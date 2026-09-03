@@ -18,11 +18,11 @@ $host-selector: ('#button');
  */
 
 @include vars.hybrid($name, $css-selector, $use-host) {
-  @include vars.local(button-font-family, var(--ds-button-family));
-  @include vars.local(button-font-weight, var(--ds-button-weight));
-  @include vars.local(button-font-size, var(--ds-button-size-base));
-  @include vars.local(button-line-height, var(--ds-button-line-height));
-  @include vars.local(button-radius, var(--ds-button-radius-base));
+  @include vars.local(button-font-family, var(--ds-button-size-base-font-family));
+  @include vars.local(button-font-weight, var(--ds-button-size-base-font-weight));
+  @include vars.local(button-font-size, var(--ds-button-size-base-font-size));
+  @include vars.local(button-line-height, var(--ds-button-size-base-line-height));
+  @include vars.local(button-radius, var(--ds-button-size-base-radius));
 
   @include vars.local(button-color-text, var(--ds-button-color-primary-base-text));
   @include vars.local(button-color-border, var(--ds-button-color-primary-base-border));
@@ -37,12 +37,11 @@ $host-selector: ('#button');
   @include vars.local(button-color-background-active, var(--ds-button-color-primary-active-background));
 
   @include vars.local(button-width, var(--ds-button-width, fit-content));
-  @include vars.local(button-border-style, solid);
 
-  @include vars.local(button-gap, 0.5rem);
-  @include vars.local(button-min-height, 3rem);
-  @include vars.local(button-min-width, 3rem);
-  @include vars.local(button-padding-inline, 1.5rem);
+  @include vars.local(button-gap, var(--ds-button-size-base-gap));
+  @include vars.local(button-min-height, var(--ds-button-size-base-min-height));
+  @include vars.local(button-min-width, var(--ds-button-size-base-min-width));
+  @include vars.local(button-padding-inline, var(--ds-button-size-base-space-x));
 
   @include vars.local(button-box-shadow, none);
   @include vars.local(button-text-shadow, none);
@@ -71,7 +70,6 @@ $host-selector: ('#button');
   vertical-align: middle;
   cursor: pointer;
   word-break: normal;
-  box-shadow: none;
   outline: none;
   box-sizing: border-box;
   text-decoration: none;
@@ -91,8 +89,6 @@ $host-selector: ('#button');
   line-height: var(--_button-line-height);
 
   border-radius: var(--_button-radius);
-  border-style: var(--_button-border-style);
-  border-width: var(--ds-alias-border-width-base);
 
   width: var(--_button-width, fit-content);
   min-width: var(--_button-min-width);
@@ -102,14 +98,14 @@ $host-selector: ('#button');
 
   background-color: var(--_button-color-background);
   color: var(--_button-color-text);
-  border-color: var(--_button-color-border);
+  border: var(--_button-color-border);
 
   &::-moz-focus-inner {
     border: 0;
   }
 
   // Icon & Spinner
-  --spinner-size: 1.5rem;
+  --spinner-logo-size: 1.5rem;
   --icon-color: var(--_button-color-text);
 
   // Outline
@@ -131,7 +127,7 @@ $host-selector: ('#button');
       --icon-color: var(--_button-color-text-hover);
       color: var(--_button-color-text-hover);
       background-color: var(--_button-color-background-hover);
-      border-color: var(--_button-color-border-hover);
+      border: var(--_button-color-border-hover);
     }
   }
 
@@ -140,7 +136,7 @@ $host-selector: ('#button');
     --icon-color: var(--_button-color-text-active);
     background-color: var(--_button-color-background-active);
     color: var(--_button-color-text-active);
-    border-color: var(--_button-color-border-active);
+    border: var(--_button-color-border-active);
     translate: 0 0.5px;
   }
 }
@@ -165,6 +161,41 @@ $host-selector: ('#button');
   &.is-wide {
     width: 100%;
     flex: 1 1 auto;
+  }
+}
+
+//
+// Brand Icon
+// --------------------------------
+
+@mixin brand-icon() {
+  flex-direction: column;
+  text-align: center;
+}
+
+@include hybrid.host($use-host) {
+  :host(.has-brand-icon) {
+    @include brand-icon();
+
+    #button {
+      flex-direction: column;
+      text-align: center;
+      padding: calc(var(--ds-button-size-base-space-x) / 2);
+
+      @include tablet {
+        padding: calc(var(--ds-button-size-base-space-x));
+      }
+    }
+  }
+}
+
+@include hybrid.styles($css-selector, $use-host) {
+  &.has-brand-icon {
+    @include brand-icon();
+    padding: calc(var(--ds-button-size-base-space-x) / 2);
+    @include tablet {
+      padding: calc(var(--ds-button-size-base-space-x));
+    }
   }
 }
 
@@ -225,10 +256,11 @@ $colors: (
   'primary',
   'secondary',
   'tertiary',
-  'tertiary-yellow',
-  'tertiary-purple',
-  'tertiary-green',
-  'tertiary-red',
+  'ghost',
+  'brand-purple',
+  'brand-red',
+  'brand-yellow',
+  'brand-green',
   'info',
   'success',
   'warning',
@@ -253,28 +285,28 @@ $colors: (
 
 @each $color in $colors {
   @include hybrid.host($use-host) {
-    :host(.is-#{$color}:not(.is-inverted):not(.is-dashed):not(.is-disabled):not(.is-loading)) {
+    :host(.is-#{$color}:not(.is-inverted):not(.is-disabled):not(.is-loading)) {
       @include color($color);
     }
   }
 
   @include hybrid.styles('.button', $use-host) {
-    &.is-#{$color}:not(.is-inverted):not(.is-dashed):not(.is-disabled):not(.is-loading) {
+    &.is-#{$color}:not(.is-inverted):not(.is-disabled):not(.is-loading) {
       @include color($color);
     }
   }
 }
 
 @each $color in $colors {
-  @if ($color != 'secondary' and $color != 'tertiary' and $color != 'link' and $color != 'text') {
+  @if ($color != 'secondary' and $color != 'tertiary' and $color != 'ghost' and $color != 'link' and $color != 'text') {
     @include hybrid.host($use-host) {
-      :host(.is-#{$color}.is-inverted:not(.is-dashed):not(.is-disabled):not(.is-loading)) {
+      :host(.is-#{$color}.is-inverted:not(.is-disabled):not(.is-loading)) {
         @include color(inverted);
       }
     }
 
     @include hybrid.styles('.button', $use-host) {
-      &.is-#{$color}.is-inverted:not(.is-dashed):not(.is-disabled):not(.is-loading) {
+      &.is-#{$color}.is-inverted:not(.is-disabled):not(.is-loading) {
         @include color(inverted);
       }
     }
@@ -285,7 +317,7 @@ $colors: (
 // Inverted Colors
 // --------------------------------
 
-$inverted-colors: ('secondary', 'tertiary', 'text', 'link');
+$inverted-colors: ('secondary', 'tertiary', 'ghost', 'text', 'link');
 
 @each $color in $inverted-colors {
   @include hybrid.host($use-host) {
@@ -302,13 +334,33 @@ $inverted-colors: ('secondary', 'tertiary', 'text', 'link');
 }
 
 //
+// Inverted Focus
+// --------------------------------
+@include hybrid.host($use-host) {
+  :host(.is-inverted:not(.is-disabled):not(.is-loading)) {
+    --mod-button-focus-shadow: var(--ds-alias-interaction-focus-color-inverted);
+  }
+}
+
+@include hybrid.styles('.button', $use-host) {
+  &.is-inverted:not(.is-disabled):not(.is-loading) {
+    --mod-button-focus-shadow: var(--ds-alias-interaction-focus-color-inverted);
+  }
+}
+
+//
 // Sizes
 // --------------------------------
 @mixin size-sm() {
-  --mod-button-font-size: var(--ds-button-size-sm);
-  --mod-button-min-height: 2rem;
-  --mod-button-min-width: 2rem;
-  --mod-button-padding-inline: 0.75rem;
+  --mod-button-font-family: var(--ds-button-size-sm-font-family);
+  --mod-button-font-weight: var(--ds-button-size-sm-font-weight);
+  --mod-button-font-size: var(--ds-button-size-sm-font-size);
+  --mod-button-line-height: var(--ds-button-size-sm-line-height);
+  --mod-button-radius: var(--ds-button-size-sm-radius);
+  --mod-button-gap: var(--ds-button-size-sm-gap);
+  --mod-button-min-height: var(--ds-button-size-sm-min-height);
+  --mod-button-min-width: var(--ds-button-size-sm-min-width);
+  --mod-button-padding-inline: var(--ds-button-size-sm-space-x);
 }
 
 @include hybrid.host($use-host) {
@@ -325,10 +377,15 @@ $inverted-colors: ('secondary', 'tertiary', 'text', 'link');
 }
 
 @mixin size-lg() {
-  --mod-button-font-size: var(--ds-button-size-lg);
-  --mod-button-min-height: 3.5rem;
-  --mod-button-min-width: 3.5rem;
-  --mod-button-padding-inline: 1.5rem;
+  --mod-button-font-family: var(--ds-button-size-lg-font-family);
+  --mod-button-font-weight: var(--ds-button-size-lg-font-weight);
+  --mod-button-font-size: var(--ds-button-size-lg-font-size);
+  --mod-button-line-height: var(--ds-button-size-lg-line-height);
+  --mod-button-radius: var(--ds-button-size-lg-radius);
+  --mod-button-gap: var(--ds-button-size-lg-gap);
+  --mod-button-min-height: var(--ds-button-size-lg-min-height);
+  --mod-button-min-width: var(--ds-button-size-lg-min-width);
+  --mod-button-padding-inline: var(--ds-button-size-lg-space-x);
 }
 
 @include hybrid.host($use-host) {
@@ -341,25 +398,6 @@ $inverted-colors: ('secondary', 'tertiary', 'text', 'link');
   &.is-lg,
   &.is-large {
     @include size-lg();
-  }
-}
-
-@mixin size-xl() {
-  --mod-button-font-size: var(--ds-button-size-xl);
-  --mod-button-min-height: 5.5rem;
-  --mod-button-min-width: 5.5rem;
-  --mod-button-padding-inline: 1.5rem;
-}
-
-@include hybrid.host($use-host) {
-  :host(.is-xl) {
-    @include size-xl();
-  }
-}
-
-@include hybrid.styles('.button', $use-host) {
-  &.is-xl {
-    @include size-xl();
   }
 }
 
@@ -382,23 +420,6 @@ $inverted-colors: ('secondary', 'tertiary', 'text', 'link');
 @include hybrid.styles('.button', $use-host) {
   &.is-flat {
     @include shape-flat();
-  }
-}
-
-// Rounded
-@mixin shape-rounded() {
-  --mod-button-radius: var(--ds-button-radius-rounded);
-}
-
-@include hybrid.host($use-host) {
-  :host(.is-rounded) {
-    @include shape-rounded();
-  }
-}
-
-@include hybrid.styles('.button', $use-host) {
-  &.is-rounded {
-    @include shape-rounded();
   }
 }
 
@@ -436,86 +457,26 @@ $inverted-colors: ('secondary', 'tertiary', 'text', 'link');
   }
 }
 
-// Circle
-@mixin shape-circle($size: 3rem) {
-  --mod-button-radius: var(--ds-button-radius-rounded);
-  --mod-button-padding-inline: 0;
-  --mod-button-gap: 0;
-  --mod-button-min-height: #{$size};
-  --mod-button-min-width: #{$size};
-}
-
-@include hybrid.host($use-host) {
-  :host(.is-circle:not(.is-sm)) {
-    @include shape-circle();
-    --icon-size: 1.5rem;
-  }
-
-  :host(.is-circle.is-sm) {
-    @include shape-circle(2rem);
-    --icon-size: var(--ds-icon-size-sm);
-  }
-}
-
-@include hybrid.styles('.button', $use-host) {
-  &.is-circle:not(.is-sm),
-  &.is-circle:not(.is-small) {
-    @include shape-circle();
-    --icon-size: 1.5rem;
-  }
-
-  &.is-circle.is-small,
-  &.is-circle.is-sm {
-    @include shape-circle(2rem);
-    --icon-size: var(--ds-icon-size-sm);
-  }
-}
-
-//
-// Dashed Variants
-// --------------------------------
-$dashed-colors: ('tertiary-purple', 'tertiary-red', 'tertiary-green', 'tertiary-yellow');
-
-@each $color in $dashed-colors {
-  @include hybrid.host($use-host) {
-    :host(.is-#{$color}.is-dashed) {
-      --mod-button-border-style: dashed;
-      --icon-shape: var(--_button-color-border);
-
-      @include color('#{$color}-dashed');
-    }
-  }
-
-  @include hybrid.styles($css-selector, $use-host) {
-    &.is-#{$color}.is-dashed {
-      --mod-button-border-style: dashed;
-      --icon-shape: var(--_button-color-border);
-
-      @include color('#{$color}-dashed');
-    }
-  }
-}
-
 //
 // Shadow
 // --------------------------------
 @include hybrid.host($use-host) {
-  :host(.has-shadow:not(.is-link):not(.is-text)) {
+  :host(.has-shadow:not(.is-link):not(.is-ghost)) {
     --mod-button-box-shadow: var(--ds-alias-shadow-box-base);
   }
 
-  :host(.is-text.has-shadow),
+  :host(.is-ghost.has-shadow),
   :host(.is-link.has-shadow) {
     --mod-button-text-shadow: var(--ds-alias-shadow-text);
   }
 }
 
 @include hybrid.styles('.button', $use-host) {
-  &.has-shadow:not(.is-link, .is-text) {
+  &.has-shadow:not(.is-link, .is-ghost) {
     --mod-button-box-shadow: var(--ds-alias-shadow-box-base);
   }
 
-  &.is-text.has-shadow,
+  &.is-ghost.has-shadow,
   &.is-link.has-shadow {
     --mod-button-text-shadow: var(--ds-alias-shadow-text);
   }
@@ -590,7 +551,7 @@ $dashed-colors: ('tertiary-purple', 'tertiary-red', 'tertiary-green', 'tertiary-
     cursor: default;
     translate: 0 0;
     background-color: var(--ds-button-color-disabled-base-background);
-    border-color: var(--ds-button-color-disabled-base-border);
+    border: var(--ds-button-color-disabled-base-border);
     color: var(--ds-button-color-disabled-base-text);
 
     & > ds-icon {

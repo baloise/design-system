@@ -38,6 +38,55 @@ describe('findRemovedVariableIds', () => {
     const staleBaseline = { ...existingState, entries: { v1: existingState.entries.v1 } }
     expect(findRemovedVariableIds(staleBaseline, currentTokens)).toEqual([])
   })
+
+  it("treats all 5 of a shadow token's sub-ids as present, not just one", () => {
+    const shadowState = {
+      ...existingState,
+      entries: {
+        ...existingState.entries,
+        'shadow-x': {},
+        'shadow-y': {},
+        'shadow-b': {},
+        'shadow-s': {},
+        'shadow-c': {},
+      },
+    }
+    const currentTokens = [
+      { path: ['A'], type: 'string', value: { kind: 'literal', value: 'x' }, variableId: 'v1' },
+      { path: ['B'], type: 'string', value: { kind: 'literal', value: 'y' }, variableId: 'v2' },
+      {
+        path: ['Global', 'Shadow', 'Base'],
+        type: 'shadow',
+        value: { kind: 'literal', value: {} },
+        variableId: {
+          offsetX: 'shadow-x',
+          offsetY: 'shadow-y',
+          blur: 'shadow-b',
+          spread: 'shadow-s',
+          color: 'shadow-c',
+        },
+      },
+    ]
+    expect(findRemovedVariableIds(shadowState, currentTokens)).toEqual([])
+  })
+
+  it('flags only the shadow sub-ids actually missing, not the whole token', () => {
+    const shadowState = {
+      ...existingState,
+      entries: { 'shadow-x': {}, 'shadow-y': {}, 'shadow-b': {}, 'shadow-s': {}, 'shadow-c': {} },
+    }
+    // Current token only carries 4 of its 5 sub-ids (e.g. the color
+    // variable was deleted in Figma out from under it).
+    const currentTokens = [
+      {
+        path: ['Global', 'Shadow', 'Base'],
+        type: 'shadow',
+        value: { kind: 'literal', value: {} },
+        variableId: { offsetX: 'shadow-x', offsetY: 'shadow-y', blur: 'shadow-b', spread: 'shadow-s' },
+      },
+    ]
+    expect(findRemovedVariableIds(shadowState, currentTokens)).toEqual(['shadow-c'])
+  })
 })
 
 describe('buildDeleteVariablesPayload', () => {

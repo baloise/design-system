@@ -25,7 +25,7 @@ export class Step implements DsComponentInterface {
 
   /**
    * PUBLIC PROPERTY API
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   /**
@@ -123,7 +123,7 @@ export class Step implements DsComponentInterface {
 
   /**
    * EVENT HANDLERS
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   private handleClick = (ev: MouseEvent) => {
@@ -142,7 +142,7 @@ export class Step implements DsComponentInterface {
 
   /**
    * RENDER
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   render() {
@@ -158,7 +158,7 @@ export class Step implements DsComponentInterface {
     }
 
     const circleContent = this.done ? (
-      <ds-icon name="check" color="white" aria-hidden="true" />
+      <ds-icon name="check" inverted aria-hidden="true" />
     ) : this.invalid ? (
       <span class="step-invalid" aria-hidden="true">
         !

@@ -16,8 +16,8 @@
 
 :host {
   @include vars.base(logo);
-  @include vars.local(logo-color, var(--ds-global-color-primary-5));
-  @include vars.local(logo-height, 22px);
+  @include vars.local(logo-color, var(--ds-logo-color-primary));
+  @include vars.local(logo-height, var(--ds-logo-size-base-mobile));
 }
 
 /**
@@ -46,7 +46,7 @@
   }
 
   @include desktop {
-    --mod-logo-height: 32px;
+    --mod-logo-height: var(--ds-logo-size-base-desktop);
   }
 
   #animated {
@@ -72,22 +72,22 @@
   }
 }
 
-:host(.is-white) {
-  --mod-logo-color: var(--ds-global-color-white);
+:host(.is-inverted) {
+  --mod-logo-color: var(--ds-logo-color-inverted);
 }
 
 :host(.is-sm) {
-  --mod-logo-height: 22px;
+  --mod-logo-height: var(--ds-logo-size-sm-mobile);
 
   @include desktop {
-    --mod-logo-height: 22px;
+    --mod-logo-height: var(--ds-logo-size-sm-desktop);
   }
 }
 
 :host(.is-lg) {
-  --mod-logo-height: 32px;
+  --mod-logo-height: var(--ds-logo-size-lg-mobile);
 
   @include desktop {
-    --mod-logo-height: 48px;
+    --mod-logo-height: var(--ds-logo-size-lg-desktop);
   }
 }

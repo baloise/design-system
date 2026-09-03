@@ -26,10 +26,10 @@ export const Colors = Story({
 export const Position = Story({
   ...withRender(
     () => `<div class="flex gap-normal">
-  <div class="border-top-primary p-x-small bg-green-2 flex-1">Top</div>
-  <div class="border-right-primary p-x-small bg-green-2 flex-1">Right</div>
-  <div class="border-bottom-primary p-x-small bg-green-2 flex-1">Bottom</div>
-  <div class="border-left-primary p-x-small bg-green-2 flex-1">Left</div>
+  <div class="border-top-primary p-x-small bg-red-2 flex-1">Top</div>
+  <div class="border-right-primary p-x-small bg-red-2 flex-1">Right</div>
+  <div class="border-bottom-primary p-x-small bg-red-2 flex-1">Bottom</div>
+  <div class="border-left-primary p-x-small bg-red-2 flex-1">Left</div>
 </div>`,
   ),
 })

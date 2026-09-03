@@ -9,8 +9,12 @@ html {
 // Shared with :host so these resolve when this stylesheet is adopted into a shadow root
 html,
 :host {
-  background-color: var(--ds-body-color-background);
-  font-size: var(--ds-body-text-size);
+  background-color: var(--ds-body-surface);
+  font-family: var(--ds-body-font-font-family);
+  font-size: var(--ds-body-font-font-size);
+  font-weight: var(--ds-body-font-font-weight);
+  line-height: var(--ds-body-font-line-height);
+
   text-rendering: optimizeLegibility;
   text-size-adjust: 100%;
   -moz-osx-font-smoothing: grayscale;
@@ -42,14 +46,18 @@ input,
 optgroup,
 select,
 textarea {
-  font-family: var(--ds-body-family);
+  font-family: var(--ds-body-font-font-family);
+  font-size: var(--ds-body-font-font-size);
+  font-weight: var(--ds-body-font-font-weight);
+  line-height: var(--ds-body-font-line-height);
 }
 
 body {
   color: var(--ds-body-color);
-  font-size: var(--ds-body-size);
-  font-weight: var(--ds-body-weight);
-  line-height: var(--ds-body-line-height);
+  font-family: var(--ds-body-font-font-family);
+  font-size: var(--ds-body-font-font-size);
+  font-weight: var(--ds-body-font-font-weight);
+  line-height: var(--ds-body-font-line-height);
   -webkit-overflow-scrolling: auto;
 }
 
@@ -105,7 +113,7 @@ input[type='radio'] {
     padding-bottom: 2.5rem;
   }
 
-  ds-footer,
+  ds-app-footer,
   footer.footer {
     margin-top: auto;
   }

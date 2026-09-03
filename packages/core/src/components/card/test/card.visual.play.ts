@@ -4,12 +4,9 @@ const TAG = 'card'
 const VARIANTS = [
   'basic',
   'tile',
-  'square',
   'centered',
-  'right',
   'colors',
   'spaces',
-  'outlined',
   'combi-header',
   'fullheight',
   'images',

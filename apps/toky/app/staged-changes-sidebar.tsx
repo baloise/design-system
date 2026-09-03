@@ -180,6 +180,8 @@ export function StagedChangesSidebar({
   canSubmit,
   submitState,
   submitMessage,
+  submitIsLocal = false,
+  localTokensMode = false,
   onSubmit,
 }: {
   diff: TokenDiffEntry[]
@@ -203,6 +205,11 @@ export function StagedChangesSidebar({
   canSubmit: boolean
   submitState: SubmitState
   submitMessage: string | null
+  // TOKY_LOCAL_TOKENS escape hatch (see src/tokens/local.ts) — submitIsLocal
+  // marks a completed save as a direct disk write rather than a PR;
+  // localTokensMode is known before submitting, to adjust copy up front.
+  submitIsLocal?: boolean
+  localTokensMode?: boolean
   onSubmit: () => void
 }) {
   const brandDiffCount = Object.values(brandDiffs).reduce((sum, d) => sum + d.length, 0)
@@ -246,7 +253,13 @@ export function StagedChangesSidebar({
             </SelectContent>
           </Select>
           <Button type="button" className="w-full" disabled={!canSubmit} onClick={onSubmit}>
-            {submitState === 'submitting' ? 'Submitting…' : `Submit ${totalCount} change${totalCount === 1 ? '' : 's'}`}
+            {submitState === 'submitting'
+              ? localTokensMode
+                ? 'Saving…'
+                : 'Submitting…'
+              : localTokensMode
+                ? `Save ${totalCount} change${totalCount === 1 ? '' : 's'} locally`
+                : `Submit ${totalCount} change${totalCount === 1 ? '' : 's'}`}
           </Button>
 
           {problemCount > 0 && (
@@ -261,7 +274,13 @@ export function StagedChangesSidebar({
           {submitState === 'success' && submitMessage && (
             <Alert role="status">
               <AlertDescription>
-                Submitted for review — <a href={submitMessage}>view your change</a>.
+                {submitIsLocal ? (
+                  submitMessage
+                ) : (
+                  <>
+                    Submitted for review — <a href={submitMessage}>view your change</a>.
+                  </>
+                )}
               </AlertDescription>
             </Alert>
           )}

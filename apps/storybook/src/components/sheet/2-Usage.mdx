@@ -1,0 +1,29 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  Footer,
+  UsageExamples,
+} from '../../../.storybook/blocks'
+import * as SheetStories from './sheet.stories'
+import { SHEET_DOC_CONFIG, getSheetTabs } from './sheet.doc-config'
+
+<Meta title="Components/Sheet/Usage" />
+
+<Banner label={'Usage'} section={SHEET_DOC_CONFIG.section} color={SHEET_DOC_CONFIG.color} />
+
+<BannerTabs of={SheetStories} tabs={getSheetTabs('usage')} />
+
+## When to Use
+
+- To surface persistent actions that should always be accessible, such as a primary call-to-action at the bottom of a form or page.
+- To present contextual information or a summary that complements the main content without covering it entirely.
+- When the action or information relates directly to the current page context and needs to stay visible as the user scrolls.
+
+## When NOT to Use
+
+- Do not use a sheet for critical alerts or errors — use a notification or modal instead.
+- Do not use a sheet when the user needs to focus entirely on a task — use a modal or a dedicated page.
+- Do not stack multiple sheets — only one sheet should be visible at a time.
+
+<Footer />

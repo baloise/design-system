@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useId, useMemo, useRef, useState } from 'react'
-import type { KeyboardEvent } from 'react'
+import type { CSSProperties, KeyboardEvent } from 'react'
 import { CheckIcon, SearchIcon } from 'lucide-react'
 import { Input } from '@/components/ui/input'
 import { cn } from '@/lib/utils'
@@ -13,6 +13,32 @@ export interface SearchSelectOption {
   // Present only when the option has a color worth previewing (e.g. a color-typed reference
   // target) - absence means "not applicable", not "color unknown".
   swatch?: string
+  // Short resolved-value summary shown right-aligned on the row (e.g. "1.5rem", "#F05D4D") -
+  // absence means "no summary available", not "empty value". Mutually exclusive with
+  // borderPreview below - a row shows one or the other, never both.
+  detail?: string
+  // Present only for border-typed reference targets - a little solid/dashed/dotted line segment
+  // right-aligned on the row, colored and styled to match what picking this option would actually
+  // resolve to, so a border's color+style is legible at a glance instead of guessed from its path.
+  borderPreview?: { color: string; cssStyle: string }
+  // The option's dimension value normalized to px, for exact-value search (see parseDimensionQuery
+  // below) — lets searching "4px" or "0.25rem" find only tokens whose value is exactly that,
+  // regardless of which unit they're authored in, rather than substring-matching display text
+  // (where "4px" would wrongly match a displayed "14px"). Absent for non-dimension options.
+  dimensionPx?: number
+}
+
+// Recognizes a bare "<number><px|rem>" search query (e.g. "4px", "0.25rem") and normalizes it to
+// px, so it can be compared for exact equality against an option's dimensionPx instead of being
+// treated as substring text — a substring match on "4px" would also hit a displayed "14px".
+const DIMENSION_QUERY_PATTERN = /^(-?\d+(?:\.\d+)?)\s*(px|rem)$/i
+const PX_PER_REM = 16
+
+function parseDimensionQueryPx(text: string): number | null {
+  const match = DIMENSION_QUERY_PATTERN.exec(text.trim())
+  if (!match) return null
+  const value = Number(match[1])
+  return match[2].toLowerCase() === 'px' ? value : value * PX_PER_REM
 }
 
 // A search field with an always-visible, independently scrollable results list underneath
@@ -41,9 +67,21 @@ export function SearchSelect({
 }) {
   const [filter, setFilter] = useState('')
   const filtered = useMemo(() => {
+    // A recognizable dimension query ("4px", "0.25rem") matches by exact px-normalized value only
+    // — never falls back to substring text matching, which would also match a displayed "14px".
+    const dimensionQueryPx = parseDimensionQueryPx(filter)
+    if (dimensionQueryPx !== null) {
+      return options.filter(
+        option => option.dimensionPx !== undefined && Math.abs(option.dimensionPx - dimensionQueryPx) < 1e-6,
+      )
+    }
     const query = normalizeSearchText(filter)
     if (!query) return options
-    return options.filter(option => normalizeSearchText(option.label).includes(query))
+    // Matches on the path (label) as before, or on the resolved-value summary (detail, e.g. "2px").
+    return options.filter(
+      option =>
+        normalizeSearchText(option.label).includes(query) || normalizeSearchText(option.detail ?? '').includes(query),
+    )
   }, [options, filter])
 
   const [highlightedIndex, setHighlightedIndex] = useState(0)
@@ -92,6 +130,7 @@ export function SearchSelect({
           onChange={e => setFilter(e.target.value)}
           onKeyDown={handleKeyDown}
           className="pl-8"
+          autoFocus
         />
       </div>
       <div id={listboxId} role="listbox" aria-label={ariaLabel} className="h-64 overflow-y-auto">
@@ -130,6 +169,27 @@ export function SearchSelect({
                   />
                 )}
                 <span className="flex-1 truncate">{option.label}</span>
+                {option.borderPreview ? (
+                  <span
+                    aria-hidden="true"
+                    className="h-0 w-8 shrink-0 border-t-2"
+                    style={{
+                      borderTopColor: option.borderPreview.color,
+                      borderTopStyle: option.borderPreview.cssStyle as CSSProperties['borderTopStyle'],
+                    }}
+                  />
+                ) : (
+                  option.detail && (
+                    <span
+                      className={cn(
+                        'shrink-0 truncate text-xs',
+                        isActive ? 'text-primary-foreground/70' : 'text-muted-foreground',
+                      )}
+                    >
+                      {option.detail}
+                    </span>
+                  )
+                )}
                 {isActive && <CheckIcon className="size-4 shrink-0" />}
               </button>
             )

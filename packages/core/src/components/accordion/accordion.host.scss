@@ -25,13 +25,13 @@
   @include vars.local(accordion-marker-size, 1rem);
 
   @include vars.local(accordion-summary-color, var(--ds-accordion-summary-color-base));
-  @include vars.local(accordion-summary-font-family, var(--ds-accordion-summary-font-family));
-  @include vars.local(accordion-summary-font-weight, var(--ds-accordion-summary-font-weight));
-  @include vars.local(accordion-summary-font-line-height, var(--ds-accordion-summary-font-line-height));
-  @include vars.local(accordion-summary-font-size, var(--ds-accordion-summary-font-size-device));
+  @include vars.local(accordion-summary-font-family, var(--ds-accordion-summary-typo-font-family));
+  @include vars.local(accordion-summary-font-weight, var(--ds-accordion-summary-typo-font-weight));
+  @include vars.local(accordion-summary-font-line-height, var(--ds-accordion-summary-typo-line-height));
+  @include vars.local(accordion-summary-font-size, var(--ds-accordion-summary-typo-font-size));
   @include vars.local(accordion-summary-color-hover, var(--ds-accordion-summary-color-hover));
   @include vars.local(accordion-summary-color-active, var(--ds-accordion-summary-color-active));
-  @include vars.local(accordion-radius, var(--ds-accordion-radius-base));
+  @include vars.local(accordion-radius, var(--ds-accordion-radius));
 }
 
 /**

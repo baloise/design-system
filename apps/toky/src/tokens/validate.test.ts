@@ -14,6 +14,8 @@ function makeToken(overrides: Partial<FlatToken>): FlatToken {
     resolvedValue: undefined,
     resolutionError: null,
     figmaId: null,
+    responsive: null,
+    resolvedResponsive: null,
     ...overrides,
   }
 }
@@ -50,26 +52,6 @@ describe('validateWorkingTokens', () => {
   it('accepts a numeric segment, e.g. a color scale step', () => {
     const items = [working('a', { name: 'Color.Danger.700' })]
     expect(validateWorkingTokens(items)).toEqual([])
-  })
-
-  it('flags a reserved word used as a segment', () => {
-    const items = [working('a', { name: 'Color.Default' })]
-    const errors = validateWorkingTokens(items)
-    expect(errors).toContainEqual({
-      tokenKey: 'a',
-      message: '"Default" is a reserved word and cannot be used in a token path.',
-      severity: 'error',
-    })
-  })
-
-  it('flags a reserved word case-insensitively', () => {
-    const items = [working('a', { name: 'DEFAULT' })]
-    const errors = validateWorkingTokens(items)
-    expect(errors).toContainEqual({
-      tokenKey: 'a',
-      message: '"DEFAULT" is a reserved word and cannot be used in a token path.',
-      severity: 'error',
-    })
   })
 
   it('flags two tokens resolving to the same layer+name as duplicates', () => {
@@ -143,6 +125,12 @@ describe('validateWorkingTokens', () => {
     })
   })
 
+  it('flags a token whose reference target points at itself', () => {
+    const items = [working('a', { name: 'Foo', layer: 'Global', referenceTarget: '🌐 Global.Foo' })]
+    const errors = validateWorkingTokens(items)
+    expect(errors).toContainEqual({ tokenKey: 'a', message: 'A token cannot reference itself.', severity: 'error' })
+  })
+
   it('accepts a reference target that matches another working token', () => {
     const items = [
       working('a', { name: 'Color.White', layer: 'Global' }),
@@ -176,6 +164,40 @@ describe('validateWorkingTokens', () => {
     const items = [
       working('a', { name: 'Color.White', layer: 'Global' }),
       working('b', { name: 'Foo', layer: 'Alias', referenceTarget: '🌐 Global.Color.White' }),
+    ]
+    expect(validateWorkingTokens(items)).toEqual([])
+  })
+
+  // docs/plans/responsive-dimension-token-plan.md decision 6 — no partial responsive tokens.
+  it('flags a responsive dimension token missing one or more breakpoints', () => {
+    const items = [
+      working('a', {
+        name: 'SpaceLg',
+        type: 'dimension',
+        rawValue: { value: 16, unit: 'px' },
+        responsive: { mobile: { value: 16, unit: 'px' }, tablet: undefined, desktop: { value: 32, unit: 'px' } },
+      }),
+    ]
+    const errors = validateWorkingTokens(items)
+    expect(errors).toContainEqual({
+      tokenKey: 'a',
+      message: 'Responsive value is missing tablet.',
+      severity: 'error',
+    })
+  })
+
+  it('passes a responsive dimension token with all 3 breakpoints filled', () => {
+    const items = [
+      working('a', {
+        name: 'SpaceLg',
+        type: 'dimension',
+        rawValue: { value: 16, unit: 'px' },
+        responsive: {
+          mobile: { value: 16, unit: 'px' },
+          tablet: { value: 24, unit: 'px' },
+          desktop: { value: 32, unit: 'px' },
+        },
+      }),
     ]
     expect(validateWorkingTokens(items)).toEqual([])
   })

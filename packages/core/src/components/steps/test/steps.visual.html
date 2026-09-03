@@ -31,12 +31,14 @@
           <ds-step name="a" label="Done" done></ds-step>
           <ds-step name="b" label="Invalid" invalid></ds-step>
           <ds-step name="c" label="Active"></ds-step>
-          <ds-step name="d" label="Disabled" disabled></ds-step>
+          <ds-step name="d" label="Default"></ds-step>
+          <ds-step name="e" label="Disabled" disabled></ds-step>
 
           <ds-step-panel for="a">Content A</ds-step-panel>
           <ds-step-panel for="b">Content B</ds-step-panel>
           <ds-step-panel for="c">Content C</ds-step-panel>
           <ds-step-panel for="d">Content D</ds-step-panel>
+          <ds-step-panel for="e">Content E</ds-step-panel>
         </ds-steps>
       </section>
 
@@ -87,24 +89,36 @@
 
       <section data-testid="colors">
         <span>Colors</span>
-        <ds-steps label="Checkout steps" color="purple" class="bg-purple-1">
-          <ds-step name="first" label="Cart"><a href="/first" aria-current="step">Cart</a></ds-step>
-          <ds-step name="second" label="Shipping"><a href="/second">Shipping</a></ds-step>
+        <ds-steps label="Checkout steps" color="purple" class="bg-purple-1 py-sm">
+          <ds-step name="first" label="Done" done><a href="/first">Cart</a></ds-step>
+          <ds-step name="second" label="Invalid" invalid><a href="/second">Invalid</a></ds-step>
+          <ds-step name="third" label="Active"><a href="/third" aria-current="step">Active</a></ds-step>
+          <ds-step name="fourth" label="Default"><a href="/second">Default</a></ds-step>
+          <ds-step name="fifth" label="Disabled" disabled><a href="/second">Disabled</a></ds-step>
         </ds-steps>
 
-        <ds-steps label="Checkout steps" color="red" class="bg-red-1">
-          <ds-step name="first" label="Cart"><a href="/first" aria-current="step">Cart</a></ds-step>
-          <ds-step name="second" label="Shipping"><a href="/second">Shipping</a></ds-step>
+        <ds-steps label="Checkout steps" color="red" class="bg-red-1 py-sm">
+          <ds-step name="first" label="Done" done><a href="/first">Cart</a></ds-step>
+          <ds-step name="second" label="Invalid" invalid><a href="/second">Invalid</a></ds-step>
+          <ds-step name="third" label="Active"><a href="/third" aria-current="step">Active</a></ds-step>
+          <ds-step name="fourth" label="Default"><a href="/second">Default</a></ds-step>
+          <ds-step name="fifth" label="Disabled" disabled><a href="/second">Disabled</a></ds-step>
         </ds-steps>
 
-        <ds-steps label="Checkout steps" color="green" class="bg-green-1">
-          <ds-step name="first" label="Cart"><a href="/first" aria-current="step">Cart</a></ds-step>
-          <ds-step name="second" label="Shipping"><a href="/second">Shipping</a></ds-step>
+        <ds-steps label="Checkout steps" color="green" class="bg-green-1 py-sm">
+          <ds-step name="first" label="Done" done><a href="/first">Cart</a></ds-step>
+          <ds-step name="second" label="Invalid" invalid><a href="/second">Invalid</a></ds-step>
+          <ds-step name="third" label="Active"><a href="/third" aria-current="step">Active</a></ds-step>
+          <ds-step name="fourth" label="Default"><a href="/second">Default</a></ds-step>
+          <ds-step name="fifth" label="Disabled" disabled><a href="/second">Disabled</a></ds-step>
         </ds-steps>
 
-        <ds-steps label="Checkout steps" color="yellow" class="bg-yellow-1">
-          <ds-step name="first" label="Cart"><a href="/first" aria-current="step">Cart</a></ds-step>
-          <ds-step name="second" label="Shipping"><a href="/second">Shipping</a></ds-step>
+        <ds-steps label="Checkout steps" color="yellow" class="bg-yellow-1 py-sm">
+          <ds-step name="first" label="Done" done><a href="/first">Cart</a></ds-step>
+          <ds-step name="second" label="Invalid" invalid><a href="/second">Invalid</a></ds-step>
+          <ds-step name="third" label="Active"><a href="/third" aria-current="step">Active</a></ds-step>
+          <ds-step name="fourth" label="Default"><a href="/second">Default</a></ds-step>
+          <ds-step name="fifth" label="Disabled" disabled><a href="/second">Disabled</a></ds-step>
         </ds-steps>
       </section>
     </main>

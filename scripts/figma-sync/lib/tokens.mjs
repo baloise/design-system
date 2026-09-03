@@ -53,10 +53,16 @@ function parseValue(rawValue) {
  * per `$value` leaf, in the domain shape from
  * docs/plans/figma-sync-action-plan.md §3 (path/type/value/variableId/figmaScopes).
  * Group nodes (no `$value`) are recursed into, not emitted.
+ *
+ * At each level, leaves are emitted before subgroups are recursed into —
+ * variables are created in Figma in this same order, and Figma's panel
+ * lists a group's direct values above its nested subgroups regardless of
+ * JSON key order, so this keeps the two in sync.
  */
 export function flattenTokens(tree, path = []) {
   /** @type {import('./tokens.d.ts').Token[]} */
   const tokens = []
+  const groupEntries = []
 
   for (const [key, node] of Object.entries(tree)) {
     if (typeof node !== 'object' || node === null) continue
@@ -72,10 +78,17 @@ export function flattenTokens(tree, path = []) {
         value: parseValue(node.$value),
         variableId: extensions['com.figma.variableId'] ?? undefined,
         figmaScopes: extensions['com.figma.scopes'] ?? undefined,
+        // A dimension token's breakpoint values (docs/plans/responsive-dimension-token-plan.md) —
+        // undefined for every other type and for a plain (non-responsive) dimension token.
+        responsive: extensions['com.helvetia.responsive'] ?? undefined,
       })
     } else {
-      tokens.push(...flattenTokens(node, nextPath))
+      groupEntries.push([node, nextPath])
     }
+  }
+
+  for (const [node, nextPath] of groupEntries) {
+    tokens.push(...flattenTokens(node, nextPath))
   }
 
   return tokens
@@ -92,6 +105,24 @@ export function flattenTokens(tree, path = []) {
  * (see the "Figma id metadata" note carried over from toky.md's
  * multi-brand section, and docs/adr/0012).
  */
+// A brand override's own $extensions.com.helvetia.responsive (if present) replaces Base's
+// wholesale, never merges field-by-field (docs/plans/responsive-dimension-token-plan.md decision
+// 7 — whole-token override only, same model typography's brand override already uses). If the
+// override doesn't carry one at all, the merged leaf gets none either — overriding $value to a
+// new literal is a complete replacement, not a partial edit that should still inherit Base's
+// breakpoints. Every other extension key (today, only com.figma.variableId, which a brand override
+// never carries of its own — see this file's own header comment) passes through from Base
+// untouched either way.
+function mergeLeafExtensions(baseExtensions, overrideExtensions) {
+  const merged = { ...baseExtensions }
+  if (overrideExtensions && 'com.helvetia.responsive' in overrideExtensions) {
+    merged['com.helvetia.responsive'] = overrideExtensions['com.helvetia.responsive']
+  } else {
+    delete merged['com.helvetia.responsive']
+  }
+  return merged
+}
+
 export function mergeBrandTree(base, brandOverride) {
   const result = {}
 
@@ -101,7 +132,13 @@ export function mergeBrandTree(base, brandOverride) {
 
     if (isTokenLeaf(baseNode)) {
       const overridesLeaf = overrideNode && typeof overrideNode === 'object' && '$value' in overrideNode
-      result[key] = overridesLeaf ? { ...baseNode, $value: overrideNode.$value } : baseNode
+      result[key] = overridesLeaf
+        ? {
+            ...baseNode,
+            $value: overrideNode.$value,
+            $extensions: mergeLeafExtensions(baseNode.$extensions, overrideNode.$extensions),
+          }
+        : baseNode
     } else {
       result[key] = mergeBrandTree(baseNode, typeof overrideNode === 'object' ? overrideNode : undefined)
     }

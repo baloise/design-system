@@ -1,11 +1,13 @@
-import { Meta } from '@storybook/addon-docs/blocks'
+import { Canvas, Meta } from '@storybook/addon-docs/blocks'
 import {
   Banner,
   BannerTabs,
   CanvasWithCodePen,
   Footer,
+  InfoQuote,
   StoryHeading,
 } from '../../../.storybook/blocks'
+import * as AgGridStories from './ag-grid.stories'
 import * as TableStories from './table.stories'
 import { TABLE_DOC_CONFIG, getTableTabs } from './table.doc-config'
 
@@ -23,24 +25,9 @@ import { TABLE_DOC_CONFIG, getTableTabs } from './table.doc-config'
 <StoryHeading of={TableStories.Striped}></StoryHeading>
 
 Alternate row backgrounds improve readability on dense tables with many rows.
-
-<CanvasWithCodePen of={TableStories.Striped} />
-
-{/* ------------------------------------------------------ */}
-
-<StoryHeading of={TableStories.Hoverable}></StoryHeading>
-
 Rows highlight on pointer hover, giving users a clear indication of which row they are about to interact with.
 
-<CanvasWithCodePen of={TableStories.Hoverable} />
-
-{/* ------------------------------------------------------ */}
-
-<StoryHeading of={TableStories.Bordered}></StoryHeading>
-
-Full cell borders on all sides make individual cells easier to distinguish in data-heavy tables.
-
-<CanvasWithCodePen of={TableStories.Bordered} />
+<CanvasWithCodePen of={TableStories.Striped} />
 
 {/* ------------------------------------------------------ */}
 
@@ -52,10 +39,184 @@ Compact cell padding reduces vertical rhythm and fits more rows into the viewpor
 
 {/* ------------------------------------------------------ */}
 
-<StoryHeading of={TableStories.SelectedRow}></StoryHeading>
+<StoryHeading of={AgGridStories.AgGrid}></StoryHeading>
 
-Highlight a specific row to indicate the currently active or selected record.
+Unlike the CSS-only variants above, this variant swaps the `table` markup for
+[AG Grid](https://www.ag-grid.com/), themed with the Design System's tokens. Reach for it when a table needs
+client-side sorting, filtering, grouping, pagination, or has to handle large or dynamic datasets — capabilities the
+CSS-only table doesn't provide on its own.
 
-<CanvasWithCodePen of={TableStories.SelectedRow} />
+<Canvas of={AgGridStories.AgGrid} sourceState="shown" />
+
+### Installation
+
+Install the package alongside AG Grid Community (`ag-grid-community` is a peer dependency; bring your own `^33.0.0`
+or later):
+
+```
+npm install --save @baloise/ds-ag-grid ag-grid-community
+```
+
+### Theming
+
+`designSystemGridTheme` is a Theming API theme built with AG Grid's own `themeQuartz.withParams(...)`. Its params are
+`var(--ds-alias-*)` strings pointing at the live `@baloise/ds-tokens` cascade, so the grid re-themes itself whenever
+the token cascade changes (brand override, dark mode) — no rebuild, no new package version.
+
+```typescript
+import { designSystemGridTheme } from '@baloise/ds-ag-grid'
+import { createGrid } from 'ag-grid-community'
+
+createGrid(gridDiv, {
+  theme: designSystemGridTheme,
+  columnDefs,
+  rowData,
+})
+```
+
+<InfoQuote>
+  **TIP**
+
+  The theme reads `--ds-alias-*` custom properties, so `@baloise/ds-tokens`' CSS must be loaded on the page —
+  otherwise the params resolve to nothing and AG Grid falls back to its own defaults.
+</InfoQuote>
+
+- for [JavaScript](https://www.ag-grid.com/javascript-data-grid/getting-started/)
+- for [Angular](https://www.ag-grid.com/angular-data-grid/getting-started/)
+- for [React](https://www.ag-grid.com/react-data-grid/getting-started/)
+
+### Custom renderers
+
+The package exports four cell renderer factories to render Design System components inside AG Grid cells. Each takes
+an options object and returns an AG Grid `cellRenderer` function.
+
+#### createBadgeCellRenderer
+
+Renders the cell's value inside a `ds-badge`.
+
+```typescript
+import { createBadgeCellRenderer } from '@baloise/ds-ag-grid'
+
+// ...
+{
+  field: 'openClaims',
+  cellRenderer: createBadgeCellRenderer<Policy>({
+    color: 'danger',
+  }),
+},
+// ...
+```
+
+```typescript
+interface BadgeCellRendererOptions<TData = unknown, TValue = unknown> {
+  /** `ds-badge` `size` attribute. Defaults to the `ds-badge` default (base) size. */
+  size?: string
+  /** `ds-badge` `color` attribute, or a function deriving it from the cell's params. */
+  color?: string | ((params: ICellRendererParams<TData, TValue>) => string)
+  /** `ds-badge` `icon` attribute, or a function deriving it from the cell's params. */
+  icon?: string | ((params: ICellRendererParams<TData, TValue>) => string | undefined)
+  /** Whether the badge is rendered for a given cell. Defaults to hiding it for `null`/`undefined` values. */
+  show?: (params: ICellRendererParams<TData, TValue>) => boolean
+}
+```
+
+#### createButtonCellRenderer
+
+Renders one or more `ds-button` elements into the cell, typically for a row-actions column.
+
+```typescript
+import { createButtonCellRenderer } from '@baloise/ds-ag-grid'
+
+// ...
+{
+  headerName: 'Actions',
+  cellRenderer: createButtonCellRenderer<Policy>([
+    { label: 'Edit', color: 'secondary', onClick: params => edit(params.data) },
+    { label: 'Delete', color: 'danger', onClick: params => remove(params.data) },
+  ]),
+  sortable: false,
+  filter: false,
+},
+// ...
+```
+
+```typescript
+interface ButtonCellRendererAction<TData = unknown, TValue = unknown> {
+  /** Button label. */
+  label: string
+  /** `ds-button` `color` attribute. Defaults to `'secondary'`. */
+  color?: string
+  /** `ds-button` `size` attribute. Defaults to `'sm'`. */
+  size?: string
+  /** `ds-button` `icon` attribute. */
+  icon?: string
+  /** Called with the cell's params when the button is clicked. */
+  onClick?: (params: ICellRendererParams<TData, TValue>) => void
+}
+```
+
+#### createTagCellRenderer
+
+Renders the cell's value inside a `ds-tag`.
+
+```typescript
+import { createTagCellRenderer } from '@baloise/ds-ag-grid'
+
+// ...
+{
+  field: 'status',
+  cellRenderer: createTagCellRenderer<Policy>({
+    color: params => (STATUS_TAG_COLORS[params.value as string] ?? 'grey'),
+  }),
+},
+// ...
+```
+
+```typescript
+interface TagCellRendererOptions<TData = unknown, TValue = unknown> {
+  /** `ds-tag` `size` attribute. Defaults to `'sm'`. */
+  size?: string
+  /** `ds-tag` `color` attribute, or a function deriving it from the cell's params. */
+  color?: string | ((params: ICellRendererParams<TData, TValue>) => string)
+}
+```
+
+#### createTextCellRenderer
+
+Renders the cell's value as text, with an optional `ds-icon` placed before or after it.
+
+```typescript
+import { createTextCellRenderer } from '@baloise/ds-ag-grid'
+
+// ...
+{
+  field: 'policyNumber',
+  cellRenderer: createTextCellRenderer<Policy>({
+    icon: params => params.data?.icon,
+    position: 'after',
+  }),
+},
+// ...
+```
+
+```typescript
+interface TextCellRendererOptions<TData = unknown, TValue = unknown> {
+  /** `ds-icon` `name` attribute, or a function deriving it from the cell's params. Return `undefined`/`''` to omit it. */
+  icon?: string | ((params: ICellRendererParams<TData, TValue>) => string | undefined)
+  /** `ds-icon` `size` attribute. Defaults to the `ds-icon` default size. */
+  iconSize?: string
+  /** `ds-icon` `color` attribute. Defaults to the `ds-icon` default color. */
+  iconColor?: string
+  /** Places the icon before or after the text, or a function deriving it. Defaults to `'after'`. */
+  position?: 'before' | 'after' | ((params: ICellRendererParams<TData, TValue>) => 'before' | 'after')
+}
+```
+
+<InfoQuote>
+  **SCOPE**
+
+  This package covers AG Grid Community only — no Enterprise-only widgets are referenced here. The theme itself
+  applies unchanged to Enterprise, since both share the same Theming API.
+</InfoQuote>
 
 <Footer />

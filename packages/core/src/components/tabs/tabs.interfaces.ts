@@ -1,4 +1,4 @@
-export const TABS_COLORS = ['', 'purple', 'green', 'red', 'yellow'] as const
+export const TABS_COLORS = ['purple', 'green', 'red', 'yellow'] as const
 export type TabsColor = (typeof TABS_COLORS)[number]
 
 export const TABS_VERTICAL_COL_SIZES = [

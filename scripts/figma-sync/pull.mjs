@@ -19,9 +19,20 @@ import { appendFileSync } from 'node:fs'
 import { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { loadSyncStateFile } from './lib/baseline.mjs'
-import { buildBootstrapPayload, resolveBootstrapIds } from './lib/bootstrap.mjs'
+import {
+  buildBootstrapPayload,
+  buildResponsiveBootstrapPayload,
+  resolveBootstrapIds,
+  resolveResponsiveBootstrapIds,
+} from './lib/bootstrap.mjs'
 import { buildDeleteVariablesPayload, findRemovedVariableIds } from './lib/deletion.mjs'
-import { buildNameIndex, findCollectionAndModes, getLocalVariables, postVariables } from './lib/figma.mjs'
+import {
+  buildNameIndex,
+  findCollectionAndModes,
+  findResponsiveCollectionAndModes,
+  getLocalVariables,
+  postVariables,
+} from './lib/figma.mjs'
 import { brandFilePath, flattenTokens, listBrandNames, loadTokenFile, mergeBrandTree } from './lib/tokens.mjs'
 import {
   assignVariableIds,
@@ -91,6 +102,65 @@ async function dryRun({ baseTokens, brandTokensByName }, figmaToken, figmaFileKe
 }
 
 /**
+ * Resolves the brand collection ("Design Tokens"), bootstrapping it if this file has never had one
+ * under that name — same one-time bootstrap the responsive collection below gets, independently,
+ * since a file might already have one collection but not the other (e.g. this feature shipped after
+ * the brand collection was already bootstrapped).
+ */
+async function resolveBrandCollection(localVariables, brandNames, figmaFileKey, figmaToken) {
+  const collectionName = process.env.FIGMA_COLLECTION_NAME ?? 'Design Tokens'
+  const exists = Object.values(localVariables.variableCollections).some(c => c.name === collectionName)
+  if (!exists) {
+    console.log(
+      `No Figma variable collection named "${collectionName}" found — bootstrapping one with a mode per brand…`,
+    )
+    const bootstrap = buildBootstrapPayload(brandNames, collectionName)
+    const bootstrapResult = await postVariables(figmaFileKey, figmaToken, {
+      variableCollections: bootstrap.variableCollections,
+      variableModes: bootstrap.variableModes,
+    })
+    const resolved = resolveBootstrapIds(bootstrap, bootstrapResult.tempIdToRealId ?? {})
+    console.log(
+      `Bootstrapped collection ${resolved.collectionId} with modes: ${Object.entries(resolved.modeIdByBrand)
+        .map(([b, id]) => `${b}=${id}`)
+        .join(', ')}`,
+    )
+    return resolved
+  }
+  return findCollectionAndModes(localVariables, brandNames, collectionName)
+}
+
+/**
+ * Resolves the responsive collection ("Design Responsive Tokens" — MVP scope, Device variables for
+ * Alias Text.Size/Space/Container.Space only, see lib/figma-value.mjs's DEVICE_ELIGIBLE_PATH_PREFIXES),
+ * bootstrapping it if this file has never had one under that name.
+ */
+async function resolveResponsiveCollection(localVariables, figmaFileKey, figmaToken) {
+  const collectionName = process.env.FIGMA_RESPONSIVE_COLLECTION_NAME ?? 'Design Responsive Tokens'
+  const exists = Object.values(localVariables.variableCollections).some(c => c.name === collectionName)
+  if (!exists) {
+    console.log(
+      `No Figma variable collection named "${collectionName}" found — bootstrapping one with Mobile/Tablet/Desktop modes…`,
+    )
+    const bootstrap = buildResponsiveBootstrapPayload(collectionName)
+    const bootstrapResult = await postVariables(figmaFileKey, figmaToken, {
+      variableCollections: bootstrap.variableCollections,
+      variableModes: bootstrap.variableModes,
+    })
+    const resolved = resolveResponsiveBootstrapIds(bootstrap, bootstrapResult.tempIdToRealId ?? {})
+    console.log(
+      `Bootstrapped responsive collection ${resolved.collectionId} with modes: ${Object.entries(
+        resolved.modeIdByBreakpoint,
+      )
+        .map(([b, id]) => `${b}=${id}`)
+        .join(', ')}`,
+    )
+    return resolved
+  }
+  return findResponsiveCollectionAndModes(localVariables, collectionName)
+}
+
+/**
  * @returns {{
  *   newIds: { path: string[], variableId: string }[],
  *   removedIds: string[],
@@ -99,32 +169,29 @@ async function dryRun({ baseTokens, brandTokensByName }, figmaToken, figmaFileKe
 async function writePull({ baseTokens, brandNames, brandTokensByName }, figmaToken, figmaFileKey) {
   const localVariables = await getLocalVariables(figmaFileKey, figmaToken)
 
-  let collectionId, modeIdByBrand
-  if (Object.keys(localVariables.variableCollections).length === 0) {
-    console.log('No Figma variable collection found in this file — bootstrapping one with a mode per brand…')
-    const bootstrap = buildBootstrapPayload(brandNames, process.env.FIGMA_COLLECTION_NAME)
-    const bootstrapResult = await postVariables(figmaFileKey, figmaToken, {
-      variableCollections: bootstrap.variableCollections,
-      variableModes: bootstrap.variableModes,
-    })
-    ;({ collectionId, modeIdByBrand } = resolveBootstrapIds(bootstrap, bootstrapResult.tempIdToRealId ?? {}))
-    console.log(
-      `Bootstrapped collection ${collectionId} with modes: ${Object.entries(modeIdByBrand)
-        .map(([b, id]) => `${b}=${id}`)
-        .join(', ')}`,
-    )
-  } else {
-    ;({ collectionId, modeIdByBrand } = findCollectionAndModes(localVariables, brandNames))
-  }
+  const { collectionId, modeIdByBrand } = await resolveBrandCollection(
+    localVariables,
+    brandNames,
+    figmaFileKey,
+    figmaToken,
+  )
+  const { collectionId: responsiveCollectionId, modeIdByBreakpoint } = await resolveResponsiveCollection(
+    localVariables,
+    figmaFileKey,
+    figmaToken,
+  )
 
   // Path/name fallback match (docs/adr/0001-figma-variable-identity-key.md)
   // — a token with no committed variableId might already exist in Figma
   // under this exact name (e.g. an earlier partial run got interrupted
   // after creating it but before its id was backfilled to GitHub). Linking
   // to it avoids a duplicate-name 400 from Figma and the duplicate
-  // variable it would otherwise create.
+  // variable it would otherwise create. Scoped per collection — a Device
+  // variable's name-fallback match only makes sense against the responsive
+  // collection's own variables, not the brand collection's.
   const nameIndex = buildNameIndex(localVariables, collectionId)
-  const idByPath = assignVariableIds(baseTokens, nameIndex)
+  const responsiveNameIndex = buildNameIndex(localVariables, responsiveCollectionId)
+  const idByPath = assignVariableIds(baseTokens, nameIndex, responsiveNameIndex)
 
   // Deletions (docs/adr/0019-pull-auto-deletes-figma-variables.md) are
   // baseline-relative — only a variableId this Action previously synced
@@ -139,7 +206,14 @@ async function writePull({ baseTokens, brandNames, brandTokensByName }, figmaTok
     console.log(`Deleting ${removedIds.length} Figma variable(s) whose token was removed from GitHub…`)
   }
 
-  const createPass = buildCreatePassPayload({ baseTokens, brandTokensByName, idByPath, collectionId, modeIdByBrand })
+  const createPass = buildCreatePassPayload({
+    baseTokens,
+    brandTokensByName,
+    idByPath,
+    collectionId,
+    modeIdByBrand,
+    responsiveCollectionId,
+  })
   const deletePass = buildDeleteVariablesPayload(removedIds)
   createPass.variables.push(...deletePass.variables)
 
@@ -149,7 +223,13 @@ async function writePull({ baseTokens, brandNames, brandTokensByName }, figmaTok
   const createResult = await postVariables(figmaFileKey, figmaToken, createPass)
   resolveTempIds(idByPath, createResult.tempIdToRealId ?? {})
 
-  const aliasPass = buildAliasPassPayload({ baseTokens, brandTokensByName, idByPath, modeIdByBrand })
+  const aliasPass = buildAliasPassPayload({
+    baseTokens,
+    brandTokensByName,
+    idByPath,
+    modeIdByBrand,
+    modeIdByBreakpoint,
+  })
   console.log(`Pass 2: writing ${aliasPass.variableModeValues.length} alias mode-value(s)…`)
   if (aliasPass.variableModeValues.length > 0) {
     await postVariables(figmaFileKey, figmaToken, aliasPass)

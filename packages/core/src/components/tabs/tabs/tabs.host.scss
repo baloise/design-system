@@ -2,60 +2,63 @@
 @use '../../../vars' as vars;
 
 /**
- * @prop --tabs-border-color: Color of the tablist border track. Set to transparent to hide it.
- * @prop --tabs-indicator-height: Thickness of the selected-tab indicator and border track.
+ * @prop --tabs-border-base: Border of the tablist border track. Set to transparent to hide it.
  * @prop --tabs-gap: Gap between tab buttons.
- * @prop --tabs-tab-padding: Padding inside each tab button.
- * @prop --tabs-tab-font-family: Font family of tab button labels.
- * @prop --tabs-tab-font-size: Font size of tab button labels.
- * @prop --tabs-tab-font-weight: Font weight of tab button labels.
- * @prop --tabs-tab-color: Text color of tab buttons.
- * @prop --tabs-tab-color-hover: Text color of a hovered tab button.
- * @prop --tabs-tab-color-active: Text color of a pressed tab button.
- * @prop --tabs-tab-color-selected: Text color of the selected tab button.
- * @prop --tabs-tab-border-color-selected: Indicator line color of the selected tab.
- * @prop --tabs-tab-font-weight-selected: Font weight of the selected tab button label.
+ * @prop --tabs-tab-space-x: Horizontal padding inside each tab button.
+ * @prop --tabs-tab-space-y: Vertical padding inside each tab button.
+ * @prop --tabs-tab-unselected-color-base: Text color of an unselected tab button.
+ * @prop --tabs-tab-unselected-color-hover: Text color of a hovered, unselected tab button.
+ * @prop --tabs-tab-unselected-color-active: Text color of a pressed, unselected tab button.
+ * @prop --tabs-tab-selected-color-base: Text color of the selected tab button.
+ * @prop --tabs-tab-selected-color-hover: Text color of a hovered, selected tab button.
+ * @prop --tabs-tab-selected-color-active: Text color of a pressed, selected tab button.
+ * @prop --tabs-indicator-unselected-base: Indicator border of an idle, unselected tab.
+ * @prop --tabs-indicator-unselected-hover: Indicator border of a hovered, unselected tab.
+ * @prop --tabs-indicator-selected-base: Indicator border of the selected tab.
+ * @prop --tabs-indicator-selected-hover: Indicator border of a hovered, selected tab.
  * @prop --tabs-tab-color-focus: Color of the keyboard focus ring on tab buttons.
- * @prop --tabs-panel-padding: Padding inside the content panel.
+ * @prop --tabs-panel-space-x: Horizontal padding inside the content panel.
+ * @prop --tabs-panel-space-y: Vertical padding inside the content panel.
  * @prop --tabs-vertical-gap: Gap between the tablist and the content panel in vertical mode.
  * @prop --tabs-scroll-fade-bg: Background color for the edge-fade gradient beside the carousel buttons.
  */
 
 :host {
-  @include vars.local(tabs-border-color, var(--ds-tabs-border-color));
-  @include vars.local(tabs-indicator-height, var(--ds-tabs-indicator-height));
+  @include vars.local(tabs-border-base, var(--ds-tabs-border-base));
   @include vars.local(tabs-gap, var(--ds-tabs-gap));
-  @include vars.local(tabs-panel-padding, var(--ds-tabs-panel-padding));
+  @include vars.local(tabs-panel-space-x, var(--ds-tabs-panel-space-x));
+  @include vars.local(tabs-panel-space-y, var(--ds-tabs-panel-space-y));
   @include vars.local(tabs-vertical-gap, var(--ds-tabs-vertical-gap));
-  @include vars.local(tabs-tab-padding, var(--ds-tabs-tab-padding));
-  @include vars.local(tabs-tab-font-family, var(--ds-tabs-tab-font-family));
-  @include vars.local(tabs-tab-font-size, var(--ds-tabs-tab-font-size));
-  @include vars.local(tabs-tab-font-weight, var(--ds-tabs-tab-font-weight));
-  @include vars.local(tabs-tab-color-focus, var(--ds-tabs-tab-color-focus));
-  @include vars.local(tabs-tab-color, var(--ds-tabs-tab-color-base));
-  @include vars.local(tabs-tab-color-hover, var(--ds-tabs-tab-color-hover));
-  @include vars.local(tabs-tab-color-active, var(--ds-tabs-tab-color-active));
-  @include vars.local(tabs-tab-color-selected, var(--ds-tabs-tab-color-selected));
-  @include vars.local(tabs-tab-border-color-selected, var(--ds-tabs-tab-border-color-selected));
-  @include vars.local(tabs-tab-font-weight-selected, var(--ds-tabs-tab-font-weight-selected));
+  @include vars.local(tabs-tab-space-x, var(--ds-tabs-tab-space-x));
+  @include vars.local(tabs-tab-space-y, var(--ds-tabs-tab-space-y));
+  @include vars.local(tabs-tab-unselected-font-family, var(--ds-tabs-tab-unselected-typo-font-family));
+  @include vars.local(tabs-tab-unselected-font-size, var(--ds-tabs-tab-unselected-typo-font-size));
+  @include vars.local(tabs-tab-unselected-font-weight, var(--ds-tabs-tab-unselected-typo-font-weight));
+  @include vars.local(tabs-tab-unselected-line-height, var(--ds-tabs-tab-unselected-typo-line-height));
+  @include vars.local(tabs-tab-unselected-color-base, var(--ds-tabs-tab-unselected-color-text-base));
+  @include vars.local(tabs-tab-unselected-color-hover, var(--ds-tabs-tab-unselected-color-text-hover));
+  @include vars.local(tabs-tab-unselected-color-active, var(--ds-tabs-tab-unselected-color-text-active));
+  @include vars.local(tabs-tab-selected-font-family, var(--ds-tabs-tab-selected-typo-font-family));
+  @include vars.local(tabs-tab-selected-font-size, var(--ds-tabs-tab-selected-typo-font-size));
+  @include vars.local(tabs-tab-selected-font-weight, var(--ds-tabs-tab-selected-typo-font-weight));
+  @include vars.local(tabs-tab-selected-line-height, var(--ds-tabs-tab-selected-typo-line-height));
+  @include vars.local(tabs-tab-selected-color-base, var(--ds-tabs-tab-selected-color-text-base));
+  @include vars.local(tabs-tab-selected-color-hover, var(--ds-tabs-tab-selected-color-text-hover));
+  @include vars.local(tabs-tab-selected-color-active, var(--ds-tabs-tab-selected-color-text-active));
+  @include vars.local(tabs-tab-color-focus, var(--ds-alias-interaction-focus-color-base));
+  @include vars.local(tabs-indicator-unselected-base, var(--ds-tabs-indicator-default-unselected-base));
+  @include vars.local(tabs-indicator-unselected-hover, var(--ds-tabs-indicator-default-unselected-hover));
+  @include vars.local(tabs-indicator-selected-base, var(--ds-tabs-indicator-default-selected-base));
+  @include vars.local(tabs-indicator-selected-hover, var(--ds-tabs-indicator-default-selected-hover));
   @include vars.local(tabs-scroll-fade-bg, var(--ds-tabs-scroll-fade-background));
-  @include vars.local(tabs-scroll-btn-radius, var(--ds-button-radius-base));
+  @include vars.local(tabs-scroll-btn-radius, var(--ds-button-size-base-radius));
   @include vars.local(tabs-scroll-btn-color-text, var(--ds-button-color-tertiary-base-text));
   @include vars.local(tabs-scroll-btn-color-hover-background, var(--ds-button-color-tertiary-hover-background));
   @include vars.local(tabs-scroll-btn-color-hover-text, var(--ds-button-color-tertiary-hover-text));
   @include vars.local(tabs-scroll-btn-color-active-background, var(--ds-button-color-tertiary-active-background));
   @include vars.local(tabs-scroll-btn-color-active-text, var(--ds-button-color-tertiary-active-text));
-  @include vars.local(tabs-tab-indicator-color-idle, var(--ds-global-color-grey-4));
   @include vars.local(tabs-tab-radius, var(--ds-alias-radius-base));
   @include vars.local(tabs-tab-badge-size, var(--ds-badge-size-sm));
-  @include vars.local(tabs-color-purple, var(--ds-tabs-color-purple));
-  @include vars.local(tabs-color-purple-hover, var(--ds-tabs-color-purple-hover));
-  @include vars.local(tabs-color-green, var(--ds-tabs-color-green));
-  @include vars.local(tabs-color-green-hover, var(--ds-tabs-color-green-hover));
-  @include vars.local(tabs-color-red, var(--ds-tabs-color-red));
-  @include vars.local(tabs-color-red-hover, var(--ds-tabs-color-red-hover));
-  @include vars.local(tabs-color-yellow, var(--ds-tabs-color-yellow));
-  @include vars.local(tabs-color-yellow-hover, var(--ds-tabs-color-yellow-hover));
 
   display: block;
 }
@@ -64,38 +67,54 @@
 // Override the grey border track and selected indicator with a brand color.
 
 :host(.is-purple) {
-  --_tabs-border-color: var(--_tabs-color-purple);
-  --_tabs-tab-indicator-color-idle: var(--_tabs-color-purple-hover);
+  --_tabs-border-base: var(--ds-tabs-border-purple);
+  --_tabs-indicator-unselected-base: var(--ds-tabs-indicator-purple-unselected-base);
+  --_tabs-indicator-unselected-hover: var(--ds-tabs-indicator-purple-unselected-hover);
+  --_tabs-indicator-selected-base: var(--ds-tabs-indicator-purple-selected-base);
+  --_tabs-indicator-selected-hover: var(--ds-tabs-indicator-purple-selected-hover);
 }
 
 :host(.is-green) {
-  --_tabs-border-color: var(--_tabs-color-green);
-  --_tabs-tab-indicator-color-idle: var(--_tabs-color-green-hover);
+  --_tabs-border-base: var(--ds-tabs-border-green);
+  --_tabs-indicator-unselected-base: var(--ds-tabs-indicator-green-unselected-base);
+  --_tabs-indicator-unselected-hover: var(--ds-tabs-indicator-green-unselected-hover);
+  --_tabs-indicator-selected-base: var(--ds-tabs-indicator-green-selected-base);
+  --_tabs-indicator-selected-hover: var(--ds-tabs-indicator-green-selected-hover);
 }
 
 :host(.is-red) {
-  --_tabs-border-color: var(--_tabs-color-red);
-  --_tabs-tab-indicator-color-idle: var(--_tabs-color-red-hover);
+  --_tabs-border-base: var(--ds-tabs-border-red);
+  --_tabs-indicator-unselected-base: var(--ds-tabs-indicator-red-unselected-base);
+  --_tabs-indicator-unselected-hover: var(--ds-tabs-indicator-red-unselected-hover);
+  --_tabs-indicator-selected-base: var(--ds-tabs-indicator-red-selected-base);
+  --_tabs-indicator-selected-hover: var(--ds-tabs-indicator-red-selected-hover);
 }
 
 :host(.is-yellow) {
-  --_tabs-border-color: var(--_tabs-color-yellow);
-  --_tabs-tab-indicator-color-idle: var(--_tabs-color-yellow-hover);
+  --_tabs-border-base: var(--ds-tabs-border-yellow);
+  --_tabs-indicator-unselected-base: var(--ds-tabs-indicator-yellow-unselected-base);
+  --_tabs-indicator-unselected-hover: var(--ds-tabs-indicator-yellow-unselected-hover);
+  --_tabs-indicator-selected-base: var(--ds-tabs-indicator-yellow-selected-base);
+  --_tabs-indicator-selected-hover: var(--ds-tabs-indicator-yellow-selected-hover);
 }
 
 // ─── Inverted mode ───────────────────────────────────────────────────────────
 // Override private vars so all slotted ds-tab children inherit the white palette.
 
 :host(.is-inverted) {
-  --_tabs-tab-color: var(--ds-alias-text-color-white);
-  --_tabs-tab-color-hover: var(--ds-alias-text-color-white);
-  --_tabs-tab-color-active: var(--ds-alias-text-color-white);
-  --_tabs-tab-color-selected: var(--ds-alias-text-color-white);
-  --_tabs-tab-border-color-selected: var(--ds-alias-text-color-white);
-  --_tabs-tab-font-family: var(--ds-alias-text-family-body);
-  --_tabs-tab-font-weight: var(--ds-alias-text-weight-regular);
-  --_tabs-border-color: rgba(255, 255, 255, 0.3);
-  --_tabs-tab-indicator-color-idle: rgba(255, 255, 255, 0.5);
+  --_tabs-tab-unselected-color-base: var(--ds-alias-text-color-white);
+  --_tabs-tab-unselected-color-hover: var(--ds-alias-text-color-white);
+  --_tabs-tab-unselected-color-active: var(--ds-alias-text-color-white);
+  --_tabs-tab-unselected-font-family: var(--ds-alias-text-family-text);
+  --_tabs-tab-unselected-font-weight: var(--ds-alias-text-weight-regular);
+  --_tabs-tab-selected-color-base: var(--ds-alias-text-color-white);
+  --_tabs-tab-selected-color-hover: var(--ds-alias-text-color-white);
+  --_tabs-tab-selected-color-active: var(--ds-alias-text-color-white);
+  --_tabs-border-base: var(--ds-alias-border-width-base) solid rgba(255, 255, 255, 0.3);
+  --_tabs-indicator-unselected-base: var(--ds-alias-border-width-base) solid transparent;
+  --_tabs-indicator-unselected-hover: var(--ds-alias-border-width-base) solid rgba(255, 255, 255, 0.5);
+  --_tabs-indicator-selected-base: var(--ds-alias-border-width-base) solid var(--ds-alias-text-color-white);
+  --_tabs-indicator-selected-hover: var(--ds-alias-border-width-base) solid var(--ds-alias-text-color-white);
   --_tabs-tab-color-focus: var(--ds-alias-interaction-focus-color-inverted);
   --_tabs-scroll-fade-bg: var(--ds-alias-background-color-primary);
   --_tabs-scroll-btn-color-text: var(--ds-alias-text-color-white);
@@ -119,7 +138,7 @@
   content: '';
   position: absolute;
   top: 0;
-  bottom: var(--_tabs-indicator-height);
+  bottom: var(--ds-alias-border-width-base);
   width: 2.5rem;
   pointer-events: none;
   z-index: 1;
@@ -218,9 +237,9 @@
   align-items: stretch;
   gap: var(--_tabs-gap);
   position: relative;
-  padding-bottom: var(--_tabs-indicator-height);
-  background: linear-gradient(var(--_tabs-border-color), var(--_tabs-border-color)) bottom / 100%
-    var(--_tabs-indicator-height) no-repeat;
+  // Border track lives in this reserved strip (not a real border) so it stays inside the
+  // padding box — content painted past the padding edge gets clipped by overflow-y: clip below.
+  padding-bottom: var(--ds-alias-border-width-base);
   overflow-x: scroll;
   overflow-y: clip;
   scroll-behavior: smooth;
@@ -229,17 +248,29 @@
   &::-webkit-scrollbar {
     display: none;
   }
+
+  &::after {
+    content: '';
+    position: absolute;
+    z-index: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 0;
+    border-bottom: var(--_tabs-border-base);
+  }
 }
 
 // Animated selected indicator — positioned + sized via JS, transitions handle the motion
 :host #tablist .indicator {
   position: absolute;
+  z-index: 1;
   bottom: 0;
   left: 0;
-  height: var(--_tabs-indicator-height);
+  height: 0;
   width: 0;
   border-radius: 9999px;
-  background-color: var(--_tabs-tab-border-color-selected);
+  border-bottom: var(--_tabs-indicator-selected-base);
   pointer-events: none;
   transition:
     transform 250ms ease,
@@ -249,9 +280,11 @@
 :host(.is-vertical) #tablist .indicator {
   top: 0;
   bottom: auto;
-  left: calc(-1 * var(--_tabs-indicator-height));
-  width: var(--_tabs-indicator-height);
+  left: calc(-1 * var(--ds-alias-border-width-base));
+  width: 0;
   height: 0;
+  border-bottom: none;
+  border-left: var(--_tabs-indicator-selected-base);
   transition:
     transform 250ms ease,
     height 250ms ease;
@@ -282,10 +315,13 @@
   flex: 0 0 auto;
   flex-direction: column;
   padding-bottom: 0;
-  background: none;
-  border-left: var(--_tabs-indicator-height) solid var(--_tabs-border-color);
+  border-left: var(--_tabs-border-base);
   overflow: visible;
   scroll-behavior: auto;
+
+  &::after {
+    content: none;
+  }
 }
 
 :host(.is-vertical.is-col-full) {
@@ -319,7 +355,7 @@
 }
 
 :host ::slotted(ds-tab-panel) {
-  --tab-panel-padding: var(--_tabs-panel-padding);
+  --tab-panel-padding: var(--_tabs-panel-space-y) var(--_tabs-panel-space-x);
 }
 
 :host(.is-vertical) ::slotted(ds-tab-panel) {

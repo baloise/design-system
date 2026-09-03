@@ -1,13 +1,5 @@
 import { Element, Component, Method, h, Host, Prop, Event, EventEmitter, State } from '@stencil/core'
-import {
-  stopEventBubbling,
-  normalizeDeprecatedTShirtSize,
-  Logger,
-  type LogInstance,
-  hasValue,
-  OneOf,
-  Type,
-} from '@utils'
+import { stopEventBubbling, Logger, type LogInstance, hasValue, OneOf, Type } from '@utils'
 import {
   NOTIFICATION_COLORS,
   NOTIFICATION_SIZES,
@@ -42,6 +34,8 @@ export class Notification implements DsComponentInterface {
   @Element() el!: HTMLStencilElement
 
   @State() didLoad = false
+
+  @State() hasBrandIcon = false
 
   private timer!: NodeJS.Timeout
 
@@ -92,7 +86,7 @@ export class Notification implements DsComponentInterface {
   readonly noIcon: boolean = false
 
   /**
-   * Defines the size of the notification, small, medium or large.
+   * Defines the size of the notification, sm or md.
    */
   @Prop()
   @OneOf(NOTIFICATION_SIZES)
@@ -114,6 +108,7 @@ export class Notification implements DsComponentInterface {
    */
 
   componentDidLoad(): void {
+    this.updateHasBrandIcon()
     this.didLoad = true
     this.dsDidLoad.emit()
   }
@@ -133,12 +128,21 @@ export class Notification implements DsComponentInterface {
   }
 
   /**
+   * PRIVATE METHODS
+   * ─────────────────────────────────────────────────────
+   */
+
+  private updateHasBrandIcon = (): void => {
+    this.hasBrandIcon = !!this.el.querySelector(':scope > ds-brand-icon')
+  }
+
+  /**
    * RENDER
    * ─────────────────────────────────────────────────────
    */
 
   render() {
-    const size = normalizeDeprecatedTShirtSize(this.size) || ''
+    const size = this.size || ''
     const a11yAttributes: { [key: string]: string } = this.alert
       ? { 'role': 'alert', 'aria-live': 'assertive', 'aria-atomic': 'true' }
       : { 'role': 'status', 'aria-live': 'polite', 'aria-atomic': 'true' }
@@ -148,6 +152,7 @@ export class Notification implements DsComponentInterface {
         {...a11yAttributes}
         class={{
           'has-no-icon': this.noIcon,
+          'has-brand-icon': this.hasBrandIcon,
           [`is-${this.color}`]: hasValue(this.color),
           [`is-${size}`]: hasValue(this.size),
         }}
@@ -164,7 +169,7 @@ export class Notification implements DsComponentInterface {
           )}
           {hasValue(this.heading) && <h2 part="heading">{this.heading}</h2>}
           <span>
-            <slot></slot>
+            <slot onSlotchange={this.updateHasBrandIcon}></slot>
           </span>
         </section>
       </Host>

@@ -156,14 +156,14 @@ export class Heading implements DsComponentInterface {
     }
   }
 
-  private updateAutoFontSize() {
-    this.autoFontSize = this.fontSize
-  }
-
   /**
    * PRIVATE METHODS
    * ─────────────────────────────────────────────────────
    */
+
+  private updateAutoFontSize() {
+    this.autoFontSize = this.fontSize
+  }
 
   private get rows() {
     if (this.headingEl && dsBrowser.hasWindow) {
@@ -177,7 +177,7 @@ export class Heading implements DsComponentInterface {
 
   private get fontColor(): HeadingColor | undefined {
     if (this.inverted) {
-      return 'white'
+      return 'inverted'
     }
     const color = this.color
     return color ? (HEADING_COLOR_MAP[color] as HeadingColor) : undefined
@@ -199,15 +199,28 @@ export class Heading implements DsComponentInterface {
   render() {
     const Heading = this.tag
 
+    // const levelMap: Record<HeadingSize, string> = {
+    //   '5xl': 'display1',
+    //   '4xl': 'display2',
+    //   '3xl': 'level1',
+    //   '2xl': 'level2',
+    //   'xl': 'level3',
+    //   'lg': 'level4',
+    //   'md': 'level5',
+    //   'base': 'level5',
+    // }
+
+    // const level = `is-${this.subtitle ? 'light' : 'bold'}-${levelMap[this.autoFontSize || '3xl']}`
+
     return (
       <Host
         class={{
           [`is-${this.autoFontSize}`]: this.autoFontSize !== undefined,
           [`is-${this.fontColor}`]: hasValue(this.fontColor),
           'is-subtitle': this.subtitle,
+          [`has-space-${this.space}`]: hasValue(this.space),
           'has-no-wrap': this.noWrap,
           'has-shadow': this.shadow,
-          [`has-space-${this.space}`]: hasValue(this.space),
         }}
       >
         <Heading id="heading" part="heading" ref={(headingEl: any) => (this.headingEl = headingEl)}>

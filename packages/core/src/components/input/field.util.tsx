@@ -75,7 +75,7 @@ export const Field: FunctionalComponent<FieldProps> = (props, children) => {
           {/* Loading Indicator                        */}
           {/* ---------------------------------------- */}
           {props.loading === true && (
-            <ds-spinner small variation="circle" color={props.disabled ? 'white' : 'blue'}></ds-spinner>
+            <ds-spinner small variation="circle" color={props.disabled ? 'inverted' : 'primary'}></ds-spinner>
           )}
         </div>
         {/* ---------------------------------------- */}

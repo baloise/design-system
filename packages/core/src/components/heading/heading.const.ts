@@ -46,8 +46,7 @@ export const HEADING_SIZES: { [key: string]: HeadingSize } = {
 
 export const HEADING_COLOR_MAP: { [key: string]: string } = {
   primary: 'primary',
-  info: 'primary',
-  blue: 'primary',
+  info: 'info',
   success: 'success',
   warning: 'warning',
   danger: 'danger',

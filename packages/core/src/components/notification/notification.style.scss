@@ -1,3 +1,4 @@
+@use 'sass:list';
 @use '@baloise/ds-css/dist/scss/mixins' as *;
 @use '../../hybrid' as hybrid;
 @use '../../vars' as vars;
@@ -18,20 +19,21 @@ $host-selector: ('#notification');
 @include vars.hybrid($name, $css-selector, $use-host) {
   @include vars.local(notification-radius, var(--ds-notification-radius));
   @include vars.local(notification-color-background, var(--ds-notification-base-color-background));
-  @include vars.local(notification-color-border, var(--ds-notification-base-color-border));
+  @include vars.local(notification-border, var(--ds-notification-base-border));
   @include vars.local(notification-color-text, var(--ds-notification-base-color-text));
+  @include vars.local(notification-color-heading, var(--ds-notification-base-color-heading));
 
-  @include vars.local(notification-heading-family, var(--ds-alias-text-family-heading));
-  @include vars.local(notification-heading-weight, var(--ds-alias-text-weight-bold));
-  @include vars.local(notification-heading-size, var(--ds-alias-text-size-lg-device));
-  @include vars.local(notification-heading-line-height, var(--ds-alias-text-line-height-heading));
+  @include vars.local(notification-heading-family, var(--ds-notification-base-heading-font-family));
+  @include vars.local(notification-heading-weight, var(--ds-notification-base-heading-font-weight));
+  @include vars.local(notification-heading-size, var(--ds-notification-base-heading-font-size));
+  @include vars.local(notification-heading-line-height, var(--ds-notification-base-heading-line-height));
 
-  @include vars.local(notification-content-family, var(--ds-alias-text-family-body));
-  @include vars.local(notification-content-weight, inherit);
-  @include vars.local(notification-content-size, var(--ds-alias-text-size-base-device));
-  @include vars.local(notification-content-line-height, var(--ds-alias-text-line-height-body));
+  @include vars.local(notification-content-family, var(--ds-notification-base-body-font-family));
+  @include vars.local(notification-content-weight, var(--ds-notification-base-body-font-weight));
+  @include vars.local(notification-content-size, var(--ds-notification-base-body-font-size));
+  @include vars.local(notification-content-line-height, var(--ds-notification-base-body-line-height));
 
-  @include vars.local(notification-icon, var(--ds-notification-base-color-icon));
+  @include vars.local(notification-icon, var(--ds-notification-base-icon));
   @include vars.local(notification-icon-display, block);
 
   @include vars.local(notification-space, var(--ds-card-space-base-device, 1.5rem));
@@ -68,7 +70,7 @@ $host-selector: ('#notification');
   position: relative;
   hyphens: auto;
 
-  border: var(--ds-alias-border-width-base) solid var(--_notification-color-border);
+  border: var(--_notification-border);
   border-radius: var(--_notification-radius);
   background: var(--_notification-color-background);
   color: var(--_notification-color-text);
@@ -100,6 +102,7 @@ $host-selector: ('#notification');
     font-weight: var(--_notification-heading-weight);
     line-height: var(--_notification-heading-line-height);
     font-size: var(--_notification-heading-size);
+    color: var(--_notification-color-heading);
     margin: 0 !important;
   }
 
@@ -129,13 +132,13 @@ $host-selector: ('#notification');
   &::before {
     display: var(--_notification-icon-display);
     background-color: currentColor;
-    color: currentColor;
+    color: var(--_notification-color-heading);
     forced-color-adjust: preserve-parent-color;
     position: absolute;
     height: 1.5rem;
     width: 1.5rem;
-    left: -0.25rem;
-    top: calc((var(--_notification-space)));
+    left: calc(var(--_notification-space) / 4 * -1);
+    top: var(--_notification-space);
     transform: translateX(var(--_notification-space));
     content: '';
     -webkit-mask-repeat: no-repeat;
@@ -175,25 +178,70 @@ $host-selector: ('#notification');
 }
 
 //
+// Brand Icon (slotted)
+// --------------------------------
+// When a `ds-brand-icon` is placed in the default slot (together with `no-icon`),
+// reserve the icon column again and position it there instead of letting it flow
+// inline with the content text.
+@mixin notification-brand-icon-position() {
+  position: absolute;
+  top: calc(var(--_notification-space) / 2);
+  left: calc(var(--_notification-space) / 2);
+  margin-top: calc(var(--_notification-space) / 8 * -1);
+}
+
+@include hybrid.host($use-host) {
+  :host(.has-brand-icon) {
+    --mod-notification-icon-space: var(--ds-brand-icon-size-base);
+  }
+
+  ::slotted(ds-brand-icon) {
+    @include notification-brand-icon-position();
+  }
+}
+
+@include hybrid.styles($css-selector, $use-host) {
+  &.has-no-icon:has(ds-brand-icon) {
+    --mod-notification-icon-space: var(--ds-brand-icon-size-base);
+  }
+
+  & ds-brand-icon {
+    @include notification-brand-icon-position();
+  }
+}
+
+//
 // Colors
 // --------------------------------
-$colors: (
-  'info',
-  'success',
-  'warning',
-  'danger',
-  'outline-base',
-  'outline-purple',
-  'outline-green',
-  'outline-yellow',
-  'outline-red'
-);
+// Semantic colors carry a composite border token (width + style + color).
+$composite-border-colors: ('info', 'success', 'warning', 'danger');
+
+// Outline colors carry a plain border color token, composed with the base border width/style.
+$outline-colors: ('outline-base', 'outline-purple', 'outline-green', 'outline-yellow', 'outline-red');
+
+$colors: list.join($composite-border-colors, $outline-colors);
 
 @mixin notification-colors($color) {
   --mod-notification-color-text: var(--ds-notification-#{$color}-color-text);
-  --mod-notification-color-border: var(--ds-notification-#{$color}-color-border);
   --mod-notification-color-background: var(--ds-notification-#{$color}-color-background);
-  --mod-notification-icon: var(--ds-notification-#{$color}-color-icon);
+  --mod-notification-color-heading: var(--ds-notification-#{$color}-color-heading);
+  --mod-notification-icon: var(--ds-notification-#{$color}-icon);
+
+  --mod-notification-heading-family: var(--ds-notification-#{$color}-heading-font-family);
+  --mod-notification-heading-weight: var(--ds-notification-#{$color}-heading-font-weight);
+  --mod-notification-heading-size: var(--ds-notification-#{$color}-heading-font-size);
+  --mod-notification-heading-line-height: var(--ds-notification-#{$color}-heading-line-height);
+
+  --mod-notification-content-family: var(--ds-notification-#{$color}-body-font-family);
+  --mod-notification-content-weight: var(--ds-notification-#{$color}-body-font-weight);
+  --mod-notification-content-size: var(--ds-notification-#{$color}-body-font-size);
+  --mod-notification-content-line-height: var(--ds-notification-#{$color}-body-line-height);
+
+  @if list.index($composite-border-colors, $color) {
+    --mod-notification-border: var(--ds-notification-#{$color}-border);
+  } @else {
+    --mod-notification-border: var(--ds-alias-border-width-base) solid var(--ds-notification-#{$color}-border);
+  }
 }
 
 @include hybrid.styles($css-selector, $use-host) {
@@ -216,7 +264,7 @@ $colors: (
 // Sizes
 // --------------------------------
 
-$sizes: ('sm', 'md', 'lg');
+$sizes: ('sm', 'md');
 
 @mixin notification-sizes($size) {
   --mod-notification-space: var(--ds-card-space-#{$size}-device);

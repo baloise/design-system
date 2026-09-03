@@ -20,10 +20,8 @@ $host-selector: ('#card');
 @include vars.hybrid($name, $css-selector, $use-host) {
   @include vars.local(card-color-background, var(--ds-card-color-base-background));
   @include vars.local(card-color-text, var(--ds-card-color-base-text));
-  @include vars.local(card-color-border, var(--ds-card-color-base-border, transparent));
-  @include vars.local(card-radius, var(--ds-card-radius-base));
-  @include vars.local(card-border-width, 0rem);
-  @include vars.local(card-border-style, solid);
+  @include vars.local(card-color-border, var(--ds-card-color-base-border));
+  @include vars.local(card-radius, var(--ds-card-radius));
   @include vars.local(card-shadow, var(--ds-card-shadow-base));
   @include vars.local(card-gap, var(--ds-card-space-base-device));
   @include vars.local(card-padding-left, var(--ds-card-space-base-device));
@@ -51,19 +49,18 @@ $host-selector: ('#card');
   position: relative;
   display: flex;
   flex-direction: column;
+  box-sizing: border-box;
   width: 100%;
   color: var(--_card-color-text);
   background-color: var(--_card-color-background);
   border-radius: var(--_card-radius);
-  border-color: var(--_card-color-border);
-  border-width: var(--_card-border-width);
-  border-style: var(--_card-border-style);
+  border: var(--_card-color-border);
   box-shadow: var(--_card-shadow);
   gap: var(--_card-gap);
-  padding-left: calc(var(--_card-padding-left) - var(--_card-border-width));
-  padding-right: calc(var(--_card-padding-right) - var(--_card-border-width));
-  padding-top: calc(var(--_card-padding-top) - var(--_card-border-width));
-  padding-bottom: calc(var(--_card-padding-bottom) - var(--_card-border-width));
+  padding-left: var(--_card-padding-left);
+  padding-right: var(--_card-padding-right);
+  padding-top: var(--_card-padding-top);
+  padding-bottom: var(--_card-padding-bottom);
   text-decoration: none;
 
   // Header
@@ -232,29 +229,9 @@ $host-selector: ('#card');
   */
 
 //
-// Square
-// --------------------------------
-@mixin square {
-  --mod-card-radius: var(--ds-card-radius-square);
-}
-
-@include hybrid.styles($css-selector, $use-host) {
-  &.is-square {
-    @include square();
-  }
-}
-
-@include hybrid.host($use-host) {
-  :host(.is-square) {
-    @include square();
-  }
-}
-
-//
 // Flat
 // --------------------------------
 @mixin flat {
-  --mod-card-radius: var(--ds-card-radius-flat);
   --mod-card-shadow: var(--ds-card-shadow-flat);
 }
 
@@ -294,79 +271,39 @@ $host-selector: ('#card');
 }
 
 //
-// Outlined
-// --------------------------------
-@mixin outlined {
-  --mod-card-shadow: var(--ds-card-shadow-flat);
-  --mod-card-border-width: var(--ds-card-outline-width);
-  --mod-card-border-style: dashed;
-  --mod-card-color-border: var(--ds-card-color-base-outline, transparent);
-}
-
-@include hybrid.styles($css-selector, $use-host) {
-  &.is-outlined {
-    @include outlined();
-  }
-}
-
-@include hybrid.host($use-host) {
-  :host(.is-outlined) {
-    @include outlined();
-  }
-}
-
-//
 // Colors
 // --------------------------------
 
 $backgrounds: (
-  'white',
   'primary',
-  'primary-light',
-  'info',
-  'success',
-  'warning',
-  'danger',
   'grey',
-  'grey-light',
+  'dashed',
   'red',
-  'red-light',
-  'red-lighter',
+  'red-dark',
   'green',
-  'green-light',
-  'green-lighter',
+  'green-dark',
   'purple',
-  'purple-light',
-  'purple-lighter',
+  'purple-dark',
   'yellow',
-  'yellow-light',
-  'yellow-lighter'
+  'yellow-dark'
 );
 
 @mixin background-color($color) {
   --mod-card-color-background: var(--ds-card-color-#{$color}-background);
   --mod-card-color-text: var(--ds-card-color-#{$color}-text);
-  --mod-card-color-border: var(--ds-card-color-#{$color}-border, transparent);
+  --mod-card-color-border: var(--ds-card-color-#{$color}-border, none);
 }
 
 @each $color in $backgrounds {
   @include hybrid.styles($css-selector, $use-host) {
     &.is-#{$color} {
       @include background-color($color);
-
-      &.is-outlined {
-        --mod-card-color-border: var(--ds-card-color-#{$color}-outline, transparent);
-      }
     }
   }
 
   @include hybrid.host($use-host) {
     :host(.is-#{$color}) {
       @include background-color($color);
-    }
-
-    :host(.is-#{$color}.is-outlined) {
-      --mod-card-color-border: var(--ds-card-color-#{$color}-outline, transparent);
     }
   }
 }

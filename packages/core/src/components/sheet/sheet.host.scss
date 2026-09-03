@@ -1,0 +1,53 @@
+@use '@baloise/ds-css/dist/scss/mixins' as *;
+@use '../../vars' as vars;
+
+/**
+ * @prop --sheet-background: Background color of the sheet panel (defaults to white).
+ * @prop --sheet-radius: Border radius of the sheet panel corners (defaults to large radius).
+ * @prop --sheet-shadow: Box shadow of the sheet panel (defaults to base shadow).
+ * @prop --sheet-position-bottom: Distance from the bottom of the viewport (defaults to the sheet token value).
+ */
+
+// ─── Variables ────────────────────────────────────────────────────────────────
+
+:host {
+  @include vars.local(sheet-background, var(--ds-sheet-background));
+  @include vars.local(sheet-radius, var(--ds-sheet-radius));
+  @include vars.local(sheet-shadow, var(--ds-sheet-shadow));
+  @include vars.local(sheet-position-bottom, var(--ds-sheet-position-bottom));
+
+  display: block;
+  position: fixed;
+  bottom: var(--_sheet-position-bottom);
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: var(--ds-alias-z-index-sticky);
+}
+
+// ─── Container ───────────────────────────────────────────────────────────────
+
+:host .container {
+  margin: 0 var(--ds-alias-container-space-device);
+  max-width: var(--ds-alias-container-width-base);
+
+  @include desktop {
+    margin: 0 auto;
+  }
+  background-color: var(--_sheet-background);
+  border-radius: var(--_sheet-radius);
+  box-shadow: var(--_sheet-shadow);
+  padding: 1rem;
+
+  @include tablet {
+    padding: 1rem 1.5rem;
+  }
+
+  &.is-fluid {
+    max-width: var(--ds-alias-container-width-fluid);
+  }
+
+  &.is-compact {
+    max-width: var(--ds-alias-container-width-compact);
+  }
+}

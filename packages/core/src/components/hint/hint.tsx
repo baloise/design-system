@@ -59,7 +59,7 @@ export class Hint implements DsComponentInterface, DsConfigObserver, DsBreakpoin
 
   /**
    * PUBLIC PROPERTY API
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   /**
@@ -102,8 +102,22 @@ export class Hint implements DsComponentInterface, DsConfigObserver, DsBreakpoin
   }
 
   /**
+   * PUBLIC LISTENERS
+   * ─────────────────────────────────────────────────────
+   */
+
+  @Listen('keydown', { target: 'document' })
+  listenToKeyDown(ev: KeyboardEvent): void {
+    if (!this.isOpen || this.isTouch) return
+    if (isEscapeKey(ev)) {
+      ev.stopPropagation()
+      this.dismiss()
+    }
+  }
+
+  /**
    * PUBLIC METHODS
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   /** Opens the hint panel. */
@@ -162,8 +176,29 @@ export class Hint implements DsComponentInterface, DsConfigObserver, DsBreakpoin
   }
 
   /**
+   * EVENT HANDLERS
+   * ─────────────────────────────────────────────────────
+   */
+
+  private handleTriggerClick = (): void => {
+    this.toggle()
+  }
+
+  private handleWillPresent = (): void => {
+    this.isOpen = true
+  }
+
+  private handleWillDismiss = (): void => {
+    this.isOpen = false
+  }
+
+  private handleCloseClick = (): void => {
+    this.dismiss()
+  }
+
+  /**
    * PRIVATE METHODS
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   @ListenToBreakpoints()
@@ -187,38 +222,8 @@ export class Hint implements DsComponentInterface, DsConfigObserver, DsBreakpoin
   }
 
   /**
-   * EVENT BINDING
-   * ------------------------------------------------------
-   */
-
-  @Listen('keydown', { target: 'document' })
-  listenToKeyDown(ev: KeyboardEvent): void {
-    if (!this.isOpen || this.isTouch) return
-    if (isEscapeKey(ev)) {
-      ev.stopPropagation()
-      this.dismiss()
-    }
-  }
-
-  private handleTriggerClick = (): void => {
-    this.toggle()
-  }
-
-  private handleWillPresent = (): void => {
-    this.isOpen = true
-  }
-
-  private handleWillDismiss = (): void => {
-    this.isOpen = false
-  }
-
-  private handleCloseClick = (): void => {
-    this.dismiss()
-  }
-
-  /**
    * RENDER
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   render() {

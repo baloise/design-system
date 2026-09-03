@@ -87,6 +87,7 @@ Current packages with CONTEXT.md:
 - `packages/tokens/CONTEXT.md` — Design token definitions
 - `packages/playwright/CONTEXT.md` — Playwright test utilities
 - `packages/assets/CONTEXT.md` — Asset files and resources
+- `packages/ag-grid/CONTEXT.md` — Token-bound AG Grid theme
 - `apps/storybook/CONTEXT.md` — Storybook documentation app
 
 See `docs/agents/domain.md` for detailed guidance on using domain docs.

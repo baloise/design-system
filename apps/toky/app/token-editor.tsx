@@ -5,6 +5,7 @@ import type { CSSProperties, KeyboardEvent, ReactNode } from 'react'
 import { useRouter } from 'next/navigation'
 import { signOut, useSession } from 'next-auth/react'
 import {
+  ALargeSmallIcon,
   ChevronDownIcon,
   ChevronsDownUpIcon,
   ChevronsUpDownIcon,
@@ -14,14 +15,20 @@ import {
   GitBranchIcon,
   HashIcon,
   HexagonIcon,
+  LayersIcon,
   Link2Icon,
+  MonitorIcon,
   NetworkIcon,
   PaletteIcon,
   PencilIcon,
   PlusIcon,
   Redo2Icon,
+  RulerIcon,
   SearchIcon,
+  SmartphoneIcon,
+  SquareDashedIcon,
   SwatchBookIcon,
+  TabletIcon,
   ToggleLeftIcon,
   Trash2Icon,
   TriangleAlertIcon,
@@ -59,7 +66,14 @@ import { allPullEntryKeys, buildFigmaPullPlan, filterPlanBySelection } from '@/s
 import type { FigmaPullResult, PullConflict, PulledEntry, PullPlan } from '@/src/tokens/figma-pull'
 import { FigmaPullSidebar } from './figma-pull-sidebar'
 import { FigmaIcon } from '@/components/icons/figma-icon'
-import { getColorAlpha, getColorHex, hexToColorValue, toSlashPath, withAlphaPercent } from '@/src/tokens/format'
+import {
+  formatValue,
+  getColorAlpha,
+  getColorHex,
+  hexToColorValue,
+  toSlashPath,
+  withAlphaPercent,
+} from '@/src/tokens/format'
 import { parseTokenPath, resolveGroupSegments, sanitizePathInput } from '@/src/tokens/path'
 import codeUsageData from '@/src/tokens/code-usage.generated.json'
 import { countDirectReferences } from '@/src/tokens/graph'
@@ -67,7 +81,7 @@ import { getNextCell } from '@/src/tokens/keyboard'
 import type { NavigationKey } from '@/src/tokens/keyboard'
 import type { SyncStatus } from '@/src/tokens/github-write'
 import { validateWorkingTokens } from '@/src/tokens/validate'
-import type { FlatToken, TokenLayer } from '@/src/tokens/types'
+import type { FlatToken, ResponsiveDimensionValue, TokenLayer } from '@/src/tokens/types'
 import { BrandsSidebar } from './brands-sidebar'
 import { ProblemsSidebar } from './problems-sidebar'
 import type { ProblemItem } from './problems-sidebar'
@@ -79,6 +93,59 @@ import { StagedChangesSidebar } from './staged-changes-sidebar'
 import { useUndoableState } from './use-undoable-state'
 import type { SubmitState } from './staged-changes-sidebar'
 import { TokenGraph } from './token-graph'
+
+// T-shirt size group names, in their intended display order — 'Base' sits
+// between SM and MD (it's the unsuffixed/default size, not the smallest).
+const TSHIRT_SIZE_ORDER = ['None', '2XS', 'XS', 'SM', 'Base', 'MD', 'LG', 'XL', '2XL', '3XL', '4XL', '5XL']
+
+// Interaction-state suffixes, in their intended display order — a name
+// ending in one of these (e.g. "OnSurfaceBase"/"OnSurfaceHover", or a bare
+// "Base"/"Hover"/"Active" leaf) reads as that state, regardless of what
+// precedes the suffix.
+const STATE_SUFFIX_ORDER = ['Base', 'Hover', 'Active']
+
+function stateSuffixRank(name: string): number {
+  return STATE_SUFFIX_ORDER.findIndex(state => name.endsWith(state))
+}
+
+// Total order for t-shirt-sized names, with a defined outcome for every pair
+// (including a ranked name vs. an unranked one like "Auto") — a comparator
+// that only ranks when *both* sides are in TSHIRT_SIZE_ORDER and otherwise
+// falls back to localeCompare is non-transitive (it can rank 2XS < XL by
+// rank while implying XL < Auto < 2XS by locale string), and V8's sort has
+// no defined behavior for that, so it produced different row orders between
+// SSR and hydration depending on array size/engine build — a hydration
+// mismatch, not a rendering bug.
+//
+// Interaction-state suffixes (Base/Hover/Active) rank next, ahead of locale —
+// alphabetical order would read Active, Base, Hover, but Base (the resting
+// state) belongs first with Hover/Active following as its variants.
+//
+// "Inverted*" names (e.g. InvertedPrimary alongside Primary) are a variant
+// of their non-inverted counterpart, not a peer alphabetically — sorting
+// "InvertedX" next to "Hint"/"Placeholder" by locale buries it mid-group.
+// Pushed after every non-inverted name (both t-shirt-ranked and plain), tied
+// among themselves by locale, so they read as a trailing block instead.
+function compareTshirtSize(a: string, b: string): number {
+  const rankA = TSHIRT_SIZE_ORDER.indexOf(a)
+  const rankB = TSHIRT_SIZE_ORDER.indexOf(b)
+  if (rankA !== -1 || rankB !== -1) {
+    const effectiveA = rankA === -1 ? TSHIRT_SIZE_ORDER.length : rankA
+    const effectiveB = rankB === -1 ? TSHIRT_SIZE_ORDER.length : rankB
+    if (effectiveA !== effectiveB) return effectiveA - effectiveB
+  }
+  const stateRankA = stateSuffixRank(a)
+  const stateRankB = stateSuffixRank(b)
+  if (stateRankA !== -1 || stateRankB !== -1) {
+    const effectiveStateA = stateRankA === -1 ? STATE_SUFFIX_ORDER.length : stateRankA
+    const effectiveStateB = stateRankB === -1 ? STATE_SUFFIX_ORDER.length : stateRankB
+    if (effectiveStateA !== effectiveStateB) return effectiveStateA - effectiveStateB
+  }
+  const invertedA = a.startsWith('Inverted')
+  const invertedB = b.startsWith('Inverted')
+  if (invertedA !== invertedB) return invertedA ? 1 : -1
+  return a.localeCompare(b, undefined, { numeric: true })
+}
 
 const LAYERS: TokenLayer[] = ['Global', 'Alias', 'Component']
 const LAYER_EMOJI: Record<TokenLayer, string> = { Global: '🌐', Alias: '🔗', Component: '🧩' }
@@ -123,11 +190,36 @@ interface Draft {
   type: string
   value: string
   alpha: number
+  unit: DimensionValue['unit']
   referenceTarget: string
+  // Structured values for the three composite types — a shadow/border/typography token's
+  // $value is never a plain string like every other type's `value` field
+  // above, so it needs its own slot (see ShadowEditor/DraftBorderEditor/TypographyEditor).
+  shadowValue: unknown
+  borderValue: BorderValue
+  typographyValue: TypographyValue
+  // A dimension token's breakpoint values (docs/plans/responsive-dimension-token-plan.md) —
+  // null unless the Fixed/Responsive toggle (decision 5) is on. Unlike shadow/border/typography,
+  // this isn't a whole replacement for `value`/`referenceTarget` — decision 4 keeps `value`
+  // mirroring `mobile`, so a responsive dimension draft still uses `value`/`unit`/`referenceTarget`
+  // for its plain-fallback form alongside this.
+  responsiveValue: ResponsiveDimensionValue | null
 }
 
 function emptyDraft(layer: TokenLayer = 'Global'): Draft {
-  return { name: '', layer, type: 'string', value: '', alpha: 100, referenceTarget: '' }
+  return {
+    name: '',
+    layer,
+    type: 'string',
+    value: '',
+    alpha: 100,
+    unit: 'rem',
+    referenceTarget: '',
+    shadowValue: [],
+    borderValue: { color: undefined, width: undefined, style: undefined },
+    typographyValue: { fontFamily: undefined, fontSize: undefined, fontWeight: undefined, lineHeight: undefined },
+    responsiveValue: null,
+  }
 }
 
 // A brand's value/reference text within the Edit-token dialog — kept
@@ -136,6 +228,7 @@ function emptyDraft(layer: TokenLayer = 'Global'): Draft {
 interface EditBrandDraft {
   value: string
   alpha: number
+  unit: DimensionValue['unit']
   referenceTarget: string
   malformed: boolean
 }
@@ -146,6 +239,7 @@ interface EditDraftState {
   name: string
   value: string
   alpha: number
+  unit: DimensionValue['unit']
   referenceTarget: string
   malformed: boolean
   brands: Record<string, EditBrandDraft>
@@ -216,6 +310,26 @@ function uniqueCopyName(layer: TokenLayer, name: string, working: WorkingToken[]
   return candidate
 }
 
+// Same idea as uniqueCopyName, but for a whole group path (e.g. "Green" ->
+// "Green copy") — taken has to check both exact name collisions and
+// collisions with an existing group's prefix, since a group isn't a token
+// itself, just a dot-prefix shared by every token under it.
+function uniqueCopyGroupName(layer: TokenLayer, group: string, working: WorkingToken[]): string {
+  const prefix = groupOf(group)
+  const leaf = leafPathFor(group)
+  const names = working.filter(w => w.token.layer === layer).map(w => w.token.name)
+  const isTaken = (candidate: string) => names.some(name => name === candidate || name.startsWith(`${candidate}.`))
+
+  let suffix = 'copy'
+  let candidate = prefix ? `${prefix}.${leaf} ${suffix}` : `${leaf} ${suffix}`
+  let n = 2
+  while (isTaken(candidate)) {
+    suffix = `copy ${n++}`
+    candidate = prefix ? `${prefix}.${leaf} ${suffix}` : `${leaf} ${suffix}`
+  }
+  return candidate
+}
+
 // Table-cell fields read as plain cell content until interacted with — no
 // border or background of their own — then pick up the normal input chrome
 // on hover/focus so it's clear the cell became editable (Figma-style grid).
@@ -233,6 +347,41 @@ const CELL_TRIGGER_CLASS =
 // used everywhere else in the app (e.g. the toolbar's search button) —
 // capped at 28px tall and left-aligning its swatch/text content.
 const CELL_TAG_CLASS = 'h-7 max-h-7 justify-start gap-2 overflow-hidden px-2 text-xs font-normal'
+
+// BorderWidthField/BorderColorField's trigger — unlike CELL_TRIGGER_CLASS/CELL_TAG_CLASS (styled
+// to sit flush inside a table cell), these fields live inside a popover form alongside
+// ShadowDimensionField's Input and the Style <Select>, so the trigger is styled to match those —
+// same height/border/background as Input, rather than the borderless-until-hover table look.
+const BORDER_FIELD_TRIGGER_CLASS =
+  'flex h-8 min-w-0 flex-1 items-center gap-2 justify-start overflow-hidden rounded-lg border border-input bg-transparent px-2.5 text-sm font-normal outline-none transition-colors hover:bg-muted/30 focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring dark:bg-input/30 dark:hover:bg-input/50'
+
+// Every reference-picker popover in this file (color/typography/responsive-dimension/border
+// sub-fields, table cells) threads this same callback down from the row-level
+// `renderReferenceSearch` — one shared alias instead of repeating the signature at each call
+// site. `typeFilter`, when given, restricts candidates to tokens of those types (e.g.
+// BorderColorField only wants `color` tokens, not every token in the file).
+type RenderReferenceSearch = (
+  currentValue: string,
+  onSelect: (value: string) => void,
+  ariaLabel: string,
+  closeOnSelect?: boolean,
+  typeFilter?: string[],
+  // Restricts candidates to these layers — BorderColorField wants Global/Alias color
+  // primitives, not a Component-layer indirection.
+  layerFilter?: TokenLayer[],
+) => ReactNode
+
+// Shared tab-row header (see `renderPopoverHeader`'s definition) — every value/reference
+// popover in this file threads this down the same way it threads RenderReferenceSearch above.
+// `onClose` overrides the header's close button, for popovers (like BorderColorField's) that
+// aren't tracked by the row-level `openPopoverId` and so can't just default to clearing it.
+type RenderPopoverHeader = (
+  tabs: { value: string; label: string }[],
+  activeValue: string,
+  onValueChange: ((value: string) => void) | null,
+  ariaLabel: string,
+  onClose?: () => void,
+) => ReactNode
 
 // Shared "no errors" fallback for a row's cellErrors — a stable reference
 // (unlike a fresh `[]` literal on every lookup) so a row without errors
@@ -264,16 +413,39 @@ const CHANGE_STATUS_VARIANT: Record<ChangeStatus, 'default' | 'secondary' | 'out
   value: 'outline',
 }
 
+interface DimensionValue {
+  value: number
+  unit: 'px' | 'rem'
+}
+
+function isDimensionValue(value: unknown): value is DimensionValue {
+  return (
+    typeof value === 'object' &&
+    value !== null &&
+    typeof (value as { value?: unknown }).value === 'number' &&
+    ((value as { unit?: unknown }).unit === 'px' || (value as { unit?: unknown }).unit === 'rem')
+  )
+}
+
 function getEditableValueText(token: FlatToken): string {
   if (token.referenceTarget) return ''
   if (token.type === 'color') return getColorHex(token.rawValue) ?? ''
+  if (token.type === 'fontFamily') return Array.isArray(token.rawValue) ? token.rawValue.join(', ') : ''
+  if (token.type === 'dimension') return isDimensionValue(token.rawValue) ? String(token.rawValue.value) : ''
   return token.rawValue === undefined || token.rawValue === null ? '' : String(token.rawValue)
+}
+
+// The dimension unit backing a row/dialog's value right now — the token's own current unit if it
+// already has one, else 'rem'. The adjacent unit <Select> is always the source of truth for a
+// dimension's unit (not the value text, which is just the bare number — see getEditableValueText).
+function dimensionUnitFor(rawValue: unknown): DimensionValue['unit'] {
+  return isDimensionValue(rawValue) ? rawValue.unit : 'rem'
 }
 
 type ParsedValue = { ok: true; value: unknown } | { ok: false }
 
-// `previous` supplies the color's existing colorSpace/alpha so typing a hex
-// value or picking one doesn't silently reset them.
+// `previous` supplies the color's existing colorSpace/alpha (or the dimension's existing unit)
+// so typing a hex value / a bare number doesn't silently reset them.
 function parseEditableValue(type: string, text: string, previous?: unknown): ParsedValue {
   if (type === 'color') {
     if (text.trim() === '') return { ok: true, value: '' }
@@ -285,12 +457,1337 @@ function parseEditableValue(type: string, text: string, previous?: unknown): Par
       return { ok: false }
     }
   }
-  if (type === 'number') {
+  if (type === 'number' || type === 'fontWeight') {
     if (text.trim() === '') return { ok: true, value: '' }
     const n = Number(text)
     return Number.isNaN(n) ? { ok: false } : { ok: true, value: n }
   }
+  if (type === 'fontFamily') {
+    const names = text
+      .split(',')
+      .map(s => s.trim())
+      .filter(s => s.length > 0)
+    return { ok: true, value: names.length > 0 ? names : '' }
+  }
+  if (type === 'dimension') {
+    if (text.trim() === '') return { ok: true, value: '' }
+    const n = Number(text)
+    if (Number.isNaN(n)) return { ok: false }
+    return { ok: true, value: { value: n, unit: dimensionUnitFor(previous) } }
+  }
   return { ok: true, value: text }
+}
+
+// The 2 DTCG-legal dimension units (https://www.designtokens.org/tr/drafts/format/#dimension) —
+// fixed, not derived from anything, since this is the entire universe of valid units, not a set
+// of references to pick from (see docs/plans/dimension-token-type-plan.md).
+const DIMENSION_UNIT_OPTIONS: { value: DimensionValue['unit']; label: string }[] = [
+  { value: 'px', label: 'px' },
+  { value: 'rem', label: 'rem' },
+]
+
+const PX_PER_REM = 16
+
+// Switching a dimension token's unit converts the number to preserve its physical size (a
+// representation change, never a silent resize) — 1.5rem -> 24px, not 1.5rem -> 1.5px.
+function convertDimensionUnit(current: DimensionValue, unit: DimensionValue['unit']): DimensionValue {
+  if (current.unit === unit) return current
+  const value = unit === 'px' ? current.value * PX_PER_REM : current.value / PX_PER_REM
+  return { value, unit }
+}
+
+// The 10 DTCG-legal font-weight values, first-listed keyword synonym per
+// weight (https://www.designtokens.org/tr/drafts/format/#font-weight) —
+// mirrors Global.🔤 Font.Weight in Base.tokens.json. Fixed, not derived from
+// whatever Global tokens happen to exist, since this is the universe of
+// valid values a fontWeight token may hold, not a set of references to pick
+// from (see docs/plans/font-weight-token-type-plan.md).
+const FONT_WEIGHT_OPTIONS: { value: number; label: string }[] = [
+  { value: 100, label: '100 — Thin' },
+  { value: 200, label: '200 — Extra-Light' },
+  { value: 300, label: '300 — Light' },
+  { value: 400, label: '400 — Regular' },
+  { value: 500, label: '500 — Medium' },
+  { value: 600, label: '600 — Semi-Bold' },
+  { value: 700, label: '700 — Bold' },
+  { value: 800, label: '800 — Extra-Bold' },
+  { value: 900, label: '900 — Black' },
+  { value: 950, label: '950 — Extra-Black' },
+]
+
+// Base UI's <Select.Value> just echoes the raw selected value back (see its own docs — it takes
+// a children render-function precisely because it has no way to look up a matching <Select.Item>
+// on its own), so every fontWeight cell's SelectValue needs this to show "700 — Bold" instead of
+// a bare "700".
+function fontWeightLabel(value: string | null): string {
+  return FONT_WEIGHT_OPTIONS.find(option => String(option.value) === value)?.label ?? value ?? ''
+}
+
+// A single DTCG shadow layer, as it lives in a shadow token's rawValue —
+// see docs/plans/shadow-token-type-plan.md. `inset` is preserved across
+// edits but has no dedicated control in this editor (not part of the
+// mockup this plan implements against).
+interface ShadowLayerValue {
+  offsetX: DimensionValue
+  offsetY: DimensionValue
+  blur: DimensionValue
+  spread: DimensionValue
+  color: unknown
+  inset?: boolean
+}
+
+function isShadowLayerValue(value: unknown): value is ShadowLayerValue {
+  if (typeof value !== 'object' || value === null) return false
+  const v = value as Record<string, unknown>
+  return (
+    isDimensionValue(v.offsetX) && isDimensionValue(v.offsetY) && isDimensionValue(v.blur) && isDimensionValue(v.spread)
+  )
+}
+
+// A shadow token's rawValue is a bare layer object (single-layer), an array
+// of layers (multi-layer), or `[]` ("none") — see decision #3 in the plan.
+// This always returns a flat list, regardless of which shape is currently
+// stored, so the editor below never has to branch on it.
+function shadowLayersOf(value: unknown): ShadowLayerValue[] {
+  if (Array.isArray(value)) return value.filter(isShadowLayerValue)
+  return isShadowLayerValue(value) ? [value] : []
+}
+
+// The inverse of shadowLayersOf — collapses back to the bare-object/array/[]
+// shape the DTCG data and shadowValueToCss both expect.
+function shadowValueFromLayers(layers: ShadowLayerValue[]): unknown {
+  if (layers.length === 0) return []
+  if (layers.length === 1) return layers[0]
+  return layers
+}
+
+function defaultShadowLayer(): ShadowLayerValue {
+  return {
+    offsetX: { value: 0, unit: 'rem' },
+    offsetY: { value: 0, unit: 'rem' },
+    blur: { value: 0, unit: 'rem' },
+    spread: { value: 0, unit: 'rem' },
+    color: { colorSpace: 'srgb', components: [0, 0, 0], alpha: 0.25, hex: '#000000' },
+  }
+}
+
+function shadowSummaryText(value: unknown): string {
+  const layers = shadowLayersOf(value)
+  if (layers.length === 0) return 'None'
+  return layers.length === 1 ? '1 layer' : `${layers.length} layers`
+}
+
+// One X/Y/Blur/Spread field within a shadow layer — a number + its own
+// px/rem <Select> (decision #6: 4 independent unit pickers per layer, not
+// one shared unit for the whole shadow). Keeps its own draft text, same
+// "commit on blur" discipline as the table's dimension cell (see
+// commitDimensionUnit) — otherwise every keystroke here would push its own
+// undo step (useUndoableState has no debounce/coalescing).
+function ShadowDimensionField({
+  id,
+  label,
+  dimension,
+  onCommit,
+  trailing,
+  hideLabel,
+}: {
+  id: string
+  label: string
+  dimension: DimensionValue
+  onCommit: (next: DimensionValue) => void
+  trailing?: ReactNode
+  // BorderEditor lays width out in a horizontal label-column row (see docs/plans's Figma
+  // reference) instead of this field's usual label-above-input stack — the input still carries
+  // `label` via aria-label either way, this only suppresses the redundant visible <Label>.
+  hideLabel?: boolean
+}): ReactNode {
+  const [text, setText] = useState(String(dimension.value))
+
+  useEffect(() => {
+    setText(String(dimension.value))
+  }, [dimension.value])
+
+  function commitText() {
+    const n = Number(text)
+    if (Number.isNaN(n)) {
+      setText(String(dimension.value))
+      return
+    }
+    onCommit({ ...dimension, value: n })
+  }
+
+  return (
+    <div className="space-y-1">
+      {!hideLabel && (
+        <Label htmlFor={id} className="text-xs text-muted-foreground">
+          {label}
+        </Label>
+      )}
+      <div className="flex gap-1">
+        <Input
+          id={id}
+          aria-label={label}
+          value={text}
+          onChange={e => setText(e.target.value)}
+          onBlur={commitText}
+          className="w-full"
+        />
+        <Select
+          value={dimension.unit}
+          onValueChange={unit => (unit === 'px' || unit === 'rem') && onCommit(convertDimensionUnit(dimension, unit))}
+        >
+          <SelectTrigger aria-label={`Unit — ${label}`} className="h-8 w-18 shrink-0">
+            <SelectValue />
+          </SelectTrigger>
+          <SelectContent>
+            {DIMENSION_UNIT_OPTIONS.map(option => (
+              <SelectItem key={option.value} value={option.value}>
+                {option.label}
+              </SelectItem>
+            ))}
+          </SelectContent>
+        </Select>
+        {trailing}
+      </div>
+    </div>
+  )
+}
+
+// A shadow layer's color field — same hex+opacity-% markup as the color
+// type's own popover (see the `token.type === 'color'` branch below), just
+// reused standalone against one layer's `color` sub-value instead of a
+// whole token's rawValue. Also reused by BorderColorField below, inside its
+// "Color" tab, for the border composite's literal color state. The native
+// `<input type="color">` swatch mirrors the top-level color cell's picker —
+// same uncontrolled/`ref`-driven `change` handling, so dragging inside the
+// OS picker doesn't flood state with an update per pixel.
+function ShadowColorField({
+  idPrefix,
+  color,
+  onCommit,
+}: {
+  idPrefix: string
+  color: unknown
+  onCommit: (next: unknown) => void
+}): ReactNode {
+  const [hexText, setHexText] = useState(getColorHex(color) ?? '')
+  const [alphaText, setAlphaText] = useState(String(alphaPercentFor(color)))
+
+  useEffect(() => {
+    setHexText(getColorHex(color) ?? '')
+    setAlphaText(String(alphaPercentFor(color)))
+  }, [color])
+
+  function commitHex() {
+    const next = hexToColorValue(hexText, color)
+    if (!next) {
+      setHexText(getColorHex(color) ?? '')
+      return
+    }
+    onCommit(withAlphaPercent(next, Number(alphaText) || 100))
+  }
+
+  function commitAlpha() {
+    const percent = Number(alphaText)
+    if (Number.isNaN(percent)) {
+      setAlphaText(String(alphaPercentFor(color)))
+      return
+    }
+    onCommit(withAlphaPercent(color, percent))
+  }
+
+  const hex = getColorHex(color)
+
+  function commitHexValue(nextHex: string) {
+    const next = hexToColorValue(nextHex, color)
+    if (!next) return
+    onCommit(withAlphaPercent(next, Number(alphaText) || 100))
+  }
+
+  return (
+    <div className="space-y-2">
+      <input
+        type="color"
+        aria-label="Pick color"
+        className="h-9 w-full cursor-pointer rounded-md border"
+        defaultValue={hex ?? '#000000'}
+        // Native `change` (not React's onChange, bound to the continuous
+        // `input` event) — fires once when the picker closes. See the
+        // top-level color cell's swatch input for the full rationale.
+        ref={el => {
+          if (!el) return
+          const current = hex ?? '#000000'
+          if (el.value !== current) el.value = current
+          el.onchange = e => commitHexValue((e.target as HTMLInputElement).value)
+        }}
+      />
+      <div className="flex gap-2">
+        <div className="basis-2/3 space-y-1">
+          <Label htmlFor={`${idPrefix}-hex`} className="text-xs text-muted-foreground">
+            Color
+          </Label>
+          <Input
+            id={`${idPrefix}-hex`}
+            placeholder="#RRGGBB"
+            value={hexText}
+            onChange={e => setHexText(e.target.value)}
+            onBlur={commitHex}
+          />
+        </div>
+        <div className="basis-1/3 space-y-1">
+          <Label htmlFor={`${idPrefix}-opacity`} className="text-xs text-muted-foreground">
+            Opacity
+          </Label>
+          <div className="relative">
+            <Input
+              id={`${idPrefix}-opacity`}
+              type="number"
+              min={0}
+              max={100}
+              step={1}
+              value={alphaText}
+              onChange={e => setAlphaText(e.target.value)}
+              onBlur={commitAlpha}
+              className="pr-6"
+            />
+            <span
+              aria-hidden="true"
+              className="pointer-events-none absolute top-1/2 right-2 -translate-y-1/2 text-xs text-muted-foreground"
+            >
+              %
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+// Border composite's `color` sub-field — literal-or-reference, laid out as a horizontal
+// label-column row (matching Figma's own Border-color/Width/Style rows). The popover mirrors
+// the top-level color cell's own picker (see `renderEditValueEditor`'s `type === 'color'`
+// branch): one swatch+value trigger opens a popover with a "Color"/"Reference" tab row
+// (`renderPopoverHeader`) instead of the toggle-button/detach-button pair BorderWidthField
+// still uses — a reference is just another tab here, not a different trigger shape. Switching
+// to the Reference tab doesn't commit anything by itself (mirrors the top-level picker); only
+// picking a search result or editing the literal fields does.
+function BorderColorField({
+  idPrefix,
+  color,
+  previewColor,
+  onChange,
+  renderPopoverHeader,
+  renderReferenceSearch,
+}: {
+  idPrefix: string
+  color: unknown
+  // The resolved literal to swatch-preview when `color` is a reference — BorderEditor already
+  // has this (`token.resolvedValue`'s `color`), a fresh draft doesn't (nothing's been resolved
+  // yet), in which case the swatch just shows empty/checkerboard.
+  previewColor?: unknown
+  onChange: (next: unknown) => void
+  renderPopoverHeader: RenderPopoverHeader
+  renderReferenceSearch: RenderReferenceSearch
+}): ReactNode {
+  const [open, setOpen] = useState(false)
+  const [modeOverride, setModeOverride] = useState<'value' | 'reference' | null>(null)
+  const isReference = typeof color === 'string'
+  const mode = modeOverride ?? (isReference ? 'reference' : 'value')
+  const hex = isReference ? getColorHex(previewColor) : getColorHex(color)
+  const swatchAlphaPercent = isReference ? alphaPercentFor(previewColor) : alphaPercentFor(color)
+  // Literal draft to hand ShadowColorField when the Color tab is open on top of a reference
+  // value — falls back to the resolved preview (or opaque black) rather than editing `color`
+  // itself, since `color` is still the reference string until the user actually commits a hex.
+  const literalColor = isReference ? (previewColor ?? hexToColorValue('#000000')) : color
+
+  return (
+    <div className="flex items-center gap-3">
+      <Label htmlFor={`${idPrefix}-trigger`} className="w-14 shrink-0 text-xs text-muted-foreground">
+        Color
+      </Label>
+      <div className="min-w-0 flex-1">
+        <Popover
+          open={open}
+          onOpenChange={next => {
+            setOpen(next)
+            if (!next) setModeOverride(null)
+          }}
+        >
+          <PopoverTrigger
+            id={`${idPrefix}-trigger`}
+            aria-label="Color"
+            render={<button type="button" className={BORDER_FIELD_TRIGGER_CLASS} />}
+          >
+            {renderColorSwatch(hex, swatchAlphaPercent)}
+            <span className="min-w-0 flex-1 truncate">
+              {isReference ? toSlashPath(bareReferenceText(color)) : (hex ?? '—')}
+            </span>
+          </PopoverTrigger>
+          <PopoverContent className="w-72">
+            {renderPopoverHeader(
+              [
+                { value: 'value', label: 'Color' },
+                { value: 'reference', label: 'Reference' },
+              ],
+              mode,
+              value => setModeOverride(value as 'value' | 'reference'),
+              'Color',
+              () => setOpen(false),
+            )}
+            {mode === 'value' ? (
+              <ShadowColorField idPrefix={idPrefix} color={literalColor} onCommit={onChange} />
+            ) : (
+              renderReferenceSearch(
+                isReference ? bareReferenceText(color) : '',
+                next => {
+                  onChange(bracedReference(next))
+                  setOpen(false)
+                  setModeOverride(null)
+                },
+                'Color reference',
+                false,
+                ['color'],
+                ['Global', 'Alias'],
+              )
+            )}
+          </PopoverContent>
+        </Popover>
+      </div>
+    </div>
+  )
+}
+
+// Border composite's `width` sub-field — same literal-or-reference duality and horizontal
+// label-column row as BorderColorField above, just for a dimension instead of a color: a
+// reference renders as a detachable Link2Icon chip, a literal gets ShadowDimensionField's
+// value+unit inputs plus a trailing TypographyReferenceToggle button back to reference-search
+// (the same search every other reference field in this file uses — Base's dimension tokens,
+// e.g. Border.Width.*, show up there like any other token). Detaching falls back to `0rem`.
+function BorderWidthField({
+  idPrefix,
+  width,
+  resolvedWidth,
+  onChange,
+  renderReferenceSearch,
+}: {
+  idPrefix: string
+  width: unknown
+  resolvedWidth: DimensionValue
+  onChange: (next: unknown) => void
+  renderReferenceSearch: RenderReferenceSearch
+}): ReactNode {
+  const [open, setOpen] = useState(false)
+  const isReference = typeof width === 'string'
+
+  return (
+    <div className="flex items-center gap-3">
+      <Label htmlFor={`${idPrefix}-trigger`} className="w-14 shrink-0 text-xs text-muted-foreground">
+        Width
+      </Label>
+      {isReference ? (
+        <div className="group/tag flex min-w-0 flex-1 items-center gap-1">
+          <Popover open={open} onOpenChange={setOpen}>
+            <PopoverTrigger
+              id={`${idPrefix}-trigger`}
+              aria-label="Width"
+              render={<Button type="button" variant="outline" className={BORDER_FIELD_TRIGGER_CLASS} />}
+            >
+              <Link2Icon className="size-3.5 shrink-0" />
+              <span className="min-w-0 flex-1 truncate">{toSlashPath(bareReferenceText(width))}</span>
+            </PopoverTrigger>
+            <PopoverContent className="w-72">
+              {renderReferenceSearch(
+                bareReferenceText(width),
+                next => {
+                  onChange(bracedReference(next))
+                  setOpen(false)
+                },
+                'Width reference',
+                false,
+                ['dimension'],
+              )}
+            </PopoverContent>
+          </Popover>
+          {renderDetachButton('Detach width alias', () => onChange({ value: 0, unit: 'rem' }), 'icon', true)}
+        </div>
+      ) : (
+        <div className="min-w-0 flex-1">
+          <ShadowDimensionField
+            id={`${idPrefix}-trigger`}
+            label="Width"
+            dimension={resolvedWidth}
+            onCommit={onChange}
+            hideLabel
+            trailing={
+              <TypographyReferenceToggle
+                ariaLabel="Width reference"
+                onSelect={next => onChange(bracedReference(next))}
+                renderReferenceSearch={renderReferenceSearch}
+                typeFilter={['dimension']}
+                size="icon"
+              />
+            }
+          />
+        </div>
+      )}
+    </div>
+  )
+}
+
+// One layer's full field set (X/Y/Blur/Spread + color), plus its remove
+// button. `onUpdate` always receives the layer's full next state — the
+// parent (ShadowEditor) owns the layer array itself, this only edits one
+// entry in place.
+function ShadowLayerEditor({
+  idPrefix,
+  index,
+  layer,
+  onUpdate,
+  onRemove,
+}: {
+  idPrefix: string
+  index: number
+  layer: ShadowLayerValue
+  onUpdate: (next: ShadowLayerValue) => void
+  onRemove: () => void
+}): ReactNode {
+  return (
+    <div className="space-y-2 rounded-md border p-3">
+      <div className="flex items-center justify-between">
+        <span className="text-xs font-medium text-muted-foreground">Layer {index + 1}</span>
+        <Button
+          type="button"
+          variant="ghost"
+          size="icon-sm"
+          aria-label={`Remove layer ${index + 1}`}
+          onClick={onRemove}
+        >
+          <Trash2Icon className="size-3.5" />
+        </Button>
+      </div>
+      <div className="grid grid-cols-2 gap-2">
+        <ShadowDimensionField
+          id={`${idPrefix}-x`}
+          label="X"
+          dimension={layer.offsetX}
+          onCommit={offsetX => onUpdate({ ...layer, offsetX })}
+        />
+        <ShadowDimensionField
+          id={`${idPrefix}-y`}
+          label="Y"
+          dimension={layer.offsetY}
+          onCommit={offsetY => onUpdate({ ...layer, offsetY })}
+        />
+        <ShadowDimensionField
+          id={`${idPrefix}-blur`}
+          label="Blur"
+          dimension={layer.blur}
+          onCommit={blur => onUpdate({ ...layer, blur })}
+        />
+        <ShadowDimensionField
+          id={`${idPrefix}-spread`}
+          label="Spread"
+          dimension={layer.spread}
+          onCommit={spread => onUpdate({ ...layer, spread })}
+        />
+      </div>
+      <ShadowColorField
+        idPrefix={`${idPrefix}-color`}
+        color={layer.color}
+        onCommit={color => onUpdate({ ...layer, color })}
+      />
+    </div>
+  )
+}
+
+// The full shadow popup: stacked layers (single-layer shadows show just
+// one), each independently editable, plus add/remove — removing the last
+// layer reaches `$value: []` ("none"), same as Font.Shadow.0/
+// Elevation.Shadow.0 today (decision #2/#6).
+function ShadowEditor({
+  idPrefix,
+  value,
+  onChange,
+}: {
+  idPrefix: string
+  value: unknown
+  onChange: (next: unknown) => void
+}): ReactNode {
+  const layers = shadowLayersOf(value)
+
+  return (
+    <div className="space-y-2">
+      {layers.length === 0 ? (
+        <p className="text-sm text-muted-foreground">No shadow — renders as &quot;none&quot;.</p>
+      ) : (
+        layers.map((layer, index) => (
+          <ShadowLayerEditor
+            key={index}
+            idPrefix={`${idPrefix}-${index}`}
+            index={index}
+            layer={layer}
+            onUpdate={next => onChange(shadowValueFromLayers(layers.map((l, i) => (i === index ? next : l))))}
+            onRemove={() => onChange(shadowValueFromLayers(layers.filter((_, i) => i !== index)))}
+          />
+        ))
+      )}
+      <Button
+        type="button"
+        variant="outline"
+        size="sm"
+        className="gap-1"
+        onClick={() => onChange(shadowValueFromLayers([...layers, defaultShadowLayer()]))}
+      >
+        <PlusIcon className="size-3.5" />
+        Add layer
+      </Button>
+    </div>
+  )
+}
+
+// A border composite token's `$value` — `color`/`width`/`style` are each a `{reference}` string
+// in the raw authored form (docs/plans/border-token-type-plan.md decision 4), never inline
+// literals, unlike shadow's sub-values. `BorderEditor` below displays the *resolved* literal
+// (`token.resolvedValue`, reference-chased by flatten.ts's resolveReferences) so
+// ShadowDimensionField/ShadowColorField have something they know how to render, but writes a
+// literal back for whichever field the user actually edits — editing color/width here detaches
+// that one field from its primitive, same "editing breaks the alias" behavior as every other
+// reference cell in this table. `style` is the exception: its `<Select>` always knows exactly
+// which `Style.*` alias a keyword maps to, so it always writes back a fresh reference, never a
+// literal — the one sub-value decision 4 requires to always stay a reference.
+interface BorderValue {
+  color: unknown
+  width: unknown
+  style: unknown
+}
+
+function isBorderValue(value: unknown): value is BorderValue {
+  if (typeof value !== 'object' || value === null) return false
+  const v = value as Record<string, unknown>
+  return 'color' in v && 'width' in v && 'style' in v
+}
+
+const BORDER_STYLE_KEYWORDS = ['None', 'Solid', 'Dashed', 'Dotted', 'Double', 'Groove', 'Ridge', 'Inset', 'Outset']
+
+function borderStyleReference(keyword: string): string {
+  return `{🔗 Alias.▭ Border.Style.${keyword}}`
+}
+
+// A rem value's px equivalent isn't obvious at a glance (unlike px, which is
+// already the "physical" unit) — appended parenthetically wherever a
+// dimension is summarized, e.g. "1.5rem (24px)", so reading the reference
+// list never requires doing the ×16 math by hand.
+function dimensionSummaryText(dimension: DimensionValue): string {
+  if (dimension.unit === 'px') return `${dimension.value}px`
+  const px = convertDimensionUnit(dimension, 'px')
+  return `${dimension.value}rem (${px.value}px)`
+}
+
+function borderSummaryText(resolvedValue: unknown): string {
+  if (!isBorderValue(resolvedValue)) return '—'
+  const width = isDimensionValue(resolvedValue.width) ? dimensionSummaryText(resolvedValue.width) : '?'
+  const style = typeof resolvedValue.style === 'string' ? resolvedValue.style : '?'
+  return `${width} ${style}`
+}
+
+// The CSS `border-style` keyword a border token's (resolved or still-raw-reference) style value
+// maps to — accepts an already-resolved keyword ("solid"), a `Style.*` reference string that
+// hasn't chased all the way down yet ("{🔗 Alias.▭ Border.Style.Solid}"), or anything else,
+// falling back to 'solid' so a preview always renders *something* rather than an invisible line.
+function cssBorderStyleFor(style: unknown): string {
+  if (typeof style !== 'string') return 'solid'
+  const keyword = BORDER_STYLE_KEYWORDS.find(k => style.toLowerCase() === k.toLowerCase() || style.endsWith(`.${k}}`))
+  return keyword?.toLowerCase() ?? 'solid'
+}
+
+// Short human-readable summary of a token's fully-resolved value — used
+// wherever a reference picker lists candidate targets, so each row shows
+// what picking it would actually resolve to (e.g. "1.5rem (24px)", "#F05D4D"),
+// not just the target's path. Falls back to the shared color/number/string
+// formatter for anything not one of these known shapes.
+function referenceValueSummary(type: string, resolvedValue: unknown): string {
+  if (type === 'border') return borderSummaryText(resolvedValue)
+  if (type === 'typography') return typographySummaryText(resolvedValue)
+  if (isDimensionValue(resolvedValue)) return dimensionSummaryText(resolvedValue)
+  if (Array.isArray(resolvedValue)) return resolvedValue.map(v => formatValue(v)).join(', ')
+  return formatValue(resolvedValue)
+}
+
+function BorderEditor({
+  idPrefix,
+  rawValue,
+  resolvedValue,
+  onChange,
+  renderPopoverHeader,
+  renderReferenceSearch,
+}: {
+  idPrefix: string
+  rawValue: unknown
+  resolvedValue: unknown
+  onChange: (next: unknown) => void
+  renderPopoverHeader: RenderPopoverHeader
+  renderReferenceSearch: RenderReferenceSearch
+}): ReactNode {
+  const base: BorderValue = isBorderValue(rawValue)
+    ? rawValue
+    : { color: undefined, width: undefined, style: undefined }
+  const resolved: BorderValue = isBorderValue(resolvedValue)
+    ? resolvedValue
+    : { color: undefined, width: undefined, style: undefined }
+  const width: DimensionValue = isDimensionValue(resolved.width) ? resolved.width : { value: 0, unit: 'rem' }
+  const styleKeyword = typeof resolved.style === 'string' ? resolved.style : ''
+  const selectedStyle = BORDER_STYLE_KEYWORDS.find(k => k.toLowerCase() === styleKeyword) ?? ''
+
+  return (
+    <div className="space-y-3">
+      <BorderWidthField
+        idPrefix={`${idPrefix}-width`}
+        width={typeof base.width === 'string' ? base.width : width}
+        resolvedWidth={width}
+        onChange={next => onChange({ ...base, width: next })}
+        renderReferenceSearch={renderReferenceSearch}
+      />
+      <BorderColorField
+        idPrefix={`${idPrefix}-color`}
+        color={typeof base.color === 'string' ? base.color : resolved.color}
+        previewColor={resolved.color}
+        onChange={next => onChange({ ...base, color: next })}
+        renderPopoverHeader={renderPopoverHeader}
+        renderReferenceSearch={renderReferenceSearch}
+      />
+      <div className="flex items-center gap-3">
+        <Label htmlFor={`${idPrefix}-style`} className="w-14 shrink-0 text-xs text-muted-foreground">
+          Style
+        </Label>
+        <Select
+          value={selectedStyle}
+          onValueChange={keyword => keyword && onChange({ ...base, style: borderStyleReference(keyword) })}
+        >
+          <SelectTrigger id={`${idPrefix}-style`} aria-label="Style" className="min-w-0 flex-1">
+            <SelectValue placeholder="Select a style…" />
+          </SelectTrigger>
+          <SelectContent>
+            {BORDER_STYLE_KEYWORDS.map(keyword => (
+              <SelectItem key={keyword} value={keyword}>
+                {keyword}
+              </SelectItem>
+            ))}
+          </SelectContent>
+        </Select>
+      </div>
+    </div>
+  )
+}
+
+// Border editor for the Create-token dialog's brand-new draft — unlike
+// BorderEditor above, a fresh draft has no separate resolvedValue to read
+// the style keyword from (nothing's gone through resolveReferences yet), so
+// the selected keyword is instead read back out of the reference string
+// borderStyleReference itself just wrote.
+function draftBorderStyleKeyword(style: unknown): string {
+  if (typeof style !== 'string') return ''
+  return BORDER_STYLE_KEYWORDS.find(k => style.endsWith(`.${k}}`)) ?? ''
+}
+
+function DraftBorderEditor({
+  idPrefix,
+  value,
+  onChange,
+  renderPopoverHeader,
+  renderReferenceSearch,
+}: {
+  idPrefix: string
+  value: BorderValue
+  onChange: (next: BorderValue) => void
+  renderPopoverHeader: RenderPopoverHeader
+  renderReferenceSearch: RenderReferenceSearch
+}): ReactNode {
+  const width: DimensionValue = isDimensionValue(value.width) ? value.width : { value: 0, unit: 'rem' }
+  const selectedStyle = draftBorderStyleKeyword(value.style)
+
+  return (
+    <div className="space-y-3">
+      <BorderWidthField
+        idPrefix={`${idPrefix}-width`}
+        width={typeof value.width === 'string' ? value.width : width}
+        resolvedWidth={width}
+        onChange={next => onChange({ ...value, width: next })}
+        renderReferenceSearch={renderReferenceSearch}
+      />
+      <BorderColorField
+        idPrefix={`${idPrefix}-color`}
+        color={value.color}
+        onChange={next => onChange({ ...value, color: next })}
+        renderPopoverHeader={renderPopoverHeader}
+        renderReferenceSearch={renderReferenceSearch}
+      />
+      <div className="flex items-center gap-3">
+        <Label htmlFor={`${idPrefix}-style`} className="w-14 shrink-0 text-xs text-muted-foreground">
+          Style
+        </Label>
+        <Select
+          value={selectedStyle}
+          onValueChange={keyword => keyword && onChange({ ...value, style: borderStyleReference(keyword) })}
+        >
+          <SelectTrigger id={`${idPrefix}-style`} aria-label="Style" className="min-w-0 flex-1">
+            <SelectValue placeholder="Select a style…" />
+          </SelectTrigger>
+          <SelectContent>
+            {BORDER_STYLE_KEYWORDS.map(keyword => (
+              <SelectItem key={keyword} value={keyword}>
+                {keyword}
+              </SelectItem>
+            ))}
+          </SelectContent>
+        </Select>
+      </div>
+    </div>
+  )
+}
+
+// A typography composite token's `$value` — per docs/plans/typography-token-type-plan.md decision
+// 4, `fontFamily`/`fontWeight` are always reference strings (small categorical primitive sets, same
+// reasoning as border's `style`), while `fontSize`/`lineHeight` are free literal-or-reference: a
+// plain DimensionValue/number for the literal case, a `{reference}` string when pointing at a
+// Font.Size.*/Font.LineHeight.* primitive — same "editing a literal detaches any prior alias, picking
+// a reference replaces the literal" duality as border's `width`/`color`, just with the toggle wired
+// up (border's editor never offers a way back to a reference; typography's does).
+interface TypographyValue {
+  fontFamily: unknown
+  fontSize: unknown
+  fontWeight: unknown
+  lineHeight: unknown
+}
+
+function isTypographyValue(value: unknown): value is TypographyValue {
+  if (typeof value !== 'object' || value === null) return false
+  const v = value as Record<string, unknown>
+  return 'fontFamily' in v && 'fontSize' in v && 'fontWeight' in v && 'lineHeight' in v
+}
+
+// fontFamily/fontWeight are reference-only, so their trigger just shows the reference's slash path
+// (or a placeholder) — there's no literal value to fall back to the way color/dimension cells do.
+function typographyReferenceLabel(value: unknown, placeholder: string): string {
+  return typeof value === 'string' && value.trim() !== '' ? toSlashPath(bareReferenceText(value)) : placeholder
+}
+
+// A responsive dimension breakpoint's reference sub-field is stored DTCG-style, wrapped in braces
+// (`{path}`, matching $extensions.com.helvetia.responsive in Base.tokens.json and how flatten.ts's
+// REFERENCE_PATTERN reads it back) — but referenceOptions/SearchSelect deal exclusively in bare
+// dotted paths (see referenceOptions/pathFor), same as the top-level referenceTarget field. These
+// two mirror that bare<->braced conversion at the boundary between a responsive breakpoint's stored
+// value and anything that displays or picks it (chip label, SearchSelect currentValue/onSelect).
+const RESPONSIVE_REFERENCE_PATTERN = /^\{(.+)\}$/
+function bareReferenceText(value: string): string {
+  return RESPONSIVE_REFERENCE_PATTERN.exec(value)?.[1] ?? value
+}
+function bracedReference(path: string): string {
+  return `{${path}}`
+}
+
+// Fallback for a typography cell whose rawValue isn't (yet) a well-formed TypographyValue —
+// same "start from a sane empty shape" reasoning as emptyDraft's own borderValue/typographyValue
+// defaults, kept as a stable module-level reference rather than a literal recreated per render.
+const EMPTY_TYPOGRAPHY_VALUE: TypographyValue = {
+  fontFamily: undefined,
+  fontSize: undefined,
+  fontWeight: undefined,
+  lineHeight: undefined,
+}
+
+function typographySummaryText(value: unknown): string {
+  if (!isTypographyValue(value)) return '—'
+  const size = isDimensionValue(value.fontSize)
+    ? dimensionSummaryText(value.fontSize)
+    : typeof value.fontSize === 'string'
+      ? typographyReferenceLabel(value.fontSize, '?')
+      : '?'
+  const family = typographyReferenceLabel(value.fontFamily, '?')
+  return `${size} · ${family}`
+}
+
+// lineHeight's own field — same "commit on blur" discipline as ShadowDimensionField, just without
+// a unit Select since DTCG lineHeight is a bare unitless number. `trailing` mirrors the same slot
+// ShadowDimensionField grew, for the fontSize/lineHeight reference-toggle button.
+function TypographyLineHeightField({
+  id,
+  value,
+  onCommit,
+  trailing,
+}: {
+  id: string
+  value: number
+  onCommit: (next: number) => void
+  trailing?: ReactNode
+}): ReactNode {
+  const [text, setText] = useState(String(value))
+
+  useEffect(() => {
+    setText(String(value))
+  }, [value])
+
+  function commitText() {
+    const n = Number(text)
+    if (Number.isNaN(n)) {
+      setText(String(value))
+      return
+    }
+    onCommit(n)
+  }
+
+  return (
+    <div className="space-y-1">
+      <Label htmlFor={id} className="text-xs text-muted-foreground">
+        Line Height
+      </Label>
+      <div className="flex gap-1">
+        <Input
+          id={id}
+          aria-label="Line height"
+          value={text}
+          onChange={e => setText(e.target.value)}
+          onBlur={commitText}
+          className="w-full"
+        />
+        {trailing}
+      </div>
+    </div>
+  )
+}
+
+// The hexagon-icon reference-toggle button used for fontSize/lineHeight — same trigger pattern as
+// the reference button next to plain dimension/number cells in the main table (CELL_TRIGGER_CLASS's
+// sibling for the "has a literal fallback" cells), reused here since both sub-fields support the
+// same literal-or-reference duality.
+function TypographyReferenceToggle({
+  ariaLabel,
+  onSelect,
+  renderReferenceSearch,
+  typeFilter,
+  layerFilter,
+  size = 'icon-sm',
+}: {
+  ariaLabel: string
+  onSelect: (value: string) => void
+  renderReferenceSearch: RenderReferenceSearch
+  // Restricts candidates to these token types — see RenderReferenceSearch's typeFilter.
+  typeFilter?: string[]
+  // Restricts candidates to these layers — see RenderReferenceSearch's layerFilter.
+  layerFilter?: TokenLayer[]
+  // Matches whichever height convention the field it sits beside uses — the default 28px
+  // ("icon-sm") pairs with CELL_TAG_CLASS chips (fontFamily/fontWeight/fontSize's own trigger),
+  // "icon" (32px) pairs with BorderWidthField/BorderColorField's Input/Select-height fields.
+  size?: 'icon-sm' | 'icon'
+}): ReactNode {
+  // Locally controlled (rather than the row popover's shared openPopoverId) so picking a
+  // reference here closes only this small picker, not the whole responsive-dimension/typography
+  // popover it's nested inside — see docs/plans/responsive-dimension-token-plan.md.
+  const [open, setOpen] = useState(false)
+  return (
+    <Popover open={open} onOpenChange={setOpen}>
+      <PopoverTrigger
+        render={<Button type="button" variant="outline" size={size} className="shrink-0" aria-label={ariaLabel} />}
+      >
+        <HexagonIcon className="size-4" />
+      </PopoverTrigger>
+      <PopoverContent className="w-128">
+        {renderReferenceSearch(
+          '',
+          value => {
+            onSelect(value)
+            setOpen(false)
+          },
+          ariaLabel,
+          false,
+          typeFilter,
+          layerFilter,
+        )}
+      </PopoverContent>
+    </Popover>
+  )
+}
+
+// fontSize/lineHeight's reference-chip display — same tag+detach markup as the main table's
+// reference cells (e.g. the border/dimension chip at token-editor.tsx's `token.referenceTarget`
+// branch), just standalone against one typography sub-field instead of a whole token.
+function TypographySubFieldReferenceChip({
+  id,
+  label,
+  reference,
+  onSelect,
+  onDetach,
+  renderReferenceSearch,
+  typeFilter,
+}: {
+  id: string
+  label: string
+  reference: string
+  onSelect: (value: string) => void
+  onDetach: () => void
+  renderReferenceSearch: RenderReferenceSearch
+  // Restricts candidates to these token types — see RenderReferenceSearch's typeFilter.
+  typeFilter?: string[]
+}): ReactNode {
+  // Locally controlled — see TypographyReferenceToggle above for why this can't share the row
+  // popover's openPopoverId.
+  const [open, setOpen] = useState(false)
+  return (
+    <div className="space-y-1">
+      <Label htmlFor={id} className="text-xs text-muted-foreground">
+        {label}
+      </Label>
+      <div className="group/tag flex items-center gap-1">
+        <Popover open={open} onOpenChange={setOpen}>
+          <PopoverTrigger
+            id={id}
+            aria-label={label}
+            render={
+              <Button
+                type="button"
+                variant="outline"
+                className={cn(CELL_TAG_CLASS, 'h-8 max-h-8 min-w-0 flex-1 justify-start text-left')}
+              />
+            }
+          >
+            <Link2Icon className="size-3.5 shrink-0" />
+            <span className="min-w-0 flex-1 truncate">{toSlashPath(bareReferenceText(reference))}</span>
+          </PopoverTrigger>
+          <PopoverContent className="w-128">
+            {renderReferenceSearch(
+              bareReferenceText(reference),
+              value => {
+                onSelect(bracedReference(value))
+                setOpen(false)
+              },
+              label,
+              false,
+              typeFilter,
+            )}
+          </PopoverContent>
+        </Popover>
+        {renderDetachButton(`Detach ${label.toLowerCase()} alias`, onDetach, 'icon')}
+      </div>
+    </div>
+  )
+}
+
+// The full typography popup: fontFamily/fontWeight are reference-pickers (nested Popover +
+// renderReferenceSearch, same pattern as the hexagon-icon reference button on plain dimension/number
+// cells), fontSize reuses ShadowDimensionField verbatim, lineHeight gets its own plain-number field
+// above. `renderReferenceSearch` is threaded in as a prop rather than closed over, since — unlike
+// ShadowEditor/BorderEditor — this component needs it for two of its four fields.
+function TypographyEditor({
+  idPrefix,
+  value,
+  onChange,
+  renderReferenceSearch,
+}: {
+  idPrefix: string
+  value: TypographyValue
+  onChange: (next: TypographyValue) => void
+  renderReferenceSearch: RenderReferenceSearch
+}): ReactNode {
+  const fontSize: DimensionValue = isDimensionValue(value.fontSize) ? value.fontSize : { value: 16, unit: 'px' }
+  const lineHeight = typeof value.lineHeight === 'number' ? value.lineHeight : 1
+  // Locally controlled — see TypographyReferenceToggle for why this can't share the row popover's
+  // openPopoverId.
+  const [familyOpen, setFamilyOpen] = useState(false)
+  const [weightOpen, setWeightOpen] = useState(false)
+
+  return (
+    <div className="space-y-3">
+      <div className="space-y-1">
+        <Label htmlFor={`${idPrefix}-family`} className="text-xs text-muted-foreground">
+          Font Family
+        </Label>
+        <div className="group/tag flex items-center gap-1">
+          <Popover open={familyOpen} onOpenChange={setFamilyOpen}>
+            <PopoverTrigger
+              id={`${idPrefix}-family`}
+              aria-label="Font family reference"
+              render={
+                <Button
+                  type="button"
+                  variant="outline"
+                  className={cn(CELL_TAG_CLASS, 'h-8 max-h-8 min-w-0 flex-1 justify-start text-left')}
+                />
+              }
+            >
+              <Link2Icon className="size-3.5 shrink-0" />
+              <span className="min-w-0 flex-1 truncate">
+                {typographyReferenceLabel(value.fontFamily, 'Select a font family…')}
+              </span>
+            </PopoverTrigger>
+            <PopoverContent className="w-128">
+              {renderReferenceSearch(
+                typeof value.fontFamily === 'string' ? bareReferenceText(value.fontFamily) : '',
+                next => {
+                  onChange({ ...value, fontFamily: bracedReference(next) })
+                  setFamilyOpen(false)
+                },
+                'Font family reference',
+                false,
+                ['fontFamily'],
+              )}
+            </PopoverContent>
+          </Popover>
+          {typeof value.fontFamily === 'string' &&
+            value.fontFamily.trim() !== '' &&
+            renderDetachButton('Detach font family alias', () => onChange({ ...value, fontFamily: undefined }), 'icon')}
+        </div>
+      </div>
+
+      {typeof value.fontSize === 'string' ? (
+        <TypographySubFieldReferenceChip
+          id={`${idPrefix}-size`}
+          label="Font Size"
+          reference={value.fontSize}
+          onSelect={next => onChange({ ...value, fontSize: next })}
+          onDetach={() => onChange({ ...value, fontSize: { value: 16, unit: 'px' } })}
+          renderReferenceSearch={renderReferenceSearch}
+          typeFilter={['dimension']}
+        />
+      ) : (
+        <ShadowDimensionField
+          id={`${idPrefix}-size`}
+          label="Font Size"
+          dimension={fontSize}
+          onCommit={next => onChange({ ...value, fontSize: next })}
+          trailing={
+            <TypographyReferenceToggle
+              ariaLabel="Font size reference"
+              onSelect={next => onChange({ ...value, fontSize: bracedReference(next) })}
+              renderReferenceSearch={renderReferenceSearch}
+              typeFilter={['dimension']}
+              size="icon"
+            />
+          }
+        />
+      )}
+
+      <div className="space-y-1">
+        <Label htmlFor={`${idPrefix}-weight`} className="text-xs text-muted-foreground">
+          Font Weight
+        </Label>
+        <div className="group/tag flex items-center gap-1">
+          <Popover open={weightOpen} onOpenChange={setWeightOpen}>
+            <PopoverTrigger
+              id={`${idPrefix}-weight`}
+              aria-label="Font weight reference"
+              render={
+                <Button
+                  type="button"
+                  variant="outline"
+                  className={cn(CELL_TAG_CLASS, 'h-8 max-h-8 min-w-0 flex-1 justify-start text-left')}
+                />
+              }
+            >
+              <Link2Icon className="size-3.5 shrink-0" />
+              <span className="min-w-0 flex-1 truncate">
+                {typographyReferenceLabel(value.fontWeight, 'Select a font weight…')}
+              </span>
+            </PopoverTrigger>
+            <PopoverContent className="w-128">
+              {renderReferenceSearch(
+                typeof value.fontWeight === 'string' ? bareReferenceText(value.fontWeight) : '',
+                next => {
+                  onChange({ ...value, fontWeight: bracedReference(next) })
+                  setWeightOpen(false)
+                },
+                'Font weight reference',
+                false,
+                ['fontWeight'],
+              )}
+            </PopoverContent>
+          </Popover>
+          {typeof value.fontWeight === 'string' &&
+            value.fontWeight.trim() !== '' &&
+            renderDetachButton('Detach font weight alias', () => onChange({ ...value, fontWeight: undefined }), 'icon')}
+        </div>
+      </div>
+
+      {typeof value.lineHeight === 'string' ? (
+        <TypographySubFieldReferenceChip
+          id={`${idPrefix}-line-height`}
+          label="Line Height"
+          reference={value.lineHeight}
+          onSelect={next => onChange({ ...value, lineHeight: next })}
+          onDetach={() => onChange({ ...value, lineHeight: 1 })}
+          renderReferenceSearch={renderReferenceSearch}
+          typeFilter={['number']}
+        />
+      ) : (
+        <TypographyLineHeightField
+          id={`${idPrefix}-line-height`}
+          value={lineHeight}
+          onCommit={next => onChange({ ...value, lineHeight: next })}
+          trailing={
+            <TypographyReferenceToggle
+              ariaLabel="Line height reference"
+              onSelect={next => onChange({ ...value, lineHeight: bracedReference(next) })}
+              renderReferenceSearch={renderReferenceSearch}
+              typeFilter={['number']}
+              size="icon"
+            />
+          }
+        />
+      )}
+    </div>
+  )
+}
+
+const RESPONSIVE_BREAKPOINTS: { key: keyof ResponsiveDimensionValue; label: string }[] = [
+  { key: 'mobile', label: 'Mobile' },
+  { key: 'tablet', label: 'Tablet' },
+  { key: 'desktop', label: 'Desktop' },
+]
+
+// mobile/tablet/desktop icons — the same SmartphoneIcon/TabletIcon/MonitorIcon used by the
+// device-preview panel's breakpoint switcher (preview-sidebar.tsx's BREAKPOINT_ICON), reused here
+// so a responsive dimension token's 3 values read the same way in both places.
+const RESPONSIVE_BREAKPOINT_ICON: Record<keyof ResponsiveDimensionValue, typeof MonitorIcon> = {
+  mobile: SmartphoneIcon,
+  tablet: TabletIcon,
+  desktop: MonitorIcon,
+}
+
+// One breakpoint's display text — a literal renders as its dimension summary ("16px"), a
+// reference as its slash path, same "how would this cell show it" split as every other
+// literal-or-reference sub-field in this file (e.g. typographySummaryText's fontSize branch).
+function responsiveDimensionFieldText(value: unknown): string {
+  if (isDimensionValue(value)) return dimensionSummaryText(value)
+  if (typeof value === 'string') return typographyReferenceLabel(bareReferenceText(value), '?')
+  return '?'
+}
+
+// Seeds mobile/tablet/desktop from the token's current plain value when the Fixed/Responsive
+// toggle turns on (decision 5) — starting all 3 breakpoints equal is a saner default than blank
+// fields, and matches how converting *back* to Fixed just keeps whatever `value`/`unit` already
+// holds (decision 4 keeps them in lockstep with `mobile` the whole time anyway).
+function seedResponsiveDimensionValue(current: DimensionValue): ResponsiveDimensionValue {
+  return { mobile: { ...current }, tablet: { ...current }, desktop: { ...current } }
+}
+
+// The full responsive-dimension popup: 3 fields, each independently literal-or-reference
+// (decision 3) — same ShadowDimensionField/TypographyReferenceToggle/TypographySubFieldReference-
+// Chip trio TypographyEditor's fontSize field already uses, just repeated 3x instead of once.
+// One breakpoint's row — icon, value (reference chip or literal dimension, filling the
+// remaining width), detach button. Unlike BorderWidthField/BorderColorField's detach (only
+// meaningful once a reference exists, so hover-revealed elsewhere in the table), this one's
+// always visible: same "already inside an open popover, not a hover-packed table row" reasoning
+// as border's own alwaysVisible fields. The breakpoint icon replaces the vertical text label
+// (Mobile/Tablet/Desktop) the old layout used — a Tooltip keeps the name available without
+// spending a whole row on it.
+function ResponsiveBreakpointField({
+  idPrefix,
+  breakpointKey,
+  label,
+  value,
+  onChange,
+  renderReferenceSearch,
+}: {
+  idPrefix: string
+  breakpointKey: keyof ResponsiveDimensionValue
+  label: string
+  value: unknown
+  onChange: (next: unknown) => void
+  renderReferenceSearch: RenderReferenceSearch
+}): ReactNode {
+  const [open, setOpen] = useState(false)
+  const Icon = RESPONSIVE_BREAKPOINT_ICON[breakpointKey]
+  const isReference = typeof value === 'string'
+  const dimension: DimensionValue = isDimensionValue(value) ? value : { value: 16, unit: 'px' }
+
+  return (
+    <div className="flex items-center gap-2">
+      <Tooltip>
+        <TooltipTrigger
+          render={<span className="flex size-8 shrink-0 items-center justify-center text-muted-foreground" />}
+        >
+          <Icon className="size-4" aria-hidden="true" />
+        </TooltipTrigger>
+        <TooltipContent>{label}</TooltipContent>
+      </Tooltip>
+      {isReference ? (
+        <Popover open={open} onOpenChange={setOpen}>
+          <PopoverTrigger
+            id={`${idPrefix}-trigger`}
+            aria-label={label}
+            render={<Button type="button" variant="outline" className={BORDER_FIELD_TRIGGER_CLASS} />}
+          >
+            <Link2Icon className="size-3.5 shrink-0" />
+            <span className="min-w-0 flex-1 truncate">{toSlashPath(bareReferenceText(value))}</span>
+          </PopoverTrigger>
+          <PopoverContent className="w-72">
+            {renderReferenceSearch(
+              bareReferenceText(value),
+              next => {
+                onChange(bracedReference(next))
+                setOpen(false)
+              },
+              label,
+              false,
+              ['dimension'],
+            )}
+          </PopoverContent>
+        </Popover>
+      ) : (
+        <div className="min-w-0 flex-1">
+          <ShadowDimensionField
+            id={`${idPrefix}-trigger`}
+            label={label}
+            dimension={dimension}
+            onCommit={onChange}
+            hideLabel
+          />
+        </div>
+      )}
+      {isReference ? (
+        renderDetachButton(
+          `Detach ${label.toLowerCase()} alias`,
+          () => onChange({ value: 16, unit: 'px' }),
+          'icon',
+          true,
+        )
+      ) : (
+        <TypographyReferenceToggle
+          ariaLabel={`${label} reference`}
+          onSelect={next => onChange(bracedReference(next))}
+          renderReferenceSearch={renderReferenceSearch}
+          typeFilter={['dimension']}
+          size="icon"
+        />
+      )}
+    </div>
+  )
+}
+
+function ResponsiveDimensionEditor({
+  idPrefix,
+  value,
+  onChange,
+  renderReferenceSearch,
+}: {
+  idPrefix: string
+  value: ResponsiveDimensionValue
+  onChange: (next: ResponsiveDimensionValue) => void
+  renderReferenceSearch: RenderReferenceSearch
+}): ReactNode {
+  return (
+    <div className="space-y-2">
+      {RESPONSIVE_BREAKPOINTS.map(({ key, label }) => (
+        <ResponsiveBreakpointField
+          key={key}
+          idPrefix={`${idPrefix}-${key}`}
+          breakpointKey={key}
+          label={label}
+          value={value[key]}
+          onChange={next => onChange({ ...value, [key]: next })}
+          renderReferenceSearch={renderReferenceSearch}
+        />
+      ))}
+    </div>
+  )
 }
 
 // The small unlink control that appears right after an alias tag on
@@ -308,6 +1805,12 @@ const TOKEN_TYPE_ICON: Record<string, typeof PaletteIcon> = {
   number: HashIcon,
   string: TypeIcon,
   boolean: ToggleLeftIcon,
+  fontWeight: HashIcon,
+  fontFamily: TypeIcon,
+  dimension: RulerIcon,
+  shadow: LayersIcon,
+  border: SquareDashedIcon,
+  typography: ALargeSmallIcon,
 }
 
 // Opaque (100%) is the sensible default for anything that isn't yet a real
@@ -345,6 +1848,31 @@ function renderColorSwatch(hex: string | null, alphaPercent: number): ReactNode 
   )
 }
 
+// Line preview for a border-composite reference cell — same "little solid/dashed/dotted line
+// in the resolved color/style" idiom as the reference picker's own borderPreview rows (see
+// referenceBorderPreviewByPath/SearchSelect), reused here so a whole-token border reference
+// reads at a glance instead of falling back to the "1.5rem solid" literal summary.
+function renderBorderLinePreview(color: string | null, cssStyle: string): ReactNode {
+  return (
+    <span
+      aria-hidden="true"
+      className="h-0 w-5 shrink-0 border-t-2"
+      style={{
+        borderTopColor: color ?? undefined,
+        borderTopStyle: cssStyle as CSSProperties['borderTopStyle'],
+      }}
+    />
+  )
+}
+
+// TOKEN_TYPE_ICON's keys are the raw DTCG $type ("fontWeight", "fontFamily") — fine for a lookup
+// key, unreadable as tooltip copy, so this splits the camelCase into "Font Weight" the same way
+// a person would say it.
+function tokenTypeLabel(type: string): string {
+  const spaced = type.replace(/([a-z])([A-Z])/g, '$1 $2')
+  return spaced.charAt(0).toUpperCase() + spaced.slice(1)
+}
+
 function renderTokenTypeIcon(type: string): ReactNode {
   const Icon = TOKEN_TYPE_ICON[type]
   if (!Icon) return null
@@ -353,12 +1881,23 @@ function renderTokenTypeIcon(type: string): ReactNode {
       <TooltipTrigger render={<span className="flex shrink-0 items-center text-muted-foreground" />}>
         <Icon className="size-3.5" aria-hidden="true" />
       </TooltipTrigger>
-      <TooltipContent>{type}</TooltipContent>
+      <TooltipContent>{tokenTypeLabel(type)}</TooltipContent>
     </Tooltip>
   )
 }
 
-function renderDetachButton(label: string, onDetach: () => void): ReactNode {
+// `size` mirrors TypographyReferenceToggle's — "icon-sm" (28px) for the usual CELL_TAG_CLASS
+// chip context, "icon" (32px) for BorderWidthField/BorderColorField's Input/Select-height rows.
+// `alwaysVisible` skips the usual "only show on row hover" treatment — BorderColorField/
+// BorderWidthField aren't table-cell chips packed into a row, they're one field in an
+// already-open popover, so hiding the only way to detach until the user hovers just makes it
+// harder to find.
+function renderDetachButton(
+  label: string,
+  onDetach: () => void,
+  size: 'icon-sm' | 'icon' = 'icon-sm',
+  alwaysVisible = false,
+): ReactNode {
   return (
     <Tooltip>
       <TooltipTrigger
@@ -366,10 +1905,10 @@ function renderDetachButton(label: string, onDetach: () => void): ReactNode {
           <Button
             type="button"
             variant="outline"
-            size="icon-sm"
+            size={size}
             aria-label={label}
             onClick={onDetach}
-            className="invisible shrink-0 group-hover/tag:visible focus-visible:visible"
+            className={cn(!alwaysVisible && 'invisible group-hover/tag:visible focus-visible:visible', 'shrink-0')}
           />
         }
       >
@@ -400,6 +1939,13 @@ interface TokenRowHandlers {
   onValueChange: (id: string, text: string) => void
   onValueBlur: (id: string, type: string) => void
   onColorPick: (id: string, type: string, text: string) => void
+  onLiteralValueSelect: (id: string, type: string, text: string) => void
+  onDimensionUnitChange: (id: string, unit: 'px' | 'rem') => void
+  onShadowChange: (id: string, rawValue: unknown) => void
+  onBorderChange: (id: string, rawValue: unknown) => void
+  onTypographyChange: (id: string, rawValue: unknown) => void
+  onResponsiveDimensionToggle: (id: string, responsive: boolean) => void
+  onResponsiveDimensionChange: (id: string, value: ResponsiveDimensionValue) => void
   onAlphaChange: (id: string, text: string) => void
   onAlphaBlur: (id: string) => void
   onReferenceChange: (id: string, text: string) => void
@@ -413,17 +1959,16 @@ interface TokenRowHandlers {
   onBrandValueChange: (id: string, text: string) => void
   onBrandValueBlur: (brand: string, id: string, type: string) => void
   onBrandColorPick: (brand: string, id: string, type: string, text: string) => void
+  onBrandDimensionUnitChange: (brand: string, id: string, unit: 'px' | 'rem') => void
+  onBrandShadowChange: (brand: string, id: string, rawValue: unknown) => void
+  onBrandTypographyChange: (brand: string, id: string, rawValue: unknown) => void
+  onBrandResponsiveDimensionChange: (brand: string, id: string, value: ResponsiveDimensionValue) => void
   onBrandAlphaChange: (brand: string, id: string, text: string) => void
   onBrandAlphaBlur: (brand: string, id: string) => void
   onBrandReferenceChange: (brand: string, id: string, text: string) => void
   onSetBrandMode: (id: string, mode: 'value' | 'reference') => void
-  renderPopoverHeader: (
-    tabs: { value: string; label: string }[],
-    activeValue: string,
-    onValueChange: ((value: string) => void) | null,
-    ariaLabel: string,
-  ) => ReactNode
-  renderReferenceSearch: (currentValue: string, onSelect: (value: string) => void, ariaLabel: string) => ReactNode
+  renderPopoverHeader: RenderPopoverHeader
+  renderReferenceSearch: RenderReferenceSearch
 }
 
 interface TokenRowProps {
@@ -646,6 +2191,8 @@ const TokenRow = memo(function TokenRow({
                         token.referenceTarget ?? '',
                         value => handlers.onReferenceChange(id, value),
                         `Reference target for ${token.name || 'token'}`,
+                        true,
+                        ['color'],
                       )
                     )}
                   </PopoverContent>
@@ -654,6 +2201,238 @@ const TokenRow = memo(function TokenRow({
                   renderDetachButton(`Detach alias for ${token.name || 'token'}`, () =>
                     handlers.onReferenceChange(id, ''),
                   )}
+              </div>
+            ) : token.type === 'shadow' ? (
+              <div className="group/tag flex items-center gap-1">
+                <Popover open={isPopoverOpen} onOpenChange={open => handlers.onPopoverOpenChange(id, open)}>
+                  <PopoverTrigger
+                    render={
+                      token.referenceTarget ? (
+                        <Button
+                          type="button"
+                          variant="outline"
+                          aria-label={`Value for ${token.name || 'token'}`}
+                          className={CELL_TAG_CLASS}
+                        />
+                      ) : (
+                        <button
+                          type="button"
+                          aria-label={`Value for ${token.name || 'token'}`}
+                          className={CELL_TRIGGER_CLASS}
+                        />
+                      )
+                    }
+                  >
+                    <LayersIcon className="size-3.5 shrink-0 text-muted-foreground" aria-hidden="true" />
+                    <span className="w-fit">
+                      {token.referenceTarget ? toSlashPath(token.referenceTarget) : shadowSummaryText(token.rawValue)}
+                    </span>
+                  </PopoverTrigger>
+                  <PopoverContent className="w-128">
+                    {handlers.renderPopoverHeader(
+                      [
+                        { value: 'value', label: 'Shadow' },
+                        { value: 'reference', label: 'Reference' },
+                      ],
+                      mode,
+                      value => handlers.onSetMode(id, value as 'value' | 'reference'),
+                      `Value mode for ${token.name || 'token'}`,
+                    )}
+                    {mode === 'value' ? (
+                      <ShadowEditor
+                        idPrefix={`shadow-${row}`}
+                        value={token.rawValue}
+                        onChange={next => handlers.onShadowChange(id, next)}
+                      />
+                    ) : (
+                      handlers.renderReferenceSearch(
+                        token.referenceTarget ?? '',
+                        value => handlers.onReferenceChange(id, value),
+                        `Reference target for ${token.name || 'token'}`,
+                        true,
+                        ['shadow'],
+                      )
+                    )}
+                  </PopoverContent>
+                </Popover>
+                {token.referenceTarget &&
+                  renderDetachButton(`Detach alias for ${token.name || 'token'}`, () =>
+                    handlers.onReferenceChange(id, ''),
+                  )}
+              </div>
+            ) : token.type === 'border' ? (
+              // Global-only — a border composite token's brand-override cell isn't implemented in
+              // this pass (docs/plans/border-token-type-plan.md decisions 8/11 scope the pilot to
+              // Global, so there's nothing at brand level to edit yet).
+              <div className="group/tag flex items-center gap-1">
+                <Popover open={isPopoverOpen} onOpenChange={open => handlers.onPopoverOpenChange(id, open)}>
+                  <PopoverTrigger
+                    render={
+                      token.referenceTarget ? (
+                        <Button
+                          type="button"
+                          variant="outline"
+                          aria-label={`Value for ${token.name || 'token'}`}
+                          className={CELL_TAG_CLASS}
+                        />
+                      ) : (
+                        <button
+                          type="button"
+                          aria-label={`Value for ${token.name || 'token'}`}
+                          className={CELL_TRIGGER_CLASS}
+                        />
+                      )
+                    }
+                  >
+                    {token.referenceTarget ? (
+                      <>
+                        {renderBorderLinePreview(
+                          getColorHex(isBorderValue(token.resolvedValue) ? token.resolvedValue.color : undefined),
+                          cssBorderStyleFor(isBorderValue(token.resolvedValue) ? token.resolvedValue.style : undefined),
+                        )}
+                        <span className="w-fit">{toSlashPath(token.referenceTarget)}</span>
+                      </>
+                    ) : (
+                      <>
+                        {renderColorSwatch(
+                          getColorHex(isBorderValue(token.resolvedValue) ? token.resolvedValue.color : undefined),
+                          alphaPercentFor(isBorderValue(token.resolvedValue) ? token.resolvedValue.color : undefined),
+                        )}
+                        <span className="w-fit">{borderSummaryText(token.resolvedValue)}</span>
+                      </>
+                    )}
+                  </PopoverTrigger>
+                  <PopoverContent className="w-96">
+                    {handlers.renderPopoverHeader(
+                      [
+                        { value: 'value', label: 'Border' },
+                        { value: 'reference', label: 'Reference' },
+                      ],
+                      mode,
+                      value => handlers.onSetMode(id, value as 'value' | 'reference'),
+                      `Value mode for ${token.name || 'token'}`,
+                    )}
+                    {mode === 'value' ? (
+                      <BorderEditor
+                        idPrefix={`border-${row}`}
+                        rawValue={token.rawValue}
+                        resolvedValue={token.resolvedValue}
+                        onChange={next => handlers.onBorderChange(id, next)}
+                        renderPopoverHeader={handlers.renderPopoverHeader}
+                        renderReferenceSearch={handlers.renderReferenceSearch}
+                      />
+                    ) : (
+                      handlers.renderReferenceSearch(
+                        token.referenceTarget ?? '',
+                        value => handlers.onReferenceChange(id, value),
+                        `Reference target for ${token.name || 'token'}`,
+                        true,
+                        ['border'],
+                      )
+                    )}
+                  </PopoverContent>
+                </Popover>
+                {token.referenceTarget &&
+                  renderDetachButton(`Detach alias for ${token.name || 'token'}`, () =>
+                    handlers.onReferenceChange(id, ''),
+                  )}
+              </div>
+            ) : token.type === 'typography' ? (
+              <div className="group/tag flex items-center gap-1">
+                <Popover open={isPopoverOpen} onOpenChange={open => handlers.onPopoverOpenChange(id, open)}>
+                  <PopoverTrigger
+                    render={
+                      <Button
+                        type="button"
+                        variant="outline"
+                        aria-label={`Value for ${token.name || 'token'}`}
+                        className={CELL_TAG_CLASS}
+                      />
+                    }
+                  >
+                    <ALargeSmallIcon className="size-3.5 shrink-0 text-muted-foreground" aria-hidden="true" />
+                    <span className="w-fit">
+                      {token.referenceTarget
+                        ? toSlashPath(bareReferenceText(token.referenceTarget))
+                        : typographySummaryText(token.rawValue)}
+                    </span>
+                  </PopoverTrigger>
+                  <PopoverContent className="w-128">
+                    {handlers.renderPopoverHeader(
+                      [
+                        { value: 'value', label: 'Typography' },
+                        { value: 'reference', label: 'Reference' },
+                      ],
+                      mode,
+                      value => handlers.onSetMode(id, value as 'value' | 'reference'),
+                      `Value mode for ${token.name || 'token'}`,
+                    )}
+                    {mode === 'value' ? (
+                      <TypographyEditor
+                        idPrefix={`typography-${row}`}
+                        value={isTypographyValue(token.rawValue) ? token.rawValue : EMPTY_TYPOGRAPHY_VALUE}
+                        onChange={next => handlers.onTypographyChange(id, next)}
+                        renderReferenceSearch={handlers.renderReferenceSearch}
+                      />
+                    ) : (
+                      handlers.renderReferenceSearch(
+                        token.referenceTarget ?? '',
+                        value => handlers.onReferenceChange(id, value),
+                        `Reference target for ${token.name || 'token'}`,
+                        true,
+                        ['typography'],
+                      )
+                    )}
+                  </PopoverContent>
+                </Popover>
+                {token.referenceTarget &&
+                  renderDetachButton(`Detach alias for ${token.name || 'token'}`, () =>
+                    handlers.onReferenceChange(id, ''),
+                  )}
+              </div>
+            ) : token.type === 'dimension' && token.responsive ? (
+              // Inline icon+value triplet (docs/plans/responsive-dimension-token-plan.md decision
+              // 10) — same SmartphoneIcon/TabletIcon/MonitorIcon the device-preview panel's
+              // breakpoint switcher already uses, shown directly as the popover trigger content
+              // rather than a single summary string, since all 3 values matter at a glance.
+              <div className="group/tag flex items-center gap-1">
+                <Popover open={isPopoverOpen} onOpenChange={open => handlers.onPopoverOpenChange(id, open)}>
+                  <PopoverTrigger
+                    aria-label={`Value for ${token.name || 'token'}`}
+                    render={<Button type="button" variant="outline" className={CELL_TAG_CLASS} />}
+                  >
+                    <span className="flex min-w-0 flex-1 items-center gap-3 overflow-hidden">
+                      {RESPONSIVE_BREAKPOINTS.map(({ key, label }) => {
+                        const Icon = RESPONSIVE_BREAKPOINT_ICON[key]
+                        return (
+                          <span key={key} className="flex shrink-0 items-center gap-1" title={label}>
+                            <Icon className="size-3.5 text-muted-foreground" aria-hidden="true" />
+                            {responsiveDimensionFieldText(token.responsive?.[key])}
+                          </span>
+                        )
+                      })}
+                    </span>
+                  </PopoverTrigger>
+                  <PopoverContent className="w-128">
+                    <div className="mb-3 flex items-center justify-between">
+                      <span className="text-xs font-medium text-muted-foreground">Responsive dimension</span>
+                      <Button
+                        type="button"
+                        variant="ghost"
+                        size="sm"
+                        onClick={() => handlers.onResponsiveDimensionToggle(id, false)}
+                      >
+                        Use fixed value
+                      </Button>
+                    </div>
+                    <ResponsiveDimensionEditor
+                      idPrefix={`responsive-dimension-${row}`}
+                      value={token.responsive}
+                      onChange={next => handlers.onResponsiveDimensionChange(id, next)}
+                      renderReferenceSearch={handlers.renderReferenceSearch}
+                    />
+                  </PopoverContent>
+                </Popover>
               </div>
             ) : (
               <div className="group/tag flex items-center gap-1">
@@ -665,7 +2444,10 @@ const TokenRow = memo(function TokenRow({
                         render={<Button type="button" variant="outline" className={CELL_TAG_CLASS} />}
                       >
                         <Link2Icon className="size-3.5 shrink-0" />
-                        <span className="truncate">{toSlashPath(token.referenceTarget)}</span>
+                        <span className="min-w-0 flex-1 truncate">{toSlashPath(token.referenceTarget)}</span>
+                        <span className="shrink-0 text-muted-foreground">
+                          {referenceValueSummary(token.type, token.resolvedValue)}
+                        </span>
                       </PopoverTrigger>
                       <PopoverContent className="w-128">
                         {handlers.renderPopoverHeader(
@@ -678,6 +2460,8 @@ const TokenRow = memo(function TokenRow({
                           token.referenceTarget ?? '',
                           value => handlers.onReferenceChange(id, value),
                           `Reference target for ${token.name || 'token'}`,
+                          true,
+                          [token.type],
                         )}
                       </PopoverContent>
                     </Popover>
@@ -687,34 +2471,114 @@ const TokenRow = memo(function TokenRow({
                   </>
                 ) : (
                   <>
-                    <Input
-                      ref={el => {
-                        if (el) cellRefs.current.set(`${row}-1`, el)
-                        else cellRefs.current.delete(`${row}-1`)
-                      }}
-                      aria-label={`Value for ${token.name || 'token'}`}
-                      aria-invalid={cellErrors.length > 0}
-                      value={valueText}
-                      onChange={e => handlers.onValueChange(id, e.target.value)}
-                      onBlur={() => handlers.onValueBlur(id, token.type)}
-                      onFocus={e => (focusSnapshot.current = { id, col: 1, value: e.target.value })}
-                      onKeyDown={e => handlers.onCellKeyDown(e, row, 1, id)}
-                      className={CELL_FIELD_CLASS}
-                    />
-                    <Popover open={isPopoverOpen} onOpenChange={open => handlers.onPopoverOpenChange(id, open)}>
-                      <PopoverTrigger
-                        render={
-                          <Button
-                            type="button"
-                            variant="outline"
-                            size="icon-sm"
-                            className="mr-1 shrink-0 rounded-none"
-                            aria-label={`Reference for ${token.name || 'token'}`}
-                          />
-                        }
+                    {token.type === 'dimension' ? (
+                      <>
+                        <Input
+                          ref={el => {
+                            if (el) cellRefs.current.set(`${row}-1`, el)
+                            else cellRefs.current.delete(`${row}-1`)
+                          }}
+                          aria-label={`Value for ${token.name || 'token'}`}
+                          aria-invalid={cellErrors.length > 0}
+                          value={valueText}
+                          onChange={e => handlers.onValueChange(id, e.target.value)}
+                          onBlur={() => handlers.onValueBlur(id, token.type)}
+                          onFocus={e => (focusSnapshot.current = { id, col: 1, value: e.target.value })}
+                          onKeyDown={e => handlers.onCellKeyDown(e, row, 1, id)}
+                          className={CELL_FIELD_CLASS}
+                        />
+                        <Select
+                          value={isDimensionValue(token.rawValue) ? token.rawValue.unit : 'rem'}
+                          onValueChange={value =>
+                            (value === 'px' || value === 'rem') && handlers.onDimensionUnitChange(id, value)
+                          }
+                        >
+                          <SelectTrigger aria-label={`Unit for ${token.name || 'token'}`} className="h-8 w-18 shrink-0">
+                            <SelectValue />
+                          </SelectTrigger>
+                          <SelectContent>
+                            {DIMENSION_UNIT_OPTIONS.map(option => (
+                              <SelectItem key={option.value} value={option.value}>
+                                {option.label}
+                              </SelectItem>
+                            ))}
+                          </SelectContent>
+                        </Select>
+                        <Tooltip>
+                          <TooltipTrigger
+                            render={
+                              <Button
+                                type="button"
+                                variant="outline"
+                                size="icon"
+                                className="shrink-0"
+                                aria-label={`Make ${token.name || 'token'} responsive`}
+                                onClick={() => handlers.onResponsiveDimensionToggle(id, true)}
+                              />
+                            }
+                          >
+                            <MonitorIcon className="size-3.5" />
+                          </TooltipTrigger>
+                          <TooltipContent>Make responsive</TooltipContent>
+                        </Tooltip>
+                      </>
+                    ) : token.type === 'fontWeight' ? (
+                      <Select
+                        value={valueText}
+                        onValueChange={value => value !== null && handlers.onLiteralValueSelect(id, token.type, value)}
                       >
-                        <HexagonIcon className="size-4" />
-                      </PopoverTrigger>
+                        <SelectTrigger
+                          aria-label={`Value for ${token.name || 'token'}`}
+                          aria-invalid={cellErrors.length > 0}
+                          className={cn(CELL_FIELD_CLASS, 'h-8 w-full flex-1')}
+                        >
+                          <SelectValue placeholder="Select a weight">{fontWeightLabel}</SelectValue>
+                        </SelectTrigger>
+                        <SelectContent>
+                          {FONT_WEIGHT_OPTIONS.map(option => (
+                            <SelectItem key={option.value} value={String(option.value)}>
+                              {option.label}
+                            </SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
+                    ) : (
+                      <Input
+                        ref={el => {
+                          if (el) cellRefs.current.set(`${row}-1`, el)
+                          else cellRefs.current.delete(`${row}-1`)
+                        }}
+                        aria-label={`Value for ${token.name || 'token'}`}
+                        aria-invalid={cellErrors.length > 0}
+                        value={valueText}
+                        onChange={e => handlers.onValueChange(id, e.target.value)}
+                        onBlur={() => handlers.onValueBlur(id, token.type)}
+                        onFocus={e => (focusSnapshot.current = { id, col: 1, value: e.target.value })}
+                        onKeyDown={e => handlers.onCellKeyDown(e, row, 1, id)}
+                        className={CELL_FIELD_CLASS}
+                      />
+                    )}
+                    <Popover open={isPopoverOpen} onOpenChange={open => handlers.onPopoverOpenChange(id, open)}>
+                      <Tooltip>
+                        <TooltipTrigger
+                          render={
+                            <PopoverTrigger
+                              render={
+                                <Button
+                                  type="button"
+                                  variant="outline"
+                                  size="icon"
+                                  className="mr-1 shrink-0"
+                                  aria-label={`Reference for ${token.name || 'token'}`}
+                                />
+                              }
+                            />
+                          }
+                        >
+                          <HexagonIcon className="size-4" />
+                        </TooltipTrigger>
+                        <TooltipContent>Attach reference</TooltipContent>
+                      </Tooltip>
                       <PopoverContent className="w-128">
                         {handlers.renderPopoverHeader(
                           [{ value: 'reference', label: 'Reference' }],
@@ -726,6 +2590,8 @@ const TokenRow = memo(function TokenRow({
                           token.referenceTarget ?? '',
                           value => handlers.onReferenceChange(id, value),
                           `Reference target for ${token.name || 'token'}`,
+                          true,
+                          [token.type],
                         )}
                       </PopoverContent>
                     </Popover>
@@ -921,6 +2787,8 @@ const TokenRow = memo(function TokenRow({
                                 brandToken.referenceTarget ?? '',
                                 value => handlers.onBrandReferenceChange(brand, id, value),
                                 `${brand} reference target for ${token.name || 'token'}`,
+                                true,
+                                ['color'],
                               )
                             )}
                           </PopoverContent>
@@ -929,6 +2797,163 @@ const TokenRow = memo(function TokenRow({
                           renderDetachButton(`Detach ${brand} alias for ${token.name || 'token'}`, () =>
                             handlers.onBrandReferenceChange(brand, id, ''),
                           )}
+                      </div>
+                    ) : brandToken.type === 'shadow' ? (
+                      <div className="group/tag flex items-center gap-1">
+                        <Popover
+                          open={brandInfo.isPopoverOpen}
+                          onOpenChange={open => handlers.onPopoverOpenChange(brandCellId, open)}
+                        >
+                          <PopoverTrigger
+                            render={
+                              brandToken.referenceTarget ? (
+                                <Button
+                                  type="button"
+                                  variant="outline"
+                                  aria-label={`${brand} value for ${token.name || 'token'}`}
+                                  className={CELL_TAG_CLASS}
+                                />
+                              ) : (
+                                <button
+                                  type="button"
+                                  aria-label={`${brand} value for ${token.name || 'token'}`}
+                                  className={CELL_TRIGGER_CLASS}
+                                />
+                              )
+                            }
+                          >
+                            <LayersIcon className="size-3.5 shrink-0 text-muted-foreground" aria-hidden="true" />
+                            <span className="w-fit">
+                              {brandToken.referenceTarget
+                                ? toSlashPath(brandToken.referenceTarget)
+                                : shadowSummaryText(brandToken.rawValue)}
+                            </span>
+                          </PopoverTrigger>
+                          <PopoverContent className="w-128">
+                            {handlers.renderPopoverHeader(
+                              [
+                                { value: 'value', label: 'Shadow' },
+                                { value: 'reference', label: 'Reference' },
+                              ],
+                              brandMode,
+                              value => handlers.onSetBrandMode(id, value as 'value' | 'reference'),
+                              `${brand} value mode for ${token.name || 'token'}`,
+                            )}
+                            {brandMode === 'value' ? (
+                              <ShadowEditor
+                                idPrefix={`shadow-brand-${brand}-${id}`}
+                                value={brandToken.rawValue}
+                                onChange={next => handlers.onBrandShadowChange(brand, id, next)}
+                              />
+                            ) : (
+                              handlers.renderReferenceSearch(
+                                brandToken.referenceTarget ?? '',
+                                value => handlers.onBrandReferenceChange(brand, id, value),
+                                `${brand} reference target for ${token.name || 'token'}`,
+                                true,
+                                ['shadow'],
+                              )
+                            )}
+                          </PopoverContent>
+                        </Popover>
+                        {brandToken.referenceTarget &&
+                          renderDetachButton(`Detach ${brand} alias for ${token.name || 'token'}`, () =>
+                            handlers.onBrandReferenceChange(brand, id, ''),
+                          )}
+                      </div>
+                    ) : brandToken.type === 'typography' ? (
+                      <div className="group/tag flex items-center gap-1">
+                        <Popover
+                          open={brandInfo.isPopoverOpen}
+                          onOpenChange={open => handlers.onPopoverOpenChange(brandCellId, open)}
+                        >
+                          <PopoverTrigger
+                            render={
+                              <Button
+                                type="button"
+                                variant="outline"
+                                aria-label={`${brand} value for ${token.name || 'token'}`}
+                                className={CELL_TAG_CLASS}
+                              />
+                            }
+                          >
+                            <ALargeSmallIcon className="size-3.5 shrink-0 text-muted-foreground" aria-hidden="true" />
+                            <span className="w-fit">
+                              {brandToken.referenceTarget
+                                ? toSlashPath(bareReferenceText(brandToken.referenceTarget))
+                                : typographySummaryText(brandToken.rawValue)}
+                            </span>
+                          </PopoverTrigger>
+                          <PopoverContent className="w-128">
+                            {handlers.renderPopoverHeader(
+                              [
+                                { value: 'value', label: 'Typography' },
+                                { value: 'reference', label: 'Reference' },
+                              ],
+                              brandMode,
+                              value => handlers.onSetBrandMode(id, value as 'value' | 'reference'),
+                              `${brand} value mode for ${token.name || 'token'}`,
+                            )}
+                            {brandMode === 'value' ? (
+                              <TypographyEditor
+                                idPrefix={`typography-brand-${brand}-${id}`}
+                                value={
+                                  isTypographyValue(brandToken.rawValue) ? brandToken.rawValue : EMPTY_TYPOGRAPHY_VALUE
+                                }
+                                onChange={next => handlers.onBrandTypographyChange(brand, id, next)}
+                                renderReferenceSearch={handlers.renderReferenceSearch}
+                              />
+                            ) : (
+                              handlers.renderReferenceSearch(
+                                brandToken.referenceTarget ?? '',
+                                value => handlers.onBrandReferenceChange(brand, id, value),
+                                `${brand} reference target for ${token.name || 'token'}`,
+                                true,
+                                ['typography'],
+                              )
+                            )}
+                          </PopoverContent>
+                        </Popover>
+                        {brandToken.referenceTarget &&
+                          renderDetachButton(`Detach ${brand} alias for ${token.name || 'token'}`, () =>
+                            handlers.onBrandReferenceChange(brand, id, ''),
+                          )}
+                      </div>
+                    ) : brandToken.type === 'dimension' && brandToken.responsive ? (
+                      // Whole-token override only (decision 7) — the brand cell edits the same
+                      // 3-field object as Base's row, no separate Fixed/Responsive toggle here:
+                      // a brand override either replaces all 3 breakpoints together or doesn't
+                      // exist at all, mirroring typography's own brand-cell model above.
+                      <div className="group/tag flex items-center gap-1">
+                        <Popover
+                          open={brandInfo.isPopoverOpen}
+                          onOpenChange={open => handlers.onPopoverOpenChange(brandCellId, open)}
+                        >
+                          <PopoverTrigger
+                            aria-label={`${brand} value for ${token.name || 'token'}`}
+                            render={<Button type="button" variant="outline" className={CELL_TAG_CLASS} />}
+                          >
+                            <span className="flex min-w-0 flex-1 items-center gap-3 overflow-hidden">
+                              {RESPONSIVE_BREAKPOINTS.map(({ key, label }) => {
+                                const Icon = RESPONSIVE_BREAKPOINT_ICON[key]
+                                return (
+                                  <span key={key} className="flex shrink-0 items-center gap-1" title={label}>
+                                    <Icon className="size-3.5 text-muted-foreground" aria-hidden="true" />
+                                    {responsiveDimensionFieldText(brandToken.responsive?.[key])}
+                                  </span>
+                                )
+                              })}
+                            </span>
+                          </PopoverTrigger>
+                          <PopoverContent className="w-128">
+                            <ResponsiveDimensionEditor
+                              idPrefix={`responsive-dimension-brand-${brand}-${id}`}
+                              value={brandToken.responsive}
+                              onChange={next => handlers.onBrandResponsiveDimensionChange(brand, id, next)}
+                              renderReferenceSearch={handlers.renderReferenceSearch}
+                            />
+                          </PopoverContent>
+                        </Popover>
                       </div>
                     ) : (
                       <div className="group/tag flex items-center gap-1">
@@ -943,7 +2968,12 @@ const TokenRow = memo(function TokenRow({
                                 render={<Button type="button" variant="outline" className={CELL_TAG_CLASS} />}
                               >
                                 <Link2Icon className="size-3.5 shrink-0" />
-                                <span className="truncate">{toSlashPath(brandToken.referenceTarget)}</span>
+                                <span className="min-w-0 flex-1 truncate">
+                                  {toSlashPath(brandToken.referenceTarget)}
+                                </span>
+                                <span className="shrink-0 text-muted-foreground">
+                                  {referenceValueSummary(brandToken.type, brandToken.resolvedValue)}
+                                </span>
                               </PopoverTrigger>
                               <PopoverContent className="w-128">
                                 {handlers.renderPopoverHeader(
@@ -956,6 +2986,8 @@ const TokenRow = memo(function TokenRow({
                                   brandToken.referenceTarget ?? '',
                                   value => handlers.onBrandReferenceChange(brand, id, value),
                                   `${brand} reference target for ${token.name || 'token'}`,
+                                  true,
+                                  [brandToken.type],
                                 )}
                               </PopoverContent>
                             </Popover>
@@ -965,30 +2997,91 @@ const TokenRow = memo(function TokenRow({
                           </>
                         ) : (
                           <>
-                            <Input
-                              aria-label={`${brand} value for ${token.name || 'token'}`}
-                              value={brandValueText}
-                              onChange={e => handlers.onBrandValueChange(id, e.target.value)}
-                              onBlur={() => handlers.onBrandValueBlur(brand, id, brandToken.type)}
-                              className={CELL_FIELD_CLASS}
-                            />
+                            {brandToken.type === 'dimension' ? (
+                              <>
+                                <Input
+                                  aria-label={`${brand} value for ${token.name || 'token'}`}
+                                  value={brandValueText}
+                                  onChange={e => handlers.onBrandValueChange(id, e.target.value)}
+                                  onBlur={() => handlers.onBrandValueBlur(brand, id, brandToken.type)}
+                                  className={CELL_FIELD_CLASS}
+                                />
+                                <Select
+                                  value={isDimensionValue(brandToken.rawValue) ? brandToken.rawValue.unit : 'rem'}
+                                  onValueChange={value =>
+                                    (value === 'px' || value === 'rem') &&
+                                    handlers.onBrandDimensionUnitChange(brand, id, value)
+                                  }
+                                >
+                                  <SelectTrigger
+                                    aria-label={`${brand} unit for ${token.name || 'token'}`}
+                                    className="h-8 w-18 shrink-0"
+                                  >
+                                    <SelectValue />
+                                  </SelectTrigger>
+                                  <SelectContent>
+                                    {DIMENSION_UNIT_OPTIONS.map(option => (
+                                      <SelectItem key={option.value} value={option.value}>
+                                        {option.label}
+                                      </SelectItem>
+                                    ))}
+                                  </SelectContent>
+                                </Select>
+                              </>
+                            ) : brandToken.type === 'fontWeight' ? (
+                              <Select
+                                value={brandValueText}
+                                onValueChange={value =>
+                                  value !== null && handlers.onBrandColorPick(brand, id, brandToken.type, value)
+                                }
+                              >
+                                <SelectTrigger
+                                  aria-label={`${brand} value for ${token.name || 'token'}`}
+                                  className={cn(CELL_FIELD_CLASS, 'h-8 w-full flex-1')}
+                                >
+                                  <SelectValue placeholder="Select a weight">{fontWeightLabel}</SelectValue>
+                                </SelectTrigger>
+                                <SelectContent>
+                                  {FONT_WEIGHT_OPTIONS.map(option => (
+                                    <SelectItem key={option.value} value={String(option.value)}>
+                                      {option.label}
+                                    </SelectItem>
+                                  ))}
+                                </SelectContent>
+                              </Select>
+                            ) : (
+                              <Input
+                                aria-label={`${brand} value for ${token.name || 'token'}`}
+                                value={brandValueText}
+                                onChange={e => handlers.onBrandValueChange(id, e.target.value)}
+                                onBlur={() => handlers.onBrandValueBlur(brand, id, brandToken.type)}
+                                className={CELL_FIELD_CLASS}
+                              />
+                            )}
                             <Popover
                               open={brandInfo.isPopoverOpen}
                               onOpenChange={open => handlers.onPopoverOpenChange(brandCellId, open)}
                             >
-                              <PopoverTrigger
-                                render={
-                                  <Button
-                                    type="button"
-                                    variant="outline"
-                                    size="icon-sm"
-                                    className="mr-1 shrink-0 rounded-none"
-                                    aria-label={`${brand} reference for ${token.name || 'token'}`}
-                                  />
-                                }
-                              >
-                                <HexagonIcon className="size-4" />
-                              </PopoverTrigger>
+                              <Tooltip>
+                                <TooltipTrigger
+                                  render={
+                                    <PopoverTrigger
+                                      render={
+                                        <Button
+                                          type="button"
+                                          variant="outline"
+                                          size="icon"
+                                          className="mr-1 shrink-0"
+                                          aria-label={`${brand} reference for ${token.name || 'token'}`}
+                                        />
+                                      }
+                                    />
+                                  }
+                                >
+                                  <HexagonIcon className="size-4" />
+                                </TooltipTrigger>
+                                <TooltipContent>Attach reference</TooltipContent>
+                              </Tooltip>
                               <PopoverContent className="w-128">
                                 {handlers.renderPopoverHeader(
                                   [{ value: 'reference', label: 'Reference' }],
@@ -1000,6 +3093,8 @@ const TokenRow = memo(function TokenRow({
                                   brandToken.referenceTarget ?? '',
                                   value => handlers.onBrandReferenceChange(brand, id, value),
                                   `${brand} reference target for ${token.name || 'token'}`,
+                                  true,
+                                  [brandToken.type],
                                 )}
                               </PopoverContent>
                             </Popover>
@@ -1075,6 +3170,7 @@ export function TokenEditor({
   tokenBrands,
   brandTokens,
   syncStatus,
+  localTokensMode = false,
 }: {
   tokens: FlatToken[]
   defaultBranch: string
@@ -1087,6 +3183,10 @@ export function TokenEditor({
   // Rendered at the top of whichever sidebar panel is open — the site header
   // that used to show it is gone (see SidebarPanel/SidebarActivityBar).
   syncStatus: SyncStatus
+  // TOKY_LOCAL_TOKENS escape hatch (see src/tokens/local.ts) — Submit writes
+  // the base diff straight to Base.tokens.json on disk instead of opening a
+  // GitHub PR. Brand staging isn't supported in this mode.
+  localTokensMode?: boolean
 }) {
   const router = useRouter()
   const { data: session } = useSession()
@@ -1134,17 +3234,23 @@ export function TokenEditor({
   // affect which rows are matched as members of the group until it's committed.
   const [editingGroup, setEditingGroup] = useState<{ layer: TokenLayer; group: string; text: string } | null>(null)
   const [createDialogOpen, setCreateDialogOpen] = useState(false)
+  // Set when the Create dialog was opened via a group's "Add token" action —
+  // locks the Name field's group-path prefix so the new token can't drift
+  // out of the group it was added from.
+  const [namePrefixLocked, setNamePrefixLocked] = useState<string | null>(null)
   // The row currently open in the Edit-token dialog — null when closed.
   // Nothing in `working`/`brandWorking` changes until Apply; Cancel just
   // discards this draft (same staged-until-submit pattern as `draft` above).
   const [editDraft, setEditDraft] = useState<EditDraftState | null>(null)
   const [editModeOverride, setEditModeOverride] = useState<'value' | 'reference' | null>(null)
   const [editBrandModeOverride, setEditBrandModeOverride] = useState<Record<string, 'value' | 'reference'>>({})
-  // The row staged for deletion in the Delete-token dialog — null when closed.
+  // The row(s) staged for deletion in the Delete dialog — null when closed.
   // Nothing is removed from `working` until the typed confirmation matches
-  // `name` exactly (see confirmDeleteToken).
+  // `name` exactly (see confirmDelete). `ids` holds a single token id for a
+  // row delete, or every member of a group for a group delete — both share
+  // the same dialog and confirmation flow.
   const [deleteDraft, setDeleteDraft] = useState<{
-    id: string
+    ids: string[]
     name: string
     figmaLinked: boolean
     usageCount: number
@@ -1154,6 +3260,9 @@ export function TokenEditor({
   const [targetBranch, setTargetBranch] = useState(defaultBranch)
   const [submitState, setSubmitState] = useState<SubmitState>('idle')
   const [submitMessage, setSubmitMessage] = useState<string | null>(null)
+  // Distinguishes a local-disk save (see localTokensMode) from a real PR
+  // submission — same 'success' state, different message rendering below.
+  const [submitIsLocal, setSubmitIsLocal] = useState(false)
   const [graphRoot, setGraphRoot] = useState<{ paths: string[]; title: string } | null>(null)
   // Set right after Ctrl/Cmd+D inserts a duplicate row — picked up by an effect once
   // the new row has actually rendered (and its cellRef exists) so it can be focused.
@@ -1298,7 +3407,15 @@ export function TokenEditor({
         }
         bucket.push(w)
       }
-      order.sort((a, b) => a.localeCompare(b))
+      // '' is the bucket of this level's own direct values (groupAtDepth returns '' once a name
+      // doesn't extend past the current depth) — it must sort ahead of every subgroup unconditionally,
+      // not through compareTshirtSize: that comparator matches on a bare leaf name like "Base", but a
+      // subgroup's key here is a full dotted path (e.g. "Tag.Base"), and "Tag.Base".endsWith('Base')
+      // trips the state-suffix rule, ranking the subgroup as the resting state ahead of ''.
+      order.sort((a, b) => {
+        if (a === '' || b === '') return a === b ? 0 : a === '' ? -1 : 1
+        return compareTshirtSize(leafPathFor(a), leafPathFor(b))
+      })
       return order.map(key => byKey.get(key)!)
     }
 
@@ -1317,7 +3434,7 @@ export function TokenEditor({
         buckets = buckets.flatMap(bucket => bucketBy(bucket, w => groupAtDepth(w.token.name, depth)))
       }
       return buckets.flatMap(bucket =>
-        [...bucket].sort((a, b) => leafPathFor(a.token.name).localeCompare(leafPathFor(b.token.name))),
+        [...bucket].sort((a, b) => compareTshirtSize(leafPathFor(a.token.name), leafPathFor(b.token.name))),
       )
     })
   }, [working, matchedTokens])
@@ -1398,6 +3515,29 @@ export function TokenEditor({
     return [...new Set(paths)].sort()
   }, [working])
 
+  // A candidate's token type — lets renderReferenceSearch's `typeFilter` restrict candidates to
+  // (e.g.) only `color` tokens for BorderColorField, instead of every token in the file.
+  const referenceTypeByPath = useMemo(() => {
+    const map = new Map<string, string>()
+    for (const w of working) {
+      if (w.token.name.trim() === '') continue
+      map.set(pathFor(w.token.layer, w.token.name).join('.'), w.token.type)
+    }
+    return map
+  }, [working])
+
+  // A candidate's layer — lets renderReferenceSearch's `layerFilter` restrict candidates to
+  // (e.g.) Global primitives only, so BorderColorField points straight at a Global color instead
+  // of an Alias-layer indirection like Border.Color.*.
+  const referenceLayerByPath = useMemo(() => {
+    const map = new Map<string, TokenLayer>()
+    for (const w of working) {
+      if (w.token.name.trim() === '') continue
+      map.set(pathFor(w.token.layer, w.token.name).join('.'), w.token.layer)
+    }
+    return map
+  }, [working])
+
   // Swatch preview for the Reference picker — only color-typed tokens get an entry, so
   // SearchSelect can render a swatch purely by checking whether a path has one.
   const referenceColorByPath = useMemo(() => {
@@ -1410,14 +3550,87 @@ export function TokenEditor({
     return map
   }, [working])
 
+  // Line-preview for the Reference picker — only border-typed tokens get an entry, so a border
+  // reference row (e.g. picking a whole Border.Composite.* alias) shows a little solid/dashed/
+  // dotted line in the actual color/style it resolves to, instead of the "1.5rem solid" text
+  // summary composite types don't read as naturally.
+  const referenceBorderPreviewByPath = useMemo(() => {
+    const map = new Map<string, { color: string; cssStyle: string }>()
+    for (const w of working) {
+      if (w.token.type !== 'border' || w.token.name.trim() === '') continue
+      // Always the fully resolved value, never rawValue — a border whose own color/style
+      // sub-fields are references (not the whole token) has an unresolved reference string
+      // in rawValue.color, which getColorHex can't turn into a swatch. resolvedValue chases
+      // those sub-field references too (flatten.ts's resolveNestedReferences), so it's the
+      // only shape guaranteed to hold a literal color here.
+      if (!isBorderValue(w.token.resolvedValue)) continue
+      const hex = getColorHex(w.token.resolvedValue.color)
+      if (!hex) continue
+      map.set(pathFor(w.token.layer, w.token.name).join('.'), {
+        color: hex,
+        cssStyle: cssBorderStyleFor(w.token.resolvedValue.style),
+      })
+    }
+    return map
+  }, [working])
+
+  // Resolved-value summary for the reference picker (e.g. "1.5rem", "#F05D4D")
+  // — shown on the right of each candidate row so picking a target doesn't
+  // require guessing what it resolves to from its name alone.
+  const referenceDetailByPath = useMemo(() => {
+    const map = new Map<string, string>()
+    for (const w of working) {
+      // A shadow's resolved value is an array of layer objects — formatted as raw JSON
+      // by referenceValueSummary, which floods the row and pushes neighboring rows out
+      // of view. Shadow rows show only their name/path, same as borderPreview replacing
+      // detail for border rows below. Typography's summary is two reference chips
+      // (size · family) rather than a short literal, which is just as wide and crowds
+      // out the name/path label the same way — typography rows show only name/path too.
+      if (w.token.name.trim() === '' || w.token.type === 'shadow' || w.token.type === 'typography') continue
+      const resolved = w.token.referenceTarget ? w.token.resolvedValue : w.token.rawValue
+      map.set(pathFor(w.token.layer, w.token.name).join('.'), referenceValueSummary(w.token.type, resolved))
+    }
+    return map
+  }, [working])
+
+  // A dimension token's value normalized to px, regardless of its own unit —
+  // enables SearchSelect's exact-value dimension matching, so searching
+  // "4px" or "0.25rem" finds only tokens whose value is exactly that (never
+  // a substring match, which would also hit a displayed "14px").
+  const referenceDimensionPxByPath = useMemo(() => {
+    const map = new Map<string, number>()
+    for (const w of working) {
+      if (w.token.name.trim() === '' || w.token.type !== 'dimension') continue
+      const resolved = w.token.referenceTarget ? w.token.resolvedValue : w.token.rawValue
+      if (!isDimensionValue(resolved)) continue
+      map.set(pathFor(w.token.layer, w.token.name).join('.'), convertDimensionUnit(resolved, 'px').value)
+    }
+    return map
+  }, [working])
+
   const referenceSearchOptions = useMemo(
     () =>
       referenceOptions.map(option => ({
         value: option,
         label: toSlashPath(option),
         swatch: referenceColorByPath.get(option),
+        // borderPreview and detail are mutually exclusive on a row (see SearchSelectOption) — a
+        // border reference gets the line preview instead of the "1.5rem solid" text summary.
+        detail: referenceBorderPreviewByPath.has(option) ? undefined : referenceDetailByPath.get(option),
+        borderPreview: referenceBorderPreviewByPath.get(option),
+        dimensionPx: referenceDimensionPxByPath.get(option),
+        type: referenceTypeByPath.get(option),
+        layer: referenceLayerByPath.get(option),
       })),
-    [referenceOptions, referenceColorByPath],
+    [
+      referenceOptions,
+      referenceColorByPath,
+      referenceBorderPreviewByPath,
+      referenceDetailByPath,
+      referenceDimensionPxByPath,
+      referenceTypeByPath,
+      referenceLayerByPath,
+    ],
   )
 
   const errors = useMemo(() => validateWorkingTokens(working), [working])
@@ -1715,6 +3928,83 @@ export function TokenEditor({
     commitValueText(id, type, text)
   }
 
+  // Switching a dimension token's unit Select — a discrete pick, not a stream of keystrokes, so
+  // it commits immediately (mirrors onColorPick/onLiteralValueSelect). Reads whatever number is
+  // currently live (an in-progress edit in the input takes precedence over the last-committed
+  // value, so switching units doesn't discard an unblurred keystroke), converts it to preserve
+  // physical size, and commits the whole {value, unit} object directly — bypassing
+  // parseEditableValue/commitValueText, since this isn't text entry.
+  function commitDimensionUnit(id: string, unit: DimensionValue['unit']) {
+    const current = working.find(w => w.id === id)?.token.rawValue
+    if (!isDimensionValue(current)) return
+    const draftText = valueDraftText[id]
+    const draftNumber = draftText !== undefined ? Number(draftText) : NaN
+    const value = draftText !== undefined && !Number.isNaN(draftNumber) ? draftNumber : current.value
+    const converted = convertDimensionUnit({ value, unit: current.unit }, unit)
+    updateToken(id, t => ({ ...t, rawValue: converted, referenceTarget: null }))
+    setValueDraftText(prev => {
+      const next = { ...prev }
+      delete next[id]
+      return next
+    })
+  }
+
+  // Shadow bypasses valueDraftText/parseEditableValue entirely — the popup
+  // (ShadowEditor) already commits a fully-formed rawValue per field on its
+  // own blur/select, mirroring commitDimensionUnit's "discrete action,
+  // commit immediately" reasoning above rather than the keystroke-draft
+  // path (see docs/plans/shadow-token-type-plan.md §7).
+  function commitShadowValue(id: string, rawValue: unknown) {
+    updateToken(id, t => ({ ...t, rawValue, referenceTarget: null }))
+  }
+
+  // Border bypasses valueDraftText/parseEditableValue the same way shadow does — see
+  // commitShadowValue above. BorderEditor already commits a fully-formed rawValue per field.
+  function commitBorderValue(id: string, rawValue: unknown) {
+    updateToken(id, t => ({ ...t, rawValue, referenceTarget: null }))
+  }
+
+  // Typography bypasses valueDraftText/parseEditableValue the same way shadow/border do — see
+  // commitShadowValue above. TypographyEditor already commits a fully-formed rawValue per field.
+  function commitTypographyValue(id: string, rawValue: unknown) {
+    updateToken(id, t => ({ ...t, rawValue, referenceTarget: null }))
+  }
+
+  // Turning the Fixed/Responsive toggle on (decision 5) seeds mobile/tablet/desktop from
+  // whatever plain value the token currently holds (or a zero default if it was a reference or
+  // empty) — turning it off just drops the extension; rawValue/unit are left exactly as they
+  // are, since decision 4 already kept them mirroring mobile the whole time.
+  function toggleResponsiveDimension(id: string, responsive: boolean) {
+    updateToken(id, t => {
+      if (!responsive) return { ...t, responsive: null }
+      const seed = isDimensionValue(t.rawValue) ? t.rawValue : { value: 0, unit: 'rem' as const }
+      return { ...t, referenceTarget: null, rawValue: seed, responsive: seedResponsiveDimensionValue(seed) }
+    })
+  }
+
+  // ResponsiveDimensionEditor already commits a fully-formed 3-field value per field (same
+  // "discrete action" reasoning as commitShadowValue), but unlike shadow/border/typography this
+  // also has to keep the token's own top-level rawValue/referenceTarget mirroring `mobile`
+  // (decision 4) — a literal mobile becomes rawValue, a reference mobile becomes referenceTarget,
+  // the same duality every plain dimension token already has. Braces are stripped from a
+  // reference mobile since referenceTarget is always stored bare (effectiveValue re-wraps braces
+  // only at JSON-write time), matching the sub-reference convention TypographySubFieldReferenceChip
+  // already writes through renderReferenceSearch.
+  function commitResponsiveDimensionValue(id: string, value: ResponsiveDimensionValue) {
+    updateToken(id, t => {
+      const mobile = value.mobile
+      if (typeof mobile === 'string') {
+        return { ...t, responsive: value, referenceTarget: bareReferenceText(mobile), rawValue: undefined }
+      }
+      return {
+        ...t,
+        responsive: value,
+        referenceTarget: null,
+        rawValue: isDimensionValue(mobile) ? mobile : t.rawValue,
+      }
+    })
+  }
+
   // Keystrokes only update the local draft — see commitAlpha, called on
   // blur. Mirrors handleValueInput/commitValue for the same reason: without
   // this, every keystroke in the opacity field would run a full
@@ -1742,27 +4032,55 @@ export function TokenEditor({
     if (typedSegments.length === 0) return
     const existingPaths = working.filter(w => w.token.layer === draft.layer).map(w => w.token.name.split('.'))
     const name = resolveGroupSegments(typedSegments, existingPaths).join('.')
-    const parsed = parseEditableValue(draft.type, draft.value)
-    if (!parsed.ok) {
-      setDraftMalformed(true)
-      return
+    let rawValue: unknown
+    // Same mobile-mirroring (decision 4) commitResponsiveDimensionValue applies to an existing
+    // row — a responsive draft bypasses draft.value/parseEditableValue entirely, same as
+    // shadow/border/typography bypass it for their own structured values.
+    let responsiveReferenceTarget: string | null = null
+    if (draft.type === 'shadow') {
+      rawValue = draft.shadowValue
+    } else if (draft.type === 'border') {
+      rawValue = draft.borderValue
+    } else if (draft.type === 'typography') {
+      rawValue = draft.typographyValue
+    } else if (draft.type === 'dimension' && draft.responsiveValue) {
+      const mobile = draft.responsiveValue.mobile
+      if (typeof mobile === 'string') {
+        responsiveReferenceTarget = bareReferenceText(mobile)
+        rawValue = undefined
+      } else {
+        rawValue = isDimensionValue(mobile) ? mobile : { value: 0, unit: draft.unit }
+      }
+    } else {
+      const previous = draft.type === 'dimension' ? { value: 0, unit: draft.unit } : undefined
+      const parsed = parseEditableValue(draft.type, draft.value, previous)
+      if (!parsed.ok) {
+        setDraftMalformed(true)
+        return
+      }
+      rawValue = draft.type === 'color' ? withAlphaPercent(parsed.value, draft.alpha) : parsed.value
     }
-    const rawValue = draft.type === 'color' ? withAlphaPercent(parsed.value, draft.alpha) : parsed.value
     const token: FlatToken = {
       path: [],
       name,
       layer: draft.layer,
       type: draft.type,
       rawValue,
-      referenceTarget: draft.referenceTarget.trim() || null,
+      referenceTarget:
+        draft.type === 'dimension' && draft.responsiveValue
+          ? responsiveReferenceTarget
+          : draft.referenceTarget.trim() || null,
       resolvedValue: undefined,
       resolutionError: null,
       figmaId: null,
+      responsive: draft.type === 'dimension' ? draft.responsiveValue : null,
+      resolvedResponsive: null,
     }
     setWorking(prev => [...prev, { id: `new-${draftIdCounter++}`, token }])
     setDraft(emptyDraft())
     setDraftMalformed(false)
     setDraftModeOverride(null)
+    setNamePrefixLocked(null)
     setCreateDialogOpen(false)
   }
 
@@ -1772,7 +4090,19 @@ export function TokenEditor({
       setDraft(emptyDraft())
       setDraftMalformed(false)
       setDraftModeOverride(null)
+      setNamePrefixLocked(null)
     }
+  }
+
+  // Opens the Create dialog pre-scoped to a group, e.g. from its "..." menu —
+  // the Name field starts (and stays) prefixed with the group's path so the
+  // new token lands inside it.
+  function openAddTokenDialog(layer: TokenLayer, group: string) {
+    setDraft({ ...emptyDraft(layer), name: group ? `${group}.` : '' })
+    setDraftMalformed(false)
+    setDraftModeOverride(null)
+    setNamePrefixLocked(group)
+    setCreateDialogOpen(true)
   }
 
   // Every currently-visible row's id that falls under a given group header —
@@ -1846,10 +4176,36 @@ export function TokenEditor({
 
   function openDeleteDialog(id: string, token: FlatToken) {
     setDeleteDraft({
-      id,
+      ids: [id],
       name: toSlashPath(token.name),
       figmaLinked: Boolean(token.figmaId),
       usageCount: referenceCounts.get(token.path.join('.')) ?? 0,
+    })
+    setDeleteConfirmText('')
+  }
+
+  // Same dialog/confirmation flow as a single-row delete, but for every
+  // token under a group header at once (the same member set its "Show
+  // reference graph" and "Duplicate" actions cover). Usage count only
+  // counts references from *outside* the group — references between
+  // members are removed along with the group, same as duplicateGroup
+  // treats them as internal.
+  function openDeleteGroupDialog(layer: TokenLayer, group: string, depth: number) {
+    const members = working.filter(
+      w => w.token.layer === layer && (w.token.name === group || w.token.name.startsWith(`${group}.`)),
+    )
+    if (members.length === 0) return
+    const memberIds = new Set(members.map(w => w.id))
+    const memberPaths = new Set(members.map(w => w.token.path.join('.')))
+    const usageCount = working.filter(
+      w => !memberIds.has(w.id) && w.token.referenceTarget && memberPaths.has(w.token.referenceTarget),
+    ).length
+
+    setDeleteDraft({
+      ids: members.map(w => w.id),
+      name: (depth === 0 ? [layer] : group.split('.')).join('/'),
+      figmaLinked: members.some(w => Boolean(w.token.figmaId)),
+      usageCount,
     })
     setDeleteConfirmText('')
   }
@@ -1859,9 +4215,10 @@ export function TokenEditor({
     setDeleteConfirmText('')
   }
 
-  function confirmDeleteToken() {
+  function confirmDelete() {
     if (!deleteDraft || deleteDraft.usageCount > 0 || deleteConfirmText !== deleteDraft.name) return
-    setWorking(prev => prev.filter(w => w.id !== deleteDraft.id))
+    const ids = new Set(deleteDraft.ids)
+    setWorking(prev => prev.filter(w => !ids.has(w.id)))
     closeDeleteDialog()
   }
 
@@ -1896,6 +4253,7 @@ export function TokenEditor({
       brands[brand] = {
         value: brandToken ? getEditableValueText(brandToken) : '',
         alpha: alphaPercentFor(brandToken?.rawValue),
+        unit: dimensionUnitFor(brandToken?.rawValue),
         referenceTarget: brandToken?.referenceTarget ?? '',
         malformed: false,
       }
@@ -1906,6 +4264,7 @@ export function TokenEditor({
       name: toSlashPath(token.name),
       value: getEditableValueText(token),
       alpha: alphaPercentFor(token.rawValue),
+      unit: dimensionUnitFor(token.rawValue),
       referenceTarget: token.referenceTarget ?? '',
       malformed: false,
       brands,
@@ -1934,6 +4293,7 @@ export function TokenEditor({
               [brand]: {
                 value: prev.value,
                 alpha: prev.alpha,
+                unit: prev.unit,
                 referenceTarget: prev.referenceTarget,
                 malformed: false,
               },
@@ -1972,8 +4332,18 @@ export function TokenEditor({
     const name = resolveGroupSegments(parseTokenPath(editDraft.name), existingPaths).join('.')
 
     let parsedValue: unknown = current.rawValue
-    if (mode === 'value') {
-      const parsed = parseEditableValue(type, editDraft.value, current.rawValue)
+    // Shadow's value isn't editable from this dialog at all (see
+    // renderEditValueEditor's 'shadow' branch) — editDraft.value for a
+    // shadow token is only ever the display-only text getEditableValueText
+    // falls back to, never something parseEditableValue should write back
+    // over the real nested value. Skipping this block leaves parsedValue at
+    // current.rawValue, untouched.
+    if (mode === 'value' && type !== 'shadow' && type !== 'border' && type !== 'typography') {
+      // For dimension, the dialog's own unit Select (editDraft.unit) is the source of truth, not
+      // current.rawValue's unit — the two can disagree if the unit was switched mid-edit without
+      // otherwise touching the token yet.
+      const previous = type === 'dimension' ? { value: 0, unit: editDraft.unit } : current.rawValue
+      const parsed = parseEditableValue(type, editDraft.value, previous)
       if (!parsed.ok) {
         setEditDraft(prev => (prev ? { ...prev, malformed: true } : prev))
         return
@@ -1993,7 +4363,14 @@ export function TokenEditor({
         continue
       }
 
-      const parsed = parseEditableValue(type, brandDraft.value, baseForBrand.rawValue)
+      // Same reasoning as the base value above — shadow/border/typography aren't editable here,
+      // leave this brand untouched rather than writing back the display-only fallback text. Border
+      // has no brand cell at all this pass (decisions 8/11), but this loop only reaches other
+      // brands' drafts, never this token's own — harmless either way.
+      if (type === 'shadow' || type === 'border' || type === 'typography') continue
+
+      const brandPrevious = type === 'dimension' ? { value: 0, unit: brandDraft.unit } : baseForBrand.rawValue
+      const parsed = parseEditableValue(type, brandDraft.value, brandPrevious)
       if (!parsed.ok) {
         setEditDraft(prev =>
           prev ? { ...prev, brands: { ...prev.brands, [brand]: { ...prev.brands[brand], malformed: true } } } : prev,
@@ -2070,6 +4447,43 @@ export function TokenEditor({
       return next
     })
     setFocusPendingId(newId)
+  }
+
+  // Inserts a copy of every token under `group` (the same set the group's
+  // "Show reference graph" button covers) directly after the group's last
+  // member, so the copy lands as its own sibling group right below the
+  // original. References between tokens *within* the group get rewired to
+  // point at their new counterparts, mirroring commitGroupRename's cascade —
+  // a reference from outside the group still points at the original.
+  function duplicateGroup(layer: TokenLayer, group: string) {
+    setWorking(prev => {
+      const members = prev
+        .map((w, index) => ({ w, index }))
+        .filter(({ w }) => w.token.layer === layer && (w.token.name === group || w.token.name.startsWith(`${group}.`)))
+      if (members.length === 0) return prev
+
+      const newGroup = uniqueCopyGroupName(layer, group, prev)
+      const renamed = new Map<string, string>()
+      const duplicates: WorkingToken[] = members.map(({ w }) => {
+        const newName = newGroup + w.token.name.slice(group.length)
+        renamed.set(pathFor(layer, w.token.name).join('.'), pathFor(layer, newName).join('.'))
+        return {
+          id: `new-${draftIdCounter++}`,
+          // Same reasoning as duplicateRow: a Figma variableId identifies one
+          // specific variable, so duplicates start unlinked.
+          token: { ...w.token, name: newName, figmaId: null },
+        }
+      })
+      const rewired = duplicates.map(w => {
+        const mapped = w.token.referenceTarget && renamed.get(w.token.referenceTarget)
+        return mapped ? { ...w, token: { ...w.token, referenceTarget: mapped } } : w
+      })
+
+      const lastIndex = members[members.length - 1].index
+      const next = [...prev]
+      next.splice(lastIndex + 1, 0, ...rewired)
+      return next
+    })
   }
 
   function focusCell(row: number, col: number) {
@@ -2204,13 +4618,8 @@ export function TokenEditor({
   // underline), plus a close button, then a full-bleed divider. When there's
   // only one mode (plain reference popovers), `onValueChange` is omitted and
   // the single tab renders as a static, non-interactive label.
-  const renderPopoverHeader = useCallback(
-    (
-      tabs: { value: string; label: string }[],
-      activeValue: string,
-      onValueChange: ((value: string) => void) | null,
-      ariaLabel: string,
-    ): ReactNode => (
+  const renderPopoverHeader: RenderPopoverHeader = useCallback(
+    (tabs, activeValue, onValueChange, ariaLabel, onClose): ReactNode => (
       <div className="-mx-3 -mt-3 mb-2">
         <div className="flex h-8 items-stretch justify-between pl-1">
           <div role={onValueChange ? 'tablist' : undefined} aria-label={ariaLabel} className="flex items-stretch">
@@ -2242,7 +4651,7 @@ export function TokenEditor({
             size="icon-xs"
             aria-label="Close"
             className="my-1 mr-1"
-            onClick={() => setOpenPopoverId(null)}
+            onClick={onClose ?? (() => setOpenPopoverId(null))}
           >
             <XIcon />
           </Button>
@@ -2256,14 +4665,18 @@ export function TokenEditor({
   // Renders the reference-search body shared by the color popover's "Reference"
   // tab and the plain-value types' reference popover. Picking an item commits
   // it and closes the popover.
-  const renderReferenceSearch = useCallback(
-    (currentValue: string, onSelect: (value: string) => void, ariaLabel: string): ReactNode => (
+  const renderReferenceSearch: RenderReferenceSearch = useCallback(
+    (currentValue, onSelect, ariaLabel, closeOnSelect = true, typeFilter, layerFilter) => (
       <SearchSelect
-        options={referenceSearchOptions}
+        options={referenceSearchOptions.filter(
+          o =>
+            (!typeFilter || (o.type && typeFilter.includes(o.type))) &&
+            (!layerFilter || (o.layer && layerFilter.includes(o.layer))),
+        )}
         currentValue={currentValue}
         onSelect={value => {
           onSelect(value)
-          setOpenPopoverId(null)
+          if (closeOnSelect) setOpenPopoverId(null)
         }}
         ariaLabel={ariaLabel}
         emptyMessage="No matching tokens."
@@ -2284,11 +4697,13 @@ export function TokenEditor({
     mode: 'value' | 'reference'
     value: string
     alpha: number
+    unit: DimensionValue['unit']
     referenceTarget: string
     malformed: boolean
     onModeChange: (mode: 'value' | 'reference') => void
     onValueChange: (value: string) => void
     onAlphaChange: (percent: number) => void
+    onUnitChange: (unit: DimensionValue['unit']) => void
     onReferenceChange: (value: string) => void
   }): ReactNode {
     const {
@@ -2298,11 +4713,13 @@ export function TokenEditor({
       mode,
       value,
       alpha,
+      unit,
       referenceTarget,
       malformed,
       onModeChange,
       onValueChange,
       onAlphaChange,
+      onUnitChange,
       onReferenceChange,
     } = opts
     const hex = type === 'color' && /^#[0-9a-fA-F]{6}$/.test(value) ? value : null
@@ -2419,6 +4836,113 @@ export function TokenEditor({
             onModeChange('value')
           })}
         </div>
+      )
+    }
+
+    if (type === 'fontWeight') {
+      return (
+        <div className="flex items-center gap-1.5">
+          <Select value={value} onValueChange={next => next !== null && onValueChange(next)}>
+            <SelectTrigger aria-label={ariaLabel} aria-invalid={malformed} className="h-8 w-full">
+              <SelectValue placeholder="Select a weight">{fontWeightLabel}</SelectValue>
+            </SelectTrigger>
+            <SelectContent>
+              {FONT_WEIGHT_OPTIONS.map(option => (
+                <SelectItem key={option.value} value={String(option.value)}>
+                  {option.label}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+          <Popover
+            open={openPopoverId === popoverKey}
+            onOpenChange={open => setOpenPopoverId(open ? popoverKey : null)}
+          >
+            <PopoverTrigger
+              render={<Button type="button" variant="outline" size="icon-sm" aria-label={`Reference — ${ariaLabel}`} />}
+            >
+              <HexagonIcon className="size-4" />
+            </PopoverTrigger>
+            <PopoverContent className="w-128">
+              {renderPopoverHeader([{ value: 'reference', label: 'Reference' }], 'reference', null, ariaLabel)}
+              {renderReferenceSearch(referenceTarget, onReferenceChange, ariaLabel)}
+            </PopoverContent>
+          </Popover>
+        </div>
+      )
+    }
+
+    if (type === 'dimension') {
+      return (
+        <div className="flex items-center gap-1.5">
+          <Input
+            aria-label={ariaLabel}
+            aria-invalid={malformed}
+            placeholder="value…"
+            value={value}
+            onChange={e => onValueChange(e.target.value)}
+          />
+          <Select
+            value={unit}
+            onValueChange={newUnit => {
+              if (newUnit !== 'px' && newUnit !== 'rem') return
+              const n = Number(value)
+              if (Number.isNaN(n)) {
+                onUnitChange(newUnit)
+                return
+              }
+              const converted = convertDimensionUnit({ value: n, unit }, newUnit)
+              onValueChange(String(converted.value))
+              onUnitChange(converted.unit)
+            }}
+          >
+            <SelectTrigger aria-label={`Unit — ${ariaLabel}`} className="h-8 w-18 shrink-0">
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent>
+              {DIMENSION_UNIT_OPTIONS.map(option => (
+                <SelectItem key={option.value} value={option.value}>
+                  {option.label}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+          <Popover
+            open={openPopoverId === popoverKey}
+            onOpenChange={open => setOpenPopoverId(open ? popoverKey : null)}
+          >
+            <PopoverTrigger
+              render={<Button type="button" variant="outline" size="icon-sm" aria-label={`Reference — ${ariaLabel}`} />}
+            >
+              <HexagonIcon className="size-4" />
+            </PopoverTrigger>
+            <PopoverContent className="w-128">
+              {renderPopoverHeader([{ value: 'reference', label: 'Reference' }], 'reference', null, ariaLabel)}
+              {renderReferenceSearch(referenceTarget, onReferenceChange, ariaLabel)}
+            </PopoverContent>
+          </Popover>
+        </div>
+      )
+    }
+
+    if (type === 'shadow') {
+      // A shadow's value is nested (layers of X/Y/blur/spread/color) and has no plain-text
+      // representation worth round-tripping through this dialog's flat editDraft.value string —
+      // its dedicated editor only exists on the table's own Value cell (see the ShadowEditor
+      // popup rendered there). applyEditDialog knows to leave the value untouched when type is
+      // 'shadow', so this is purely informational, not a dead-end.
+      return <p className="text-sm text-muted-foreground">Edit this shadow from its Value cell in the table.</p>
+    }
+
+    if (type === 'border') {
+      // Same reasoning as shadow above — no plain-text representation worth round-tripping.
+      return <p className="text-sm text-muted-foreground">Edit this border from its Value cell in the table.</p>
+    }
+
+    if (type === 'typography') {
+      // Same reasoning as shadow/border above — no plain-text representation worth round-tripping.
+      return (
+        <p className="text-sm text-muted-foreground">Edit this typography token from its Value cell in the table.</p>
       )
     }
 
@@ -2575,10 +5099,26 @@ export function TokenEditor({
                     <NetworkIcon />
                     Show reference graph
                   </DropdownMenuItem>
+                  <DropdownMenuItem onClick={() => openAddTokenDialog(layer, group)}>
+                    <PlusIcon />
+                    Add token
+                  </DropdownMenuItem>
                   {depth !== 0 && (
                     <DropdownMenuItem onClick={() => startEditingGroup(layer, group)}>
                       <PencilIcon />
                       Rename
+                    </DropdownMenuItem>
+                  )}
+                  {depth !== 0 && (
+                    <DropdownMenuItem onClick={() => duplicateGroup(layer, group)}>
+                      <CopyIcon />
+                      Duplicate
+                    </DropdownMenuItem>
+                  )}
+                  {depth !== 0 && (
+                    <DropdownMenuItem variant="destructive" onClick={() => openDeleteGroupDialog(layer, group, depth)}>
+                      <Trash2Icon />
+                      Delete
                     </DropdownMenuItem>
                   )}
                 </DropdownMenuContent>
@@ -2677,6 +5217,63 @@ export function TokenEditor({
     commitBrandValueText(brand, id, type, text)
   }
 
+  // Brand-scoped mirror of commitDimensionUnit — see its comment for why this
+  // commits immediately and bypasses parseEditableValue.
+  function commitBrandDimensionUnit(brand: string, id: string, unit: DimensionValue['unit']) {
+    const current = brandTokenFor(brand, id)
+    if (!current || !isDimensionValue(current.rawValue)) return
+    const draftText = brandValueDraftText[id]
+    const draftNumber = draftText !== undefined ? Number(draftText) : NaN
+    const value = draftText !== undefined && !Number.isNaN(draftNumber) ? draftNumber : current.rawValue.value
+    const converted = convertDimensionUnit({ value, unit: current.rawValue.unit }, unit)
+    upsertOrRemoveBrandEntry(brand, id, { ...current, rawValue: converted, referenceTarget: null })
+    setBrandValueDraftText(prev => {
+      const next = { ...prev }
+      delete next[id]
+      return next
+    })
+  }
+
+  // Brand-scoped mirror of commitShadowValue — see its comment.
+  function commitBrandShadowValue(brand: string, id: string, rawValue: unknown) {
+    const current = brandTokenFor(brand, id)
+    if (!current) return
+    upsertOrRemoveBrandEntry(brand, id, { ...current, rawValue, referenceTarget: null })
+  }
+
+  // Brand-scoped mirror of commitTypographyValue — see its comment. Whole-token override only
+  // (docs/plans/typography-token-type-plan.md decision 9) — this always replaces the brand's
+  // entire rawValue, never a single sub-field.
+  function commitBrandTypographyValue(brand: string, id: string, rawValue: unknown) {
+    const current = brandTokenFor(brand, id)
+    if (!current) return
+    upsertOrRemoveBrandEntry(brand, id, { ...current, rawValue, referenceTarget: null })
+  }
+
+  // Brand-scoped mirror of commitResponsiveDimensionValue — see its comment. Whole-token override
+  // only (decision 7, same as typography's decision 9 above) — always replaces the brand's entire
+  // responsive value together, never a single breakpoint.
+  function commitBrandResponsiveDimensionValue(brand: string, id: string, value: ResponsiveDimensionValue) {
+    const current = brandTokenFor(brand, id)
+    if (!current) return
+    const mobile = value.mobile
+    if (typeof mobile === 'string') {
+      upsertOrRemoveBrandEntry(brand, id, {
+        ...current,
+        responsive: value,
+        referenceTarget: bareReferenceText(mobile),
+        rawValue: undefined,
+      })
+      return
+    }
+    upsertOrRemoveBrandEntry(brand, id, {
+      ...current,
+      responsive: value,
+      referenceTarget: null,
+      rawValue: isDimensionValue(mobile) ? mobile : current.rawValue,
+    })
+  }
+
   function handleBrandAlphaChange(_brand: string, id: string, text: string) {
     setBrandAlphaDraftText(prev => ({ ...prev, [id]: text }))
   }
@@ -2756,6 +5353,13 @@ export function TokenEditor({
     onValueChange: handleValueInput,
     onValueBlur: commitValue,
     onColorPick: commitValueText,
+    onLiteralValueSelect: commitValueText,
+    onDimensionUnitChange: commitDimensionUnit,
+    onShadowChange: commitShadowValue,
+    onBorderChange: commitBorderValue,
+    onTypographyChange: commitTypographyValue,
+    onResponsiveDimensionToggle: toggleResponsiveDimension,
+    onResponsiveDimensionChange: commitResponsiveDimensionValue,
     onAlphaChange: handleAlphaChange,
     onAlphaBlur: commitAlpha,
     onReferenceChange: handleReferenceChange,
@@ -2769,6 +5373,10 @@ export function TokenEditor({
     onBrandValueChange: handleBrandValueInput,
     onBrandValueBlur: commitBrandValue,
     onBrandColorPick: commitBrandValueText,
+    onBrandDimensionUnitChange: commitBrandDimensionUnit,
+    onBrandShadowChange: commitBrandShadowValue,
+    onBrandTypographyChange: commitBrandTypographyValue,
+    onBrandResponsiveDimensionChange: commitBrandResponsiveDimensionValue,
     onBrandAlphaChange: handleBrandAlphaChange,
     onBrandAlphaBlur: commitBrandAlpha,
     onBrandReferenceChange: handleBrandReferenceChange,
@@ -2797,6 +5405,11 @@ export function TokenEditor({
       resolvedValue: undefined,
       resolutionError: null,
       figmaId: entry.figmaId,
+      responsive: entry.responsive ?? null,
+      // Recomputed from `responsive` the next time resolveReferences runs over `working` (it
+      // doesn't run on a freshly-applied pull entry directly) — null here is a transient gap, same
+      // as `resolvedValue: undefined` above.
+      resolvedResponsive: null,
     }
   }
 
@@ -2998,13 +5611,15 @@ export function TokenEditor({
 
       if (response.status === 200) {
         setSubmitState('success')
-        setSubmitMessage(json.url)
+        setSubmitIsLocal(Boolean(json.local))
+        setSubmitMessage(json.local ? 'Saved to Base.tokens.json.' : json.url)
         setDescription('')
         setPendingBrands([])
         // The submit just created/updated the branch (and its PR) this base
         // now reads from — re-run the server component so the header's sync
         // status tag, PR link, the token list, and the brand list all pick
-        // that up without a manual reload.
+        // that up without a manual reload. Local writes also need this: it's
+        // the only way the freshly-written file content gets re-read.
         pendingResyncRef.current = true
         router.refresh()
       } else if (response.status === 409) {
@@ -3020,8 +5635,12 @@ export function TokenEditor({
     }
   }
 
+  // Local-disk saves (see localTokensMode) only write Base.tokens.json — no
+  // branch, no PR — so brand creation/overrides can't go through this button
+  // while local mode is on; the server would reject them anyway.
   const canSubmit =
     (diff.length > 0 || pendingBrands.length > 0 || totalBrandDiffCount > 0) &&
+    (!localTokensMode || (pendingBrands.length === 0 && totalBrandDiffCount === 0)) &&
     blockingErrors.length === 0 &&
     pullConflicts.length === 0 &&
     targetBranch.trim() !== '' &&
@@ -3117,6 +5736,7 @@ export function TokenEditor({
               type="button"
               onClick={() => {
                 setDraft(emptyDraft())
+                setNamePrefixLocked(null)
                 setCreateDialogOpen(true)
               }}
             >
@@ -3270,7 +5890,7 @@ export function TokenEditor({
         <Dialog open={createDialogOpen} onOpenChange={handleCreateDialogOpenChange}>
           <DialogContent>
             <DialogHeader>
-              <DialogTitle>Create token</DialogTitle>
+              <DialogTitle>{namePrefixLocked !== null ? 'Add token' : 'Create token'}</DialogTitle>
               <DialogDescription>
                 Add a new {draft.layer} token. Nothing happens until you submit and it&apos;s reviewed and merged.
               </DialogDescription>
@@ -3281,6 +5901,7 @@ export function TokenEditor({
                 <Label htmlFor="new-token-layer">Layer</Label>
                 <Select
                   value={draft.layer}
+                  disabled={namePrefixLocked !== null}
                   onValueChange={value => setDraft(prev => ({ ...prev, layer: (value as TokenLayer) ?? prev.layer }))}
                 >
                   <SelectTrigger id="new-token-layer" className="w-full">
@@ -3298,12 +5919,34 @@ export function TokenEditor({
 
               <div className="space-y-1.5">
                 <Label htmlFor="new-token-name">Name</Label>
-                <Input
-                  id="new-token-name"
-                  placeholder="e.g. Color.Danger.7"
-                  value={draft.name}
-                  onChange={e => setDraft(prev => ({ ...prev, name: sanitizePathInput(e.target.value) }))}
-                />
+                {namePrefixLocked !== null ? (
+                  <div className="flex items-center gap-1.5 rounded-md border border-input px-2 focus-within:ring-2 focus-within:ring-ring">
+                    {namePrefixLocked && (
+                      <span className="shrink-0 text-muted-foreground text-sm">{namePrefixLocked}.</span>
+                    )}
+                    <Input
+                      id="new-token-name"
+                      placeholder="e.g. 7"
+                      value={namePrefixLocked ? draft.name.slice(namePrefixLocked.length + 1) : draft.name}
+                      onChange={e =>
+                        setDraft(prev => ({
+                          ...prev,
+                          name: namePrefixLocked
+                            ? `${namePrefixLocked}.${sanitizePathInput(e.target.value)}`
+                            : sanitizePathInput(e.target.value),
+                        }))
+                      }
+                      className="border-0 px-0 focus-visible:ring-0"
+                    />
+                  </div>
+                ) : (
+                  <Input
+                    id="new-token-name"
+                    placeholder="e.g. Color.Danger.7"
+                    value={draft.name}
+                    onChange={e => setDraft(prev => ({ ...prev, name: sanitizePathInput(e.target.value) }))}
+                  />
+                )}
               </div>
 
               <div className="space-y-1.5">
@@ -3330,14 +5973,235 @@ export function TokenEditor({
                     <SelectItem value="string">string</SelectItem>
                     <SelectItem value="number">number</SelectItem>
                     <SelectItem value="color">color</SelectItem>
+                    <SelectItem value="fontWeight">fontWeight</SelectItem>
+                    <SelectItem value="fontFamily">fontFamily</SelectItem>
+                    <SelectItem value="dimension">dimension</SelectItem>
+                    <SelectItem value="shadow">shadow</SelectItem>
+                    <SelectItem value="border">border</SelectItem>
+                    <SelectItem value="typography">typography</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
 
               <div className="space-y-1.5">
-                <Label>Value</Label>
+                <div className="flex items-center justify-between">
+                  <Label>Value</Label>
+                  {(draft.type === 'border' ||
+                    draft.type === 'shadow' ||
+                    draft.type === 'typography' ||
+                    (draft.type === 'dimension' && !draft.responsiveValue)) &&
+                    !draft.referenceTarget && (
+                      <Popover
+                        open={openPopoverId === 'draft'}
+                        onOpenChange={open => setOpenPopoverId(open ? 'draft' : null)}
+                      >
+                        <Tooltip>
+                          <TooltipTrigger
+                            render={
+                              <PopoverTrigger
+                                render={
+                                  <Button
+                                    type="button"
+                                    variant="outline"
+                                    size="icon"
+                                    aria-label={`Reference another ${draft.type} token`}
+                                  />
+                                }
+                              />
+                            }
+                          >
+                            <HexagonIcon className="size-4" />
+                          </TooltipTrigger>
+                          <TooltipContent>Attach reference</TooltipContent>
+                        </Tooltip>
+                        <PopoverContent className="w-128">
+                          {renderPopoverHeader(
+                            [{ value: 'reference', label: 'Reference' }],
+                            'reference',
+                            null,
+                            'Value mode for new token',
+                          )}
+                          {renderReferenceSearch(
+                            draft.referenceTarget,
+                            value => setDraft(prev => ({ ...prev, referenceTarget: value })),
+                            `${
+                              draft.type === 'border'
+                                ? 'Border'
+                                : draft.type === 'shadow'
+                                  ? 'Shadow'
+                                  : draft.type === 'typography'
+                                    ? 'Typography'
+                                    : 'Dimension'
+                            } reference target for new token`,
+                            true,
+                            [draft.type],
+                          )}
+                        </PopoverContent>
+                      </Popover>
+                    )}
+                </div>
 
-                {draft.type === 'color' ? (
+                {draft.type === 'fontWeight' ? (
+                  <Select
+                    value={draft.value}
+                    onValueChange={value => value !== null && setDraft(prev => ({ ...prev, value }))}
+                  >
+                    <SelectTrigger id="new-token-value" aria-label="Value for new token" className="h-8 w-full">
+                      <SelectValue placeholder="Select a weight">{fontWeightLabel}</SelectValue>
+                    </SelectTrigger>
+                    <SelectContent>
+                      {FONT_WEIGHT_OPTIONS.map(option => (
+                        <SelectItem key={option.value} value={String(option.value)}>
+                          {option.label}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                ) : draft.type === 'shadow' ? (
+                  draft.referenceTarget ? (
+                    <div className="flex items-center gap-1.5">
+                      <div className="flex h-8 flex-1 items-center gap-1.5 overflow-hidden rounded-lg border border-input px-2.5 text-sm text-muted-foreground">
+                        <Link2Icon className="size-3.5 shrink-0" />
+                        <span className="truncate">{toSlashPath(draft.referenceTarget)}</span>
+                      </div>
+                      {renderDetachButton(
+                        'Detach shadow alias',
+                        () => setDraft(prev => ({ ...prev, referenceTarget: '' })),
+                        'icon',
+                        true,
+                      )}
+                    </div>
+                  ) : (
+                    <ShadowEditor
+                      idPrefix="draft-shadow"
+                      value={draft.shadowValue}
+                      onChange={next => setDraft(prev => ({ ...prev, shadowValue: next }))}
+                    />
+                  )
+                ) : draft.type === 'border' ? (
+                  draft.referenceTarget ? (
+                    <div className="flex items-center gap-1.5">
+                      <div className="flex h-8 flex-1 items-center gap-1.5 overflow-hidden rounded-lg border border-input px-2.5 text-sm text-muted-foreground">
+                        <Link2Icon className="size-3.5 shrink-0" />
+                        <span className="truncate">{toSlashPath(draft.referenceTarget)}</span>
+                      </div>
+                      {renderDetachButton(
+                        'Detach border alias',
+                        () => setDraft(prev => ({ ...prev, referenceTarget: '' })),
+                        'icon',
+                        true,
+                      )}
+                    </div>
+                  ) : (
+                    <DraftBorderEditor
+                      idPrefix="draft-border"
+                      value={draft.borderValue}
+                      onChange={next => setDraft(prev => ({ ...prev, borderValue: next }))}
+                      renderPopoverHeader={renderPopoverHeader}
+                      renderReferenceSearch={renderReferenceSearch}
+                    />
+                  )
+                ) : draft.type === 'typography' ? (
+                  draft.referenceTarget ? (
+                    <div className="flex items-center gap-1.5">
+                      <div className="flex h-8 flex-1 items-center gap-1.5 overflow-hidden rounded-lg border border-input px-2.5 text-sm text-muted-foreground">
+                        <Link2Icon className="size-3.5 shrink-0" />
+                        <span className="truncate">{toSlashPath(draft.referenceTarget)}</span>
+                      </div>
+                      {renderDetachButton(
+                        'Detach typography alias',
+                        () => setDraft(prev => ({ ...prev, referenceTarget: '' })),
+                        'icon',
+                        true,
+                      )}
+                    </div>
+                  ) : (
+                    <TypographyEditor
+                      idPrefix="draft-typography"
+                      value={draft.typographyValue}
+                      onChange={next => setDraft(prev => ({ ...prev, typographyValue: next }))}
+                      renderReferenceSearch={renderReferenceSearch}
+                    />
+                  )
+                ) : draft.type === 'dimension' ? (
+                  draft.referenceTarget ? (
+                    <div className="flex items-center gap-1.5">
+                      <div className="flex h-8 flex-1 items-center gap-1.5 overflow-hidden rounded-lg border border-input px-2.5 text-sm text-muted-foreground">
+                        <Link2Icon className="size-3.5 shrink-0" />
+                        <span className="truncate">{toSlashPath(draft.referenceTarget)}</span>
+                      </div>
+                      {renderDetachButton(
+                        'Detach dimension alias',
+                        () => setDraft(prev => ({ ...prev, referenceTarget: '' })),
+                        'icon',
+                        true,
+                      )}
+                    </div>
+                  ) : (
+                    <div className="space-y-2">
+                      {draft.responsiveValue ? (
+                        <ResponsiveDimensionEditor
+                          idPrefix="draft-responsive-dimension"
+                          value={draft.responsiveValue}
+                          onChange={next => setDraft(prev => ({ ...prev, responsiveValue: next }))}
+                          renderReferenceSearch={renderReferenceSearch}
+                        />
+                      ) : (
+                        <div className="flex items-center gap-1.5">
+                          <Input
+                            aria-label="Value for new token"
+                            placeholder="value…"
+                            value={draft.value}
+                            onChange={e => {
+                              setDraft(prev => ({ ...prev, value: e.target.value }))
+                              setDraftMalformed(false)
+                            }}
+                          />
+                          <Select
+                            value={draft.unit}
+                            onValueChange={unit => {
+                              if (unit !== 'px' && unit !== 'rem') return
+                              setDraft(prev => {
+                                const n = Number(prev.value)
+                                if (Number.isNaN(n)) return { ...prev, unit }
+                                const converted = convertDimensionUnit({ value: n, unit: prev.unit }, unit)
+                                return { ...prev, value: String(converted.value), unit: converted.unit }
+                              })
+                            }}
+                          >
+                            <SelectTrigger aria-label="Unit for new token" className="h-8 w-18 shrink-0">
+                              <SelectValue />
+                            </SelectTrigger>
+                            <SelectContent>
+                              {DIMENSION_UNIT_OPTIONS.map(option => (
+                                <SelectItem key={option.value} value={option.value}>
+                                  {option.label}
+                                </SelectItem>
+                              ))}
+                            </SelectContent>
+                          </Select>
+                        </div>
+                      )}
+                      <Button
+                        type="button"
+                        variant="ghost"
+                        size="sm"
+                        className="gap-1"
+                        onClick={() =>
+                          setDraft(prev => {
+                            if (prev.responsiveValue) return { ...prev, responsiveValue: null }
+                            const n = Number(prev.value)
+                            const seed = { value: Number.isNaN(n) ? 0 : n, unit: prev.unit }
+                            return { ...prev, responsiveValue: seedResponsiveDimensionValue(seed) }
+                          })
+                        }
+                      >
+                        <MonitorIcon className="size-3.5" />
+                        {draft.responsiveValue ? 'Use fixed value' : 'Make responsive'}
+                      </Button>
+                    </div>
+                  )
+                ) : draft.type === 'color' ? (
                   <Popover
                     open={openPopoverId === 'draft'}
                     onOpenChange={open => setOpenPopoverId(open ? 'draft' : null)}
@@ -3489,7 +6353,11 @@ export function TokenEditor({
 
             <DialogFooter>
               <DialogClose render={<Button type="button" variant="outline" />}>Cancel</DialogClose>
-              <Button type="button" disabled={!draft.name.trim()} onClick={commitDraftIfReady}>
+              <Button
+                type="button"
+                disabled={!draft.name.trim() || draft.name.endsWith('.')}
+                onClick={commitDraftIfReady}
+              >
                 Create
               </Button>
             </DialogFooter>
@@ -3535,12 +6403,14 @@ export function TokenEditor({
                           mode: editMode(),
                           value: editDraft.value,
                           alpha: editDraft.alpha,
+                          unit: editDraft.unit,
                           referenceTarget: editDraft.referenceTarget,
                           malformed: editDraft.malformed,
                           onModeChange: setEditMode,
                           onValueChange: text =>
                             setEditDraft(prev => (prev ? { ...prev, value: text, malformed: false } : prev)),
                           onAlphaChange: percent => setEditDraft(prev => (prev ? { ...prev, alpha: percent } : prev)),
+                          onUnitChange: unit => setEditDraft(prev => (prev ? { ...prev, unit } : prev)),
                           onReferenceChange: text =>
                             setEditDraft(prev => (prev ? { ...prev, referenceTarget: text } : prev)),
                         })}
@@ -3582,6 +6452,7 @@ export function TokenEditor({
                                     mode: editBrandMode(brand),
                                     value: brandDraft.value,
                                     alpha: brandDraft.alpha,
+                                    unit: brandDraft.unit,
                                     referenceTarget: brandDraft.referenceTarget,
                                     malformed: brandDraft.malformed,
                                     onModeChange: mode => setEditBrandMode(brand, mode),
@@ -3606,6 +6477,15 @@ export function TokenEditor({
                                                 ...prev.brands,
                                                 [brand]: { ...prev.brands[brand], alpha: percent },
                                               },
+                                            }
+                                          : prev,
+                                      ),
+                                    onUnitChange: unit =>
+                                      setEditDraft(prev =>
+                                        prev
+                                          ? {
+                                              ...prev,
+                                              brands: { ...prev.brands, [brand]: { ...prev.brands[brand], unit } },
                                             }
                                           : prev,
                                       ),
@@ -3689,10 +6569,13 @@ export function TokenEditor({
             {deleteDraft && (
               <>
                 <DialogHeader>
-                  <DialogTitle>Delete &quot;{deleteDraft.name}&quot;?</DialogTitle>
+                  <DialogTitle>
+                    Delete &quot;{deleteDraft.name}&quot;{deleteDraft.ids.length > 1 ? ' group' : ''}?
+                  </DialogTitle>
                   <DialogDescription>
+                    {deleteDraft.ids.length > 1 ? `This deletes ${deleteDraft.ids.length} tokens. ` : ''}
                     {deleteDraft.figmaLinked
-                      ? 'This token is linked to Figma — deleting it here also deletes the variable in Figma. '
+                      ? `${deleteDraft.ids.length > 1 ? 'Some of these tokens are' : 'This token is'} linked to Figma — deleting ${deleteDraft.ids.length > 1 ? 'them' : 'it'} here also deletes the variable${deleteDraft.ids.length > 1 ? 's' : ''} in Figma. `
                       : ''}
                     Nothing happens until you submit and it&apos;s reviewed and merged.
                   </DialogDescription>
@@ -3703,8 +6586,9 @@ export function TokenEditor({
                     <TriangleAlertIcon />
                     <AlertDescription>
                       &quot;{deleteDraft.name}&quot; is referenced by {deleteDraft.usageCount}{' '}
-                      {deleteDraft.usageCount === 1 ? 'other token' : 'other tokens'} and can&apos;t be deleted. Remove
-                      those references first.
+                      {deleteDraft.usageCount === 1 ? 'other token' : 'other tokens'} outside{' '}
+                      {deleteDraft.ids.length > 1 ? 'the group' : 'it'} and can&apos;t be deleted. Remove those
+                      references first.
                     </AlertDescription>
                   </Alert>
                 ) : (
@@ -3718,7 +6602,7 @@ export function TokenEditor({
                       onKeyDown={e => {
                         if (e.key === 'Enter' && deleteConfirmText === deleteDraft.name) {
                           e.preventDefault()
-                          confirmDeleteToken()
+                          confirmDelete()
                         }
                       }}
                     />
@@ -3733,7 +6617,7 @@ export function TokenEditor({
                     type="button"
                     variant="destructive"
                     disabled={deleteDraft.usageCount > 0 || deleteConfirmText !== deleteDraft.name}
-                    onClick={confirmDeleteToken}
+                    onClick={confirmDelete}
                   >
                     Delete
                   </Button>
@@ -3833,6 +6717,8 @@ export function TokenEditor({
           canSubmit={canSubmit}
           submitState={submitState}
           submitMessage={submitMessage}
+          submitIsLocal={submitIsLocal}
+          localTokensMode={localTokensMode}
           onSubmit={handleSubmit}
         />
       )}

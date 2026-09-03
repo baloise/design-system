@@ -7,23 +7,23 @@
  * Define here the css variables for the component to be able to use it in host or non-host mode
  * These variables can be used in the component styles below and later on be overridden in themes.
  *
- * @prop --spinner-size: Size of the spinner component.
+ * @prop --spinner-logo-size: Size of the spinner logo variant.
  * @prop --spinner-circle-size: Size of the spinner circle.
- * @prop --spinner-circle-border-width: Border width of the spinner circle.
- * @prop --spinner-circle-color-border-background: Background color of the circle border.
- * @prop --spinner-circle-color-border-progress: Progress/animation color of the circle border.
+ * @prop --spinner-circle-thickness: Border width of the spinner circle.
+ * @prop --spinner-circle-background-color: Background color of the circle border.
+ * @prop --spinner-circle-progress-color: Progress/animation color of the circle border.
  * @prop --spinner-animation-duration: Duration of the spinner animation.
  * @prop --spinner-animation-easing: Easing function of the spinner animation.
  */
 
 :host {
   @include vars.base(spinner);
-  @include vars.local(spinner-size, var(--ds-spinner-size));
+  @include vars.local(spinner-logo-size, var(--ds-spinner-logo-size-md));
+  @include vars.local(spinner-circle-size, var(--ds-spinner-circle-size-md));
 
-  @include vars.local(spinner-circle-size, var(--ds-spinner-circle-size));
-  @include vars.local(spinner-circle-border-width, var(--ds-spinner-circle-border-width));
-  @include vars.local(spinner-circle-color-border-background, var(--ds-spinner-circle-color-background));
-  @include vars.local(spinner-circle-color-border-progress, var(--ds-spinner-circle-color-progress));
+  @include vars.local(spinner-circle-thickness, var(--ds-spinner-circle-thickness-md));
+  @include vars.local(spinner-circle-background-color, var(--ds-spinner-circle-primary-background));
+  @include vars.local(spinner-circle-progress-color, var(--ds-spinner-circle-primary-progress));
 }
 
 /**
@@ -49,15 +49,15 @@
 }
 
 :host(:not(.is-circle)) > div {
-  width: var(--_spinner-size);
+  width: var(--_spinner-logo-size);
 }
 
 :host(.is-circle) #inner {
   border-radius: 50%;
   border-style: solid;
-  border-width: var(--_spinner-circle-border-width);
-  border-color: var(--_spinner-circle-color-border-background);
-  border-top-color: var(--_spinner-circle-color-border-progress);
+  border-width: var(--_spinner-circle-thickness);
+  border-color: var(--_spinner-circle-background-color);
+  border-top-color: var(--_spinner-circle-progress-color);
   width: var(--_spinner-circle-size);
   height: var(--_spinner-circle-size);
 }
@@ -73,14 +73,14 @@
   */
 
 :host(.is-sm) {
-  --mod-spinner-size: 2rem;
-  --mod-spinner-circle-size: 1.125rem;
-  --mod-spinner-circle-border-width: 0.2rem;
+  --mod-spinner-logo-size: var(--ds-spinner-logo-size-sm);
+  --mod-spinner-circle-size: var(--ds-spinner-circle-size-sm);
+  --mod-spinner-circle-thickness: var(--ds-spinner-circle-thickness-sm);
 }
 
-:host(.is-white) {
-  --mod-spinner-circle-color-border-background: var(--ds-spinner-inverted-circle-color-background);
-  --mod-spinner-circle-color-border-progress: var(--ds-spinner-inverted-circle-color-progress);
+:host(.is-inverted) {
+  --mod-spinner-circle-background-color: var(--ds-spinner-circle-inverted-background);
+  --mod-spinner-circle-progress-color: var(--ds-spinner-circle-inverted-progress);
 }
 
 /**

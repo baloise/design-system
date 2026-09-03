@@ -1,7 +1,7 @@
 import { expectScreenshot, screenshot, test } from '@baloise/ds-playwright'
 
 const TAG = 'colors'
-const VARIANTS = ['primary', 'grey', 'sky', 'purple', 'green', 'red', 'yellow']
+const VARIANTS = ['primary', 'grey', 'sky', 'purple', 'green', 'red', 'yellow', 'info', 'success', 'warning', 'danger']
 
 const image = screenshot(TAG)
 
@@ -10,7 +10,7 @@ test.beforeEach('Setup', async ({ page }) => {
 })
 
 VARIANTS.forEach(variant => {
-  test.skip(variant, async ({ page, isMobile }) => {
+  test(variant, async ({ page, isMobile }) => {
     // eslint-disable-next-line playwright/no-skipped-test
     test.skip(isMobile, 'Runs only on desktop')
     const el = page.getByTestId(variant)

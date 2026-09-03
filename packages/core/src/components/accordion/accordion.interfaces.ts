@@ -1,8 +1,8 @@
-export const ACCORDION_SUMMARY_LEVELS = ['h1', 'h2', 'h3', 'h4', 'h5', ''] as const
-export const ACCORDION_MARKERS = ['', 'plus', 'plus-minus', 'none'] as const
-export const ACCORDION_MARKER_POSITIONS = ['', 'left', 'right'] as const
+export const ACCORDION_SUMMARY_LEVELS = ['h1', 'h2', 'h3', 'h4', 'h5'] as const
+export const ACCORDION_MARKERS = ['plus', 'plus-minus', 'none'] as const
+export const ACCORDION_MARKER_POSITIONS = ['left', 'right'] as const
 export const ACCORDION_BUTTON_COLORS = ['primary', 'secondary', 'success', 'warning', 'danger', ''] as const
-export const ACCORDION_BUTTON_SIZES = ['sm', 'lg', 'xl', ''] as const
+export const ACCORDION_BUTTON_SIZES = ['sm', 'lg', 'xl'] as const
 
 export type AccordionSummaryLevel = (typeof ACCORDION_SUMMARY_LEVELS)[number]
 export type AccordionMarker = (typeof ACCORDION_MARKERS)[number]

@@ -52,9 +52,6 @@
         <ds-notification heading="Information" closable no-icon>
           <p>Your changes have been saved.</p>
         </ds-notification>
-        <ds-notification heading="Information" closable no-icon size="lg">
-          <p>Your changes have been saved.</p>
-        </ds-notification>
       </section>
 
       <!-- Colors -->
@@ -70,24 +67,36 @@
       <!-- Outline -->
       <section class="flex gap-small flex-direction-column" data-testid="outline">
         <span>Outline</span>
-        <ds-notification heading="Default" color="outline-base">Your changes have been saved.</ds-notification>
-        <ds-notification heading="Purple" color="outline-purple">Your changes have been saved.</ds-notification>
-        <ds-notification heading="Green" color="outline-green">Your changes have been saved.</ds-notification>
-        <ds-notification heading="Yellow" color="outline-yellow">Your changes have been saved.</ds-notification>
-        <ds-notification heading="Red" color="outline-red">Your changes have been saved.</ds-notification>
+        <ds-notification heading="Default" color="outline-base" no-icon>
+          <ds-brand-icon src="/assets/images/brand-icons/car-green.svg"></ds-brand-icon>
+          Your changes have been saved.
+        </ds-notification>
+        <ds-notification heading="Purple" color="outline-purple" no-icon>
+          <ds-brand-icon color="purple" src="/assets/images/brand-icons/car-green.svg"></ds-brand-icon>
+          Your changes have been saved.
+        </ds-notification>
+        <ds-notification heading="Green" color="outline-green" no-icon>
+          <ds-brand-icon color="green" src="/assets/images/brand-icons/car-green.svg"></ds-brand-icon>
+          Your changes have been saved.
+        </ds-notification>
+        <ds-notification heading="Yellow" color="outline-yellow" no-icon>
+          <ds-brand-icon color="yellow" src="/assets/images/brand-icons/car-green.svg"></ds-brand-icon>
+          Your changes have been saved.
+        </ds-notification>
+        <ds-notification heading="Red" color="outline-red" no-icon>
+          <ds-brand-icon color="red" src="/assets/images/brand-icons/car-green.svg"></ds-brand-icon>
+          Your changes have been saved.
+        </ds-notification>
       </section>
 
       <!-- Sizes -->
       <section class="flex gap-small flex-direction-column" data-testid="sizes">
         <span>Sizes</span>
-        <ds-notification heading="Small" color="outline-purple" size="small"
+        <ds-notification heading="Small" color="outline-purple" size="sm"
           >Your changes have been saved.</ds-notification
         >
         <ds-notification heading="Default" color="outline-purple">Your changes have been saved.</ds-notification>
-        <ds-notification heading="Medium" color="outline-purple" size="medium"
-          >Your changes have been saved.</ds-notification
-        >
-        <ds-notification heading="Large" color="outline-purple" size="large"
+        <ds-notification heading="Medium" color="outline-purple" size="md"
           >Your changes have been saved.</ds-notification
         >
       </section>

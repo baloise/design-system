@@ -12,7 +12,7 @@ import {
 } from '@global'
 import { i18nDsClose } from './close.i18n'
 import { BUTTON_COLORS, ButtonColor } from '../button/button.interfaces'
-import { CLOSE_SIZES, CloseSize } from './close.interfaces'
+import { CLOSE_BUTTON_SIZES, CLOSE_SIZES, CloseButtonSize, CloseSize } from './close.interfaces'
 
 /**
  * Close renders a button element for closing or dismissing UI components with customizable size and color.
@@ -36,6 +36,8 @@ export class Close implements DsComponentInterface, DsConfigObserver {
 
   @State() language: DsLanguage = defaultConfig.language
   @State() region: DsRegion = defaultConfig.region
+
+  private rotation = 0
 
   /**
    * PUBLIC PROPERTY API
@@ -79,6 +81,13 @@ export class Close implements DsComponentInterface, DsConfigObserver {
   readonly buttonColor?: ButtonColor
 
   /**
+   * Define the size of the button variant. Only applicable if `button` is `true`.
+   */
+  @Prop({ reflect: true })
+  @OneOf(CLOSE_BUTTON_SIZES)
+  readonly buttonSize?: CloseButtonSize
+
+  /**
    * PUBLIC METHODS
    * ─────────────────────────────────────────────────────
    */
@@ -91,6 +100,16 @@ export class Close implements DsComponentInterface, DsConfigObserver {
   async configChanged(state: DsConfigState): Promise<void> {
     this.language = state.language
     this.region = state.region
+  }
+
+  /**
+   * PRIVATE METHODS
+   * ─────────────────────────────────────────────────────
+   */
+
+  private handleMouseEnter = (): void => {
+    this.rotation += 90
+    this.el.style.setProperty('--_close-icon-rotation', `${this.rotation}deg`)
   }
 
   /**
@@ -111,7 +130,7 @@ export class Close implements DsComponentInterface, DsConfigObserver {
             disabled={this.disabled}
             inverted={this.inverted}
             color={this.buttonColor}
-            size={size === 'sm' ? 'sm' : size === 'md' ? 'lg' : ''}
+            size={this.buttonSize}
           >
             {label}
           </ds-button>
@@ -135,6 +154,7 @@ export class Close implements DsComponentInterface, DsConfigObserver {
           title={label}
           tabindex="0"
           disabled={this.disabled}
+          onMouseEnter={this.disabled ? undefined : this.handleMouseEnter}
         ></button>
       </Host>
     )

@@ -1,0 +1,39 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  CanvasWithCodePen,
+  Footer,
+  StoryHeading,
+} from '../../../.storybook/blocks'
+import * as AppNavbarStories from './app-navbar.stories'
+import { APP_NAVBAR_DOC_CONFIG, getAppNavbarTabs } from './app-navbar.doc-config'
+
+<Meta title="Components/AppNavbar/Variants/Overview" />
+
+<StoryHeading of={AppNavbarStories.Basic} hidden></StoryHeading>
+
+<Banner label={'Variants'} section={APP_NAVBAR_DOC_CONFIG.section} color={APP_NAVBAR_DOC_CONFIG.color} />
+
+<BannerTabs of={AppNavbarStories} tabs={getAppNavbarTabs('variants')} />
+
+{/* STORIES */}
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={AppNavbarStories.Basic}></StoryHeading>
+
+Basic navbar with logo, title, navigation links, and action buttons. Automatically adapts to mobile with a sidebar drawer.
+
+Mobile-optimized navbar with simplified branding and navigation. Resize your viewport to see the hamburger menu and sidebar drawer behavior.
+
+<CanvasWithCodePen of={AppNavbarStories.Basic} sourceState="shown" />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={AppNavbarStories.BrandLogo}></StoryHeading>
+
+Navbar with custom SVG logo in the brand slot. Shows how to structure custom branding elements while maintaining proper layout.
+
+<CanvasWithCodePen of={AppNavbarStories.BrandLogo} sourceState="shown" />
+
+<Footer />

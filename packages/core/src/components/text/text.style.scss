@@ -16,16 +16,16 @@ $host-selector: ('#text');
  */
 
 @include vars.hybrid($name, $css-selector, $use-host) {
-  @include vars.local(text-color, inherit);
   @include vars.local(text-align, inherit);
-  @include vars.local(text-family, var(--ds-body-family));
-  @include vars.local(text-weight, var(--ds-body-weight));
-  @include vars.local(text-line-height, var(--ds-body-line-height));
-  @include vars.local(text-size, var(--ds-alias-text-size-base-device));
-  @include vars.local(text-shadow, var(--ds-alias-shadow-text));
-  @include vars.local(text-space, var(--ds-body-space));
+  @include vars.local(text-color, var(--ds-body-color));
 
-  @include vars.local(text-shadow, none); // var(--ds-heading-shadow)
+  @include vars.local(text-family, var(--ds-text-typo-paragraph-font-family));
+  @include vars.local(text-weight, var(--ds-text-typo-paragraph-font-weight));
+  @include vars.local(text-line-height, var(--ds-text-typo-paragraph-line-height));
+  @include vars.local(text-size, var(--ds-text-typo-paragraph-font-size));
+
+  @include vars.local(text-space, var(--ds-text-space));
+  @include vars.local(text-shadow, none); // var(--ds-text-shadow)
 }
 
 /**
@@ -44,11 +44,12 @@ $host-selector: ('#text');
   text-wrap: balance;
   text-align: var(--_text-align);
 
-  color: var(--_text-color);
-  font-family: var(--_text-family);
   font-weight: var(--_text-weight);
-  line-height: var(--_text-line-height);
+  font-family: var(--_text-family);
   font-size: var(--_text-size);
+  line-height: var(--_text-line-height);
+
+  color: var(--_text-color);
   text-shadow: var(--_text-shadow);
 
   b,
@@ -139,7 +140,7 @@ $weights: ('light', 'regular', 'bold');
 // Shadow
 // --------------------------------
 @mixin shadow {
-  --mod-text-shadow: var(--ds-alias-text-shadow);
+  --mod-text-shadow: var(--ds-text-shadow);
 }
 
 @include hybrid.styles($css-selector, $use-host) {
@@ -174,31 +175,20 @@ $weights: ('light', 'regular', 'bold');
 // Colors
 // --------------------------------
 $colors: (
-  'white',
-  'black',
-  'primary',
-  'primary-hover',
-  'primary-active',
-  'inverted-primary',
-  'inverted-primary-hover',
-  'inverted-primary-active',
-  'primary-light',
-  'hint',
-  'grey-light',
-  'grey',
-  'grey-dark',
-  'disabled',
-  'inverted-disabled',
-  'info',
-  'warning',
-  'success',
   'danger',
-  'danger-hover',
-  'danger-active'
+  'disabled',
+  'grey',
+  'info',
+  'placeholder',
+  'primary',
+  'success',
+  'warning',
+  'inverted',
+  'inverted-disabled'
 );
 
 @mixin color($color) {
-  --mod-text-color: var(--ds-alias-text-color-#{$color});
+  --mod-text-color: var(--ds-text-color-#{$color});
 }
 
 @each $color in $colors {

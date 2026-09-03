@@ -51,7 +51,7 @@ export class Accordion implements DsComponentInterface, DsConfigObserver {
 
   /**
    * PUBLIC PROPERTY API
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   /**
@@ -81,7 +81,7 @@ export class Accordion implements DsComponentInterface, DsConfigObserver {
    */
   @Prop()
   @OneOf(ACCORDION_SUMMARY_LEVELS)
-  readonly summaryVisualLevel: AccordionSummaryLevel = ''
+  readonly summaryVisualLevel?: AccordionSummaryLevel
 
   /**
    * If `true` the summary is styled as a title.
@@ -97,14 +97,14 @@ export class Accordion implements DsComponentInterface, DsConfigObserver {
    */
   @Prop()
   @OneOf(ACCORDION_MARKERS)
-  readonly marker: AccordionMarker = ''
+  readonly marker?: AccordionMarker
 
   /**
    * The position of the marker. Only applies if `button` is `false`.
    */
   @Prop()
   @OneOf(ACCORDION_MARKER_POSITIONS)
-  readonly markerPosition: AccordionMarkerPosition = ''
+  readonly markerPosition?: AccordionMarkerPosition
 
   /**
    * Displays the summary as a button and hides the default marker.
@@ -132,7 +132,7 @@ export class Accordion implements DsComponentInterface, DsConfigObserver {
    */
   @Prop()
   @OneOf(ACCORDION_BUTTON_SIZES)
-  readonly buttonSize: AccordionButtonSize = ''
+  readonly buttonSize?: AccordionButtonSize
 
   /**
    * Label of the open trigger button
@@ -178,8 +178,8 @@ export class Accordion implements DsComponentInterface, DsConfigObserver {
   @Event() dsClosed!: EventEmitter<AccordionToggleDetail>
 
   /**
-   * LISTENERS
-   * ------------------------------------------------------
+   * PUBLIC LISTENERS
+   * ─────────────────────────────────────────────────────
    */
 
   @Listen('dsOpened', { target: 'window' })
@@ -196,6 +196,11 @@ export class Accordion implements DsComponentInterface, DsConfigObserver {
   }
 
   /**
+   * PUBLIC METHODS
+   * ─────────────────────────────────────────────────────
+   */
+
+  /**
    * @internal define config for the component
    */
   @Method()
@@ -206,7 +211,7 @@ export class Accordion implements DsComponentInterface, DsConfigObserver {
 
   /**
    * PRIVATE METHODS
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   private handleToggle(event: MouseEvent, open: boolean) {
@@ -243,7 +248,7 @@ export class Accordion implements DsComponentInterface, DsConfigObserver {
 
   /**
    * RENDER
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   render() {

@@ -15,7 +15,7 @@ export const HEADING_VISUAL_LEVELS = [
   'md',
   'base',
 ] as const
-export const HEADING_COLORS = ['primary', 'info', 'success', 'warning', 'danger', 'blue', 'white'] as const
+export const HEADING_COLORS = ['primary', 'inverted'] as const
 export const HEADING_TAGS = ['h1', 'h2', 'h3', 'h4', 'h5', 'span', 'p'] as const
 export const HEADING_LEVELS = ['display', 'display-2', 'h1', 'h2', 'h3', 'h4', 'h5', 'span', 'p', ''] as const
 export const HEADING_SPACES = ['none', 'bottom', 'top', 'all'] as const

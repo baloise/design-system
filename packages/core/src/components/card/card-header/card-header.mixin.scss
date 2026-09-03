@@ -7,7 +7,7 @@
 
   // Only use small buttons in the card header
   // to have the same height as the title
-  --button-font-size: var(--ds-button-size-sm);
+  --button-font-size: var(--ds-button-size-sm-font-size);
   --button-min-height: 2rem;
   --button-min-width: 2rem;
   --button-padding-inline: 0.75rem;
@@ -30,6 +30,8 @@
   grid-template-areas: var(--_card-header-grid-template-areas);
 
   ds-icon,
+  ds-brand-icon,
+  ::slotted(ds-brand-icon),
   ::slotted(ds-icon) {
     grid-area: icon;
   }
@@ -45,6 +47,7 @@
   }
 
   .title,
+  .heading,
   ds-card-title {
     @include title.style();
   }

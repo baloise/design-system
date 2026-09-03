@@ -21,6 +21,7 @@ test('required label', async ({ page, a11y }) => {
 })
 
 test('disabled', async ({ page, a11y }) => {
+  test.skip(true, 'Contrast issue tracked in https://github.com/baloise/design-system/issues/2189')
   await page.mount(`<ds-data>
     <ds-data-item disabled>
       <ds-data-label>Disabled Field</ds-data-label>

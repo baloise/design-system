@@ -97,6 +97,32 @@ describe('flattenTokens', () => {
     const [white] = flattenTokens(base)
     expect(white.value).toEqual({ kind: 'literal', value: { hex: '#FFFFFF' } })
   })
+
+  it('carries com.helvetia.responsive from $extensions, undefined for a plain dimension token', () => {
+    const withResponsive = {
+      '🔗 Alias': {
+        SpaceLg: {
+          $type: 'dimension',
+          $value: { value: 16, unit: 'px' },
+          $extensions: {
+            'com.helvetia.responsive': {
+              mobile: { value: 16, unit: 'px' },
+              tablet: { value: 24, unit: 'px' },
+              desktop: { value: 32, unit: 'px' },
+            },
+          },
+        },
+        SpaceSm: { $type: 'dimension', $value: { value: 8, unit: 'px' } },
+      },
+    }
+    const [spaceLg, spaceSm] = flattenTokens(withResponsive)
+    expect(spaceLg.responsive).toEqual({
+      mobile: { value: 16, unit: 'px' },
+      tablet: { value: 24, unit: 'px' },
+      desktop: { value: 32, unit: 'px' },
+    })
+    expect(spaceSm.responsive).toBeUndefined()
+  })
 })
 
 describe('mergeBrandTree', () => {
@@ -120,6 +146,75 @@ describe('mergeBrandTree', () => {
   it('round-trips through the real computeTokenDiff: diffing a merged tree against Base reproduces exactly the override that was merged in', () => {
     const resolved = mergeBrandTree(base, brandOverride)
     expect(stripExtensions(realComputeTokenDiff(base, resolved))).toEqual(brandOverride)
+  })
+})
+
+// docs/plans/responsive-dimension-token-plan.md decision 7 — whole-token override only. Base's
+// $extensions.com.helvetia.responsive would otherwise never reach mergeLeafExtensions's own
+// override-file-carries-none case if there weren't a token to inherit *from* in the first place.
+describe('mergeBrandTree — responsive dimension extension', () => {
+  const baseWithResponsive = {
+    '🔗 Alias': {
+      SpaceLg: {
+        $type: 'dimension',
+        $value: { value: 16, unit: 'px' },
+        $extensions: {
+          'com.figma.variableId': { mobile: 'v1', tablet: 'v2', desktop: 'v3' },
+          'com.helvetia.responsive': {
+            mobile: { value: 16, unit: 'px' },
+            tablet: { value: 24, unit: 'px' },
+            desktop: { value: 32, unit: 'px' },
+          },
+        },
+      },
+    },
+  }
+
+  it('replaces com.helvetia.responsive wholesale when the override carries its own', () => {
+    const override = {
+      '🔗 Alias': {
+        SpaceLg: {
+          $type: 'dimension',
+          $value: { value: 8, unit: 'px' },
+          $extensions: {
+            'com.helvetia.responsive': {
+              mobile: { value: 8, unit: 'px' },
+              tablet: { value: 12, unit: 'px' },
+              desktop: { value: 16, unit: 'px' },
+            },
+          },
+        },
+      },
+    }
+    const resolved = mergeBrandTree(baseWithResponsive, override)
+    expect(resolved['🔗 Alias'].SpaceLg.$extensions['com.helvetia.responsive']).toEqual({
+      mobile: { value: 8, unit: 'px' },
+      tablet: { value: 12, unit: 'px' },
+      desktop: { value: 16, unit: 'px' },
+    })
+    // Base's variableId is still reused, never minted — same as the plain-color test above.
+    expect(resolved['🔗 Alias'].SpaceLg.$extensions['com.figma.variableId']).toEqual({
+      mobile: 'v1',
+      tablet: 'v2',
+      desktop: 'v3',
+    })
+  })
+
+  it('drops com.helvetia.responsive when the override replaces $value without one of its own', () => {
+    const override = {
+      '🔗 Alias': {
+        SpaceLg: { $type: 'dimension', $value: { value: 8, unit: 'px' } },
+      },
+    }
+    const resolved = mergeBrandTree(baseWithResponsive, override)
+    expect(resolved['🔗 Alias'].SpaceLg.$extensions['com.helvetia.responsive']).toBeUndefined()
+  })
+
+  it('keeps com.helvetia.responsive untouched for a token the brand does not override at all', () => {
+    const resolved = mergeBrandTree(baseWithResponsive, {})
+    expect(resolved['🔗 Alias'].SpaceLg.$extensions['com.helvetia.responsive']).toEqual(
+      baseWithResponsive['🔗 Alias'].SpaceLg.$extensions['com.helvetia.responsive'],
+    )
   })
 })
 

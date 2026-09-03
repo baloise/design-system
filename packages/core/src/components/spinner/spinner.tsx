@@ -65,7 +65,7 @@ export class Spinner implements DsComponentInterface, DsConfigObserver {
    */
   @Prop()
   @OneOf(SPINNER_COLORS)
-  readonly color: SpinnerColor = 'blue'
+  readonly color: SpinnerColor = 'primary'
 
   /**
    * If `true` the component will not add the spinner animation svg
@@ -277,7 +277,7 @@ export class Spinner implements DsComponentInterface, DsConfigObserver {
           'is-animated': this.animated,
           'is-circle': this.variation === 'circle',
           'is-sm': size === 'sm',
-          'is-white': this.color === 'white',
+          'is-inverted': this.color === 'inverted' || this.inverted,
           'is-label-right': hasValue(this.label) && this.labelPosition === 'right',
           'is-label-bottom': hasValue(this.label) && this.labelPosition === 'bottom',
         }}

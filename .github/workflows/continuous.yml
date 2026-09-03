@@ -118,6 +118,7 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v7
         with:
+          ref: ${{ needs.assembleInformation.outputs.branch }}
           fetch-depth: 2
 
       - uses: ./.github/workflows/actions/setup-environment
@@ -134,6 +135,7 @@ jobs:
       - name: Run Playwright tests
         working-directory: packages/core
         run: pnpm exec playwright test --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
+        # run: pnpm exec playwright test --update-snapshots
 
       # - name: Commit snapshots
       #   if: always()

@@ -5,10 +5,12 @@
  * @prop --carousel-gap: Gap between slides / product items.
  * @prop --carousel-control-color: Color of the scroll arrow buttons.
  * @prop --carousel-scroll-fade-bg: Background color for the edge-fade gradient in the product variant.
+ * @prop --carousel-radius: Border radius of the slide track.
  */
 
 :host {
   @include vars.local(carousel-gap, var(--ds-carousel-gap));
+  @include vars.local(carousel-radius, var(--ds-carousel-radius, var(--ds-alias-radius-base)));
   @include vars.local(carousel-control-color, var(--ds-carousel-control-color));
   @include vars.local(carousel-scroll-fade-bg, var(--ds-carousel-scroll-fade-bg));
   @include vars.local(
@@ -41,10 +43,16 @@
   cursor: grab;
   user-select: none;
   -webkit-user-select: none;
+  outline: none;
+  border-radius: var(--_carousel-radius);
 
   &::-webkit-scrollbar {
     display: none;
   }
+}
+
+:host .carousel-track:focus-visible:not(:active) {
+  @include focus-shadow(var(--ds-alias-interaction-focus-color-base));
 }
 
 :host .carousel-track.is-dragging {
@@ -70,6 +78,12 @@
 :host(.is-slide) .carousel-track {
   scroll-snap-type: x mandatory;
   gap: 0;
+}
+
+// Mandatory scroll-snap fights programmatic scrollLeft writes — the browser snaps back
+// before paint, so a JS-driven drag never visibly moves. Suspend snapping while dragging.
+:host(.is-slide) .carousel-track.is-dragging {
+  scroll-snap-type: none;
 }
 
 // Pagination (dots variant) — centered below the track

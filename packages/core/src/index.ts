@@ -13,13 +13,14 @@ export { Components, JSX } from './components'
  */
 // TODO: export all interfaces
 export * from './components/modal/modal.interfaces'
-export * from './components/footer/footer.interfaces'
+export * from './components/app-footer/app-footer.interfaces'
+export * from './components/sheet/sheet.interfaces'
 
 /**
  * i18n
  */
 export * from './components/close/close.i18n'
-export * from './components/footer/footer.i18n'
+export * from './components/app-footer/app-footer.i18n'
 export * from './components/label/label.i18n'
 export * from './components/pagination/pagination.i18n'
 

@@ -29,7 +29,12 @@ import { HTMLStencilElement } from '@stencil/core/internal'
  *
  * @slot - The snackbar message content.
  * @slot action - The action button (if used).
- * @part snackbar - The snackbar container element.
+ * @part icon - The icon element.
+ * @part content - The content wrapper containing the heading and message.
+ * @part heading - The snackbar heading.
+ * @part message - The snackbar message element.
+ * @part action - The action button group.
+ * @part button - The action button element.
  * @part close - The close button element.
  */
 @Component({
@@ -62,7 +67,7 @@ export class Snackbar implements DsComponentInterface, AlertComponent, DsBreakpo
    */
   @Prop()
   @OneOf(SNACKBAR_COLORS)
-  readonly color: SnackbarColor = 'base'
+  readonly color?: SnackbarColor
 
   /**
    * If `true` the notification can be closed by the user.
@@ -265,7 +270,7 @@ export class Snackbar implements DsComponentInterface, AlertComponent, DsBreakpo
         {this.isMobile && !this.mobileOpenState && (
           <ds-button
             id="mobile-button"
-            color={this.color === 'base' ? 'primary' : this.color}
+            color={this.color}
             square={true}
             icon={iconName}
             onClick={() => (this.mobileOpenState = true)}
@@ -275,22 +280,9 @@ export class Snackbar implements DsComponentInterface, AlertComponent, DsBreakpo
         {/* Icon                                  */}
         {/* --------------------------------------*/}
         {iconName && !svgContent && (
-          <ds-icon
-            part="icon"
-            id="icon"
-            name={iconName}
-            color={this.color}
-            size={'xl'}
-            shape={
-              this.color === 'warning'
-                ? 'triangle'
-                : this.color === 'danger' || this.color === 'success' || this.color === 'info'
-                  ? 'circle'
-                  : undefined
-            }
-          ></ds-icon>
+          <ds-icon part="icon" id="icon" name={iconName} color={this.color} size={'md'}></ds-icon>
         )}
-        {svgContent && <ds-icon id="icon" part="icon" svg={svgContent} size={'xl'}></ds-icon>}
+        {svgContent && <ds-brand-icon id="icon" part="icon" svg={svgContent} size={'sm'}></ds-brand-icon>}
         {/* --------------------------------------*/}
         {/* Heading + Message                     */}
         {/* --------------------------------------*/}
@@ -331,7 +323,6 @@ export class Snackbar implements DsComponentInterface, AlertComponent, DsBreakpo
               button
               button-color="secondary"
               part="close"
-              size="sm"
               onClick={ev => {
                 stopEventBubbling(ev)
                 this.close()

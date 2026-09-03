@@ -21,13 +21,13 @@
   // Mobile everything is strechtedˆ
   // --------------------------------
   @include mobile {
-    ::slotted(.button:not(.is-square, .is-circle)),
-    .button:not(.is-square, .is-circle) {
+    ::slotted(.button:not(.is-square)),
+    .button:not(.is-square) {
       flex: 1 1 auto;
     }
 
-    ::slotted(ds-button:not(.is-square, .is-circle)),
-    ds-button:not(.is-square, .is-circle) {
+    ::slotted(ds-button:not(.is-square)),
+    ds-button:not(.is-square) {
       flex: 1 1 auto;
 
       --button-width: 100%;
@@ -110,10 +110,10 @@
   // --------------------------------
   @include tablet {
     &.is-wide {
-      ::slotted(.button:not(.is-square, .is-circle)),
-      .button:not(.is-square, .is-circle),
-      ::slotted(ds-button:not(.is-square, .is-circle)),
-      ds-button:not(.is-square, .is-circle) {
+      ::slotted(.button:not(.is-square)),
+      .button:not(.is-square),
+      ::slotted(ds-button:not(.is-square)),
+      ds-button:not(.is-square) {
         flex: 1 1 auto;
 
         --button-width: 100%;
