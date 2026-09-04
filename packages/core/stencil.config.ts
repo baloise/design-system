@@ -93,6 +93,13 @@ export const config: Config = {
       !IS_DS_DOCUMENTATION && {
         type: 'dist',
         esmLoaderPath: '../loader',
+        copy: [
+          {
+            src: '../node_modules/country-flag-icons/3x2',
+            dest: 'assets/flags',
+            warn: true,
+          },
+        ],
       },
     /**
      * The dist-custom-elements output target creates custom elements that directly extend HTMLElement and provides
@@ -175,6 +182,11 @@ export const config: Config = {
         {
           src: join(packagesDir, 'core', 'public', 'images'),
           dest: 'assets/images',
+          warn: true,
+        },
+        {
+          src: join(__dirname, 'node_modules/country-flag-icons/3x2'),
+          dest: 'assets/flags',
           warn: true,
         },
         {

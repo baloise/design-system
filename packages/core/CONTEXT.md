@@ -556,13 +556,14 @@ danger`) shared with `ds-input`/`ds-number-input`. `bal-input-slider` had
 
 ## Phone Field (ds-input-phone)
 
-`ds-input-phone` is a planned form control (see
+`ds-input-phone` is a form control (see
 [docs/plans/ds-input-phone-plan.md](../../docs/plans/ds-input-phone-plan.md))
 for entering an international phone number: a country picker (flag +
 calling code) paired with a national-number text field, formatted via
-`libphonenumber-js`. It is **standalone** — its own native `<input>` and its
-own `Field` wrapper, a sibling to `ds-input`/`ds-select` rather than
-composing either. Shared vocabulary:
+`libphonenumber-js`. It is **standalone** — its own native `<input>` and
+`Field` wrapper (`packages/core/src/components/input/field.util.tsx`), a
+sibling to `ds-input`/`ds-select` rather than composing either. Shared
+vocabulary:
 
 - **Model value** — the canonical `value`, an **E.164 string**
   (e.g. `+41791234567`). Self-contained (encodes the country), unambiguous,

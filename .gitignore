@@ -21,6 +21,7 @@ tsconfig.tsbuildinfo
 
 # dependencies
 node_modules
+.pnpm-store
 
 # IDEs and editors
 /.idea
@@ -90,6 +91,7 @@ apps/storybook/public/build/
 apps/storybook/public/assets/images/map-markers
 apps/storybook/public/assets/images/brand-icons
 apps/storybook/public/assets/images/icons
+apps/storybook/public/assets/flags
 apps/storybook/src/assets/data
 apps/storybook/src/components/**/api.md
 apps/storybook/src/components/**/theming.md

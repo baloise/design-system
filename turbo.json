@@ -20,7 +20,7 @@
   "tasks": {
     "build": {
       "dependsOn": ["^build"],
-      "inputs": ["src/**", "app/**", "!**/*.spec.*", "!**/*.play.*"],
+      "inputs": ["src/**", "app/**", "tokens/**", "!**/*.spec.*", "!**/*.play.*"],
       "outputs": ["dist/**", "www/**", "docs/**", "components/**", "loader/**", ".next/**", "!.next/cache/**"]
     },
     "test": {

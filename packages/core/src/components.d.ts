@@ -27,6 +27,7 @@ import { DrawerContainer, DrawerDismissDetail, DrawerPresentDetail } from "./com
 import { FileUploadBlurDetail, FileUploadChangeDetail, FileUploadFilesAddedDetail, FileUploadFilesRemovedDetail, FileUploadFocusDetail, FileUploadInputClickDetail, FileUploadRejectedFileDetail } from "./components/file-upload/file-upload.interfaces";
 import { PopupDismissDetail, PopupPlacement, PopupPresentDetail, PopupRole } from "./components/popup/popup.interfaces";
 import { IconColor as IconColor1, IconSize as IconSize1 } from "./components/icon/icon.interfaces";
+import { PhoneChangeDetail, PhoneCountryChangeDetail, PhoneInputDetail } from "./components/input-phone/input-phone.interfaces";
 import { InputSliderBlurDetail, InputSliderBrandColor, InputSliderChangeDetail, InputSliderClickDetail, InputSliderFocusDetail, InputSliderInputDetail } from "./components/input-slider/input-slider.interfaces";
 import { InputStepperBlurDetail, InputStepperChangeDetail, InputStepperDecreaseDetail, InputStepperFocusDetail, InputStepperIncreaseDetail, InputStepperInputDetail } from "./components/input-stepper/input-stepper.interfaces";
 import { ItemActionIcon, ItemLabelLevel, ItemLabelSize, ItemSize, ItemVariant } from "./components/list/item/item.interfaces";
@@ -74,6 +75,7 @@ export { DrawerContainer, DrawerDismissDetail, DrawerPresentDetail } from "./com
 export { FileUploadBlurDetail, FileUploadChangeDetail, FileUploadFilesAddedDetail, FileUploadFilesRemovedDetail, FileUploadFocusDetail, FileUploadInputClickDetail, FileUploadRejectedFileDetail } from "./components/file-upload/file-upload.interfaces";
 export { PopupDismissDetail, PopupPlacement, PopupPresentDetail, PopupRole } from "./components/popup/popup.interfaces";
 export { IconColor as IconColor1, IconSize as IconSize1 } from "./components/icon/icon.interfaces";
+export { PhoneChangeDetail, PhoneCountryChangeDetail, PhoneInputDetail } from "./components/input-phone/input-phone.interfaces";
 export { InputSliderBlurDetail, InputSliderBrandColor, InputSliderChangeDetail, InputSliderClickDetail, InputSliderFocusDetail, InputSliderInputDetail } from "./components/input-slider/input-slider.interfaces";
 export { InputStepperBlurDetail, InputStepperChangeDetail, InputStepperDecreaseDetail, InputStepperFocusDetail, InputStepperIncreaseDetail, InputStepperInputDetail } from "./components/input-stepper/input-stepper.interfaces";
 export { ItemActionIcon, ItemLabelLevel, ItemLabelSize, ItemSize, ItemVariant } from "./components/list/item/item.interfaces";
@@ -1647,6 +1649,93 @@ export namespace Components {
         "type": InputInputType;
         /**
           * The value of the input.
+          * @default null
+         */
+        "value": string | null;
+    }
+    /**
+     * Input phone renders an international phone number field with a country picker
+     * (flag + calling code) and a national-number input that live-formats as the user types.
+     */
+    interface DsInputPhone {
+        /**
+          * Defines the color of the input. The default value is `primary`.
+          * @default 'primary'
+         */
+        "color": InputColor;
+        "configChanged": (state: DsConfigState) => Promise<void>;
+        /**
+          * Allow-list of ISO 3166-1 alpha-2 country codes. Accepts a comma-separated string or a string array. `undefined` / empty shows every country.
+          * @default undefined
+         */
+        "countries": string | string[] | undefined;
+        /**
+          * Live / controlled selected country (ISO 3166-1 alpha-2).
+         */
+        "country"?: string;
+        /**
+          * The description of the input, which is displayed below the input field.
+          * @default ''
+         */
+        "description": string;
+        /**
+          * If `true`, the element is not mutable, focusable, or even submitted with the form.
+          * @default false
+         */
+        "disabled": boolean;
+        /**
+          * Returns the native `<input>` element used under the hood.
+         */
+        "getInputElement": () => Promise<HTMLInputElement | undefined>;
+        /**
+          * Uncontrolled seed for the starting country. Read once during first load.
+         */
+        "initialCountry"?: string;
+        /**
+          * If `true` the component gets a invalid style.
+          * @default false
+         */
+        "invalid": boolean;
+        /**
+          * The text to display when the input is in an invalid state.
+          * @default ''
+         */
+        "invalidText": string;
+        /**
+          * The label of the input, which is displayed above the input field.
+          * @default ''
+         */
+        "label": string;
+        /**
+          * The name of the control, which is submitted with the form data.
+          * @default this.inputId
+         */
+        "name": string;
+        /**
+          * Instructional text that shows before the number field has a value.
+          * @default ''
+         */
+        "placeholder": string;
+        /**
+          * If `true` the element can not be mutated, meaning the user can not edit the control. The country picker is disabled; the number field stays focusable and selectable.
+          * @default false
+         */
+        "readonly": boolean;
+        /**
+          * If `true`, the user must fill in a value before submitting a form.
+          * @default true
+         */
+        "required": boolean;
+        /**
+          * Removes focus from the national-number field.
+         */
+        "setBlur": () => Promise<void>;
+        /**
+          * Sets focus on the national-number field.
+         */
+        "setFocus": () => Promise<void>;
+        /**
+          * The canonical phone number value in E.164 format (e.g. `+41791234567`).
           * @default null
          */
         "value": string | null;
@@ -3691,6 +3780,10 @@ export interface DsInputCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLDsInputElement;
 }
+export interface DsInputPhoneCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLDsInputPhoneElement;
+}
 export interface DsInputSliderCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLDsInputSliderElement;
@@ -4286,6 +4379,31 @@ declare global {
     var HTMLDsInputElement: {
         prototype: HTMLDsInputElement;
         new (): HTMLDsInputElement;
+    };
+    interface HTMLDsInputPhoneElementEventMap {
+        "dsInput": PhoneInputDetail;
+        "dsChange": PhoneChangeDetail;
+        "dsCountryChange": PhoneCountryChangeDetail;
+        "dsFocus": FocusEvent;
+        "dsBlur": FocusEvent;
+    }
+    /**
+     * Input phone renders an international phone number field with a country picker
+     * (flag + calling code) and a national-number input that live-formats as the user types.
+     */
+    interface HTMLDsInputPhoneElement extends Components.DsInputPhone, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLDsInputPhoneElementEventMap>(type: K, listener: (this: HTMLDsInputPhoneElement, ev: DsInputPhoneCustomEvent<HTMLDsInputPhoneElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLDsInputPhoneElementEventMap>(type: K, listener: (this: HTMLDsInputPhoneElement, ev: DsInputPhoneCustomEvent<HTMLDsInputPhoneElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLDsInputPhoneElement: {
+        prototype: HTMLDsInputPhoneElement;
+        new (): HTMLDsInputPhoneElement;
     };
     interface HTMLDsInputSliderElementEventMap {
         "dsInput": InputSliderInputDetail;
@@ -4993,6 +5111,7 @@ declare global {
         "ds-hint-title": HTMLDsHintTitleElement;
         "ds-icon": HTMLDsIconElement;
         "ds-input": HTMLDsInputElement;
+        "ds-input-phone": HTMLDsInputPhoneElement;
         "ds-input-slider": HTMLDsInputSliderElement;
         "ds-input-stepper": HTMLDsInputStepperElement;
         "ds-item": HTMLDsItemElement;
@@ -6690,6 +6809,104 @@ declare namespace LocalJSX {
         "type"?: InputInputType;
         /**
           * The value of the input.
+          * @default null
+         */
+        "value"?: string | null;
+    }
+    /**
+     * Input phone renders an international phone number field with a country picker
+     * (flag + calling code) and a national-number input that live-formats as the user types.
+     */
+    interface DsInputPhone {
+        /**
+          * Defines the color of the input. The default value is `primary`.
+          * @default 'primary'
+         */
+        "color"?: InputColor;
+        /**
+          * Allow-list of ISO 3166-1 alpha-2 country codes. Accepts a comma-separated string or a string array. `undefined` / empty shows every country.
+          * @default undefined
+         */
+        "countries"?: string | string[] | undefined;
+        /**
+          * Live / controlled selected country (ISO 3166-1 alpha-2).
+         */
+        "country"?: string;
+        /**
+          * The description of the input, which is displayed below the input field.
+          * @default ''
+         */
+        "description"?: string;
+        /**
+          * If `true`, the element is not mutable, focusable, or even submitted with the form.
+          * @default false
+         */
+        "disabled"?: boolean;
+        /**
+          * The `id` of a `<form>` element to associate this element with.
+         */
+        "form"?: string;
+        /**
+          * Uncontrolled seed for the starting country. Read once during first load.
+         */
+        "initialCountry"?: string;
+        /**
+          * If `true` the component gets a invalid style.
+          * @default false
+         */
+        "invalid"?: boolean;
+        /**
+          * The text to display when the input is in an invalid state.
+          * @default ''
+         */
+        "invalidText"?: string;
+        /**
+          * The label of the input, which is displayed above the input field.
+          * @default ''
+         */
+        "label"?: string;
+        /**
+          * The name of the control, which is submitted with the form data.
+          * @default this.inputId
+         */
+        "name"?: string;
+        /**
+          * Emitted when the number field loses focus.
+         */
+        "onDsBlur"?: (event: DsInputPhoneCustomEvent<FocusEvent>) => void;
+        /**
+          * Emitted when the number field blurs, after the blur-time reformat.
+         */
+        "onDsChange"?: (event: DsInputPhoneCustomEvent<PhoneChangeDetail>) => void;
+        /**
+          * Emitted when the selected country changes through the picker.
+         */
+        "onDsCountryChange"?: (event: DsInputPhoneCustomEvent<PhoneCountryChangeDetail>) => void;
+        /**
+          * Emitted when the number field receives focus.
+         */
+        "onDsFocus"?: (event: DsInputPhoneCustomEvent<FocusEvent>) => void;
+        /**
+          * Emitted on every keystroke or paste in the number field, after live formatting is applied.
+         */
+        "onDsInput"?: (event: DsInputPhoneCustomEvent<PhoneInputDetail>) => void;
+        /**
+          * Instructional text that shows before the number field has a value.
+          * @default ''
+         */
+        "placeholder"?: string;
+        /**
+          * If `true` the element can not be mutated, meaning the user can not edit the control. The country picker is disabled; the number field stays focusable and selectable.
+          * @default false
+         */
+        "readonly"?: boolean;
+        /**
+          * If `true`, the user must fill in a value before submitting a form.
+          * @default true
+         */
+        "required"?: boolean;
+        /**
+          * The canonical phone number value in E.164 format (e.g. `+41791234567`).
           * @default null
          */
         "value"?: string | null;
@@ -9181,6 +9398,22 @@ declare namespace LocalJSX {
         "mask": InputMask;
         "autoInvalidOff": boolean;
     }
+    interface DsInputPhoneAttributes {
+        "value": string | null;
+        "name": string;
+        "countries": string | string[] | undefined;
+        "initialCountry": string;
+        "country": string;
+        "label": string;
+        "description": string;
+        "color": InputColor;
+        "invalid": boolean;
+        "invalidText": string;
+        "required": boolean;
+        "disabled": boolean;
+        "readonly": boolean;
+        "placeholder": string;
+    }
     interface DsInputSliderAttributes {
         "value": number;
         "name": string;
@@ -9624,6 +9857,7 @@ declare namespace LocalJSX {
         "ds-hint-title": DsHintTitle;
         "ds-icon": Omit<DsIcon, keyof DsIconAttributes> & { [K in keyof DsIcon & keyof DsIconAttributes]?: DsIcon[K] } & { [K in keyof DsIcon & keyof DsIconAttributes as `attr:${K}`]?: DsIconAttributes[K] } & { [K in keyof DsIcon & keyof DsIconAttributes as `prop:${K}`]?: DsIcon[K] };
         "ds-input": Omit<DsInput, keyof DsInputAttributes> & { [K in keyof DsInput & keyof DsInputAttributes]?: DsInput[K] } & { [K in keyof DsInput & keyof DsInputAttributes as `attr:${K}`]?: DsInputAttributes[K] } & { [K in keyof DsInput & keyof DsInputAttributes as `prop:${K}`]?: DsInput[K] };
+        "ds-input-phone": Omit<DsInputPhone, keyof DsInputPhoneAttributes> & { [K in keyof DsInputPhone & keyof DsInputPhoneAttributes]?: DsInputPhone[K] } & { [K in keyof DsInputPhone & keyof DsInputPhoneAttributes as `attr:${K}`]?: DsInputPhoneAttributes[K] } & { [K in keyof DsInputPhone & keyof DsInputPhoneAttributes as `prop:${K}`]?: DsInputPhone[K] };
         "ds-input-slider": Omit<DsInputSlider, keyof DsInputSliderAttributes> & { [K in keyof DsInputSlider & keyof DsInputSliderAttributes]?: DsInputSlider[K] } & { [K in keyof DsInputSlider & keyof DsInputSliderAttributes as `attr:${K}`]?: DsInputSliderAttributes[K] } & { [K in keyof DsInputSlider & keyof DsInputSliderAttributes as `prop:${K}`]?: DsInputSlider[K] };
         "ds-input-stepper": Omit<DsInputStepper, keyof DsInputStepperAttributes> & { [K in keyof DsInputStepper & keyof DsInputStepperAttributes]?: DsInputStepper[K] } & { [K in keyof DsInputStepper & keyof DsInputStepperAttributes as `attr:${K}`]?: DsInputStepperAttributes[K] } & { [K in keyof DsInputStepper & keyof DsInputStepperAttributes as `prop:${K}`]?: DsInputStepper[K] };
         "ds-item": Omit<DsItem, keyof DsItemAttributes> & { [K in keyof DsItem & keyof DsItemAttributes]?: DsItem[K] } & { [K in keyof DsItem & keyof DsItemAttributes as `attr:${K}`]?: DsItemAttributes[K] } & { [K in keyof DsItem & keyof DsItemAttributes as `prop:${K}`]?: DsItem[K] };
@@ -9822,6 +10056,11 @@ declare module "@stencil/core" {
              * Input renders a text input field with validation, masking, autocomplete, and optional help/error messaging.
              */
             "ds-input": LocalJSX.IntrinsicElements["ds-input"] & JSXBase.HTMLAttributes<HTMLDsInputElement>;
+            /**
+             * Input phone renders an international phone number field with a country picker
+             * (flag + calling code) and a national-number input that live-formats as the user types.
+             */
+            "ds-input-phone": LocalJSX.IntrinsicElements["ds-input-phone"] & JSXBase.HTMLAttributes<HTMLDsInputPhoneElement>;
             /**
              * Input slider renders a noUiSlider-backed slider with validation and label/description messaging.
              */
