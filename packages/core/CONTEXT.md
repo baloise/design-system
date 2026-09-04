@@ -419,7 +419,11 @@ adding a calendar-icon trigger that opens a date-picker popup. Shared vocabulary
   attribute reflection exposes.
 - **Display value** — the localized string the user sees and types in the masked
   field (e.g. `13.07.2026` for CH). Derived from DS locale config; never the
-  model value. **luxon** bridges display ⇄ model.
+  model value. Display ⇄ model conversion is native `Date` only (no Luxon) —
+  Switzerland used Local Mean Time until June 1894, and the native `Date`
+  engine and Luxon's `Intl`-based engine can disagree on the pre-1894 offset,
+  shifting the calendar day by one if a `Date` crosses between them. See the
+  comment on `nativeDateToISO` in `date.mask.ts`.
 - **Trigger** — the calendar-icon `<button>` at the end of the field. It is the
   **only** gesture that opens/toggles the popup; focusing the text input just
   places the typing cursor. `disabled` turns both off; `readonly` is display-only.
