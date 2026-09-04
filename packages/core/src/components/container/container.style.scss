@@ -10,13 +10,19 @@
 @use '@baloise/ds-css/dist/scss/mixins' as *;
 @use '../../vars' as vars;
 
+/**
+  * Spaces are defined at body level to allow for consistent spacing across the application.
+  * Container spaces are use for example in the app-header and app-footer to provide consistent horizontal padding.
+  */
+
 body {
-  @include vars.local(container-max-width, var(--ds-alias-container-width-default));
   @include vars.local(container-space-x, var(--ds-alias-container-space-device));
   @include vars.local(container-space-y, 0);
 }
 
 .container {
+  @include vars.local(container-max-width, var(--ds-alias-container-width-default));
+
   flex-grow: 1;
   margin: 0 auto;
   position: relative;
