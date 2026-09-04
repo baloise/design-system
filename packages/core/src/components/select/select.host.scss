@@ -104,7 +104,7 @@ $select-icon-arrow: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/20
   @include vars.local(select-option-selected-icon-color, var(--ds-select-option-color-icon-selected));
   @include vars.local(select-option-selected-text-color, var(--ds-select-option-color-text-selected));
   @include vars.local(select-option-selected-background-color, var(--ds-select-option-color-background-selected));
-  @include vars.local(select-option-hover-text-color, var(--ds-select-option-color-text-hover));
+  @include vars.local(select-option-hover-text-color, var(--ds-select-option-color-text-highlight));
   @include vars.local(select-option-hover-background-color, var(--ds-select-option-color-background-hover));
   @include vars.local(select-option-highlight-text-color, var(--ds-select-option-color-text-highlight));
   @include vars.local(select-option-highlight-background-color, var(--ds-select-option-color-background-highlight));

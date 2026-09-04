@@ -14,14 +14,12 @@ $css-selector: ('.table');
 
 @include vars.hybrid($name, $css-selector, $use-host) {
   @include vars.local(table-color, var(--ds-table-color));
-  @include vars.local(table-font, var(--ds-table-font));
 
   @include vars.local(table-cell-border, var(--ds-table-cell-border));
   @include vars.local(table-cell-px, var(--ds-table-cell-padding-x));
   @include vars.local(table-cell-py, var(--ds-table-cell-padding-y));
 
   @include vars.local(table-head-border, var(--ds-table-head-border));
-  @include vars.local(table-head-font, var(--ds-table-head-font));
 
   @include vars.local(table-row-background-active, var(--ds-table-row-background-active));
   @include vars.local(table-row-background-hover, var(--ds-table-row-background-hover));
@@ -93,10 +91,10 @@ $css-selector: ('.table');
       border-bottom: var(--_table-head-border);
     }
     th {
-      font-family: var(--ds-table-font-font-family);
-      font-size: var(--ds-table-font-font-size);
-      font-weight: var(--ds-table-font-font-weight);
-      line-height: var(--ds-table-font-line-height);
+      font-family: var(--ds-table-head-font-font-family);
+      font-size: var(--ds-table-head-font-font-size);
+      font-weight: var(--ds-table-head-font-font-weight);
+      line-height: var(--ds-table-head-font-line-height);
     }
   }
   tbody {

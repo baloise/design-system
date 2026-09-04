@@ -16,7 +16,7 @@ $host-selector: ('#label');
  */
 
 @include vars.hybrid($name, $css-selector, $use-host) {
-  @include vars.local(label-color, var(--ds-label-color-base));
+  @include vars.local(label-color, var(--ds-label-color-primary));
   @include vars.local(label-family, var(--ds-label-typo-base-font-family));
   @include vars.local(label-weight, var(--ds-label-typo-base-font-weight));
   @include vars.local(label-line-height, var(--ds-label-typo-base-line-height));

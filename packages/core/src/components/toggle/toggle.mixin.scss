@@ -139,7 +139,7 @@
   }
 
   #{$wrapper} input[type='checkbox']:focus-visible {
-    outline: var(--ds-alias-interaction-focus-width, 2px) solid var(--ds-alias-interaction-focus-color-base);
+    outline: var(--ds-alias-interaction-focus-size-outer, 2px) solid var(--ds-alias-interaction-focus-color-base);
     outline-offset: 2px;
     border-radius: var(--_toggle-radius);
   }

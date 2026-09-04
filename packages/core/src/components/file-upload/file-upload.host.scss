@@ -35,20 +35,20 @@
   @include vars.local(file-upload-label-family, var(--ds-alias-text-family-text));
   @include vars.local(file-upload-label-weight, var(--ds-alias-text-weight-bold));
   @include vars.local(file-upload-label-size, var(--ds-alias-text-size-base));
-  @include vars.local(file-upload-label-line-height, var(--ds-alias-text-line-height-body));
+  @include vars.local(file-upload-label-line-height, var(--ds-alias-text-line-height-text));
   @include vars.local(file-upload-drop-zone-border-color, var(--ds-alias-border-color-grey));
-  @include vars.local(file-upload-drop-zone-background, var(--ds-alias-background-color-transparent));
-  @include vars.local(file-upload-drop-zone-hover-background, var(--ds-alias-background-color-grey-lighter));
+  @include vars.local(file-upload-drop-zone-background, var(--ds-alias-surface-transparent));
+  @include vars.local(file-upload-drop-zone-hover-background, var(--ds-alias-surface-grey-lighter));
   @include vars.local(file-upload-drop-zone-hover-border-color, var(--ds-alias-border-color-primary));
   @include vars.local(file-upload-drop-zone-hover-text-color, var(--ds-alias-text-color-primary-hover));
-  @include vars.local(file-upload-drop-zone-active-background, var(--ds-alias-background-color-grey-light));
+  @include vars.local(file-upload-drop-zone-active-background, var(--ds-alias-surface-grey-light));
   @include vars.local(file-upload-drop-zone-active-border-color, var(--ds-alias-border-color-primary));
   @include vars.local(file-upload-drop-zone-active-text-color, var(--ds-alias-text-color-primary-active));
-  @include vars.local(file-upload-drop-zone-focus-border-color, var(--ds-alias-border-focus));
-  @include vars.local(file-upload-drop-zone-disabled-background, var(--ds-alias-background-color-grey-light));
+  @include vars.local(file-upload-drop-zone-focus-border-color, var(--ds-alias-interaction-focus-color-border));
+  @include vars.local(file-upload-drop-zone-disabled-background, var(--ds-alias-surface-grey-light));
   @include vars.local(file-upload-drop-zone-disabled-border-color, var(--ds-button-color-disabled-base-text));
   @include vars.local(file-upload-drop-zone-disabled-text-color, var(--ds-button-color-disabled-base-text));
-  @include vars.local(file-upload-file-list-background, var(--ds-alias-background-color-grey-light));
+  @include vars.local(file-upload-file-list-background, var(--ds-alias-surface-grey-light));
   @include vars.local(file-upload-file-name-color, var(--ds-alias-text-color-primary));
   @include vars.local(file-upload-file-size-color, var(--ds-alias-text-color-primary-light));
   @include vars.local(file-upload-disabled-icon-color, var(--ds-button-color-disabled-base-text));
@@ -128,7 +128,7 @@
   align-items: center;
   gap: 1rem;
 
-  font-family: var(--ds-alias-text-family-base);
+  font-family: var(--ds-alias-text-family-text);
   font-weight: var(--ds-alias-text-weight-bold);
   font-size: var(--ds-alias-text-size-base);
 }
@@ -185,28 +185,28 @@
 // Invalid or Color Danger
 // --------------------------------
 :host(.is-danger) {
-  --mod-file-upload-description-color: var(--ds-input-description-color-danger);
-  --mod-file-upload-drop-zone-border-color: var(--ds-input-container-color-danger-border);
-  --mod-file-upload-drop-zone-hover-border-color: var(--ds-input-container-color-danger-border);
-  --mod-file-upload-drop-zone-active-border-color: var(--ds-input-container-color-danger-border);
+  --mod-file-upload-description-color: var(--ds-form-danger-description-color);
+  --mod-file-upload-drop-zone-border-color: var(--ds-form-danger-container-border);
+  --mod-file-upload-drop-zone-hover-border-color: var(--ds-form-danger-container-border);
+  --mod-file-upload-drop-zone-active-border-color: var(--ds-form-danger-container-border);
 }
 
 //
 // Valid or Color Success
 // --------------------------------
 :host(.is-success) {
-  --mod-file-upload-description-color: var(--ds-input-description-color-success);
-  --mod-file-upload-drop-zone-border-color: var(--ds-input-container-color-success-border);
-  --mod-file-upload-drop-zone-hover-border-color: var(--ds-input-container-color-success-border);
-  --mod-file-upload-drop-zone-active-border-color: var(--ds-input-container-color-success-border);
+  --mod-file-upload-description-color: var(--ds-form-success-description-color);
+  --mod-file-upload-drop-zone-border-color: var(--ds-form-success-container-border);
+  --mod-file-upload-drop-zone-hover-border-color: var(--ds-form-success-container-border);
+  --mod-file-upload-drop-zone-active-border-color: var(--ds-form-success-container-border);
 }
 
 //
 // Color Warning
 // --------------------------------
 :host(.is-warning) {
-  --mod-file-upload-description-color: var(--ds-input-description-color-warning);
-  --mod-file-upload-drop-zone-border-color: var(--ds-input-container-color-warning-border);
-  --mod-file-upload-drop-zone-hover-border-color: var(--ds-input-container-color-warning-border);
-  --mod-file-upload-drop-zone-active-border-color: var(--ds-input-container-color-warning-border);
+  --mod-file-upload-description-color: var(--ds-form-warning-description-color);
+  --mod-file-upload-drop-zone-border-color: var(--ds-form-warning-container-border);
+  --mod-file-upload-drop-zone-hover-border-color: var(--ds-form-warning-container-border);
+  --mod-file-upload-drop-zone-active-border-color: var(--ds-form-warning-container-border);
 }

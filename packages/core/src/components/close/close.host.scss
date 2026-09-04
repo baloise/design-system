@@ -69,7 +69,7 @@
   --mod-close-color-background: var(--ds-close-primary-color-background-disabled);
   --mod-close-color-background-hover: var(--ds-close-primary-color-background-disabled);
   --mod-close-color-background-active: var(--ds-close-primary-color-background-disabled);
-  --mod-close-color-focus: var(--ds-alias-interaction-focus-color-disabled);
+  --mod-close-color-focus: var(--ds-alias-interaction-focus-color-base);
 }
 
 :host(.is-inverted.is-disabled) {

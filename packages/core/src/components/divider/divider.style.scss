@@ -14,7 +14,7 @@ $css-selector: (hr, '.divider');
  */
 
 @include vars.hybrid($name, $css-selector, $use-host) {
-  @include vars.local(divider-color, var(--ds-divider-color-grey));
+  @include vars.local(divider-color, var(--ds-divider-color-default));
   @include vars.local(divider-size, var(--ds-divider-size));
   @include vars.local(divider-radius, var(--ds-divider-radius));
   @include vars.local(divider-margin, 0);

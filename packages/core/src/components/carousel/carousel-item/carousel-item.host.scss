@@ -30,7 +30,7 @@
   gap: 0.5rem;
   padding: 1rem;
   border-radius: var(--ds-alias-radius-base);
-  background-color: var(--ds-alias-background-color-grey);
+  background-color: var(--ds-alias-surface-grey);
   cursor: pointer;
   outline: none;
   transition:
@@ -39,12 +39,12 @@
 
   @include hover {
     &:hover {
-      background-color: var(--ds-alias-background-color-grey-hover);
+      background-color: var(--ds-alias-surface-grey-dark);
     }
   }
 
   &:active {
-    background-color: var(--ds-alias-background-color-grey-active);
+    background-color: var(--ds-alias-surface-grey-darker);
   }
 }
 
@@ -53,64 +53,64 @@
 }
 
 :host(.is-tile.is-selected) {
-  background-color: var(--ds-alias-background-color-primary-light);
+  background-color: var(--ds-alias-surface-primary-light);
 }
 
 // ─── Color variants (product) — level 1 (lightest) base ──────────────────────
 
 :host(.is-tile.is-purple) {
-  background-color: var(--ds-alias-background-color-purple-lighter);
+  background-color: var(--ds-alias-surface-purple-lighter);
 
   @include hover {
     &:hover {
-      background-color: var(--ds-alias-background-color-purple-light);
+      background-color: var(--ds-alias-surface-purple-light);
     }
   }
 
   &:active {
-    background-color: var(--ds-alias-background-color-purple);
+    background-color: var(--ds-alias-surface-purple);
   }
 }
 
 :host(.is-tile.is-green) {
-  background-color: var(--ds-alias-background-color-green-lighter);
+  background-color: var(--ds-alias-surface-green-lighter);
 
   @include hover {
     &:hover {
-      background-color: var(--ds-alias-background-color-green-light);
+      background-color: var(--ds-alias-surface-green-light);
     }
   }
 
   &:active {
-    background-color: var(--ds-alias-background-color-green);
+    background-color: var(--ds-alias-surface-green);
   }
 }
 
 :host(.is-tile.is-red) {
-  background-color: var(--ds-alias-background-color-red-lighter);
+  background-color: var(--ds-alias-surface-red-lighter);
 
   @include hover {
     &:hover {
-      background-color: var(--ds-alias-background-color-red-light);
+      background-color: var(--ds-alias-surface-red-light);
     }
   }
 
   &:active {
-    background-color: var(--ds-alias-background-color-red);
+    background-color: var(--ds-alias-surface-red);
   }
 }
 
 :host(.is-tile.is-yellow) {
-  background-color: var(--ds-alias-background-color-yellow-lighter);
+  background-color: var(--ds-alias-surface-yellow-lighter);
 
   @include hover {
     &:hover {
-      background-color: var(--ds-alias-background-color-yellow-light);
+      background-color: var(--ds-alias-surface-yellow-light);
     }
   }
 
   &:active {
-    background-color: var(--ds-alias-background-color-yellow);
+    background-color: var(--ds-alias-surface-yellow);
   }
 }
 
