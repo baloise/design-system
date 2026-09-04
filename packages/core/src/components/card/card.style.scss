@@ -347,13 +347,6 @@ $spaces: ('sm', 'md', 'lg');
   &.is-tile {
     --mod-card-header-grid-template-columns: auto 1fr auto;
     --mod-card-header-grid-template-areas: 'icon title .' 'icon subtitle subtitle';
-
-    @include tablet() {
-      --mod-card-padding-left: calc(
-        var(--ds-card-space-base) + var(--ds-brand-icon-tile-size-lg) + calc(var(--_card-gap) / 2)
-      );
-      --mod-card-header-margin-left: calc(calc(var(--ds-brand-icon-tile-size-lg) * -1) - calc(var(--_card-gap) / 2));
-    }
   }
 }
 
@@ -361,13 +354,6 @@ $spaces: ('sm', 'md', 'lg');
   :host(.is-tile) {
     --mod-card-header-grid-template-columns: auto 1fr auto;
     --mod-card-header-grid-template-areas: 'icon title .' 'icon subtitle subtitle';
-
-    @include tablet() {
-      --mod-card-padding-left: calc(
-        var(--ds-card-space-base) + var(--ds-brand-icon-tile-size-lg) + calc(var(--_card-gap) / 2)
-      );
-      --mod-card-header-margin-left: calc(calc(var(--ds-brand-icon-tile-size-lg) * -1) - calc(var(--_card-gap) / 2));
-    }
   }
 }
 

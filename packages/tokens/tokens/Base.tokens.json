@@ -4717,25 +4717,7 @@
           "$value": "{🔗 Alias.🔵 Radius.Base}"
         },
         "Size": {
-          "SM": {
-            "Mobile": {
-              "$type": "dimension",
-              "$value": "{🌐 Global.📏 Dimension.Size.32}"
-            },
-            "Tablet": {
-              "$type": "dimension",
-              "$value": "{🌐 Global.📏 Dimension.Size.48}"
-            },
-            "Desktop": {
-              "$type": "dimension",
-              "$value": "{🌐 Global.📏 Dimension.Size.48}"
-            }
-          },
           "Base": {
-            "Mobile": {
-              "$type": "dimension",
-              "$value": "{🌐 Global.📏 Dimension.Size.48}"
-            },
             "Tablet": {
               "$type": "dimension",
               "$value": "{🌐 Global.📏 Dimension.Size.64}"
@@ -4743,6 +4725,10 @@
             "Desktop": {
               "$type": "dimension",
               "$value": "{🌐 Global.📏 Dimension.Size.64}"
+            },
+            "Mobile": {
+              "$type": "dimension",
+              "$value": "{🌐 Global.📏 Dimension.Size.56}"
             }
           },
           "LG": {
@@ -4757,6 +4743,20 @@
             "Desktop": {
               "$type": "dimension",
               "$value": "{🌐 Global.📏 Dimension.Size.96}"
+            }
+          },
+          "SM": {
+            "Mobile": {
+              "$type": "dimension",
+              "$value": "{🌐 Global.📏 Dimension.Size.48}"
+            },
+            "Tablet": {
+              "$type": "dimension",
+              "$value": "{🌐 Global.📏 Dimension.Size.56}"
+            },
+            "Desktop": {
+              "$type": "dimension",
+              "$value": "{🌐 Global.📏 Dimension.Size.56}"
             }
           }
         }
