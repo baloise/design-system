@@ -25,7 +25,7 @@
   @include vars.local(modal-heading-size, var(--ds-modal-heading-font-size));
   @include vars.local(modal-heading-line-height, var(--ds-modal-heading-line-height));
   @include vars.local(modal-width, var(--ds-modal-width));
-  @include vars.local(modal-space, var(--ds-modal-space-device));
+  @include vars.local(modal-space, var(--ds-modal-space));
 
   display: contents;
 }

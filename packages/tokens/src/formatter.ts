@@ -43,16 +43,7 @@ import { tokenNameToCssVar } from './css-naming.js'
  * emits `-device` vars (no media queries there), so its bare reference is left untouched.
  */
 function expandTypographyTokens(tokens: TransformedToken[], referenceSyntax: ReferenceSyntax): TransformedToken[] {
-  const responsiveDimensionPaths = new Set<string>()
-  for (const token of tokens) {
-    const extensions = token.original?.$extensions as Record<string, unknown> | undefined
-    if (
-      token.$type === 'dimension' &&
-      isRawResponsiveDimensionValue(extensions?.[RESPONSIVE_DIMENSION_EXTENSION_KEY])
-    ) {
-      responsiveDimensionPaths.add(token.path.join('.'))
-    }
-  }
+  const responsiveDimensionPaths = computeResponsiveDimensionPaths(tokens)
 
   const resolveField = (
     css: TypographyCssValue,
@@ -125,6 +116,52 @@ function isRawResponsiveDimensionValue(value: unknown): value is RawResponsiveDi
   if (typeof value !== 'object' || value === null) return false
   const v = value as Record<string, unknown>
   return 'mobile' in v && 'tablet' in v && 'desktop' in v
+}
+
+/** DTCG paths (dot-joined, e.g. "🔗 Alias.📏 Space.MD") of every token carrying a responsive breakpoint map — shared by expandTypographyTokens (its fontSize field) and resolveResponsiveDimensionReferences (any other token's whole $value) so both agree on which reference targets need the `-device` treatment. */
+function computeResponsiveDimensionPaths(tokens: TransformedToken[]): Set<string> {
+  const responsiveDimensionPaths = new Set<string>()
+  for (const token of tokens) {
+    const extensions = token.original?.$extensions as Record<string, unknown> | undefined
+    if (
+      token.$type === 'dimension' &&
+      isRawResponsiveDimensionValue(extensions?.[RESPONSIVE_DIMENSION_EXTENSION_KEY])
+    ) {
+      responsiveDimensionPaths.add(token.path.join('.'))
+    }
+  }
+  return responsiveDimensionPaths
+}
+
+/**
+ * Mirrors expandTypographyTokens's fontSize special-case (see its own comment) for every other
+ * token whose *whole* `$value` is a `{reference}` to a responsive dimension token — e.g. a plain
+ * Component.Popup.Space aliasing Alias.Space.MD. Left to Style Dictionary's own `outputReferences`,
+ * such a token renders `var(--ds-alias-space-md)`, which only ever reflects the alias's mobile
+ * value; this rewrites it to `var(--ds-alias-space-md-device)` instead, so it picks up the
+ * per-breakpoint redeclarations the `ds/css/variables-*` formatters emit in their own `@media`
+ * blocks. Typography tokens are skipped — their 4 longhand fields already get this treatment
+ * per-field in expandTypographyTokens, and re-running it here on their (object-shaped) `$value`
+ * would be a no-op anyway. CSS-only, same reasoning as expandTypographyTokens: SCSS never emits
+ * `-device` vars.
+ */
+function resolveResponsiveDimensionReferences(
+  tokens: TransformedToken[],
+  referenceSyntax: ReferenceSyntax,
+): TransformedToken[] {
+  if (referenceSyntax !== 'css') return tokens
+  const responsiveDimensionPaths = computeResponsiveDimensionPaths(tokens)
+  if (responsiveDimensionPaths.size === 0) return tokens
+
+  return tokens.map(token => {
+    if (token.$type === 'typography') return token
+    const rawValue = token.original?.$value
+    const match = typeof rawValue === 'string' ? /^\{(.+)\}$/.exec(rawValue) : null
+    if (!match || !responsiveDimensionPaths.has(match[1])) return token
+
+    const deviceValue = `var(--${tokenNameToCssVar(match[1].split('.'))}-device)`
+    return { ...token, value: deviceValue, $value: deviceValue, original: { ...token.original, $value: deviceValue } }
+  })
 }
 
 // Which reference syntax (if any) a resolvable breakpoint reference should render as — `var(--x)`
@@ -279,7 +316,10 @@ export const registerCustomFormatters = (sd: typeof StyleDictionary) => {
       const dictionary = {
         ...rawDictionary,
         allTokens: expandResponsiveDimensionTokens(
-          expandTypographyTokens(rawDictionary.allTokens, outputReferences ? 'css' : false),
+          resolveResponsiveDimensionReferences(
+            expandTypographyTokens(rawDictionary.allTokens, outputReferences ? 'css' : false),
+            outputReferences ? 'css' : false,
+          ),
           outputReferences ? 'css' : false,
         ),
       } as Dictionary
@@ -448,7 +488,10 @@ export const registerCustomFormatters = (sd: typeof StyleDictionary) => {
       const dictionary = {
         ...rawDictionary,
         allTokens: expandResponsiveDimensionTokens(
-          expandTypographyTokens(rawDictionary.allTokens, outputReferences ? 'css' : false),
+          resolveResponsiveDimensionReferences(
+            expandTypographyTokens(rawDictionary.allTokens, outputReferences ? 'css' : false),
+            outputReferences ? 'css' : false,
+          ),
           outputReferences ? 'css' : false,
         ),
       } as Dictionary

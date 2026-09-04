@@ -38,10 +38,6 @@
           "$type": "color",
           "$value": "{🌐 Global.🌈 Color.Grey.4}"
         },
-        "PrimaryLight": {
-          "$type": "color",
-          "$value": "{🌐 Global.🌈 Color.Primary.3}"
-        },
         "Primary": {
           "$type": "color",
           "$value": "{🌐 Global.🌈 Color.Primary.5}"
@@ -161,6 +157,10 @@
         "YellowActive": {
           "$type": "color",
           "$value": "{🌐 Global.🌈 Color.Yellow.6}"
+        },
+        "PrimaryLight": {
+          "$type": "color",
+          "$value": "{🌐 Global.🌈 Color.Primary.2}"
         }
       },
       "Width": {
@@ -212,14 +212,6 @@
         }
       },
       "Composite": {
-        "Grey": {
-          "$type": "border",
-          "$value": {
-            "color": "{🔗 Alias.▭ Border.Color.Grey}",
-            "width": "{🔗 Alias.▭ Border.Width.Base}",
-            "style": "{🔗 Alias.▭ Border.Style.Solid}"
-          }
-        },
         "GreyDashed": {
           "$type": "border",
           "$value": {
@@ -494,6 +486,14 @@
             "width": "{🔗 Alias.▭ Border.Width.Base}",
             "style": "{🔗 Alias.▭ Border.Style.Solid}"
           }
+        },
+        "Grey": {
+          "$type": "border",
+          "$value": {
+            "color": "{🌐 Global.🌈 Color.Grey.2}",
+            "width": "{🔗 Alias.▭ Border.Width.Base}",
+            "style": "{🔗 Alias.▭ Border.Style.Solid}"
+          }
         }
       }
     },
@@ -697,18 +697,6 @@
           "$type": "color",
           "$value": "{🌐 Global.🌈 Color.White}"
         },
-        "Warning": {
-          "$type": "color",
-          "$value": "{🌐 Global.🌈 Color.Yellow.6}"
-        },
-        "Success": {
-          "$type": "color",
-          "$value": "{🌐 Global.🌈 Color.Success.4}"
-        },
-        "Danger": {
-          "$type": "color",
-          "$value": "{🌐 Global.🌈 Color.Danger.4}"
-        },
         "Primary": {
           "$type": "color",
           "$value": "{🌐 Global.🌈 Color.Primary.5}"
@@ -736,6 +724,22 @@
         "Placeholder": {
           "$type": "color",
           "$value": "{🌐 Global.🌈 Color.Primary.3}"
+        },
+        "Info": {
+          "$type": "color",
+          "$value": "{🌐 Global.🌈 Color.Info.5}"
+        },
+        "Danger": {
+          "$type": "color",
+          "$value": "{🌐 Global.🌈 Color.Danger.5}"
+        },
+        "Success": {
+          "$type": "color",
+          "$value": "{🌐 Global.🌈 Color.Success.5}"
+        },
+        "Warning": {
+          "$type": "color",
+          "$value": "{🌐 Global.🌈 Color.Warning.6B}"
         }
       },
       "Shadow": {
@@ -1067,6 +1071,17 @@
             "desktop": "{🌐 Global.📏 Dimension.Space.128}"
           }
         }
+      },
+      "3XS": {
+        "$type": "dimension",
+        "$value": "{🌐 Global.📏 Dimension.Space.2}",
+        "$extensions": {
+          "com.helvetia.responsive": {
+            "mobile": "{🌐 Global.📏 Dimension.Space.2}",
+            "tablet": "{🌐 Global.📏 Dimension.Space.2}",
+            "desktop": "{🌐 Global.📏 Dimension.Space.2}"
+          }
+        }
       }
     },
     "🎨 Surface": {
@@ -1077,10 +1092,6 @@
       "OnWhite": {
         "$type": "color",
         "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
-      },
-      "Selected": {
-        "$type": "color",
-        "$value": "{🌐 Global.🌈 Color.Primary.2}"
       },
       "OnSelected": {
         "$type": "color",
@@ -1502,9 +1513,61 @@
         "$type": "color",
         "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
       },
+      "Backdrop": {
+        "$type": "color",
+        "$value": "{🌐 Global.🌈 Color.Primary.6}"
+      },
+      "OnBackdrop": {
+        "$type": "color",
+        "$value": "{🌐 Global.🌈 Color.White}"
+      },
+      "OnYellowDark": {
+        "$type": "color",
+        "$value": "{🔗 Alias.🔤 Text.Color.White}"
+      },
+      "OnRedDark": {
+        "$type": "color",
+        "$value": "{🔗 Alias.🔤 Text.Color.White}"
+      },
+      "OnPurpleDark": {
+        "$type": "color",
+        "$value": "{🔗 Alias.🔤 Text.Color.White}"
+      },
+      "GreenDark": {
+        "$type": "color",
+        "$value": "{🌐 Global.🌈 Color.Green.6}"
+      },
+      "OnGreenDark": {
+        "$type": "color",
+        "$value": "{🔗 Alias.🔤 Text.Color.White}"
+      },
+      "PurpleDark": {
+        "$type": "color",
+        "$value": "{🌐 Global.🌈 Color.Purple.6}"
+      },
+      "RedDark": {
+        "$type": "color",
+        "$value": "{🌐 Global.🌈 Color.Red.6}"
+      },
+      "YellowDark": {
+        "$type": "color",
+        "$value": "{🌐 Global.🌈 Color.Yellow.6}"
+      },
+      "InfoLighter": {
+        "$type": "color",
+        "$value": "{🌐 Global.🌈 Color.Info.1}"
+      },
+      "OnInfoLighter": {
+        "$type": "color",
+        "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
+      },
+      "Selected": {
+        "$type": "color",
+        "$value": "{🌐 Global.🌈 Color.Primary.1B}"
+      },
       "Hover": {
         "$type": "color",
-        "$value": "{🌐 Global.🌈 Color.Grey.1}"
+        "$value": "{🌐 Global.🌈 Color.Grey.0}"
       }
     },
     "🎬 Action": {
@@ -2568,7 +2631,7 @@
       },
       "Color": {
         "$type": "color",
-        "$value": "{🌐 Global.🌈 Color.Primary.6}"
+        "$value": "{🔗 Alias.🎨 Surface.Backdrop}"
       }
     },
     "AppFooter": {
@@ -2600,10 +2663,6 @@
           }
         }
       },
-      "SpaceY": {
-        "$type": "dimension",
-        "$value": "{🔗 Alias.↔️ Space.XL}"
-      },
       "Gap": {
         "$type": "dimension",
         "$value": "{🔗 Alias.↔️ Space.Base}"
@@ -2620,8 +2679,12 @@
       "SocialIcon": {
         "Size": {
           "$type": "dimension",
-          "$value": "{🌐 Global.🔤 Font.Size.24}"
+          "$value": "{🌐 Global.📏 Dimension.Size.24}"
         }
+      },
+      "SpaceY": {
+        "$type": "dimension",
+        "$value": "{🔗 Alias.↔️ Space.LG}"
       }
     },
     "Hint": {
@@ -2652,10 +2715,6 @@
           "$type": "dimension",
           "$value": "{🔗 Alias.↔️ Space.2XS}"
         },
-        "Size": {
-          "$type": "number",
-          "$value": "{🌐 Global.🔤 Font.Size.20}"
-        },
         "Color": {
           "Background": {
             "Base": {
@@ -2671,6 +2730,10 @@
               "$value": "{🔗 Alias.🎨 Surface.PrimaryActive}"
             }
           }
+        },
+        "Size": {
+          "$type": "dimension",
+          "$value": "{🌐 Global.📏 Dimension.Size.24}"
         }
       },
       "Heading": {
@@ -2691,10 +2754,6 @@
       }
     },
     "Heading": {
-      "Shadow": {
-        "$type": "shadow",
-        "$value": "{🌐 Global.🔤 Font.Shadow.1}"
-      },
       "Color": {
         "Primary": {
           "$type": "color",
@@ -2814,6 +2873,10 @@
             "lineHeight": "{🔗 Alias.🔤 Text.LineHeight.Heading}"
           }
         }
+      },
+      "Shadow": {
+        "$type": "shadow",
+        "$value": "{🔗 Alias.🌓 Shadow.Text}"
       }
     },
     "Badge": {
@@ -2826,18 +2889,6 @@
           "Background": {
             "$type": "color",
             "$value": "{🔗 Alias.🎨 Surface.Red}"
-          }
-        }
-      },
-      "Info": {
-        "Color": {
-          "Text": {
-            "$type": "color",
-            "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
-          },
-          "Background": {
-            "$type": "color",
-            "$value": "{🔗 Alias.🎨 Surface.Purple}"
           }
         }
       },
@@ -2895,10 +2946,6 @@
             "$type": "dimension",
             "$value": "{🔗 Alias.🔤 Text.Size.XS}"
           },
-          "Font": {
-            "$type": "dimension",
-            "$value": "{🌐 Global.🔤 Font.Size.0}"
-          },
           "Radius": {
             "$type": "number",
             "$value": "{🔗 Alias.🔵 Radius.Rounded}"
@@ -2910,6 +2957,13 @@
           "Space": {
             "$type": "dimension",
             "$value": "{🔗 Alias.↔️ Space.2XS}"
+          },
+          "Font": {
+            "$type": "dimension",
+            "$value": {
+              "value": 0,
+              "unit": "rem"
+            }
           }
         },
         "Base": {
@@ -2925,13 +2979,13 @@
             "$type": "number",
             "$value": "{🔗 Alias.🔵 Radius.Rounded}"
           },
-          "Icon": {
-            "$type": "dimension",
-            "$value": "{🌐 Global.🔤 Font.Size.14}"
-          },
           "Space": {
             "$type": "dimension",
             "$value": "{🔗 Alias.↔️ Space.2XS}"
+          },
+          "Icon": {
+            "$type": "dimension",
+            "$value": "{🌐 Global.📏 Dimension.Size.14}"
           }
         },
         "LG": {
@@ -2969,6 +3023,18 @@
         "LineHeight": {
           "$type": "number",
           "$value": "{🔗 Alias.🔤 Text.LineHeight.Single}"
+        }
+      },
+      "Info": {
+        "Color": {
+          "Text": {
+            "$type": "color",
+            "$value": "{🔗 Alias.🎨 Surface.OnPrimaryLighter}"
+          },
+          "Background": {
+            "$type": "color",
+            "$value": "{🔗 Alias.🎨 Surface.PrimaryLighter}"
+          }
         }
       }
     },
@@ -3863,7 +3929,7 @@
           },
           "SpaceX": {
             "$type": "dimension",
-            "$value": "{🔗 Alias.↔️ Space.LG}"
+            "$value": "{🌐 Global.📏 Dimension.Space.24}"
           }
         },
         "SM": {
@@ -3929,10 +3995,6 @@
             "$type": "dimension",
             "$value": "{🔗 Alias.↔️ Space.XS}"
           },
-          "SpaceX": {
-            "$type": "dimension",
-            "$value": "{🔗 Alias.↔️ Space.LG}"
-          },
           "MinHeight": {
             "$type": "dimension",
             "$value": "{🌐 Global.📏 Dimension.Size.56}"
@@ -3940,6 +4002,10 @@
           "MinWidth": {
             "$type": "dimension",
             "$value": "{🌐 Global.📏 Dimension.Size.56}"
+          },
+          "SpaceX": {
+            "$type": "dimension",
+            "$value": "{🔗 Alias.↔️ Space.MD}"
           }
         }
       }
@@ -4187,55 +4253,27 @@
           }
         }
       },
-      "Space": {
-        "SM": {
-          "$type": "dimension",
-          "$value": "{🌐 Global.📏 Dimension.Space.16}",
-          "$extensions": {
-            "com.helvetia.responsive": {
-              "mobile": "{🌐 Global.📏 Dimension.Space.16}",
-              "tablet": "{🌐 Global.📏 Dimension.Space.16}",
-              "desktop": "{🌐 Global.📏 Dimension.Space.16}"
-            }
-          }
-        },
-        "Base": {
-          "$type": "dimension",
-          "$value": "{🌐 Global.📏 Dimension.Space.16}",
-          "$extensions": {
-            "com.helvetia.responsive": {
-              "mobile": "{🌐 Global.📏 Dimension.Space.16}",
-              "tablet": "{🌐 Global.📏 Dimension.Space.24}",
-              "desktop": "{🌐 Global.📏 Dimension.Space.24}"
-            }
-          }
-        },
-        "MD": {
-          "$type": "dimension",
-          "$value": "{🌐 Global.📏 Dimension.Space.16}",
-          "$extensions": {
-            "com.helvetia.responsive": {
-              "mobile": "{🌐 Global.📏 Dimension.Space.16}",
-              "tablet": "{🌐 Global.📏 Dimension.Space.24}",
-              "desktop": "{🌐 Global.📏 Dimension.Space.32}"
-            }
-          }
-        },
-        "LG": {
-          "$type": "dimension",
-          "$value": "{🌐 Global.📏 Dimension.Space.16}",
-          "$extensions": {
-            "com.helvetia.responsive": {
-              "mobile": "{🌐 Global.📏 Dimension.Space.16}",
-              "tablet": "{🌐 Global.📏 Dimension.Space.32}",
-              "desktop": "{🌐 Global.📏 Dimension.Space.48}"
-            }
-          }
-        }
-      },
       "Radius": {
         "$type": "dimension",
         "$value": "{🔗 Alias.🔵 Radius.LG}"
+      },
+      "Space": {
+        "SM": {
+          "$type": "dimension",
+          "$value": "{🔗 Alias.↔️ Space.Base}"
+        },
+        "Base": {
+          "$type": "dimension",
+          "$value": "{🔗 Alias.↔️ Space.MD}"
+        },
+        "MD": {
+          "$type": "dimension",
+          "$value": "{🔗 Alias.↔️ Space.MD}"
+        },
+        "LG": {
+          "$type": "dimension",
+          "$value": "{🔗 Alias.↔️ Space.XL}"
+        }
       }
     },
     "Close": {
@@ -4381,6 +4419,40 @@
             "value": 6,
             "unit": "px"
           }
+        }
+      }
+    },
+    "DataItem": {
+      "Label": {
+        "FontWeight": {
+          "$type": "fontWeight",
+          "$value": "{🔗 Alias.🔤 Text.Weight.Bold}"
+        },
+        "Color": {
+          "$type": "color",
+          "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
+        }
+      },
+      "Value": {
+        "Color": {
+          "$type": "color",
+          "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
+        }
+      },
+      "Color": {
+        "Required": {
+          "$type": "color",
+          "$value": "{🔗 Alias.🔤 Text.Color.Danger}"
+        },
+        "Disabled": {
+          "$type": "color",
+          "$value": "{🔗 Alias.🔤 Text.Color.Disabled}"
+        }
+      },
+      "Border": {
+        "Bottom": {
+          "$type": "border",
+          "$value": "{🔗 Alias.▭ Border.Composite.Grey}"
         }
       }
     },
@@ -4562,13 +4634,13 @@
           "$type": "color",
           "$value": "{🔗 Alias.▭ Border.Color.PrimaryLight}"
         },
-        "Base": {
-          "$type": "color",
-          "$value": "{🔗 Alias.▭ Border.Color.Grey}"
-        },
         "Inverted": {
           "$type": "color",
           "$value": "{🔗 Alias.▭ Border.Color.White}"
+        },
+        "Base": {
+          "$type": "color",
+          "$value": "{🔗 Alias.▭ Border.Color.GreyLight}"
         }
       },
       "Size": {
@@ -4618,23 +4690,23 @@
       "Size": {
         "SM": {
           "$type": "dimension",
-          "$value": "{🌐 Global.🔤 Font.Size.14}"
+          "$value": "{🌐 Global.📏 Dimension.Size.14}"
         },
         "Base": {
           "$type": "dimension",
-          "$value": "{🌐 Global.🔤 Font.Size.16}"
+          "$value": "{🌐 Global.📏 Dimension.Size.16}"
         },
         "MD": {
           "$type": "dimension",
-          "$value": "{🌐 Global.🔤 Font.Size.24}"
+          "$value": "{🌐 Global.📏 Dimension.Size.24}"
         },
         "LG": {
           "$type": "dimension",
-          "$value": "{🌐 Global.🔤 Font.Size.32}"
+          "$value": "{🌐 Global.📏 Dimension.Size.32}"
         },
         "XL": {
           "$type": "dimension",
-          "$value": "{🌐 Global.🔤 Font.Size.40}"
+          "$value": "{🌐 Global.📏 Dimension.Size.40}"
         }
       }
     },
@@ -4646,33 +4718,45 @@
         },
         "Size": {
           "Base": {
-            "Mobile": {
-              "$type": "dimension",
-              "$value": "{🌐 Global.📏 Dimension.Space.32}"
-            },
             "Tablet": {
               "$type": "dimension",
-              "$value": "{🌐 Global.📏 Dimension.Space.48}"
+              "$value": "{🌐 Global.📏 Dimension.Size.64}"
+            },
+            "Desktop": {
+              "$type": "dimension",
+              "$value": "{🌐 Global.📏 Dimension.Size.64}"
+            },
+            "Mobile": {
+              "$type": "dimension",
+              "$value": "{🌐 Global.📏 Dimension.Size.56}"
             }
           },
           "LG": {
             "Mobile": {
               "$type": "dimension",
-              "$value": "{🌐 Global.📏 Dimension.Space.48}"
+              "$value": "{🌐 Global.📏 Dimension.Size.64}"
             },
             "Tablet": {
               "$type": "dimension",
-              "$value": "{🌐 Global.📏 Dimension.Space.64}"
+              "$value": "{🌐 Global.📏 Dimension.Size.96}"
+            },
+            "Desktop": {
+              "$type": "dimension",
+              "$value": "{🌐 Global.📏 Dimension.Size.96}"
             }
           },
-          "XL": {
+          "SM": {
             "Mobile": {
               "$type": "dimension",
-              "$value": "{🌐 Global.📏 Dimension.Space.64}"
+              "$value": "{🌐 Global.📏 Dimension.Size.48}"
             },
             "Tablet": {
               "$type": "dimension",
-              "$value": "{🌐 Global.📏 Dimension.Space.96}"
+              "$value": "{🌐 Global.📏 Dimension.Size.56}"
+            },
+            "Desktop": {
+              "$type": "dimension",
+              "$value": "{🌐 Global.📏 Dimension.Size.56}"
             }
           }
         }
@@ -4680,34 +4764,34 @@
       "Size": {
         "SM": {
           "$type": "dimension",
-          "$value": "{🌐 Global.🔤 Font.Size.40}"
+          "$value": "{🌐 Global.📏 Dimension.Size.40}"
         },
         "Base": {
           "$type": "dimension",
-          "$value": "{🌐 Global.🔤 Font.Size.80}"
+          "$value": "{🌐 Global.📏 Dimension.Size.80}"
         },
         "LG": {
           "$type": "dimension",
-          "$value": "{🌐 Global.🔤 Font.Size.176}"
+          "$value": "{🌐 Global.📏 Dimension.Size.176}"
         }
       },
       "Color": {
         "Green": {
-          "Level1": {
-            "$type": "color",
-            "$value": "{🌐 Global.🌈 Color.Primary.5}"
-          },
-          "Level2": {
-            "$type": "color",
-            "$value": "{🌐 Global.🌈 Color.Green.6}"
-          },
-          "Level3": {
-            "$type": "color",
-            "$value": "{🌐 Global.🌈 Color.Green.3}"
-          },
           "Background": {
             "$type": "color",
             "$value": "{🔗 Alias.🎨 Surface.GreenLighter}"
+          },
+          "Level1": {
+            "$type": "color",
+            "$value": "{🔗 Alias.🎨 Surface.Primary}"
+          },
+          "Level2": {
+            "$type": "color",
+            "$value": "{🔗 Alias.🎨 Surface.GreenDark}"
+          },
+          "Level3": {
+            "$type": "color",
+            "$value": "{🔗 Alias.🎨 Surface.Green}"
           }
         },
         "Invalid": {
@@ -4747,57 +4831,57 @@
           }
         },
         "Purple": {
-          "Level1": {
-            "$type": "color",
-            "$value": "{🌐 Global.🌈 Color.Primary.5}"
-          },
-          "Level2": {
-            "$type": "color",
-            "$value": "{🌐 Global.🌈 Color.Purple.6}"
-          },
-          "Level3": {
-            "$type": "color",
-            "$value": "{🌐 Global.🌈 Color.Purple.3}"
-          },
           "Background": {
             "$type": "color",
             "$value": "{🔗 Alias.🎨 Surface.PurpleLighter}"
+          },
+          "Level1": {
+            "$type": "color",
+            "$value": "{🔗 Alias.🎨 Surface.Primary}"
+          },
+          "Level2": {
+            "$type": "color",
+            "$value": "{🔗 Alias.🎨 Surface.PurpleDark}"
+          },
+          "Level3": {
+            "$type": "color",
+            "$value": "{🔗 Alias.🎨 Surface.Purple}"
           }
         },
         "Red": {
-          "Level1": {
-            "$type": "color",
-            "$value": "{🌐 Global.🌈 Color.Primary.5}"
-          },
-          "Level2": {
-            "$type": "color",
-            "$value": "{🌐 Global.🌈 Color.Red.6}"
-          },
-          "Level3": {
-            "$type": "color",
-            "$value": "{🌐 Global.🌈 Color.Red.3}"
-          },
           "Background": {
             "$type": "color",
             "$value": "{🔗 Alias.🎨 Surface.RedLighter}"
-          }
-        },
-        "Yellow": {
+          },
           "Level1": {
             "$type": "color",
-            "$value": "{🌐 Global.🌈 Color.Primary.5}"
+            "$value": "{🔗 Alias.🎨 Surface.Primary}"
           },
           "Level2": {
             "$type": "color",
-            "$value": "{🌐 Global.🌈 Color.Yellow.6}"
+            "$value": "{🔗 Alias.🎨 Surface.RedDark}"
           },
           "Level3": {
             "$type": "color",
-            "$value": "{🌐 Global.🌈 Color.Yellow.3}"
-          },
+            "$value": "{🔗 Alias.🎨 Surface.Red}"
+          }
+        },
+        "Yellow": {
           "Background": {
             "$type": "color",
             "$value": "{🔗 Alias.🎨 Surface.YellowLighter}"
+          },
+          "Level1": {
+            "$type": "color",
+            "$value": "{🔗 Alias.🎨 Surface.Primary}"
+          },
+          "Level2": {
+            "$type": "color",
+            "$value": "{🔗 Alias.🎨 Surface.YellowDark}"
+          },
+          "Level3": {
+            "$type": "color",
+            "$value": "{🔗 Alias.🎨 Surface.Yellow}"
           }
         }
       }
@@ -4959,7 +5043,7 @@
           "Placeholder": {
             "Color": {
               "$type": "color",
-              "$value": "{🌐 Global.🌈 Color.Success.2}"
+              "$value": "{🔗 Alias.🔤 Text.Color.Placeholder}"
             }
           }
         },
@@ -5028,7 +5112,7 @@
           "Placeholder": {
             "Color": {
               "$type": "color",
-              "$value": "{🌐 Global.🌈 Color.Warning.4}"
+              "$value": "{🔗 Alias.🔤 Text.Color.Placeholder}"
             }
           }
         },
@@ -5097,7 +5181,7 @@
           "Placeholder": {
             "Color": {
               "$type": "color",
-              "$value": "{🌐 Global.🌈 Color.Danger.2}"
+              "$value": "{🔗 Alias.🔤 Text.Color.Placeholder}"
             }
           }
         },
@@ -5343,7 +5427,7 @@
             },
             "Base": {
               "$type": "color",
-              "$value": "{🔗 Alias.🔤 Text.Color.Hint}"
+              "$value": "{🔗 Alias.🔤 Text.Color.Placeholder}"
             }
           }
         },
@@ -5630,17 +5714,17 @@
     "Notification": {
       "Base": {
         "Color": {
-          "Text": {
-            "$type": "color",
-            "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
-          },
           "Background": {
             "$type": "color",
             "$value": "{🔗 Alias.🎨 Surface.GreyLight}"
           },
+          "Text": {
+            "$type": "color",
+            "$value": "{🔗 Alias.🎨 Surface.OnGreyLight}"
+          },
           "Heading": {
             "$type": "color",
-            "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
+            "$value": "{🔗 Alias.🎨 Surface.OnGreyLight}"
           }
         },
         "Icon": {
@@ -5661,20 +5745,6 @@
         }
       },
       "Info": {
-        "Color": {
-          "Text": {
-            "$type": "color",
-            "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
-          },
-          "Background": {
-            "$type": "color",
-            "$value": "{🌐 Global.🌈 Color.Info.1}"
-          },
-          "Heading": {
-            "$type": "color",
-            "$value": "{🌐 Global.🌈 Color.Info.5}"
-          }
-        },
         "Icon": {
           "$type": "string",
           "$value": "url('data:image/svg+xml;charset=UTF-8,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 18 18\"><path d=\"M6.176 13.705c-0.65 0-1.176 0.514-1.176 1.147 0 0.635 0.526 1.149 1.176 1.149h2.824h2.824c0.65 0 1.176-0.514 1.176-1.149 0-0.633-0.526-1.147-1.176-1.147h-1.647V8.426c0-0.634-0.526-1.147-1.176-1.147H7.118C6.468 7.279 5.941 7.792 5.941 8.426c0 0.633 0.526 1.147 1.176 1.147h0.706v4.132H6.176zM10.882 3.836c0 1.014-0.843 1.836-1.882 1.836S7.118 4.85 7.118 3.836C7.118 2.822 7.96 2 9 2s1.882 0.822 1.882 1.836z\" fill=\"black\"/></svg>')"
@@ -5690,21 +5760,35 @@
         "Body": {
           "$type": "typography",
           "$value": "{🧩 Component.Text.Typo.Paragraph}"
+        },
+        "Color": {
+          "Background": {
+            "$type": "color",
+            "$value": "{🔗 Alias.🎨 Surface.InfoLighter}"
+          },
+          "Heading": {
+            "$type": "color",
+            "$value": "{🔗 Alias.🔤 Text.Color.Info}"
+          },
+          "Text": {
+            "$type": "color",
+            "$value": "{🔗 Alias.🎨 Surface.OnInfoLighter}"
+          }
         }
       },
       "Success": {
         "Color": {
-          "Text": {
-            "$type": "color",
-            "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
-          },
           "Background": {
             "$type": "color",
             "$value": "{🔗 Alias.🎨 Surface.SuccessLighter}"
           },
+          "Text": {
+            "$type": "color",
+            "$value": "{🔗 Alias.🎨 Surface.OnSuccessLighter}"
+          },
           "Heading": {
             "$type": "color",
-            "$value": "{🌐 Global.🌈 Color.Success.5}"
+            "$value": "{🔗 Alias.🔤 Text.Color.Success}"
           }
         },
         "Icon": {
@@ -5726,17 +5810,17 @@
       },
       "Warning": {
         "Color": {
-          "Text": {
-            "$type": "color",
-            "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
-          },
           "Background": {
             "$type": "color",
             "$value": "{🔗 Alias.🎨 Surface.WarningLighter}"
           },
+          "Text": {
+            "$type": "color",
+            "$value": "{🔗 Alias.🎨 Surface.OnWarningLighter}"
+          },
           "Heading": {
             "$type": "color",
-            "$value": "{🌐 Global.🌈 Color.Warning.6B}"
+            "$value": "{🔗 Alias.🔤 Text.Color.Warning}"
           }
         },
         "Icon": {
@@ -5758,17 +5842,17 @@
       },
       "Danger": {
         "Color": {
-          "Text": {
-            "$type": "color",
-            "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
-          },
           "Background": {
             "$type": "color",
             "$value": "{🔗 Alias.🎨 Surface.DangerLighter}"
           },
+          "Text": {
+            "$type": "color",
+            "$value": "{🔗 Alias.🎨 Surface.OnDangerLighter}"
+          },
           "Heading": {
             "$type": "color",
-            "$value": "{🌐 Global.🌈 Color.Danger.5}"
+            "$value": "{🔗 Alias.🔤 Text.Color.Danger}"
           }
         },
         "Icon": {
@@ -5790,26 +5874,22 @@
       },
       "OutlineBase": {
         "Color": {
-          "Text": {
-            "$type": "color",
-            "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
-          },
           "Background": {
             "$type": "color",
             "$value": "{🔗 Alias.🎨 Surface.White}"
           },
+          "Text": {
+            "$type": "color",
+            "$value": "{🔗 Alias.🎨 Surface.OnWhite}"
+          },
           "Heading": {
             "$type": "color",
-            "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
+            "$value": "{🔗 Alias.🎨 Surface.OnWhite}"
           }
         },
         "Icon": {
           "$type": "string",
           "$value": "url('data:image/svg+xml;charset=UTF-8,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 18 18\"><path d=\"M5.52 3.448C6.452 2.521 7.716 2 9.033 2s2.562 0.521 3.493 1.448C13.478 4.374 14.001 5.632 14.001 6.942v4.413c0 0.31 0.124 0.605 0.344 0.824 0.249 0.248 0.445 0.342 0.719 0.342 0.278 0 0.503 0.224 0.503 0.501 0 0.277-0.225 0.501-0.503 0.501H3.003c-0.278 0-0.503-0.224-0.503-0.501 0-0.277 0.225-0.501 0.503-0.501 0.275 0 0.47-0.094 0.719-0.342 0.219-0.219 0.344-0.514 0.344-0.824V6.942c0-1.311 0.523-2.569 1.456-3.494zM7.274 15.25c0-0.414 0.338-0.75 0.754-0.75h2.01c0.416 0 0.754 0.336 0.754 0.75s-0.338 0.75-0.754 0.75h-2.01c-0.416 0-0.754-0.336-0.754-0.75z\" fill=\"black\"/></svg>')"
-        },
-        "Border": {
-          "$type": "color",
-          "$value": "{🌐 Global.🌈 Color.Primary.2}"
         },
         "Heading": {
           "$type": "typography",
@@ -5818,21 +5898,25 @@
         "Body": {
           "$type": "typography",
           "$value": "{🧩 Component.Text.Typo.Paragraph}"
+        },
+        "Border": {
+          "$type": "color",
+          "$value": "{🔗 Alias.▭ Border.Color.PrimaryLight}"
         }
       },
       "OutlinePurple": {
         "Color": {
-          "Text": {
-            "$type": "color",
-            "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
-          },
           "Background": {
             "$type": "color",
             "$value": "{🔗 Alias.🎨 Surface.PurpleLighter}"
           },
+          "Text": {
+            "$type": "color",
+            "$value": "{🔗 Alias.🎨 Surface.OnPurpleLighter}"
+          },
           "Heading": {
             "$type": "color",
-            "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
+            "$value": "{🔗 Alias.🎨 Surface.OnPurpleLighter}"
           }
         },
         "Icon": {
@@ -5854,17 +5938,17 @@
       },
       "OutlineGreen": {
         "Color": {
-          "Text": {
-            "$type": "color",
-            "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
-          },
           "Background": {
             "$type": "color",
             "$value": "{🔗 Alias.🎨 Surface.GreenLighter}"
           },
+          "Text": {
+            "$type": "color",
+            "$value": "{🔗 Alias.🎨 Surface.OnGreenLighter}"
+          },
           "Heading": {
             "$type": "color",
-            "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
+            "$value": "{🔗 Alias.🎨 Surface.OnGreenLighter}"
           }
         },
         "Icon": {
@@ -5886,17 +5970,17 @@
       },
       "OutlineYellow": {
         "Color": {
-          "Text": {
-            "$type": "color",
-            "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
-          },
           "Background": {
             "$type": "color",
             "$value": "{🔗 Alias.🎨 Surface.YellowLighter}"
           },
+          "Text": {
+            "$type": "color",
+            "$value": "{🔗 Alias.🎨 Surface.OnYellowLighter}"
+          },
           "Heading": {
             "$type": "color",
-            "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
+            "$value": "{🔗 Alias.🎨 Surface.OnYellowLighter}"
           }
         },
         "Icon": {
@@ -5918,17 +6002,17 @@
       },
       "OutlineRed": {
         "Color": {
-          "Text": {
-            "$type": "color",
-            "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
-          },
           "Background": {
             "$type": "color",
             "$value": "{🔗 Alias.🎨 Surface.RedLighter}"
           },
+          "Text": {
+            "$type": "color",
+            "$value": "{🔗 Alias.🎨 Surface.OnRedLighter}"
+          },
           "Heading": {
             "$type": "color",
-            "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
+            "$value": "{🔗 Alias.🎨 Surface.OnRedLighter}"
           }
         },
         "Icon": {
@@ -6109,10 +6193,6 @@
           "$type": "dimension",
           "$value": "{🔗 Alias.🔵 Radius.LG}"
         },
-        "ContentGap": {
-          "$type": "dimension",
-          "$value": "{🌐 Global.📏 Dimension.Space.1}"
-        },
         "Color": {
           "Text": {
             "Base": {
@@ -6143,7 +6223,7 @@
             },
             "Base": {
               "$type": "border",
-              "$value": "{🔗 Alias.▭ Border.Composite.GreyLight}"
+              "$value": "{🔗 Alias.▭ Border.Composite.Grey}"
             }
           }
         },
@@ -6212,6 +6292,13 @@
             "fontWeight": "{🔗 Alias.🔤 Text.Weight.Regular}",
             "lineHeight": "{🔗 Alias.🔤 Text.LineHeight.Text}"
           }
+        },
+        "ContentGap": {
+          "$type": "dimension",
+          "$value": {
+            "value": 1,
+            "unit": "px"
+          }
         }
       }
     },
@@ -6246,23 +6333,12 @@
       },
       "Space": {
         "$type": "dimension",
-        "$value": "{🌐 Global.📏 Dimension.Size.16}",
-        "$extensions": {
-          "com.helvetia.responsive": {
-            "mobile": "{🌐 Global.📏 Dimension.Size.16}",
-            "tablet": "{🌐 Global.📏 Dimension.Size.32}",
-            "desktop": "{🌐 Global.📏 Dimension.Space.40}"
-          }
-        }
+        "$value": "{🔗 Alias.↔️ Space.MD}"
       }
     },
     "AppNavbar": {
       "Base": {
         "Layout": {
-          "Padding": {
-            "$type": "dimension",
-            "$value": "{🌐 Global.📏 Dimension.Space.16}"
-          },
           "Shadow": {
             "$type": "shadow",
             "$value": "{🔗 Alias.🌓 Shadow.Box.Header}"
@@ -6281,6 +6357,10 @@
           "Background": {
             "$type": "color",
             "$value": "{🔗 Alias.🎨 Surface.Primary}"
+          },
+          "Padding": {
+            "$type": "dimension",
+            "$value": "{🔗 Alias.↔️ Space.Base}"
           }
         },
         "Brand": {
@@ -6290,7 +6370,7 @@
           },
           "Gap": {
             "$type": "dimension",
-            "$value": "{🌐 Global.📏 Dimension.Space.8}"
+            "$value": "{🔗 Alias.↔️ Space.XS}"
           }
         },
         "Title": {
@@ -6312,25 +6392,25 @@
           }
         },
         "Hamburger": {
-          "Padding": {
-            "$type": "dimension",
-            "$value": "{🌐 Global.📏 Dimension.Space.8}"
-          },
           "TransitionDuration": {
             "$type": "string",
             "$value": "0.2s"
           },
-          "Width": {
-            "$type": "dimension",
-            "$value": "{🌐 Global.📏 Dimension.Space.48}"
-          },
-          "Height": {
-            "$type": "dimension",
-            "$value": "{🌐 Global.📏 Dimension.Space.48}"
-          },
           "Radius": {
             "$type": "dimension",
             "$value": "{🔗 Alias.🔵 Radius.Base}"
+          },
+          "Padding": {
+            "$type": "dimension",
+            "$value": "{🔗 Alias.↔️ Space.XS}"
+          },
+          "Width": {
+            "$type": "dimension",
+            "$value": "{🌐 Global.📏 Dimension.Size.48}"
+          },
+          "Height": {
+            "$type": "dimension",
+            "$value": "{🌐 Global.📏 Dimension.Size.48}"
           }
         },
         "Sidebar": {
@@ -6369,33 +6449,7 @@
               "$value": "{🔗 Alias.🎨 Surface.White}"
             }
           },
-          "Content": {
-            "Gap": {
-              "$type": "dimension",
-              "$value": "{🌐 Global.📏 Dimension.Space.16}"
-            },
-            "PaddingInline": {
-              "$type": "dimension",
-              "$value": "{🌐 Global.📏 Dimension.Space.24}"
-            },
-            "PaddingBlock": {
-              "$type": "dimension",
-              "$value": "{🌐 Global.📏 Dimension.Space.24}"
-            }
-          },
           "Item": {
-            "MinHeight": {
-              "$type": "dimension",
-              "$value": "{🌐 Global.📏 Dimension.Space.48}"
-            },
-            "PaddingBlock": {
-              "$type": "dimension",
-              "$value": "{🌐 Global.📏 Dimension.Space.12}"
-            },
-            "PaddingInline": {
-              "$type": "dimension",
-              "$value": "{🌐 Global.📏 Dimension.Space.8}"
-            },
             "FontWeight": {
               "$type": "fontWeight",
               "$value": "{🔗 Alias.🔤 Text.Weight.Bold}"
@@ -6428,16 +6482,6 @@
                 "$value": "{🔗 Alias.▭ Border.Color.Primary}"
               }
             },
-            "Chevron": {
-              "Color": {
-                "$type": "color",
-                "$value": "{🌐 Global.🌈 Color.Primary.5}"
-              },
-              "Size": {
-                "$type": "dimension",
-                "$value": "{🌐 Global.📏 Dimension.Space.16}"
-              }
-            },
             "FontSize": {
               "$type": "dimension",
               "$value": "{🔗 Alias.🔤 Text.Size.Base}"
@@ -6451,31 +6495,47 @@
                 "$type": "color",
                 "$value": "{🔗 Alias.🎨 Surface.PrimaryLighter}"
               }
+            },
+            "MinHeight": {
+              "$type": "dimension",
+              "$value": "{🌐 Global.📏 Dimension.Size.48}"
+            },
+            "PaddingBlock": {
+              "$type": "dimension",
+              "$value": "{🔗 Alias.↔️ Space.SM}"
+            },
+            "PaddingInline": {
+              "$type": "dimension",
+              "$value": "{🔗 Alias.↔️ Space.XS}"
+            },
+            "Chevron": {
+              "Color": {
+                "$type": "color",
+                "$value": "{🔗 Alias.🎨 Surface.Primary}"
+              },
+              "Size": {
+                "$type": "dimension",
+                "$value": "{🌐 Global.📏 Dimension.Size.16}"
+              }
+            }
+          },
+          "Content": {
+            "Gap": {
+              "$type": "dimension",
+              "$value": "{🔗 Alias.↔️ Space.Base}"
+            },
+            "PaddingInline": {
+              "$type": "dimension",
+              "$value": "{🔗 Alias.↔️ Space.LG}"
+            },
+            "PaddingBlock": {
+              "$type": "dimension",
+              "$value": "{🔗 Alias.↔️ Space.LG}"
             }
           }
         },
         "Menu": {
-          "Gap": {
-            "$type": "dimension",
-            "$value": "{🌐 Global.📏 Dimension.Space.32}"
-          },
-          "StartGap": {
-            "$type": "dimension",
-            "$value": "{🌐 Global.📏 Dimension.Space.2}"
-          },
-          "EndGap": {
-            "$type": "dimension",
-            "$value": "{🌐 Global.📏 Dimension.Space.8}"
-          },
           "Item": {
-            "PaddingBlock": {
-              "$type": "dimension",
-              "$value": "{🌐 Global.📏 Dimension.Space.8}"
-            },
-            "PaddingInline": {
-              "$type": "dimension",
-              "$value": "{🌐 Global.📏 Dimension.Space.16}"
-            },
             "BorderRadius": {
               "$type": "dimension",
               "$value": "{🔗 Alias.🔵 Radius.Base}"
@@ -6509,63 +6569,71 @@
             "FontSize": {
               "$type": "dimension",
               "$value": "{🔗 Alias.🔤 Text.Size.Base}"
+            },
+            "PaddingBlock": {
+              "$type": "dimension",
+              "$value": "{🔗 Alias.↔️ Space.XS}"
+            },
+            "PaddingInline": {
+              "$type": "dimension",
+              "$value": "{🔗 Alias.↔️ Space.Base}"
             }
-          }
-        },
-        "Container": {
+          },
           "Gap": {
             "$type": "dimension",
-            "$value": "{🌐 Global.📏 Dimension.Space.32}"
-          }
-        },
-        "Content": {
-          "Gap": {
+            "$value": "{🔗 Alias.↔️ Space.XL}"
+          },
+          "StartGap": {
             "$type": "dimension",
-            "$value": "{🌐 Global.📏 Dimension.Space.8}"
+            "$value": "{🔗 Alias.↔️ Space.3XS}"
+          },
+          "EndGap": {
+            "$type": "dimension",
+            "$value": "{🔗 Alias.↔️ Space.XS}"
           }
         },
         "Button": {
           "Color": {
+            "Border": {
+              "Base": {
+                "$type": "border",
+                "$value": "{🧩 Component.Button.Color.InvertedTertiary.Base.Border}"
+              },
+              "Hover": {
+                "$type": "border",
+                "$value": "{🧩 Component.Button.Color.InvertedTertiary.Hover.Border}"
+              },
+              "Active": {
+                "$type": "border",
+                "$value": "{🧩 Component.Button.Color.InvertedTertiary.Active.Border}"
+              }
+            },
             "Text": {
               "Base": {
                 "$type": "color",
-                "$value": "{🌐 Global.🌈 Color.White}"
+                "$value": "{🧩 Component.Button.Color.InvertedTertiary.Base.Text}"
               },
               "Hover": {
                 "$type": "color",
-                "$value": "{🌐 Global.🌈 Color.Primary.5}"
+                "$value": "{🧩 Component.Button.Color.InvertedTertiary.Hover.Text}"
               },
               "Active": {
                 "$type": "color",
-                "$value": "{🌐 Global.🌈 Color.Primary.5}"
+                "$value": "{🧩 Component.Button.Color.InvertedTertiary.Active.Text}"
               }
             },
             "Background": {
               "Base": {
                 "$type": "color",
-                "$value": "{🌐 Global.🌈 Color.Primary.4}"
+                "$value": "{🧩 Component.Button.Color.InvertedTertiary.Base.Background}"
               },
               "Hover": {
                 "$type": "color",
-                "$value": "{🌐 Global.🌈 Color.Sky.2}"
+                "$value": "{🧩 Component.Button.Color.InvertedTertiary.Hover.Background}"
               },
               "Active": {
                 "$type": "color",
-                "$value": "{🌐 Global.🌈 Color.White}"
-              }
-            },
-            "Border": {
-              "Base": {
-                "$type": "color",
-                "$value": "{🌐 Global.🌈 Color.Primary.4}"
-              },
-              "Hover": {
-                "$type": "color",
-                "$value": "{🌐 Global.🌈 Color.Sky.2}"
-              },
-              "Active": {
-                "$type": "color",
-                "$value": "{🌐 Global.🌈 Color.White}"
+                "$value": "{🧩 Component.Button.Color.InvertedTertiary.Active.Background}"
               }
             }
           }
@@ -6579,13 +6647,21 @@
             "$type": "color",
             "$value": "{🔗 Alias.✨ Interaction.Focus.Color.Inverted}"
           }
+        },
+        "Container": {
+          "Gap": {
+            "$type": "dimension",
+            "$value": "{🔗 Alias.↔️ Space.XL}"
+          }
+        },
+        "Content": {
+          "Gap": {
+            "$type": "dimension",
+            "$value": "{🔗 Alias.↔️ Space.XS}"
+          }
         }
       },
       "Light": {
-        "Background": {
-          "$type": "color",
-          "$value": "{🌐 Global.🌈 Color.White}"
-        },
         "Title": {
           "Color": {
             "$type": "color",
@@ -6624,46 +6700,46 @@
         },
         "Button": {
           "Color": {
-            "Text": {
+            "Border": {
               "Base": {
-                "$type": "color",
-                "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
+                "$type": "border",
+                "$value": "{🧩 Component.Button.Color.Tertiary.Base.Border}"
               },
               "Hover": {
-                "$type": "color",
-                "$value": "{🔗 Alias.🎬 Action.Primary.Text.Hover}"
+                "$type": "border",
+                "$value": "{🧩 Component.Button.Color.Tertiary.Hover.Border}"
               },
               "Active": {
-                "$type": "color",
-                "$value": "{🔗 Alias.🎬 Action.Primary.Text.Active}"
+                "$type": "border",
+                "$value": "{🧩 Component.Button.Color.Tertiary.Active.Border}"
               }
             },
             "Background": {
               "Base": {
                 "$type": "color",
-                "$value": "{🌐 Global.🌈 Color.Grey.1}"
+                "$value": "{🧩 Component.Button.Color.Tertiary.Base.Background}"
               },
               "Hover": {
                 "$type": "color",
-                "$value": "{🌐 Global.🌈 Color.Sky.1}"
+                "$value": "{🧩 Component.Button.Color.Tertiary.Hover.Background}"
               },
               "Active": {
                 "$type": "color",
-                "$value": "{🌐 Global.🌈 Color.Sky.1}"
+                "$value": "{🧩 Component.Button.Color.Tertiary.Active.Background}"
               }
             },
-            "Border": {
+            "Text": {
               "Base": {
                 "$type": "color",
-                "$value": "{🌐 Global.🌈 Color.Grey.1}"
+                "$value": "{🧩 Component.Button.Color.Tertiary.Base.Text}"
               },
               "Hover": {
                 "$type": "color",
-                "$value": "{🌐 Global.🌈 Color.Sky.1}"
+                "$value": "{🧩 Component.Button.Color.Tertiary.Hover.Text}"
               },
               "Active": {
                 "$type": "color",
-                "$value": "{🌐 Global.🌈 Color.Sky.1}"
+                "$value": "{🧩 Component.Button.Color.Tertiary.Active.Text}"
               }
             }
           }
@@ -6677,6 +6753,10 @@
             "$type": "color",
             "$value": "{🔗 Alias.✨ Interaction.Focus.Color.End}"
           }
+        },
+        "Background": {
+          "$type": "color",
+          "$value": "{🔗 Alias.🎨 Surface.White}"
         }
       }
     },
@@ -6736,11 +6816,11 @@
             "$type": "color",
             "$value": "{🔗 Alias.🎨 Surface.GreyLight}"
           },
-          "Heading": {
-            "$type": "color",
-            "$value": "{🌐 Global.🌈 Color.Primary.5}"
-          },
           "Body": {
+            "$type": "color",
+            "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
+          },
+          "Heading": {
             "$type": "color",
             "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
           }
@@ -6752,10 +6832,6 @@
       },
       "Success": {
         "Color": {
-          "Heading": {
-            "$type": "color",
-            "$value": "{🌐 Global.🌈 Color.Success.5}"
-          },
           "Body": {
             "$type": "color",
             "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
@@ -6763,6 +6839,10 @@
           "Background": {
             "$type": "color",
             "$value": "{🔗 Alias.🎨 Surface.SuccessLighter}"
+          },
+          "Heading": {
+            "$type": "color",
+            "$value": "{🔗 Alias.🔤 Text.Color.Success}"
           }
         },
         "Border": {
@@ -6772,17 +6852,17 @@
       },
       "Info": {
         "Color": {
-          "Heading": {
-            "$type": "color",
-            "$value": "{🌐 Global.🌈 Color.Info.5}"
-          },
           "Body": {
             "$type": "color",
             "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
           },
+          "Heading": {
+            "$type": "color",
+            "$value": "{🔗 Alias.🔤 Text.Color.Info}"
+          },
           "Background": {
             "$type": "color",
-            "$value": "{🌐 Global.🌈 Color.Info.1}"
+            "$value": "{🔗 Alias.🎨 Surface.InfoLighter}"
           }
         },
         "Border": {
@@ -6792,10 +6872,6 @@
       },
       "Warning": {
         "Color": {
-          "Heading": {
-            "$type": "color",
-            "$value": "{🌐 Global.🌈 Color.Warning.5}"
-          },
           "Body": {
             "$type": "color",
             "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
@@ -6803,6 +6879,10 @@
           "Background": {
             "$type": "color",
             "$value": "{🔗 Alias.🎨 Surface.WarningLighter}"
+          },
+          "Heading": {
+            "$type": "color",
+            "$value": "{🔗 Alias.🔤 Text.Color.Warning}"
           }
         },
         "Border": {
@@ -6812,10 +6892,6 @@
       },
       "Danger": {
         "Color": {
-          "Heading": {
-            "$type": "color",
-            "$value": "{🌐 Global.🌈 Color.Danger.5}"
-          },
           "Body": {
             "$type": "color",
             "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
@@ -6823,16 +6899,16 @@
           "Background": {
             "$type": "color",
             "$value": "{🔗 Alias.🎨 Surface.DangerLighter}"
+          },
+          "Heading": {
+            "$type": "color",
+            "$value": "{🔗 Alias.🔤 Text.Color.Danger}"
           }
         },
         "Border": {
           "$type": "border",
           "$value": "{🔗 Alias.▭ Border.Composite.None}"
         }
-      },
-      "Gap": {
-        "$type": "dimension",
-        "$value": "{🌐 Global.📏 Dimension.Space.2}"
       },
       "Padding": {
         "$type": "dimension",
@@ -6845,6 +6921,10 @@
       "Body": {
         "$type": "typography",
         "$value": "{🧩 Component.Text.Typo.Paragraph}"
+      },
+      "Gap": {
+        "$type": "dimension",
+        "$value": "{🔗 Alias.↔️ Space.3XS}"
       }
     },
     "Spinner": {
@@ -6924,26 +7004,26 @@
           },
           "Heading": {
             "$type": "color",
-            "$value": "{🌐 Global.🌈 Color.Primary.5}"
+            "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
           },
           "Body": {
             "$type": "color",
-            "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
-          }
-        },
-        "Progress": {
-          "Background": {
-            "$type": "color",
-            "$value": "{🌐 Global.🌈 Color.Primary.2}"
-          },
-          "Bar": {
-            "$type": "color",
-            "$value": "{🌐 Global.🌈 Color.Primary.5}"
+            "$value": "{🔗 Alias.🎨 Surface.OnGreyLight}"
           }
         },
         "Border": {
           "$type": "border",
           "$value": "{🔗 Alias.▭ Border.Composite.None}"
+        },
+        "Progress": {
+          "Background": {
+            "$type": "color",
+            "$value": "{🌐 Global.🌈 Color.Primary.1B}"
+          },
+          "Bar": {
+            "$type": "color",
+            "$value": "{🔗 Alias.🎨 Surface.Primary}"
+          }
         }
       },
       "Success": {
@@ -6954,56 +7034,56 @@
           },
           "Heading": {
             "$type": "color",
-            "$value": "{🌐 Global.🌈 Color.Success.5}"
+            "$value": "{🔗 Alias.🔤 Text.Color.Success}"
           },
           "Body": {
             "$type": "color",
-            "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
-          }
-        },
-        "Progress": {
-          "Background": {
-            "$type": "color",
-            "$value": "{🌐 Global.🌈 Color.Success.3}"
-          },
-          "Bar": {
-            "$type": "color",
-            "$value": "{🌐 Global.🌈 Color.Success.6}"
+            "$value": "{🔗 Alias.🎨 Surface.OnSuccessLighter}"
           }
         },
         "Border": {
           "$type": "border",
           "$value": "{🔗 Alias.▭ Border.Composite.None}"
+        },
+        "Progress": {
+          "Background": {
+            "$type": "color",
+            "$value": "{🔗 Alias.🎨 Surface.SuccessLight}"
+          },
+          "Bar": {
+            "$type": "color",
+            "$value": "{🔗 Alias.🎨 Surface.SuccessDarkest}"
+          }
         }
       },
       "Info": {
+        "Border": {
+          "$type": "border",
+          "$value": "{🔗 Alias.▭ Border.Composite.None}"
+        },
         "Color": {
           "Background": {
             "$type": "color",
-            "$value": "{🌐 Global.🌈 Color.Info.1}"
+            "$value": "{🔗 Alias.🎨 Surface.InfoLighter}"
           },
           "Heading": {
             "$type": "color",
-            "$value": "{🌐 Global.🌈 Color.Info.5}"
+            "$value": "{🔗 Alias.🔤 Text.Color.Info}"
           },
           "Body": {
             "$type": "color",
-            "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
+            "$value": "{🔗 Alias.🎨 Surface.OnInfoLighter}"
           }
         },
         "Progress": {
           "Background": {
             "$type": "color",
-            "$value": "{🌐 Global.🌈 Color.Info.3}"
+            "$value": "{🔗 Alias.🎨 Surface.InfoLight}"
           },
           "Bar": {
             "$type": "color",
-            "$value": "{🌐 Global.🌈 Color.Info.6}"
+            "$value": "{🔗 Alias.🎨 Surface.InfoDarkest}"
           }
-        },
-        "Border": {
-          "$type": "border",
-          "$value": "{🔗 Alias.▭ Border.Composite.None}"
         }
       },
       "Warning": {
@@ -7012,28 +7092,28 @@
             "$type": "color",
             "$value": "{🔗 Alias.🎨 Surface.WarningLighter}"
           },
-          "Heading": {
-            "$type": "color",
-            "$value": "{🌐 Global.🌈 Color.Warning.6B}"
-          },
           "Body": {
             "$type": "color",
-            "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
-          }
-        },
-        "Progress": {
-          "Background": {
-            "$type": "color",
-            "$value": "{🌐 Global.🌈 Color.Warning.3}"
+            "$value": "{🔗 Alias.🎨 Surface.OnWarningLighter}"
           },
-          "Bar": {
+          "Heading": {
             "$type": "color",
-            "$value": "{🌐 Global.🌈 Color.Warning.6}"
+            "$value": "{🔗 Alias.🔤 Text.Color.Warning}"
           }
         },
         "Border": {
           "$type": "border",
           "$value": "{🔗 Alias.▭ Border.Composite.None}"
+        },
+        "Progress": {
+          "Background": {
+            "$type": "color",
+            "$value": "{🔗 Alias.🎨 Surface.WarningLight}"
+          },
+          "Bar": {
+            "$type": "color",
+            "$value": "{🔗 Alias.🎨 Surface.WarningDarkest}"
+          }
         }
       },
       "Danger": {
@@ -7044,35 +7124,31 @@
           },
           "Heading": {
             "$type": "color",
-            "$value": "{🌐 Global.🌈 Color.Danger.5}"
+            "$value": "{🔗 Alias.🔤 Text.Color.Danger}"
           },
           "Body": {
             "$type": "color",
-            "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
-          }
-        },
-        "Progress": {
-          "Background": {
-            "$type": "color",
-            "$value": "{🌐 Global.🌈 Color.Danger.3}"
-          },
-          "Bar": {
-            "$type": "color",
-            "$value": "{🌐 Global.🌈 Color.Danger.6}"
+            "$value": "{🔗 Alias.🎨 Surface.OnDangerLighter}"
           }
         },
         "Border": {
           "$type": "border",
           "$value": "{🔗 Alias.▭ Border.Composite.None}"
+        },
+        "Progress": {
+          "Background": {
+            "$type": "color",
+            "$value": "{🔗 Alias.🎨 Surface.DangerLight}"
+          },
+          "Bar": {
+            "$type": "color",
+            "$value": "{🔗 Alias.🎨 Surface.DangerDarkest}"
+          }
         }
       },
       "Radius": {
         "$type": "dimension",
         "$value": "{🔗 Alias.🔵 Radius.MD}"
-      },
-      "Gap": {
-        "$type": "dimension",
-        "$value": "{🌐 Global.📏 Dimension.Space.2}"
       },
       "Padding": {
         "$type": "dimension",
@@ -7085,6 +7161,10 @@
       "Body": {
         "$type": "typography",
         "$value": "{🧩 Component.Text.Typo.Small}"
+      },
+      "Gap": {
+        "$type": "dimension",
+        "$value": "{🔗 Alias.↔️ Space.3XS}"
       }
     },
     "Tag": {
@@ -7222,18 +7302,6 @@
           }
         }
       },
-      "PurpleDark": {
-        "Color": {
-          "Text": {
-            "$type": "color",
-            "$value": "{🔗 Alias.🔤 Text.Color.White}"
-          },
-          "Background": {
-            "$type": "color",
-            "$value": "{🌐 Global.🌈 Color.Purple.6}"
-          }
-        }
-      },
       "Red": {
         "Color": {
           "Text": {
@@ -7255,18 +7323,6 @@
           "Background": {
             "$type": "color",
             "$value": "{🔗 Alias.🎨 Surface.RedLight}"
-          }
-        }
-      },
-      "RedDark": {
-        "Color": {
-          "Text": {
-            "$type": "color",
-            "$value": "{🔗 Alias.🔤 Text.Color.White}"
-          },
-          "Background": {
-            "$type": "color",
-            "$value": "{🌐 Global.🌈 Color.Red.6}"
           }
         }
       },
@@ -7294,18 +7350,6 @@
           }
         }
       },
-      "GreenDark": {
-        "Color": {
-          "Text": {
-            "$type": "color",
-            "$value": "{🔗 Alias.🔤 Text.Color.White}"
-          },
-          "Background": {
-            "$type": "color",
-            "$value": "{🌐 Global.🌈 Color.Green.6}"
-          }
-        }
-      },
       "Yellow": {
         "Color": {
           "Text": {
@@ -7330,18 +7374,6 @@
           }
         }
       },
-      "YellowDark": {
-        "Color": {
-          "Text": {
-            "$type": "color",
-            "$value": "{🔗 Alias.🔤 Text.Color.White}"
-          },
-          "Background": {
-            "$type": "color",
-            "$value": "{🌐 Global.🌈 Color.Yellow.6}"
-          }
-        }
-      },
       "Base": {
         "Color": {
           "Text": {
@@ -7351,54 +7383,6 @@
           "Background": {
             "$type": "color",
             "$value": "{🔗 Alias.🎨 Surface.Grey}"
-          }
-        }
-      },
-      "Danger": {
-        "Color": {
-          "Background": {
-            "$type": "color",
-            "$value": "{🌐 Global.🌈 Color.Danger.1}"
-          },
-          "Text": {
-            "$type": "color",
-            "$value": "{🌐 Global.🌈 Color.Danger.6}"
-          }
-        }
-      },
-      "Warning": {
-        "Color": {
-          "Background": {
-            "$type": "color",
-            "$value": "{🌐 Global.🌈 Color.Warning.1}"
-          },
-          "Text": {
-            "$type": "color",
-            "$value": "{🌐 Global.🌈 Color.Yellow.6}"
-          }
-        }
-      },
-      "Info": {
-        "Color": {
-          "Text": {
-            "$type": "color",
-            "$value": "{🌐 Global.🌈 Color.Info.6}"
-          },
-          "Background": {
-            "$type": "color",
-            "$value": "{🌐 Global.🌈 Color.Info.1}"
-          }
-        }
-      },
-      "Success": {
-        "Color": {
-          "Text": {
-            "$type": "color",
-            "$value": "{🌐 Global.🌈 Color.Success.6}"
-          },
-          "Background": {
-            "$type": "color",
-            "$value": "{🌐 Global.🌈 Color.Success.1}"
           }
         }
       },
@@ -7414,15 +7398,111 @@
         "$type": "fontFamily",
         "$value": "{🔗 Alias.🔤 Text.Family.Text}"
       },
+      "PurpleDark": {
+        "Color": {
+          "Text": {
+            "$type": "color",
+            "$value": "{🔗 Alias.🎨 Surface.OnPurpleDark}"
+          },
+          "Background": {
+            "$type": "color",
+            "$value": "{🔗 Alias.🎨 Surface.PurpleDark}"
+          }
+        }
+      },
+      "RedDark": {
+        "Color": {
+          "Text": {
+            "$type": "color",
+            "$value": "{🔗 Alias.🎨 Surface.OnRedDark}"
+          },
+          "Background": {
+            "$type": "color",
+            "$value": "{🔗 Alias.🎨 Surface.RedDark}"
+          }
+        }
+      },
+      "GreenDark": {
+        "Color": {
+          "Text": {
+            "$type": "color",
+            "$value": "{🔗 Alias.🎨 Surface.OnGreenDark}"
+          },
+          "Background": {
+            "$type": "color",
+            "$value": "{🔗 Alias.🎨 Surface.GreenDark}"
+          }
+        }
+      },
+      "YellowDark": {
+        "Color": {
+          "Text": {
+            "$type": "color",
+            "$value": "{🔗 Alias.🎨 Surface.OnYellowDark}"
+          },
+          "Background": {
+            "$type": "color",
+            "$value": "{🔗 Alias.🎨 Surface.YellowDark}"
+          }
+        }
+      },
+      "Danger": {
+        "Color": {
+          "Background": {
+            "$type": "color",
+            "$value": "{🔗 Alias.🎨 Surface.DangerLighter}"
+          },
+          "Text": {
+            "$type": "color",
+            "$value": "{🔗 Alias.🔤 Text.Color.Danger}"
+          }
+        }
+      },
+      "Warning": {
+        "Color": {
+          "Background": {
+            "$type": "color",
+            "$value": "{🔗 Alias.🎨 Surface.WarningLighter}"
+          },
+          "Text": {
+            "$type": "color",
+            "$value": "{🔗 Alias.🔤 Text.Color.Warning}"
+          }
+        }
+      },
+      "Info": {
+        "Color": {
+          "Text": {
+            "$type": "color",
+            "$value": "{🔗 Alias.🔤 Text.Color.Info}"
+          },
+          "Background": {
+            "$type": "color",
+            "$value": "{🔗 Alias.🎨 Surface.InfoLighter}"
+          }
+        }
+      },
+      "Success": {
+        "Color": {
+          "Text": {
+            "$type": "color",
+            "$value": "{🔗 Alias.🔤 Text.Color.Success}"
+          },
+          "Background": {
+            "$type": "color",
+            "$value": "{🔗 Alias.🎨 Surface.SuccessLighter}"
+          }
+        }
+      },
       "Disabled": {
         "Color": {
           "Text": {
             "$type": "color",
-            "$value": "{🌐 Global.🌈 Color.White}"
+            "$value": "{🔗 Alias.🔤 Text.Color.White}"
           },
           "Background": {
             "$type": "color",
-            "$value": "{🌐 Global.🌈 Color.Grey.5}"
+            "$value": "{🔗 Alias.🔤 Text.Color.Grey}"
           }
         }
       }
@@ -7449,20 +7529,12 @@
         }
       },
       "Item": {
-        "Height": {
-          "$type": "dimension",
-          "$value": "{🌐 Global.📏 Dimension.Space.40}"
-        },
         "FontWeight": {
           "$type": "fontWeight",
           "$value": "{🔗 Alias.🔤 Text.Weight.Bold}"
         },
         "Unselected": {
           "Color": {
-            "Base": {
-              "$type": "color",
-              "$value": "{🌐 Global.🌈 Color.Primary.4}"
-            },
             "Hover": {
               "$type": "color",
               "$value": "{🔗 Alias.🎬 Action.Primary.Text.Hover}"
@@ -7470,15 +7542,15 @@
             "Active": {
               "$type": "color",
               "$value": "{🔗 Alias.🎬 Action.Primary.Text.Active}"
+            },
+            "Base": {
+              "$type": "color",
+              "$value": "{🔗 Alias.🎬 Action.Primary.Text.Base}"
             }
           }
         },
         "Selected": {
           "Color": {
-            "Base": {
-              "$type": "color",
-              "$value": "{🌐 Global.🌈 Color.Primary.4}"
-            },
             "Hover": {
               "$type": "color",
               "$value": "{🔗 Alias.🎬 Action.Primary.Text.Hover}"
@@ -7486,11 +7558,15 @@
             "Active": {
               "$type": "color",
               "$value": "{🔗 Alias.🎬 Action.Primary.Text.Active}"
+            },
+            "Base": {
+              "$type": "color",
+              "$value": "{🔗 Alias.🎬 Action.Primary.Text.Base}"
             }
           },
           "Background": {
             "$type": "color",
-            "$value": "{🌐 Global.🌈 Color.Primary.1B}"
+            "$value": "{🔗 Alias.🎨 Surface.Selected}"
           }
         },
         "Icon": {
@@ -7513,6 +7589,10 @@
         "PaddingBlock": {
           "$type": "dimension",
           "$value": "{🔗 Alias.↔️ Space.2XS}"
+        },
+        "Height": {
+          "$type": "dimension",
+          "$value": "{🌐 Global.📏 Dimension.Size.40}"
         }
       },
       "Gap": {
@@ -7530,7 +7610,7 @@
       "Divider": {
         "Color": {
           "$type": "color",
-          "$value": "{🌐 Global.🌈 Color.Grey.2}"
+          "$value": "{🧩 Component.Divider.Color.Base}"
         }
       }
     },
@@ -7983,10 +8063,6 @@
           "$value": "{🔗 Alias.🔵 Radius.Base}"
         },
         "Color": {
-          "Inactive": {
-            "$type": "color",
-            "$value": "{🌐 Global.🌈 Color.White}"
-          },
           "Active": {
             "$type": "color",
             "$value": "{🔗 Alias.🎨 Surface.Primary}"
@@ -7994,11 +8070,15 @@
           "Background": {
             "$type": "color",
             "$value": "{🔗 Alias.🎨 Surface.Grey}"
+          },
+          "Inactive": {
+            "$type": "color",
+            "$value": "{🔗 Alias.🎨 Surface.White}"
           }
         },
         "Gap": {
           "$type": "dimension",
-          "$value": "{🌐 Global.📏 Dimension.Space.2}"
+          "$value": "{🔗 Alias.↔️ Space.3XS}"
         }
       },
       "Elevation": {
@@ -8058,7 +8138,7 @@
         },
         "Line": {
           "$type": "color",
-          "$value": "{🌐 Global.🌈 Color.Yellow.6}"
+          "$value": "{🔗 Alias.🎨 Surface.YellowDark}"
         }
       },
       "Purple": {
@@ -8074,7 +8154,7 @@
         },
         "Line": {
           "$type": "color",
-          "$value": "{🌐 Global.🌈 Color.Purple.6}"
+          "$value": "{🔗 Alias.🎨 Surface.PurpleDark}"
         }
       },
       "Red": {
@@ -8090,7 +8170,7 @@
         },
         "Line": {
           "$type": "color",
-          "$value": "{🌐 Global.🌈 Color.Red.6}"
+          "$value": "{🔗 Alias.🎨 Surface.RedDark}"
         }
       },
       "Green": {
@@ -8106,7 +8186,7 @@
         },
         "Line": {
           "$type": "color",
-          "$value": "{🌐 Global.🌈 Color.Green.6}"
+          "$value": "{🔗 Alias.🎨 Surface.GreenDark}"
         }
       },
       "Radius": {
@@ -8255,7 +8335,7 @@
         },
         "Base": {
           "$type": "border",
-          "$value": "{🔗 Alias.▭ Border.Composite.GreyLight}"
+          "$value": "{🔗 Alias.▭ Border.Composite.Grey}"
         }
       },
       "Indicator": {
@@ -8390,13 +8470,13 @@
           "$value": "{🔗 Alias.▭ Border.Width.Base}"
         },
         "Color": {
-          "Base": {
-            "$type": "color",
-            "$value": "{🔗 Alias.▭ Border.Color.Grey}"
-          },
           "Filled": {
             "$type": "color",
             "$value": "{🔗 Alias.🎨 Surface.Primary}"
+          },
+          "Base": {
+            "$type": "color",
+            "$value": "{🔗 Alias.▭ Border.Color.GreyLight}"
           }
         }
       },
@@ -8413,6 +8493,10 @@
           "Base": {
             "$type": "color",
             "$value": "{🔗 Alias.🔤 Text.Color.Hint}"
+          },
+          "Disabled": {
+            "$type": "color",
+            "$value": "{🔗 Alias.🔤 Text.Color.Disabled}"
           }
         },
         "Typo": {
@@ -8482,13 +8566,13 @@
             }
           },
           "Disabled": {
-            "Text": {
-              "$type": "color",
-              "$value": "{🔗 Alias.🎨 Surface.OnGrey}"
-            },
             "Background": {
               "$type": "color",
               "$value": "{🔗 Alias.🎨 Surface.Grey}"
+            },
+            "Text": {
+              "$type": "color",
+              "$value": "{🔗 Alias.🔤 Text.Color.Disabled}"
             }
           },
           "Invalid": {
@@ -8505,11 +8589,11 @@
         "Size": {
           "Base": {
             "$type": "dimension",
-            "$value": "{🔗 Alias.🔤 Text.Size.4XL}"
+            "$value": "{🌐 Global.📏 Dimension.Size.32}"
           },
           "SM": {
             "$type": "dimension",
-            "$value": "{🔗 Alias.🔤 Text.Size.2XL}"
+            "$value": "{🌐 Global.📏 Dimension.Size.24}"
           }
         }
       },
@@ -8628,10 +8712,6 @@
         "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
       },
       "Cell": {
-        "Border": {
-          "$type": "border",
-          "$value": "{🔗 Alias.▭ Border.Composite.GreyLight}"
-        },
         "PaddingX": {
           "$type": "string",
           "$value": "0.75em"
@@ -8639,6 +8719,10 @@
         "PaddingY": {
           "$type": "string",
           "$value": "0.5em"
+        },
+        "Border": {
+          "$type": "border",
+          "$value": "{🔗 Alias.▭ Border.Composite.Grey}"
         }
       },
       "Head": {
@@ -9413,6 +9497,13 @@
             "unit": "px"
           }
         },
+        "14": {
+          "$type": "dimension",
+          "$value": {
+            "value": 14,
+            "unit": "px"
+          }
+        },
         "16": {
           "$type": "dimension",
           "$value": {
@@ -9431,6 +9522,13 @@
           "$type": "dimension",
           "$value": {
             "value": 32,
+            "unit": "px"
+          }
+        },
+        "40": {
+          "$type": "dimension",
+          "$value": {
+            "value": 40,
             "unit": "px"
           }
         },
@@ -9459,6 +9557,27 @@
           "$type": "dimension",
           "$value": {
             "value": 72,
+            "unit": "px"
+          }
+        },
+        "80": {
+          "$type": "dimension",
+          "$value": {
+            "value": 80,
+            "unit": "px"
+          }
+        },
+        "96": {
+          "$type": "dimension",
+          "$value": {
+            "value": 96,
+            "unit": "px"
+          }
+        },
+        "176": {
+          "$type": "dimension",
+          "$value": {
+            "value": 176,
             "unit": "px"
           }
         }

@@ -5,7 +5,7 @@
  * @prop --hint-trigger-color-background-base: Color of the info-circle trigger icon.
  * @prop --hint-trigger-color-background-hover: Background shown behind the trigger icon on hover.
  * @prop --hint-trigger-radius: Border radius of the trigger icon.
- * @prop --hint-trigger-space: Padding around the trigger icon.
+ * @prop --hint-trigger-space: Extra space added around the trigger icon to size the trigger button.
  * @prop --hint-trigger-size: Size of the trigger icon.
  * @prop --hint-color-focus: Focus outline color of the trigger icon.
  * @prop --hint-color-heading: Text color of the hint panel title.
@@ -64,6 +64,8 @@
     border: none;
     background: none;
     padding: var(--_hint-trigger-space);
+    width: var(--_hint-trigger-size);
+    height: var(--_hint-trigger-size);
     border-radius: var(--_hint-trigger-radius);
     cursor: pointer;
     color: var(--_hint-trigger-color-background-base);
@@ -86,8 +88,8 @@
     }
 
     ds-icon {
-      --icon-size: var(--_hint-trigger-size);
-      --icon-inner-size: var(--_hint-trigger-size);
+      --icon-size: calc(var(--_hint-trigger-size) - var(--_hint-trigger-space));
+      --icon-inner-size: calc(var(--_hint-trigger-size) - var(--_hint-trigger-space));
     }
   }
 }

@@ -23,11 +23,11 @@ $host-selector: ('#card');
   @include vars.local(card-color-border, var(--ds-card-color-base-border));
   @include vars.local(card-radius, var(--ds-card-radius));
   @include vars.local(card-shadow, var(--ds-card-shadow-base));
-  @include vars.local(card-gap, var(--ds-card-space-base-device));
-  @include vars.local(card-padding-left, var(--ds-card-space-base-device));
-  @include vars.local(card-padding-right, var(--ds-card-space-base-device));
-  @include vars.local(card-padding-top, var(--ds-card-space-base-device));
-  @include vars.local(card-padding-bottom, var(--ds-card-space-base-device));
+  @include vars.local(card-gap, var(--ds-card-space-base));
+  @include vars.local(card-padding-left, var(--ds-card-space-base));
+  @include vars.local(card-padding-right, var(--ds-card-space-base));
+  @include vars.local(card-padding-top, var(--ds-card-space-base));
+  @include vars.local(card-padding-bottom, var(--ds-card-space-base));
 
   @include vars.local(card-header-grid-template-columns, 1fr auto);
   @include vars.local(card-header-margin-left, 0);
@@ -316,25 +316,25 @@ $spaces: ('sm', 'md', 'lg');
 @each $space in $spaces {
   @include hybrid.styles($css-selector, $use-host) {
     &.has-space-#{$space} {
-      --mod-card-gap: var(--ds-card-space-#{$space}-device);
+      --mod-card-gap: var(--ds-card-space-#{$space});
     }
     &.has-space-#{$space}:not(.is-dense) {
-      --mod-card-padding-left: var(--ds-card-space-#{$space}-device);
-      --mod-card-padding-right: var(--ds-card-space-#{$space}-device);
-      --mod-card-padding-top: var(--ds-card-space-#{$space}-device);
-      --mod-card-padding-bottom: var(--ds-card-space-#{$space}-device);
+      --mod-card-padding-left: var(--ds-card-space-#{$space});
+      --mod-card-padding-right: var(--ds-card-space-#{$space});
+      --mod-card-padding-top: var(--ds-card-space-#{$space});
+      --mod-card-padding-bottom: var(--ds-card-space-#{$space});
     }
   }
 
   @include hybrid.host($use-host) {
     :host(.has-space-#{$space}) {
-      --mod-card-gap: var(--ds-card-space-#{$space}-device);
+      --mod-card-gap: var(--ds-card-space-#{$space});
     }
     :host(.has-space-#{$space}:not(.is-dense)) {
-      --mod-card-padding-left: var(--ds-card-space-#{$space}-device);
-      --mod-card-padding-right: var(--ds-card-space-#{$space}-device);
-      --mod-card-padding-top: var(--ds-card-space-#{$space}-device);
-      --mod-card-padding-bottom: var(--ds-card-space-#{$space}-device);
+      --mod-card-padding-left: var(--ds-card-space-#{$space});
+      --mod-card-padding-right: var(--ds-card-space-#{$space});
+      --mod-card-padding-top: var(--ds-card-space-#{$space});
+      --mod-card-padding-bottom: var(--ds-card-space-#{$space});
     }
   }
 }
@@ -347,15 +347,6 @@ $spaces: ('sm', 'md', 'lg');
   &.is-tile {
     --mod-card-header-grid-template-columns: auto 1fr auto;
     --mod-card-header-grid-template-areas: 'icon title .' 'icon subtitle subtitle';
-
-    @include tablet() {
-      --mod-card-padding-left: calc(
-        var(--ds-card-space-base-device) + var(--ds-brand-icon-tile-size-lg-device) + calc(var(--_card-gap) / 2)
-      );
-      --mod-card-header-margin-left: calc(
-        calc(var(--ds-brand-icon-tile-size-lg-device) * -1) - calc(var(--_card-gap) / 2)
-      );
-    }
   }
 }
 
@@ -363,15 +354,6 @@ $spaces: ('sm', 'md', 'lg');
   :host(.is-tile) {
     --mod-card-header-grid-template-columns: auto 1fr auto;
     --mod-card-header-grid-template-areas: 'icon title .' 'icon subtitle subtitle';
-
-    @include tablet() {
-      --mod-card-padding-left: calc(
-        var(--ds-card-space-base-device) + var(--ds-brand-icon-tile-size-lg-device) + calc(var(--_card-gap) / 2)
-      );
-      --mod-card-header-margin-left: calc(
-        calc(var(--ds-brand-icon-tile-size-lg-device) * -1) - calc(var(--_card-gap) / 2)
-      );
-    }
   }
 }
 

@@ -160,6 +160,19 @@ describe('validateWorkingTokens', () => {
     expect(validateWorkingTokens(items)).toEqual([])
   })
 
+  it('does not warn when a Component token references Global Dimension/Size directly', () => {
+    const items = [
+      working('a', { name: '📏 Dimension.Size.48', layer: 'Global', type: 'dimension' }),
+      working('b', {
+        name: 'Foo',
+        layer: 'Component',
+        type: 'dimension',
+        referenceTarget: '🌐 Global.📏 Dimension.Size.48',
+      }),
+    ]
+    expect(validateWorkingTokens(items)).toEqual([])
+  })
+
   it('does not warn when an Alias token references Global', () => {
     const items = [
       working('a', { name: 'Color.White', layer: 'Global' }),

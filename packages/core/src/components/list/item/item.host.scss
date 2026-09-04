@@ -190,7 +190,7 @@ $size-aliases: (
 @each $class-group, $token in $size-aliases {
   @each $class in $class-group {
     :host(.has-label-#{$class}) {
-      --mod-list-item-title-size: var(--ds-heading-#{$token}-size-device);
+      --mod-list-item-title-size: var(--ds-heading-level-#{$token}-font-size);
     }
   }
 }
