@@ -139,26 +139,29 @@ Token names are composed of ordered segments that narrow scope:
 
 ## Responsive Tokens
 
-Typography and spacing tokens come in **three responsive variants** plus one auto-responsive form:
+Responsive typography and spacing tokens live in the **Device** layer (`--ds-device-*`). Each one
+comes in **three fixed breakpoint variants** plus one auto-responsive form:
 
-**Always prefer `-device`** in component code. The fixed variants exist only for special cases.
+**Always prefer the bare `--ds-device-*` name** in component code — it auto-switches at
+breakpoints. The `-mobile`/`-tablet`/`-desktop` variants exist only for special cases where you
+need to force a specific breakpoint's value.
 
-### How `-device` Works
+### How the bare Device var auto-switches
 
 ```css
 :root {
-  --ds-font-size-xl-device: var(--ds-font-size-28);  /* mobile: 1.75rem */
+  --ds-device-text-size-xl: var(--ds-font-size-28);  /* mobile: 1.75rem */
 }
 
 @media (min-width: 769px) {
   :root {
-    --ds-font-size-xl-device: var(--ds-font-size-40); /* tablet: 2.5rem */
+    --ds-device-text-size-xl: var(--ds-font-size-40); /* tablet: 2.5rem */
   }
 }
 
 @media (min-width: 1024px) {
   :root {
-    --ds-font-size-xl-device: var(--ds-font-size-40); /* desktop: 2.5rem */
+    --ds-device-text-size-xl: var(--ds-font-size-40); /* desktop: 2.5rem */
   }
 }
 ```

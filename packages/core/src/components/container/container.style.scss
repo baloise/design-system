@@ -16,7 +16,7 @@
   */
 
 body {
-  @include vars.local(container-space-x, var(--ds-alias-container-space-device));
+  @include vars.local(container-space-x, var(--ds-device-container-space));
   @include vars.local(container-space-y, 0);
 }
 

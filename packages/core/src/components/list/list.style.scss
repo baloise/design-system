@@ -334,6 +334,6 @@ ol.list li .item.is-disabled {
   */
 
 ds-item [slot='content'] {
-  font-size: var(--ds-alias-text-size-sm);
+  font-size: var(--ds-device-text-size-sm);
   @include typography.content(false);
 }

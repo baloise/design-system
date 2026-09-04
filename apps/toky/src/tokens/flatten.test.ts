@@ -31,6 +31,21 @@ const fixture = {
       },
     },
   },
+  '📱 Device': {
+    '↔️ Space': {
+      Sm: {
+        $type: 'dimension',
+        $value: { value: 12, unit: 'px' },
+        $extensions: {
+          'com.helvetia.responsive': {
+            mobile: { value: 12, unit: 'px' },
+            tablet: { value: 16, unit: 'px' },
+            desktop: { value: 20, unit: 'px' },
+          },
+        },
+      },
+    },
+  },
   '🧩 Component': {
     Button: {
       Color: {
@@ -38,6 +53,10 @@ const fixture = {
           $type: 'color',
           $value: '{🔗 Alias.🎨 Background.Color.White}',
         },
+      },
+      Gap: {
+        $type: 'dimension',
+        $value: '{📱 Device.↔️ Space.Sm}',
       },
     },
   },
@@ -55,7 +74,13 @@ describe('flattenTokenDocument', () => {
   it('tags tokens with the correct layer from their top-level key', () => {
     const tokens = flattenTokenDocument(fixture)
     const layers = new Set(tokens.map(t => t.layer))
-    expect(layers).toEqual(new Set(['Global', 'Alias', 'Component']))
+    expect(layers).toEqual(new Set(['Global', 'Alias', 'Device', 'Component']))
+  })
+
+  it('tags a token under the 📱 Device top-level key with the Device layer', () => {
+    const tokens = flattenTokenDocument(fixture)
+    const spaceSm = tokens.find(t => t.path.join('.') === '📱 Device.↔️ Space.Sm')
+    expect(spaceSm?.layer).toBe('Device')
   })
 
   it('produces the full path and a display name without the layer segment', () => {
@@ -111,6 +136,13 @@ describe('parseTokenDocument (flatten + resolve)', () => {
       hex: '#FFFFFF',
     })
     expect(buttonPrimary?.resolutionError).toBeNull()
+  })
+
+  it('resolves a Component -> Device reference', () => {
+    const tokens = parseTokenDocument(fixture)
+    const buttonGap = tokens.find(t => t.path.join('.') === '🧩 Component.Button.Gap')
+    expect(buttonGap?.resolvedValue).toEqual({ value: 12, unit: 'px' })
+    expect(buttonGap?.resolutionError).toBeNull()
   })
 
   it('resolves a non-reference leaf to itself', () => {

@@ -209,7 +209,7 @@ $colors: (
 // Sizes
 // --------------------------------
 @mixin size($level) {
-  --mod-text-size: var(--ds-alias-text-size-#{$level}-device);
+  --mod-text-size: var(--ds-device-text-size-#{$level});
 }
 
 $size-aliases: (

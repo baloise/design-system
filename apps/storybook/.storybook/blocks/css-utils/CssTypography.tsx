@@ -51,7 +51,7 @@ function formatSizeValue(value: unknown): string | undefined {
 }
 
 export const CssTypographySize = (): React.ReactElement => {
-  const sizeCategory = tokens['🔗 Alias']['🔤 Text'].Size
+  const sizeCategory = tokens['📱 Device']['🔤 Text'].Size
 
   const sizeTokens = Object.fromEntries(
     Object.keys(sizeCategory).map(key => {
@@ -61,7 +61,7 @@ export const CssTypographySize = (): React.ReactElement => {
       return [
         size,
         {
-          name: `ds-alias-text-size-${size}-device`,
+          name: `ds-device-text-size-${size}`,
           $value: formatSizeValue(responsive?.mobile) ?? item.$value,
         },
       ]

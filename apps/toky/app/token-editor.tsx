@@ -147,8 +147,8 @@ function compareTshirtSize(a: string, b: string): number {
   return a.localeCompare(b, undefined, { numeric: true })
 }
 
-const LAYERS: TokenLayer[] = ['Global', 'Alias', 'Component']
-const LAYER_EMOJI: Record<TokenLayer, string> = { Global: '🌐', Alias: '🔗', Component: '🧩' }
+const LAYERS: TokenLayer[] = ['Global', 'Alias', 'Device', 'Component']
+const LAYER_EMOJI: Record<TokenLayer, string> = { Global: '🌐', Alias: '🔗', Device: '📱', Component: '🧩' }
 // Each layer's accordion-head tint at layer depth (0) only — the same
 // amber/sky/emerald used as each layer's node border color in the
 // reference graph (see LAYER_BORDER_COLOR in token-graph.tsx). This row is
@@ -161,6 +161,8 @@ const LAYER_BG_TINT: Record<TokenLayer, string> = {
     'bg-[color-mix(in_oklch,#f59e0b_15%,var(--background))] hover:bg-[color-mix(in_oklch,#f59e0b_15%,var(--background))]', // amber
   Alias:
     'bg-[color-mix(in_oklch,#38bdf8_15%,var(--background))] hover:bg-[color-mix(in_oklch,#38bdf8_15%,var(--background))]', // sky
+  Device:
+    'bg-[color-mix(in_oklch,#2dd4bf_15%,var(--background))] hover:bg-[color-mix(in_oklch,#2dd4bf_15%,var(--background))]', // teal
   Component:
     'bg-[color-mix(in_oklch,#34d399_15%,var(--background))] hover:bg-[color-mix(in_oklch,#34d399_15%,var(--background))]', // emerald
 }

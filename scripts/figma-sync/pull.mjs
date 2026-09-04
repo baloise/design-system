@@ -132,7 +132,7 @@ async function resolveBrandCollection(localVariables, brandNames, figmaFileKey, 
 
 /**
  * Resolves the responsive collection ("Design Responsive Tokens" — MVP scope, Device variables for
- * Alias Text.Size/Space/Container.Space only, see lib/figma-value.mjs's DEVICE_ELIGIBLE_PATH_PREFIXES),
+ * Device-layer Text.Size/Space/Container.Space only, see lib/figma-value.mjs's DEVICE_ELIGIBLE_PATH_PREFIXES),
  * bootstrapping it if this file has never had one under that name.
  */
 async function resolveResponsiveCollection(localVariables, figmaFileKey, figmaToken) {

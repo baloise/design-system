@@ -523,17 +523,6 @@
       }
     },
     "🗃️ Container": {
-      "Space": {
-        "$type": "dimension",
-        "$value": "{🌐 Global.📏 Dimension.Space.16}",
-        "$extensions": {
-          "com.helvetia.responsive": {
-            "mobile": "{🌐 Global.📏 Dimension.Space.16}",
-            "tablet": "{🌐 Global.📏 Dimension.Space.40}",
-            "desktop": "{🌐 Global.📏 Dimension.Space.48}"
-          }
-        }
-      },
       "Width": {
         "Modal": {
           "$type": "dimension",
@@ -747,141 +736,6 @@
           "$type": "shadow",
           "$value": "{🌐 Global.🔤 Font.Shadow.1}"
         }
-      },
-      "Size": {
-        "Base": {
-          "$type": "dimension",
-          "$value": "{🌐 Global.🔤 Font.Size.16}",
-          "$extensions": {
-            "com.helvetia.responsive": {
-              "mobile": "{🌐 Global.🔤 Font.Size.16}",
-              "tablet": "{🌐 Global.🔤 Font.Size.16}",
-              "desktop": "{🌐 Global.🔤 Font.Size.16}"
-            }
-          }
-        },
-        "None": {
-          "$type": "dimension",
-          "$value": {
-            "value": 0,
-            "unit": "rem"
-          },
-          "$extensions": {
-            "com.helvetia.responsive": {
-              "mobile": {
-                "value": 0,
-                "unit": "rem"
-              },
-              "tablet": {
-                "value": 0,
-                "unit": "rem"
-              },
-              "desktop": {
-                "value": 0,
-                "unit": "rem"
-              }
-            }
-          }
-        },
-        "XS": {
-          "$type": "dimension",
-          "$value": "{🌐 Global.🔤 Font.Size.12}",
-          "$extensions": {
-            "com.helvetia.responsive": {
-              "mobile": "{🌐 Global.🔤 Font.Size.12}",
-              "tablet": "{🌐 Global.🔤 Font.Size.12}",
-              "desktop": "{🌐 Global.🔤 Font.Size.12}"
-            }
-          }
-        },
-        "MD": {
-          "$type": "dimension",
-          "$value": "{🌐 Global.🔤 Font.Size.16}",
-          "$extensions": {
-            "com.helvetia.responsive": {
-              "mobile": "{🌐 Global.🔤 Font.Size.16}",
-              "tablet": "{🌐 Global.🔤 Font.Size.18}",
-              "desktop": "{🌐 Global.🔤 Font.Size.18}"
-            }
-          }
-        },
-        "SM": {
-          "$type": "dimension",
-          "$value": "{🌐 Global.🔤 Font.Size.14}",
-          "$extensions": {
-            "com.helvetia.responsive": {
-              "mobile": "{🌐 Global.🔤 Font.Size.14}",
-              "tablet": "{🌐 Global.🔤 Font.Size.14}",
-              "desktop": "{🌐 Global.🔤 Font.Size.14}"
-            }
-          }
-        },
-        "2XL": {
-          "$type": "dimension",
-          "$value": "{🌐 Global.🔤 Font.Size.24}",
-          "$extensions": {
-            "com.helvetia.responsive": {
-              "mobile": "{🌐 Global.🔤 Font.Size.24}",
-              "tablet": "{🌐 Global.🔤 Font.Size.32}",
-              "desktop": "{🌐 Global.🔤 Font.Size.32}"
-            }
-          }
-        },
-        "3XL": {
-          "$type": "dimension",
-          "$value": "{🌐 Global.🔤 Font.Size.28}",
-          "$extensions": {
-            "com.helvetia.responsive": {
-              "mobile": "{🌐 Global.🔤 Font.Size.28}",
-              "tablet": "{🌐 Global.🔤 Font.Size.40}",
-              "desktop": "{🌐 Global.🔤 Font.Size.40}"
-            }
-          }
-        },
-        "4XL": {
-          "$type": "dimension",
-          "$value": "{🌐 Global.🔤 Font.Size.32}",
-          "$extensions": {
-            "com.helvetia.responsive": {
-              "mobile": "{🌐 Global.🔤 Font.Size.32}",
-              "tablet": "{🌐 Global.🔤 Font.Size.48}",
-              "desktop": "{🌐 Global.🔤 Font.Size.48}"
-            }
-          }
-        },
-        "5XL": {
-          "$type": "dimension",
-          "$value": "{🌐 Global.🔤 Font.Size.48}",
-          "$extensions": {
-            "com.helvetia.responsive": {
-              "mobile": "{🌐 Global.🔤 Font.Size.48}",
-              "tablet": "{🌐 Global.🔤 Font.Size.80}",
-              "desktop": "{🌐 Global.🔤 Font.Size.80}"
-            }
-          }
-        },
-        "XL": {
-          "$type": "dimension",
-          "$value": "{🌐 Global.🔤 Font.Size.20}",
-          "$extensions": {
-            "com.helvetia.responsive": {
-              "mobile": "{🌐 Global.🔤 Font.Size.20}",
-              "tablet": "{🌐 Global.🔤 Font.Size.24}",
-              "desktop": "{🌐 Global.🔤 Font.Size.24}"
-            }
-          }
-        },
-        "LG": {
-          "$type": "dimension",
-          "$value": "{🌐 Global.🔤 Font.Size.18}",
-          "$extensions": {
-            "com.helvetia.responsive": {
-              "mobile": "{🌐 Global.🔤 Font.Size.18}",
-              "tablet": "{🌐 Global.🔤 Font.Size.18}",
-              "desktop": "{🌐 Global.🔤 Font.Size.18}"
-            }
-          }
-        }
       }
     },
     "🌓 Shadow": {
@@ -944,144 +798,6 @@
       "Tooltip": {
         "$type": "number",
         "$value": "{🌐 Global.🗂️ Elevation.ZIndex.1300}"
-      }
-    },
-    "↔️ Space": {
-      "None": {
-        "$type": "dimension",
-        "$value": "{🌐 Global.📏 Dimension.Space.0}",
-        "$extensions": {
-          "com.helvetia.responsive": {
-            "mobile": "{🌐 Global.📏 Dimension.Space.0}",
-            "tablet": "{🌐 Global.📏 Dimension.Space.0}",
-            "desktop": "{🌐 Global.📏 Dimension.Space.0}"
-          }
-        }
-      },
-      "Auto": {
-        "$type": "string",
-        "$value": "{🌐 Global.📏 Dimension.Space.Auto}"
-      },
-      "2XS": {
-        "$type": "dimension",
-        "$value": "{🌐 Global.📏 Dimension.Space.4}",
-        "$extensions": {
-          "com.helvetia.responsive": {
-            "mobile": "{🌐 Global.📏 Dimension.Space.4}",
-            "tablet": "{🌐 Global.📏 Dimension.Space.4}",
-            "desktop": "{🌐 Global.📏 Dimension.Space.4}"
-          }
-        }
-      },
-      "XS": {
-        "$type": "dimension",
-        "$value": "{🌐 Global.📏 Dimension.Space.8}",
-        "$extensions": {
-          "com.helvetia.responsive": {
-            "mobile": "{🌐 Global.📏 Dimension.Space.8}",
-            "tablet": "{🌐 Global.📏 Dimension.Space.8}",
-            "desktop": "{🌐 Global.📏 Dimension.Space.8}"
-          }
-        }
-      },
-      "SM": {
-        "$type": "dimension",
-        "$value": "{🌐 Global.📏 Dimension.Space.12}",
-        "$extensions": {
-          "com.helvetia.responsive": {
-            "mobile": "{🌐 Global.📏 Dimension.Space.12}",
-            "tablet": "{🌐 Global.📏 Dimension.Space.12}",
-            "desktop": "{🌐 Global.📏 Dimension.Space.12}"
-          }
-        }
-      },
-      "Base": {
-        "$type": "dimension",
-        "$value": "{🌐 Global.📏 Dimension.Space.16}",
-        "$extensions": {
-          "com.helvetia.responsive": {
-            "mobile": "{🌐 Global.📏 Dimension.Space.16}",
-            "tablet": "{🌐 Global.📏 Dimension.Space.16}",
-            "desktop": "{🌐 Global.📏 Dimension.Space.16}"
-          }
-        }
-      },
-      "MD": {
-        "$type": "dimension",
-        "$value": "{🌐 Global.📏 Dimension.Space.20}",
-        "$extensions": {
-          "com.helvetia.responsive": {
-            "mobile": "{🌐 Global.📏 Dimension.Space.20}",
-            "tablet": "{🌐 Global.📏 Dimension.Space.20}",
-            "desktop": "{🌐 Global.📏 Dimension.Space.24}"
-          }
-        }
-      },
-      "LG": {
-        "$type": "dimension",
-        "$value": "{🌐 Global.📏 Dimension.Space.24}",
-        "$extensions": {
-          "com.helvetia.responsive": {
-            "mobile": "{🌐 Global.📏 Dimension.Space.24}",
-            "tablet": "{🌐 Global.📏 Dimension.Space.24}",
-            "desktop": "{🌐 Global.📏 Dimension.Space.32}"
-          }
-        }
-      },
-      "XL": {
-        "$type": "dimension",
-        "$value": "{🌐 Global.📏 Dimension.Space.32}",
-        "$extensions": {
-          "com.helvetia.responsive": {
-            "mobile": "{🌐 Global.📏 Dimension.Space.32}",
-            "tablet": "{🌐 Global.📏 Dimension.Space.40}",
-            "desktop": "{🌐 Global.📏 Dimension.Space.48}"
-          }
-        }
-      },
-      "2XL": {
-        "$type": "dimension",
-        "$value": "{🌐 Global.📏 Dimension.Space.48}",
-        "$extensions": {
-          "com.helvetia.responsive": {
-            "mobile": "{🌐 Global.📏 Dimension.Space.48}",
-            "tablet": "{🌐 Global.📏 Dimension.Space.56}",
-            "desktop": "{🌐 Global.📏 Dimension.Space.64}"
-          }
-        }
-      },
-      "3XL": {
-        "$type": "dimension",
-        "$value": "{🌐 Global.📏 Dimension.Space.56}",
-        "$extensions": {
-          "com.helvetia.responsive": {
-            "mobile": "{🌐 Global.📏 Dimension.Space.56}",
-            "tablet": "{🌐 Global.📏 Dimension.Space.72}",
-            "desktop": "{🌐 Global.📏 Dimension.Space.96}"
-          }
-        }
-      },
-      "4XL": {
-        "$type": "dimension",
-        "$value": "{🌐 Global.📏 Dimension.Space.64}",
-        "$extensions": {
-          "com.helvetia.responsive": {
-            "mobile": "{🌐 Global.📏 Dimension.Space.64}",
-            "tablet": "{🌐 Global.📏 Dimension.Space.96}",
-            "desktop": "{🌐 Global.📏 Dimension.Space.128}"
-          }
-        }
-      },
-      "3XS": {
-        "$type": "dimension",
-        "$value": "{🌐 Global.📏 Dimension.Space.2}",
-        "$extensions": {
-          "com.helvetia.responsive": {
-            "mobile": "{🌐 Global.📏 Dimension.Space.2}",
-            "tablet": "{🌐 Global.📏 Dimension.Space.2}",
-            "desktop": "{🌐 Global.📏 Dimension.Space.2}"
-          }
-        }
       }
     },
     "🎨 Surface": {
@@ -2619,6 +2335,296 @@
       }
     }
   },
+  "📱 Device": {
+    "↔️ Space": {
+      "None": {
+        "$type": "dimension",
+        "$value": "{🌐 Global.📏 Dimension.Space.0}",
+        "$extensions": {
+          "com.helvetia.responsive": {
+            "mobile": "{🌐 Global.📏 Dimension.Space.0}",
+            "tablet": "{🌐 Global.📏 Dimension.Space.0}",
+            "desktop": "{🌐 Global.📏 Dimension.Space.0}"
+          }
+        }
+      },
+      "Auto": {
+        "$type": "string",
+        "$value": "{🌐 Global.📏 Dimension.Space.Auto}"
+      },
+      "2XS": {
+        "$type": "dimension",
+        "$value": "{🌐 Global.📏 Dimension.Space.4}",
+        "$extensions": {
+          "com.helvetia.responsive": {
+            "mobile": "{🌐 Global.📏 Dimension.Space.4}",
+            "tablet": "{🌐 Global.📏 Dimension.Space.4}",
+            "desktop": "{🌐 Global.📏 Dimension.Space.4}"
+          }
+        }
+      },
+      "XS": {
+        "$type": "dimension",
+        "$value": "{🌐 Global.📏 Dimension.Space.8}",
+        "$extensions": {
+          "com.helvetia.responsive": {
+            "mobile": "{🌐 Global.📏 Dimension.Space.8}",
+            "tablet": "{🌐 Global.📏 Dimension.Space.8}",
+            "desktop": "{🌐 Global.📏 Dimension.Space.8}"
+          }
+        }
+      },
+      "SM": {
+        "$type": "dimension",
+        "$value": "{🌐 Global.📏 Dimension.Space.12}",
+        "$extensions": {
+          "com.helvetia.responsive": {
+            "mobile": "{🌐 Global.📏 Dimension.Space.12}",
+            "tablet": "{🌐 Global.📏 Dimension.Space.12}",
+            "desktop": "{🌐 Global.📏 Dimension.Space.12}"
+          }
+        }
+      },
+      "Base": {
+        "$type": "dimension",
+        "$value": "{🌐 Global.📏 Dimension.Space.16}",
+        "$extensions": {
+          "com.helvetia.responsive": {
+            "mobile": "{🌐 Global.📏 Dimension.Space.16}",
+            "tablet": "{🌐 Global.📏 Dimension.Space.16}",
+            "desktop": "{🌐 Global.📏 Dimension.Space.16}"
+          }
+        }
+      },
+      "MD": {
+        "$type": "dimension",
+        "$value": "{🌐 Global.📏 Dimension.Space.20}",
+        "$extensions": {
+          "com.helvetia.responsive": {
+            "mobile": "{🌐 Global.📏 Dimension.Space.20}",
+            "tablet": "{🌐 Global.📏 Dimension.Space.20}",
+            "desktop": "{🌐 Global.📏 Dimension.Space.24}"
+          }
+        }
+      },
+      "LG": {
+        "$type": "dimension",
+        "$value": "{🌐 Global.📏 Dimension.Space.24}",
+        "$extensions": {
+          "com.helvetia.responsive": {
+            "mobile": "{🌐 Global.📏 Dimension.Space.24}",
+            "tablet": "{🌐 Global.📏 Dimension.Space.24}",
+            "desktop": "{🌐 Global.📏 Dimension.Space.32}"
+          }
+        }
+      },
+      "XL": {
+        "$type": "dimension",
+        "$value": "{🌐 Global.📏 Dimension.Space.32}",
+        "$extensions": {
+          "com.helvetia.responsive": {
+            "mobile": "{🌐 Global.📏 Dimension.Space.32}",
+            "tablet": "{🌐 Global.📏 Dimension.Space.40}",
+            "desktop": "{🌐 Global.📏 Dimension.Space.48}"
+          }
+        }
+      },
+      "2XL": {
+        "$type": "dimension",
+        "$value": "{🌐 Global.📏 Dimension.Space.48}",
+        "$extensions": {
+          "com.helvetia.responsive": {
+            "mobile": "{🌐 Global.📏 Dimension.Space.48}",
+            "tablet": "{🌐 Global.📏 Dimension.Space.56}",
+            "desktop": "{🌐 Global.📏 Dimension.Space.64}"
+          }
+        }
+      },
+      "3XL": {
+        "$type": "dimension",
+        "$value": "{🌐 Global.📏 Dimension.Space.56}",
+        "$extensions": {
+          "com.helvetia.responsive": {
+            "mobile": "{🌐 Global.📏 Dimension.Space.56}",
+            "tablet": "{🌐 Global.📏 Dimension.Space.72}",
+            "desktop": "{🌐 Global.📏 Dimension.Space.96}"
+          }
+        }
+      },
+      "4XL": {
+        "$type": "dimension",
+        "$value": "{🌐 Global.📏 Dimension.Space.64}",
+        "$extensions": {
+          "com.helvetia.responsive": {
+            "mobile": "{🌐 Global.📏 Dimension.Space.64}",
+            "tablet": "{🌐 Global.📏 Dimension.Space.96}",
+            "desktop": "{🌐 Global.📏 Dimension.Space.128}"
+          }
+        }
+      },
+      "3XS": {
+        "$type": "dimension",
+        "$value": "{🌐 Global.📏 Dimension.Space.2}",
+        "$extensions": {
+          "com.helvetia.responsive": {
+            "mobile": "{🌐 Global.📏 Dimension.Space.2}",
+            "tablet": "{🌐 Global.📏 Dimension.Space.2}",
+            "desktop": "{🌐 Global.📏 Dimension.Space.2}"
+          }
+        }
+      }
+    },
+    "🔤 Text": {
+      "Size": {
+        "Base": {
+          "$type": "dimension",
+          "$value": "{🌐 Global.🔤 Font.Size.16}",
+          "$extensions": {
+            "com.helvetia.responsive": {
+              "mobile": "{🌐 Global.🔤 Font.Size.16}",
+              "tablet": "{🌐 Global.🔤 Font.Size.16}",
+              "desktop": "{🌐 Global.🔤 Font.Size.16}"
+            }
+          }
+        },
+        "None": {
+          "$type": "dimension",
+          "$value": {
+            "value": 0,
+            "unit": "rem"
+          },
+          "$extensions": {
+            "com.helvetia.responsive": {
+              "mobile": {
+                "value": 0,
+                "unit": "rem"
+              },
+              "tablet": {
+                "value": 0,
+                "unit": "rem"
+              },
+              "desktop": {
+                "value": 0,
+                "unit": "rem"
+              }
+            }
+          }
+        },
+        "XS": {
+          "$type": "dimension",
+          "$value": "{🌐 Global.🔤 Font.Size.12}",
+          "$extensions": {
+            "com.helvetia.responsive": {
+              "mobile": "{🌐 Global.🔤 Font.Size.12}",
+              "tablet": "{🌐 Global.🔤 Font.Size.12}",
+              "desktop": "{🌐 Global.🔤 Font.Size.12}"
+            }
+          }
+        },
+        "MD": {
+          "$type": "dimension",
+          "$value": "{🌐 Global.🔤 Font.Size.16}",
+          "$extensions": {
+            "com.helvetia.responsive": {
+              "mobile": "{🌐 Global.🔤 Font.Size.16}",
+              "tablet": "{🌐 Global.🔤 Font.Size.18}",
+              "desktop": "{🌐 Global.🔤 Font.Size.18}"
+            }
+          }
+        },
+        "SM": {
+          "$type": "dimension",
+          "$value": "{🌐 Global.🔤 Font.Size.14}",
+          "$extensions": {
+            "com.helvetia.responsive": {
+              "mobile": "{🌐 Global.🔤 Font.Size.14}",
+              "tablet": "{🌐 Global.🔤 Font.Size.14}",
+              "desktop": "{🌐 Global.🔤 Font.Size.14}"
+            }
+          }
+        },
+        "2XL": {
+          "$type": "dimension",
+          "$value": "{🌐 Global.🔤 Font.Size.24}",
+          "$extensions": {
+            "com.helvetia.responsive": {
+              "mobile": "{🌐 Global.🔤 Font.Size.24}",
+              "tablet": "{🌐 Global.🔤 Font.Size.32}",
+              "desktop": "{🌐 Global.🔤 Font.Size.32}"
+            }
+          }
+        },
+        "3XL": {
+          "$type": "dimension",
+          "$value": "{🌐 Global.🔤 Font.Size.28}",
+          "$extensions": {
+            "com.helvetia.responsive": {
+              "mobile": "{🌐 Global.🔤 Font.Size.28}",
+              "tablet": "{🌐 Global.🔤 Font.Size.40}",
+              "desktop": "{🌐 Global.🔤 Font.Size.40}"
+            }
+          }
+        },
+        "4XL": {
+          "$type": "dimension",
+          "$value": "{🌐 Global.🔤 Font.Size.32}",
+          "$extensions": {
+            "com.helvetia.responsive": {
+              "mobile": "{🌐 Global.🔤 Font.Size.32}",
+              "tablet": "{🌐 Global.🔤 Font.Size.48}",
+              "desktop": "{🌐 Global.🔤 Font.Size.48}"
+            }
+          }
+        },
+        "5XL": {
+          "$type": "dimension",
+          "$value": "{🌐 Global.🔤 Font.Size.48}",
+          "$extensions": {
+            "com.helvetia.responsive": {
+              "mobile": "{🌐 Global.🔤 Font.Size.48}",
+              "tablet": "{🌐 Global.🔤 Font.Size.80}",
+              "desktop": "{🌐 Global.🔤 Font.Size.80}"
+            }
+          }
+        },
+        "XL": {
+          "$type": "dimension",
+          "$value": "{🌐 Global.🔤 Font.Size.20}",
+          "$extensions": {
+            "com.helvetia.responsive": {
+              "mobile": "{🌐 Global.🔤 Font.Size.20}",
+              "tablet": "{🌐 Global.🔤 Font.Size.24}",
+              "desktop": "{🌐 Global.🔤 Font.Size.24}"
+            }
+          }
+        },
+        "LG": {
+          "$type": "dimension",
+          "$value": "{🌐 Global.🔤 Font.Size.18}",
+          "$extensions": {
+            "com.helvetia.responsive": {
+              "mobile": "{🌐 Global.🔤 Font.Size.18}",
+              "tablet": "{🌐 Global.🔤 Font.Size.18}",
+              "desktop": "{🌐 Global.🔤 Font.Size.18}"
+            }
+          }
+        }
+      }
+    },
+    "🗃️ Container": {
+      "Space": {
+        "$type": "dimension",
+        "$value": "{🌐 Global.📏 Dimension.Space.16}",
+        "$extensions": {
+          "com.helvetia.responsive": {
+            "mobile": "{🌐 Global.📏 Dimension.Space.16}",
+            "tablet": "{🌐 Global.📏 Dimension.Space.40}",
+            "desktop": "{🌐 Global.📏 Dimension.Space.48}"
+          }
+        }
+      }
+    }
+  },
   "🧩 Component": {
     "Backdrop": {
       "Opacity": {
@@ -2665,13 +2671,13 @@
       },
       "Gap": {
         "$type": "dimension",
-        "$value": "{🔗 Alias.↔️ Space.Base}"
+        "$value": "{📱 Device.↔️ Space.Base}"
       },
       "Typo": {
         "$type": "typography",
         "$value": {
           "fontFamily": "{🔗 Alias.🔤 Text.Family.Text}",
-          "fontSize": "{🔗 Alias.🔤 Text.Size.SM}",
+          "fontSize": "{📱 Device.🔤 Text.Size.SM}",
           "fontWeight": "{🔗 Alias.🔤 Text.Weight.Regular}",
           "lineHeight": "{🔗 Alias.🔤 Text.LineHeight.Text}"
         }
@@ -2684,7 +2690,7 @@
       },
       "SpaceY": {
         "$type": "dimension",
-        "$value": "{🔗 Alias.↔️ Space.LG}"
+        "$value": "{📱 Device.↔️ Space.LG}"
       }
     },
     "Hint": {
@@ -2713,7 +2719,7 @@
         },
         "Space": {
           "$type": "dimension",
-          "$value": "{🔗 Alias.↔️ Space.2XS}"
+          "$value": "{📱 Device.↔️ Space.2XS}"
         },
         "Color": {
           "Background": {
@@ -2750,7 +2756,7 @@
       },
       "Gap": {
         "$type": "dimension",
-        "$value": "{🔗 Alias.↔️ Space.SM}"
+        "$value": "{📱 Device.↔️ Space.SM}"
       }
     },
     "Heading": {
@@ -2769,7 +2775,7 @@
           "$type": "typography",
           "$value": {
             "fontFamily": "{🔗 Alias.🔤 Text.Family.Heading}",
-            "fontSize": "{🔗 Alias.🔤 Text.Size.3XL}",
+            "fontSize": "{📱 Device.🔤 Text.Size.3XL}",
             "fontWeight": "{🔗 Alias.🔤 Text.Weight.Bold}",
             "lineHeight": "{🔗 Alias.🔤 Text.LineHeight.Heading}"
           }
@@ -2778,7 +2784,7 @@
           "$type": "typography",
           "$value": {
             "fontFamily": "{🔗 Alias.🔤 Text.Family.Heading}",
-            "fontSize": "{🔗 Alias.🔤 Text.Size.2XL}",
+            "fontSize": "{📱 Device.🔤 Text.Size.2XL}",
             "fontWeight": "{🔗 Alias.🔤 Text.Weight.Bold}",
             "lineHeight": "{🔗 Alias.🔤 Text.LineHeight.Heading}"
           }
@@ -2787,7 +2793,7 @@
           "$type": "typography",
           "$value": {
             "fontFamily": "{🔗 Alias.🔤 Text.Family.Heading}",
-            "fontSize": "{🔗 Alias.🔤 Text.Size.XL}",
+            "fontSize": "{📱 Device.🔤 Text.Size.XL}",
             "fontWeight": "{🔗 Alias.🔤 Text.Weight.Bold}",
             "lineHeight": "{🔗 Alias.🔤 Text.LineHeight.Heading}"
           }
@@ -2796,7 +2802,7 @@
           "$type": "typography",
           "$value": {
             "fontFamily": "{🔗 Alias.🔤 Text.Family.Heading}",
-            "fontSize": "{🔗 Alias.🔤 Text.Size.LG}",
+            "fontSize": "{📱 Device.🔤 Text.Size.LG}",
             "fontWeight": "{🔗 Alias.🔤 Text.Weight.Bold}",
             "lineHeight": "{🔗 Alias.🔤 Text.LineHeight.Heading}"
           }
@@ -2805,7 +2811,7 @@
           "$type": "typography",
           "$value": {
             "fontFamily": "{🔗 Alias.🔤 Text.Family.Heading}",
-            "fontSize": "{🔗 Alias.🔤 Text.Size.Base}",
+            "fontSize": "{📱 Device.🔤 Text.Size.Base}",
             "fontWeight": "{🔗 Alias.🔤 Text.Weight.Bold}",
             "lineHeight": "{🔗 Alias.🔤 Text.LineHeight.Heading}"
           }
@@ -2814,7 +2820,7 @@
           "$type": "typography",
           "$value": {
             "fontFamily": "{🔗 Alias.🔤 Text.Family.Heading}",
-            "fontSize": "{🔗 Alias.🔤 Text.Size.3XL}",
+            "fontSize": "{📱 Device.🔤 Text.Size.3XL}",
             "fontWeight": "{🔗 Alias.🔤 Text.Weight.Light}",
             "lineHeight": "{🔗 Alias.🔤 Text.LineHeight.Heading}"
           }
@@ -2823,7 +2829,7 @@
           "$type": "typography",
           "$value": {
             "fontFamily": "{🔗 Alias.🔤 Text.Family.Heading}",
-            "fontSize": "{🔗 Alias.🔤 Text.Size.XL}",
+            "fontSize": "{📱 Device.🔤 Text.Size.XL}",
             "fontWeight": "{🔗 Alias.🔤 Text.Weight.Light}",
             "lineHeight": "{🔗 Alias.🔤 Text.LineHeight.Heading}"
           }
@@ -2832,7 +2838,7 @@
           "$type": "typography",
           "$value": {
             "fontFamily": "{🔗 Alias.🔤 Text.Family.Heading}",
-            "fontSize": "{🔗 Alias.🔤 Text.Size.4XL}",
+            "fontSize": "{📱 Device.🔤 Text.Size.4XL}",
             "fontWeight": "{🔗 Alias.🔤 Text.Weight.Bold}",
             "lineHeight": "{🔗 Alias.🔤 Text.LineHeight.Heading}"
           }
@@ -2841,7 +2847,7 @@
           "$type": "typography",
           "$value": {
             "fontFamily": "{🔗 Alias.🔤 Text.Family.Heading}",
-            "fontSize": "{🔗 Alias.🔤 Text.Size.5XL}",
+            "fontSize": "{📱 Device.🔤 Text.Size.5XL}",
             "fontWeight": "{🔗 Alias.🔤 Text.Weight.Bold}",
             "lineHeight": "{🔗 Alias.🔤 Text.LineHeight.Heading}"
           }
@@ -2850,7 +2856,7 @@
           "$type": "typography",
           "$value": {
             "fontFamily": "{🔗 Alias.🔤 Text.Family.Heading}",
-            "fontSize": "{🔗 Alias.🔤 Text.Size.4XL}",
+            "fontSize": "{📱 Device.🔤 Text.Size.4XL}",
             "fontWeight": "{🔗 Alias.🔤 Text.Weight.Light}",
             "lineHeight": "{🔗 Alias.🔤 Text.LineHeight.Heading}"
           }
@@ -2859,7 +2865,7 @@
           "$type": "typography",
           "$value": {
             "fontFamily": "{🔗 Alias.🔤 Text.Family.Heading}",
-            "fontSize": "{🔗 Alias.🔤 Text.Size.5XL}",
+            "fontSize": "{📱 Device.🔤 Text.Size.5XL}",
             "fontWeight": "{🔗 Alias.🔤 Text.Weight.Light}",
             "lineHeight": "{🔗 Alias.🔤 Text.LineHeight.Heading}"
           }
@@ -2868,7 +2874,7 @@
           "$type": "typography",
           "$value": {
             "fontFamily": "{🔗 Alias.🔤 Text.Family.Heading}",
-            "fontSize": "{🔗 Alias.🔤 Text.Size.2XL}",
+            "fontSize": "{📱 Device.🔤 Text.Size.2XL}",
             "fontWeight": "{🔗 Alias.🔤 Text.Weight.Light}",
             "lineHeight": "{🔗 Alias.🔤 Text.LineHeight.Heading}"
           }
@@ -2944,7 +2950,7 @@
         "SM": {
           "Height": {
             "$type": "dimension",
-            "$value": "{🔗 Alias.🔤 Text.Size.XS}"
+            "$value": "{📱 Device.🔤 Text.Size.XS}"
           },
           "Radius": {
             "$type": "number",
@@ -2952,11 +2958,11 @@
           },
           "Icon": {
             "$type": "dimension",
-            "$value": "{🔗 Alias.↔️ Space.None}"
+            "$value": "{📱 Device.↔️ Space.None}"
           },
           "Space": {
             "$type": "dimension",
-            "$value": "{🔗 Alias.↔️ Space.2XS}"
+            "$value": "{📱 Device.↔️ Space.2XS}"
           },
           "Font": {
             "$type": "dimension",
@@ -2969,11 +2975,11 @@
         "Base": {
           "Height": {
             "$type": "dimension",
-            "$value": "{🔗 Alias.🔤 Text.Size.2XL}"
+            "$value": "{📱 Device.🔤 Text.Size.2XL}"
           },
           "Font": {
             "$type": "dimension",
-            "$value": "{🔗 Alias.🔤 Text.Size.XS}"
+            "$value": "{📱 Device.🔤 Text.Size.XS}"
           },
           "Radius": {
             "$type": "number",
@@ -2981,7 +2987,7 @@
           },
           "Space": {
             "$type": "dimension",
-            "$value": "{🔗 Alias.↔️ Space.2XS}"
+            "$value": "{📱 Device.↔️ Space.2XS}"
           },
           "Icon": {
             "$type": "dimension",
@@ -2991,11 +2997,11 @@
         "LG": {
           "Height": {
             "$type": "dimension",
-            "$value": "{🔗 Alias.🔤 Text.Size.4XL}"
+            "$value": "{📱 Device.🔤 Text.Size.4XL}"
           },
           "Font": {
             "$type": "dimension",
-            "$value": "{🔗 Alias.🔤 Text.Size.Base}"
+            "$value": "{📱 Device.🔤 Text.Size.Base}"
           },
           "Radius": {
             "$type": "number",
@@ -3003,11 +3009,11 @@
           },
           "Icon": {
             "$type": "dimension",
-            "$value": "{🔗 Alias.🔤 Text.Size.LG}"
+            "$value": "{📱 Device.🔤 Text.Size.LG}"
           },
           "Space": {
             "$type": "dimension",
-            "$value": "{🔗 Alias.↔️ Space.2XS}"
+            "$value": "{📱 Device.↔️ Space.2XS}"
           }
         }
       },
@@ -3913,11 +3919,11 @@
           },
           "FontSize": {
             "$type": "dimension",
-            "$value": "{🔗 Alias.🔤 Text.Size.Base}"
+            "$value": "{📱 Device.🔤 Text.Size.Base}"
           },
           "Gap": {
             "$type": "dimension",
-            "$value": "{🔗 Alias.↔️ Space.XS}"
+            "$value": "{📱 Device.↔️ Space.XS}"
           },
           "MinHeight": {
             "$type": "dimension",
@@ -3951,11 +3957,11 @@
           },
           "FontSize": {
             "$type": "dimension",
-            "$value": "{🔗 Alias.🔤 Text.Size.SM}"
+            "$value": "{📱 Device.🔤 Text.Size.SM}"
           },
           "Gap": {
             "$type": "dimension",
-            "$value": "{🔗 Alias.↔️ Space.XS}"
+            "$value": "{📱 Device.↔️ Space.XS}"
           },
           "MinHeight": {
             "$type": "dimension",
@@ -3967,7 +3973,7 @@
           },
           "SpaceX": {
             "$type": "dimension",
-            "$value": "{🔗 Alias.↔️ Space.SM}"
+            "$value": "{📱 Device.↔️ Space.SM}"
           }
         },
         "LG": {
@@ -3989,11 +3995,11 @@
           },
           "FontSize": {
             "$type": "dimension",
-            "$value": "{🔗 Alias.🔤 Text.Size.LG}"
+            "$value": "{📱 Device.🔤 Text.Size.LG}"
           },
           "Gap": {
             "$type": "dimension",
-            "$value": "{🔗 Alias.↔️ Space.XS}"
+            "$value": "{📱 Device.↔️ Space.XS}"
           },
           "MinHeight": {
             "$type": "dimension",
@@ -4005,7 +4011,7 @@
           },
           "SpaceX": {
             "$type": "dimension",
-            "$value": "{🔗 Alias.↔️ Space.MD}"
+            "$value": "{📱 Device.↔️ Space.MD}"
           }
         }
       }
@@ -4260,19 +4266,19 @@
       "Space": {
         "SM": {
           "$type": "dimension",
-          "$value": "{🔗 Alias.↔️ Space.Base}"
+          "$value": "{📱 Device.↔️ Space.Base}"
         },
         "Base": {
           "$type": "dimension",
-          "$value": "{🔗 Alias.↔️ Space.MD}"
+          "$value": "{📱 Device.↔️ Space.MD}"
         },
         "MD": {
           "$type": "dimension",
-          "$value": "{🔗 Alias.↔️ Space.MD}"
+          "$value": "{📱 Device.↔️ Space.MD}"
         },
         "LG": {
           "$type": "dimension",
-          "$value": "{🔗 Alias.↔️ Space.XL}"
+          "$value": "{📱 Device.↔️ Space.XL}"
         }
       }
     },
@@ -4564,7 +4570,7 @@
         },
         "Size": {
           "$type": "dimension",
-          "$value": "{🔗 Alias.🔤 Text.Size.Base}"
+          "$value": "{📱 Device.🔤 Text.Size.Base}"
         }
       },
       "Trigger": {
@@ -4909,7 +4915,7 @@
             "$type": "typography",
             "$value": {
               "fontFamily": "{🔗 Alias.🔤 Text.Family.Text}",
-              "fontSize": "{🔗 Alias.🔤 Text.Size.SM}",
+              "fontSize": "{📱 Device.🔤 Text.Size.SM}",
               "fontWeight": "{🔗 Alias.🔤 Text.Weight.Bold}",
               "lineHeight": "{🔗 Alias.🔤 Text.LineHeight.Text}"
             }
@@ -4924,7 +4930,7 @@
             "$type": "typography",
             "$value": {
               "fontFamily": "{🔗 Alias.🔤 Text.Family.Text}",
-              "fontSize": "{🔗 Alias.🔤 Text.Size.Base}",
+              "fontSize": "{📱 Device.🔤 Text.Size.Base}",
               "fontWeight": "{🔗 Alias.🔤 Text.Weight.Regular}",
               "lineHeight": "{🔗 Alias.🔤 Text.LineHeight.Text}"
             }
@@ -4947,7 +4953,7 @@
             "$type": "typography",
             "$value": {
               "fontFamily": "{🔗 Alias.🔤 Text.Family.Text}",
-              "fontSize": "{🔗 Alias.🔤 Text.Size.XS}",
+              "fontSize": "{📱 Device.🔤 Text.Size.XS}",
               "fontWeight": "{🔗 Alias.🔤 Text.Weight.Regular}",
               "lineHeight": "{🔗 Alias.🔤 Text.LineHeight.Text}"
             }
@@ -5014,7 +5020,7 @@
             "$type": "typography",
             "$value": {
               "fontFamily": "{🔗 Alias.🔤 Text.Family.Text}",
-              "fontSize": "{🔗 Alias.🔤 Text.Size.SM}",
+              "fontSize": "{📱 Device.🔤 Text.Size.SM}",
               "fontWeight": "{🔗 Alias.🔤 Text.Weight.Bold}",
               "lineHeight": "{🔗 Alias.🔤 Text.LineHeight.Text}"
             }
@@ -5029,7 +5035,7 @@
             "$type": "typography",
             "$value": {
               "fontFamily": "{🔗 Alias.🔤 Text.Family.Text}",
-              "fontSize": "{🔗 Alias.🔤 Text.Size.Base}",
+              "fontSize": "{📱 Device.🔤 Text.Size.Base}",
               "fontWeight": "{🔗 Alias.🔤 Text.Weight.Regular}",
               "lineHeight": "{🔗 Alias.🔤 Text.LineHeight.Text}"
             }
@@ -5052,7 +5058,7 @@
             "$type": "typography",
             "$value": {
               "fontFamily": "{🔗 Alias.🔤 Text.Family.Text}",
-              "fontSize": "{🔗 Alias.🔤 Text.Size.XS}",
+              "fontSize": "{📱 Device.🔤 Text.Size.XS}",
               "fontWeight": "{🔗 Alias.🔤 Text.Weight.Regular}",
               "lineHeight": "{🔗 Alias.🔤 Text.LineHeight.Text}"
             }
@@ -5083,7 +5089,7 @@
             "$type": "typography",
             "$value": {
               "fontFamily": "{🔗 Alias.🔤 Text.Family.Text}",
-              "fontSize": "{🔗 Alias.🔤 Text.Size.SM}",
+              "fontSize": "{📱 Device.🔤 Text.Size.SM}",
               "fontWeight": "{🔗 Alias.🔤 Text.Weight.Bold}",
               "lineHeight": "{🔗 Alias.🔤 Text.LineHeight.Text}"
             }
@@ -5098,7 +5104,7 @@
             "$type": "typography",
             "$value": {
               "fontFamily": "{🔗 Alias.🔤 Text.Family.Text}",
-              "fontSize": "{🔗 Alias.🔤 Text.Size.Base}",
+              "fontSize": "{📱 Device.🔤 Text.Size.Base}",
               "fontWeight": "{🔗 Alias.🔤 Text.Weight.Regular}",
               "lineHeight": "{🔗 Alias.🔤 Text.LineHeight.Text}"
             }
@@ -5121,7 +5127,7 @@
             "$type": "typography",
             "$value": {
               "fontFamily": "{🔗 Alias.🔤 Text.Family.Text}",
-              "fontSize": "{🔗 Alias.🔤 Text.Size.XS}",
+              "fontSize": "{📱 Device.🔤 Text.Size.XS}",
               "fontWeight": "{🔗 Alias.🔤 Text.Weight.Regular}",
               "lineHeight": "{🔗 Alias.🔤 Text.LineHeight.Text}"
             }
@@ -5152,7 +5158,7 @@
             "$type": "typography",
             "$value": {
               "fontFamily": "{🔗 Alias.🔤 Text.Family.Text}",
-              "fontSize": "{🔗 Alias.🔤 Text.Size.SM}",
+              "fontSize": "{📱 Device.🔤 Text.Size.SM}",
               "fontWeight": "{🔗 Alias.🔤 Text.Weight.Bold}",
               "lineHeight": "{🔗 Alias.🔤 Text.LineHeight.Text}"
             }
@@ -5167,7 +5173,7 @@
             "$type": "typography",
             "$value": {
               "fontFamily": "{🔗 Alias.🔤 Text.Family.Text}",
-              "fontSize": "{🔗 Alias.🔤 Text.Size.Base}",
+              "fontSize": "{📱 Device.🔤 Text.Size.Base}",
               "fontWeight": "{🔗 Alias.🔤 Text.Weight.Regular}",
               "lineHeight": "{🔗 Alias.🔤 Text.LineHeight.Text}"
             }
@@ -5190,7 +5196,7 @@
             "$type": "typography",
             "$value": {
               "fontFamily": "{🔗 Alias.🔤 Text.Family.Text}",
-              "fontSize": "{🔗 Alias.🔤 Text.Size.XS}",
+              "fontSize": "{📱 Device.🔤 Text.Size.XS}",
               "fontWeight": "{🔗 Alias.🔤 Text.Weight.Regular}",
               "lineHeight": "{🔗 Alias.🔤 Text.LineHeight.Text}"
             }
@@ -5217,7 +5223,7 @@
             "$type": "typography",
             "$value": {
               "fontFamily": "{🔗 Alias.🔤 Text.Family.Text}",
-              "fontSize": "{🔗 Alias.🔤 Text.Size.SM}",
+              "fontSize": "{📱 Device.🔤 Text.Size.SM}",
               "fontWeight": "{🔗 Alias.🔤 Text.Weight.Bold}",
               "lineHeight": "{🔗 Alias.🔤 Text.LineHeight.Text}"
             }
@@ -5232,7 +5238,7 @@
             "$type": "typography",
             "$value": {
               "fontFamily": "{🔗 Alias.🔤 Text.Family.Text}",
-              "fontSize": "{🔗 Alias.🔤 Text.Size.Base}",
+              "fontSize": "{📱 Device.🔤 Text.Size.Base}",
               "fontWeight": "{🔗 Alias.🔤 Text.Weight.Regular}",
               "lineHeight": "{🔗 Alias.🔤 Text.LineHeight.Text}"
             }
@@ -5255,7 +5261,7 @@
             "$type": "typography",
             "$value": {
               "fontFamily": "{🔗 Alias.🔤 Text.Family.Text}",
-              "fontSize": "{🔗 Alias.🔤 Text.Size.XS}",
+              "fontSize": "{📱 Device.🔤 Text.Size.XS}",
               "fontWeight": "{🔗 Alias.🔤 Text.Weight.Regular}",
               "lineHeight": "{🔗 Alias.🔤 Text.LineHeight.Text}"
             }
@@ -5401,7 +5407,7 @@
         },
         "Size": {
           "$type": "dimension",
-          "$value": "{🔗 Alias.🔤 Text.Size.SM}"
+          "$value": "{📱 Device.🔤 Text.Size.SM}"
         }
       },
       "Control": {
@@ -5441,7 +5447,7 @@
         },
         "FontSize": {
           "$type": "dimension",
-          "$value": "{🔗 Alias.🔤 Text.Size.Base}"
+          "$value": "{📱 Device.🔤 Text.Size.Base}"
         }
       },
       "Description": {
@@ -5481,7 +5487,7 @@
         },
         "Size": {
           "$type": "dimension",
-          "$value": "{🔗 Alias.🔤 Text.Size.XS}"
+          "$value": "{📱 Device.🔤 Text.Size.XS}"
         }
       },
       "Chip": {
@@ -6037,7 +6043,7 @@
           "$type": "typography",
           "$value": {
             "fontFamily": "{🔗 Alias.🔤 Text.Family.Text}",
-            "fontSize": "{🔗 Alias.🔤 Text.Size.SM}",
+            "fontSize": "{📱 Device.🔤 Text.Size.SM}",
             "fontWeight": "{🔗 Alias.🔤 Text.Weight.Bold}",
             "lineHeight": "{🔗 Alias.🔤 Text.LineHeight.Text}"
           }
@@ -6046,7 +6052,7 @@
           "$type": "typography",
           "$value": {
             "fontFamily": "{🔗 Alias.🔤 Text.Family.Text}",
-            "fontSize": "{🔗 Alias.🔤 Text.Size.Base}",
+            "fontSize": "{📱 Device.🔤 Text.Size.Base}",
             "fontWeight": "{🔗 Alias.🔤 Text.Weight.Bold}",
             "lineHeight": "{🔗 Alias.🔤 Text.LineHeight.Text}"
           }
@@ -6055,7 +6061,7 @@
           "$type": "typography",
           "$value": {
             "fontFamily": "{🔗 Alias.🔤 Text.Family.Heading}",
-            "fontSize": "{🔗 Alias.🔤 Text.Size.3XL}",
+            "fontSize": "{📱 Device.🔤 Text.Size.3XL}",
             "fontWeight": "{🔗 Alias.🔤 Text.Weight.Bold}",
             "lineHeight": "{🔗 Alias.🔤 Text.LineHeight.Text}"
           }
@@ -6064,7 +6070,7 @@
           "$type": "typography",
           "$value": {
             "fontFamily": "{🔗 Alias.🔤 Text.Family.Heading}",
-            "fontSize": "{🔗 Alias.🔤 Text.Size.2XL}",
+            "fontSize": "{📱 Device.🔤 Text.Size.2XL}",
             "fontWeight": "{🔗 Alias.🔤 Text.Weight.Bold}",
             "lineHeight": "{🔗 Alias.🔤 Text.LineHeight.Text}"
           }
@@ -6073,7 +6079,7 @@
           "$type": "typography",
           "$value": {
             "fontFamily": "{🔗 Alias.🔤 Text.Family.Heading}",
-            "fontSize": "{🔗 Alias.🔤 Text.Size.LG}",
+            "fontSize": "{📱 Device.🔤 Text.Size.LG}",
             "fontWeight": "{🔗 Alias.🔤 Text.Weight.Bold}",
             "lineHeight": "{🔗 Alias.🔤 Text.LineHeight.Text}"
           }
@@ -6082,7 +6088,7 @@
           "$type": "typography",
           "$value": {
             "fontFamily": "{🔗 Alias.🔤 Text.Family.Heading}",
-            "fontSize": "{🔗 Alias.🔤 Text.Size.XL}",
+            "fontSize": "{📱 Device.🔤 Text.Size.XL}",
             "fontWeight": "{🔗 Alias.🔤 Text.Weight.Bold}",
             "lineHeight": "{🔗 Alias.🔤 Text.LineHeight.Text}"
           }
@@ -6139,7 +6145,7 @@
           "Base": {
             "Space": {
               "$type": "dimension",
-              "$value": "{🔗 Alias.↔️ Space.XS}"
+              "$value": "{📱 Device.↔️ Space.XS}"
             },
             "MinHeight": {
               "$type": "dimension",
@@ -6149,7 +6155,7 @@
           "LG": {
             "Space": {
               "$type": "dimension",
-              "$value": "{🔗 Alias.↔️ Space.XS}"
+              "$value": "{📱 Device.↔️ Space.XS}"
             },
             "MinHeight": {
               "$type": "dimension",
@@ -6159,7 +6165,7 @@
         },
         "Gap": {
           "$type": "dimension",
-          "$value": "{🔗 Alias.↔️ Space.Base}"
+          "$value": "{📱 Device.↔️ Space.Base}"
         },
         "Radius": {
           "$type": "dimension",
@@ -6238,7 +6244,7 @@
         "Accordion": {
           "Py": {
             "$type": "dimension",
-            "$value": "{🔗 Alias.↔️ Space.Base}"
+            "$value": "{📱 Device.↔️ Space.Base}"
           }
         },
         "Action": {
@@ -6251,7 +6257,7 @@
           "$type": "typography",
           "$value": {
             "fontFamily": "{🔗 Alias.🔤 Text.Family.Heading}",
-            "fontSize": "{🔗 Alias.🔤 Text.Size.Base}",
+            "fontSize": "{📱 Device.🔤 Text.Size.Base}",
             "fontWeight": "{🔗 Alias.🔤 Text.Weight.Bold}",
             "lineHeight": "{🔗 Alias.🔤 Text.LineHeight.Heading}"
           }
@@ -6260,7 +6266,7 @@
           "$type": "typography",
           "$value": {
             "fontFamily": "{🔗 Alias.🔤 Text.Family.Text}",
-            "fontSize": "{🔗 Alias.🔤 Text.Size.SM}",
+            "fontSize": "{📱 Device.🔤 Text.Size.SM}",
             "fontWeight": "{🔗 Alias.🔤 Text.Weight.Regular}",
             "lineHeight": "{🔗 Alias.🔤 Text.LineHeight.Text}"
           }
@@ -6305,7 +6311,7 @@
       },
       "Space": {
         "$type": "dimension",
-        "$value": "{🔗 Alias.↔️ Space.MD}"
+        "$value": "{📱 Device.↔️ Space.MD}"
       }
     },
     "AppNavbar": {
@@ -6332,7 +6338,7 @@
           },
           "Padding": {
             "$type": "dimension",
-            "$value": "{🔗 Alias.↔️ Space.Base}"
+            "$value": "{📱 Device.↔️ Space.Base}"
           }
         },
         "Brand": {
@@ -6342,7 +6348,7 @@
           },
           "Gap": {
             "$type": "dimension",
-            "$value": "{🔗 Alias.↔️ Space.XS}"
+            "$value": "{📱 Device.↔️ Space.XS}"
           }
         },
         "Title": {
@@ -6360,7 +6366,7 @@
           },
           "FontSize": {
             "$type": "dimension",
-            "$value": "{🔗 Alias.🔤 Text.Size.XL}"
+            "$value": "{📱 Device.🔤 Text.Size.XL}"
           }
         },
         "Hamburger": {
@@ -6374,7 +6380,7 @@
           },
           "Padding": {
             "$type": "dimension",
-            "$value": "{🔗 Alias.↔️ Space.XS}"
+            "$value": "{📱 Device.↔️ Space.XS}"
           },
           "Width": {
             "$type": "dimension",
@@ -6456,7 +6462,7 @@
             },
             "FontSize": {
               "$type": "dimension",
-              "$value": "{🔗 Alias.🔤 Text.Size.Base}"
+              "$value": "{📱 Device.🔤 Text.Size.Base}"
             },
             "Background": {
               "Active": {
@@ -6474,11 +6480,11 @@
             },
             "PaddingBlock": {
               "$type": "dimension",
-              "$value": "{🔗 Alias.↔️ Space.SM}"
+              "$value": "{📱 Device.↔️ Space.SM}"
             },
             "PaddingInline": {
               "$type": "dimension",
-              "$value": "{🔗 Alias.↔️ Space.XS}"
+              "$value": "{📱 Device.↔️ Space.XS}"
             },
             "Chevron": {
               "Color": {
@@ -6494,15 +6500,15 @@
           "Content": {
             "Gap": {
               "$type": "dimension",
-              "$value": "{🔗 Alias.↔️ Space.Base}"
+              "$value": "{📱 Device.↔️ Space.Base}"
             },
             "PaddingInline": {
               "$type": "dimension",
-              "$value": "{🔗 Alias.↔️ Space.LG}"
+              "$value": "{📱 Device.↔️ Space.LG}"
             },
             "PaddingBlock": {
               "$type": "dimension",
-              "$value": "{🔗 Alias.↔️ Space.LG}"
+              "$value": "{📱 Device.↔️ Space.LG}"
             }
           }
         },
@@ -6540,28 +6546,28 @@
             },
             "FontSize": {
               "$type": "dimension",
-              "$value": "{🔗 Alias.🔤 Text.Size.Base}"
+              "$value": "{📱 Device.🔤 Text.Size.Base}"
             },
             "PaddingBlock": {
               "$type": "dimension",
-              "$value": "{🔗 Alias.↔️ Space.XS}"
+              "$value": "{📱 Device.↔️ Space.XS}"
             },
             "PaddingInline": {
               "$type": "dimension",
-              "$value": "{🔗 Alias.↔️ Space.Base}"
+              "$value": "{📱 Device.↔️ Space.Base}"
             }
           },
           "Gap": {
             "$type": "dimension",
-            "$value": "{🔗 Alias.↔️ Space.XL}"
+            "$value": "{📱 Device.↔️ Space.XL}"
           },
           "StartGap": {
             "$type": "dimension",
-            "$value": "{🔗 Alias.↔️ Space.3XS}"
+            "$value": "{📱 Device.↔️ Space.3XS}"
           },
           "EndGap": {
             "$type": "dimension",
-            "$value": "{🔗 Alias.↔️ Space.XS}"
+            "$value": "{📱 Device.↔️ Space.XS}"
           }
         },
         "Button": {
@@ -6623,13 +6629,13 @@
         "Container": {
           "Gap": {
             "$type": "dimension",
-            "$value": "{🔗 Alias.↔️ Space.XL}"
+            "$value": "{📱 Device.↔️ Space.XL}"
           }
         },
         "Content": {
           "Gap": {
             "$type": "dimension",
-            "$value": "{🔗 Alias.↔️ Space.XS}"
+            "$value": "{📱 Device.↔️ Space.XS}"
           }
         }
       },
@@ -6767,7 +6773,7 @@
       "Position": {
         "Bottom": {
           "$type": "number",
-          "$value": "{🔗 Alias.↔️ Space.XS}",
+          "$value": "{📱 Device.↔️ Space.XS}",
           "$extensions": {
             "com.figma.variableId": "VariableID:2:1557",
             "com.figma.scopes": [
@@ -6884,7 +6890,7 @@
       },
       "Padding": {
         "$type": "dimension",
-        "$value": "{🔗 Alias.↔️ Space.Base}"
+        "$value": "{📱 Device.↔️ Space.Base}"
       },
       "Heading": {
         "$type": "typography",
@@ -6896,7 +6902,7 @@
       },
       "Gap": {
         "$type": "dimension",
-        "$value": "{🔗 Alias.↔️ Space.3XS}"
+        "$value": "{📱 Device.↔️ Space.3XS}"
       }
     },
     "Spinner": {
@@ -7124,7 +7130,7 @@
       },
       "Padding": {
         "$type": "dimension",
-        "$value": "{🔗 Alias.↔️ Space.Base}"
+        "$value": "{📱 Device.↔️ Space.Base}"
       },
       "Heading": {
         "$type": "typography",
@@ -7136,7 +7142,7 @@
       },
       "Gap": {
         "$type": "dimension",
-        "$value": "{🔗 Alias.↔️ Space.3XS}"
+        "$value": "{📱 Device.↔️ Space.3XS}"
       }
     },
     "Tag": {
@@ -7145,15 +7151,15 @@
           "Space": {
             "Gap": {
               "$type": "dimension",
-              "$value": "{🔗 Alias.↔️ Space.2XS}"
+              "$value": "{📱 Device.↔️ Space.2XS}"
             },
             "X": {
               "$type": "dimension",
-              "$value": "{🔗 Alias.↔️ Space.SM}"
+              "$value": "{📱 Device.↔️ Space.SM}"
             },
             "Y": {
               "$type": "dimension",
-              "$value": "{🔗 Alias.↔️ Space.2XS}"
+              "$value": "{📱 Device.↔️ Space.2XS}"
             }
           },
           "FontWeight": {
@@ -7162,22 +7168,22 @@
           },
           "FontSize": {
             "$type": "dimension",
-            "$value": "{🔗 Alias.🔤 Text.Size.Base}"
+            "$value": "{📱 Device.🔤 Text.Size.Base}"
           }
         },
         "SM": {
           "Space": {
             "Gap": {
               "$type": "dimension",
-              "$value": "{🔗 Alias.↔️ Space.2XS}"
+              "$value": "{📱 Device.↔️ Space.2XS}"
             },
             "X": {
               "$type": "dimension",
-              "$value": "{🔗 Alias.↔️ Space.SM}"
+              "$value": "{📱 Device.↔️ Space.SM}"
             },
             "Y": {
               "$type": "dimension",
-              "$value": "{🔗 Alias.↔️ Space.None}"
+              "$value": "{📱 Device.↔️ Space.None}"
             }
           },
           "FontWeight": {
@@ -7186,22 +7192,22 @@
           },
           "FontSize": {
             "$type": "dimension",
-            "$value": "{🔗 Alias.🔤 Text.Size.SM}"
+            "$value": "{📱 Device.🔤 Text.Size.SM}"
           }
         },
         "MD": {
           "Space": {
             "Gap": {
               "$type": "dimension",
-              "$value": "{🔗 Alias.↔️ Space.2XS}"
+              "$value": "{📱 Device.↔️ Space.2XS}"
             },
             "X": {
               "$type": "dimension",
-              "$value": "{🔗 Alias.↔️ Space.Base}"
+              "$value": "{📱 Device.↔️ Space.Base}"
             },
             "Y": {
               "$type": "dimension",
-              "$value": "{🔗 Alias.↔️ Space.XS}"
+              "$value": "{📱 Device.↔️ Space.XS}"
             }
           },
           "FontWeight": {
@@ -7210,22 +7216,22 @@
           },
           "FontSize": {
             "$type": "dimension",
-            "$value": "{🔗 Alias.🔤 Text.Size.Base}"
+            "$value": "{📱 Device.🔤 Text.Size.Base}"
           }
         },
         "LG": {
           "Space": {
             "Gap": {
               "$type": "dimension",
-              "$value": "{🔗 Alias.↔️ Space.2XS}"
+              "$value": "{📱 Device.↔️ Space.2XS}"
             },
             "X": {
               "$type": "dimension",
-              "$value": "{🔗 Alias.↔️ Space.LG}"
+              "$value": "{📱 Device.↔️ Space.LG}"
             },
             "Y": {
               "$type": "dimension",
-              "$value": "{🔗 Alias.↔️ Space.SM}"
+              "$value": "{📱 Device.↔️ Space.SM}"
             }
           },
           "FontWeight": {
@@ -7234,7 +7240,7 @@
           },
           "FontSize": {
             "$type": "dimension",
-            "$value": "{🔗 Alias.🔤 Text.Size.Base}"
+            "$value": "{📱 Device.🔤 Text.Size.Base}"
           }
         }
       },
@@ -7497,7 +7503,7 @@
         },
         "FontSize": {
           "$type": "dimension",
-          "$value": "{🔗 Alias.🔤 Text.Size.SM}"
+          "$value": "{📱 Device.🔤 Text.Size.SM}"
         }
       },
       "Item": {
@@ -7551,16 +7557,16 @@
           },
           "Size": {
             "$type": "dimension",
-            "$value": "{🔗 Alias.↔️ Space.Base}"
+            "$value": "{📱 Device.↔️ Space.Base}"
           }
         },
         "PaddingInline": {
           "$type": "dimension",
-          "$value": "{🔗 Alias.↔️ Space.Base}"
+          "$value": "{📱 Device.↔️ Space.Base}"
         },
         "PaddingBlock": {
           "$type": "dimension",
-          "$value": "{🔗 Alias.↔️ Space.2XS}"
+          "$value": "{📱 Device.↔️ Space.2XS}"
         },
         "Height": {
           "$type": "dimension",
@@ -7569,11 +7575,11 @@
       },
       "Gap": {
         "$type": "dimension",
-        "$value": "{🔗 Alias.↔️ Space.2XS}"
+        "$value": "{📱 Device.↔️ Space.2XS}"
       },
       "Padding": {
         "$type": "dimension",
-        "$value": "{🔗 Alias.↔️ Space.2XS}"
+        "$value": "{📱 Device.↔️ Space.2XS}"
       },
       "Background": {
         "$type": "color",
@@ -8050,7 +8056,7 @@
         },
         "Gap": {
           "$type": "dimension",
-          "$value": "{🔗 Alias.↔️ Space.3XS}"
+          "$value": "{📱 Device.↔️ Space.3XS}"
         }
       },
       "Elevation": {
@@ -8063,13 +8069,13 @@
         "SM": {
           "Gap": {
             "$type": "dimension",
-            "$value": "{🔗 Alias.↔️ Space.2XS}"
+            "$value": "{📱 Device.↔️ Space.2XS}"
           }
         },
         "Base": {
           "Gap": {
             "$type": "dimension",
-            "$value": "{🔗 Alias.↔️ Space.XS}"
+            "$value": "{📱 Device.↔️ Space.XS}"
           }
         }
       },
@@ -8190,7 +8196,7 @@
           "$type": "typography",
           "$value": {
             "fontFamily": "{🔗 Alias.🔤 Text.Family.Text}",
-            "fontSize": "{🔗 Alias.🔤 Text.Size.Base}",
+            "fontSize": "{📱 Device.🔤 Text.Size.Base}",
             "fontWeight": "{🔗 Alias.🔤 Text.Weight.Regular}",
             "lineHeight": "{🔗 Alias.🔤 Text.LineHeight.Text}"
           }
@@ -8209,18 +8215,18 @@
       "Tab": {
         "SpaceX": {
           "$type": "dimension",
-          "$value": "{🔗 Alias.↔️ Space.Base}"
+          "$value": "{📱 Device.↔️ Space.Base}"
         },
         "SpaceY": {
           "$type": "dimension",
-          "$value": "{🔗 Alias.↔️ Space.2XS}"
+          "$value": "{📱 Device.↔️ Space.2XS}"
         },
         "Selected": {
           "Typo": {
             "$type": "typography",
             "$value": {
               "fontFamily": "{🔗 Alias.🔤 Text.Family.Heading}",
-              "fontSize": "{🔗 Alias.🔤 Text.Size.Base}",
+              "fontSize": "{📱 Device.🔤 Text.Size.Base}",
               "fontWeight": "{🔗 Alias.🔤 Text.Weight.Bold}",
               "lineHeight": "{🔗 Alias.🔤 Text.LineHeight.Text}"
             }
@@ -8247,7 +8253,7 @@
             "$type": "typography",
             "$value": {
               "fontFamily": "{🔗 Alias.🔤 Text.Family.Heading}",
-              "fontSize": "{🔗 Alias.🔤 Text.Size.Base}",
+              "fontSize": "{📱 Device.🔤 Text.Size.Base}",
               "fontWeight": "{🔗 Alias.🔤 Text.Weight.Bold}",
               "lineHeight": "{🔗 Alias.🔤 Text.LineHeight.Text}"
             }
@@ -8281,11 +8287,11 @@
       "Panel": {
         "SpaceX": {
           "$type": "dimension",
-          "$value": "{🔗 Alias.↔️ Space.None}"
+          "$value": "{📱 Device.↔️ Space.None}"
         },
         "SpaceY": {
           "$type": "dimension",
-          "$value": "{🔗 Alias.↔️ Space.Base}"
+          "$value": "{📱 Device.↔️ Space.Base}"
         }
       },
       "Border": {
@@ -8425,7 +8431,7 @@
       "Vertical": {
         "Gap": {
           "$type": "dimension",
-          "$value": "{🔗 Alias.↔️ Space.LG}"
+          "$value": "{📱 Device.↔️ Space.LG}"
         }
       }
     },
@@ -8480,7 +8486,7 @@
             "$type": "typography",
             "$value": {
               "fontFamily": "{🔗 Alias.🔤 Text.Family.Heading}",
-              "fontSize": "{🔗 Alias.🔤 Text.Size.SM}",
+              "fontSize": "{📱 Device.🔤 Text.Size.SM}",
               "fontWeight": "{🔗 Alias.🔤 Text.Weight.Bold}",
               "lineHeight": "{🔗 Alias.🔤 Text.LineHeight.Heading}"
             }
@@ -8572,11 +8578,11 @@
       "Panel": {
         "SpaceX": {
           "$type": "dimension",
-          "$value": "{🔗 Alias.↔️ Space.None}"
+          "$value": "{📱 Device.↔️ Space.None}"
         },
         "SpaceY": {
           "$type": "dimension",
-          "$value": "{🔗 Alias.↔️ Space.Base}"
+          "$value": "{📱 Device.↔️ Space.Base}"
         }
       }
     },
@@ -8635,7 +8641,7 @@
       },
       "Gap": {
         "$type": "dimension",
-        "$value": "{🔗 Alias.↔️ Space.Base}"
+        "$value": "{📱 Device.↔️ Space.Base}"
       },
       "ScrollFadeBg": {
         "$type": "color",
@@ -8671,11 +8677,11 @@
       },
       "SpaceX": {
         "$type": "dimension",
-        "$value": "{🔗 Alias.↔️ Space.SM}"
+        "$value": "{📱 Device.↔️ Space.SM}"
       },
       "SpaceY": {
         "$type": "dimension",
-        "$value": "{🔗 Alias.↔️ Space.XS}"
+        "$value": "{📱 Device.↔️ Space.XS}"
       }
     },
     "Table": {
@@ -8763,7 +8769,7 @@
       },
       "Space": {
         "$type": "dimension",
-        "$value": "{🔗 Alias.↔️ Space.MD}"
+        "$value": "{📱 Device.↔️ Space.MD}"
       }
     },
     "Drawer": {
@@ -8787,7 +8793,7 @@
       },
       "Padding": {
         "$type": "dimension",
-        "$value": "{🔗 Alias.↔️ Space.MD}"
+        "$value": "{📱 Device.↔️ Space.MD}"
       },
       "Background": {
         "$type": "color",
@@ -8817,7 +8823,7 @@
           },
           "Size": {
             "$type": "dimension",
-            "$value": "{🔗 Alias.🔤 Text.Size.Base}"
+            "$value": "{📱 Device.🔤 Text.Size.Base}"
           }
         }
       },
@@ -8921,7 +8927,7 @@
         "Text": {
           "Size": {
             "$type": "dimension",
-            "$value": "{🔗 Alias.🔤 Text.Size.Base}"
+            "$value": "{📱 Device.🔤 Text.Size.Base}"
           },
           "LineHeight": {
             "$type": "number",
@@ -8953,7 +8959,7 @@
         "Text": {
           "Size": {
             "$type": "dimension",
-            "$value": "{🔗 Alias.🔤 Text.Size.XS}"
+            "$value": "{📱 Device.🔤 Text.Size.XS}"
           },
           "LineHeight": {
             "$type": "number",
@@ -9047,12 +9053,12 @@
       },
       "Space": {
         "$type": "dimension",
-        "$value": "{🔗 Alias.↔️ Space.Base}",
+        "$value": "{📱 Device.↔️ Space.Base}",
         "$extensions": {
           "com.helvetia.responsive": {
-            "mobile": "{🔗 Alias.↔️ Space.Base}",
-            "tablet": "{🔗 Alias.↔️ Space.Base}",
-            "desktop": "{🔗 Alias.↔️ Space.Base}"
+            "mobile": "{📱 Device.↔️ Space.Base}",
+            "tablet": "{📱 Device.↔️ Space.Base}",
+            "desktop": "{📱 Device.↔️ Space.Base}"
           }
         }
       },
@@ -9103,7 +9109,7 @@
           "$type": "typography",
           "$value": {
             "fontFamily": "{🔗 Alias.🔤 Text.Family.Text}",
-            "fontSize": "{🔗 Alias.🔤 Text.Size.Base}",
+            "fontSize": "{📱 Device.🔤 Text.Size.Base}",
             "fontWeight": "{🔗 Alias.🔤 Text.Weight.Regular}",
             "lineHeight": "{🔗 Alias.🔤 Text.LineHeight.Text}"
           }
@@ -9112,7 +9118,7 @@
           "$type": "typography",
           "$value": {
             "fontFamily": "{🔗 Alias.🔤 Text.Family.Text}",
-            "fontSize": "{🔗 Alias.🔤 Text.Size.SM}",
+            "fontSize": "{📱 Device.🔤 Text.Size.SM}",
             "fontWeight": "{🔗 Alias.🔤 Text.Weight.Regular}",
             "lineHeight": "{🔗 Alias.🔤 Text.LineHeight.Text}"
           }
@@ -9121,7 +9127,7 @@
           "$type": "typography",
           "$value": {
             "fontFamily": "{🔗 Alias.🔤 Text.Family.Text}",
-            "fontSize": "{🔗 Alias.🔤 Text.Size.LG}",
+            "fontSize": "{📱 Device.🔤 Text.Size.LG}",
             "fontWeight": "{🔗 Alias.🔤 Text.Weight.Regular}",
             "lineHeight": "{🔗 Alias.🔤 Text.LineHeight.Text}"
           }
@@ -9130,7 +9136,7 @@
           "$type": "typography",
           "$value": {
             "fontFamily": "{🔗 Alias.🔤 Text.Family.Text}",
-            "fontSize": "{🔗 Alias.🔤 Text.Size.MD}",
+            "fontSize": "{📱 Device.🔤 Text.Size.MD}",
             "fontWeight": "{🔗 Alias.🔤 Text.Weight.Regular}",
             "lineHeight": "{🔗 Alias.🔤 Text.LineHeight.Text}"
           }

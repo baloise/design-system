@@ -125,7 +125,7 @@ $colors: ('primary', 'secondary', 'default', 'inverted');
 $spaces: ('none', '2xs', 'xs', 'sm', 'base', 'md', 'lg', 'xl', '2xl', '3xl');
 
 @mixin space($space) {
-  --mod-divider-space: var(--ds-alias-space-#{$space}-device);
+  --mod-divider-space: var(--ds-device-space-#{$space});
 }
 
 @each $space in $spaces {

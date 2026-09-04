@@ -28,7 +28,7 @@
 // ─── Container ───────────────────────────────────────────────────────────────
 
 :host .container {
-  margin: 0 var(--ds-alias-container-space-device);
+  margin: 0 var(--ds-device-container-space);
   max-width: var(--ds-alias-container-width-default);
 
   @include desktop {

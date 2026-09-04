@@ -100,7 +100,7 @@ export function findCollectionAndModes(meta, brandNames, collectionName = 'Desig
 }
 
 /**
- * Resolves the responsive/breakpoint collection (docs — MVP scope: Alias
+ * Resolves the responsive/breakpoint collection (docs — MVP scope: Device-layer
  * Text.Size/Space/Container.Space Device variables, see lib/figma-value.mjs's
  * DEVICE_ELIGIBLE_PATH_PREFIXES) and a breakpoint-name -> modeId map.
  */

@@ -261,8 +261,8 @@
   justify-content: flex-start;
   box-sizing: border-box;
   gap: var(--_app-navbar-container-gap);
-  padding-left: var(--ds-alias-container-space-device);
-  padding-right: var(--ds-alias-container-space-device);
+  padding-left: var(--ds-device-container-space);
+  padding-right: var(--ds-device-container-space);
   width: 100%;
   max-width: var(--ds-alias-container-width-default);
 

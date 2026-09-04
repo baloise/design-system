@@ -1,6 +1,6 @@
 /**
  * Generates apps/toky/src/tokens/code-usage.generated.json — for every Base
- * token (Global/Alias/Component layers), how many compiled CSS files in
+ * token (Global/Alias/Device/Component layers), how many compiled CSS files in
  * packages/core and packages/css reference it as a CSS custom property.
  * Used by Toky's token editor to flag dead tokens (see
  * docs/plans/toky-code-usage-plan.md).

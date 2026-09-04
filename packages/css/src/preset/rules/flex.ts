@@ -18,7 +18,7 @@ const aliases: Record<string, Size> = {
 }
 
 function sv(size: Size | string): string {
-  return `var(--ds-alias-space-${size}-device)`
+  return `var(--ds-device-space-${size})`
 }
 
 export const flexRules: Rule[] = [

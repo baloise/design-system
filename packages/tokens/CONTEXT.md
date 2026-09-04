@@ -32,17 +32,23 @@ A **token** is a named design value that represents a single, reusable design de
 - `text-size-base` → `1rem` (typography token)
 - `shadow-box-default` → `0 2px 8px rgba(0,0,0,0.1)` (shadow token)
 
-### Three-Layer Architecture
+### Four-Layer Architecture
 
-Tokens are organized into three layers:
+Tokens are organized into four layers:
 
-| Layer         | JSON Key       | Purpose                               | Consumer Access                            |
-| ------------- | -------------- | ------------------------------------- | ------------------------------------------ |
-| **Global**    | `🌐 Global`    | Raw values (color scales, base sizes) | ❌ Rarely; only when no Alias fits         |
-| **Alias**     | `🔗 Alias`     | Meaningful abstractions for consumers | ✅ **Primary layer** for component/app use |
-| **Component** | `🧩 Component` | Per-component token overrides         | ✅ When styling a specific DS component    |
+| Layer         | JSON Key       | Purpose                                    | Consumer Access                                                       |
+| ------------- | -------------- | ------------------------------------------ | --------------------------------------------------------------------- |
+| **Global**    | `🌐 Global`    | Raw values (color scales, base sizes)      | ❌ Rarely; only when no Alias/Device fits                             |
+| **Alias**     | `🔗 Alias`     | Meaningful, non-responsive abstractions    | ✅ **Primary layer** for component/app use                            |
+| **Device**    | `📱 Device`    | Responsive abstractions (space, text size) | ✅ For any spacing/type-size value that should respond to breakpoints |
+| **Component** | `🧩 Component` | Per-component token overrides              | ✅ When styling a specific DS component                               |
 
-**Flow:** Components reference Alias tokens → resolved to Global values → values come from Figma
+**Flow:** Components reference Alias/Device tokens → resolved to Global values → values come from Figma
+
+Device holds every token that carries the responsive `$extensions.com.helvetia.responsive`
+breakpoint map (see "Responsive Tokens" below) — currently `Space`, `Text.Size`, and
+`Container.Space`. Everything else non-responsive stays in Alias. See
+`docs/plans/device-token-layer-plan.md` for the migration that split these out of Alias.
 
 ### Naming Convention
 
@@ -64,15 +70,23 @@ Raw color scales with numbered intensity levels (1–5+):
 
 #### Alias Layer
 
-Semantic abstractions for consumers (colors, spacing, typography, etc.):
+Semantic abstractions for consumers (colors, typography properties other than size, etc.) —
+responsive spacing/text-size abstractions live in the Device layer instead, see below:
 
 - Pattern: `--ds-alias-[category]-[subcategory]-[name]`
 - Examples:
   - `--ds-alias-background-color-sky` (references `--ds-global-color-sky-2`)
   - `--ds-alias-background-color-info` (references `--ds-global-color-info-3`)
-  - `--ds-alias-space-lg` → `1.5rem`
-  - `--ds-alias-text-size-base` → `1rem`
   - `--ds-alias-radius-base` → `0.25rem`
+
+#### Device Layer
+
+Responsive semantic abstractions — same naming shape as Alias, `alias` swapped for `device`:
+
+- Pattern: `--ds-device-[category]-[name]`
+- Examples:
+  - `--ds-device-space-lg` → `1.5rem` (mobile) / `2rem` (desktop), auto-switching
+  - `--ds-device-text-size-base` → `1rem` (mobile) / `1.125rem` (desktop), auto-switching
 
 #### Component Layer
 
@@ -123,38 +137,43 @@ _Avoid_: theme, variant (component variants are a distinct concept in this syste
 
 ### Responsive Tokens
 
-Typography and spacing tokens come in **three responsive variants** plus one auto-responsive form:
+A Device-layer token comes in **three fixed breakpoint variants** plus one auto-responsive,
+bare-named form — the bare name _is_ the auto-switching variant:
 
-| Form        | Example                           | Behavior                     |
-| ----------- | --------------------------------- | ---------------------------- |
-| **Mobile**  | `--ds-alias-font-size-xl-mobile`  | Always mobile value          |
-| **Tablet**  | `--ds-alias-font-size-xl-tablet`  | Always tablet value          |
-| **Desktop** | `--ds-alias-font-size-xl-desktop` | Always desktop value         |
-| **Device**  | `--ds-alias-font-size-xl-device`  | Auto-switches at breakpoints |
+| Form        | Example                            | Behavior                     |
+| ----------- | ---------------------------------- | ---------------------------- |
+| **Mobile**  | `--ds-device-text-size-xl-mobile`  | Always mobile value          |
+| **Tablet**  | `--ds-device-text-size-xl-tablet`  | Always tablet value          |
+| **Desktop** | `--ds-device-text-size-xl-desktop` | Always desktop value         |
+| **Auto**    | `--ds-device-text-size-xl`         | Auto-switches at breakpoints |
 
-**Always prefer `-device`** in component code. The fixed variants exist only for special cases where you need to force a specific breakpoint value.
+**Always prefer the bare `--ds-device-*` name** in component code. The `-mobile`/`-tablet`/
+`-desktop` variants exist only for special cases where you need to force a specific breakpoint
+value.
 
-#### How `-device` Works
-
-The `-device` variant automatically switches values at media breakpoints:
+#### How the bare Device var auto-switches
 
 ```css
 :root {
-  --ds-font-size-xl-device: var(--ds-font-size-28); /* mobile: 1.75rem */
+  --ds-device-text-size-xl: var(--ds-font-size-28); /* mobile: 1.75rem */
 }
 
 @media (min-width: 769px) {
   :root {
-    --ds-font-size-xl-device: var(--ds-font-size-40); /* tablet: 2.5rem */
+    --ds-device-text-size-xl: var(--ds-font-size-40); /* tablet: 2.5rem */
   }
 }
 
 @media (min-width: 1024px) {
   :root {
-    --ds-font-size-xl-device: var(--ds-font-size-40); /* desktop: 2.5rem */
+    --ds-device-text-size-xl: var(--ds-font-size-40); /* desktop: 2.5rem */
   }
 }
 ```
+
+This applies to _every_ token carrying the responsive extension, not just the three that live in
+the Device layer — a Component-level responsive token (e.g. `Component.Logo.Size`) gets the same
+bare-name-is-auto-switching treatment from the same build-time formatter step.
 
 ### Token Categories
 

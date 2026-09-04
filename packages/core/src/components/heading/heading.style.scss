@@ -28,7 +28,7 @@ $nested-vars-selector: ('.title', '.subtitle');
   @include vars.local(heading-size, var(--ds-heading-level-1-font-size));
 
   @include vars.local(heading-color, var(--ds-heading-color-primary));
-  @include vars.local(heading-space, var(--ds-alias-space-xs-device));
+  @include vars.local(heading-space, var(--ds-device-space-xs));
   @include vars.local(heading-shadow, none);
   @include vars.local(heading-text-align, inherit);
 }
