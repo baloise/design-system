@@ -56,7 +56,7 @@ export class Divider implements DsComponentInterface {
    */
   @Prop()
   @OneOf(DIVIDER_COLORS)
-  readonly color: DividerColor = 'base'
+  readonly color: DividerColor = 'default'
 
   /**
    * Defines if the separator line is dashed or solid. Default is solid.

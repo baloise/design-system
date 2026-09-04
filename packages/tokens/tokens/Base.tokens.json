@@ -10,7 +10,7 @@
           "$type": "color",
           "$value": "{🌐 Global.🌈 Color.Neutral}"
         },
-        "Base": {
+        "Default": {
           "$type": "color",
           "$value": "{🌐 Global.🌈 Color.Grey.3}"
         },
@@ -543,7 +543,7 @@
           "$type": "dimension",
           "$value": "{🌐 Global.📏 Dimension.Container.4}"
         },
-        "Base": {
+        "Default": {
           "$type": "dimension",
           "$value": "{🌐 Global.📏 Dimension.Container.5}"
         },
@@ -2880,7 +2880,7 @@
       }
     },
     "Badge": {
-      "Base": {
+      "Default": {
         "Color": {
           "Text": {
             "$type": "color",
@@ -4234,7 +4234,7 @@
             "$value": "{🔗 Alias.▭ Border.Composite.GreyDashed}"
           }
         },
-        "Base": {
+        "Default": {
           "Text": {
             "$type": "color",
             "$value": "{🔗 Alias.🎨 Surface.OnWhite}"
@@ -4638,7 +4638,7 @@
           "$type": "color",
           "$value": "{🔗 Alias.▭ Border.Color.White}"
         },
-        "Base": {
+        "Default": {
           "$type": "color",
           "$value": "{🔗 Alias.▭ Border.Color.GreyLight}"
         }
@@ -5486,15 +5486,13 @@
       },
       "Chip": {
         "Color": {
-          "Base": {
-            "Text": {
-              "$type": "color",
-              "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
-            },
-            "Background": {
-              "$type": "color",
-              "$value": "{🔗 Alias.🎨 Surface.Grey}"
-            }
+          "Text": {
+            "$type": "color",
+            "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
+          },
+          "Background": {
+            "$type": "color",
+            "$value": "{🔗 Alias.🎨 Surface.Grey}"
           }
         },
         "Family": {
@@ -5516,52 +5514,36 @@
           "$value": "{🔗 Alias.🔤 Text.Color.Danger}"
         },
         "Text": {
-          "Base": {
-            "$type": "color",
-            "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
-          }
+          "$type": "color",
+          "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
         },
         "Primary": {
-          "Base": {
-            "$type": "color",
-            "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
-          }
+          "$type": "color",
+          "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
         },
         "Placeholder": {
-          "Base": {
-            "$type": "color",
-            "$value": "{🔗 Alias.🔤 Text.Color.Placeholder}"
-          }
+          "$type": "color",
+          "$value": "{🔗 Alias.🔤 Text.Color.Placeholder}"
         },
         "Border": {
-          "Base": {
-            "$type": "color",
-            "$value": "{🔗 Alias.▭ Border.Color.GreyLight}"
-          }
+          "$type": "color",
+          "$value": "{🔗 Alias.▭ Border.Color.GreyLight}"
         },
         "FocusRing": {
-          "Base": {
-            "$type": "color",
-            "$value": "{🔗 Alias.✨ Interaction.Focus.Color.Base}"
-          }
+          "$type": "color",
+          "$value": "{🔗 Alias.✨ Interaction.Focus.Color.Base}"
         },
         "Background": {
-          "Base": {
-            "$type": "color",
-            "$value": "{🔗 Alias.🎨 Surface.Transparent}"
-          }
+          "$type": "color",
+          "$value": "{🔗 Alias.🎨 Surface.Transparent}"
         },
         "Highlight": {
-          "Base": {
-            "$type": "color",
-            "$value": "{🔗 Alias.🎨 Surface.YellowLight}"
-          }
+          "$type": "color",
+          "$value": "{🔗 Alias.🎨 Surface.YellowLight}"
         },
         "Focus": {
-          "Base": {
-            "$type": "color",
-            "$value": "{🔗 Alias.🎨 Surface.Hover}"
-          }
+          "$type": "color",
+          "$value": "{🔗 Alias.🎨 Surface.Hover}"
         }
       },
       "Content": {
@@ -5575,20 +5557,16 @@
         },
         "Color": {
           "Background": {
-            "Base": {
-              "$type": "color",
-              "$value": "{🔗 Alias.🎨 Surface.White}"
-            }
+            "$type": "color",
+            "$value": "{🔗 Alias.🎨 Surface.White}"
           }
         }
       },
       "Search": {
         "Color": {
           "Text": {
-            "Base": {
-              "$type": "color",
-              "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
-            }
+            "$type": "color",
+            "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
           }
         }
       },
@@ -5613,10 +5591,8 @@
             }
           },
           "Border": {
-            "Base": {
-              "$type": "color",
-              "$value": "{🔗 Alias.▭ Border.Color.GreyLight}"
-            }
+            "$type": "color",
+            "$value": "{🔗 Alias.▭ Border.Color.GreyLight}"
           },
           "Icon": {
             "Selected": {
@@ -5661,16 +5637,12 @@
         },
         "Color": {
           "Text": {
-            "Base": {
-              "$type": "color",
-              "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
-            }
+            "$type": "color",
+            "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
           },
           "Background": {
-            "Base": {
-              "$type": "color",
-              "$value": "{🔗 Alias.🎨 Surface.GreyLight}"
-            }
+            "$type": "color",
+            "$value": "{🔗 Alias.🎨 Surface.GreyLight}"
           }
         }
       },
@@ -5712,7 +5684,7 @@
       }
     },
     "Notification": {
-      "Base": {
+      "Default": {
         "Color": {
           "Background": {
             "$type": "color",
@@ -5872,7 +5844,7 @@
           "$value": "{🧩 Component.Text.Typo.Paragraph}"
         }
       },
-      "OutlineBase": {
+      "OutlineDefault": {
         "Color": {
           "Background": {
             "$type": "color",
@@ -6337,7 +6309,7 @@
       }
     },
     "AppNavbar": {
-      "Base": {
+      "Default": {
         "Layout": {
           "Shadow": {
             "$type": "shadow",
@@ -7374,7 +7346,7 @@
           }
         }
       },
-      "Base": {
+      "Default": {
         "Color": {
           "Text": {
             "$type": "color",
@@ -7610,7 +7582,7 @@
       "Divider": {
         "Color": {
           "$type": "color",
-          "$value": "{🧩 Component.Divider.Color.Base}"
+          "$value": "{🧩 Component.Divider.Color.Default}"
         }
       }
     },
@@ -8333,7 +8305,7 @@
           "$type": "border",
           "$value": "{🔗 Alias.🎬 Action.BrandPurple.Border.Base}"
         },
-        "Base": {
+        "Default": {
           "$type": "border",
           "$value": "{🔗 Alias.▭ Border.Composite.Grey}"
         }
@@ -8956,18 +8928,14 @@
             "$value": "{🔗 Alias.🔤 Text.LineHeight.Text}"
           },
           "Color": {
-            "Base": {
-              "$type": "color",
-              "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
-            }
+            "$type": "color",
+            "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
           }
         },
         "Placeholder": {
           "Color": {
-            "Base": {
-              "$type": "color",
-              "$value": "{🔗 Alias.🔤 Text.Color.Placeholder}"
-            }
+            "$type": "color",
+            "$value": "{🔗 Alias.🔤 Text.Color.Placeholder}"
           }
         }
       },

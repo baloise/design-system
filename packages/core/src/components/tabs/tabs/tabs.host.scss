@@ -24,7 +24,7 @@
  */
 
 :host {
-  @include vars.local(tabs-border-base, var(--ds-tabs-border-base));
+  @include vars.local(tabs-border-base, var(--ds-tabs-border-default));
   @include vars.local(tabs-gap, var(--ds-tabs-gap));
   @include vars.local(tabs-panel-space-x, var(--ds-tabs-panel-space-x));
   @include vars.local(tabs-panel-space-y, var(--ds-tabs-panel-space-y));

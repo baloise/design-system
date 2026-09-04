@@ -18,9 +18,9 @@ $host-selector: ('#card');
  */
 
 @include vars.hybrid($name, $css-selector, $use-host) {
-  @include vars.local(card-color-background, var(--ds-card-color-base-background));
-  @include vars.local(card-color-text, var(--ds-card-color-base-text));
-  @include vars.local(card-color-border, var(--ds-card-color-base-border));
+  @include vars.local(card-color-background, var(--ds-card-color-default-background));
+  @include vars.local(card-color-text, var(--ds-card-color-default-text));
+  @include vars.local(card-color-border, var(--ds-card-color-default-border));
   @include vars.local(card-radius, var(--ds-card-radius));
   @include vars.local(card-shadow, var(--ds-card-shadow-base));
   @include vars.local(card-gap, var(--ds-card-space-base));

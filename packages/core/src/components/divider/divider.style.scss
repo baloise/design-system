@@ -99,7 +99,7 @@ $css-selector: (hr, '.divider');
 //
 // Colors
 // --------------------------------
-$colors: ('primary', 'secondary', 'base', 'inverted');
+$colors: ('primary', 'secondary', 'default', 'inverted');
 
 @mixin color($color) {
   --mod-divider-color: var(--ds-divider-color-#{$color});

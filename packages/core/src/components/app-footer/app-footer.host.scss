@@ -56,7 +56,7 @@
   padding-block: var(--_app-footer-space-y);
   padding-inline: var(--_container-space-x, var(--ds-alias-container-space-device));
   width: 100%;
-  max-width: var(--_container-max-width, var(--ds-alias-container-width-base));
+  max-width: var(--_container-max-width, var(--ds-alias-container-width-default));
 
   &.is-fluid {
     max-width: var(--ds-alias-container-width-fluid);

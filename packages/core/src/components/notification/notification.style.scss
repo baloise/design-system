@@ -18,22 +18,22 @@ $host-selector: ('#notification');
 
 @include vars.hybrid($name, $css-selector, $use-host) {
   @include vars.local(notification-radius, var(--ds-notification-radius));
-  @include vars.local(notification-color-background, var(--ds-notification-base-color-background));
-  @include vars.local(notification-border, var(--ds-notification-base-border));
-  @include vars.local(notification-color-text, var(--ds-notification-base-color-text));
-  @include vars.local(notification-color-heading, var(--ds-notification-base-color-heading));
+  @include vars.local(notification-color-background, var(--ds-notification-default-color-background));
+  @include vars.local(notification-border, var(--ds-notification-default-border));
+  @include vars.local(notification-color-text, var(--ds-notification-default-color-text));
+  @include vars.local(notification-color-heading, var(--ds-notification-default-color-heading));
 
-  @include vars.local(notification-heading-family, var(--ds-notification-base-heading-font-family));
-  @include vars.local(notification-heading-weight, var(--ds-notification-base-heading-font-weight));
-  @include vars.local(notification-heading-size, var(--ds-notification-base-heading-font-size));
-  @include vars.local(notification-heading-line-height, var(--ds-notification-base-heading-line-height));
+  @include vars.local(notification-heading-family, var(--ds-notification-default-heading-font-family));
+  @include vars.local(notification-heading-weight, var(--ds-notification-default-heading-font-weight));
+  @include vars.local(notification-heading-size, var(--ds-notification-default-heading-font-size));
+  @include vars.local(notification-heading-line-height, var(--ds-notification-default-heading-line-height));
 
-  @include vars.local(notification-content-family, var(--ds-notification-base-body-font-family));
-  @include vars.local(notification-content-weight, var(--ds-notification-base-body-font-weight));
-  @include vars.local(notification-content-size, var(--ds-notification-base-body-font-size));
-  @include vars.local(notification-content-line-height, var(--ds-notification-base-body-line-height));
+  @include vars.local(notification-content-family, var(--ds-notification-default-body-font-family));
+  @include vars.local(notification-content-weight, var(--ds-notification-default-body-font-weight));
+  @include vars.local(notification-content-size, var(--ds-notification-default-body-font-size));
+  @include vars.local(notification-content-line-height, var(--ds-notification-default-body-line-height));
 
-  @include vars.local(notification-icon, var(--ds-notification-base-icon));
+  @include vars.local(notification-icon, var(--ds-notification-default-icon));
   @include vars.local(notification-icon-display, block);
 
   @include vars.local(notification-space, var(--ds-card-space-base, 1.5rem));
@@ -217,7 +217,7 @@ $host-selector: ('#notification');
 $composite-border-colors: ('info', 'success', 'warning', 'danger');
 
 // Outline colors carry a plain border color token, composed with the base border width/style.
-$outline-colors: ('outline-base', 'outline-purple', 'outline-green', 'outline-yellow', 'outline-red');
+$outline-colors: ('outline-default', 'outline-purple', 'outline-green', 'outline-yellow', 'outline-red');
 
 $colors: list.join($composite-border-colors, $outline-colors);
 

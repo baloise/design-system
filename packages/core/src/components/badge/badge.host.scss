@@ -34,12 +34,12 @@
   @include vars.local(badge-min-width, var(--ds-badge-size-base-height));
   @include vars.local(badge-height, var(--ds-badge-size-base-height));
   @include vars.local(badge-radius, var(--ds-badge-size-base-radius));
-  @include vars.local(badge-color-background, var(--ds-badge-base-color-background));
-  @include vars.local(badge-color-text, var(--ds-badge-base-color-text));
-  @include vars.local(badge-pulse-color, var(--ds-badge-base-color-background));
+  @include vars.local(badge-color-background, var(--ds-badge-default-color-background));
+  @include vars.local(badge-color-text, var(--ds-badge-default-color-text));
+  @include vars.local(badge-pulse-color, var(--ds-badge-default-color-background));
 
   @include vars.local(badge-icon-size, var(--ds-badge-size-base-icon));
-  @include vars.local(badge-icon-color, var(--ds-badge-base-color-text));
+  @include vars.local(badge-icon-color, var(--ds-badge-default-color-text));
 
   @include vars.local(badge-gap, var(--ds-badge-size-base-space));
   @include vars.local(badge-padding-inline, var(--ds-badge-size-base-space));
