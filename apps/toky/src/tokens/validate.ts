@@ -100,8 +100,13 @@ export function validateWorkingTokens(working: WorkingToken[]): ValidationError[
 
     // Component tokens should alias through the Alias layer rather than
     // reaching straight into Global — not incorrect, just a shortcut that
-    // skips the layer meant to carry semantic meaning.
-    if (token.layer === 'Component' && token.referenceTarget?.startsWith(`${KEY_BY_LAYER.Global}.`)) {
+    // skips the layer meant to carry semantic meaning. Dimension/Size is
+    // exempt: there's no semantic aliasing to gain for raw size scale steps.
+    if (
+      token.layer === 'Component' &&
+      token.referenceTarget?.startsWith(`${KEY_BY_LAYER.Global}.`) &&
+      !token.referenceTarget?.startsWith(`${KEY_BY_LAYER.Global}.📏 Dimension.Size.`)
+    ) {
       errors.push({
         tokenKey: id,
         message: `References "${toSlashPath(token.referenceTarget)}" directly from Global — consider aliasing it instead.`,

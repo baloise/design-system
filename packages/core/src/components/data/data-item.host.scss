@@ -11,25 +11,20 @@
  * @prop --data-item-color-text-label: Text color of the label
  * @prop --data-item-color-text-required: Color of the required indicator
  * @prop --data-item-color-text-disabled: Text color when disabled
- * @prop --data-item-border-width: Border width
- * @prop --data-item-border-color: Border color
+ * @prop --data-item-border-bottom: Bottom border
  */
 
 :host {
   @include vars.base(data-item);
 
-  @include vars.local(data-item-font-weight-label, var(--ds-global-font-weight-700));
-  @include vars.local(data-item-color-text, var(--ds-alias-text-color-primary));
-  @include vars.local(data-item-color-text-label, var(--ds-alias-text-color-primary));
-  @include vars.local(data-item-color-text-required, var(--ds-alias-text-color-danger));
-  @include vars.local(data-item-color-text-disabled, var(--ds-alias-text-color-disabled));
-  @include vars.local(data-item-border-width, var(--ds-global-dimension-border-2));
-  @include vars.local(data-item-border-color, var(--ds-global-color-grey-3));
-}
+  @include vars.local(data-item-font-weight-label, var(--ds-data-item-label-font-weight));
+  @include vars.local(data-item-color-text, var(--ds-data-item-value-color));
+  @include vars.local(data-item-color-text-label, var(--ds-data-item-label-color));
+  @include vars.local(data-item-color-text-required, var(--ds-data-item-color-required));
+  @include vars.local(data-item-color-text-disabled, var(--ds-data-item-color-disabled));
+  @include vars.local(data-item-border-bottom, var(--ds-data-item-border-bottom));
 
-// Variant: Bordered (always applied in vertical layout)
-:host {
-  border-bottom: var(--_data-item-border-width) solid var(--_data-item-border-color);
+  border-bottom: var(--_data-item-border-bottom);
 }
 
 :host(:last-child) {

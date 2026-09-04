@@ -29,13 +29,15 @@ Please read and follow our [Code of Conduct](CODE_OF_CONDUCT.md). We are committ
 ### Prerequisites
 
 - **Node.js**: >=24 <25
-- **npm**: >=11.0.0
+- **pnpm**: 11.x
 
 ### Setup
 
 ```bash
 git clone https://github.com/baloise/design-system.git
 cd design-system
+nvm use
+corepack enable
 pnpm install --frozen-lockfile
 ```
 

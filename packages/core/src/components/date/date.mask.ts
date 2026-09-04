@@ -47,13 +47,51 @@ function parseShortDate(raw: string, divider: string): Date | null {
   }
 
   const dt = DateTime.fromObject({ day, month, year })
-  return dt.isValid ? dt.toJSDate() : null
+  return dt.isValid ? new Date(year, month - 1, day) : null
+}
+
+// Native Date <-> ISO/display conversion, deliberately bypassing Luxon.
+//
+// Switzerland (and many other regions) used Local Mean Time with a fractional-minute
+// UTC offset until timezones were standardized in June 1894. The native `Date` engine and
+// Luxon (which relies on `Intl`) can each compute a slightly different offset for the same
+// pre-June-1894 instant. Converting a Date built by one of them (e.g. air-datepicker's native
+// `new Date(year, month, day)`) through the other (`DateTime.fromJSDate`) can therefore land
+// on the wrong side of midnight and shift the calendar day by one.
+//
+// Reading/writing a Date's own local getters/setters directly — the same engine that
+// created it — is always self-consistent, so we never let a Date object cross between
+// Luxon and native code for calendar-only values. `dateParts` is the single place that
+// extracts zero-padded day/month/year from a native Date; both ISO and display formatting
+// build on it so the two can never drift apart.
+function dateParts(date: Date): { day: string; month: string; year: string } {
+  return {
+    day: String(date.getDate()).padStart(2, '0'),
+    month: String(date.getMonth() + 1).padStart(2, '0'),
+    year: String(date.getFullYear()).padStart(4, '0'),
+  }
+}
+
+export function nativeDateToISO(date: Date): string {
+  const { year, month, day } = dateParts(date)
+  return `${year}-${month}-${day}`
+}
+
+function nativeDateToDisplay(date: Date, format: DateDisplayFormat): string {
+  const { day, month, year } = dateParts(date)
+  return [day, month, year].join(getDivider(format))
+}
+
+export function isoToNativeDate(isoValue: string): Date | null {
+  const dt = DateTime.fromISO(isoValue)
+  if (!dt.isValid) return null
+  return new Date(dt.year, dt.month - 1, dt.day)
 }
 
 export function isoToDisplay(isoValue: string | null, format: DateDisplayFormat): string {
   if (!isoValue) return ''
-  const dt = DateTime.fromISO(isoValue)
-  return dt.isValid ? dt.toFormat(format) : ''
+  const date = isoToNativeDate(isoValue)
+  return date ? nativeDateToDisplay(date, format) : ''
 }
 
 export interface DateMaskConfig {
@@ -124,8 +162,16 @@ export class DateMask {
       lazy: true,
       overwrite: true,
       autofix: true,
-      format: (date: Date) => DateTime.fromJSDate(date).toFormat(fmt),
-      parse: (str: string) => DateTime.fromFormat(str, fmt).toJSDate(),
+      // Native construction/reading only — see the comment on nativeDateToISO for why
+      // this must never round-trip through Luxon's timezone-aware conversion.
+      format: (date: Date | null) => {
+        if (!date) return ''
+        return nativeDateToDisplay(date, fmt)
+      },
+      parse: (str: string) => {
+        const [day, month, year] = str.split(getDivider(fmt)).map(Number)
+        return new Date(year, month - 1, day)
+      },
       blocks: {
         d: { mask: IMask.MaskedRange, from: 1, to: 31, maxLength: 2 },
         m: { mask: IMask.MaskedRange, from: 1, to: 12, maxLength: 2 },
@@ -148,8 +194,7 @@ export class DateMask {
   private getISO(): string | null {
     const typed = this.mask?.typedValue as Date | undefined
     if (!typed || isNaN(typed.getTime())) return null
-    const dt = DateTime.fromJSDate(typed)
-    return dt.isValid ? (dt.toISODate() ?? null) : null
+    return nativeDateToISO(typed)
   }
 
   setLazy(lazy: boolean) {
@@ -162,9 +207,9 @@ export class DateMask {
       this.mask.value = ''
       return
     }
-    const dt = DateTime.fromISO(isoValue)
-    if (dt.isValid) {
-      this.mask.typedValue = dt.toJSDate()
+    const date = isoToNativeDate(isoValue)
+    if (date) {
+      this.mask.typedValue = date
     }
   }
 

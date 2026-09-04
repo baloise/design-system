@@ -1,15 +1,6 @@
 import { Component, Element, h, Host, Prop, State } from '@stencil/core'
 import { HTMLStencilElement } from '@stencil/core/internal'
-import {
-  sanitizeSvg,
-  fetchSvg,
-  normalizeDeprecatedTShirtSize,
-  Logger,
-  type LogInstance,
-  hasValue,
-  OneOf,
-  Type,
-} from '@utils'
+import { sanitizeSvg, fetchSvg, Logger, type LogInstance, hasValue, OneOf, Type } from '@utils'
 import { DsComponentInterface } from '@global'
 import { type IconColor, type IconSize, BRAND_ICON_SIZES, BRAND_ICON_COLORS } from './brand-icon.interfaces'
 
@@ -130,14 +121,12 @@ export class BrandIcon implements DsComponentInterface {
    */
 
   render() {
-    const size = normalizeDeprecatedTShirtSize(this.size) || ''
-
     return (
       <Host
         aria-hidden="true"
         class={{
           [`is-${this.color}`]: hasValue(this.color),
-          [`is-${size}`]: hasValue(this.size),
+          [`is-${this.size}`]: hasValue(this.size),
           'is-tile': this.tile,
           'is-disabled': this.disabled,
           'is-invalid': this.invalid,

@@ -56,6 +56,7 @@
   @include vars.local(steps-step-line-height, var(--ds-steps-step-typo-base-line-height));
   @include vars.local(steps-step-color, var(--ds-steps-step-color-base));
   @include vars.local(steps-step-color-selected, var(--ds-steps-step-color-selected));
+  @include vars.local(steps-step-color-disabled, var(--ds-steps-step-color-disabled));
   @include vars.local(steps-step-color-focus, var(--ds-steps-step-color-focus));
   @include vars.local(steps-panel-space-x, var(--ds-steps-panel-space-x));
   @include vars.local(steps-panel-space-y, var(--ds-steps-panel-space-y));

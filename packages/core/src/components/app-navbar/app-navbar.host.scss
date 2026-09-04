@@ -85,13 +85,13 @@
  * Button Component Variables:
  * @prop --app-navbar-button-color-text: Text color of buttons
  * @prop --app-navbar-button-color-background: Background color of buttons
- * @prop --app-navbar-button-color-border: Border color of buttons
+ * @prop --app-navbar-button-color-border: Border (composite: width, style, color) of buttons
  * @prop --app-navbar-button-color-text-hover: Text color of buttons on hover
  * @prop --app-navbar-button-color-background-hover: Background color of buttons on hover
- * @prop --app-navbar-button-color-border-hover: Border color of buttons on hover
+ * @prop --app-navbar-button-color-border-hover: Border (composite: width, style, color) of buttons on hover
  * @prop --app-navbar-button-color-text-active: Text color of buttons on active
  * @prop --app-navbar-button-color-background-active: Background color of buttons on active
- * @prop --app-navbar-button-color-border-active: Border color of buttons on active
+ * @prop --app-navbar-button-color-border-active: Border (composite: width, style, color) of buttons on active
  *
  * Focus Variables:
  * @prop --app-navbar-focus-color-start: Start color of the focus indicator gradient
