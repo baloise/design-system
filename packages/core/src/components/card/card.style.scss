@@ -23,11 +23,11 @@ $host-selector: ('#card');
   @include vars.local(card-color-border, var(--ds-card-color-default-border));
   @include vars.local(card-radius, var(--ds-card-radius));
   @include vars.local(card-shadow, var(--ds-card-shadow-base));
-  @include vars.local(card-gap, var(--ds-card-space-base));
-  @include vars.local(card-padding-left, var(--ds-card-space-base));
-  @include vars.local(card-padding-right, var(--ds-card-space-base));
-  @include vars.local(card-padding-top, var(--ds-card-space-base));
-  @include vars.local(card-padding-bottom, var(--ds-card-space-base));
+  @include vars.local(card-gap, var(--ds-card-gap-base));
+  @include vars.local(card-pl, var(--ds-card-padding-base));
+  @include vars.local(card-pr, var(--ds-card-padding-base));
+  @include vars.local(card-pt, var(--ds-card-padding-base));
+  @include vars.local(card-pb, var(--ds-card-padding-base));
 
   @include vars.local(card-header-grid-template-columns, 1fr auto);
   @include vars.local(card-header-margin-left, 0);
@@ -57,10 +57,10 @@ $host-selector: ('#card');
   border: var(--_card-color-border);
   box-shadow: var(--_card-shadow);
   gap: var(--_card-gap);
-  padding-left: var(--_card-padding-left);
-  padding-right: var(--_card-padding-right);
-  padding-top: var(--_card-padding-top);
-  padding-bottom: var(--_card-padding-bottom);
+  padding-left: var(--_card-pl);
+  padding-right: var(--_card-pr);
+  padding-top: var(--_card-pt);
+  padding-bottom: var(--_card-pb);
   text-decoration: none;
 
   // Header
@@ -252,10 +252,10 @@ $host-selector: ('#card');
 // --------------------------------
 @mixin dense {
   --mod-card-shadow: var(--ds-card-shadow-flat);
-  --mod-card-padding-left: 0;
-  --mod-card-padding-right: 0;
-  --mod-card-padding-top: 0;
-  --mod-card-padding-bottom: 0;
+  --mod-card-pl: 0;
+  --mod-card-pr: 0;
+  --mod-card-pt: 0;
+  --mod-card-pb: 0;
 }
 
 @include hybrid.styles($css-selector, $use-host) {
@@ -316,25 +316,25 @@ $spaces: ('sm', 'md', 'lg');
 @each $space in $spaces {
   @include hybrid.styles($css-selector, $use-host) {
     &.has-space-#{$space} {
-      --mod-card-gap: var(--ds-card-space-#{$space});
+      --mod-card-gap: var(--ds-card-gap-#{$space});
     }
     &.has-space-#{$space}:not(.is-dense) {
-      --mod-card-padding-left: var(--ds-card-space-#{$space});
-      --mod-card-padding-right: var(--ds-card-space-#{$space});
-      --mod-card-padding-top: var(--ds-card-space-#{$space});
-      --mod-card-padding-bottom: var(--ds-card-space-#{$space});
+      --mod-card-pl: var(--ds-card-padding-#{$space});
+      --mod-card-pr: var(--ds-card-padding-#{$space});
+      --mod-card-pt: var(--ds-card-padding-#{$space});
+      --mod-card-pb: var(--ds-card-padding-#{$space});
     }
   }
 
   @include hybrid.host($use-host) {
     :host(.has-space-#{$space}) {
-      --mod-card-gap: var(--ds-card-space-#{$space});
+      --mod-card-gap: var(--ds-card-gap-#{$space});
     }
     :host(.has-space-#{$space}:not(.is-dense)) {
-      --mod-card-padding-left: var(--ds-card-space-#{$space});
-      --mod-card-padding-right: var(--ds-card-space-#{$space});
-      --mod-card-padding-top: var(--ds-card-space-#{$space});
-      --mod-card-padding-bottom: var(--ds-card-space-#{$space});
+      --mod-card-pl: var(--ds-card-padding-#{$space});
+      --mod-card-pr: var(--ds-card-padding-#{$space});
+      --mod-card-pt: var(--ds-card-padding-#{$space});
+      --mod-card-pb: var(--ds-card-padding-#{$space});
     }
   }
 }

@@ -18,12 +18,12 @@
 //
 // Size Variants
 .close.is-sm {
-  --mod-close-padding: var(--ds-close-space-sm);
+  --mod-close-p: var(--ds-close-padding-sm);
   --mod-close-size-icon: var(--ds-close-size-sm);
 }
 
 .close.is-md {
-  --mod-close-padding: var(--ds-close-space-md);
+  --mod-close-p: var(--ds-close-padding-md);
   --mod-close-size-icon: var(--ds-close-size-md);
 }
 

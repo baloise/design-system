@@ -34,7 +34,7 @@
 :host {
   @include vars.local(file-upload-label-family, var(--ds-alias-text-family-text));
   @include vars.local(file-upload-label-weight, var(--ds-alias-text-weight-bold));
-  @include vars.local(file-upload-label-size, var(--ds-device-text-size-base));
+  @include vars.local(file-upload-label-size, var(--ds-alias-text-size-base));
   @include vars.local(file-upload-label-line-height, var(--ds-alias-text-line-height-body));
   @include vars.local(file-upload-drop-zone-border-color, var(--ds-alias-border-color-grey));
   @include vars.local(file-upload-drop-zone-background, var(--ds-alias-background-color-transparent));
@@ -130,7 +130,7 @@
 
   font-family: var(--ds-alias-text-family-base);
   font-weight: var(--ds-alias-text-weight-bold);
-  font-size: var(--ds-device-text-size-base);
+  font-size: var(--ds-alias-text-size-base);
 }
 
 :host #file-list {
@@ -155,12 +155,12 @@
   .file-name {
     color: var(--_file-upload-file-name-color);
     font-weight: var(--ds-alias-text-weight-bold);
-    font-size: var(--ds-device-text-size-base);
+    font-size: var(--ds-alias-text-size-base);
   }
 
   .file-size {
     color: var(--_file-upload-file-size-color);
-    font-size: var(--ds-device-text-size-xs);
+    font-size: var(--ds-alias-text-size-xs);
   }
 }
 

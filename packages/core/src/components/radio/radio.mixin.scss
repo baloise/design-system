@@ -24,7 +24,7 @@
 
     // Tile
     @include vars.local(radio-tile-radius, var(--ds-alias-radius-base));
-    @include vars.local(radio-tile-padding, 1rem);
+    @include vars.local(radio-tile-p, 1rem);
     @include vars.local(radio-tile-border-width, var(--ds-alias-border-width-base));
 
     @include vars.local(radio-tile-base-background-color, inherit);

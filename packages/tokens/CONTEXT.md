@@ -34,21 +34,32 @@ A **token** is a named design value that represents a single, reusable design de
 
 ### Four-Layer Architecture
 
-Tokens are organized into four layers:
+Tokens are organized into four layers, always in this order:
 
-| Layer         | JSON Key       | Purpose                                    | Consumer Access                                                       |
-| ------------- | -------------- | ------------------------------------------ | --------------------------------------------------------------------- |
-| **Global**    | `🌐 Global`    | Raw values (color scales, base sizes)      | ❌ Rarely; only when no Alias/Device fits                             |
-| **Alias**     | `🔗 Alias`     | Meaningful, non-responsive abstractions    | ✅ **Primary layer** for component/app use                            |
-| **Device**    | `📱 Device`    | Responsive abstractions (space, text size) | ✅ For any spacing/type-size value that should respond to breakpoints |
-| **Component** | `🧩 Component` | Per-component token overrides              | ✅ When styling a specific DS component                               |
+```
+Global → Alias → Device → Component
+```
+
+Each layer only ever references the layer(s) to its left — a Device token resolves to Alias or
+Global, a Component token resolves to Alias, Device, or Global, and Global never references
+anything (it's raw values sourced from Figma). Never skip backwards (e.g. Alias referencing
+Component) and never reference a layer to your right.
+
+| Layer         | JSON Key       | Purpose                                                                                         | Consumer Access                                     |
+| ------------- | -------------- | ----------------------------------------------------------------------------------------------- | --------------------------------------------------- |
+| **Global**    | `🌐 Global`    | Raw values (color scales, base sizes)                                                           | ❌ Rarely; only when no Alias/Device fits           |
+| **Alias**     | `🔗 Alias`     | Meaningful, non-responsive abstractions                                                         | ✅ **Primary layer** for component/app use          |
+| **Device**    | `📱 Device`    | **The responsive layer** — space, text size, and any other value that must switch by breakpoint | ✅ For any value that should respond to breakpoints |
+| **Component** | `🧩 Component` | Per-component token overrides                                                                   | ✅ When styling a specific DS component             |
 
 **Flow:** Components reference Alias/Device tokens → resolved to Global values → values come from Figma
 
-Device holds every token that carries the responsive `$extensions.com.helvetia.responsive`
-breakpoint map (see "Responsive Tokens" below) — currently `Space`, `Text.Size`, and
-`Container.Space`. Everything else non-responsive stays in Alias. See
-`docs/plans/device-token-layer-plan.md` for the migration that split these out of Alias.
+Device is where responsiveness lives: **every token carrying the `$extensions.com.helvetia.responsive`
+breakpoint map (see "Responsive Tokens" below) must be placed in Device, never in Alias.** Today
+that's `Space`, `Text.Size`, and `Container.Space` — but the rule is about the extension, not
+that fixed list: if a new token needs to respond to breakpoints, it belongs in Device, full stop.
+Everything non-responsive stays in Alias. See `docs/plans/device-token-layer-plan.md` for the
+migration that originally split these out of Alias.
 
 ### Naming Convention
 
@@ -97,6 +108,47 @@ Per-component token overrides for specific use cases:
   - `--ds-button-color-primary-base-text` (button primary state text color)
   - `--ds-button-label-font-family` (button label typography)
   - `--ds-modal-header-border-color` (modal header styling)
+
+#### Spacing Naming
+
+`Space` is a fine name for the raw Global/Alias/Device **scale** (`↔️ Space.2XS`–`4XL`) — at
+that level the value is genuinely property-agnostic, reused for margin, padding, and gap alike.
+But a Component-layer token names a specific use, so `Space`/`SpaceX`/`SpaceY` is not a valid
+name there — it hides which CSS property the token drives. Name it after that property instead:
+
+- **Padding** — `--ds-button-size-base-padding-x`, `--ds-card-padding-base`
+- **Gap** — `--ds-tag-size-base-gap`, `--ds-card-gap-base`
+- **Margin** — `--ds-text-margin-bottom`
+
+If one token value genuinely drives two different properties (e.g. a badge's gap and its
+padding share the same number), split it into two tokens referencing the same value rather than
+naming either one `Space` — see `Component.Badge.Size.*.{Gap,Padding}` for the pattern.
+
+This token-naming rule is distinct from the **component CSS variable** suffix convention for
+per-side margin/padding (`-m`/`-mx`/`-my`/`-mt`/`-mb`/`-ml`/`-mr` for margin, the same suffixes
+with `p` for padding) — that's a `packages/core` concern, see
+[[packages/core|packages/core/CONTEXT.md]]'s "Common Component Variables" section.
+
+#### Variant Naming
+
+`Base` has two legitimate meanings in this system, and neither of them is "the default
+variant":
+
+- The middle step of a size scale — `SM` / `Base` / `MD` / `LG` / `XL`.
+- The idle/resting state within an interaction-state group — `Base` / `Hover` / `Active` /
+  `Disabled` (e.g. `Component.Button.Color.Primary.{Base,Hover,Active}`).
+
+When naming the neutral option among a set of **variants** (as opposed to a size step or an
+interaction state), don't use `Base` — use:
+
+- **Default** — the neutral/no-special-styling variant, e.g. `Component.Card.Color.Default`
+  (sibling to `Primary`, `Success`, `Danger`, …).
+- **Primary** — when the variant set expresses an emphasis hierarchy (`Primary`/`Secondary`/
+  `Tertiary`), e.g. `Component.Button.Color.Primary`.
+
+`Component.Select.Label.Color.Base` and `Component.FileUpload.Description.Text.Color.Base` are
+existing examples of the anti-pattern — both sit alongside semantic variants (`Success`,
+`Warning`, `Danger`) and should read `Default`, not `Base`.
 
 ### Figma Integration
 
@@ -179,7 +231,7 @@ bare-name-is-auto-switching treatment from the same build-time formatter step.
 
 Common categories in the Alias layer:
 
-- **Space** (2XS–4XL, plus responsive variants)
+- **Space** (2XS–4XL, plus responsive variants) — the raw scale only; Component-layer tokens built from it are named `Padding`/`Gap`/`Margin`, see [Spacing Naming](#spacing-naming)
 - **Color** (backgrounds, borders, text, with light/dark variants)
 - **Border** (width, color, radius, plus a pilot set of `$type: "border"` composite tokens under `▭ Border.Composite.*` — `{color, width, style}`, each sub-value a reference to the existing `Color`/`Width`/new `Style` primitives; see `docs/plans/border-token-type-plan.md`)
 - **Text** (size, color, family, weight, line-height, shadow, plus a `$type: "typography"` composite type — `{fontFamily, fontSize, fontWeight, lineHeight}` — fully supported in Toky/Style Dictionary/Figma sync, but no actual `Typography.*` tokens exist yet; the responsive-`fontSize` question a real pilot needs is still open. See `docs/plans/typography-token-type-plan.md`.)

@@ -9,8 +9,8 @@
  * @prop --tooltip-max-width: Maximum width of the tooltip container.
  * @prop --tooltip-radius: Border radius of the tooltip container.
  * @prop --tooltip-shadow: Box shadow of the tooltip container.
- * @prop --tooltip-space-x: Horizontal padding of the tooltip content.
- * @prop --tooltip-space-y: Vertical padding of the tooltip content.
+ * @prop --tooltip-px: Horizontal padding of the tooltip content.
+ * @prop --tooltip-py: Vertical padding of the tooltip content.
  * @prop --tooltip-text-font-family: Font family of the tooltip text.
  * @prop --tooltip-text-font-weight: Font weight of the tooltip text.
  * @prop --tooltip-text-font-size: Font size of the tooltip text.
@@ -25,8 +25,8 @@
   @include vars.local(tooltip-max-width, auto);
   @include vars.local(tooltip-radius, var(--ds-tooltip-radius));
   @include vars.local(tooltip-shadow, var(--ds-tooltip-shadow));
-  @include vars.local(tooltip-space-x, var(--ds-tooltip-space-x));
-  @include vars.local(tooltip-space-y, var(--ds-tooltip-space-y));
+  @include vars.local(tooltip-px, var(--ds-tooltip-padding-x));
+  @include vars.local(tooltip-py, var(--ds-tooltip-padding-y));
   @include vars.local(tooltip-text-font-family, var(--ds-tooltip-text-font-family));
   @include vars.local(tooltip-text-font-weight, var(--ds-tooltip-text-font-weight));
   @include vars.local(tooltip-text-font-size, var(--ds-tooltip-text-font-size));
@@ -119,8 +119,8 @@
 
 [part='content'] {
   position: relative;
-  padding-block: var(--_tooltip-space-y);
-  padding-inline: var(--_tooltip-space-x);
+  padding-block: var(--_tooltip-py);
+  padding-inline: var(--_tooltip-px);
   overflow-y: auto;
   max-height: calc(100svh - 8rem);
 }

@@ -25,8 +25,8 @@
  * @prop --steps-step-color: Text color for step labels (default state).
  * @prop --steps-step-color-selected: Text color for step labels (selected state).
  * @prop --steps-step-color-focus: Focus ring color for step buttons.
- * @prop --steps-panel-space-x: Horizontal padding inside each step panel.
- * @prop --steps-panel-space-y: Vertical padding inside each step panel.
+ * @prop --steps-panel-px: Horizontal padding inside each step panel.
+ * @prop --steps-panel-py: Vertical padding inside each step panel.
  * @prop --steps-color-purple: Brand tint used by the purple color variant.
  * @prop --steps-color-green: Brand tint used by the green color variant.
  * @prop --steps-color-red: Brand tint used by the red color variant.
@@ -58,8 +58,8 @@
   @include vars.local(steps-step-color-selected, var(--ds-steps-step-color-selected));
   @include vars.local(steps-step-color-disabled, var(--ds-steps-step-color-disabled));
   @include vars.local(steps-step-color-focus, var(--ds-steps-step-color-focus));
-  @include vars.local(steps-panel-space-x, var(--ds-steps-panel-space-x));
-  @include vars.local(steps-panel-space-y, var(--ds-steps-panel-space-y));
+  @include vars.local(steps-panel-px, var(--ds-steps-panel-padding-x));
+  @include vars.local(steps-panel-py, var(--ds-steps-panel-padding-y));
   @include vars.local(steps-color-purple, var(--ds-steps-color-purple));
   @include vars.local(steps-color-green, var(--ds-steps-color-green));
   @include vars.local(steps-color-red, var(--ds-steps-color-red));
@@ -113,7 +113,7 @@
 // ─── Panel padding passthrough ────────────────────────────────────────────────
 
 :host ::slotted(ds-step-panel) {
-  --step-panel-padding: var(--_steps-panel-space-y) var(--_steps-panel-space-x);
+  --step-panel-p: var(--_steps-panel-py) var(--_steps-panel-px);
 }
 
 // ─── Vertical mode ────────────────────────────────────────────────────────────

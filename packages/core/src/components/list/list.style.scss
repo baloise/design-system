@@ -23,7 +23,7 @@ ol.list li details {
   @include vars.local(list-item-grid-template-columns, 1fr);
   @include vars.local(list-item-min-height, var(--ds-list-item-size-base-min-height));
   @include vars.local(list-item-gap, var(--ds-list-item-gap));
-  @include vars.local(list-item-space, var(--ds-list-item-size-base-space));
+  @include vars.local(list-item-py, var(--ds-list-item-size-base-padding-y));
   @include vars.local(list-item-content-gap, var(--ds-list-item-content-gap));
 
   @include vars.local(list-item-color, var(--ds-list-item-color-text-base));
@@ -116,8 +116,8 @@ ul.list li .item {
   text-align: left;
   font-family: var(--_list-item-title-family);
 
-  padding: var(--_list-item-space) 0;
-  padding-bottom: calc(var(--_list-item-space) + 2px);
+  padding: var(--_list-item-py) 0;
+  padding-bottom: calc(var(--_list-item-py) + 2px);
 
   //
   // Icons
@@ -307,7 +307,7 @@ ol.list .item.is-lg,
 ul.list li details.is-lg,
 ol.list li details.is-lg {
   --mod-list-item-min-height: var(--ds-list-item-size-lg-min-height);
-  --mod-list-item-space: var(--ds-list-item-size-lg-space);
+  --mod-list-item-py: var(--ds-list-item-size-lg-padding-y);
 }
 
 /**

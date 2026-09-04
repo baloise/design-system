@@ -24,7 +24,7 @@ $host-selector: ('#text');
   @include vars.local(text-line-height, var(--ds-text-typo-paragraph-line-height));
   @include vars.local(text-size, var(--ds-text-typo-paragraph-font-size));
 
-  @include vars.local(text-space, var(--ds-text-space));
+  @include vars.local(text-margin, var(--ds-text-margin-bottom));
   @include vars.local(text-shadow, none); // var(--ds-text-shadow)
 }
 
@@ -293,17 +293,17 @@ $sizes: ('xs', 'sm', 'base', 'md', 'lg', 'xl', '2xl', '3xl', '4xl', '5xl');
 // --------------------------------
 @include hybrid.styles($css-selector, $use-host) {
   &.has-space-all {
-    --mod-text-mt: var(--_text-space);
-    --mod-text-mb: var(--_text-space);
+    --mod-text-mt: var(--_text-margin);
+    --mod-text-mb: var(--_text-margin);
   }
 
   &.has-space-top {
-    --mod-text-mt: var(--_text-space);
+    --mod-text-mt: var(--_text-margin);
     --mod-text-mb: 0;
   }
 
   &.has-space-bottom {
-    --mod-text-mb: var(--_text-space);
+    --mod-text-mb: var(--_text-margin);
   }
 
   &.has-space-none {
@@ -314,18 +314,18 @@ $sizes: ('xs', 'sm', 'base', 'md', 'lg', 'xl', '2xl', '3xl', '4xl', '5xl');
 
 @include hybrid.host($use-host) {
   :host(.has-space-all) {
-    --text-mt: var(--_text-space);
-    --text-mb: var(--_text-space);
+    --text-mt: var(--_text-margin);
+    --text-mb: var(--_text-margin);
   }
 
   :host(.has-space-top) {
-    --text-mt: var(--_text-space);
+    --text-mt: var(--_text-margin);
     --text-mb: 0;
   }
 
   :host(.has-space-bottom) {
     --text-mt: 0;
-    --text-mb: var(--_text-space);
+    --text-mb: var(--_text-margin);
   }
 
   :host(.has-space-none) {

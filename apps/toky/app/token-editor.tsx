@@ -96,7 +96,7 @@ import { TokenGraph } from './token-graph'
 
 // T-shirt size group names, in their intended display order — 'Base' sits
 // between SM and MD (it's the unsuffixed/default size, not the smallest).
-const TSHIRT_SIZE_ORDER = ['None', '2XS', 'XS', 'SM', 'Base', 'MD', 'LG', 'XL', '2XL', '3XL', '4XL', '5XL']
+const TSHIRT_SIZE_ORDER = ['None', '3XS', '2XS', 'XS', 'SM', 'Base', 'MD', 'LG', 'XL', '2XL', '3XL', '4XL', '5XL']
 
 // Interaction-state suffixes, in their intended display order — a name
 // ending in one of these (e.g. "OnSurfaceBase"/"OnSurfaceHover", or a bare

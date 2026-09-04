@@ -675,10 +675,6 @@
         "MD": {
           "$type": "dimension",
           "$value": "{🌐 Global.📏 Dimension.Space.24}"
-        },
-        "LG": {
-          "$type": "dimension",
-          "$value": "{🌐 Global.📏 Dimension.Space.24}"
         }
       }
     },
@@ -801,6 +797,32 @@
         "Elevated": {
           "$type": "shadow",
           "$value": "{🌐 Global.🔤 Font.Shadow.1}"
+        }
+      },
+      "Size": {
+        "XS": {
+          "$type": "dimension",
+          "$value": "{🌐 Global.🔤 Font.Size.12}"
+        },
+        "SM": {
+          "$type": "dimension",
+          "$value": "{🌐 Global.🔤 Font.Size.14}"
+        },
+        "Base": {
+          "$type": "dimension",
+          "$value": "{🌐 Global.🔤 Font.Size.16}"
+        },
+        "LG": {
+          "$type": "dimension",
+          "$value": "{🌐 Global.🔤 Font.Size.18}"
+        },
+        "2XL": {
+          "$type": "dimension",
+          "$value": "{🌐 Global.🔤 Font.Size.24}"
+        },
+        "4XL": {
+          "$type": "dimension",
+          "$value": "{🌐 Global.🔤 Font.Size.32}"
         }
       }
     },
@@ -2754,7 +2776,7 @@
           "$value": "{🌐 Global.📏 Dimension.Size.24}"
         }
       },
-      "SpaceY": {
+      "PaddingY": {
         "$type": "dimension",
         "$value": "{📱 Device.↔️ Space.LG}"
       }
@@ -2783,7 +2805,7 @@
           "$type": "number",
           "$value": "{🔗 Alias.🔵 Radius.Rounded}"
         },
-        "Space": {
+        "Padding": {
           "$type": "dimension",
           "$value": "{🔗 Alias.↔️ Space.Padding.2XS}"
         },
@@ -3016,7 +3038,7 @@
         "SM": {
           "Height": {
             "$type": "dimension",
-            "$value": "{📱 Device.🔤 Text.Size.XS}"
+            "$value": "{🔗 Alias.🔤 Text.Size.XS}"
           },
           "Radius": {
             "$type": "number",
@@ -3026,48 +3048,56 @@
             "$type": "dimension",
             "$value": "{🌐 Global.📏 Dimension.Size.0}"
           },
-          "Space": {
-            "$type": "dimension",
-            "$value": "{🔗 Alias.↔️ Space.Padding.2XS}"
-          },
           "Font": {
             "$type": "dimension",
             "$value": {
               "value": 0,
               "unit": "rem"
             }
+          },
+          "Gap": {
+            "$type": "dimension",
+            "$value": "{🔗 Alias.↔️ Space.Padding.2XS}"
+          },
+          "Padding": {
+            "$type": "dimension",
+            "$value": "{🔗 Alias.↔️ Space.Padding.2XS}"
           }
         },
         "Base": {
           "Height": {
             "$type": "dimension",
-            "$value": "{📱 Device.🔤 Text.Size.2XL}"
+            "$value": "{🔗 Alias.🔤 Text.Size.2XL}"
           },
           "Font": {
             "$type": "dimension",
-            "$value": "{📱 Device.🔤 Text.Size.XS}"
+            "$value": "{🔗 Alias.🔤 Text.Size.XS}"
           },
           "Radius": {
             "$type": "number",
             "$value": "{🔗 Alias.🔵 Radius.Rounded}"
           },
-          "Space": {
-            "$type": "dimension",
-            "$value": "{🔗 Alias.↔️ Space.Padding.2XS}"
-          },
           "Icon": {
             "$type": "dimension",
             "$value": "{🌐 Global.📏 Dimension.Size.14}"
+          },
+          "Gap": {
+            "$type": "dimension",
+            "$value": "{🔗 Alias.↔️ Space.Padding.2XS}"
+          },
+          "Padding": {
+            "$type": "dimension",
+            "$value": "{🔗 Alias.↔️ Space.Padding.2XS}"
           }
         },
         "LG": {
           "Height": {
             "$type": "dimension",
-            "$value": "{📱 Device.🔤 Text.Size.4XL}"
+            "$value": "{🔗 Alias.🔤 Text.Size.4XL}"
           },
           "Font": {
             "$type": "dimension",
-            "$value": "{📱 Device.🔤 Text.Size.Base}"
+            "$value": "{🔗 Alias.🔤 Text.Size.Base}"
           },
           "Radius": {
             "$type": "number",
@@ -3075,9 +3105,13 @@
           },
           "Icon": {
             "$type": "dimension",
-            "$value": "{📱 Device.🔤 Text.Size.LG}"
+            "$value": "{🔗 Alias.🔤 Text.Size.LG}"
           },
-          "Space": {
+          "Gap": {
+            "$type": "dimension",
+            "$value": "{🔗 Alias.↔️ Space.Padding.2XS}"
+          },
+          "Padding": {
             "$type": "dimension",
             "$value": "{🔗 Alias.↔️ Space.Padding.2XS}"
           }
@@ -3985,7 +4019,7 @@
           },
           "FontSize": {
             "$type": "dimension",
-            "$value": "{📱 Device.🔤 Text.Size.Base}"
+            "$value": "{🔗 Alias.🔤 Text.Size.Base}"
           },
           "Gap": {
             "$type": "dimension",
@@ -3999,9 +4033,9 @@
             "$type": "dimension",
             "$value": "{🌐 Global.📏 Dimension.Size.48}"
           },
-          "SpaceX": {
+          "PaddingX": {
             "$type": "dimension",
-            "$value": "{🔗 Alias.↔️ Space.Padding.LG}"
+            "$value": "{🔗 Alias.↔️ Space.Padding.MD}"
           }
         },
         "SM": {
@@ -4023,7 +4057,7 @@
           },
           "FontSize": {
             "$type": "dimension",
-            "$value": "{📱 Device.🔤 Text.Size.SM}"
+            "$value": "{🔗 Alias.🔤 Text.Size.SM}"
           },
           "Gap": {
             "$type": "dimension",
@@ -4037,7 +4071,7 @@
             "$type": "dimension",
             "$value": "{🌐 Global.📏 Dimension.Size.32}"
           },
-          "SpaceX": {
+          "PaddingX": {
             "$type": "dimension",
             "$value": "{🔗 Alias.↔️ Space.Padding.SM}"
           }
@@ -4061,7 +4095,7 @@
           },
           "FontSize": {
             "$type": "dimension",
-            "$value": "{📱 Device.🔤 Text.Size.LG}"
+            "$value": "{🔗 Alias.🔤 Text.Size.LG}"
           },
           "Gap": {
             "$type": "dimension",
@@ -4075,7 +4109,7 @@
             "$type": "dimension",
             "$value": "{🌐 Global.📏 Dimension.Size.56}"
           },
-          "SpaceX": {
+          "PaddingX": {
             "$type": "dimension",
             "$value": "{🔗 Alias.↔️ Space.Padding.MD}"
           }
@@ -4329,7 +4363,25 @@
         "$type": "dimension",
         "$value": "{🔗 Alias.🔵 Radius.LG}"
       },
-      "Space": {
+      "Gap": {
+        "SM": {
+          "$type": "dimension",
+          "$value": "{📱 Device.↔️ Space.Base}"
+        },
+        "Base": {
+          "$type": "dimension",
+          "$value": "{📱 Device.↔️ Space.MD}"
+        },
+        "MD": {
+          "$type": "dimension",
+          "$value": "{📱 Device.↔️ Space.MD}"
+        },
+        "LG": {
+          "$type": "dimension",
+          "$value": "{📱 Device.↔️ Space.XL}"
+        }
+      },
+      "Padding": {
         "SM": {
           "$type": "dimension",
           "$value": "{📱 Device.↔️ Space.Base}"
@@ -4470,7 +4522,7 @@
           }
         }
       },
-      "Space": {
+      "Padding": {
         "Base": {
           "$type": "dimension",
           "$value": {
@@ -4636,7 +4688,7 @@
         },
         "Size": {
           "$type": "dimension",
-          "$value": "{📱 Device.🔤 Text.Size.Base}"
+          "$value": "{🔗 Alias.🔤 Text.Size.Base}"
         }
       },
       "Trigger": {
@@ -5473,7 +5525,7 @@
         },
         "Size": {
           "$type": "dimension",
-          "$value": "{📱 Device.🔤 Text.Size.SM}"
+          "$value": "{🔗 Alias.🔤 Text.Size.SM}"
         }
       },
       "Control": {
@@ -5513,7 +5565,7 @@
         },
         "FontSize": {
           "$type": "dimension",
-          "$value": "{📱 Device.🔤 Text.Size.Base}"
+          "$value": "{🔗 Alias.🔤 Text.Size.Base}"
         }
       },
       "Description": {
@@ -5553,7 +5605,7 @@
         },
         "Size": {
           "$type": "dimension",
-          "$value": "{📱 Device.🔤 Text.Size.XS}"
+          "$value": "{🔗 Alias.🔤 Text.Size.XS}"
         }
       },
       "Chip": {
@@ -6209,9 +6261,9 @@
       "Item": {
         "Size": {
           "Base": {
-            "Space": {
+            "PaddingY": {
               "$type": "dimension",
-              "$value": "{📱 Device.↔️ Space.XS}"
+              "$value": "{🔗 Alias.↔️ Space.Padding.XS}"
             },
             "MinHeight": {
               "$type": "dimension",
@@ -6219,9 +6271,9 @@
             }
           },
           "LG": {
-            "Space": {
+            "PaddingY": {
               "$type": "dimension",
-              "$value": "{📱 Device.↔️ Space.XS}"
+              "$value": "{🔗 Alias.↔️ Space.Padding.XS}"
             },
             "MinHeight": {
               "$type": "dimension",
@@ -6375,7 +6427,11 @@
         "$type": "typography",
         "$value": "{🧩 Component.Heading.Level.3}"
       },
-      "Space": {
+      "Padding": {
+        "$type": "dimension",
+        "$value": "{📱 Device.↔️ Space.MD}"
+      },
+      "Gap": {
         "$type": "dimension",
         "$value": "{📱 Device.↔️ Space.MD}"
       }
@@ -6532,7 +6588,7 @@
             },
             "FontSize": {
               "$type": "dimension",
-              "$value": "{📱 Device.🔤 Text.Size.Base}"
+              "$value": "{🔗 Alias.🔤 Text.Size.Base}"
             },
             "Background": {
               "Active": {
@@ -6574,11 +6630,11 @@
             },
             "PaddingInline": {
               "$type": "dimension",
-              "$value": "{🔗 Alias.↔️ Space.Padding.LG}"
+              "$value": "{🔗 Alias.↔️ Space.Padding.MD}"
             },
             "PaddingBlock": {
               "$type": "dimension",
-              "$value": "{🔗 Alias.↔️ Space.Padding.LG}"
+              "$value": "{🔗 Alias.↔️ Space.Padding.MD}"
             }
           }
         },
@@ -6616,7 +6672,7 @@
             },
             "FontSize": {
               "$type": "dimension",
-              "$value": "{📱 Device.🔤 Text.Size.Base}"
+              "$value": "{🔗 Alias.🔤 Text.Size.Base}"
             },
             "PaddingBlock": {
               "$type": "dimension",
@@ -7218,11 +7274,11 @@
     "Tag": {
       "Size": {
         "Base": {
-          "Space": {
-            "Gap": {
-              "$type": "dimension",
-              "$value": "{🔗 Alias.↔️ Space.Gap.2XS}"
-            },
+          "Gap": {
+            "$type": "dimension",
+            "$value": "{🔗 Alias.↔️ Space.Gap.2XS}"
+          },
+          "Padding": {
             "X": {
               "$type": "dimension",
               "$value": "{🔗 Alias.↔️ Space.Padding.SM}"
@@ -7238,15 +7294,15 @@
           },
           "FontSize": {
             "$type": "dimension",
-            "$value": "{📱 Device.🔤 Text.Size.Base}"
+            "$value": "{🔗 Alias.🔤 Text.Size.Base}"
           }
         },
         "SM": {
-          "Space": {
-            "Gap": {
-              "$type": "dimension",
-              "$value": "{🔗 Alias.↔️ Space.Gap.2XS}"
-            },
+          "Gap": {
+            "$type": "dimension",
+            "$value": "{🔗 Alias.↔️ Space.Gap.2XS}"
+          },
+          "Padding": {
             "X": {
               "$type": "dimension",
               "$value": "{🔗 Alias.↔️ Space.Padding.SM}"
@@ -7262,15 +7318,15 @@
           },
           "FontSize": {
             "$type": "dimension",
-            "$value": "{📱 Device.🔤 Text.Size.SM}"
+            "$value": "{🔗 Alias.🔤 Text.Size.SM}"
           }
         },
         "MD": {
-          "Space": {
-            "Gap": {
-              "$type": "dimension",
-              "$value": "{🔗 Alias.↔️ Space.Gap.2XS}"
-            },
+          "Gap": {
+            "$type": "dimension",
+            "$value": "{🔗 Alias.↔️ Space.Gap.2XS}"
+          },
+          "Padding": {
             "X": {
               "$type": "dimension",
               "$value": "{🔗 Alias.↔️ Space.Padding.Base}"
@@ -7286,18 +7342,18 @@
           },
           "FontSize": {
             "$type": "dimension",
-            "$value": "{📱 Device.🔤 Text.Size.Base}"
+            "$value": "{🔗 Alias.🔤 Text.Size.Base}"
           }
         },
         "LG": {
-          "Space": {
-            "Gap": {
-              "$type": "dimension",
-              "$value": "{🔗 Alias.↔️ Space.Gap.2XS}"
-            },
+          "Gap": {
+            "$type": "dimension",
+            "$value": "{🔗 Alias.↔️ Space.Gap.2XS}"
+          },
+          "Padding": {
             "X": {
               "$type": "dimension",
-              "$value": "{🔗 Alias.↔️ Space.Padding.LG}"
+              "$value": "{🔗 Alias.↔️ Space.Padding.MD}"
             },
             "Y": {
               "$type": "dimension",
@@ -7310,7 +7366,7 @@
           },
           "FontSize": {
             "$type": "dimension",
-            "$value": "{📱 Device.🔤 Text.Size.Base}"
+            "$value": "{🔗 Alias.🔤 Text.Size.Base}"
           }
         }
       },
@@ -7573,7 +7629,7 @@
         },
         "FontSize": {
           "$type": "dimension",
-          "$value": "{📱 Device.🔤 Text.Size.SM}"
+          "$value": "{🔗 Alias.🔤 Text.Size.SM}"
         }
       },
       "Item": {
@@ -8283,13 +8339,13 @@
         "$value": "{🔗 Alias.▭ Border.Width.Base}"
       },
       "Tab": {
-        "SpaceX": {
+        "PaddingX": {
           "$type": "dimension",
-          "$value": "{📱 Device.↔️ Space.Base}"
+          "$value": "{🔗 Alias.↔️ Space.Padding.Base}"
         },
-        "SpaceY": {
+        "PaddingY": {
           "$type": "dimension",
-          "$value": "{📱 Device.↔️ Space.2XS}"
+          "$value": "{🔗 Alias.↔️ Space.Padding.2XS}"
         },
         "Selected": {
           "Typo": {
@@ -8355,11 +8411,11 @@
         }
       },
       "Panel": {
-        "SpaceX": {
+        "PaddingX": {
           "$type": "dimension",
           "$value": "{📱 Device.↔️ Space.None}"
         },
-        "SpaceY": {
+        "PaddingY": {
           "$type": "dimension",
           "$value": "{📱 Device.↔️ Space.Base}"
         }
@@ -8646,11 +8702,11 @@
         }
       },
       "Panel": {
-        "SpaceX": {
+        "PaddingX": {
           "$type": "dimension",
           "$value": "{📱 Device.↔️ Space.None}"
         },
-        "SpaceY": {
+        "PaddingY": {
           "$type": "dimension",
           "$value": "{📱 Device.↔️ Space.Base}"
         }
@@ -8745,11 +8801,11 @@
         "$type": "typography",
         "$value": "{🧩 Component.Text.Typo.Small}"
       },
-      "SpaceX": {
+      "PaddingX": {
         "$type": "dimension",
         "$value": "{🔗 Alias.↔️ Space.Padding.SM}"
       },
-      "SpaceY": {
+      "PaddingY": {
         "$type": "dimension",
         "$value": "{🔗 Alias.↔️ Space.Padding.XS}"
       }
@@ -8837,7 +8893,7 @@
           "$value": "{🔗 Alias.🎨 Surface.White}"
         }
       },
-      "Space": {
+      "Padding": {
         "$type": "dimension",
         "$value": "{📱 Device.↔️ Space.MD}"
       }
@@ -8893,7 +8949,7 @@
           },
           "Size": {
             "$type": "dimension",
-            "$value": "{📱 Device.🔤 Text.Size.Base}"
+            "$value": "{🔗 Alias.🔤 Text.Size.Base}"
           }
         }
       },
@@ -8997,7 +9053,7 @@
         "Text": {
           "Size": {
             "$type": "dimension",
-            "$value": "{📱 Device.🔤 Text.Size.Base}"
+            "$value": "{🔗 Alias.🔤 Text.Size.Base}"
           },
           "LineHeight": {
             "$type": "number",
@@ -9029,7 +9085,7 @@
         "Text": {
           "Size": {
             "$type": "dimension",
-            "$value": "{📱 Device.🔤 Text.Size.XS}"
+            "$value": "{🔗 Alias.🔤 Text.Size.XS}"
           },
           "LineHeight": {
             "$type": "number",
@@ -9121,7 +9177,7 @@
         "$type": "shadow",
         "$value": "{🔗 Alias.🔤 Text.Shadow.Elevated}"
       },
-      "Space": {
+      "MarginBottom": {
         "$type": "dimension",
         "$value": "{📱 Device.↔️ Space.Base}",
         "$extensions": {

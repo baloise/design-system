@@ -16,8 +16,8 @@
   */
 
 body {
-  @include vars.local(container-space-x, var(--ds-device-container-space));
-  @include vars.local(container-space-y, 0);
+  @include vars.local(container-px, var(--ds-device-container-space));
+  @include vars.local(container-py, 0);
 }
 
 .container {
@@ -27,8 +27,8 @@ body {
   margin: 0 auto;
   position: relative;
   width: auto;
-  padding-block: var(--_container-space-y);
-  padding-inline: var(--_container-space-x);
+  padding-block: var(--_container-py);
+  padding-inline: var(--_container-px);
 
   @include desktop {
     max-width: var(--_container-max-width);

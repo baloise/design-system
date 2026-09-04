@@ -16,9 +16,9 @@ $host-selector: ('#tag');
  */
 
 @include vars.hybrid($name, $css-selector, $use-host) {
-  @include vars.local(tag-gap, var(--ds-tag-size-base-space-gap));
-  @include vars.local(tag-px, var(--ds-tag-size-base-space-x));
-  @include vars.local(tag-py, var(--ds-tag-size-base-space-y));
+  @include vars.local(tag-gap, var(--ds-tag-size-base-gap));
+  @include vars.local(tag-px, var(--ds-tag-size-base-padding-x));
+  @include vars.local(tag-py, var(--ds-tag-size-base-padding-y));
   @include vars.local(tag-radius, var(--ds-tag-radius));
   @include vars.local(tag-color, var(--ds-tag-default-color-text));
   @include vars.local(tag-bg, var(--ds-tag-default-color-background));
@@ -158,31 +158,31 @@ $close-inverted: ('primary', 'disabled', 'purple-dark', 'red-dark', 'yellow-dark
 // --------------------------------
 
 @mixin sizeSmall() {
-  --mod-tag-gap: var(--ds-tag-size-sm-space-gap);
-  --mod-tag-py: var(--ds-tag-size-sm-space-y);
-  --mod-tag-px: var(--ds-tag-size-sm-space-x);
+  --mod-tag-gap: var(--ds-tag-size-sm-gap);
+  --mod-tag-py: var(--ds-tag-size-sm-padding-y);
+  --mod-tag-px: var(--ds-tag-size-sm-padding-x);
   --mod-tag-font-size: var(--ds-tag-size-sm-font-size);
   --mod-tag-font-weight: var(--ds-tag-size-sm-font-weight);
 
   > .close,
   > ds-close {
-    --close-padding: var(--ds-close-space-sm);
+    --close-padding: var(--ds-close-padding-sm);
     --close-size-icon: var(--ds-close-size-sm);
   }
 }
 
 @mixin sizeMedium() {
-  --mod-tag-gap: var(--ds-tag-size-md-space-gap);
-  --mod-tag-py: var(--ds-tag-size-md-space-y);
-  --mod-tag-px: var(--ds-tag-size-md-space-x);
+  --mod-tag-gap: var(--ds-tag-size-md-gap);
+  --mod-tag-py: var(--ds-tag-size-md-padding-y);
+  --mod-tag-px: var(--ds-tag-size-md-padding-x);
   --mod-tag-font-size: var(--ds-tag-size-md-font-size);
   --mod-tag-font-weight: var(--ds-tag-size-md-font-weight);
 }
 
 @mixin sizeLarge() {
-  --mod-tag-gap: var(--ds-tag-size-lg-space-gap);
-  --mod-tag-py: var(--ds-tag-size-lg-space-y);
-  --mod-tag-px: var(--ds-tag-size-lg-space-x);
+  --mod-tag-gap: var(--ds-tag-size-lg-gap);
+  --mod-tag-py: var(--ds-tag-size-lg-padding-y);
+  --mod-tag-px: var(--ds-tag-size-lg-padding-x);
   --mod-tag-font-size: var(--ds-tag-size-lg-font-size);
   --mod-tag-font-weight: var(--ds-tag-size-lg-font-weight);
 }

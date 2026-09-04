@@ -454,8 +454,8 @@ $select-icon-arrow: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/20
     @include unselectable();
 
     min-height: 1.5rem;
-    padding-block: var(--ds-tag-size-sm-space-y);
-    padding-inline: var(--ds-tag-size-sm-space-x);
+    padding-block: var(--ds-tag-size-sm-padding-y);
+    padding-inline: var(--ds-tag-size-sm-padding-x);
     border-radius: var(--ds-tag-radius);
 
     background-color: var(--_select-tag-background-color);

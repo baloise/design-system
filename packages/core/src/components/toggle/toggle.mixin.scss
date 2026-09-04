@@ -24,12 +24,12 @@
     @include vars.local(toggle-radius, var(--ds-toggle-radius));
 
     // label layout
-    @include vars.local(toggle-padding-y, 0.25rem);
+    @include vars.local(toggle-py, 0.25rem);
     @include vars.local(toggle-min-height, 3rem);
 
     // Tile
     @include vars.local(toggle-tile-radius, var(--ds-toggle-tile-radius));
-    @include vars.local(toggle-tile-padding, 1rem);
+    @include vars.local(toggle-tile-p, 1rem);
     @include vars.local(toggle-tile-border-width, var(--ds-toggle-tile-border-width));
 
     @include vars.local(toggle-tile-base-background-color, inherit);
@@ -80,8 +80,8 @@
   color: var(--_toggle-label-base-color);
   font-family: var(--ds-alias-text-family-text);
   line-height: var(--ds-alias-text-line-height-text);
-  padding-top: var(--_toggle-padding-y);
-  padding-bottom: var(--_toggle-padding-y);
+  padding-top: var(--_toggle-py);
+  padding-bottom: var(--_toggle-py);
   min-height: var(--_toggle-min-height);
 
   @include hover() {
@@ -256,7 +256,7 @@
 
 @mixin _dense-vars() {
   --mod-toggle-min-height: 2rem;
-  --mod-toggle-padding-y: 0;
+  --mod-toggle-py: 0;
 }
 
 @mixin _disabled-vars() {

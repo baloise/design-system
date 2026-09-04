@@ -36,16 +36,16 @@ $host-selector: ('#notification');
   @include vars.local(notification-icon, var(--ds-notification-default-icon));
   @include vars.local(notification-icon-display, block);
 
-  @include vars.local(notification-space, var(--ds-card-space-base, 1.5rem));
-  @include vars.local(notification-icon-space, 1.5rem);
+  @include vars.local(notification-p, var(--ds-card-padding-base, 1.5rem));
+  @include vars.local(notification-icon-size, 1.5rem);
 
   @include vars.local(notification-close-offset, 2rem); // extra space reserved when a close button is present
   @include vars.local(notification-gap, 0.125rem);
 
   // Close
   @include vars.local(notification-close-position, absolute);
-  @include vars.local(notification-close-right, var(--_notification-space));
-  @include vars.local(notification-close-top, var(--_notification-space));
+  @include vars.local(notification-close-right, var(--_notification-p));
+  @include vars.local(notification-close-top, var(--_notification-p));
 
   // Animation
   @include vars.local(notification-animation-start-opacity, 1);
@@ -75,10 +75,10 @@ $host-selector: ('#notification');
   background: var(--_notification-color-background);
   color: var(--_notification-color-text);
 
-  padding-top: var(--_notification-space);
-  padding-right: var(--_notification-space);
-  padding-bottom: var(--_notification-space);
-  padding-left: calc(var(--_notification-space) + var(--_notification-icon-space));
+  padding-top: var(--_notification-p);
+  padding-right: var(--_notification-p);
+  padding-bottom: var(--_notification-p);
+  padding-left: calc(var(--_notification-p) + var(--_notification-icon-size));
 
   display: flex;
   flex-direction: column;
@@ -137,9 +137,9 @@ $host-selector: ('#notification');
     position: absolute;
     height: 1.5rem;
     width: 1.5rem;
-    left: calc(var(--_notification-space) / 4 * -1);
-    top: var(--_notification-space);
-    transform: translateX(var(--_notification-space));
+    left: calc(var(--_notification-p) / 4 * -1);
+    top: var(--_notification-p);
+    transform: translateX(var(--_notification-p));
     content: '';
     -webkit-mask-repeat: no-repeat;
     mask-repeat: no-repeat;
@@ -162,7 +162,7 @@ $host-selector: ('#notification');
 // --------------------------------
 @mixin noIcon() {
   --mod-notification-icon-display: none;
-  --mod-notification-icon-space: 0rem;
+  --mod-notification-icon-size: 0rem;
 }
 
 @include hybrid.host($use-host) {
@@ -185,14 +185,14 @@ $host-selector: ('#notification');
 // inline with the content text.
 @mixin notification-brand-icon-position() {
   position: absolute;
-  top: calc(var(--_notification-space) / 2);
-  left: calc(var(--_notification-space) / 2);
-  margin-top: calc(var(--_notification-space) / 8 * -1);
+  top: calc(var(--_notification-p) / 2);
+  left: calc(var(--_notification-p) / 2);
+  margin-top: calc(var(--_notification-p) / 8 * -1);
 }
 
 @include hybrid.host($use-host) {
   :host(.has-brand-icon) {
-    --mod-notification-icon-space: var(--ds-brand-icon-size-base);
+    --mod-notification-icon-size: var(--ds-brand-icon-size-base);
   }
 
   ::slotted(ds-brand-icon) {
@@ -202,7 +202,7 @@ $host-selector: ('#notification');
 
 @include hybrid.styles($css-selector, $use-host) {
   &.has-no-icon:has(ds-brand-icon) {
-    --mod-notification-icon-space: var(--ds-brand-icon-size-base);
+    --mod-notification-icon-size: var(--ds-brand-icon-size-base);
   }
 
   & ds-brand-icon {
@@ -267,7 +267,7 @@ $colors: list.join($composite-border-colors, $outline-colors);
 $sizes: ('sm', 'md');
 
 @mixin notification-sizes($size) {
-  --mod-notification-space: var(--ds-card-space-#{$size}-device);
+  --mod-notification-p: var(--ds-card-padding-#{$size}-device);
 }
 
 @include hybrid.styles($css-selector, $use-host) {

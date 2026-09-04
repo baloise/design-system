@@ -24,7 +24,7 @@
 
     // Tile
     @include vars.local(checkbox-tile-radius, var(--ds-alias-radius-base));
-    @include vars.local(checkbox-tile-padding, 1rem);
+    @include vars.local(checkbox-tile-p, 1rem);
     @include vars.local(checkbox-tile-border-width, var(--ds-alias-border-width-base));
 
     @include vars.local(checkbox-tile-base-background-color, inherit);
