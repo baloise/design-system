@@ -9,10 +9,9 @@ import localeNl from 'air-datepicker/locale/nl'
 import localePl from 'air-datepicker/locale/pl'
 import localePt from 'air-datepicker/locale/pt'
 import localeSv from 'air-datepicker/locale/sv'
-import { DateTime } from 'luxon'
 import type { DsLanguage, DsRegion } from '@global'
 import { i18nDsDate } from './date.i18n'
-import { getDisplayFormat } from './date.mask'
+import { getDisplayFormat, isoToNativeDate, nativeDateToISO } from './date.mask'
 import { raf } from '@utils'
 
 export interface DatePickerConfig {
@@ -31,6 +30,13 @@ export interface DatePickerConfig {
   onClose: () => void
 }
 
+// All comparisons below rely on `iso`, `min` and `max` being zero-padded
+// YYYY-MM-DD strings (as produced by nativeDateToISO / documented on the
+// `min`/`max` props) — fixed-width ISO dates compare correctly as plain
+// strings, so no Date objects need to be constructed here. `ISO_DATE_PATTERN`
+// guards `min`/`max`, which are consumer-supplied props that may be malformed.
+const ISO_DATE_PATTERN = /^\d{4}-\d{2}-\d{2}$/
+
 export function checkIsWithinRange(
   iso: string,
   min: string | undefined,
@@ -39,19 +45,10 @@ export function checkIsWithinRange(
   maxYear: number | undefined,
   allowedDates: ((iso: string) => boolean) | undefined,
 ): boolean {
-  const dt = DateTime.fromISO(iso)
-  if (!dt.isValid) return false
-  const date = dt.toJSDate()
-  if (minYear !== undefined && date < new Date(minYear, 0, 1)) return false
-  if (maxYear !== undefined && date > new Date(maxYear, 11, 31)) return false
-  if (min) {
-    const minDt = DateTime.fromISO(min)
-    if (minDt.isValid && date < minDt.toJSDate()) return false
-  }
-  if (max) {
-    const maxDt = DateTime.fromISO(max)
-    if (maxDt.isValid && date > maxDt.toJSDate()) return false
-  }
+  if (minYear !== undefined && iso < `${String(minYear).padStart(4, '0')}-01-01`) return false
+  if (maxYear !== undefined && iso > `${String(maxYear).padStart(4, '0')}-12-31`) return false
+  if (min && ISO_DATE_PATTERN.test(min) && iso < min) return false
+  if (max && ISO_DATE_PATTERN.test(max) && iso > max) return false
   if (allowedDates && !allowedDates(iso)) return false
   return true
 }
@@ -93,14 +90,19 @@ export class DatePickerController {
     if (!value) {
       this.airDatepicker.clear({ silent: true })
       if (this.config.defaultDate) {
-        const dt = DateTime.fromISO(this.config.defaultDate)
-        if (dt.isValid) this.airDatepicker.setViewDate(dt.toJSDate())
+        const date = isoToNativeDate(this.config.defaultDate)
+        if (date) this.airDatepicker.setViewDate(date)
       }
       return
     }
-    const dt = DateTime.fromISO(value)
-    if (dt.isValid) {
-      this.airDatepicker.selectDate(dt.toJSDate(), { silent: true })
+    const date = isoToNativeDate(value)
+    if (date) {
+      this.airDatepicker.selectDate(date, { silent: true })
+      // selectDate only moves the calendar view itself for some navigation cases (e.g. a
+      // month change within `moveToOtherMonthsOnSelect`), not for every value change — a value
+      // typed directly into the input (e.g. 01.01.2024 -> 01.01.2025) leaves the view where it
+      // was. Explicitly navigate so the popup always opens on the month/year of the current value.
+      this.airDatepicker.setViewDate(date)
     }
   }
 
@@ -188,8 +190,7 @@ export class DatePickerController {
           return
         }
 
-        const iso = DateTime.fromJSDate(selected).toISODate()
-        if (!iso) return
+        const iso = nativeDateToISO(selected)
 
         // Update the aria-selected attribute on all cells to reflect the new selection
         this.getCells().forEach(c => {
@@ -210,8 +211,7 @@ export class DatePickerController {
           month: 'long',
           day: 'numeric',
         }).format(date)
-        const iso = DateTime.fromJSDate(date).toISODate()
-        const disabled = iso && this.config.allowedDates ? !this.config.allowedDates(iso) : false
+        const disabled = this.config.allowedDates ? !this.config.allowedDates(nativeDateToISO(date)) : false
         return { attrs: { 'aria-label': label }, disabled }
       },
     })
@@ -250,8 +250,7 @@ export class DatePickerController {
     body.addEventListener('keydown', this.handleGridKeydown as EventListener)
 
     const selected = this.airDatepicker?.selectedDates[0] ?? null
-    const defaultDateObj =
-      !selected && this.config.defaultDate ? DateTime.fromISO(this.config.defaultDate).toJSDate() : null
+    const defaultDateObj = !selected && this.config.defaultDate ? isoToNativeDate(this.config.defaultDate) : null
     this.setActiveCell(selected ?? defaultDateObj ?? this.today, focusOnDate)
   }
 
@@ -576,19 +575,13 @@ export class DatePickerController {
 
   private getMinDate(): Date | undefined {
     if (this.config.minYear !== undefined) return new Date(this.config.minYear, 0, 1)
-    if (this.config.min) {
-      const dt = DateTime.fromISO(this.config.min)
-      return dt.isValid ? dt.toJSDate() : undefined
-    }
+    if (this.config.min) return isoToNativeDate(this.config.min) ?? undefined
     return undefined
   }
 
   private getMaxDate(): Date | undefined {
     if (this.config.maxYear !== undefined) return new Date(this.config.maxYear, 11, 31)
-    if (this.config.max) {
-      const dt = DateTime.fromISO(this.config.max)
-      return dt.isValid ? dt.toJSDate() : undefined
-    }
+    if (this.config.max) return isoToNativeDate(this.config.max) ?? undefined
     return undefined
   }
 }
