@@ -1,4 +1,4 @@
-export type TokenLayer = 'Global' | 'Alias' | 'Component'
+export type TokenLayer = 'Global' | 'Alias' | 'Device' | 'Component'
 
 export type ResolutionError = 'missing-reference' | 'circular-reference'
 

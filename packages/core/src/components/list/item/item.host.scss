@@ -13,7 +13,7 @@
  * @prop --list-item-grid-template-columns: Grid template columns of the list item host element.
  * @prop --list-item-min-height: Minimum height of a list item row.
  * @prop --list-item-gap: Horizontal gap between the icon slot, content, and action icon.
- * @prop --list-item-space: Vertical padding applied to the top and bottom of a list item.
+ * @prop --list-item-py: Vertical padding applied to the top and bottom of a list item.
  * @prop --list-item-content-gap: Vertical gap between the label and description inside the content area.
  * @prop --list-item-color: Text color of the list item.
  * @prop --list-item-color-hover: Text color of a clickable (link or button) list item on hover.
@@ -43,7 +43,7 @@
   @include vars.local(list-item-grid-template-columns, 1fr);
   @include vars.local(list-item-min-height, var(--ds-list-item-size-base-min-height));
   @include vars.local(list-item-gap, var(--ds-list-item-gap));
-  @include vars.local(list-item-space, var(--ds-list-item-size-base-space));
+  @include vars.local(list-item-py, var(--ds-list-item-size-base-padding-y));
   @include vars.local(list-item-content-gap, var(--ds-list-item-content-gap));
 
   @include vars.local(list-item-color, var(--ds-list-item-color-text-base));
@@ -57,8 +57,8 @@
   @include vars.local(list-item-border-radius, var(--ds-list-item-radius));
 
   @include vars.local(list-item-background-base, transparent);
-  @include vars.local(list-item-background-hover, var(--ds-alias-background-color-primary-lighter));
-  @include vars.local(list-item-background-active, var(--ds-alias-background-color-primary-lighter));
+  @include vars.local(list-item-background-hover, var(--ds-alias-surface-primary-lighter));
+  @include vars.local(list-item-background-active, var(--ds-alias-surface-primary-lighter));
 
   @include vars.local(list-item-accordion-py, var(--ds-list-item-accordion-py));
 
@@ -122,8 +122,8 @@
 
   @include font-smoothing();
   font-family: var(--_list-item-title-family);
-  padding: var(--_list-item-space) 0.25rem;
-  padding-bottom: calc(var(--_list-item-space) + 2px);
+  padding: var(--_list-item-py) 0.25rem;
+  padding-bottom: calc(var(--_list-item-py) + 2px);
   min-height: var(--_list-item-min-height);
 
   //
@@ -383,5 +383,5 @@ $size-aliases: (
   */
 :host(.is-lg) {
   --mod-list-item-min-height: var(--ds-list-item-size-lg-min-height);
-  --mod-list-item-space: var(--ds-list-item-size-lg-space);
+  --mod-list-item-py: var(--ds-list-item-size-lg-padding-y);
 }

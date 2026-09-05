@@ -4,13 +4,14 @@ import { type RuleMetadata } from '../utils'
 
 /**
  * Build spacing rules (margin, padding, gap) dynamically from base.tokens.json.
- * Source: 🔗 Alias › ↔️ Space
+ * Source: 📱 Device › ↔️ Space
  *
  * Each size group (None, Auto, 2XS, …) contributes a set of margin/padding/gap
- * classes referencing the responsive `-device` CSS variable so that the classes
- * respond to breakpoints automatically via the token CSS. `Auto` has no
- * responsive variant, so it falls back to the plain (non-`-device`) CSS variable.
- * Backward-compat aliases (xx-small, x-small, …) are also emitted.
+ * classes referencing the auto-switching `--ds-device-space-*` CSS variable so
+ * that the classes respond to breakpoints automatically via the token CSS.
+ * `Auto` has no responsive variant, so it falls back to the plain
+ * `--ds-device-space-auto` CSS variable. Backward-compat aliases (xx-small,
+ * x-small, …) are also emitted.
  */
 
 const aliases: Record<string, string> = {
@@ -45,9 +46,9 @@ const prefixProps: Array<[string, string[]]> = [
 
 function sv(size: string): string {
   if (size === 'auto') {
-    return `var(--ds-alias-space-auto)`
+    return `var(--ds-device-space-auto)`
   }
-  return `var(--ds-alias-space-${size}-device)`
+  return `var(--ds-device-space-${size})`
 }
 
 function makeRule(className: string, props: string[], size: string): StaticRule {
@@ -60,7 +61,7 @@ export function buildSpacingRules(tokensJsonPath: string): {
   metadata: RuleMetadata[]
 } {
   const json = JSON.parse(readFileSync(tokensJsonPath, 'utf8'))
-  const spaceCategory = (json['🔗 Alias']?.['↔️ Space'] ?? {}) as Record<string, unknown>
+  const spaceCategory = (json['📱 Device']?.['↔️ Space'] ?? {}) as Record<string, unknown>
 
   // Extract canonical size keys directly from the token JSON keys.
   // e.g. "2XS" → "2xs", "None" → "none"
@@ -76,7 +77,7 @@ export function buildSpacingRules(tokensJsonPath: string): {
     metadata.push({
       class: className,
       property: props.length === 1 ? props[0] : props,
-      token: size === 'auto' ? `ds-alias-space-auto` : `ds-alias-space-${size}-device`,
+      token: `ds-device-space-${size}`,
     })
   }
 

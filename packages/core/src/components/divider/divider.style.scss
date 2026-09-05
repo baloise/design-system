@@ -14,10 +14,10 @@ $css-selector: (hr, '.divider');
  */
 
 @include vars.hybrid($name, $css-selector, $use-host) {
-  @include vars.local(divider-color, var(--ds-divider-color-grey));
+  @include vars.local(divider-color, var(--ds-divider-color-default));
   @include vars.local(divider-size, var(--ds-divider-size));
   @include vars.local(divider-radius, var(--ds-divider-radius));
-  @include vars.local(divider-space, 0);
+  @include vars.local(divider-margin, 0);
 }
 
 /**
@@ -61,8 +61,8 @@ $css-selector: (hr, '.divider');
   width: 100%;
   min-height: var(--_divider-size);
   height: var(--_divider-size);
-  margin-top: var(--_divider-space);
-  margin-bottom: var(--_divider-space);
+  margin-top: var(--_divider-margin);
+  margin-bottom: var(--_divider-margin);
 }
 
 @mixin verticalLayout() {
@@ -70,8 +70,8 @@ $css-selector: (hr, '.divider');
   flex-shrink: 0;
   align-self: stretch;
   width: var(--_divider-size);
-  margin-left: var(--_divider-space);
-  margin-right: var(--_divider-space);
+  margin-left: var(--_divider-margin);
+  margin-right: var(--_divider-margin);
 }
 
 @include hybrid.styles($css-selector, $use-host) {
@@ -99,7 +99,7 @@ $css-selector: (hr, '.divider');
 //
 // Colors
 // --------------------------------
-$colors: ('primary', 'secondary', 'base', 'inverted');
+$colors: ('primary', 'secondary', 'default', 'inverted');
 
 @mixin color($color) {
   --mod-divider-color: var(--ds-divider-color-#{$color});
@@ -125,7 +125,7 @@ $colors: ('primary', 'secondary', 'base', 'inverted');
 $spaces: ('none', '2xs', 'xs', 'sm', 'base', 'md', 'lg', 'xl', '2xl', '3xl');
 
 @mixin space($space) {
-  --mod-divider-space: var(--ds-alias-space-#{$space}-device);
+  --mod-divider-margin: var(--ds-device-space-#{$space});
 }
 
 @each $space in $spaces {

@@ -540,8 +540,8 @@ export function buildAliasPassPayload({
       // A responsive dimension token is handled above as `token` — it never reaches here as one
       // (this generic branch only sees `token.value.kind === 'reference'`, never true for a
       // responsive dimension token's own $value, decision 4). It *can* reach here as `target`,
-      // though — e.g. a Component token (Component.Badge.Size.Base.Height) referencing an Alias
-      // responsive dimension token (Alias.Text.Size.2XL) by whole value — which idByPath resolves
+      // though — e.g. a Component token (Component.Badge.Size.Base.Height) referencing a Device
+      // responsive dimension token (Device.Text.Size.2XL) by whole value — which idByPath resolves
       // to a {mobile, tablet, desktop[, device]} object, not a single id on its own. If the target
       // is Device-eligible, its 'device' id IS the single collapsed variable to alias to; otherwise
       // there's no single Figma variable this could point at (which breakpoint would it mean?), so

@@ -1,11 +1,11 @@
 export const NOTIFICATION_SIZES = ['sm', 'md'] as const
 export const NOTIFICATION_COLORS = [
-  'base',
+  'default',
   'info',
   'success',
   'warning',
   'danger',
-  'outline-base',
+  'outline-default',
   'outline-purple',
   'outline-green',
   'outline-yellow',

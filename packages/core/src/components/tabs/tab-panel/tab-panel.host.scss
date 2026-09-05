@@ -4,16 +4,16 @@
 /**
  * Variables
  * --------------------------------
- * @prop --tab-panel-padding: Padding inside the tab panel.
+ * @prop --tab-panel-p: Padding inside the tab panel.
  */
 
 :host {
-  @include vars.local(tab-panel-padding, var(--ds-tab-panel-padding));
+  @include vars.local(tab-panel-p, var(--ds-tab-panel-padding));
 
   display: none;
 }
 
 :host(.is-selected) {
   display: block;
-  padding: var(--_tab-panel-padding);
+  padding: var(--_tab-panel-p);
 }

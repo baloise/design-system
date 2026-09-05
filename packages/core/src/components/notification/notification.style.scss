@@ -1,4 +1,3 @@
-@use 'sass:list';
 @use '@baloise/ds-css/dist/scss/mixins' as *;
 @use '../../hybrid' as hybrid;
 @use '../../vars' as vars;
@@ -18,34 +17,34 @@ $host-selector: ('#notification');
 
 @include vars.hybrid($name, $css-selector, $use-host) {
   @include vars.local(notification-radius, var(--ds-notification-radius));
-  @include vars.local(notification-color-background, var(--ds-notification-base-color-background));
-  @include vars.local(notification-border, var(--ds-notification-base-border));
-  @include vars.local(notification-color-text, var(--ds-notification-base-color-text));
-  @include vars.local(notification-color-heading, var(--ds-notification-base-color-heading));
+  @include vars.local(notification-color-background, var(--ds-notification-default-color-background));
+  @include vars.local(notification-border, var(--ds-notification-default-border));
+  @include vars.local(notification-color-text, var(--ds-notification-default-color-text));
+  @include vars.local(notification-color-heading, var(--ds-notification-default-color-heading));
 
-  @include vars.local(notification-heading-family, var(--ds-notification-base-heading-font-family));
-  @include vars.local(notification-heading-weight, var(--ds-notification-base-heading-font-weight));
-  @include vars.local(notification-heading-size, var(--ds-notification-base-heading-font-size));
-  @include vars.local(notification-heading-line-height, var(--ds-notification-base-heading-line-height));
+  @include vars.local(notification-heading-family, var(--ds-notification-default-heading-font-family));
+  @include vars.local(notification-heading-weight, var(--ds-notification-default-heading-font-weight));
+  @include vars.local(notification-heading-size, var(--ds-notification-default-heading-font-size));
+  @include vars.local(notification-heading-line-height, var(--ds-notification-default-heading-line-height));
 
-  @include vars.local(notification-content-family, var(--ds-notification-base-body-font-family));
-  @include vars.local(notification-content-weight, var(--ds-notification-base-body-font-weight));
-  @include vars.local(notification-content-size, var(--ds-notification-base-body-font-size));
-  @include vars.local(notification-content-line-height, var(--ds-notification-base-body-line-height));
+  @include vars.local(notification-content-family, var(--ds-notification-default-body-font-family));
+  @include vars.local(notification-content-weight, var(--ds-notification-default-body-font-weight));
+  @include vars.local(notification-content-size, var(--ds-notification-default-body-font-size));
+  @include vars.local(notification-content-line-height, var(--ds-notification-default-body-line-height));
 
-  @include vars.local(notification-icon, var(--ds-notification-base-icon));
+  @include vars.local(notification-icon, var(--ds-notification-default-icon));
   @include vars.local(notification-icon-display, block);
 
-  @include vars.local(notification-space, var(--ds-card-space-base, 1.5rem));
-  @include vars.local(notification-icon-space, 1.5rem);
+  @include vars.local(notification-p, var(--ds-card-padding-base, 1.5rem));
+  @include vars.local(notification-icon-size, 1.5rem);
 
   @include vars.local(notification-close-offset, 2rem); // extra space reserved when a close button is present
   @include vars.local(notification-gap, 0.125rem);
 
   // Close
   @include vars.local(notification-close-position, absolute);
-  @include vars.local(notification-close-right, var(--_notification-space));
-  @include vars.local(notification-close-top, var(--_notification-space));
+  @include vars.local(notification-close-right, var(--_notification-p));
+  @include vars.local(notification-close-top, var(--_notification-p));
 
   // Animation
   @include vars.local(notification-animation-start-opacity, 1);
@@ -75,10 +74,10 @@ $host-selector: ('#notification');
   background: var(--_notification-color-background);
   color: var(--_notification-color-text);
 
-  padding-top: var(--_notification-space);
-  padding-right: var(--_notification-space);
-  padding-bottom: var(--_notification-space);
-  padding-left: calc(var(--_notification-space) + var(--_notification-icon-space));
+  padding-top: var(--_notification-p);
+  padding-right: var(--_notification-p);
+  padding-bottom: var(--_notification-p);
+  padding-left: calc(var(--_notification-p) + var(--_notification-icon-size));
 
   display: flex;
   flex-direction: column;
@@ -137,9 +136,9 @@ $host-selector: ('#notification');
     position: absolute;
     height: 1.5rem;
     width: 1.5rem;
-    left: calc(var(--_notification-space) / 4 * -1);
-    top: var(--_notification-space);
-    transform: translateX(var(--_notification-space));
+    left: calc(var(--_notification-p) / 4 * -1);
+    top: var(--_notification-p);
+    transform: translateX(var(--_notification-p));
     content: '';
     -webkit-mask-repeat: no-repeat;
     mask-repeat: no-repeat;
@@ -162,7 +161,7 @@ $host-selector: ('#notification');
 // --------------------------------
 @mixin noIcon() {
   --mod-notification-icon-display: none;
-  --mod-notification-icon-space: 0rem;
+  --mod-notification-icon-size: 0rem;
 }
 
 @include hybrid.host($use-host) {
@@ -185,14 +184,14 @@ $host-selector: ('#notification');
 // inline with the content text.
 @mixin notification-brand-icon-position() {
   position: absolute;
-  top: calc(var(--_notification-space) / 2);
-  left: calc(var(--_notification-space) / 2);
-  margin-top: calc(var(--_notification-space) / 8 * -1);
+  top: calc(var(--_notification-p) / 2);
+  left: calc(var(--_notification-p) / 2);
+  margin-top: calc(var(--_notification-p) / 8 * -1);
 }
 
 @include hybrid.host($use-host) {
   :host(.has-brand-icon) {
-    --mod-notification-icon-space: var(--ds-brand-icon-size-base);
+    --mod-notification-icon-size: var(--ds-brand-icon-size-base);
   }
 
   ::slotted(ds-brand-icon) {
@@ -202,7 +201,7 @@ $host-selector: ('#notification');
 
 @include hybrid.styles($css-selector, $use-host) {
   &.has-no-icon:has(ds-brand-icon) {
-    --mod-notification-icon-space: var(--ds-brand-icon-size-base);
+    --mod-notification-icon-size: var(--ds-brand-icon-size-base);
   }
 
   & ds-brand-icon {
@@ -213,13 +212,18 @@ $host-selector: ('#notification');
 //
 // Colors
 // --------------------------------
-// Semantic colors carry a composite border token (width + style + color).
-$composite-border-colors: ('info', 'success', 'warning', 'danger');
-
-// Outline colors carry a plain border color token, composed with the base border width/style.
-$outline-colors: ('outline-base', 'outline-purple', 'outline-green', 'outline-yellow', 'outline-red');
-
-$colors: list.join($composite-border-colors, $outline-colors);
+// Every color token below is a composite border token (width + style + color).
+$colors: (
+  'info',
+  'success',
+  'warning',
+  'danger',
+  'outline-default',
+  'outline-purple',
+  'outline-green',
+  'outline-yellow',
+  'outline-red'
+);
 
 @mixin notification-colors($color) {
   --mod-notification-color-text: var(--ds-notification-#{$color}-color-text);
@@ -237,11 +241,7 @@ $colors: list.join($composite-border-colors, $outline-colors);
   --mod-notification-content-size: var(--ds-notification-#{$color}-body-font-size);
   --mod-notification-content-line-height: var(--ds-notification-#{$color}-body-line-height);
 
-  @if list.index($composite-border-colors, $color) {
-    --mod-notification-border: var(--ds-notification-#{$color}-border);
-  } @else {
-    --mod-notification-border: var(--ds-alias-border-width-base) solid var(--ds-notification-#{$color}-border);
-  }
+  --mod-notification-border: var(--ds-notification-#{$color}-border);
 }
 
 @include hybrid.styles($css-selector, $use-host) {
@@ -267,7 +267,7 @@ $colors: list.join($composite-border-colors, $outline-colors);
 $sizes: ('sm', 'md');
 
 @mixin notification-sizes($size) {
-  --mod-notification-space: var(--ds-card-space-#{$size}-device);
+  --mod-notification-p: var(--ds-card-padding-#{$size});
 }
 
 @include hybrid.styles($css-selector, $use-host) {

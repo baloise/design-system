@@ -15,15 +15,15 @@
   @include vars.local(carousel-scroll-fade-bg, var(--ds-carousel-scroll-fade-bg));
   @include vars.local(
     carousel-scroll-btn-bg-active,
-    var(--ds-carousel-scroll-btn-background-active, var(--ds-alias-background-color-primary))
+    var(--ds-carousel-scroll-btn-background-active, var(--ds-alias-surface-primary))
   );
   @include vars.local(
     carousel-scroll-btn-bg-active-hover,
-    var(--ds-carousel-scroll-btn-background-active-hover, var(--ds-alias-background-color-primary-hover))
+    var(--ds-carousel-scroll-btn-background-active-hover, var(--ds-alias-surface-primary-hover))
   );
   @include vars.local(
     carousel-scroll-btn-bg-active-pressed,
-    var(--ds-carousel-scroll-btn-background-active-pressed, var(--ds-alias-background-color-primary-active))
+    var(--ds-carousel-scroll-btn-background-active-pressed, var(--ds-alias-surface-primary-active))
   );
   @include vars.local(
     carousel-scroll-btn-color-active,

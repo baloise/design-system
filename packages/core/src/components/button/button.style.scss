@@ -41,7 +41,7 @@ $host-selector: ('#button');
   @include vars.local(button-gap, var(--ds-button-size-base-gap));
   @include vars.local(button-min-height, var(--ds-button-size-base-min-height));
   @include vars.local(button-min-width, var(--ds-button-size-base-min-width));
-  @include vars.local(button-padding-inline, var(--ds-button-size-base-space-x));
+  @include vars.local(button-px, var(--ds-button-size-base-padding-x));
 
   @include vars.local(button-box-shadow, none);
   @include vars.local(button-text-shadow, none);
@@ -94,7 +94,7 @@ $host-selector: ('#button');
   min-width: var(--_button-min-width);
   min-height: var(--_button-min-height);
   gap: var(--_button-gap);
-  padding-inline: var(--_button-padding-inline);
+  padding-inline: var(--_button-px);
 
   background-color: var(--_button-color-background);
   color: var(--_button-color-text);
@@ -180,10 +180,10 @@ $host-selector: ('#button');
     #button {
       flex-direction: column;
       text-align: center;
-      padding: calc(var(--ds-button-size-base-space-x) / 2);
+      padding: calc(var(--ds-button-size-base-padding-x) / 2);
 
       @include tablet {
-        padding: calc(var(--ds-button-size-base-space-x));
+        padding: calc(var(--ds-button-size-base-padding-x));
       }
     }
   }
@@ -192,9 +192,9 @@ $host-selector: ('#button');
 @include hybrid.styles($css-selector, $use-host) {
   &.has-brand-icon {
     @include brand-icon();
-    padding: calc(var(--ds-button-size-base-space-x) / 2);
+    padding: calc(var(--ds-button-size-base-padding-x) / 2);
     @include tablet {
-      padding: calc(var(--ds-button-size-base-space-x));
+      padding: calc(var(--ds-button-size-base-padding-x));
     }
   }
 }
@@ -360,7 +360,7 @@ $inverted-colors: ('secondary', 'tertiary', 'ghost', 'text', 'link');
   --mod-button-gap: var(--ds-button-size-sm-gap);
   --mod-button-min-height: var(--ds-button-size-sm-min-height);
   --mod-button-min-width: var(--ds-button-size-sm-min-width);
-  --mod-button-padding-inline: var(--ds-button-size-sm-space-x);
+  --mod-button-px: var(--ds-button-size-sm-padding-x);
 }
 
 @include hybrid.host($use-host) {
@@ -385,7 +385,7 @@ $inverted-colors: ('secondary', 'tertiary', 'ghost', 'text', 'link');
   --mod-button-gap: var(--ds-button-size-lg-gap);
   --mod-button-min-height: var(--ds-button-size-lg-min-height);
   --mod-button-min-width: var(--ds-button-size-lg-min-width);
-  --mod-button-padding-inline: var(--ds-button-size-lg-space-x);
+  --mod-button-px: var(--ds-button-size-lg-padding-x);
 }
 
 @include hybrid.host($use-host) {
@@ -407,7 +407,7 @@ $inverted-colors: ('secondary', 'tertiary', 'ghost', 'text', 'link');
 
 // Flat
 @mixin shape-flat() {
-  --mod-button-padding-inline: 0;
+  --mod-button-px: 0;
   --mod-button-min-height: 1.75rem;
 }
 
@@ -425,7 +425,7 @@ $inverted-colors: ('secondary', 'tertiary', 'ghost', 'text', 'link');
 
 // Square
 @mixin shape-square($size: 3rem) {
-  --mod-button-padding-inline: 0;
+  --mod-button-px: 0;
   --mod-button-gap: 0;
   --mod-button-min-height: #{$size};
   --mod-button-min-width: #{$size};

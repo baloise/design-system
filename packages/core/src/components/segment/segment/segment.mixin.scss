@@ -19,10 +19,10 @@ $_max-items: 8;
     @include vars.local(segment-radius, var(--ds-segment-radius));
     @include vars.local(segment-background, var(--ds-segment-background));
     @include vars.local(segment-gap, var(--ds-segment-gap));
-    @include vars.local(segment-padding, var(--ds-segment-padding));
+    @include vars.local(segment-p, var(--ds-segment-padding));
     @include vars.local(segment-item-height, var(--ds-segment-item-height));
-    @include vars.local(segment-item-padding-inline, var(--ds-segment-item-padding-inline));
-    @include vars.local(segment-item-padding-block, var(--ds-segment-item-padding-block));
+    @include vars.local(segment-item-px, var(--ds-segment-item-padding-inline));
+    @include vars.local(segment-item-py, var(--ds-segment-item-padding-block));
     @include vars.local(segment-item-icon-size, var(--ds-segment-item-icon-size));
     @include vars.local(segment-item-icon-gap, var(--ds-segment-item-icon-gap));
     @include vars.local(segment-item-font-weight, var(--ds-segment-item-font-weight));
@@ -58,7 +58,7 @@ $_max-items: 8;
     grid-auto-columns: max-content;
     width: max-content;
     gap: var(--_segment-gap);
-    padding: var(--_segment-padding);
+    padding: var(--_segment-p);
     border-radius: var(--_segment-radius);
     background: var(--_segment-background);
 
@@ -72,10 +72,8 @@ $_max-items: 8;
       z-index: 2;
       // Symmetric wider padding keeps text centred while reserving space
       // on the left for the icon (which is position:absolute).
-      padding-inline: calc(
-        var(--_segment-item-padding-inline) + var(--_segment-item-icon-size) + var(--_segment-item-icon-gap)
-      );
-      padding-block: calc(var(--_segment-item-padding-block));
+      padding-inline: calc(var(--_segment-item-px) + var(--_segment-item-icon-size) + var(--_segment-item-icon-gap));
+      padding-block: calc(var(--_segment-item-py));
       min-height: var(--_segment-item-height);
       border-radius: inherit;
       cursor: pointer;
@@ -105,7 +103,7 @@ $_max-items: 8;
       &::before {
         content: '';
         position: absolute;
-        left: var(--_segment-item-padding-inline);
+        left: var(--_segment-item-px);
         top: 50%;
         transform: translateY(-50%);
         width: var(--_segment-item-icon-size);
@@ -166,7 +164,7 @@ $_max-items: 8;
         cursor: pointer;
 
         &:focus-visible {
-          outline: var(--ds-alias-interaction-focus-width, 2px) solid var(--_segment-focus-color);
+          outline: var(--ds-alias-interaction-focus-size-outer, 2px) solid var(--_segment-focus-color);
           outline-offset: 2px;
           border-radius: inherit;
         }
@@ -263,9 +261,9 @@ $_max-items: 8;
       gap: 0.75rem;
       text-align: left;
       // Reserve space on the right for the icon; restore normal left padding.
-      padding-inline-start: var(--_segment-item-padding-inline);
+      padding-inline-start: var(--_segment-item-px);
       padding-inline-end: calc(
-        var(--_segment-item-padding-inline) + var(--_segment-item-icon-size) + var(--_segment-item-icon-gap)
+        var(--_segment-item-px) + var(--_segment-item-icon-size) + var(--_segment-item-icon-gap)
       );
 
       &:has(input:checked)::before {
@@ -279,7 +277,7 @@ $_max-items: 8;
       // Move icon to the right side, vertically centred within the label.
       &::before {
         left: auto;
-        right: var(--_segment-item-padding-inline);
+        right: var(--_segment-item-px);
       }
 
       // Description span — smaller text on a new line below the label

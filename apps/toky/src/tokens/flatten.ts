@@ -4,12 +4,14 @@ import type { FigmaId, FlatToken, ResponsiveDimensionValue, TokenLayer } from '.
 const LAYER_KEYS: Record<string, TokenLayer> = {
   '🌐 Global': 'Global',
   '🔗 Alias': 'Alias',
+  '📱 Device': 'Device',
   '🧩 Component': 'Component',
 }
 
 export const KEY_BY_LAYER: Record<TokenLayer, string> = {
   Global: '🌐 Global',
   Alias: '🔗 Alias',
+  Device: '📱 Device',
   Component: '🧩 Component',
 }
 
