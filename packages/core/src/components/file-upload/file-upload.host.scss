@@ -186,9 +186,9 @@
 // --------------------------------
 :host(.is-danger) {
   --mod-file-upload-description-color: var(--ds-form-danger-description-color);
-  --mod-file-upload-drop-zone-border-color: var(--ds-form-danger-container-border);
-  --mod-file-upload-drop-zone-hover-border-color: var(--ds-form-danger-container-border);
-  --mod-file-upload-drop-zone-active-border-color: var(--ds-form-danger-container-border);
+  --mod-file-upload-drop-zone-border-color: var(--ds-alias-text-color-danger);
+  --mod-file-upload-drop-zone-hover-border-color: var(--ds-alias-text-color-danger);
+  --mod-file-upload-drop-zone-active-border-color: var(--ds-alias-text-color-danger);
 }
 
 //
@@ -196,9 +196,9 @@
 // --------------------------------
 :host(.is-success) {
   --mod-file-upload-description-color: var(--ds-form-success-description-color);
-  --mod-file-upload-drop-zone-border-color: var(--ds-form-success-container-border);
-  --mod-file-upload-drop-zone-hover-border-color: var(--ds-form-success-container-border);
-  --mod-file-upload-drop-zone-active-border-color: var(--ds-form-success-container-border);
+  --mod-file-upload-drop-zone-border-color: var(--ds-alias-text-color-success);
+  --mod-file-upload-drop-zone-hover-border-color: var(--ds-alias-text-color-success);
+  --mod-file-upload-drop-zone-active-border-color: var(--ds-alias-text-color-success);
 }
 
 //
@@ -206,7 +206,7 @@
 // --------------------------------
 :host(.is-warning) {
   --mod-file-upload-description-color: var(--ds-form-warning-description-color);
-  --mod-file-upload-drop-zone-border-color: var(--ds-form-warning-container-border);
-  --mod-file-upload-drop-zone-hover-border-color: var(--ds-form-warning-container-border);
-  --mod-file-upload-drop-zone-active-border-color: var(--ds-form-warning-container-border);
+  --mod-file-upload-drop-zone-border-color: var(--ds-alias-text-color-warning);
+  --mod-file-upload-drop-zone-hover-border-color: var(--ds-alias-text-color-warning);
+  --mod-file-upload-drop-zone-active-border-color: var(--ds-alias-text-color-warning);
 }

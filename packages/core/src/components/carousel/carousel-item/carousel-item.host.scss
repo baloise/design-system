@@ -30,7 +30,7 @@
   gap: 0.5rem;
   padding: 1rem;
   border-radius: var(--ds-alias-radius-base);
-  background-color: var(--ds-alias-surface-grey);
+  background-color: var(--ds-alias-surface-grey-light);
   cursor: pointer;
   outline: none;
   transition:
@@ -53,7 +53,7 @@
 }
 
 :host(.is-tile.is-selected) {
-  background-color: var(--ds-alias-surface-primary-light);
+  background-color: var(--ds-alias-surface-selected);
 }
 
 // ─── Color variants (product) — level 1 (lightest) base ──────────────────────

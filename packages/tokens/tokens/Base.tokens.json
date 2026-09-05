@@ -3043,24 +3043,16 @@
               "unit": "rem"
             }
           },
-          "Gap": {
-            "$type": "dimension",
-            "$value": "{🔗 Alias.↔️ Space.Padding.2XS}"
-          },
           "Padding": {
             "$type": "dimension",
             "$value": "{🔗 Alias.↔️ Space.Padding.2XS}"
+          },
+          "Gap": {
+            "$type": "dimension",
+            "$value": "{🔗 Alias.↔️ Space.Gap.None}"
           }
         },
         "Base": {
-          "Height": {
-            "$type": "dimension",
-            "$value": "{🔗 Alias.🔤 Text.Size.2XL}"
-          },
-          "Font": {
-            "$type": "dimension",
-            "$value": "{🔗 Alias.🔤 Text.Size.XS}"
-          },
           "Radius": {
             "$type": "number",
             "$value": "{🔗 Alias.🔵 Radius.Rounded}"
@@ -3076,24 +3068,20 @@
           "Padding": {
             "$type": "dimension",
             "$value": "{🔗 Alias.↔️ Space.Padding.2XS}"
-          }
-        },
-        "LG": {
+          },
           "Height": {
             "$type": "dimension",
-            "$value": "{🔗 Alias.🔤 Text.Size.4XL}"
+            "$value": "{🌐 Global.📏 Dimension.Size.24}"
           },
           "Font": {
             "$type": "dimension",
-            "$value": "{🔗 Alias.🔤 Text.Size.Base}"
-          },
+            "$value": "{🔗 Alias.🔤 Text.Size.SM}"
+          }
+        },
+        "LG": {
           "Radius": {
             "$type": "number",
             "$value": "{🔗 Alias.🔵 Radius.Rounded}"
-          },
-          "Icon": {
-            "$type": "dimension",
-            "$value": "{🔗 Alias.🔤 Text.Size.LG}"
           },
           "Gap": {
             "$type": "dimension",
@@ -3102,6 +3090,18 @@
           "Padding": {
             "$type": "dimension",
             "$value": "{🔗 Alias.↔️ Space.Padding.2XS}"
+          },
+          "Height": {
+            "$type": "dimension",
+            "$value": "{🌐 Global.📏 Dimension.Size.32}"
+          },
+          "Font": {
+            "$type": "dimension",
+            "$value": "{🔗 Alias.🔤 Text.Size.LG}"
+          },
+          "Icon": {
+            "$type": "dimension",
+            "$value": "{🌐 Global.📏 Dimension.Size.18}"
           }
         }
       },
@@ -9596,6 +9596,13 @@
           "$type": "dimension",
           "$value": {
             "value": 16,
+            "unit": "px"
+          }
+        },
+        "18": {
+          "$type": "dimension",
+          "$value": {
+            "value": 18,
             "unit": "px"
           }
         },

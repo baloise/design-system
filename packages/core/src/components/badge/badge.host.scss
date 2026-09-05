@@ -66,8 +66,8 @@
   line-height: var(--_badge-line-height);
   z-index: 1;
   cursor: inherit;
-  min-width: calc(var(--_badge-min-width) - var(--_badge-px) * 2);
-  height: calc(var(--_badge-height) - var(--_badge-py) * 2);
+  min-width: var(--_badge-min-width);
+  height: var(--_badge-height);
   border-radius: var(--_badge-radius);
   background: var(--_badge-color-background);
   color: var(--_badge-color-text);
@@ -118,8 +118,8 @@ $colors: (
 // --------------------------------
 :host(.is-sm) {
   --mod-badge-radius: var(--ds-badge-size-sm-radius);
-  --mod-badge-height: calc(var(--ds-badge-size-sm-height) - var(--mod-badge-py) * 2);
-  --mod-badge-min-width: calc(var(--ds-badge-size-sm-height) - var(--mod-badge-px) * 2);
+  --mod-badge-height: var(--ds-badge-size-sm-height);
+  --mod-badge-min-width: var(--ds-badge-size-sm-height);
   --mod-badge-icon-size: var(--ds-badge-size-sm-icon);
   --mod-badge-font-size: var(--ds-badge-size-sm-font);
 
@@ -127,7 +127,7 @@ $colors: (
   --mod-badge-px: var(--ds-badge-size-sm-padding);
   --mod-badge-py: var(--ds-badge-size-sm-padding);
 
-  max-width: calc(var(--ds-badge-size-sm-height) - var(--mod-badge-px) * 2);
+  max-width: var(--ds-badge-size-sm-height);
   overflow: hidden;
 
   > * {
@@ -136,8 +136,8 @@ $colors: (
 }
 
 :host(.is-lg) {
-  --mod-badge-min-width: calc(var(--ds-badge-size-lg-height) - var(--mod-badge-px) * 2);
-  --mod-badge-height: calc(var(--ds-badge-size-lg-height) - var(--mod-badge-py) * 2);
+  --mod-badge-min-width: var(--ds-badge-size-lg-height);
+  --mod-badge-height: var(--ds-badge-size-lg-height);
   --mod-badge-radius: var(--ds-badge-size-lg-radius);
   --mod-badge-font-size: var(--ds-badge-size-lg-font);
   --mod-badge-icon-size: var(--ds-badge-size-lg-icon);
