@@ -21818,25 +21818,6 @@
           "com.figma.variableId": "VariableID:137:2688"
         }
       },
-      "Black": {
-        "$type": "color",
-        "$value": {
-          "colorSpace": "srgb",
-          "components": [
-            0,
-            0,
-            0
-          ],
-          "alpha": 1,
-          "hex": "#000000"
-        },
-        "$extensions": {
-          "com.figma.scopes": [
-            "ALL_SCOPES"
-          ],
-          "com.figma.variableId": "VariableID:137:2689"
-        }
-      },
       "Neutral": {
         "$type": "color",
         "$value": {
@@ -23320,6 +23301,25 @@
             ],
             "com.figma.variableId": "VariableID:137:2766"
           }
+        }
+      },
+      "BlackRename": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0,
+            0,
+            0
+          ],
+          "alpha": 1,
+          "hex": "#000000"
+        },
+        "$extensions": {
+          "com.figma.scopes": [
+            "ALL_SCOPES"
+          ],
+          "com.figma.variableId": "VariableID:137:2689"
         }
       }
     },
