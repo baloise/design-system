@@ -1,6 +1,6 @@
 {
-  "lastSyncedCommit": "2f87c36c5bcffb6ef1f1a716e4a0ef9cb4c09718",
-  "lastSyncedAt": "2026-09-07T13:49:16.779Z",
+  "lastSyncedCommit": "ca19545702e9c206891581de2af0f1c79e514a05",
+  "lastSyncedAt": "2026-09-07T14:05:04.271Z",
   "entries": {
     "VariableID:137:77": {
       "tokenPath": [
@@ -56011,28 +56011,6 @@
       "resolvedValue": {
         "kind": "literal",
         "value": 1
-      },
-      "lastModifiedSource": "code",
-      "lastModifiedAt": "2026-09-07T13:49:16.779Z"
-    },
-    "VariableID:150:77": {
-      "tokenPath": [
-        "🌐 Global",
-        "🌈 Color",
-        "HirschTest"
-      ],
-      "resolvedValue": {
-        "kind": "literal",
-        "value": {
-          "colorSpace": "srgb",
-          "components": [
-            0,
-            0,
-            0
-          ],
-          "alpha": 1,
-          "hex": "#000000"
-        }
       },
       "lastModifiedSource": "code",
       "lastModifiedAt": "2026-09-07T13:49:16.779Z"
