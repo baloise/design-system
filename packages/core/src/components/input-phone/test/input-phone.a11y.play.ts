@@ -23,9 +23,7 @@ test('restricted countries', async ({ page, a11y }) => {
 })
 
 test('open country picker', async ({ page, a11y }) => {
-  await page.mount(
-    `<ds-input-phone label="Phone number" countries="CH,DE,FR,IT" initial-country="CH"></ds-input-phone>`,
-  )
+  await page.mount(`<ds-input-phone label="Phone number" initial-country="CH"></ds-input-phone>`)
   const phone = new DsInputPhone(page.locator('ds-input-phone'))
   await phone.open()
   await a11y('ds-input-phone')
@@ -50,6 +48,7 @@ test('semantics and keyboard navigation', async ({ page }) => {
   await expect(phone.filter).toBeFocused()
   await expect(phone.listbox).toHaveRole('listbox')
   await expect(phone.listbox).toHaveAccessibleName(/.+/)
+  await expect(phone.listbox).toHaveAttribute('tabindex', '0')
 
   const firstOptionId = (await phone.listbox.getByRole('option').first().getAttribute('id'))!
   const lastOptionId = (await phone.listbox.getByRole('option').last().getAttribute('id'))!

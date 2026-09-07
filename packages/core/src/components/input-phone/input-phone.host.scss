@@ -57,8 +57,8 @@ $chevron-icon: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/sv
 
   @include input.vars('input-phone');
 
-  @include vars.local(input-phone-flag-width, calc(var(--ds-alias-space-base) * 1.5));
-  @include vars.local(input-phone-flag-height, var(--ds-alias-space-base));
+  @include vars.local(input-phone-flag-width, calc(var(--ds-device-space-base) * 1.5));
+  @include vars.local(input-phone-flag-height, var(--ds-device-space-base));
   @include vars.local(input-phone-popup-width, 18.75rem);
   @include vars.local(input-phone-popup-background, var(--ds-select-content-color-background-base));
   @include vars.local(input-phone-popup-shadow, var(--ds-select-content-shadow));

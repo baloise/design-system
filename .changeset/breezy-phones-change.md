@@ -2,4 +2,4 @@
 '@baloise/ds-core': patch
 ---
 
-**core/input-phone**: Clarify keyboard focus between the country trigger and phone input
+**core/input-phone**: Clarify phone input focus and make the scrollable country list keyboard accessible

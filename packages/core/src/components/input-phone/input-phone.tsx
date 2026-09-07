@@ -797,6 +797,7 @@ export class InputPhone implements DsComponentInterface, FieldInterface {
             <div
               id="country-list"
               role="listbox"
+              tabIndex={0}
               aria-labelledby="country-list-label"
               aria-activedescendant={this.activeCode ? this.optionId(this.activeCode) : undefined}
             >
