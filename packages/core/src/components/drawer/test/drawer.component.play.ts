@@ -149,7 +149,7 @@ test.describe('component', () => {
     `)
     await page.evaluate(() => (document.querySelector('ds-drawer') as any).present())
 
-    const container = page.locator('ds-drawer').locator('.container')
+    const container = page.locator('ds-drawer').locator('.ds-container')
     await expect(container).toHaveClass(/is-fluid/)
   })
 })

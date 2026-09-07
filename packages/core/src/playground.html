@@ -20,7 +20,7 @@
       <ds-button slot="actions" color="secondary">Sign In</ds-button>
     </ds-app-navbar>
 
-    <main class="container my-lg">
+    <main class="ds-container my-lg">
       <ds-card>
         <ds-card-header>
           <ds-card-title>User Information</ds-card-title>
@@ -28,8 +28,8 @@
         </ds-card-header>
         <ds-card-content>
           <form>
-            <div class="form">
-              <div class="form-col">
+            <div class="ds-form">
+              <div class="ds-form-col">
                 <ds-select name="gender" label="Gender" description="Select your gender" required>
                   <ds-select-option value="f">Female</ds-select-option>
                   <ds-select-option value="m">Male</ds-select-option>
@@ -37,24 +37,24 @@
                 </ds-select>
               </div>
 
-              <div class="form-col tablet:is-6">
+              <div class="ds-form-col tablet:is-6">
                 <ds-input name="firstName" label="First Name" required></ds-input>
               </div>
-              <div class="form-col tablet:is-6">
+              <div class="ds-form-col tablet:is-6">
                 <ds-input name="lastName" label="Last Name" required></ds-input>
               </div>
 
-              <div class="form-col tablet:is-6">
+              <div class="ds-form-col tablet:is-6">
                 <ds-date name="birthday" label="Date of Birth" description="DD.MM.YYYY" required></ds-date>
               </div>
 
-              <div class="form-col tablet:is-9">
+              <div class="ds-form-col tablet:is-9">
                 <ds-input name="street" label="Street" required></ds-input>
               </div>
-              <div class="form-col tablet:is-3">
+              <div class="ds-form-col tablet:is-3">
                 <ds-input name="zip" label="ZIP" required></ds-input>
               </div>
-              <div class="form-col">
+              <div class="ds-form-col">
                 <ds-input name="city" label="City" required></ds-input>
               </div>
             </div>

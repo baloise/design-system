@@ -137,7 +137,12 @@ const targets = [
     transform: replaceHtmlClassAttributes,
   },
   {
-    pattern: 'packages/core/src/components/**/test/*.style.html',
+    // Every hand-authored HTML fixture under packages/core/src — CSS-only
+    // *.style.html, web-component *.visual.html, Cypress *.cy.html, the
+    // playground, and any other one-off page — can reference these classes
+    // (most commonly via the shared `<main class="container">` wrapper).
+    // packages/core/www is excluded: it's a gitignored build output.
+    pattern: 'packages/core/src/**/*.html',
     transform: replaceHtmlClassAttributes,
   },
 ]
