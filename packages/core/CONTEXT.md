@@ -581,14 +581,21 @@ vocabulary:
   what a form submits. Never the thing the user directly edits.
 - **National number** — the digits displayed and typed into the number
   field (e.g. `79 123 45 67`), always relative to the currently selected
-  country. Reformatted live via `AsYouType` while typing, and again on blur
-  for a stable final form. Carried alongside `value`/`country` in
+  country. Its display is the international grouping without the calling
+  code already shown by the country picker. A national trunk prefix (such
+  as Swiss `0`) may remain while typing but is removed on blur; a
+  significant leading zero (such as an Italian landline's `0`) remains.
+  Reformatted live via `AsYouType` while typing, and again on blur for a
+  stable final form. Carried alongside `value`/`country` in
   `dsChange`/`dsInput` event payloads as `nationalNumber` so consumers don't
   need to re-derive it from the E.164 string.
 - **`initialCountry`** — uncontrolled seed for the starting country,
   read once. **`country`** — the live/controlled current selection,
   readable and settable after first render, updated by user interaction or
   externally, and re-validated against `countries` whenever either changes.
+  Entering an international `+` or `00` calling code in the number field
+  also updates `country` and removes that calling code from the visible
+  national number.
   Distinct props because a form control that lets a user actively repick
   its country needs "starting state" and "current state" to not be the same
   slot.

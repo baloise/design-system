@@ -23,7 +23,13 @@ import { INPUT_COLORS, InputColor } from '../input/input.interfaces'
 import { PhoneChangeDetail, PhoneCountryChangeDetail, PhoneInputDetail } from './input-phone.interfaces'
 import { i18nDsInputPhone } from './input-phone.i18n'
 import { CountryOption, filterCountries, getCountryName, matchesCountryQuery, parseCountriesProp } from './country-data'
-import { PhoneFormatter, caretFromDigitCount, countDigitsBefore, detectCountryFromInput } from './formatting'
+import {
+  PhoneFormatter,
+  caretFromDigitCount,
+  countDigitsBefore,
+  detectCountryFromInput,
+  getExamplePlaceholder,
+} from './formatting'
 import { getFlagUrl } from './flag'
 
 /**
@@ -436,25 +442,25 @@ export class InputPhone implements DsComponentInterface, FieldInterface {
   private handleInput = (ev: InputEvent) => {
     const input = ev.target as HTMLInputElement
     const raw = input.value
-    const isPaste = ev.inputType === 'insertFromPaste'
+    const detected = detectCountryFromInput(raw)
 
-    if (isPaste) {
-      const detected = detectCountryFromInput(raw)
-      if (detected && detected !== this.resolvedCountry) {
-        const available = this.getAvailableCountries()
-        if (available.some(country => country.code === detected)) {
-          this.setInternalCountry(detected, { emit: false, reformat: false })
-        } else if (available[0]) {
-          this.warnCountryMismatch(detected, available)
-          this.setInternalCountry(available[0].code, { emit: false, reformat: false })
-        }
+    if (detected && detected !== this.resolvedCountry) {
+      const available = this.getAvailableCountries()
+      if (available.some(country => country.code === detected)) {
+        this.setInternalCountry(detected, { emit: false, reformat: false })
+      } else if (available[0]) {
+        this.warnCountryMismatch(detected, available)
+        this.setInternalCountry(available[0].code, { emit: false, reformat: false })
       }
     }
 
     const caret = input.selectionStart ?? raw.length
     const digitsBefore = countDigitsBefore(raw, caret)
     this.displayValue = this.formatter.formatLive(raw)
-    this.pendingCaret = caretFromDigitCount(this.displayValue, digitsBefore)
+    this.pendingCaret =
+      digitsBefore === 0 && this.displayValue === '+'
+        ? 1
+        : caretFromDigitCount(this.displayValue, digitsBefore)
     this.nationalNumber = this.formatter.getNationalNumber()
     this.setInternalValue(this.formatter.getE164())
     this.dsInput.emit(this.eventDetail())
@@ -708,6 +714,7 @@ export class InputPhone implements DsComponentInterface, FieldInterface {
     const selected = available.find(country => country.code === this.resolvedCountry)
     const selectedName = selected ? getCountryName(selected.code, this.language) : ''
     const pickerDisabled = this.disabled || this.readonly
+    const inputPlaceholder = this.placeholder || getExamplePlaceholder(this.resolvedCountry)
 
     return (
       <Field
@@ -759,7 +766,7 @@ export class InputPhone implements DsComponentInterface, FieldInterface {
           disabled={this.disabled}
           readonly={this.readonly}
           required={this.required}
-          placeholder={this.placeholder || ''}
+          placeholder={inputPlaceholder}
           value={this.displayValue}
           onInput={ev => this.handleInput(ev as InputEvent)}
           onFocus={ev => this.handleFocus(ev)}

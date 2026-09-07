@@ -16,7 +16,8 @@ import { INPUTPHONE_DOC_CONFIG, getInputPhoneTabs } from './input-phone.doc-conf
 
 <StoryHeading of={InputPhoneStories.Placeholder}></StoryHeading>
 
-`placeholder` applies only to the national-number field. The country trigger never shows placeholder text.
+The national-number field derives a mobile example from the selected country by default. Set `placeholder` to override
+that example. The country trigger never shows placeholder text.
 
 <CanvasWithCodePen of={InputPhoneStories.Placeholder} sourceState="shown" overflowVisible={true} />
 
@@ -88,7 +89,8 @@ Use `description` for persistent guidance such as which part of the number users
 
 <StoryHeading of={InputPhoneStories.FormattedValue}></StoryHeading>
 
-Pass the canonical E.164 `value`. The field displays the national format for the selected country.
+Pass the canonical E.164 `value`. The field displays the country's international grouping without the calling code,
+because that code is already visible in the country trigger.
 
 <CanvasWithCodePen of={InputPhoneStories.FormattedValue} sourceState="shown" overflowVisible={true} />
 
@@ -96,7 +98,9 @@ Pass the canonical E.164 `value`. The field displays the national format for the
 
 <StoryHeading of={InputPhoneStories.Formatting}></StoryHeading>
 
-Each country uses its own national grouping. Live typing uses `AsYouType`; blur applies a stable national format.
+Each country uses its own international grouping without repeating the calling code. Formatting is applied while
+typing. On blur, a national trunk prefix such as the Swiss `0` is removed, while significant leading digits such as an
+Italian landline's `0` remain.
 
 <CanvasWithCodePen of={InputPhoneStories.Formatting} sourceState="shown" overflowVisible={true} />
 

@@ -14,6 +14,7 @@ test.describe('component', () => {
       country: 'CH',
       nationalNumber: '791234567',
     })
+    await phone.assertNationalNumber('79 123 45 67')
   })
 
   test('should update the E.164 payload on every typed digit', async ({ page }) => {
@@ -21,7 +22,9 @@ test.describe('component', () => {
     const phone = new DsInputPhone(page.locator('ds-input-phone'))
     const inputSpy = await phone.el.spyOnEvent('dsInput')
 
-    await phone.type('791234567')
+    await phone.type('7912')
+    await phone.assertNationalNumber('79 12')
+    await phone.type('34567')
 
     expect(inputSpy).toHaveReceivedEventTimes(9)
     expect(inputSpy).toHaveReceivedEventDetail({
@@ -29,14 +32,16 @@ test.describe('component', () => {
       country: 'CH',
       nationalNumber: '791234567',
     })
+    await phone.assertNationalNumber('79 123 45 67')
   })
 
-  test('should fire dsChange with formatted national number on blur', async ({ page }) => {
+  test('should remove the Swiss national prefix on blur', async ({ page }) => {
     await page.mount(`<ds-input-phone label="Phone number" initial-country="CH"></ds-input-phone>`)
     const phone = new DsInputPhone(page.locator('ds-input-phone'))
     const changeSpy = await phone.el.spyOnEvent('dsChange')
 
-    await phone.fill('791234567')
+    await phone.fill('0791234567')
+    await phone.assertNationalNumber('079 123 45 67')
     await phone.blur()
 
     expect(changeSpy).toHaveReceivedEventTimes(1)
@@ -45,8 +50,23 @@ test.describe('component', () => {
       country: 'CH',
       nationalNumber: '791234567',
     })
-    await phone.assertNationalNumber('079 123 45 67')
+    await phone.assertNationalNumber('79 123 45 67')
     await phone.assertValue('+41791234567')
+  })
+
+  test('should derive a country-specific placeholder and allow an override', async ({ page }) => {
+    await page.mount(`
+      <ds-input-phone data-testid="derived" label="Phone number" initial-country="CH"></ds-input-phone>
+      <ds-input-phone data-testid="custom" label="Phone number" initial-country="CH" placeholder="Custom"></ds-input-phone>
+    `)
+    const derived = new DsInputPhone(page.getByTestId('derived'))
+    const custom = new DsInputPhone(page.getByTestId('custom'))
+
+    await expect(derived.nativeInput).toHaveAttribute('placeholder', '78 123 45 67')
+    await expect(custom.nativeInput).toHaveAttribute('placeholder', 'Custom')
+
+    await derived.selectCountry('DE')
+    await expect(derived.nativeInput).toHaveAttribute('placeholder', '1512 3456789')
   })
 
   test('should fire dsFocus on focus and dsBlur on blur', async ({ page }) => {
@@ -83,7 +103,7 @@ test.describe('country picker', () => {
     await phone.fill('791234567')
     await phone.selectCountry('DE')
 
-    await phone.assertNationalNumber('0791 234567')
+    await phone.assertNationalNumber('791 234567')
   })
 
   test('should restrict picker options to the countries allow-list', async ({ page }) => {
@@ -166,6 +186,42 @@ test.describe('paste', () => {
   })
 })
 
+test.describe('international calling code input', () => {
+  test('should keep the caret after a leading plus', async ({ page }) => {
+    await page.mount(`<ds-input-phone label="Phone number" initial-country="CH"></ds-input-phone>`)
+    const phone = new DsInputPhone(page.locator('ds-input-phone'))
+
+    await phone.type('+')
+
+    await phone.assertNationalNumber('+')
+    await expect.poll(() => phone.nativeInput.evaluate(input => (input as HTMLInputElement).selectionStart)).toBe(1)
+  })
+
+  test('should switch country and remove a typed + calling code from the number field', async ({ page }) => {
+    await page.mount(`<ds-input-phone label="Phone number" countries="CH,DE" initial-country="DE"></ds-input-phone>`)
+    const phone = new DsInputPhone(page.locator('ds-input-phone'))
+    const countrySpy = await phone.el.spyOnEvent('dsCountryChange')
+
+    await phone.fill('+41795012122')
+
+    expect(countrySpy).toHaveReceivedEventTimes(0)
+    await expect.poll(() => phone.el.evaluate(el => (el as HTMLDsInputPhoneElement).country)).toBe('CH')
+    await phone.assertNationalNumber('79 501 21 22')
+    await phone.assertValue('+41795012122')
+  })
+
+  test('should switch country and remove a typed 00 calling code from the number field', async ({ page }) => {
+    await page.mount(`<ds-input-phone label="Phone number" countries="CH,DE" initial-country="DE"></ds-input-phone>`)
+    const phone = new DsInputPhone(page.locator('ds-input-phone'))
+
+    await phone.fill('0041795012122')
+
+    await expect.poll(() => phone.el.evaluate(el => (el as HTMLDsInputPhoneElement).country)).toBe('CH')
+    await phone.assertNationalNumber('79 501 21 22')
+    await phone.assertValue('+41795012122')
+  })
+})
+
 test.describe('disabled', () => {
   test('trigger and number field should be disabled', async ({ page }) => {
     await page.mount(`<ds-input-phone label="Phone number" initial-country="CH" disabled></ds-input-phone>`)
@@ -186,7 +242,7 @@ test.describe('readonly', () => {
 
     await phone.assertPickerDisabled()
     await expect(phone.nativeInput).toBeEnabled()
-    await phone.assertNationalNumber('079 123 45 67')
+    await phone.assertNationalNumber('79 123 45 67')
   })
 })
 
@@ -207,6 +263,6 @@ test.describe('form reset', () => {
     await page.getByTestId('reset').click()
     await page.waitForChanges()
     await phone.assertValue('+41791234567')
-    await phone.assertNationalNumber('079 123 45 67')
+    await phone.assertNationalNumber('79 123 45 67')
   })
 })

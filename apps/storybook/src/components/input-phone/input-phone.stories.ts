@@ -32,7 +32,7 @@ Basic.storyName = '🧩 Basic'
 
 export const Placeholder = Story({
   args: {
-    placeholder: '79 123 45 67',
+    placeholder: '79 501 21 22',
   },
 })
 Placeholder.storyName = '🧩 Placeholder'

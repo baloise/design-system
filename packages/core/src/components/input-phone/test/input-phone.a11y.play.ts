@@ -12,7 +12,7 @@ test('with value', async ({ page, a11y }) => {
 
 test('with placeholder', async ({ page, a11y }) => {
   await page.mount(
-    `<ds-input-phone label="Phone number" initial-country="CH" placeholder="79 123 45 67"></ds-input-phone>`,
+    `<ds-input-phone label="Phone number" initial-country="CH" placeholder="79 501 21 22"></ds-input-phone>`,
   )
   await a11y('ds-input-phone')
 })

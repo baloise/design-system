@@ -80,12 +80,23 @@ $chevron-icon: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/sv
 
   @include input.style('input-phone');
 
+  min-width: 0;
+
   #inner {
     @include form.field();
+
+    min-width: 0;
   }
 
   #container {
     position: relative;
+    min-width: 0;
+  }
+
+  #input {
+    box-sizing: border-box;
+    min-width: 0;
+    flex: 1 1 0%;
   }
 }
 
