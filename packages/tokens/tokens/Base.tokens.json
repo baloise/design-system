@@ -6854,7 +6854,6 @@
         "$type": "color",
         "$value": "{🔗 Alias.🎨 Surface.White}",
         "$extensions": {
-          "com.figma.variableId": "VariableID:2:1554",
           "com.figma.scopes": [
             "ALL_SCOPES"
           ]
@@ -6864,7 +6863,6 @@
         "$type": "number",
         "$value": "{🔗 Alias.🔵 Radius.LG}",
         "$extensions": {
-          "com.figma.variableId": "VariableID:2:1555",
           "com.figma.scopes": [
             "CORNER_RADIUS"
           ]
@@ -6874,7 +6872,6 @@
         "$type": "string",
         "$value": "{🔗 Alias.🌓 Shadow.Box.Base}",
         "$extensions": {
-          "com.figma.variableId": "VariableID:2:1556",
           "com.figma.scopes": [
             "ALL_SCOPES"
           ],
@@ -6886,7 +6883,6 @@
           "$type": "number",
           "$value": "{🔗 Alias.↔️ Space.Padding.XS}",
           "$extensions": {
-            "com.figma.variableId": "VariableID:2:1557",
             "com.figma.scopes": [
               "ALL_SCOPES"
             ]
