@@ -14,10 +14,12 @@ import {
   figmaBorderSubValuesFor,
   figmaResponsiveDimensionDeviceVariableName,
   figmaResponsiveDimensionSubEntriesFor,
+  figmaLineHeightPercentFor,
   figmaShadowSubValuesFor,
   figmaTypographySubValuesFor,
   figmaValueFor,
   isDeviceEligibleResponsiveDimensionToken,
+  isLineHeightNumberToken,
   isPushableToken,
   isSyncableBorderToken,
   isSyncableResponsiveDimensionToken,
@@ -419,10 +421,15 @@ export function buildCreatePassPayload({
         continue
       }
 
+      // A standalone LineHeight `number` token (Global.Font.LineHeight.*, Alias.Text.LineHeight.*,
+      // Component.*.LineHeight) is scaled ×100 for Figma's percentage convention, same as
+      // typography's own lineHeight sub-value above — see figmaLineHeightPercentFor.
       variableModeValues.push({
         variableId: idByPath.get(pathKey(token.path)),
         modeId,
-        value: figmaValueFor(token.type, token.value.value),
+        value: isLineHeightNumberToken(token)
+          ? figmaLineHeightPercentFor(token.value.value)
+          : figmaValueFor(token.type, token.value.value),
       })
     }
   }

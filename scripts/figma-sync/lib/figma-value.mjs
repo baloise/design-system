@@ -40,6 +40,31 @@ const RESOLVED_TYPE_BY_DTCG_TYPE = {
 // packages/tokens/src/config.base.ts's basePxFontSize).
 const PX_PER_REM = 16
 
+// Figma's Variables UI (and its native "line height" text property, when a variable is bound to
+// it) expects a percentage, not the raw CSS-style multiplier this codebase stores in JSON (1.3,
+// not 130) — see the Global/Font/LineHeight/* screenshot that prompted this. Applies to both a
+// standalone `number`-typed LineHeight token (isLineHeightNumberToken below) and a `typography`
+// composite token's `lineHeight` sub-value (figmaTypographySubValuesFor) — every LineHeight-shaped
+// Figma variable in the file, so none of them disagree on units. Inverse:
+// apps/toky/src/tokens/figma-map.ts's LINE_HEIGHT_PERCENT_MULTIPLIER (reimplemented there, not
+// imported — Node-only module, outside apps/toky's module boundary).
+export const LINE_HEIGHT_PERCENT_MULTIPLIER = 100
+
+// A standalone `number` token is this codebase's LineHeight primitive/alias/component-override
+// group (Global.Font.LineHeight.*, Alias.Text.LineHeight.*, Component.*.LineHeight) whenever
+// "LineHeight" appears anywhere in its path — `$type: "number"` alone can't tell it apart from
+// Opacity/ZIndex/Radius tokens, which share the same type but must stay a raw unitless number.
+export function isLineHeightNumberToken(token) {
+  return token.type === 'number' && token.path.includes('LineHeight')
+}
+
+export function figmaLineHeightPercentFor(literalValue) {
+  if (typeof literalValue !== 'number') {
+    throw new Error(`Unsupported LineHeight value "${JSON.stringify(literalValue)}" — expected a number.`)
+  }
+  return literalValue * LINE_HEIGHT_PERCENT_MULTIPLIER
+}
+
 // Figma doesn't understand a numeric font weight — its "Font Weight"
 // variable binding expects the font's named style (e.g. "Bold"), not "700".
 // Generic DTCG first-listed keyword per weight
@@ -252,7 +277,9 @@ export function isSyncableBorderToken(token) {
  * fontFamily/fontWeight are always `{reference}` strings (decision 4), same as border's
  * color/width/style — resolved to a literal via `resolveLiteral` first. fontSize/lineHeight are
  * free literal-or-reference, so `resolveLiteral` is a no-op passthrough for either shape (it only
- * follows a `{reference}` string, returning anything else unchanged).
+ * follows a `{reference}` string, returning anything else unchanged). lineHeight's resolved literal
+ * is additionally scaled ×100 (see figmaLineHeightPercentFor/LINE_HEIGHT_PERCENT_MULTIPLIER) —
+ * Figma expects a percentage, not this codebase's raw CSS-style multiplier.
  *
  * @param {unknown} literalValue already-resolved (non-reference) `$value` of a typography token —
  *   its `fontFamily`/`fontSize`/`fontWeight`/`lineHeight` fields may themselves still be
@@ -272,7 +299,7 @@ export function figmaTypographySubValuesFor(literalValue, tokenIndex) {
     fontFamily: figmaValueFor('fontFamily', fontFamilyLiteral),
     fontSize: figmaValueFor('dimension', fontSizeLiteral),
     fontWeight: figmaValueFor('fontWeight', fontWeightLiteral),
-    lineHeight: lineHeightLiteral,
+    lineHeight: figmaLineHeightPercentFor(lineHeightLiteral),
   }
 }
 

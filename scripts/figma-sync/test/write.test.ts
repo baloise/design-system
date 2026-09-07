@@ -3,11 +3,13 @@ import { buildTokenIndex } from '../lib/alias.mjs'
 import { buildNameIndex, findCollectionAndModes, findResponsiveCollectionAndModes } from '../lib/figma.mjs'
 import {
   figmaBorderSubValuesFor,
+  figmaLineHeightPercentFor,
   figmaResponsiveDimensionSubEntriesFor,
   figmaShadowSubValuesFor,
   figmaTypographySubValuesFor,
   figmaValueFor,
   flattenVariableId,
+  isLineHeightNumberToken,
   resolvedTypeFor,
 } from '../lib/figma-value.mjs'
 import {
@@ -99,6 +101,36 @@ describe('figma-value', () => {
 
   it('maps fontFamily to STRING too — Figma has no font-stack/array type', () => {
     expect(resolvedTypeFor('fontFamily')).toBe('STRING')
+  })
+})
+
+describe('isLineHeightNumberToken / figmaLineHeightPercentFor', () => {
+  it('recognizes a number token as LineHeight whenever "LineHeight" appears anywhere in its path', () => {
+    expect(isLineHeightNumberToken({ type: 'number', path: ['🌐 Global', '🔤 Font', 'LineHeight', '2'] })).toBe(true)
+    expect(isLineHeightNumberToken({ type: 'number', path: ['🔗 Alias', '🔤 Text', 'LineHeight', 'Single'] })).toBe(
+      true,
+    )
+    expect(isLineHeightNumberToken({ type: 'number', path: ['🧩 Component', 'Badge', 'Typo', 'LineHeight'] })).toBe(
+      true,
+    )
+  })
+
+  it('does not flag a same-type number token with no "LineHeight" in its path, e.g. Opacity', () => {
+    expect(isLineHeightNumberToken({ type: 'number', path: ['🔗 Alias', '🌫️ Opacity', 'Half'] })).toBe(false)
+  })
+
+  it('does not flag a non-number token even if "LineHeight" is in its path', () => {
+    expect(isLineHeightNumberToken({ type: 'string', path: ['🌐 Global', 'LineHeight'] })).toBe(false)
+  })
+
+  it("scales a raw CSS-style multiplier ×100 into Figma's percentage convention", () => {
+    expect(figmaLineHeightPercentFor(1)).toBe(100)
+    expect(figmaLineHeightPercentFor(1.3)).toBe(130)
+    expect(figmaLineHeightPercentFor(2)).toBe(200)
+  })
+
+  it('throws on a non-number value', () => {
+    expect(() => figmaLineHeightPercentFor('1.3')).toThrow(/Unsupported LineHeight value/)
   })
 })
 
@@ -265,7 +297,7 @@ describe('figmaTypographySubValuesFor', () => {
       fontFamily: 'BaloiseCreateHeadline',
       fontSize: 16,
       fontWeight: 'Bold',
-      lineHeight: 1.3,
+      lineHeight: 130,
     })
   })
 
@@ -308,6 +340,34 @@ describe('figmaResponsiveDimensionSubEntriesFor', () => {
   it('returns null for a non-object value', () => {
     expect(figmaResponsiveDimensionSubEntriesFor(null)).toBeNull()
     expect(figmaResponsiveDimensionSubEntriesFor('nope')).toBeNull()
+  })
+})
+
+describe('LineHeight number token push (two-pass write payload)', () => {
+  const lineHeightToken = {
+    path: ['🌐 Global', '🔤 Font', 'LineHeight', '2'],
+    type: 'number',
+    value: { kind: 'literal', value: 1.3 },
+  }
+  const opacityToken = {
+    path: ['🔗 Alias', '🌫️ Opacity', 'Half'],
+    type: 'number',
+    value: { kind: 'literal', value: 0.5 },
+  }
+  const tokens = [lineHeightToken, opacityToken]
+
+  it("writes a LineHeight number token's mode-value scaled ×100, but leaves a same-type Opacity token unscaled", () => {
+    const idByPath = assignVariableIds(tokens)
+    const { variableModeValues } = buildCreatePassPayload({
+      baseTokens: tokens,
+      brandTokensByName: { Base: tokens },
+      idByPath,
+      collectionId: 'coll-1',
+      modeIdByBrand: { Base: 'm-base' },
+    })
+    const byId = Object.fromEntries(variableModeValues.map(v => [v.variableId, v.value]))
+    expect(byId[idByPath.get('🌐 Global.🔤 Font.LineHeight.2')]).toBe(130)
+    expect(byId[idByPath.get('🔗 Alias.🌫️ Opacity.Half')]).toBe(0.5)
   })
 })
 
@@ -706,7 +766,7 @@ describe('typography push (two-pass write payload)', () => {
     expect(byId['temp-Global.Font.Typography.Test-fontFamily']).toBe('BaloiseCreateHeadline')
     expect(byId['temp-Global.Font.Typography.Test-fontSize']).toBe(16)
     expect(byId['temp-Global.Font.Typography.Test-fontWeight']).toBe('Bold')
-    expect(byId['temp-Global.Font.Typography.Test-lineHeight']).toBe(1.3)
+    expect(byId['temp-Global.Font.Typography.Test-lineHeight']).toBe(130)
   })
 
   it('pass 2 writes 4 alias mode-values for a typography reference, each pointing at the matching sub-property of the target', () => {

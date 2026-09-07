@@ -666,6 +666,66 @@ describe('buildBasePullPlan', () => {
     expect(plan.creates).toHaveLength(0)
     expect(plan.deletes).toHaveLength(0)
   })
+
+  it("divides a matched LineHeight number token's Figma percentage back to a raw multiplier", () => {
+    const lineHeight2 = token({
+      path: ['🌐 Global', '🔤 Font', 'LineHeight', '2'],
+      type: 'number',
+      figmaId: 'VariableID:lineheight-2',
+      rawValue: 1.3,
+      resolvedValue: 1.3,
+    })
+    const v = variable({
+      id: 'VariableID:lineheight-2',
+      name: '🌐 Global/🔤 Font/LineHeight/2',
+      resolvedType: 'FLOAT',
+      valuesByMode: { [BASE_MODE]: 150 }, // changed in Figma from 130% to 150%
+    })
+    const plan = buildBasePullPlan({
+      original: [lineHeight2],
+      working: [working(lineHeight2)],
+      figmaMeta: meta([v]),
+      baseModeId: BASE_MODE,
+    })
+    expect(plan.updates).toHaveLength(1)
+    expect(plan.updates[0].rawValue).toBe(1.5)
+  })
+
+  it("divides an unmatched (new) LineHeight number variable's Figma percentage, keyed off its name", () => {
+    const v = variable({
+      id: 'VariableID:lineheight-new',
+      name: '🌐 Global/🔤 Font/LineHeight/5',
+      resolvedType: 'FLOAT',
+      valuesByMode: { [BASE_MODE]: 175 },
+    })
+    const plan = buildBasePullPlan({ original: [], working: [], figmaMeta: meta([v]), baseModeId: BASE_MODE })
+    expect(plan.creates).toHaveLength(1)
+    expect(plan.creates[0].rawValue).toBe(1.75)
+  })
+
+  it('does not scale a plain (non-LineHeight) number token, e.g. Opacity', () => {
+    const opacity = token({
+      path: ['🔗 Alias', '🌫️ Opacity', 'Half'],
+      type: 'number',
+      figmaId: 'VariableID:opacity-half',
+      rawValue: 0.5,
+      resolvedValue: 0.5,
+    })
+    const v = variable({
+      id: 'VariableID:opacity-half',
+      name: '🔗 Alias/🌫️ Opacity/Half',
+      resolvedType: 'FLOAT',
+      valuesByMode: { [BASE_MODE]: 0.6 },
+    })
+    const plan = buildBasePullPlan({
+      original: [opacity],
+      working: [working(opacity)],
+      figmaMeta: meta([v]),
+      baseModeId: BASE_MODE,
+    })
+    expect(plan.updates).toHaveLength(1)
+    expect(plan.updates[0].rawValue).toBe(0.6)
+  })
 })
 
 describe('buildBasePullPlan — shadow', () => {
@@ -1104,7 +1164,9 @@ describe('buildBasePullPlan — typography', () => {
     const fontFamily = overrides?.fontFamily ?? 'BaloiseCreateHeadline'
     const fontSize = overrides?.fontSize ?? 16
     const fontWeight = overrides?.fontWeight ?? 'Bold'
-    const lineHeight = overrides?.lineHeight ?? 1.3
+    // Figma-side value — a percentage (130), not this codebase's raw multiplier (1.3). See
+    // LINE_HEIGHT_PERCENT_MULTIPLIER.
+    const lineHeight = overrides?.lineHeight ?? 130
     return [
       variable({
         id: typographyFigmaId.fontFamily,
@@ -1646,7 +1708,9 @@ describe('buildBrandPullPlan — typography', () => {
         id: typographyFigmaId.lineHeight,
         name: 'x/LineHeight',
         resolvedType: 'FLOAT',
-        valuesByMode: { [TCS_MODE]: 1.3 },
+        // Figma-side value — a percentage (130), not this codebase's raw multiplier (1.3). See
+        // LINE_HEIGHT_PERCENT_MULTIPLIER.
+        valuesByMode: { [TCS_MODE]: 130 },
       }),
     ]
   }
