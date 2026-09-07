@@ -43,7 +43,7 @@ All tokens follow the `--ds-` prefix pattern with layer indicators. You can use 
 .card {
   background-color: var(--ds-alias-bg-color-primary);
   color: var(--ds-alias-text-color-primary);
-  padding: var(--ds-alias-space-16);
+  padding: var(--ds-device-space-16);
   border-radius: var(--ds-alias-radius-base);
 }
 
@@ -70,7 +70,7 @@ Provide a fallback in case the token isn't available:
 For dynamic styling, use CSS variables inline:
 
 ```html
-<div style="background-color: var(--ds-alias-bg-color-primary); padding: var(--ds-alias-space-16);"></div>
+<div style="background-color: var(--ds-alias-bg-color-primary); padding: var(--ds-device-space-16);"></div>
 ```
 
 ## JavaScript
@@ -118,12 +118,12 @@ if (isDesktop) {
 
 ### Responsive Spacing
 
-Always use `-device` tokens for responsive values from the alias layer:
+Always use `--ds-device-*` tokens for responsive values — the bare name auto-switches at breakpoints:
 
 ```css
 .container {
-  padding: var(--ds-alias-space-base-device);  /* auto-responsive */
-  font-size: var(--ds-alias-font-size-base-device);  /* auto-responsive */
+  padding: var(--ds-device-space-base);  /* auto-responsive */
+  font-size: var(--ds-device-text-size-base);  /* auto-responsive */
 }
 ```
 
@@ -143,7 +143,7 @@ Always use `-device` tokens for responsive values from the alias layer:
   background: var(--ds-alias-bg-color-info-light);
   border: 1px solid var(--ds-alias-border-color-info);
   color: var(--ds-alias-text-color-primary);
-  padding: var(--ds-alias-space-12);
+  padding: var(--ds-device-space-12);
   border-radius: var(--ds-alias-radius-base);
 }
 

@@ -1,6 +1,6 @@
 export const DIVIDER_LAYOUTS = ['horizontal', 'vertical', ''] as const
 export const DIVIDER_BORDER_STYLES = ['solid', 'dashed', ''] as const
-export const DIVIDER_COLORS = ['primary', 'secondary', 'base', 'inverted'] as const
+export const DIVIDER_COLORS = ['primary', 'secondary', 'default', 'inverted'] as const
 
 export const DIVIDER_SPACES = [
   'none',

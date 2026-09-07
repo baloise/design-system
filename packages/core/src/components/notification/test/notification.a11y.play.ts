@@ -7,12 +7,12 @@ test('basic', async ({ page, a11y }) => {
 
 test.describe('colors', () => {
   const COLORS = [
-    'base',
+    'default',
     'info',
     'success',
     'warning',
     'danger',
-    'outline-base',
+    'outline-default',
     'outline-purple',
     'outline-green',
     'outline-yellow',

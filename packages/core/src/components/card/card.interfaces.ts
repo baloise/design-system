@@ -5,7 +5,7 @@ export const CARD_IMAGE_TEASERS = ['wide-left', 'wide-center', 'wide-right', '']
 export const CARD_ACTIONS_ALIGNMENTS = ['right', 'center', 'left'] as const
 export const CARD_FOOTER_POSITIONS = ['right', 'center', 'left'] as const
 export const CARD_HEADER_DIRECTIONS = ['row', 'column'] as const
-export const CARD_SPACES = ['sm', 'md', 'lg', '', 'small', 'medium', 'large'] as const
+export const CARD_SPACES = ['sm', 'lg'] as const
 export const CARD_COLORS = [
   'primary',
   'grey',

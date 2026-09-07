@@ -14,20 +14,18 @@ $css-selector: ('.table');
 
 @include vars.hybrid($name, $css-selector, $use-host) {
   @include vars.local(table-color, var(--ds-table-color));
-  @include vars.local(table-font, var(--ds-table-font));
 
   @include vars.local(table-cell-border, var(--ds-table-cell-border));
-  @include vars.local(table-cell-padding-x, var(--ds-table-cell-padding-x));
-  @include vars.local(table-cell-padding-y, var(--ds-table-cell-padding-y));
+  @include vars.local(table-cell-px, var(--ds-table-cell-padding-x));
+  @include vars.local(table-cell-py, var(--ds-table-cell-padding-y));
 
   @include vars.local(table-head-border, var(--ds-table-head-border));
-  @include vars.local(table-head-font, var(--ds-table-head-font));
 
   @include vars.local(table-row-background-active, var(--ds-table-row-background-active));
   @include vars.local(table-row-background-hover, var(--ds-table-row-background-hover));
   @include vars.local(table-row-background-striped, var(--ds-table-row-background-striped));
 
-  @include vars.local(table-narrow-cell-padding, 0.25em 0.5em);
+  @include vars.local(table-narrow-cell-p, 0.25em 0.5em);
 }
 
 /**
@@ -51,7 +49,7 @@ $css-selector: ('.table');
   th {
     border: 0;
     border-bottom: var(--_table-cell-border);
-    padding: var(--_table-cell-padding-y) var(--_table-cell-padding-x);
+    padding: var(--_table-cell-py) var(--_table-cell-px);
     vertical-align: middle;
     text-align: left;
     .ds-checkbox {
@@ -93,10 +91,10 @@ $css-selector: ('.table');
       border-bottom: var(--_table-head-border);
     }
     th {
-      font-family: var(--ds-table-font-font-family);
-      font-size: var(--ds-table-font-font-size);
-      font-weight: var(--ds-table-font-font-weight);
-      line-height: var(--ds-table-font-line-height);
+      font-family: var(--ds-table-head-font-font-family);
+      font-size: var(--ds-table-head-font-font-size);
+      font-weight: var(--ds-table-head-font-font-weight);
+      line-height: var(--ds-table-head-font-line-height);
     }
   }
   tbody {
@@ -115,7 +113,7 @@ $css-selector: ('.table');
   &.is-narrow {
     td,
     th {
-      padding: var(--_table-narrow-cell-padding);
+      padding: var(--_table-narrow-cell-p);
     }
   }
   &.is-striped {

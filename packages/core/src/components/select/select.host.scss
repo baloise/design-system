@@ -80,54 +80,54 @@ $select-icon-arrow: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/20
 
   @include input.vars('select');
 
-  @include vars.local(select-background-color, var(--ds-select-color-background-base));
-  @include vars.local(select-text-color, var(--ds-select-color-text-base));
-  @include vars.local(select-primary-color, var(--ds-select-color-primary-base));
-  @include vars.local(select-placeholder-color, var(--ds-select-color-placeholder-base));
+  @include vars.local(select-background-color, var(--ds-select-color-background));
+  @include vars.local(select-text-color, var(--ds-select-color-text));
+  @include vars.local(select-primary-color, var(--ds-select-color-primary));
+  @include vars.local(select-placeholder-color, var(--ds-select-color-placeholder));
   @include vars.local(select-disabled-color, var(--ds-select-color-disabled));
-  @include vars.local(select-border-color, var(--ds-select-color-border-base));
-  @include vars.local(select-highlight-color, var(--ds-select-color-highlight-base));
-  @include vars.local(select-focus-color, var(--ds-select-color-focus-base));
+  @include vars.local(select-border-color, var(--ds-select-color-border));
+  @include vars.local(select-highlight-color, var(--ds-select-color-highlight));
+  @include vars.local(select-focus-color, var(--ds-select-color-focus));
   @include vars.local(select-success-color, var(--ds-select-color-success));
   @include vars.local(select-error-color, var(--ds-select-color-error));
   @include vars.local(select-radius, var(--ds-select-radius));
 
   @include vars.local(select-content-family, var(--ds-select-content-family));
-  @include vars.local(select-content-background-color, var(--ds-select-content-color-background-base));
+  @include vars.local(select-content-background-color, var(--ds-select-content-color-background));
   @include vars.local(select-content-shadow, var(--ds-select-content-shadow));
-  @include vars.local(select-search-text-color, var(--ds-select-search-color-text-base));
+  @include vars.local(select-search-text-color, var(--ds-select-search-color-text));
 
   @include vars.local(select-option-text-color, var(--ds-select-option-color-text-base));
   @include vars.local(select-option-background-color, var(--ds-select-option-color-background-base));
-  @include vars.local(select-option-border-color, var(--ds-select-option-color-border-base));
+  @include vars.local(select-option-border-color, var(--ds-select-option-color-border));
   @include vars.local(select-option-selected-weight, var(--ds-select-option-weight-selected));
   @include vars.local(select-option-selected-icon-color, var(--ds-select-option-color-icon-selected));
   @include vars.local(select-option-selected-text-color, var(--ds-select-option-color-text-selected));
   @include vars.local(select-option-selected-background-color, var(--ds-select-option-color-background-selected));
-  @include vars.local(select-option-hover-text-color, var(--ds-select-option-color-text-hover));
+  @include vars.local(select-option-hover-text-color, var(--ds-select-option-color-text-highlight));
   @include vars.local(select-option-hover-background-color, var(--ds-select-option-color-background-hover));
   @include vars.local(select-option-highlight-text-color, var(--ds-select-option-color-text-highlight));
   @include vars.local(select-option-highlight-background-color, var(--ds-select-option-color-background-highlight));
   @include vars.local(select-option-disabled-text-color, var(--ds-select-option-color-text-disabled));
   @include vars.local(select-option-disabled-background-color, var(--ds-select-option-color-background-disabled));
 
-  @include vars.local(select-optgroup-background-color, var(--ds-select-optgroup-color-background-base));
-  @include vars.local(select-optgroup-text-color, var(--ds-select-optgroup-color-text-base));
+  @include vars.local(select-optgroup-background-color, var(--ds-select-optgroup-color-background));
+  @include vars.local(select-optgroup-text-color, var(--ds-select-optgroup-color-text));
   @include vars.local(select-optgroup-weight, var(--ds-select-optgroup-weight));
 
   @include vars.local(select-icon-color, var(--ds-select-icon-color-base));
   @include vars.local(select-icon-hover-color, var(--ds-select-icon-color-hover));
   @include vars.local(select-icon-active-color, var(--ds-select-icon-color-active));
 
-  @include vars.local(select-tag-background-color, var(--ds-select-chip-color-base-background));
-  @include vars.local(select-tag-text-color, var(--ds-select-chip-color-base-text));
+  @include vars.local(select-tag-background-color, var(--ds-select-chip-color-background));
+  @include vars.local(select-tag-text-color, var(--ds-select-chip-color-text));
   @include vars.local(select-tag-family, var(--ds-select-chip-family));
 
   @include vars.local(select-checkbox-border-color, var(--ds-select-checkbox-color-border-base));
   @include vars.local(select-checkbox-selected-background-color, var(--ds-select-checkbox-color-background-selected));
   @include vars.local(select-checkbox-selected-border-color, var(--ds-select-checkbox-color-border-selected));
 
-  @include vars.local(select-focus-ring-color, var(--ds-select-color-focus-ring-base));
+  @include vars.local(select-focus-ring-color, var(--ds-select-color-focus-ring));
 
   // Map slim-select CSS variables to DS component vars so inherited rules pick up DS theming.
   // Colors
@@ -454,8 +454,8 @@ $select-icon-arrow: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/20
     @include unselectable();
 
     min-height: 1.5rem;
-    padding-block: var(--ds-tag-size-sm-space-y);
-    padding-inline: var(--ds-tag-size-sm-space-x);
+    padding-block: var(--ds-tag-size-sm-padding-y);
+    padding-inline: var(--ds-tag-size-sm-padding-x);
     border-radius: var(--ds-tag-radius);
 
     background-color: var(--_select-tag-background-color);

@@ -10,7 +10,7 @@ const meta: Meta<Args> = {
   ...withRender(
     () => `
 <div class="container bg-purple-2 p-base">
-  <p>Default container — constrained to <code>--ds-alias-container-width-base</code> on desktop.</p>
+  <p>Default container — constrained to <code>--ds-alias-container-width-default</code> on desktop.</p>
 </div>
     `,
   ),

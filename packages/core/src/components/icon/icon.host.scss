@@ -209,7 +209,7 @@ $icon-colors: ('primary', 'primary-light', 'info', 'success', 'danger', 'warning
 }
 
 :host(.is-invalid) {
-  --mod-icon-color: var(--ds-icon-color-invalid);
+  --mod-icon-color: var(--ds-icon-color-danger);
 }
 
 :host(.is-disabled) {

@@ -7,10 +7,16 @@
 
   // Only use small buttons in the card header
   // to have the same height as the title
+  --button-font-family: var(--ds-button-size-sm-font-family);
+  --button-font-weight: var(--ds-button-size-sm-font-weight);
   --button-font-size: var(--ds-button-size-sm-font-size);
-  --button-min-height: 2rem;
-  --button-min-width: 2rem;
-  --button-padding-inline: 0.75rem;
+  --button-line-height: var(--ds-button-size-sm-line-height);
+  --button-radius: var(--ds-button-size-sm-radius);
+  --button-gap: var(--ds-button-size-sm-gap);
+  --button-min-height: var(--ds-button-size-sm-min-height);
+  --button-min-width: var(--ds-button-size-sm-min-width);
+  --button-px: var(--ds-button-size-sm-padding-x);
+
   --tags-display: flex;
   --tags-mt: 0.25rem;
 

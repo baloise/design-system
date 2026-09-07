@@ -32,7 +32,7 @@
       <!-- Long Content -->
       <section data-testid="long-content">
         <span>Long Content</span>
-        <section class="notification has-no-icon is-sm" role="status" aria-live="polite" aria-atomic="true">
+        <section class="notification has-no-icon" role="status" aria-live="polite" aria-atomic="true">
           <ds-close></ds-close>
           <h2>
             Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
@@ -96,7 +96,12 @@
       <!-- Outline -->
       <section class="flex gap-small flex-direction-column" data-testid="outline">
         <span>Outline</span>
-        <section class="notification has-no-icon is-outline-base" role="status" aria-live="polite" aria-atomic="true">
+        <section
+          class="notification has-no-icon is-outline-default"
+          role="status"
+          aria-live="polite"
+          aria-atomic="true"
+        >
           <h2>Heading</h2>
           <p>
             <ds-brand-icon src="/assets/images/brand-icons/car-green.svg"></ds-brand-icon> Your changes have been saved.
@@ -141,10 +146,6 @@
         </section>
         <section class="notification is-outline-purple" role="status" aria-live="polite" aria-atomic="true">
           <h2>Default</h2>
-          <p>Your changes have been saved.</p>
-        </section>
-        <section class="notification is-outline-purple is-md" role="status" aria-live="polite" aria-atomic="true">
-          <h2>Medium</h2>
           <p>Your changes have been saved.</p>
         </section>
       </section>

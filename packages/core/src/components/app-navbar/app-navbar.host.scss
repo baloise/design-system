@@ -8,7 +8,7 @@
  * These variables can be used in the component styles below and later on be overridden in themes.
  *
  * @prop --app-navbar-background: Background color of the app-navbar
- * @prop --app-navbar-padding: Padding of the app-navbar
+ * @prop --app-navbar-p: Padding of the app-navbar
  * @prop --app-navbar-height: Height of the app-navbar container
  * @prop --app-navbar-z-index: Stacking context of the app-navbar
  * @prop --app-navbar-shadow: Shadow of the app-navbar
@@ -26,7 +26,7 @@
  * Hamburger Button Variables (sizing only):
  * @prop --app-navbar-hamburger-width: Width of the hamburger button
  * @prop --app-navbar-hamburger-height: Height of the hamburger button
- * @prop --app-navbar-hamburger-padding: Padding inside the hamburger button
+ * @prop --app-navbar-hamburger-p: Padding inside the hamburger button
  * @prop --app-navbar-hamburger-radius: Border radius of the hamburger button
  * @prop --app-navbar-hamburger-transition-duration: Transition duration for hamburger hover/active states
  *
@@ -41,13 +41,13 @@
  * @prop --app-navbar-sidebar-panel-shadow: Box shadow of the sidebar panel
  * @prop --app-navbar-sidebar-panel-border-top: Top border of the sidebar panel
  * @prop --app-navbar-sidebar-content-gap: Gap between menu items in sidebar
- * @prop --app-navbar-sidebar-padding-inline: Horizontal padding of sidebar content
- * @prop --app-navbar-sidebar-padding-block: Vertical padding of sidebar content
+ * @prop --app-navbar-sidebar-px: Horizontal padding of sidebar content
+ * @prop --app-navbar-sidebar-py: Vertical padding of sidebar content
  *
  * Menu Item Variables (Sidebar):
  * @prop --app-navbar-sidebar-item-min-height: Minimum height of menu items in sidebar
- * @prop --app-navbar-sidebar-item-padding-block: Vertical padding of menu items
- * @prop --app-navbar-sidebar-item-padding-inline: Horizontal padding of menu items
+ * @prop --app-navbar-sidebar-item-py: Vertical padding of menu items
+ * @prop --app-navbar-sidebar-item-px: Horizontal padding of menu items
  * @prop --app-navbar-sidebar-item-font-size: Font size of menu items in sidebar
  * @prop --app-navbar-sidebar-item-font-weight: Font weight of menu items in sidebar
  * @prop --app-navbar-sidebar-item-font-family: Font family of menu items in sidebar
@@ -66,8 +66,8 @@
  * @prop --app-navbar-menu-start-gap: Gap between menu-start items on desktop
  * @prop --app-navbar-menu-item-color: Text color of menu items on desktop
  * @prop --app-navbar-menu-item-font-size: Font size of menu items on desktop
- * @prop --app-navbar-menu-item-padding-block: Vertical padding of desktop menu items
- * @prop --app-navbar-menu-item-padding-inline: Horizontal padding of desktop menu items
+ * @prop --app-navbar-menu-item-py: Vertical padding of desktop menu items
+ * @prop --app-navbar-menu-item-px: Horizontal padding of desktop menu items
  * @prop --app-navbar-menu-item-border-radius: Border radius of desktop menu items
  * @prop --app-navbar-menu-item-color-hover: Text color of desktop menu items on hover
  * @prop --app-navbar-menu-item-color-selected: Text color of selected desktop menu items
@@ -102,118 +102,118 @@
 :host {
   @include vars.focus(link);
 
-  // Base theme app-navbar styles
-  @include vars.local(app-navbar-background, var(--ds-app-navbar-base-layout-background));
-  @include vars.local(app-navbar-padding, var(--ds-app-navbar-base-layout-padding));
-  @include vars.local(app-navbar-height, var(--ds-app-navbar-base-layout-height));
-  @include vars.local(app-navbar-shadow, var(--ds-app-navbar-base-layout-shadow));
-  @include vars.local(app-navbar-z-index, var(--ds-app-navbar-base-layout-z-index));
+  // Default theme app-navbar styles
+  @include vars.local(app-navbar-background, var(--ds-app-navbar-default-layout-background));
+  @include vars.local(app-navbar-p, var(--ds-app-navbar-default-layout-padding));
+  @include vars.local(app-navbar-height, var(--ds-app-navbar-default-layout-height));
+  @include vars.local(app-navbar-shadow, var(--ds-app-navbar-default-layout-shadow));
+  @include vars.local(app-navbar-z-index, var(--ds-app-navbar-default-layout-z-index));
 
   // Brand slot
-  @include vars.local(app-navbar-brand-gap, var(--ds-app-navbar-base-brand-gap));
-  @include vars.local(app-navbar-brand-focus-radius, var(--ds-app-navbar-base-brand-focus-radius));
+  @include vars.local(app-navbar-brand-gap, var(--ds-app-navbar-default-brand-gap));
+  @include vars.local(app-navbar-brand-focus-radius, var(--ds-app-navbar-default-brand-focus-radius));
 
   // Title slot
-  @include vars.local(app-navbar-title-color, var(--ds-app-navbar-base-title-color));
-  @include vars.local(app-navbar-title-font-family, var(--ds-app-navbar-base-title-font-family));
-  @include vars.local(app-navbar-title-font-size, var(--ds-app-navbar-base-title-font-size));
-  @include vars.local(app-navbar-title-font-weight, var(--ds-app-navbar-base-title-font-weight));
+  @include vars.local(app-navbar-title-color, var(--ds-app-navbar-default-title-color));
+  @include vars.local(app-navbar-title-font-family, var(--ds-app-navbar-default-title-font-family));
+  @include vars.local(app-navbar-title-font-size, var(--ds-app-navbar-default-title-font-size));
+  @include vars.local(app-navbar-title-font-weight, var(--ds-app-navbar-default-title-font-weight));
 
   // Hamburger button (sizing only; colors use button variables)
-  @include vars.local(app-navbar-hamburger-width, var(--ds-app-navbar-base-hamburger-width));
-  @include vars.local(app-navbar-hamburger-height, var(--ds-app-navbar-base-hamburger-height));
-  @include vars.local(app-navbar-hamburger-padding, var(--ds-app-navbar-base-hamburger-padding));
-  @include vars.local(app-navbar-hamburger-radius, var(--ds-app-navbar-base-hamburger-radius));
+  @include vars.local(app-navbar-hamburger-width, var(--ds-app-navbar-default-hamburger-width));
+  @include vars.local(app-navbar-hamburger-height, var(--ds-app-navbar-default-hamburger-height));
+  @include vars.local(app-navbar-hamburger-p, var(--ds-app-navbar-default-hamburger-padding));
+  @include vars.local(app-navbar-hamburger-radius, var(--ds-app-navbar-default-hamburger-radius));
   @include vars.local(
     app-navbar-hamburger-transition-duration,
-    var(--ds-app-navbar-base-hamburger-transition-duration)
+    var(--ds-app-navbar-default-hamburger-transition-duration)
   );
 
   // Sidebar
-  @include vars.local(app-navbar-sidebar-max-width, var(--ds-app-navbar-base-sidebar-max-width));
-  @include vars.local(app-navbar-sidebar-slide-duration, var(--ds-app-navbar-base-sidebar-slide-duration));
-  @include vars.local(app-navbar-sidebar-backdrop-color, var(--ds-app-navbar-base-sidebar-backdrop-color));
+  @include vars.local(app-navbar-sidebar-max-width, var(--ds-app-navbar-default-sidebar-max-width));
+  @include vars.local(app-navbar-sidebar-slide-duration, var(--ds-app-navbar-default-sidebar-slide-duration));
+  @include vars.local(app-navbar-sidebar-backdrop-color, var(--ds-app-navbar-default-sidebar-backdrop-color));
   @include vars.local(app-navbar-sidebar-backdrop-opacity, var(--ds-global-elevation-opacity-50));
-  @include vars.local(app-navbar-sidebar-panel-background, var(--ds-app-navbar-base-sidebar-panel-background));
-  @include vars.local(app-navbar-sidebar-panel-shadow, var(--ds-app-navbar-base-sidebar-panel-shadow));
-  @include vars.local(app-navbar-sidebar-panel-border-top, var(--ds-app-navbar-base-sidebar-panel-border-top));
-  @include vars.local(app-navbar-sidebar-content-gap, var(--ds-app-navbar-base-sidebar-content-gap));
-  @include vars.local(app-navbar-sidebar-padding-inline, var(--ds-app-navbar-base-sidebar-content-padding-inline));
-  @include vars.local(app-navbar-sidebar-padding-block, var(--ds-app-navbar-base-sidebar-content-padding-block));
+  @include vars.local(app-navbar-sidebar-panel-background, var(--ds-app-navbar-default-sidebar-panel-background));
+  @include vars.local(app-navbar-sidebar-panel-shadow, var(--ds-app-navbar-default-sidebar-panel-shadow));
+  @include vars.local(app-navbar-sidebar-panel-border-top, var(--ds-app-navbar-default-sidebar-panel-border-top));
+  @include vars.local(app-navbar-sidebar-content-gap, var(--ds-app-navbar-default-sidebar-content-gap));
+  @include vars.local(app-navbar-sidebar-px, var(--ds-app-navbar-default-sidebar-content-padding-inline));
+  @include vars.local(app-navbar-sidebar-py, var(--ds-app-navbar-default-sidebar-content-padding-block));
 
   // Sidebar menu items
-  @include vars.local(app-navbar-sidebar-item-min-height, var(--ds-app-navbar-base-sidebar-item-min-height));
-  @include vars.local(app-navbar-sidebar-item-padding-block, var(--ds-app-navbar-base-sidebar-item-padding-block));
-  @include vars.local(app-navbar-sidebar-item-padding-inline, var(--ds-app-navbar-base-sidebar-item-padding-inline));
-  @include vars.local(app-navbar-sidebar-item-font-size, var(--ds-app-navbar-base-sidebar-item-font-size));
-  @include vars.local(app-navbar-sidebar-item-font-weight, var(--ds-app-navbar-base-sidebar-item-font-weight));
-  @include vars.local(app-navbar-sidebar-item-font-family, var(--ds-app-navbar-base-sidebar-item-font-family));
-  @include vars.local(app-navbar-sidebar-item-color, var(--ds-app-navbar-base-sidebar-item-color-base));
+  @include vars.local(app-navbar-sidebar-item-min-height, var(--ds-app-navbar-default-sidebar-item-min-height));
+  @include vars.local(app-navbar-sidebar-item-py, var(--ds-app-navbar-default-sidebar-item-padding-block));
+  @include vars.local(app-navbar-sidebar-item-px, var(--ds-app-navbar-default-sidebar-item-padding-inline));
+  @include vars.local(app-navbar-sidebar-item-font-size, var(--ds-app-navbar-default-sidebar-item-font-size));
+  @include vars.local(app-navbar-sidebar-item-font-weight, var(--ds-app-navbar-default-sidebar-item-font-weight));
+  @include vars.local(app-navbar-sidebar-item-font-family, var(--ds-app-navbar-default-sidebar-item-font-family));
+  @include vars.local(app-navbar-sidebar-item-color, var(--ds-app-navbar-default-sidebar-item-color-base));
   @include vars.local(
     app-navbar-sidebar-item-background-active,
-    var(--ds-app-navbar-base-sidebar-item-background-active)
+    var(--ds-app-navbar-default-sidebar-item-background-active)
   );
   @include vars.local(
     app-navbar-sidebar-item-background-hover,
-    var(--ds-app-navbar-base-sidebar-item-background-hover)
+    var(--ds-app-navbar-default-sidebar-item-background-hover)
   );
-  @include vars.local(app-navbar-sidebar-item-color-hover, var(--ds-app-navbar-base-sidebar-item-color-hover));
-  @include vars.local(app-navbar-sidebar-item-color-active, var(--ds-app-navbar-base-sidebar-item-color-active));
-  @include vars.local(app-navbar-sidebar-item-divider-color, var(--ds-app-navbar-base-sidebar-item-divider-color));
+  @include vars.local(app-navbar-sidebar-item-color-hover, var(--ds-app-navbar-default-sidebar-item-color-hover));
+  @include vars.local(app-navbar-sidebar-item-color-active, var(--ds-app-navbar-default-sidebar-item-color-active));
+  @include vars.local(app-navbar-sidebar-item-divider-color, var(--ds-app-navbar-default-sidebar-item-divider-color));
   @include vars.local(
     app-navbar-sidebar-item-divider-color-active,
-    var(--ds-app-navbar-base-sidebar-item-divider-color-active)
+    var(--ds-app-navbar-default-sidebar-item-divider-color-active)
   );
-  @include vars.local(app-navbar-sidebar-item-chevron-size, var(--ds-app-navbar-base-sidebar-item-chevron-size));
-  @include vars.local(app-navbar-sidebar-item-chevron-color, var(--ds-app-navbar-base-sidebar-item-chevron-color));
+  @include vars.local(app-navbar-sidebar-item-chevron-size, var(--ds-app-navbar-default-sidebar-item-chevron-size));
+  @include vars.local(app-navbar-sidebar-item-chevron-color, var(--ds-app-navbar-default-sidebar-item-chevron-color));
 
   // Menu (Desktop)
-  @include vars.local(app-navbar-menu-gap, var(--ds-app-navbar-base-menu-gap));
-  @include vars.local(app-navbar-menu-start-gap, var(--ds-app-navbar-base-menu-start-gap));
-  @include vars.local(app-navbar-menu-item-color, var(--ds-app-navbar-base-menu-item-color-base));
-  @include vars.local(app-navbar-menu-item-font-size, var(--ds-app-navbar-base-menu-item-font-size));
-  @include vars.local(app-navbar-menu-item-padding-block, var(--ds-app-navbar-base-menu-item-padding-block));
-  @include vars.local(app-navbar-menu-item-padding-inline, var(--ds-app-navbar-base-menu-item-padding-inline));
-  @include vars.local(app-navbar-menu-item-border-radius, var(--ds-app-navbar-base-menu-item-border-radius));
-  @include vars.local(app-navbar-menu-item-color-hover, var(--ds-app-navbar-base-menu-item-color-hover));
-  @include vars.local(app-navbar-menu-item-color-selected, var(--ds-app-navbar-base-menu-item-color-selected));
+  @include vars.local(app-navbar-menu-gap, var(--ds-app-navbar-default-menu-gap));
+  @include vars.local(app-navbar-menu-start-gap, var(--ds-app-navbar-default-menu-start-gap));
+  @include vars.local(app-navbar-menu-item-color, var(--ds-app-navbar-default-menu-item-color-base));
+  @include vars.local(app-navbar-menu-item-font-size, var(--ds-app-navbar-default-menu-item-font-size));
+  @include vars.local(app-navbar-menu-item-py, var(--ds-app-navbar-default-menu-item-padding-block));
+  @include vars.local(app-navbar-menu-item-px, var(--ds-app-navbar-default-menu-item-padding-inline));
+  @include vars.local(app-navbar-menu-item-border-radius, var(--ds-app-navbar-default-menu-item-border-radius));
+  @include vars.local(app-navbar-menu-item-color-hover, var(--ds-app-navbar-default-menu-item-color-hover));
+  @include vars.local(app-navbar-menu-item-color-selected, var(--ds-app-navbar-default-menu-item-color-selected));
   @include vars.local(
     app-navbar-menu-item-color-selected-hover,
-    var(--ds-app-navbar-base-menu-item-color-selected-hover)
+    var(--ds-app-navbar-default-menu-item-color-selected-hover)
   );
-  @include vars.local(app-navbar-menu-item-color-active, var(--ds-app-navbar-base-menu-item-color-active));
+  @include vars.local(app-navbar-menu-item-color-active, var(--ds-app-navbar-default-menu-item-color-active));
   @include vars.local(app-navbar-menu-item-underline-height, var(--ds-global-dimension-border-2));
   @include vars.local(app-navbar-menu-item-underline-border-radius, var(--ds-alias-radius-rounded));
   @include vars.local(
     app-navbar-menu-item-transition-duration,
-    var(--ds-app-navbar-base-menu-item-transition-duration)
+    var(--ds-app-navbar-default-menu-item-transition-duration)
   );
-  @include vars.local(app-navbar-menu-end-gap, var(--ds-app-navbar-base-menu-end-gap));
+  @include vars.local(app-navbar-menu-end-gap, var(--ds-app-navbar-default-menu-end-gap));
 
   // Content container
-  @include vars.local(app-navbar-container-gap, var(--ds-app-navbar-base-container-gap));
-  @include vars.local(app-navbar-content-gap, var(--ds-app-navbar-base-content-gap));
+  @include vars.local(app-navbar-container-gap, var(--ds-app-navbar-default-container-gap));
+  @include vars.local(app-navbar-content-gap, var(--ds-app-navbar-default-content-gap));
 
   // Button component
-  @include vars.local(app-navbar-button-color-text, var(--ds-app-navbar-base-button-color-text-base));
-  @include vars.local(app-navbar-button-color-background, var(--ds-app-navbar-base-button-color-background-base));
-  @include vars.local(app-navbar-button-color-border, var(--ds-app-navbar-base-button-color-border-base));
-  @include vars.local(app-navbar-button-color-text-hover, var(--ds-app-navbar-base-button-color-text-hover));
+  @include vars.local(app-navbar-button-color-text, var(--ds-app-navbar-default-button-color-text-base));
+  @include vars.local(app-navbar-button-color-background, var(--ds-app-navbar-default-button-color-background-base));
+  @include vars.local(app-navbar-button-color-border, var(--ds-app-navbar-default-button-color-border-base));
+  @include vars.local(app-navbar-button-color-text-hover, var(--ds-app-navbar-default-button-color-text-hover));
   @include vars.local(
     app-navbar-button-color-background-hover,
-    var(--ds-app-navbar-base-button-color-background-hover)
+    var(--ds-app-navbar-default-button-color-background-hover)
   );
-  @include vars.local(app-navbar-button-color-border-hover, var(--ds-app-navbar-base-button-color-border-hover));
-  @include vars.local(app-navbar-button-color-text-active, var(--ds-app-navbar-base-button-color-text-active));
+  @include vars.local(app-navbar-button-color-border-hover, var(--ds-app-navbar-default-button-color-border-hover));
+  @include vars.local(app-navbar-button-color-text-active, var(--ds-app-navbar-default-button-color-text-active));
   @include vars.local(
     app-navbar-button-color-background-active,
-    var(--ds-app-navbar-base-button-color-background-active)
+    var(--ds-app-navbar-default-button-color-background-active)
   );
-  @include vars.local(app-navbar-button-color-border-active, var(--ds-app-navbar-base-button-color-border-active));
+  @include vars.local(app-navbar-button-color-border-active, var(--ds-app-navbar-default-button-color-border-active));
 
   // Focus colors
-  @include vars.local(app-navbar-focus-color-start, var(--ds-app-navbar-base-focus-color-start));
-  @include vars.local(app-navbar-focus-color-end, var(--ds-app-navbar-base-focus-color-end));
+  @include vars.local(app-navbar-focus-color-start, var(--ds-app-navbar-default-focus-color-start));
+  @include vars.local(app-navbar-focus-color-end, var(--ds-app-navbar-default-focus-color-end));
 }
 
 /**
@@ -261,10 +261,10 @@
   justify-content: flex-start;
   box-sizing: border-box;
   gap: var(--_app-navbar-container-gap);
-  padding-left: var(--ds-alias-container-space-device);
-  padding-right: var(--ds-alias-container-space-device);
+  padding-left: var(--ds-device-container-space);
+  padding-right: var(--ds-device-container-space);
   width: 100%;
-  max-width: var(--ds-alias-container-width-base);
+  max-width: var(--ds-alias-container-width-default);
 
   &.is-fluid {
     max-width: var(--ds-alias-container-width-fluid);
@@ -363,7 +363,7 @@
   flex-shrink: 0;
   background: none;
   border: none;
-  padding: var(--_app-navbar-hamburger-padding);
+  padding: var(--_app-navbar-hamburger-p);
   color: var(--_app-navbar-button-color-text);
   background-color: var(--_app-navbar-button-color-background);
   width: var(--_app-navbar-hamburger-width);
@@ -504,8 +504,8 @@
   flex-direction: column;
   gap: var(--_app-navbar-sidebar-content-gap);
 
-  padding-inline: var(--_app-navbar-sidebar-padding-inline);
-  padding-block: var(--_app-navbar-sidebar-padding-block);
+  padding-inline: var(--_app-navbar-sidebar-px);
+  padding-block: var(--_app-navbar-sidebar-py);
   overflow-y: auto;
 
   ::slotted(a[slot='menu-start']),
@@ -518,8 +518,8 @@
     font-family: var(--_app-navbar-sidebar-item-font-family);
     text-decoration: none;
     min-height: var(--_app-navbar-sidebar-item-min-height);
-    padding-block: var(--_app-navbar-sidebar-item-padding-block);
-    padding-inline: var(--_app-navbar-sidebar-item-padding-inline);
+    padding-block: var(--_app-navbar-sidebar-item-py);
+    padding-inline: var(--_app-navbar-sidebar-item-px);
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -659,8 +659,8 @@
       color: var(--_app-navbar-menu-item-color);
       font-size: var(--_app-navbar-menu-item-font-size);
       border-radius: var(--_app-navbar-menu-item-border-radius);
-      padding-inline: var(--_app-navbar-menu-item-padding-inline);
-      padding-block: var(--_app-navbar-menu-item-padding-block);
+      padding-inline: var(--_app-navbar-menu-item-px);
+      padding-block: var(--_app-navbar-menu-item-py);
       text-decoration: none;
       outline: none;
       white-space: nowrap;

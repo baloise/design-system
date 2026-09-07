@@ -338,7 +338,7 @@ export function figmaResponsiveDimensionSubEntriesFor(literalValue) {
 }
 
 // Sub-property suffixes appended to a responsive dimension token's path to name its 3 decomposed
-// Figma variables, e.g. '🔗 Alias/↔️ Space/Lg/Mobile'. Order matches
+// Figma variables, e.g. '📱 Device/↔️ Space/Lg/Mobile'. Order matches
 // figmaResponsiveDimensionSubValuesFor's return shape.
 export const RESPONSIVE_DIMENSION_SUB_PROPERTIES = ['mobile', 'tablet', 'desktop']
 export const RESPONSIVE_DIMENSION_SUB_PROPERTY_SUFFIX = {
@@ -370,11 +370,16 @@ export function isSyncableResponsiveDimensionToken(token) {
 // a new `$extensions` marker — deliberately provisional, expected to grow (e.g. to Component-level
 // responsive tokens like `Component.Text.Space`/`Component.Logo.Size.*`, which already carry the
 // responsive extension today but aren't in this list) by editing this array, not by touching token
-// JSON schema.
+// JSON schema. These 3 groups moved from `🔗 Alias` to their own `📱 Device` top-level layer (see
+// docs/plans/device-token-layer-plan.md) — this array tracks that move, but the Figma-side
+// mechanism itself (3 sibling variables in "Design Tokens" + this collection's derived 4th Device
+// variable) is deliberately unchanged; consolidating the siblings themselves into this collection
+// was considered and rejected (would drop per-brand override support for these tokens, since a
+// Figma collection has exactly one mode axis and this one's is already spent on breakpoint).
 const DEVICE_ELIGIBLE_PATH_PREFIXES = [
-  ['🔗 Alias', '🔤 Text', 'Size'],
-  ['🔗 Alias', '↔️ Space'],
-  ['🔗 Alias', '🗃️ Container', 'Space'],
+  ['📱 Device', '🔤 Text', 'Size'],
+  ['📱 Device', '↔️ Space'],
+  ['📱 Device', '🗃️ Container', 'Space'],
 ]
 
 function pathStartsWith(path, prefix) {
@@ -393,7 +398,7 @@ export function isDeviceEligibleResponsiveDimensionToken(token) {
 
 // The Device variable's name mirrors the existing CSS `-mobile/-tablet/-desktop` -> `-device`
 // convention (packages/tokens/src/formatter.ts) — same path as the sibling variables, `Device`
-// appended, e.g. '🔗 Alias/↔️ Space/Lg/Device'. Lives in the "Design Responsive Tokens" collection,
+// appended, e.g. '📱 Device/↔️ Space/Lg/Device'. Lives in the "Design Responsive Tokens" collection,
 // not alongside its siblings, so the shared name isn't a collision (different collection = different
 // id namespace).
 export function figmaResponsiveDimensionDeviceVariableName(path) {

@@ -885,7 +885,7 @@ describe('responsive dimension push (two-pass write payload)', () => {
 
 describe('Device variable (responsive collection) push — MVP scope', () => {
   // Real emoji path segments, matching DEVICE_ELIGIBLE_PATH_PREFIXES in figma-value.mjs
-  // (['🔗 Alias', '↔️ Space'] etc.) — unlike the plain-ASCII fixtures above (which deliberately stay
+  // (['📱 Device', '↔️ Space'] etc.) — unlike the plain-ASCII fixtures above (which deliberately stay
   // out of MVP scope and double as the "not eligible" regression check), these need the real
   // prefixes to exercise isDeviceEligibleResponsiveDimensionToken at all.
   const space16Primitive = {
@@ -899,7 +899,7 @@ describe('Device variable (responsive collection) push — MVP scope', () => {
     value: { kind: 'literal', value: { value: 40, unit: 'px' } },
   }
   const deviceEligibleToken = {
-    path: ['🔗 Alias', '↔️ Space', 'Lg'],
+    path: ['📱 Device', '↔️ Space', 'Lg'],
     type: 'dimension',
     value: { kind: 'literal', value: { value: 16, unit: 'px' } },
     responsive: {
@@ -914,17 +914,17 @@ describe('Device variable (responsive collection) push — MVP scope', () => {
   const componentRefToken = {
     path: ['🧩 Component', 'Badge', 'Size', 'Base', 'Height'],
     type: 'dimension',
-    value: { kind: 'reference', path: ['🔗 Alias', '↔️ Space', 'Lg'] },
+    value: { kind: 'reference', path: ['📱 Device', '↔️ Space', 'Lg'] },
   }
   const deviceBaseTokens = [space16Primitive, space40Primitive, deviceEligibleToken, componentRefToken]
 
   it('assignVariableIds assigns a 4th temp "device" id, alongside the 3 breakpoint sub-ids, for an in-scope token', () => {
     const idByPath = assignVariableIds(deviceBaseTokens)
-    expect(idByPath.get('🔗 Alias.↔️ Space.Lg')).toEqual({
-      mobile: 'temp-🔗 Alias.↔️ Space.Lg-mobile',
-      tablet: 'temp-🔗 Alias.↔️ Space.Lg-tablet',
-      desktop: 'temp-🔗 Alias.↔️ Space.Lg-desktop',
-      device: 'temp-🔗 Alias.↔️ Space.Lg-device',
+    expect(idByPath.get('📱 Device.↔️ Space.Lg')).toEqual({
+      mobile: 'temp-📱 Device.↔️ Space.Lg-mobile',
+      tablet: 'temp-📱 Device.↔️ Space.Lg-tablet',
+      desktop: 'temp-📱 Device.↔️ Space.Lg-desktop',
+      device: 'temp-📱 Device.↔️ Space.Lg-device',
     })
   })
 
@@ -939,7 +939,7 @@ describe('Device variable (responsive collection) push — MVP scope', () => {
       responsiveCollectionId: 'coll-responsive',
     })
 
-    const deviceVariable = variables.find(v => v.name === '🔗 Alias/↔️ Space/Lg/Device')
+    const deviceVariable = variables.find(v => v.name === '📱 Device/↔️ Space/Lg/Device')
     expect(deviceVariable).toMatchObject({ variableCollectionId: 'coll-responsive', resolvedType: 'FLOAT' })
   })
 
@@ -954,7 +954,7 @@ describe('Device variable (responsive collection) push — MVP scope', () => {
       responsiveCollectionId: 'coll-responsive',
     })
 
-    const deviceId = idByPath.get('🔗 Alias.↔️ Space.Lg').device
+    const deviceId = idByPath.get('📱 Device.↔️ Space.Lg').device
     expect(variableModeValues.find(v => v.variableId === deviceId)).toBeUndefined()
   })
 
@@ -963,10 +963,10 @@ describe('Device variable (responsive collection) push — MVP scope', () => {
     resolveTempIds(idByPath, {
       'temp-🌐 Global.📏 Dimension.Space.16': 'real-g16',
       'temp-🌐 Global.📏 Dimension.Space.40': 'real-g40',
-      'temp-🔗 Alias.↔️ Space.Lg-mobile': 'real-mobile',
-      'temp-🔗 Alias.↔️ Space.Lg-tablet': 'real-tablet',
-      'temp-🔗 Alias.↔️ Space.Lg-desktop': 'real-desktop',
-      'temp-🔗 Alias.↔️ Space.Lg-device': 'real-device',
+      'temp-📱 Device.↔️ Space.Lg-mobile': 'real-mobile',
+      'temp-📱 Device.↔️ Space.Lg-tablet': 'real-tablet',
+      'temp-📱 Device.↔️ Space.Lg-desktop': 'real-desktop',
+      'temp-📱 Device.↔️ Space.Lg-device': 'real-device',
       'temp-🧩 Component.Badge.Size.Base.Height': 'real-height',
     })
     return idByPath

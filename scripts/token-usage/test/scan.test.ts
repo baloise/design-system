@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest'
 import { collectBaseTokens, computeUsage, extractUsedVarNames } from '../lib/scan.mjs'
 
 describe('collectBaseTokens', () => {
-  it('collects leaf tokens from the Global, Alias, and Component layers', () => {
+  it('collects leaf tokens from the Global, Alias, Device, and Component layers', () => {
     const docsJson = {
       '🌐 Global': {
         '🌈 Color': {
@@ -12,6 +12,11 @@ describe('collectBaseTokens', () => {
       '🔗 Alias': {
         Color: {
           Surface: { path: ['🔗 Alias', 'Color', 'Surface'], name: 'ds-alias-color-surface' },
+        },
+      },
+      '📱 Device': {
+        Space: {
+          Sm: { path: ['📱 Device', 'Space', 'Sm'], name: 'ds-device-space-sm' },
         },
       },
       '🧩 Component': {
@@ -24,11 +29,12 @@ describe('collectBaseTokens', () => {
     expect(collectBaseTokens(docsJson)).toEqual([
       { path: ['🌐 Global', '🌈 Color', 'White'], names: ['ds-global-color-white'] },
       { path: ['🔗 Alias', 'Color', 'Surface'], names: ['ds-alias-color-surface'] },
+      { path: ['📱 Device', 'Space', 'Sm'], names: ['ds-device-space-sm'] },
       { path: ['🧩 Component', 'Button', 'Bg'], names: ['ds-button-bg'] },
     ])
   })
 
-  it('ignores layers other than Global, Alias, and Component', () => {
+  it('ignores layers other than Global, Alias, Device, and Component', () => {
     const docsJson = {
       '🎨 Brand': {
         Tcs: { path: ['🎨 Brand', 'Tcs'], name: 'ds-brand-tcs' },
@@ -38,14 +44,14 @@ describe('collectBaseTokens', () => {
     expect(collectBaseTokens(docsJson)).toEqual([])
   })
 
-  it('adds the shared -device name for responsive Mobile/Tablet/Desktop siblings', () => {
+  it('adds the shared bare (auto-switching) name for responsive Mobile/Tablet/Desktop siblings', () => {
     const docsJson = {
-      '🔗 Alias': {
+      '📱 Device': {
         Space: {
           SM: {
-            Mobile: { path: ['🔗 Alias', 'Space', 'SM', 'Mobile'], name: 'ds-alias-space-sm-mobile' },
-            Tablet: { path: ['🔗 Alias', 'Space', 'SM', 'Tablet'], name: 'ds-alias-space-sm-tablet' },
-            Desktop: { path: ['🔗 Alias', 'Space', 'SM', 'Desktop'], name: 'ds-alias-space-sm-desktop' },
+            Mobile: { path: ['📱 Device', 'Space', 'SM', 'Mobile'], name: 'ds-device-space-sm-mobile' },
+            Tablet: { path: ['📱 Device', 'Space', 'SM', 'Tablet'], name: 'ds-device-space-sm-tablet' },
+            Desktop: { path: ['📱 Device', 'Space', 'SM', 'Desktop'], name: 'ds-device-space-sm-desktop' },
           },
         },
       },
@@ -53,16 +59,16 @@ describe('collectBaseTokens', () => {
 
     expect(collectBaseTokens(docsJson)).toEqual([
       {
-        path: ['🔗 Alias', 'Space', 'SM', 'Mobile'],
-        names: ['ds-alias-space-sm-mobile', 'ds-alias-space-sm-device'],
+        path: ['📱 Device', 'Space', 'SM', 'Mobile'],
+        names: ['ds-device-space-sm-mobile', 'ds-device-space-sm'],
       },
       {
-        path: ['🔗 Alias', 'Space', 'SM', 'Tablet'],
-        names: ['ds-alias-space-sm-tablet', 'ds-alias-space-sm-device'],
+        path: ['📱 Device', 'Space', 'SM', 'Tablet'],
+        names: ['ds-device-space-sm-tablet', 'ds-device-space-sm'],
       },
       {
-        path: ['🔗 Alias', 'Space', 'SM', 'Desktop'],
-        names: ['ds-alias-space-sm-desktop', 'ds-alias-space-sm-device'],
+        path: ['📱 Device', 'Space', 'SM', 'Desktop'],
+        names: ['ds-device-space-sm-desktop', 'ds-device-space-sm'],
       },
     ])
   })
@@ -131,33 +137,33 @@ describe('computeUsage', () => {
     })
   })
 
-  it('treats a -device reference as usage of every Mobile/Tablet/Desktop sibling', () => {
-    // Only Desktop's literal name is unused; -device is what's actually
+  it('treats a bare auto-switching reference as usage of every Mobile/Tablet/Desktop sibling', () => {
+    // Only Desktop's literal name is unused; the bare name is what's actually
     // consumed, and per the responsive formatter that one shared variable is
-    // fed by all three siblings depending on breakpoint — so a single
-    // -device reference should mark Mobile, Tablet, *and* Desktop as used.
+    // fed by all three siblings depending on breakpoint — so a single bare
+    // reference should mark Mobile, Tablet, *and* Desktop as used.
     const tokens = [
-      { path: ['🔗 Alias', 'Space', 'SM', 'Mobile'], names: ['ds-alias-space-sm-mobile', 'ds-alias-space-sm-device'] },
-      { path: ['🔗 Alias', 'Space', 'SM', 'Tablet'], names: ['ds-alias-space-sm-tablet', 'ds-alias-space-sm-device'] },
+      { path: ['📱 Device', 'Space', 'SM', 'Mobile'], names: ['ds-device-space-sm-mobile', 'ds-device-space-sm'] },
+      { path: ['📱 Device', 'Space', 'SM', 'Tablet'], names: ['ds-device-space-sm-tablet', 'ds-device-space-sm'] },
       {
-        path: ['🔗 Alias', 'Space', 'SM', 'Desktop'],
-        names: ['ds-alias-space-sm-desktop', 'ds-alias-space-sm-device'],
+        path: ['📱 Device', 'Space', 'SM', 'Desktop'],
+        names: ['ds-device-space-sm-desktop', 'ds-device-space-sm'],
       },
     ]
     const files = [
       {
         package: 'core',
         file: 'typography.host.css',
-        content: '.heading { margin-bottom: var(--ds-alias-space-sm-device); }',
+        content: '.heading { margin-bottom: var(--ds-device-space-sm); }',
       },
     ]
 
     const usage = computeUsage(tokens, files)
-    expect(usage['🔗 Alias.Space.SM.Mobile']).toEqual({
+    expect(usage['📱 Device.Space.SM.Mobile']).toEqual({
       count: 1,
       locations: [{ package: 'core', file: 'typography.host.css' }],
     })
-    expect(usage['🔗 Alias.Space.SM.Tablet']).toEqual(usage['🔗 Alias.Space.SM.Mobile'])
-    expect(usage['🔗 Alias.Space.SM.Desktop']).toEqual(usage['🔗 Alias.Space.SM.Mobile'])
+    expect(usage['📱 Device.Space.SM.Tablet']).toEqual(usage['📱 Device.Space.SM.Mobile'])
+    expect(usage['📱 Device.Space.SM.Desktop']).toEqual(usage['📱 Device.Space.SM.Mobile'])
   })
 })

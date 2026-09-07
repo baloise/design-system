@@ -1159,7 +1159,7 @@ export namespace Components {
     interface DsDivider {
         /**
           * Defines the color of the separator line.
-          * @default 'base'
+          * @default 'default'
          */
         "color": DividerColor;
         /**
@@ -6175,7 +6175,7 @@ declare namespace LocalJSX {
     interface DsDivider {
         /**
           * Defines the color of the separator line.
-          * @default 'base'
+          * @default 'default'
          */
         "color"?: DividerColor;
         /**

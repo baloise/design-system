@@ -161,9 +161,20 @@ Most components expose these variable groups:
 
 **Spacing Variables:**
 
-- `--{component}-px` — horizontal padding
-- `--{component}-py` — vertical padding
-- `--{component}-m` — margin (sometimes)
+Margin and padding both use the same seven-suffix shorthand — all sides, then the two axis
+shorthands, then the four individual sides:
+
+| Suffix | Side         | Margin example     | Padding example    |
+| ------ | ------------ | ------------------ | ------------------ |
+| `-m`   | all sides    | `--{component}-m`  | `--{component}-p`  |
+| `-mx`  | left + right | `--{component}-mx` | `--{component}-px` |
+| `-my`  | top + bottom | `--{component}-my` | `--{component}-py` |
+| `-ml`  | left         | `--{component}-ml` | `--{component}-pl` |
+| `-mr`  | right        | `--{component}-mr` | `--{component}-pr` |
+| `-mt`  | top          | `--{component}-mt` | `--{component}-pt` |
+| `-mb`  | bottom       | `--{component}-mb` | `--{component}-pb` |
+
+Margin's suffix set is generated for free by `vars.margin($name)` (see `packages/core/src/vars.scss`'s `margin-vars` mixin), which every component using `vars.base($name)` picks up automatically. Padding has no shared mixin yet, so it's authored by hand per component — existing examples spell out the full word rather than using the `-p`/`-px`/`-py` shorthand (`--_container-padding-x`/`--_container-padding-y`, `--_notification-padding`). Follow whichever style the component already uses for its other spacing vars; the shorthand table above is the target scheme once/if padding gets a shared mixin like margin's.
 
 **Typography Variables:**
 
