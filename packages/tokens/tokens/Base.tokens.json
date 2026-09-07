@@ -23321,25 +23321,6 @@
             "com.figma.variableId": "VariableID:137:2766"
           }
         }
-      },
-      "HirschTestRename2": {
-        "$type": "color",
-        "$value": {
-          "colorSpace": "srgb",
-          "components": [
-            0,
-            0,
-            0
-          ],
-          "alpha": 1,
-          "hex": "#000000"
-        },
-        "$extensions": {
-          "com.figma.variableId": "VariableID:150:77",
-          "com.figma.scopes": [
-            "ALL_SCOPES"
-          ]
-        }
       }
     },
     "🔤 Font": {
