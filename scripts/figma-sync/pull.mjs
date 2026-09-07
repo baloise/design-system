@@ -40,6 +40,7 @@ import {
   buildAliasPassPayload,
   buildCreatePassPayload,
   buildDescriptionUpdatePayload,
+  buildNameUpdatePayload,
   collectNewlyCreatedIds,
   committedVariableIds,
   resolveTempIds,
@@ -273,9 +274,20 @@ async function writePull({ baseTokens, brandNames, brandTokensByName }, figmaTok
     idByPath,
     remoteVariablesById: localVariables.variables,
   })
-  console.log(`Pass 3: updating ${descriptionPass.variables.length} variable description(s)…`)
-  if (descriptionPass.variables.length > 0) {
-    await postVariables(figmaFileKey, figmaToken, descriptionPass)
+  // Merged with the description pass: a rename UPDATE and a description UPDATE never conflict
+  // (different fields on the same variable), so there's no ordering reason to keep them in
+  // separate POSTs — same "merge when there's no dependency" reasoning pass 1 uses for deletions.
+  const namePass = buildNameUpdatePayload({
+    baseTokens,
+    idByPath,
+    remoteVariablesById: localVariables.variables,
+  })
+  const metadataPass = { variables: [...descriptionPass.variables, ...namePass.variables] }
+  console.log(
+    `Pass 3: updating ${descriptionPass.variables.length} variable description(s), renaming ${namePass.variables.length} variable(s)…`,
+  )
+  if (metadataPass.variables.length > 0) {
+    await postVariables(figmaFileKey, figmaToken, metadataPass)
   }
 
   const newIds = collectNewlyCreatedIds(baseTokens, idByPath)

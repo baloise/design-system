@@ -654,6 +654,80 @@ export function buildDescriptionUpdatePayload({ baseTokens, idByPath, remoteVari
 }
 
 /**
+ * Pass 4: name-only UPDATEs for already-synced variables whose token path has been renamed in
+ * JSON since it was last pushed — mirrors buildDescriptionUpdatePayload's shape exactly (same
+ * "call after resolveTempIds", same per-sub-property loop for composite types), but for `name`
+ * instead of `description`. Without this, a token whose path changes (e.g. Global.Color.Black ->
+ * Global.Color.BlackRename) keeps its existing variableId (identity is the id, not the path — see
+ * docs/adr/0001-figma-variable-identity-key.md) and so never goes through buildCreatePassPayload's
+ * CREATE branch, which is the only other place a Figma variable's `name` is ever written — leaving
+ * the stale pre-rename name in Figma forever, silently, since every other check (mode-values,
+ * description) still matches.
+ *
+ * @param {object} params
+ * @param {import('./tokens.mjs').Token[]} params.baseTokens
+ * @param {Map<string, string | Record<string, string>>} params.idByPath
+ * @param {Record<string, { name?: string }>} params.remoteVariablesById Figma's current
+ *   local-variables meta.variables, keyed by id — this run's own CREATEs won't appear here yet, but
+ *   they already got their correct (post-rename) name from buildCreatePassPayload, so skipping an id
+ *   with no remote entry (rather than treating `undefined !== expectedName` as a diff) is correct,
+ *   not just harmless.
+ */
+export function buildNameUpdatePayload({ baseTokens, idByPath, remoteVariablesById }) {
+  const variables = []
+  const seenVariableIds = new Set()
+
+  function pushIfChanged(id, expectedName) {
+    if (!id || isTempId(id) || seenVariableIds.has(id)) return
+    seenVariableIds.add(id)
+    const remoteName = remoteVariablesById[id]?.name
+    if (remoteName === undefined || remoteName === expectedName) return
+    variables.push({ action: 'UPDATE', id, name: expectedName })
+  }
+
+  for (const token of baseTokens) {
+    if (!isPushableToken(token)) continue
+    const key = pathKey(token.path)
+    const variableId = idByPath.get(key)
+
+    if (isSyncableShadowToken(token)) {
+      for (const sub of SHADOW_SUB_PROPERTIES) {
+        pushIfChanged(variableId[sub], figmaShadowSubVariableName(token.path, sub))
+      }
+      continue
+    }
+
+    if (isSyncableBorderToken(token)) {
+      for (const sub of BORDER_SUB_PROPERTIES) {
+        pushIfChanged(variableId[sub], figmaBorderSubVariableName(token.path, sub))
+      }
+      continue
+    }
+
+    if (isSyncableTypographyToken(token)) {
+      for (const sub of TYPOGRAPHY_SUB_PROPERTIES) {
+        pushIfChanged(variableId[sub], figmaTypographySubVariableName(token.path, sub))
+      }
+      continue
+    }
+
+    if (isSyncableResponsiveDimensionToken(token)) {
+      for (const sub of RESPONSIVE_DIMENSION_SUB_PROPERTIES) {
+        pushIfChanged(variableId[sub], figmaResponsiveDimensionSubVariableName(token.path, sub))
+      }
+      if (variableId.device) {
+        pushIfChanged(variableId.device, figmaResponsiveDimensionDeviceVariableName(token.path))
+      }
+      continue
+    }
+
+    pushIfChanged(variableId, figmaVariableName(token.path))
+  }
+
+  return { variables }
+}
+
+/**
  * Patches `idByPath` in place so every temp id assigned by
  * `assignVariableIds` is replaced with pass 1's real Figma id — pass 2 and
  * the newly-created-id collection below must never see a temp id again.

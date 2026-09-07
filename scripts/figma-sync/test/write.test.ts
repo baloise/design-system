@@ -17,6 +17,7 @@ import {
   buildAliasPassPayload,
   buildCreatePassPayload,
   buildDescriptionUpdatePayload,
+  buildNameUpdatePayload,
   collectNewlyCreatedIds,
   figmaBorderSubVariableName,
   figmaResponsiveDimensionSubVariableName,
@@ -1420,6 +1421,118 @@ describe('description push', () => {
     expect(variables).toHaveLength(5)
     expect(variables.every(v => v.description === 'A small drop shadow.')).toBe(true)
     expect(new Set(variables.map(v => v.id))).toEqual(new Set(Object.values(baseTokens[0].variableId)))
+  })
+})
+
+describe('buildNameUpdatePayload', () => {
+  it('proposes an UPDATE for an already-synced variable whose token path was renamed', () => {
+    const baseTokens = [
+      {
+        path: ['🌐 Global', '🌈 Color', 'BlackRename'],
+        type: 'color',
+        value: { kind: 'literal', value: { components: [0, 0, 0], alpha: 1 } },
+        variableId: 'VariableID:137:2689',
+      },
+    ]
+    const idByPath = assignVariableIds(baseTokens)
+    const { variables } = buildNameUpdatePayload({
+      baseTokens,
+      idByPath,
+      remoteVariablesById: { 'VariableID:137:2689': { name: '🌐 Global/🌈 Color/Black' } },
+    })
+
+    expect(variables).toEqual([{ action: 'UPDATE', id: 'VariableID:137:2689', name: '🌐 Global/🌈 Color/BlackRename' }])
+  })
+
+  it('skips an already-synced variable whose name already matches its current path', () => {
+    const baseTokens = [
+      {
+        path: ['Global', 'White'],
+        type: 'color',
+        value: { kind: 'literal', value: { components: [1, 1, 1], alpha: 1 } },
+        variableId: 'VariableID:1:1',
+      },
+    ]
+    const idByPath = assignVariableIds(baseTokens)
+    const { variables } = buildNameUpdatePayload({
+      baseTokens,
+      idByPath,
+      remoteVariablesById: { 'VariableID:1:1': { name: 'Global/White' } },
+    })
+
+    expect(variables).toHaveLength(0)
+  })
+
+  it('never emits an UPDATE for a still-temp (not-yet-created) id', () => {
+    const baseTokens = [{ path: ['Global', 'Spacing', 'Lg'], type: 'number', value: { kind: 'literal', value: 24 } }]
+    const idByPath = assignVariableIds(baseTokens)
+    const { variables } = buildNameUpdatePayload({ baseTokens, idByPath, remoteVariablesById: {} })
+
+    expect(variables).toHaveLength(0)
+  })
+
+  it("skips a real id absent from remoteVariablesById (this run's own fresh CREATE, already named correctly)", () => {
+    const baseTokens = [
+      {
+        path: ['Global', 'White'],
+        type: 'color',
+        value: { kind: 'literal', value: { components: [1, 1, 1], alpha: 1 } },
+        variableId: 'VariableID:1:1',
+      },
+    ]
+    const idByPath = assignVariableIds(baseTokens)
+    const { variables } = buildNameUpdatePayload({ baseTokens, idByPath, remoteVariablesById: {} })
+
+    expect(variables).toHaveLength(0)
+  })
+
+  it('renames the same-shaped path onto every sub-variable of a composite (shadow) token', () => {
+    const baseTokens = [
+      {
+        path: ['Global', 'Shadow', 'SmRename'],
+        type: 'shadow',
+        value: {
+          kind: 'literal',
+          value: {
+            offsetX: { value: 0, unit: 'px' },
+            offsetY: { value: 1, unit: 'px' },
+            blur: { value: 2, unit: 'px' },
+            spread: { value: 0, unit: 'px' },
+            color: { colorSpace: 'srgb', components: [0, 0, 0], alpha: 0.1 },
+          },
+        },
+        variableId: {
+          offsetX: 'VariableID:s:1',
+          offsetY: 'VariableID:s:2',
+          blur: 'VariableID:s:3',
+          spread: 'VariableID:s:4',
+          color: 'VariableID:s:5',
+        },
+      },
+    ]
+    const idByPath = assignVariableIds(baseTokens)
+    const { variables } = buildNameUpdatePayload({
+      baseTokens,
+      idByPath,
+      remoteVariablesById: {
+        'VariableID:s:1': { name: 'Global/Shadow/Sm/OffsetX' },
+        'VariableID:s:2': { name: 'Global/Shadow/Sm/OffsetY' },
+        'VariableID:s:3': { name: 'Global/Shadow/Sm/Blur' },
+        'VariableID:s:4': { name: 'Global/Shadow/Sm/Spread' },
+        'VariableID:s:5': { name: 'Global/Shadow/Sm/Color' },
+      },
+    })
+
+    expect(variables).toHaveLength(5)
+    expect(new Set(variables.map(v => v.name))).toEqual(
+      new Set([
+        'Global/Shadow/SmRename/OffsetX',
+        'Global/Shadow/SmRename/OffsetY',
+        'Global/Shadow/SmRename/Blur',
+        'Global/Shadow/SmRename/Spread',
+        'Global/Shadow/SmRename/Color',
+      ]),
+    )
   })
 })
 
