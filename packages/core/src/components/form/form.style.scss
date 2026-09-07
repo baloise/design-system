@@ -95,7 +95,12 @@
 }
 
 // Add space to reserve it for upcoming help text so the user will not have any flickering.
-.ds-field:not(:has(.ds-help)) {
+// Scoped to :not(.hydrated) — Stencil's hydration marker on every custom element — because
+// `:has()` cannot see past a shadow boundary: a hybrid component's `.ds-help`/`#description`
+// lives in its shadow root, so this selector would always read as "no help text" for it and
+// add a phantom bottom margin even when the component is already rendering visible help text
+// (it reserves its own space internally instead, see form.mixin.scss's `description()` mixin).
+.ds-field:not(:has(.ds-help)):not(.hydrated) {
   margin-bottom: 1.375rem;
 }
 

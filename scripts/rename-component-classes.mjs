@@ -109,13 +109,18 @@ function replaceScssSelectors(content) {
 }
 
 function replaceHtmlClassAttributes(content) {
-  return content.replace(/class=(["'])([^"']*)\1/g, (match, quote, classList) => {
+  let out = content.replace(/class=(["'])([^"']*)\1/g, (match, quote, classList) => {
     const rewritten = classList
       .split(/(\s+)/)
       .map(token => (/\s+/.test(token) ? token : (CLASS_MAP[token] ?? token)))
       .join('')
     return `class=${quote}${rewritten}${quote}`
   })
+  // A handful of fixtures embed a `<style>` block with demo-only CSS (e.g.
+  // grid.style.html's `.col { background: ... }` highlighting box) that
+  // targets these same classes as real CSS selectors, not HTML attributes.
+  out = out.replace(/<style>([\s\S]*?)<\/style>/g, (match, css) => `<style>${replaceScssSelectors(css)}</style>`)
+  return out
 }
 
 const targets = [
