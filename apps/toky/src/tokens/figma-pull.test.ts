@@ -1293,6 +1293,10 @@ describe('buildBasePullPlan — responsive dimension', () => {
     mobile: 'VariableID:responsive:mobile',
     tablet: 'VariableID:responsive:tablet',
     desktop: 'VariableID:responsive:desktop',
+    // Figma's real 4th sub-variable, undocumented by RESPONSIVE_DIMENSION_SUB_PROPERTIES — the
+    // concrete anchor another token's alias actually points at, since nothing can alias to "a set
+    // of 3" (see the 'resolves a Component alias...' test below).
+    device: 'VariableID:responsive:device',
   }
 
   const space16 = token({
@@ -1343,8 +1347,42 @@ describe('buildBasePullPlan — responsive dimension', () => {
         resolvedType: 'FLOAT',
         valuesByMode: { [BASE_MODE]: overrides?.desktop ?? 32 },
       }),
+      variable({
+        id: responsiveFigmaId.device,
+        name: 'x/Device',
+        resolvedType: 'FLOAT',
+        valuesByMode: { [BASE_MODE]: overrides?.mobile ?? 16 },
+      }),
     ]
   }
+
+  it('resolves a Component token that aliases a responsive-dimension primitive’s "device" sub-variable', () => {
+    // e.g. Component.AppFooter.Gap -> {📱 Device.↔️ Space.Base} in real Base.tokens.json — Figma's
+    // alias points at the responsive-dimension token's own extra "device" variable, since nothing
+    // can alias to "a set of 3" breakpoints.
+    const gap = token({
+      path: ['🧭 Component', 'AppFooter', 'Gap'],
+      type: 'dimension',
+      figmaId: 'VariableID:gap',
+      rawValue: { value: 16, unit: 'px' },
+      referenceTarget: responsive.path.join('.'),
+    })
+    const v = variable({
+      id: 'VariableID:gap',
+      name: '🧭 Component/AppFooter/Gap',
+      resolvedType: 'FLOAT',
+      valuesByMode: { [BASE_MODE]: { type: 'VARIABLE_ALIAS', id: responsiveFigmaId.device } },
+    })
+    const plan = buildBasePullPlan({
+      original: [...responsivePrimitives, responsive, gap],
+      working: [working(responsive), working(gap)],
+      figmaMeta: meta([...responsiveVariables(), v]),
+      baseModeId: BASE_MODE,
+    })
+    expect(plan.skipped).toHaveLength(0)
+    expect(plan.updates).toHaveLength(0)
+    expect(plan.creates).toHaveLength(0)
+  })
 
   it('is a no-op when all 3 sub-variables still match the local resolved responsive value', () => {
     const plan = buildBasePullPlan({

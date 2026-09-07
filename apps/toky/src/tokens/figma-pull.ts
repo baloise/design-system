@@ -1354,6 +1354,19 @@ export function buildBasePullPlan(params: {
       .filter((t): t is FlatToken & { figmaId: string } => typeof t.figmaId === 'string')
       .map(t => [t.figmaId, t]),
   )
+  // A responsive-dimension token's alias target in Figma is its own extra "device" sub-variable
+  // (real Figma data alongside the 3 documented mobile/tablet/desktop breakpoints — see
+  // docs/plans/responsive-dimension-token-plan.md — since nothing can alias to "a set of 3"). A
+  // Component token that aliases one of these (e.g. Component.AppFooter.Gap -> 📱 Device.↔️
+  // Space.Base) resolves via deriveValue's alias branch, which only ever consults `baseIndex` — a
+  // responsive-dimension token's object figmaId is otherwise invisible to it, so the alias always
+  // reports "no known token" and gets skipped. Folding every sub-id (device included) into
+  // `baseIndex`, pointing back at the owning token, fixes that lookup — deriveValue's alias branch
+  // only ever needs `target.path.join('.')`, the same for any of a token's sub-ids.
+  for (const t of original) {
+    if (!isResponsiveDimensionFigmaId(t.figmaId)) continue
+    for (const id of Object.values(t.figmaId)) baseIndex.set(id, t)
+  }
   const originalByPath = new Map(original.map(t => [t.path.join('.'), t]))
   const workingByPath = new Map(working.map(w => [w.token.path.join('.'), w]))
   // Anything already linked to a Figma variable in `working` but not yet in
@@ -1701,6 +1714,12 @@ export function buildBrandPullPlan(params: {
       .filter((t): t is FlatToken & { figmaId: string } => typeof t.figmaId === 'string')
       .map(t => [t.figmaId, t]),
   )
+  // Same "device" sub-id fold as buildBasePullPlan's baseIndex above — a Component token can alias
+  // a responsive-dimension primitive at brand level too.
+  for (const t of baseOriginal) {
+    if (!isResponsiveDimensionFigmaId(t.figmaId)) continue
+    for (const id of Object.values(t.figmaId)) baseIndex.set(id, t)
+  }
   const baseByPath = new Map(baseOriginal.map(t => [t.path.join('.'), t]))
   const brandOriginalByPath = new Map(brandOriginal.map(t => [t.path.join('.'), t]))
   const brandWorkingByPath = new Map(brandWorking.map(w => [w.token.path.join('.'), w]))
