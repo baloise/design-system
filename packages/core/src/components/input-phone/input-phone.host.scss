@@ -19,6 +19,7 @@ $chevron-icon: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/sv
  * @prop --input-phone-line-height: Line height of the number field text.
  * @prop --input-phone-flag-width: Width of the country flag.
  * @prop --input-phone-flag-height: Height of the country flag.
+ * @prop --input-phone-popup-width: Width of the country picker popup.
  * @prop --input-phone-popup-background: Background color of the country picker popup.
  * @prop --input-phone-popup-shadow: Box shadow of the country picker popup.
  * @prop --input-phone-option-color: Text color of a country option.
@@ -58,6 +59,7 @@ $chevron-icon: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/sv
 
   @include vars.local(input-phone-flag-width, calc(var(--ds-alias-space-base) * 1.5));
   @include vars.local(input-phone-flag-height, var(--ds-alias-space-base));
+  @include vars.local(input-phone-popup-width, 18.75rem);
   @include vars.local(input-phone-popup-background, var(--ds-select-content-color-background-base));
   @include vars.local(input-phone-popup-shadow, var(--ds-select-content-shadow));
   @include vars.local(input-phone-option-color, var(--ds-select-option-color-text-base));
@@ -182,7 +184,9 @@ $chevron-icon: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/sv
     z-index: var(--ds-alias-z-index-popup);
     display: flex;
     flex-direction: column;
-    width: 100%;
+    box-sizing: border-box;
+    width: var(--_input-phone-popup-width);
+    max-width: calc(100vw - 2rem);
     max-height: 18.75rem;
     margin: 0;
     background: var(--_input-phone-popup-background);
@@ -192,21 +196,21 @@ $chevron-icon: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/sv
 
   .filter {
     flex-shrink: 0;
-    padding: 0.5rem;
     border-bottom: var(--_form-container-border);
 
     input {
       box-sizing: border-box;
       width: 100%;
       margin: 0;
-      padding: 0.25rem 0.5rem;
-      border: var(--_form-container-border);
-      border-radius: var(--_form-container-radius);
-      background: var(--_form-container-background);
+      padding: 0.5rem;
+      border: none;
+      border-radius: 0;
+      outline: none;
+      box-shadow: none;
+      background: transparent;
       color: var(--_input-phone-color);
       font-family: var(--_input-phone-family);
       font-size: var(--_input-phone-size);
-      outline: none;
     }
   }
 

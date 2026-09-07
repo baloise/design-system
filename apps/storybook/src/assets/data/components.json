@@ -32240,6 +32240,10 @@
           "docs": "Height of the country flag."
         },
         {
+          "name": "--input-phone-popup-width",
+          "docs": "Width of the country picker popup."
+        },
+        {
           "name": "--input-phone-popup-background",
           "docs": "Background color of the country picker popup."
         },
