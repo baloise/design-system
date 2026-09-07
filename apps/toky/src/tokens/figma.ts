@@ -21,6 +21,10 @@ export interface FigmaVariableCollection {
   name: string
   modes: { modeId: string; name: string }[]
   defaultModeId: string
+  // true for a collection published by a linked library rather than owned by this file — e.g. a
+  // shared "Space"/"Typography" collection enabled as a library. findCollectionAndModes in
+  // figma-pull.ts must ignore these; the design tokens sync only ever owns one local collection.
+  remote?: boolean
 }
 
 export interface FigmaVariablesMeta {

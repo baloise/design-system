@@ -110,9 +110,21 @@ export function findCollectionAndModes(
   meta: FigmaVariablesMeta,
   brandNames: string[],
 ): { collectionId: string; modeIdByBrand: Record<string, string> } {
-  const collections = Object.values(meta.variableCollections)
+  // A linked library (e.g. a shared "Space"/"Typography" collection) shows up here too, marked
+  // `remote: true` — it isn't owned by this file and must be ignored, or enabling any library
+  // makes this throw on a perfectly normal file (see apps/toky/src/tokens/figma.ts's
+  // FigmaVariableCollection.remote). The responsive/breakpoint collection ("Design Responsive
+  // Tokens" — Mobile/Tablet/Desktop modes, see scripts/figma-sync/lib/bootstrap.mjs) is local too,
+  // so filtering on `remote` alone still leaves 2: the brand collection this function actually
+  // wants is the one distinguished by carrying a "Base" mode, which the responsive collection
+  // never has.
+  const collections = Object.values(meta.variableCollections).filter(
+    c => !c.remote && c.modes.some(m => m.name === 'Base'),
+  )
   if (collections.length !== 1) {
-    throw new Error(`Expected exactly one Figma variable collection, found ${collections.length}.`)
+    throw new Error(
+      `Expected exactly one local Figma variable collection with a "Base" mode, found ${collections.length}.`,
+    )
   }
   const collection = collections[0]
 
