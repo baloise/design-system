@@ -23322,7 +23322,7 @@
           }
         }
       },
-      "HirschTest": {
+      "HirschTestRename": {
         "$type": "color",
         "$value": {
           "colorSpace": "srgb",
