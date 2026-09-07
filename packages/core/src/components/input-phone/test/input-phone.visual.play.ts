@@ -38,6 +38,23 @@ test('mid-typing', async ({ page }) => {
   await expectScreenshot(el, image('mid-typing'))
 })
 
+test('focused-trigger', async ({ page }) => {
+  const el = page.getByTestId('focused-trigger')
+  const phone = new DsInputPhone(page.locator('[data-testid="focused-trigger"] ds-input-phone'))
+  await phone.trigger.focus()
+  await phone.trigger.press('Tab')
+  await phone.nativeInput.press('Shift+Tab')
+  await expectScreenshot(el, image('focused-trigger'))
+})
+
+test('focused-input', async ({ page }) => {
+  const el = page.getByTestId('focused-input')
+  const phone = new DsInputPhone(page.locator('[data-testid="focused-input"] ds-input-phone'))
+  await phone.trigger.focus()
+  await phone.trigger.press('Tab')
+  await expectScreenshot(el, image('focused-input'))
+})
+
 test('country-selection', async ({ page }) => {
   const el = page.getByTestId('country-selection')
   const phone = new DsInputPhone(page.locator('[data-testid="country-selection"] ds-input-phone'))

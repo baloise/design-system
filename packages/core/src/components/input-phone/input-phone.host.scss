@@ -93,12 +93,22 @@ $chevron-icon: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/sv
   #container {
     position: relative;
     min-width: 0;
+    gap: 0;
+    padding-inline: 0;
+
+    &:focus-within:not(:active) {
+      border: var(--_form-container-border);
+    }
   }
 
-  #input {
+  #input-segment {
     box-sizing: border-box;
     min-width: 0;
     flex: 1 1 0%;
+    align-self: stretch;
+    display: flex;
+    align-items: center;
+    padding-inline: 0.25rem 0.5rem;
   }
 }
 
@@ -109,13 +119,14 @@ $chevron-icon: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/sv
 
 :host {
   #country-trigger {
+    position: relative;
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
     flex-shrink: 0;
-    height: 100%;
+    align-self: stretch;
     margin: 0;
-    padding-inline: 0.25rem 0.5rem;
+    padding-inline: 0.75rem 0.5rem;
     border: none;
     border-inline-end: var(--_form-container-border);
     border-radius: 0;
@@ -131,6 +142,32 @@ $chevron-icon: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/sv
     &:disabled {
       cursor: default;
     }
+  }
+
+  #input-segment {
+    position: relative;
+  }
+
+  #country-trigger:focus-visible::after,
+  #input-segment:has(#input:focus-visible)::after {
+    content: '';
+    position: absolute;
+    z-index: 1;
+    inset-block: calc(var(--ds-alias-border-width-base, 1px) * -1);
+    pointer-events: none;
+    border: var(--_form-container-focus-border);
+  }
+
+  #country-trigger:focus-visible::after {
+    inset-inline: calc(var(--ds-alias-border-width-base, 1px) * -1) 0;
+    border-start-start-radius: var(--_form-container-radius);
+    border-end-start-radius: var(--_form-container-radius);
+  }
+
+  #input-segment:has(#input:focus-visible)::after {
+    inset-inline: calc(var(--ds-alias-border-width-base, 1px) * -1);
+    border-start-end-radius: var(--_form-container-radius);
+    border-end-end-radius: var(--_form-container-radius);
   }
 
   .flag {

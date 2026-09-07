@@ -751,26 +751,28 @@ export class InputPhone implements DsComponentInterface, FieldInterface {
           </span>
           <span class="chevron" aria-hidden="true"></span>
         </button>
-        <input
-          id="input"
-          part="input"
-          name={this.name}
-          ref={el => (this.inputEl = el as HTMLInputElement)}
-          type="text"
-          inputMode="tel"
-          autocomplete="tel-national"
-          aria-describedby="description"
-          aria-invalid={isInvalid ? 'true' : 'false'}
-          disabled={this.disabled}
-          readonly={this.readonly}
-          required={this.required}
-          placeholder={inputPlaceholder}
-          value={this.displayValue}
-          onInput={ev => this.handleInput(ev as InputEvent)}
-          onFocus={ev => this.handleFocus(ev)}
-          onBlur={ev => this.handleBlur(ev)}
-          {...this.inheritedAttributes}
-        />
+        <div id="input-segment">
+          <input
+            id="input"
+            part="input"
+            name={this.name}
+            ref={el => (this.inputEl = el as HTMLInputElement)}
+            type="text"
+            inputMode="tel"
+            autocomplete="tel-national"
+            aria-describedby="description"
+            aria-invalid={isInvalid ? 'true' : 'false'}
+            disabled={this.disabled}
+            readonly={this.readonly}
+            required={this.required}
+            placeholder={inputPlaceholder}
+            value={this.displayValue}
+            onInput={ev => this.handleInput(ev as InputEvent)}
+            onFocus={ev => this.handleFocus(ev)}
+            onBlur={ev => this.handleBlur(ev)}
+            {...this.inheritedAttributes}
+          />
+        </div>
         {this.pickerOpen && (
           <div id="popup">
             <div class="filter">

@@ -66,22 +66,6 @@ export const InvalidTextSlot = Story({
 })
 InvalidTextSlot.storyName = '🧩 Invalid Text Slot'
 
-export const Success = Story({
-  args: {
-    value: '+41791234567',
-    color: 'success',
-  },
-})
-Success.storyName = '🧩 Success'
-
-export const Warning = Story({
-  args: {
-    value: '+41791234567',
-    color: 'warning',
-  },
-})
-Warning.storyName = '🧩 Warning'
-
 export const WithDescription = Story({
   args: {
     description: 'Include the national number only',

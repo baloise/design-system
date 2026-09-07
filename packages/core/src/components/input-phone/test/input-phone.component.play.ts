@@ -140,7 +140,7 @@ test.describe('country picker', () => {
     await expect(phone.trigger).toBeFocused()
   })
 
-  test('should not draw a nested browser outline around the keyboard-focused trigger', async ({ page }) => {
+  test('should not draw nested browser outlines around the keyboard-focused segments', async ({ page }) => {
     await page.mount(`<ds-input-phone label="Phone number" initial-country="CH"></ds-input-phone>`)
     const phone = new DsInputPhone(page.locator('ds-input-phone'))
 
@@ -151,6 +151,11 @@ test.describe('country picker', () => {
     await expect(phone.trigger).toBeFocused()
     expect(await phone.trigger.evaluate(element => element.matches(':focus-visible'))).toBe(true)
     await expect(phone.trigger).toHaveCSS('outline-style', 'none')
+
+    await phone.trigger.press('Tab')
+    await expect(phone.nativeInput).toBeFocused()
+    expect(await phone.nativeInput.evaluate(element => element.matches(':focus-visible'))).toBe(true)
+    await expect(phone.nativeInput).toHaveCSS('outline-style', 'none')
   })
 
   test('should warn and fall back when country is outside the allow-list', async ({ page }) => {
