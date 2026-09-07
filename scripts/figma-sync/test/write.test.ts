@@ -14,6 +14,7 @@ import {
   assignVariableIds,
   buildAliasPassPayload,
   buildCreatePassPayload,
+  buildDescriptionUpdatePayload,
   collectNewlyCreatedIds,
   figmaBorderSubVariableName,
   figmaResponsiveDimensionSubVariableName,
@@ -1232,6 +1233,133 @@ describe('two-pass write payload', () => {
       { path: ['Global', 'Spacing', 'Lg'], variableId: 'VariableID:9:1' },
       { path: ['Alias', 'Background'], variableId: 'VariableID:9:2' },
     ])
+  })
+})
+
+describe('description push', () => {
+  it('folds description into a CREATE variable payload', () => {
+    const baseTokens = [
+      {
+        path: ['Global', 'Spacing', 'Lg'],
+        type: 'number',
+        value: { kind: 'literal', value: 24 },
+        description: 'The large spacing step.',
+      },
+    ]
+    const idByPath = assignVariableIds(baseTokens)
+    const { variables } = buildCreatePassPayload({
+      baseTokens,
+      brandTokensByName: { Base: baseTokens },
+      idByPath,
+      collectionId: 'coll-1',
+      modeIdByBrand: { Base: 'm-base' },
+    })
+
+    expect(variables).toHaveLength(1)
+    expect(variables[0].description).toBe('The large spacing step.')
+  })
+
+  it('writes an empty description on CREATE for a token with none', () => {
+    const baseTokens = [{ path: ['Global', 'Spacing', 'Lg'], type: 'number', value: { kind: 'literal', value: 24 } }]
+    const idByPath = assignVariableIds(baseTokens)
+    const { variables } = buildCreatePassPayload({
+      baseTokens,
+      brandTokensByName: { Base: baseTokens },
+      idByPath,
+      collectionId: 'coll-1',
+      modeIdByBrand: { Base: 'm-base' },
+    })
+
+    expect(variables[0].description).toBe('')
+  })
+
+  it('proposes an UPDATE for an already-synced variable whose description changed', () => {
+    const baseTokens = [
+      {
+        path: ['Global', 'White'],
+        type: 'color',
+        value: { kind: 'literal', value: { components: [1, 1, 1], alpha: 1 } },
+        variableId: 'VariableID:1:1',
+        description: 'Pure white.',
+      },
+    ]
+    const idByPath = assignVariableIds(baseTokens)
+    const { variables } = buildDescriptionUpdatePayload({
+      baseTokens,
+      idByPath,
+      remoteVariablesById: { 'VariableID:1:1': { description: 'An outdated description.' } },
+    })
+
+    expect(variables).toEqual([{ action: 'UPDATE', id: 'VariableID:1:1', description: 'Pure white.' }])
+  })
+
+  it('skips an already-synced variable whose description already matches Figma', () => {
+    const baseTokens = [
+      {
+        path: ['Global', 'White'],
+        type: 'color',
+        value: { kind: 'literal', value: { components: [1, 1, 1], alpha: 1 } },
+        variableId: 'VariableID:1:1',
+        description: 'Pure white.',
+      },
+    ]
+    const idByPath = assignVariableIds(baseTokens)
+    const { variables } = buildDescriptionUpdatePayload({
+      baseTokens,
+      idByPath,
+      remoteVariablesById: { 'VariableID:1:1': { description: 'Pure white.' } },
+    })
+
+    expect(variables).toHaveLength(0)
+  })
+
+  it('never emits an UPDATE for a still-temp (not-yet-created) id', () => {
+    const baseTokens = [
+      { path: ['Global', 'Spacing', 'Lg'], type: 'number', value: { kind: 'literal', value: 24 }, description: 'x' },
+    ]
+    const idByPath = assignVariableIds(baseTokens)
+    const { variables } = buildDescriptionUpdatePayload({ baseTokens, idByPath, remoteVariablesById: {} })
+
+    expect(variables).toHaveLength(0)
+  })
+
+  it('writes the same description onto every sub-variable of a composite (shadow) token', () => {
+    const baseTokens = [
+      {
+        path: ['Global', 'Shadow', 'Sm'],
+        type: 'shadow',
+        value: {
+          kind: 'literal',
+          value: {
+            offsetX: { value: 0, unit: 'px' },
+            offsetY: { value: 1, unit: 'px' },
+            blur: { value: 2, unit: 'px' },
+            spread: { value: 0, unit: 'px' },
+            color: { colorSpace: 'srgb', components: [0, 0, 0], alpha: 0.1 },
+          },
+        },
+        variableId: {
+          offsetX: 'VariableID:s:1',
+          offsetY: 'VariableID:s:2',
+          blur: 'VariableID:s:3',
+          spread: 'VariableID:s:4',
+          color: 'VariableID:s:5',
+        },
+        description: 'A small drop shadow.',
+      },
+    ]
+    const idByPath = assignVariableIds(baseTokens)
+    const { variables } = buildDescriptionUpdatePayload({
+      baseTokens,
+      idByPath,
+      remoteVariablesById: Object.fromEntries(
+        Object.values(baseTokens[0].variableId).map(id => [id, { description: '' }]),
+      ),
+    })
+
+    expect(variables).toHaveLength(5)
+    expect(variables.every(v => v.description === 'A small drop shadow.')).toBe(true)
+    expect(new Set(variables.map(v => v.id))).toEqual(new Set(Object.values(baseTokens[0].variableId)))
   })
 })
 

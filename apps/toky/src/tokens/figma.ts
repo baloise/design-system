@@ -13,6 +13,7 @@ export interface FigmaVariable {
   resolvedType: string
   valuesByMode: Record<string, unknown>
   scopes: string[]
+  description: string
 }
 
 export interface FigmaVariableCollection {

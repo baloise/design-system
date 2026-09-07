@@ -768,10 +768,6 @@
           "$type": "color",
           "$value": "{🌐 Global.🌈 Color.Info.5}"
         },
-        "Danger": {
-          "$type": "color",
-          "$value": "{🌐 Global.🌈 Color.Danger.5}"
-        },
         "Success": {
           "$type": "color",
           "$value": "{🌐 Global.🌈 Color.Success.5}"
@@ -779,6 +775,11 @@
         "Warning": {
           "$type": "color",
           "$value": "{🌐 Global.🌈 Color.Warning.6B}"
+        },
+        "Danger": {
+          "$type": "color",
+          "$value": "{🌐 Global.🌈 Color.Danger.5}",
+          "$description": "Used for validation messages in forms"
         }
       },
       "Shadow": {

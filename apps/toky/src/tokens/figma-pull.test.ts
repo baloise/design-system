@@ -32,6 +32,7 @@ function variable(partial: Partial<FigmaVariable> & Pick<FigmaVariable, 'id' | '
     resolvedType: 'COLOR',
     valuesByMode: {},
     scopes: [],
+    description: '',
     ...partial,
   }
 }
@@ -290,6 +291,62 @@ describe('buildBasePullPlan', () => {
     const plan = buildBasePullPlan({
       original: [white],
       working: [working(white)],
+      figmaMeta: meta([v]),
+      baseModeId: BASE_MODE,
+    })
+    expect(plan.updates).toHaveLength(0)
+  })
+
+  it('fills $description from Figma when the local token has none, even if the value is unchanged', () => {
+    const v = variable({
+      id: white.figmaId as string,
+      name: 'x',
+      valuesByMode: { [BASE_MODE]: { r: 1, g: 1, b: 1, a: 1 } },
+      description: 'Pure white.',
+    })
+    const plan = buildBasePullPlan({
+      original: [white],
+      working: [working(white)],
+      figmaMeta: meta([v]),
+      baseModeId: BASE_MODE,
+    })
+    expect(plan.updates).toHaveLength(1)
+    expect(plan.updates[0].description).toBe('Pure white.')
+  })
+
+  it('fills a description without clobbering an unrelated pending value edit still sitting in working', () => {
+    // Figma's value hasn't changed since `original`, but `working` has a pending, unsubmitted
+    // value edit — a description fill must not revert that edit back to the original value.
+    const editedWhite = { ...white, rawValue: { colorSpace: 'srgb', components: [0, 0, 0], alpha: 1, hex: '#000000' } }
+    const v = variable({
+      id: white.figmaId as string,
+      name: 'x',
+      valuesByMode: { [BASE_MODE]: { r: 1, g: 1, b: 1, a: 1 } }, // unchanged from `original`
+      description: 'Pure white.',
+    })
+    const plan = buildBasePullPlan({
+      original: [white],
+      working: [working(editedWhite)],
+      figmaMeta: meta([v]),
+      baseModeId: BASE_MODE,
+    })
+    expect(plan.conflicts).toHaveLength(0)
+    expect(plan.updates).toHaveLength(1)
+    expect(plan.updates[0].description).toBe('Pure white.')
+    expect((plan.updates[0].rawValue as { hex: string }).hex).toBe('#000000') // the pending edit, preserved
+  })
+
+  it('never overwrites an existing local $description, even when Figma disagrees', () => {
+    const documentedWhite = { ...white, description: 'Already documented.' }
+    const v = variable({
+      id: white.figmaId as string,
+      name: 'x',
+      valuesByMode: { [BASE_MODE]: { r: 1, g: 1, b: 1, a: 1 } },
+      description: 'A different description from Figma.',
+    })
+    const plan = buildBasePullPlan({
+      original: [documentedWhite],
+      working: [working(documentedWhite)],
       figmaMeta: meta([v]),
       baseModeId: BASE_MODE,
     })

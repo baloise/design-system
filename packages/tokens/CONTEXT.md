@@ -152,7 +152,7 @@ existing examples of the anti-pattern — both sit alongside semantic variants (
 
 ### Figma Integration
 
-Each token in `Base.tokens.json` carries a `$extensions.com.figma.variableId` (and, once synced at least once, `$extensions.com.figma.scopes`). **`Base.tokens.json` (and each brand's `*.tokens.json`) in GitHub is the sole source of truth.** Figma Variables are a generated projection of these files. A designer changing a variable in Figma has made a _proposal_, not a fact — it only becomes real once it lands in GitHub via a reviewed pull request. Figma itself never holds a value GitHub doesn't know about once sync has run. When referencing a token by name in Figma, the same name is used in CSS.
+Each token in `Base.tokens.json` carries a `$extensions.com.figma.variableId` (and, once synced at least once, `$extensions.com.figma.scopes`). A token's `$description` round-trips with Figma's native variable `description` field — Push always writes JSON's `$description` into Figma; Pull only fills it in JSON when JSON's is empty, never overwriting an existing one. **`Base.tokens.json` (and each brand's `*.tokens.json`) in GitHub is the sole source of truth.** Figma Variables are a generated projection of these files. A designer changing a variable in Figma has made a _proposal_, not a fact — it only becomes real once it lands in GitHub via a reviewed pull request. Figma itself never holds a value GitHub doesn't know about once sync has run. When referencing a token by name in Figma, the same name is used in CSS.
 
 Two independent implementations keep this projection in sync, sharing the same vocabulary, `variableId` identity rule, and `.figma-sync-state.json` baseline below — see [ADR-0016](../../docs/adr/0016-github-action-supersedes-plugin-pull.md) for why the direction split this way:
 
@@ -254,6 +254,7 @@ Component tokens are nested under `"🧩 Component" > "<ComponentName>"`:
             "Text": {
               "$type": "color",
               "$value": "{🔗 Alias.Color.Text.White}",
+              "$description": "Text color for the primary button's default state.",
               "$extensions": { "com.figma.variableId": "..." }
             }
           }
@@ -265,6 +266,8 @@ Component tokens are nested under `"🧩 Component" > "<ComponentName>"`:
 ```
 
 This maps to CSS variable: `--ds-button-color-primary-base-text`
+
+`$description` (W3C Design Tokens Format Module, [2025.10 draft](https://www.designtokens.org/tr/drafts/format/)) is optional, free text, and shared across brands — a brand's `*.tokens.json` override never sets its own. Editable via Toky's create/edit dialogs and shown (truncated) in its token table; round-trips with Figma's native variable `description` (JSON is the source of truth — see Figma Integration below).
 
 ## Token Naming Anatomy
 

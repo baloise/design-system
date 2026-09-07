@@ -4,7 +4,6 @@ import { DsComponentInterface } from '@global'
 import {
   ariaBooleanToString,
   inheritAttributes,
-  normalizeDeprecatedTShirtSize,
   Logger,
   type LogInstance,
   type Attributes,
@@ -419,7 +418,7 @@ export class Button implements DsComponentInterface {
 
   render() {
     const { elementType, download, href, rel, target, name, value } = this
-    const size = normalizeDeprecatedTShirtSize(this.size) || undefined
+    const size = this.size || undefined
     const TagType = !hasValue(this.href) ? 'button' : 'a'
     const attrs =
       TagType === 'button'

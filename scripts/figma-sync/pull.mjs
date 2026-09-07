@@ -38,7 +38,9 @@ import {
   assignVariableIds,
   buildAliasPassPayload,
   buildCreatePassPayload,
+  buildDescriptionUpdatePayload,
   collectNewlyCreatedIds,
+  committedVariableIds,
   resolveTempIds,
 } from './lib/write.mjs'
 
@@ -169,6 +171,21 @@ async function resolveResponsiveCollection(localVariables, figmaFileKey, figmaTo
 async function writePull({ baseTokens, brandNames, brandTokensByName }, figmaToken, figmaFileKey) {
   const localVariables = await getLocalVariables(figmaFileKey, figmaToken)
 
+  // Fail fast, before any POST, if the tokens tree already carries variableIds this file has never
+  // seen — almost always TOKENS_DIR_OVERRIDE was meant to be set (testing against a sandbox file
+  // with the production tokens directory). Left undetected, this surfaces later as a cryptic 400
+  // from Figma's alias pass, after the create pass has already written.
+  const unknownIds = committedVariableIds(baseTokens).filter(id => !localVariables.variables[id])
+  if (unknownIds.length > 0) {
+    throw new Error(
+      `${unknownIds.length} committed variableId(s) don't exist in file ${figmaFileKey} (e.g. ${unknownIds
+        .slice(0, 5)
+        .join(', ')}). This usually means the tokens directory was round-tripped against a ` +
+        `different Figma file — set TOKENS_DIR_OVERRIDE to a scratch tokens directory for sandbox-` +
+        `file testing, or point FIGMA_FILE_KEY at the file these variableIds actually belong to.`,
+    )
+  }
+
   const { collectionId, modeIdByBrand } = await resolveBrandCollection(
     localVariables,
     brandNames,
@@ -233,6 +250,16 @@ async function writePull({ baseTokens, brandNames, brandTokensByName }, figmaTok
   console.log(`Pass 2: writing ${aliasPass.variableModeValues.length} alias mode-value(s)…`)
   if (aliasPass.variableModeValues.length > 0) {
     await postVariables(figmaFileKey, figmaToken, aliasPass)
+  }
+
+  const descriptionPass = buildDescriptionUpdatePayload({
+    baseTokens,
+    idByPath,
+    remoteVariablesById: localVariables.variables,
+  })
+  console.log(`Pass 3: updating ${descriptionPass.variables.length} variable description(s)…`)
+  if (descriptionPass.variables.length > 0) {
+    await postVariables(figmaFileKey, figmaToken, descriptionPass)
   }
 
   const newIds = collectNewlyCreatedIds(baseTokens, idByPath)
