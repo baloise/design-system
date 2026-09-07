@@ -60,13 +60,13 @@ $chevron-icon: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/sv
   @include vars.local(input-phone-flag-width, calc(var(--ds-device-space-base) * 1.5));
   @include vars.local(input-phone-flag-height, var(--ds-device-space-base));
   @include vars.local(input-phone-popup-width, 18.75rem);
-  @include vars.local(input-phone-popup-background, var(--ds-select-content-color-background-base));
+  @include vars.local(input-phone-popup-background, var(--ds-select-content-color-background));
   @include vars.local(input-phone-popup-shadow, var(--ds-select-content-shadow));
   @include vars.local(input-phone-option-color, var(--ds-select-option-color-text-base));
   @include vars.local(input-phone-option-background, var(--ds-select-option-color-background-base));
   @include vars.local(input-phone-option-hover-background, var(--ds-select-option-color-background-highlight));
   @include vars.local(input-phone-option-selected-background, var(--ds-select-option-color-background-selected));
-  @include vars.local(input-phone-option-border, var(--ds-select-option-color-border-base));
+  @include vars.local(input-phone-option-border, var(--ds-select-option-color-border));
 }
 
 /**
@@ -203,6 +203,8 @@ $chevron-icon: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/sv
 }
 
 :host(.is-open) {
+  z-index: var(--ds-alias-z-index-popup);
+
   .chevron {
     transform: rotate(180deg);
   }

@@ -439,10 +439,6 @@ div.has-visible-overflow > .docs-story > div:nth-child(2) {
   z-index: 10;
 }
 
-.input-phone-canvas ds-input-phone.is-open {
-  margin-bottom: 18.75rem;
-}
-
 .support {
   display: flex;
   gap: 1rem;

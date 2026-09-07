@@ -19,12 +19,7 @@ import { INPUTPHONE_DOC_CONFIG, getInputPhoneTabs } from './input-phone.doc-conf
 The national-number field derives a mobile example from the selected country by default. Set `placeholder` to override
 that example. The country trigger never shows placeholder text.
 
-<CanvasWithCodePen
-  of={InputPhoneStories.Placeholder}
-  sourceState="shown"
-  className="input-phone-canvas"
-  overflowVisible={true}
-/>
+<CanvasWithCodePen of={InputPhoneStories.Placeholder} sourceState="shown" overflowVisible={true} />
 
 {/* ------------------------------------------------------ */}
 
@@ -32,12 +27,7 @@ that example. The country trigger never shows placeholder text.
 
 `countries` limits the picker to an allow-list of ISO 3166-1 alpha-2 codes (comma-separated string or string array).
 
-<CanvasWithCodePen
-  of={InputPhoneStories.RestrictedCountries}
-  sourceState="shown"
-  className="input-phone-canvas"
-  overflowVisible={true}
-/>
+<CanvasWithCodePen of={InputPhoneStories.RestrictedCountries} sourceState="shown" overflowVisible={true} />
 
 {/* ------------------------------------------------------ */}
 
@@ -45,12 +35,7 @@ that example. The country trigger never shows placeholder text.
 
 An invalid field shows validation styling and `invalidText`. The component does not decide whether a number is valid — the application sets this state.
 
-<CanvasWithCodePen
-  of={InputPhoneStories.Invalid}
-  sourceState="shown"
-  className="input-phone-canvas"
-  overflowVisible={true}
-/>
+<CanvasWithCodePen of={InputPhoneStories.Invalid} sourceState="shown" overflowVisible={true} />
 
 {/* ------------------------------------------------------ */}
 
@@ -58,12 +43,7 @@ An invalid field shows validation styling and `invalidText`. The component does 
 
 Use the `invalid-text` slot when the validation message needs structured markup instead of a plain string.
 
-<CanvasWithCodePen
-  of={InputPhoneStories.InvalidTextSlot}
-  sourceState="shown"
-  className="input-phone-canvas"
-  overflowVisible={true}
-/>
+<CanvasWithCodePen of={InputPhoneStories.InvalidTextSlot} sourceState="shown" overflowVisible={true} />
 
 {/* ------------------------------------------------------ */}
 
@@ -71,12 +51,7 @@ Use the `invalid-text` slot when the validation message needs structured markup 
 
 Use `description` for persistent guidance such as which part of the number users should enter.
 
-<CanvasWithCodePen
-  of={InputPhoneStories.WithDescription}
-  sourceState="shown"
-  className="input-phone-canvas"
-  overflowVisible={true}
-/>
+<CanvasWithCodePen of={InputPhoneStories.WithDescription} sourceState="shown" overflowVisible={true} />
 
 {/* ------------------------------------------------------ */}
 
@@ -84,12 +59,7 @@ Use `description` for persistent guidance such as which part of the number users
 
 `disabled` blocks both the country picker and the number field.
 
-<CanvasWithCodePen
-  of={InputPhoneStories.Disabled}
-  sourceState="shown"
-  className="input-phone-canvas"
-  overflowVisible={true}
-/>
+<CanvasWithCodePen of={InputPhoneStories.Disabled} sourceState="shown" overflowVisible={true} />
 
 {/* ------------------------------------------------------ */}
 
@@ -97,12 +67,7 @@ Use `description` for persistent guidance such as which part of the number users
 
 `readonly` disables the country picker but leaves the national number focusable and selectable.
 
-<CanvasWithCodePen
-  of={InputPhoneStories.Readonly}
-  sourceState="shown"
-  className="input-phone-canvas"
-  overflowVisible={true}
-/>
+<CanvasWithCodePen of={InputPhoneStories.Readonly} sourceState="shown" overflowVisible={true} />
 
 {/* ------------------------------------------------------ */}
 
@@ -111,12 +76,7 @@ Use `description` for persistent guidance such as which part of the number users
 Pass the canonical E.164 `value`. The field displays the country's international grouping without the calling code,
 because that code is already visible in the country trigger.
 
-<CanvasWithCodePen
-  of={InputPhoneStories.FormattedValue}
-  sourceState="shown"
-  className="input-phone-canvas"
-  overflowVisible={true}
-/>
+<CanvasWithCodePen of={InputPhoneStories.FormattedValue} sourceState="shown" overflowVisible={true} />
 
 {/* ------------------------------------------------------ */}
 
@@ -126,11 +86,6 @@ Each country uses its own international grouping without repeating the calling c
 typing. On blur, a national trunk prefix such as the Swiss `0` is removed, while significant leading digits such as an
 Italian landline's `0` remain.
 
-<CanvasWithCodePen
-  of={InputPhoneStories.Formatting}
-  sourceState="shown"
-  className="input-phone-canvas"
-  overflowVisible={true}
-/>
+<CanvasWithCodePen of={InputPhoneStories.Formatting} sourceState="shown" overflowVisible={true} />
 
 <Footer />
