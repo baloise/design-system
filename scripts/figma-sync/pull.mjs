@@ -218,10 +218,25 @@ async function writePull({ baseTokens, brandNames, brandTokensByName }, figmaTok
   // (it's the plugin's Push flow's job to pick that up, not this Action's
   // to delete). Merged into pass 1: deletions don't depend on temp-id
   // resolution, so there's no ordering reason to keep them in a separate call.
+  // Baseline-relative (findRemovedVariableIds only ever compares against the
+  // last-synced state, never Figma's live state), so a stale baseline entry
+  // whose variable Figma no longer has (deleted out of band, or the
+  // collection it lived in got recreated/renamed) is still "removed" here —
+  // it still needs to drop out of the baseline below — but must not be
+  // queued as a DELETE: Figma's POST /variables is atomic, and a DELETE
+  // against a nonexistent id 400s the *entire* batch, taking this run's
+  // creates and mode-values down with it.
   const existingState = loadSyncStateFile(SYNC_STATE_FILE)
   const removedIds = findRemovedVariableIds(existingState, baseTokens)
-  if (removedIds.length > 0) {
-    console.log(`Deleting ${removedIds.length} Figma variable(s) whose token was removed from GitHub…`)
+  const deletableIds = removedIds.filter(id => localVariables.variables[id])
+  const staleBaselineIds = removedIds.filter(id => !localVariables.variables[id])
+  if (deletableIds.length > 0) {
+    console.log(`Deleting ${deletableIds.length} Figma variable(s) whose token was removed from GitHub…`)
+  }
+  if (staleBaselineIds.length > 0) {
+    console.log(
+      `Dropping ${staleBaselineIds.length} stale baseline entr${staleBaselineIds.length === 1 ? 'y' : 'ies'} whose variable no longer exists in Figma (e.g. ${staleBaselineIds.slice(0, 5).join(', ')}).`,
+    )
   }
 
   const createPass = buildCreatePassPayload({
@@ -232,7 +247,7 @@ async function writePull({ baseTokens, brandNames, brandTokensByName }, figmaTok
     modeIdByBrand,
     responsiveCollectionId,
   })
-  const deletePass = buildDeleteVariablesPayload(removedIds)
+  const deletePass = buildDeleteVariablesPayload(deletableIds)
   createPass.variables.push(...deletePass.variables)
 
   console.log(
