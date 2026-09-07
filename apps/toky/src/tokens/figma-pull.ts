@@ -1349,7 +1349,7 @@ export function buildBasePullPlan(params: {
   // object of 5 sub-ids, not the single string this generic per-variable
   // loop (and deriveValue's alias-target lookup) is keyed by. They're
   // matched separately by deriveShadowPullEntries below.
-  const baseIndex = new Map(
+  const baseIndex: Map<string, FlatToken> = new Map(
     original
       .filter((t): t is FlatToken & { figmaId: string } => typeof t.figmaId === 'string')
       .map(t => [t.figmaId, t]),
@@ -1709,7 +1709,7 @@ export function buildBrandPullPlan(params: {
   // Shadow tokens excluded — see buildBasePullPlan's baseIndex comment.
   // Shadow sync is Base-only anyway (docs/plans/shadow-token-type-plan.md),
   // so brand-mode values for a shadow's sub-variables are never read here.
-  const baseIndex = new Map(
+  const baseIndex: Map<string, FlatToken> = new Map(
     baseOriginal
       .filter((t): t is FlatToken & { figmaId: string } => typeof t.figmaId === 'string')
       .map(t => [t.figmaId, t]),
