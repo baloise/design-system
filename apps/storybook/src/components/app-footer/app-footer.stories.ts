@@ -57,7 +57,7 @@ export const CustomLogo = Story({
     hideLanguageSelection: true,
     legalText: ' ',
     slot: `
-    <a slot="logo" href="/" aria-label="Home"><strong class="title text-warning">Gugus</strong></a>
+    <a slot="logo" href="/" aria-label="Home"><strong class="ds-title text-warning">Gugus</strong></a>
   `,
   },
 })

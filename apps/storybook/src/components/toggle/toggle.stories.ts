@@ -32,7 +32,7 @@ Basic.storyName = '🧩 Basic'
 export const BasicHtml = Story({
   ...withRender(
     () => `
-<label class="toggle">
+<label class="ds-toggle">
   <input type="checkbox" />
   Toggle me
 </label>`,
@@ -50,7 +50,7 @@ Disabled.storyName = '🧩 Disabled'
 export const DisabledHtml = Story({
   ...withRender(
     () => `
-<label class="toggle is-disabled">
+<label class="ds-toggle is-disabled">
   <input type="checkbox" disabled />
   Unchecked
 </label>`,
@@ -68,7 +68,7 @@ Invalid.storyName = '🧩 Invalid'
 export const InvalidHtml = Story({
   ...withRender(
     () => `
-<label class="toggle is-invalid">
+<label class="ds-toggle is-invalid">
   <input type="checkbox" aria-invalid="true" />
   Unchecked
 </label>`,
@@ -79,10 +79,10 @@ InvalidHtml.storyName = '🌍 Invalid'
 export const Field = Story({
   ...withRender(
     () => `
-<fieldset class="field">
-  <legend class="label">Label</legend>
+<fieldset class="ds-field">
+  <legend class="ds-label">Label</legend>
   <ds-toggle name="agreement" value="accepted" aria-describedby="toggle-help">Accept terms and conditions</ds-toggle>
-  <p class="help" id="toggle-help">Required to proceed</p>
+  <p class="ds-help" id="toggle-help">Required to proceed</p>
 </fieldset>`,
   ),
 })
@@ -91,13 +91,13 @@ Field.storyName = '🧩 Field'
 export const FieldHtml = Story({
   ...withRender(
     () => `
-<fieldset class="field">
-  <legend class="label">Label</legend>
-  <label class="toggle">
+<fieldset class="ds-field">
+  <legend class="ds-label">Label</legend>
+  <label class="ds-toggle">
     <input type="checkbox" aria-describedby="toggle-help" />
     Accept terms and conditions
   </label>
-  <p class="help" id="toggle-help">Required to proceed</p>
+  <p class="ds-help" id="toggle-help">Required to proceed</p>
 </fieldset>`,
   ),
 })
@@ -120,13 +120,13 @@ export const FormHtml = Story({
   ...withRender(
     () => `
 <form>
-  <label class="toggle">
+  <label class="ds-toggle">
     <input type="checkbox" name="terms" value="accepted" />
     Accept terms and conditions
   </label>
   <br /><br />
-  <button type="submit" class="button is-primary">Submit</button>
-  <button type="reset" class="button is-link">Reset</button>
+  <button type="submit" class="ds-button is-primary">Submit</button>
+  <button type="reset" class="ds-button is-link">Reset</button>
 </form>`,
   ),
 })

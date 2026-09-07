@@ -8,7 +8,7 @@
  * These variables can be used in the component styles below and later on be overridden in themes.
  */
 
-.textarea {
+.ds-textarea {
   @include textarea.vars('input');
 }
 
@@ -17,8 +17,8 @@
  * --------------------------------
  */
 
-.field {
-  @include textarea.style('input', '.textarea');
-  @include textarea.container('input', '.control');
-  @include textarea.specific('.control');
+.ds-field {
+  @include textarea.style('input', '.ds-textarea');
+  @include textarea.container('input', '.ds-control');
+  @include textarea.specific('.ds-control');
 }

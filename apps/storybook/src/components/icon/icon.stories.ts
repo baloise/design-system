@@ -147,10 +147,10 @@ UiIcons.storyName = '🧩 UI Icons'
 export const Sizes = Story({
   ...withRender(
     () =>
-      `<div class="stack">
+      `<div class="ds-stack">
       ${['sm', 'base', 'md', 'lg', 'xl']
         .map(
-          item => `<div class="stack as-row">
+          item => `<div class="ds-stack as-row">
       <ds-icon name="info-circle" size="${item}"></ds-icon>
       <span>${item}</span>
     </div>`,

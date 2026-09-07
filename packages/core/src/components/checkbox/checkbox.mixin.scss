@@ -6,7 +6,7 @@
  * --------------------------------
  * $wrapper — the element that contains input[type="checkbox"] + label.
  *   Web component: ':host'
- *   CSS-only:      '.checkbox'
+ *   CSS-only:      '.ds-checkbox'
  */
 
 @mixin vars($wrapper: ':host') {
@@ -91,7 +91,7 @@
 }
 
 // Web component: :host is a thin shell, the inner label is the flex/style container.
-// CSS-only:      label.checkbox is the flex/style container directly — no inner label.
+// CSS-only:      label.ds-checkbox is the flex/style container directly — no inner label.
 @mixin layout($wrapper: ':host') {
   @if $wrapper == ':host' {
     :host {

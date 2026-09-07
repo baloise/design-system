@@ -6,12 +6,12 @@
  * to an arbitrary selector. Lets other components reuse the close look — e.g. a
  * `ds-delete` button — without pulling in the `<ds-close>` custom element.
  *
- * @param {String} $selector - Selector the styles are scoped to. Defaults to `.close`.
+ * @param {String} $selector - Selector the styles are scoped to. Defaults to `.ds-close`.
  * @param {Boolean} $background - Whether hover/active states darken the button background.
  *   Set to `false` for bare icon buttons that shouldn't get the background pill (e.g. a clear
  *   icon sitting inside an already-interactive control).
  */
-@mixin style($selector: '.close', $background: true) {
+@mixin style($selector: '.ds-close', $background: true) {
   #{$selector} {
     @include vars.local(close-color-background, var(--ds-close-primary-color-background-base));
     @include vars.local(close-color-background-hover, var(--ds-close-primary-color-background-hover));

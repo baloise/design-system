@@ -79,13 +79,13 @@ Variants.storyName = '🧩 Variants'
 
 export const VariantsHtml = Story({
   ...withRender(
-    () => `<div class="buttons">
-  <button class="button is-primary">Primary</button>
-  <button class="button is-secondary">Secondary</button>
-  <button class="button is-tertiary">Tertiary</button>
+    () => `<div class="ds-buttons">
+  <button class="ds-button is-primary">Primary</button>
+  <button class="ds-button is-secondary">Secondary</button>
+  <button class="ds-button is-tertiary">Tertiary</button>
 </div>
-<div class="buttons mt-normal">
-  <button class="button is-link">Link</button>
+<div class="ds-buttons mt-normal">
+  <button class="ds-button is-link">Link</button>
 </div>`,
   ),
 })
@@ -105,11 +105,11 @@ Sizes.storyName = '🧩 Sizes'
 
 export const SizesHtml = Story({
   ...withRender(
-    () => `<div class="buttons">
-  <button class="button is-sm">Small</button>
-  <button class="button">Normal</button>
-  <button class="button is-lg">Large</button>
-  <button class="button is-xl">X-Large</button>
+    () => `<div class="ds-buttons">
+  <button class="ds-button is-sm">Small</button>
+  <button class="ds-button">Normal</button>
+  <button class="ds-button is-lg">Large</button>
+  <button class="ds-button is-xl">X-Large</button>
 </div>`,
   ),
 })
@@ -117,7 +117,7 @@ SizesHtml.storyName = '🌍 Sizes'
 
 export const Inverted = Story({
   ...withRender(
-    () => `<div class="stack bg-primary p-normal">
+    () => `<div class="ds-stack bg-primary p-normal">
   <ds-button-group>
     <ds-button inverted color="primary">Primary</ds-button>
     <ds-button inverted color="secondary">Secondary</ds-button>
@@ -132,13 +132,13 @@ Inverted.storyName = '🧩 Inverted'
 
 export const InvertedHtml = Story({
   ...withRender(
-    () => `<div class="stack bg-primary p-normal">
-  <div class="buttons">
-    <button class="button is-inverted is-primary">Primary</button>
-    <button class="button is-inverted is-secondary">Secondary</button>
+    () => `<div class="ds-stack bg-primary p-normal">
+  <div class="ds-buttons">
+    <button class="ds-button is-inverted is-primary">Primary</button>
+    <button class="ds-button is-inverted is-secondary">Secondary</button>
   </div>
-  <div class="buttons">
-    <button class="button is-inverted is-link">Link</button>
+  <div class="ds-buttons">
+    <button class="ds-button is-inverted is-link">Link</button>
   </div>
 </div>`,
   ),
@@ -158,7 +158,7 @@ WithIcon.storyName = '🧩 With Icon'
 export const WithIconHtml = Story({
   ...withRender(
     () => `
-<button class="button is-primary">
+<button class="ds-button is-primary">
   <ds-icon name="plus"></ds-icon>
   Button
 </button>`,
@@ -179,16 +179,16 @@ States.storyName = '🧩 States'
 
 export const StatesHtml = Story({
   ...withRender(
-    () => `<div class="buttons">
-  <button class="button is-loading">
+    () => `<div class="ds-buttons">
+  <button class="ds-button is-loading">
     <ds-spinner></ds-spinner>
     loading...
   </button>
-  <button class="button is-loading" disabled>
+  <button class="ds-button is-loading" disabled>
     <ds-spinner variation="circle"></ds-spinner>
     loading...
   </button>
-  <button class="button" disabled>Disabled</button>
+  <button class="ds-button" disabled>Disabled</button>
 </div>`,
   ),
 })
@@ -208,11 +208,11 @@ AlertButtons.storyName = '🧩 Alert Buttons'
 
 export const AlertButtonsHtml = Story({
   ...withRender(
-    () => `<div class="buttons">
-  <button class="button is-info">Info</button>
-  <button class="button is-success">Success</button>
-  <button class="button is-warning">Warning</button>
-  <button class="button is-danger">Danger</button>
+    () => `<div class="ds-buttons">
+  <button class="ds-button is-info">Info</button>
+  <button class="ds-button is-success">Success</button>
+  <button class="ds-button is-warning">Warning</button>
+  <button class="ds-button is-danger">Danger</button>
 </div>`,
   ),
 })
@@ -231,14 +231,14 @@ SquareButtons.storyName = '🧩 Square Buttons'
 
 export const SquareButtonsHtml = Story({
   ...withRender(
-    () => `<div class="buttons">
-  <button class="button is-square">
+    () => `<div class="ds-buttons">
+  <button class="ds-button is-square">
     <ds-icon name="plus"></ds-icon>
   </button>
-  <button class="button is-square is-secondary">
+  <button class="ds-button is-square is-secondary">
     <ds-icon name="plus"></ds-icon>
   </button>
-  <button class="button is-square is-tertiary">
+  <button class="ds-button is-square is-tertiary">
     <ds-icon name="plus"></ds-icon>
   </button>
 </div>`,
@@ -248,8 +248,8 @@ SquareButtonsHtml.storyName = '🌍 Square Buttons'
 
 export const NoWrap = Story({
   ...withRender(
-    () => `<div class="buttons">
-  <button class="button has-no-wrap is-tertiary">
+    () => `<div class="ds-buttons">
+  <button class="ds-button has-no-wrap is-tertiary">
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec venenatis vulputate lorem.
   </button>
 </div>`,
@@ -264,10 +264,10 @@ NoWrap.storyName = '🌍 No Wrap'
 
 export const ButtonGroup = Story({
   ...withRender(
-    () => `<div class="buttons">
-  <button class="button">Left</button>
-  <button class="button">Middle</button>
-  <button class="button">Right</button>
+    () => `<div class="ds-buttons">
+  <button class="ds-button">Left</button>
+  <button class="ds-button">Middle</button>
+  <button class="ds-button">Right</button>
 </div>`,
   ),
 })
@@ -275,21 +275,21 @@ ButtonGroup.storyName = '🌍 Button Group'
 
 export const ButtonGroupAlignment = Story({
   ...withRender(
-    () => `<div class="stack">
-  <div class="buttons">
-    <button class="button">Left</button>
-    <button class="button">Middle</button>
-    <button class="button">Right</button>
+    () => `<div class="ds-stack">
+  <div class="ds-buttons">
+    <button class="ds-button">Left</button>
+    <button class="ds-button">Middle</button>
+    <button class="ds-button">Right</button>
   </div>
-  <div class="buttons is-centered">
-    <button class="button">Left</button>
-    <button class="button">Middle</button>
-    <button class="button">Right</button>
+  <div class="ds-buttons is-centered">
+    <button class="ds-button">Left</button>
+    <button class="ds-button">Middle</button>
+    <button class="ds-button">Right</button>
   </div>
-  <div class="buttons is-right">
-    <button class="button">Left</button>
-    <button class="button">Middle</button>
-    <button class="button">Right</button>
+  <div class="ds-buttons is-right">
+    <button class="ds-button">Left</button>
+    <button class="ds-button">Middle</button>
+    <button class="ds-button">Right</button>
   </div>
 </div>`,
   ),
@@ -298,19 +298,19 @@ ButtonGroupAlignment.storyName = '🌍 Button Group Alignment'
 
 export const ButtonGroupAsRow = Story({
   ...withRender(
-    () => `<div class="stack">
-  <div class="buttons as-row">
-    <button class="button is-scondary">
+    () => `<div class="ds-stack">
+  <div class="ds-buttons as-row">
+    <button class="ds-button is-scondary">
       <ds-icon name="caret-left"></ds-icon>
       Back
     </button>
-    <button class="button">Next</button>
+    <button class="ds-button">Next</button>
   </div>
-  <div class="buttons as-row">
-    <button class="button is-square">
+  <div class="ds-buttons as-row">
+    <button class="ds-button is-square">
       <ds-icon name="caret-left"></ds-icon>
     </button>
-    <button class="button">Next</button>
+    <button class="ds-button">Next</button>
   </div>
 </div>`,
   ),
@@ -319,21 +319,21 @@ ButtonGroupAsRow.storyName = '🌍 Button Group As Row'
 
 export const ButtonGroupAsCol = Story({
   ...withRender(
-    () => `<div class="stack">
-  <div class="buttons as-col is-left">
-    <button class="button">Left</button>
-    <button class="button">Middle</button>
-    <button class="button">Right</button>
+    () => `<div class="ds-stack">
+  <div class="ds-buttons as-col is-left">
+    <button class="ds-button">Left</button>
+    <button class="ds-button">Middle</button>
+    <button class="ds-button">Right</button>
   </div>
-  <div class="buttons as-col is-centered">
-    <button class="button">Left</button>
-    <button class="button">Middle</button>
-    <button class="button">Right</button>
+  <div class="ds-buttons as-col is-centered">
+    <button class="ds-button">Left</button>
+    <button class="ds-button">Middle</button>
+    <button class="ds-button">Right</button>
   </div>
-  <div class="buttons as-col is-right">
-    <button class="button">Left</button>
-    <button class="button">Middle</button>
-    <button class="button">Right</button>
+  <div class="ds-buttons as-col is-right">
+    <button class="ds-button">Left</button>
+    <button class="ds-button">Middle</button>
+    <button class="ds-button">Right</button>
   </div>
 </div>`,
   ),
@@ -347,10 +347,10 @@ ButtonGroupAsCol.storyName = '🌍 Button Group As Col'
 
 export const Link = Story({
   ...withRender(
-    () => `<div class="stack">
-  <a class="link"> Link</a>
+    () => `<div class="ds-stack">
+  <a class="ds-link"> Link</a>
   <div class="bg-primary p-normal">
-    <a class="link is-inverted"> Inverted Link</a>
+    <a class="ds-link is-inverted"> Inverted Link</a>
   </div>
   </div>`,
   ),
@@ -360,7 +360,7 @@ Link.storyName = '🌍 Link'
 export const LinkButton = Story({
   ...withRender(
     () => `
-<a class="button is-link">
+<a class="ds-button is-link">
   <ds-icon name="plus"></ds-icon>
   Link
 </a>`,
@@ -372,10 +372,10 @@ export const NativeLink = Story({
   ...withRender(
     () => `<div class="columns m-none">
   <div class="column">
-      <a class="link">Link</a>
+      <a class="ds-link">Link</a>
   </div>
   <div class="column bg-primary">
-      <a class="link is-inverted">Link</a>
+      <a class="ds-link is-inverted">Link</a>
   </div>
 </div>`,
   ),

@@ -44,7 +44,7 @@ The system supports **three component architectures**:
 - **Has**: `.style.scss` file (global CSS classes)
 - **No**: `.host.scss` file
 - **Usage**: Plain HTML elements with CSS classes, no JavaScript
-- **Example**: `<button class="button is-primary">Click me</button>`
+- **Example**: `<button class="ds-button is-primary">Click me</button>`
 - **Skills**: No stories, limited tests (visual + a11y only)
 - **Identification**: Check for `.style.scss` only (not `.host.scss`)
 
@@ -52,7 +52,7 @@ The system supports **three component architectures**:
 
 - **Has**: Both `.host.scss` (Shadow DOM) and `.style.scss` (global CSS)
 - **Usage**: Supports both web component mode and CSS-only mode
-- **Example**: Works as both `<ds-button>` and `<button class="button">`
+- **Example**: Works as both `<ds-button>` and `<button class="ds-button">`
 - **Skills**: Minimal stories (no prop controls), limited tests
 - **Identification**: Check for both `.host.scss` AND `.style.scss`
 

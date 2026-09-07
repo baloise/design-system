@@ -62,7 +62,7 @@ export const Alerts = Story({
   },
   ...withRender(
     ({ slot, ...args }) => `
-<div class="stack">
+<div class="ds-stack">
   <ds-notification ${props(args)} heading="Alert">
     ${slot}
   </ds-notification>
@@ -89,7 +89,7 @@ export const Outlines = Story({
   },
   ...withRender(
     ({ slot, ...args }) => `
-<div class="stack">
+<div class="ds-stack">
   <ds-notification ${props(args)} color="outline-default" heading="Alert">
     ${slot}
   </ds-notification>

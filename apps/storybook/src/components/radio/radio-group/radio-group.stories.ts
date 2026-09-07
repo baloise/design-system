@@ -39,23 +39,23 @@ Basic.storyName = '🧩 Basic'
 export const BasicHtml = Story({
   ...withRender(
     ({ label, description }) => `
-<fieldset class="field">
-  <legend class="label">${label}</legend>
-  <div class="radio-group">
-    <label class="radio">
+<fieldset class="ds-field">
+  <legend class="ds-label">${label}</legend>
+  <div class="ds-radio-group">
+    <label class="ds-radio">
       <input type="radio" name="basic" value="Apple" aria-describedby="rb-help"/>
       Apple
     </label>
-    <label class="radio">
+    <label class="ds-radio">
       <input type="radio" name="basic" value="Strawberry" checked aria-describedby="rb-help" />
       Strawberry
     </label>
-    <label class="radio">
+    <label class="ds-radio">
       <input type="radio" name="basic" value="Banana" aria-describedby="rb-help"/>
       Banana
     </label>
   </div>
-  <p class="help" id="rb-help">${description}</p>
+  <p class="ds-help" id="rb-help">${description}</p>
 </fieldset>  `,
   ),
 })
@@ -71,23 +71,23 @@ Disabled.storyName = '🧩 Disabled'
 export const DisabledHtml = Story({
   ...withRender(
     ({ label, description }) => `
-<fieldset class="field is-disabled">
-  <legend class="label">${label}</legend>
-  <div class="radio-group">
-    <label class="radio is-disabled">
+<fieldset class="ds-field is-disabled">
+  <legend class="ds-label">${label}</legend>
+  <div class="ds-radio-group">
+    <label class="ds-radio is-disabled">
       <input disabled type="radio" name="basic" value="Apple" aria-describedby="rb-help"/>
       Apple
     </label>
-    <label class="radio is-disabled">
+    <label class="ds-radio is-disabled">
       <input disabled type="radio" name="basic" value="Strawberry" checked aria-describedby="rb-help" />
       Strawberry
     </label>
-    <label class="radio is-disabled">
+    <label class="ds-radio is-disabled">
       <input disabled type="radio" name="basic" value="Banana" aria-describedby="rb-help"/>
       Banana
     </label>
   </div>
-  <p class="help" id="rb-help">${description}</p>
+  <p class="ds-help" id="rb-help">${description}</p>
 </fieldset>  `,
   ),
 })
@@ -103,23 +103,23 @@ Invalid.storyName = '🧩 Invalid'
 export const InvalidHtml = Story({
   ...withRender(
     ({ label, description }) => `
-<fieldset class="field is-invalid">
-  <legend class="label">${label}</legend>
-  <div class="radio-group">
-    <label class="radio is-invalid">
+<fieldset class="ds-field is-invalid">
+  <legend class="ds-label">${label}</legend>
+  <div class="ds-radio-group">
+    <label class="ds-radio is-invalid">
       <input type="radio" name="basic" aria-invalid="true" value="Apple" aria-describedby="rb-help"/>
       Apple
     </label>
-    <label class="radio is-invalid">
+    <label class="ds-radio is-invalid">
       <input type="radio" name="basic" aria-invalid="true" value="Strawberry" checked aria-describedby="rb-help" />
       Strawberry
     </label>
-    <label class="radio is-invalid">
+    <label class="ds-radio is-invalid">
       <input type="radio" name="basic" aria-invalid="true" value="Banana" aria-describedby="rb-help"/>
       Banana
     </label>
   </div>
-  <p class="help" id="rb-help">${description}</p>
+  <p class="ds-help" id="rb-help">${description}</p>
 </fieldset>  `,
   ),
 })
@@ -133,23 +133,23 @@ FieldVertical.storyName = '🧩 Field Vertical'
 export const FieldVerticalHtml = Story({
   ...withRender(
     ({ label, description }) => `
-<fieldset class="field">
-  <legend class="label">${label}</legend>
-  <div class="radio-group is-vertical">
-    <label class="radio">
+<fieldset class="ds-field">
+  <legend class="ds-label">${label}</legend>
+  <div class="ds-radio-group is-vertical">
+    <label class="ds-radio">
       <input type="radio" name="basic" value="Apple" aria-describedby="rb-help"/>
       Apple
     </label>
-    <label class="radio">
+    <label class="ds-radio">
       <input type="radio" name="basic" value="Strawberry" checked aria-describedby="rb-help" />
       Strawberry
     </label>
-    <label class="radio">
+    <label class="ds-radio">
       <input type="radio" name="basic" value="Banana" aria-describedby="rb-help"/>
       Banana
     </label>
   </div>
-  <p class="help" id="rb-help">${description}</p>
+  <p class="ds-help" id="rb-help">${description}</p>
 </fieldset>`,
   ),
 })

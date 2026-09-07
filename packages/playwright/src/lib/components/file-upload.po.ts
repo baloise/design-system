@@ -6,8 +6,8 @@ export class DsFileUpload extends PageObject {
   readonly fileList = this.el.locator('[part="file-list"]')
   readonly input = this.el.locator('[part="input"]')
 
-  async click() {
-    await this.dropZone.click()
+  async click(options?: { force?: boolean }) {
+    await this.dropZone.click(options)
   }
 
   async setFocus() {

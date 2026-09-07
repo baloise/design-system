@@ -65,7 +65,7 @@ button {
   color: inherit;
 }
 
-p:not(.text, .title, .subtitle, .heading) {
+p:not(.ds-text, .ds-title, .ds-subtitle, .ds-heading) {
   hyphens: auto;
   margin: 0;
   overflow-wrap: break-word;

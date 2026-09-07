@@ -5,7 +5,7 @@
 
 $use-host: false !default;
 $name: tag;
-$css-selector: ('.tag:not(.token)');
+$css-selector: ('.ds-tag:not(.token)');
 $host-selector: ('#tag');
 
 /**
@@ -58,7 +58,7 @@ $host-selector: ('#tag');
   font-size: var(--_tag-font-size);
   font-weight: var(--_tag-font-weight);
 
-  > .close,
+  > .ds-close,
   > ds-close {
     --close-mr: var(--_tag-close-mr);
   }
@@ -164,7 +164,7 @@ $close-inverted: ('primary', 'disabled', 'purple-dark', 'red-dark', 'yellow-dark
   --mod-tag-font-size: var(--ds-tag-size-sm-font-size);
   --mod-tag-font-weight: var(--ds-tag-size-sm-font-weight);
 
-  > .close,
+  > .ds-close,
   > ds-close {
     --close-padding: var(--ds-close-padding-sm);
     --close-size-icon: var(--ds-close-size-sm);
@@ -218,11 +218,11 @@ $close-inverted: ('primary', 'disabled', 'purple-dark', 'red-dark', 'yellow-dark
   */
 
 @include hybrid.styles-only($use-host) {
-  .tags {
+  .ds-tags {
     @include tags.style();
   }
 
-  .tags + .tags {
+  .ds-tags + .ds-tags {
     margin-top: var(--_tag-gap);
   }
 

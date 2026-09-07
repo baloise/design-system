@@ -27,7 +27,7 @@ const meta: Meta<Args> = {
   <a href="#" slot="menu-start">Pricing</a>
 
   <ds-button slot="menu-end" icon="search" square></ds-button>
-  <button slot="menu-end" class="button">Sign In</button>
+  <button slot="menu-end" class="ds-button">Sign In</button>
 </ds-app-navbar>`,
   ),
 }
@@ -57,7 +57,7 @@ export const BasicMobile = Story({
   <a href="#" slot="menu-start">Pricing</a>
 
   <ds-button slot="menu-end" icon="search" square></ds-button>
-  <button slot="menu-end" class="button">Sign In</button>
+  <button slot="menu-end" class="ds-button">Sign In</button>
 </ds-app-navbar>`,
   ),
 })
@@ -75,7 +75,7 @@ export const BrandLogo = Story({
 <h1 slot="title">White Label</h1>
 <a href="#" slot="menu-start" aria-current="page">Docs</a>
 <a href="#" slot="menu-start">API</a>
-<button class="button" slot="menu-end">Get Started</button>
+<button class="ds-button" slot="menu-end">Get Started</button>
 </ds-app-navbar>`,
   ),
 })

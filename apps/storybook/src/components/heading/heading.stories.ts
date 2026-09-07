@@ -61,11 +61,11 @@ BasicHtml.storyName = '🌍 Basic'
 export const Levels = Story({
   ...withRender(
     () => `
-<h1 class="title">Heading 1</h1>
-<h2 class="title">Heading 2</h2>
-<h3 class="title">Heading 3</h3>
-<h4 class="title">Heading 4</h4>
-<h5 class="title">Heading 5</h5>`,
+<h1 class="ds-title">Heading 1</h1>
+<h2 class="ds-title">Heading 2</h2>
+<h3 class="ds-title">Heading 3</h3>
+<h4 class="ds-title">Heading 4</h4>
+<h5 class="ds-title">Heading 5</h5>`,
   ),
 })
 Levels.storyName = '🌍 Levels'
@@ -73,11 +73,11 @@ Levels.storyName = '🌍 Levels'
 export const Sizes = Story({
   ...withRender(
     () => `
-<h1 class="title is-1">Size 1 (3xl)</h1>
-<h1 class="title is-2xl">Size 2 (2xl)</h1>
-<h1 class="title is-level-3">Size 3 (xl)</h3>
-<h1 class="title is-level-4">Size 4 (lg)</h4>
-<h1 class="title is-level-5">Size 5 (base)</h5>`,
+<h1 class="ds-title is-1">Size 1 (3xl)</h1>
+<h1 class="ds-title is-2xl">Size 2 (2xl)</h1>
+<h1 class="ds-title is-level-3">Size 3 (xl)</h3>
+<h1 class="ds-title is-level-4">Size 4 (lg)</h4>
+<h1 class="ds-title is-level-5">Size 5 (base)</h5>`,
   ),
 })
 Sizes.storyName = '🌍 Sizes'
@@ -85,10 +85,10 @@ Sizes.storyName = '🌍 Sizes'
 export const Colors = Story({
   ...withRender(
     () => `
-<h4 class="title">Default / Primary</h4>
-<h4 class="title is-success">Success</h4>
-<h4 class="title is-warning">Warning</h4>
-<h4 class="title is-danger">Danger</h4>`,
+<h4 class="ds-title">Default / Primary</h4>
+<h4 class="ds-title is-success">Success</h4>
+<h4 class="ds-title is-warning">Warning</h4>
+<h4 class="ds-title is-danger">Danger</h4>`,
   ),
 })
 Colors.storyName = '🌍 Colors'
@@ -96,7 +96,7 @@ Colors.storyName = '🌍 Colors'
 export const NoWrap = Story({
   ...withRender(
     () => `
-<h4 class="title has-no-wrap">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</h4>`,
+<h4 class="ds-title has-no-wrap">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</h4>`,
   ),
 })
 NoWrap.storyName = '🌍 No Wrap'
@@ -105,16 +105,16 @@ export const Spacing = Story({
   ...withRender(
     () => `<div>
     <div class="bg-primary-1 flex mb-small">
-      <h4 class="title has-space-all">All</h4>
+      <h4 class="ds-title has-space-all">All</h4>
     </div>
     <div class="bg-primary-1 flex mb-small">
-      <h4 class="title has-space-none">None</h4>
+      <h4 class="ds-title has-space-none">None</h4>
     </div>
     <div class="bg-primary-1 flex mb-small">
-      <h4 class="title has-space-top">Top</h4>
+      <h4 class="ds-title has-space-top">Top</h4>
     </div>
     <div class="bg-primary-1 flex mb-small">
-      <h4 class="title has-space-bottom">Bottom</h4>
+      <h4 class="ds-title has-space-bottom">Bottom</h4>
     </div>
   </div>`,
   ),

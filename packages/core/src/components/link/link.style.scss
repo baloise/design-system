@@ -28,8 +28,8 @@
  * @prop --link-underline-offset - Offset of the underline from text baseline.
  * @prop --link-focus - Focus ring color.
  */
-a.link:not(.button),
-a.is-link:not(.button) {
+a.ds-link:not(.ds-button),
+a.is-link:not(.ds-button) {
   @include vars.focus(link);
 
   @include vars.local(link-color, var(--ds-link-primary-base));
@@ -48,9 +48,9 @@ a.is-link:not(.button) {
 /**
   * Basic Style
   */
-a.link:not(.button),
-a.is-link:not(.button),
-.content > a:any-link:not(.button) {
+a.ds-link:not(.ds-button),
+a.is-link:not(.ds-button),
+.ds-content > a:any-link:not(.ds-button) {
   @include font-smoothing();
 
   cursor: pointer;
