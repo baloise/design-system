@@ -31622,10 +31622,10 @@
       "props": [
         {
           "name": "color",
-          "type": "\"\" | \"danger\" | \"primary\" | \"success\" | \"warning\"",
+          "type": "\"danger\" | \"primary\" | \"success\" | \"warning\"",
           "complexType": {
             "original": "InputColor",
-            "resolved": "\"\" | \"danger\" | \"primary\" | \"success\" | \"warning\"",
+            "resolved": "\"danger\" | \"primary\" | \"success\" | \"warning\"",
             "references": {
               "InputColor": {
                 "location": "import",
@@ -31647,9 +31647,6 @@
           ],
           "default": "'primary'",
           "values": [
-            {
-              "type": "\"\""
-            },
             {
               "value": "danger",
               "type": "string"
