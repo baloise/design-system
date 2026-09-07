@@ -9,7 +9,7 @@ const meta: Meta<Args> = {
   argTypes: {},
   ...withRender(
     () => `
-<div class="container bg-purple-2 p-base">
+<div class="ds-container bg-purple-2 p-base">
   <p>Default container — constrained to <code>--ds-alias-container-width-default</code> on desktop.</p>
 </div>
     `,
@@ -32,7 +32,7 @@ Basic.storyName = '🌍 Default'
 export const Fluid = Story({
   ...withRender(
     () => `
-<div class="container is-fluid bg-purple-2 p-base">
+<div class="ds-container is-fluid bg-purple-2 p-base">
   <p>Fluid container — expands to <code>--ds-alias-container-width-fluid</code>.</p>
 </div>
     `,
@@ -43,7 +43,7 @@ Fluid.storyName = '🌍 Fluid'
 export const Compact = Story({
   ...withRender(
     () => `
-<div class="container is-compact bg-purple-2 p-base">
+<div class="ds-container is-compact bg-purple-2 p-base">
   <p>Compact container — constrained to <code>--ds-alias-container-width-compact</code>.</p>
 </div>
     `,

@@ -114,7 +114,7 @@ export class Content implements DsComponentInterface {
     return (
       <Host
         class={{
-          'stack-content': true,
+          'ds-stack-content': true,
           'as-row': direction === 'row',
           'as-col': direction === 'column',
           [`align-${alignValue}`]: align || alignment,

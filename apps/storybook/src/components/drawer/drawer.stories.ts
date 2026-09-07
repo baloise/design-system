@@ -47,7 +47,7 @@ export const RichContent = Story({
     ({ slot, ...args }) => `
 <ds-button onclick="document.getElementById('drawer-rich').present()">Open Drawer</ds-button>
 <ds-drawer id="drawer-rich" ${props(args)}>
-  <h3 class="title mb-base">Filter options</h3>
+  <h3 class="ds-title mb-base">Filter options</h3>
   <ds-checkbox-group vertical>
     <ds-checkbox>Category A</ds-checkbox>
     <ds-checkbox>Category B</ds-checkbox>

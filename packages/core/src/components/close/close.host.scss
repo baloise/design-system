@@ -30,7 +30,7 @@
 /**
   * Basic Component Styles
   * --------------------------------
-  * Shared with the `.close` CSS-ready class and any other selector via close.mixin.scss.
+  * Shared with the `.ds-close` CSS-ready class and any other selector via close.mixin.scss.
   */
 
 @include close-mx.style('button');

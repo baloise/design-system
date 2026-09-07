@@ -34,8 +34,8 @@ Basic.storyName = '🧩 Basic'
 
 export const BasicHtml = Story({
   ...withRender(
-    () => `<div class="stack-content">
-  <label class="label">The Content Component</label>
+    () => `<div class="ds-stack-content">
+  <label class="ds-label">The Content Component</label>
   <span>Content helps to align text nodes inside a section.</span>
 </div>`,
   ),
@@ -57,8 +57,8 @@ Alignment.storyName = '🧩 Alignment'
 
 export const AlignmentHtml = Story({
   ...withRender(
-    () => `<div class="stack-content align-center">
-  <label class="label">The Content Component</label>
+    () => `<div class="ds-stack-content align-center">
+  <label class="ds-label">The Content Component</label>
   <span>Content helps to align text nodes inside a section.</span>
 </div>`,
   ),
@@ -81,8 +81,8 @@ Layout.storyName = '🧩 Layout'
 
 export const LayoutHtml = Story({
   ...withRender(
-    () => `<div class="stack-content as-row has-space-base">
-  <label class="label">The Content Component</label>
+    () => `<div class="ds-stack-content as-row has-space-base">
+  <label class="ds-label">The Content Component</label>
   <span>Content helps to align text nodes inside a section.</span>
 </div>`,
   ),
@@ -116,20 +116,20 @@ Space.storyName = '🧩 Space'
 export const SpaceHtml = Story({
   ...withRender(
     () => `<div>
-  <div class="stack-content bg-red-2">
-    <label class="label bg-green-2">Default Space</label>
+  <div class="ds-stack-content bg-red-2">
+    <label class="ds-label bg-green-2">Default Space</label>
     <span class="bg-green-2">Content helps to align text nodes inside a section.</span>
   </div>
-  <div class="stack-content has-space-xs bg-red-2 mt-medium">
-    <label class="label bg-green-2">X Small Space</label>
+  <div class="ds-stack-content has-space-xs bg-red-2 mt-medium">
+    <label class="ds-label bg-green-2">X Small Space</label>
     <span class="bg-green-2">Content helps to align text nodes inside a section.</span>
   </div>
-  <div class="stack-content has-space-sm bg-red-2 mt-medium">
-    <label class="label bg-green-2">Small Space</label>
+  <div class="ds-stack-content has-space-sm bg-red-2 mt-medium">
+    <label class="ds-label bg-green-2">Small Space</label>
     <span class="bg-green-2">Content helps to align text nodes inside a section.</span>
   </div>
-  <div class="stack-content has-space-base bg-red-2 mt-medium">
-    <label class="label bg-green-2">Normal Space</label>
+  <div class="ds-stack-content has-space-base bg-red-2 mt-medium">
+    <label class="ds-label bg-green-2">Normal Space</label>
     <span class="bg-green-2">Content helps to align text nodes inside a section.</span>
   </div>
 </div>`,

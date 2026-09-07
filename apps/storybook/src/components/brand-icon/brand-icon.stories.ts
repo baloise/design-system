@@ -31,13 +31,13 @@ Basic.storyName = '🧩 Basic'
 export const States = Story({
   ...withRender(
     () =>
-      `<div class="stack">
-      <div class="stack as-row">
+      `<div class="ds-stack">
+      <div class="ds-stack as-row">
         <ds-brand-icon color="green" src="/assets/images/brand-icons/car-green.svg"></ds-brand-icon>
         <ds-brand-icon color="green" src="/assets/images/brand-icons/car-green.svg" invalid></ds-brand-icon>
         <ds-brand-icon color="green" src="/assets/images/brand-icons/car-green.svg" disabled></ds-brand-icon>
       </div>
-      <div class="stack as-row">
+      <div class="ds-stack as-row">
         <ds-brand-icon tile color="green" src="/assets/images/brand-icons/car-green.svg"></ds-brand-icon>
         <ds-brand-icon tile color="green" src="/assets/images/brand-icons/car-green.svg" invalid></ds-brand-icon>
         <ds-brand-icon tile color="green" src="/assets/images/brand-icons/car-green.svg" disabled></ds-brand-icon>
@@ -50,7 +50,7 @@ States.storyName = '🧩 States'
 export const Sizes = Story({
   ...withRender(
     () =>
-      `<div class="stack as-row">
+      `<div class="ds-stack as-row">
       <ds-brand-icon src="/assets/images/brand-icons/car-green.svg" size="sm"></ds-brand-icon>
       <ds-brand-icon src="/assets/images/brand-icons/car-green.svg"></ds-brand-icon>
       <ds-brand-icon src="/assets/images/brand-icons/car-green.svg" size="lg"></ds-brand-icon>
@@ -62,20 +62,20 @@ Sizes.storyName = '🧩 Sizes'
 export const Tile = Story({
   ...withRender(
     () =>
-      `<div class="stack">
-      <div class="stack as-row">
+      `<div class="ds-stack">
+      <div class="ds-stack as-row">
         <ds-brand-icon tile src="/assets/images/brand-icons/car-purple.svg" color="purple" size="sm"></ds-brand-icon>
         <ds-brand-icon tile src="/assets/images/brand-icons/car-green.svg" color="green" size="sm"></ds-brand-icon>
         <ds-brand-icon tile src="/assets/images/brand-icons/car-red.svg" color="red" size="sm"></ds-brand-icon>
         <ds-brand-icon tile src="/assets/images/brand-icons/car-tangerine.svg" color="yellow" size="sm"></ds-brand-icon>
       </div>
-      <div class="stack as-row">
+      <div class="ds-stack as-row">
         <ds-brand-icon tile src="/assets/images/brand-icons/car-purple.svg" color="purple"></ds-brand-icon>
         <ds-brand-icon tile src="/assets/images/brand-icons/car-green.svg" color="green"></ds-brand-icon>
         <ds-brand-icon tile src="/assets/images/brand-icons/car-red.svg" color="red"></ds-brand-icon>
         <ds-brand-icon tile src="/assets/images/brand-icons/car-tangerine.svg" color="yellow"></ds-brand-icon>
       </div>
-      <div class="stack as-row">
+      <div class="ds-stack as-row">
         <ds-brand-icon tile src="/assets/images/brand-icons/car-purple.svg" color="purple" size="lg"></ds-brand-icon>
         <ds-brand-icon tile src="/assets/images/brand-icons/car-green.svg" color="green" size="lg"></ds-brand-icon>
         <ds-brand-icon tile src="/assets/images/brand-icons/car-red.svg" color="red" size="lg"></ds-brand-icon>

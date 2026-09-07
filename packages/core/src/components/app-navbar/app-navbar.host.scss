@@ -509,7 +509,7 @@
   overflow-y: auto;
 
   ::slotted(a[slot='menu-start']),
-  ::slotted(.link[slot='menu-start']) {
+  ::slotted(.ds-link[slot='menu-start']) {
     position: relative;
     color: var(--_app-navbar-sidebar-item-color);
     --icon-color: var(--_app-navbar-sidebar-item-color);
@@ -569,7 +569,7 @@
     }
   }
 
-  ::slotted(.link[slot='menu-start'][aria-current='page']),
+  ::slotted(.ds-link[slot='menu-start'][aria-current='page']),
   ::slotted(a[slot='menu-start'][aria-current='page']) {
     background: var(--_app-navbar-sidebar-item-background-active);
     &::before {
@@ -577,7 +577,7 @@
     }
   }
 
-  ::slotted(.link[slot='menu-start']:hover),
+  ::slotted(.ds-link[slot='menu-start']:hover),
   ::slotted(a[slot='menu-start']:hover) {
     background: var(--_app-navbar-sidebar-item-background-hover);
     color: var(--_app-navbar-sidebar-item-color-hover);
@@ -590,7 +590,7 @@
     }
   }
 
-  ::slotted(.link[slot='menu-start']:active),
+  ::slotted(.ds-link[slot='menu-start']:active),
   ::slotted(a[slot='menu-start']:active) {
     background: var(--_app-navbar-sidebar-item-background-active);
     color: var(--_app-navbar-sidebar-item-color-active);
@@ -603,7 +603,7 @@
     }
   }
 
-  ::slotted(.link[slot='menu-start']:focus-visible:not(:active)),
+  ::slotted(.ds-link[slot='menu-start']:focus-visible:not(:active)),
   ::slotted(a[slot='menu-start']:focus-visible:not(:active)) {
     &::before {
       border-radius: var(--ds-alias-radius-base);
@@ -625,7 +625,7 @@
 
   ::slotted(ds-button[slot='menu-end']),
   ::slotted(button[slot='menu-end']),
-  ::slotted(button.button[slot='menu-end']) {
+  ::slotted(button.ds-button[slot='menu-end']) {
     width: 100%;
     --button-width: 100%;
     --button-min-width: 100%;
@@ -650,7 +650,7 @@
     justify-content: flex-start;
     align-items: center;
 
-    ::slotted(.link[slot='menu-start']),
+    ::slotted(.ds-link[slot='menu-start']),
     ::slotted(a[slot='menu-start']) {
       @include unselectable();
       position: relative;
@@ -693,7 +693,7 @@
       }
     }
 
-    ::slotted(.link[slot='menu-start']:hover),
+    ::slotted(.ds-link[slot='menu-start']:hover),
     ::slotted(a[slot='menu-start']:hover) {
       color: var(--_app-navbar-menu-item-color-hover);
       --icon-color: var(--_app-navbar-menu-item-color-hover);
@@ -702,7 +702,7 @@
       }
     }
 
-    ::slotted(.link[slot='menu-start']:active),
+    ::slotted(.ds-link[slot='menu-start']:active),
     ::slotted(a[slot='menu-start']:active) {
       color: var(--_app-navbar-menu-item-color-active);
       --icon-color: var(--_app-navbar-menu-item-color-active);
@@ -719,7 +719,7 @@
     transition-duration: var(--_app-navbar-menu-item-transition-duration);
     transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
 
-    ::slotted(.link[slot='menu-start']:focus-visible),
+    ::slotted(.ds-link[slot='menu-start']:focus-visible),
     ::slotted(a[slot='menu-start']:focus-visible) {
       box-shadow:
         var(--_app-navbar-focus-color-start) 0 0 0 2px,
@@ -735,7 +735,7 @@
 
     // Link app-navbar button component variables to button slots
     ::slotted(ds-button[slot='menu-end']),
-    ::slotted(.button[slot='menu-end']),
+    ::slotted(.ds-button[slot='menu-end']),
     ::slotted(button[slot='menu-end']) {
       --button-focus-shadow: var(--_app-navbar-focus-color-end);
       --button-color-text: var(--_app-navbar-button-color-text);
@@ -766,7 +766,7 @@
 
   // Link app-navbar button component variables to action buttons
   ::slotted(ds-button[slot='actions']),
-  ::slotted(.button[slot='actions']),
+  ::slotted(.ds-button[slot='actions']),
   ::slotted(button[slot='actions']) {
     --button-focus-shadow: var(--_app-navbar-focus-color-end);
     --button-color-text: var(--_app-navbar-button-color-text);

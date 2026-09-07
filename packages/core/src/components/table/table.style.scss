@@ -3,7 +3,7 @@
 
 $use-host: false !default;
 $name: table;
-$css-selector: ('.table');
+$css-selector: ('.ds-table');
 
 /**
  * Variables
@@ -34,7 +34,7 @@ $css-selector: ('.table');
   * Define here the component styles using the mixin to support host and non-host mode for hybrid components.
   */
 
-.table {
+.ds-table {
   @extend %bottomSpacing;
   display: table !important;
   border-spacing: 0;
@@ -77,7 +77,7 @@ $css-selector: ('.table');
         margin-right: 0px;
       }
     }
-    .buttons {
+    .ds-buttons {
       justify-content: flex-end;
       padding: 3px;
     }

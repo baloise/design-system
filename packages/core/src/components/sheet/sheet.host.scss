@@ -27,7 +27,7 @@
 
 // ─── Container ───────────────────────────────────────────────────────────────
 
-:host .container {
+:host .ds-container {
   margin: 0 var(--ds-device-container-space);
   max-width: var(--ds-alias-container-width-default);
 

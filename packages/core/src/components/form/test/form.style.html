@@ -11,106 +11,106 @@
     <script nomodule src="/build/design-system.js"></script>
   </head>
   <body>
-    <main class="container">
+    <main class="ds-container">
       <!-- Basic-->
       <section data-testid="basic">
         <span>Basic</span>
-        <div class="form">
-          <div class="form-col">
-            <fieldset class="field">
-              <legend class="label">Gender</legend>
-              <div class="radio-group">
-                <label class="radio">
+        <div class="ds-form">
+          <div class="ds-form-col">
+            <fieldset class="ds-field">
+              <legend class="ds-label">Gender</legend>
+              <div class="ds-radio-group">
+                <label class="ds-radio">
                   <input required type="radio" name="required" aria-describedby="help-gender" />
                   Male
                 </label>
-                <label class="radio">
+                <label class="ds-radio">
                   <input required type="radio" name="required" aria-describedby="help-gender" checked />
                   Female
                 </label>
               </div>
-              <p class="help" id="help-gender">Select your gender</p>
+              <p class="ds-help" id="help-gender">Select your gender</p>
             </fieldset>
           </div>
 
-          <div class="form-col tablet:is-6">
-            <div class="field">
-              <label class="label" for="fname">First Name</label>
-              <div class="control">
-                <input id="fname" class="input" aria-describedby="help-fname" value="Jane" />
+          <div class="ds-form-col tablet:is-6">
+            <div class="ds-field">
+              <label class="ds-label" for="fname">First Name</label>
+              <div class="ds-control">
+                <input id="fname" class="ds-input" aria-describedby="help-fname" value="Jane" />
               </div>
             </div>
           </div>
 
-          <div class="form-col tablet:is-6">
-            <div class="field">
-              <label class="label" for="lname">Last Name</label>
-              <div class="control">
-                <input id="lname" class="input" aria-describedby="help-lname" value="Doe" />
+          <div class="ds-form-col tablet:is-6">
+            <div class="ds-field">
+              <label class="ds-label" for="lname">Last Name</label>
+              <div class="ds-control">
+                <input id="lname" class="ds-input" aria-describedby="help-lname" value="Doe" />
               </div>
-              <p id="help-lname" class="help">Provide the last name</p>
+              <p id="help-lname" class="ds-help">Provide the last name</p>
             </div>
           </div>
 
-          <div class="form-col tablet:is-3">
-            <div class="field">
-              <label class="label" for="plz">PLZ</label>
-              <div class="control">
-                <input id="plz" class="input" aria-describedby="help-plz" placeholder="4000" />
+          <div class="ds-form-col tablet:is-3">
+            <div class="ds-field">
+              <label class="ds-label" for="plz">PLZ</label>
+              <div class="ds-control">
+                <input id="plz" class="ds-input" aria-describedby="help-plz" placeholder="4000" />
               </div>
-              <p id="help-plz" class="help">Provide the postal code</p>
+              <p id="help-plz" class="ds-help">Provide the postal code</p>
             </div>
           </div>
 
-          <div class="form-col tablet:is-9">
-            <div class="field">
-              <label class="label" for="city">City</label>
-              <div class="control">
-                <input id="city" class="input" aria-describedby="help-city" placeholder="Basel" />
+          <div class="ds-form-col tablet:is-9">
+            <div class="ds-field">
+              <label class="ds-label" for="city">City</label>
+              <div class="ds-control">
+                <input id="city" class="ds-input" aria-describedby="help-city" placeholder="Basel" />
               </div>
-              <p id="help-city" class="help">Provide the city</p>
+              <p id="help-city" class="ds-help">Provide the city</p>
             </div>
           </div>
 
-          <div class="form-col">
-            <div class="field">
-              <label class="label" for="country">Country</label>
-              <div class="control">
-                <select id="country" class="select" aria-describedby="help-country">
+          <div class="ds-form-col">
+            <div class="ds-field">
+              <label class="ds-label" for="country">Country</label>
+              <div class="ds-control">
+                <select id="country" class="ds-select" aria-describedby="help-country">
                   <option value="">-- Select a country --</option>
                   <option value="ch">Switzerland</option>
                   <option value="de">Germany</option>
                   <option value="at">Austria</option>
                 </select>
               </div>
-              <p id="help-country" class="help">Provide the country</p>
+              <p id="help-country" class="ds-help">Provide the country</p>
             </div>
           </div>
 
-          <div class="form-col">
-            <fieldset class="field">
-              <legend class="label">Languages</legend>
-              <div class="checkbox-group">
-                <label class="checkbox">
+          <div class="ds-form-col">
+            <fieldset class="ds-field">
+              <legend class="ds-label">Languages</legend>
+              <div class="ds-checkbox-group">
+                <label class="ds-checkbox">
                   <input required type="checkbox" aria-describedby="help-lang" checked value="1" name="lang" />
                   German
                 </label>
-                <label class="checkbox">
+                <label class="ds-checkbox">
                   <input required type="checkbox" aria-describedby="help-lang" value="2" name="lang" />
                   English
                 </label>
               </div>
-              <p class="help" id="help-lang">What language do you speak?</p>
+              <p class="ds-help" id="help-lang">What language do you speak?</p>
             </fieldset>
           </div>
 
-          <div class="form-col">
-            <div class="field">
-              <label class="label" for="comment">Comment</label>
-              <div class="control">
-                <textarea id="comment" class="textarea" aria-describedby="help-comment"></textarea>
+          <div class="ds-form-col">
+            <div class="ds-field">
+              <label class="ds-label" for="comment">Comment</label>
+              <div class="ds-control">
+                <textarea id="comment" class="ds-textarea" aria-describedby="help-comment"></textarea>
               </div>
-              <p id="help-comment" class="help">Add any additional comments</p>
+              <p id="help-comment" class="ds-help">Add any additional comments</p>
             </div>
           </div>
         </div>
@@ -119,12 +119,12 @@
       <!-- Disabled -->
       <section data-testid="disabled">
         <span>Disabled</span>
-        <div class="form">
-          <div class="form-col">
-            <fieldset class="field is-disabled">
-              <legend class="label">Gender</legend>
-              <div class="radio-group">
-                <label class="radio is-disabled">
+        <div class="ds-form">
+          <div class="ds-form-col">
+            <fieldset class="ds-field is-disabled">
+              <legend class="ds-label">Gender</legend>
+              <div class="ds-radio-group">
+                <label class="ds-radio is-disabled">
                   <input
                     disabled
                     required
@@ -134,7 +134,7 @@
                   />
                   Male
                 </label>
-                <label class="radio is-disabled">
+                <label class="ds-radio is-disabled">
                   <input
                     disabled
                     required
@@ -146,82 +146,82 @@
                   Female
                 </label>
               </div>
-              <p class="help" id="help-gender-disabled">Select your gender</p>
+              <p class="ds-help" id="help-gender-disabled">Select your gender</p>
             </fieldset>
           </div>
 
-          <div class="form-col tablet:is-6">
-            <div class="field is-disabled">
-              <label class="label" for="fname-disabled">First Name</label>
-              <div class="control">
-                <input disabled id="fname-disabled" class="input" aria-describedby="help-fname-disabled" value="Jane" />
+          <div class="ds-form-col tablet:is-6">
+            <div class="ds-field is-disabled">
+              <label class="ds-label" for="fname-disabled">First Name</label>
+              <div class="ds-control">
+                <input disabled id="fname-disabled" class="ds-input" aria-describedby="help-fname-disabled" value="Jane" />
               </div>
-              <p id="help-fname-disabled" class="help">Provide the first name</p>
+              <p id="help-fname-disabled" class="ds-help">Provide the first name</p>
             </div>
           </div>
 
-          <div class="form-col tablet:is-6">
-            <div class="field is-disabled">
-              <label class="label" for="lname-disabled">Last Name</label>
-              <div class="control">
-                <input disabled id="lname-disabled" class="input" aria-describedby="help-lname-disabled" value="Doe" />
+          <div class="ds-form-col tablet:is-6">
+            <div class="ds-field is-disabled">
+              <label class="ds-label" for="lname-disabled">Last Name</label>
+              <div class="ds-control">
+                <input disabled id="lname-disabled" class="ds-input" aria-describedby="help-lname-disabled" value="Doe" />
               </div>
-              <p id="help-lname-disabled" class="help">Provide the last name</p>
+              <p id="help-lname-disabled" class="ds-help">Provide the last name</p>
             </div>
           </div>
 
-          <div class="form-col tablet:is-3">
-            <div class="field is-disabled">
-              <label class="label" for="plz-disabled">PLZ</label>
-              <div class="control">
+          <div class="ds-form-col tablet:is-3">
+            <div class="ds-field is-disabled">
+              <label class="ds-label" for="plz-disabled">PLZ</label>
+              <div class="ds-control">
                 <input
                   disabled
                   id="plz-disabled"
-                  class="input"
+                  class="ds-input"
                   aria-describedby="help-plz-disabled"
                   placeholder="4000"
                 />
               </div>
-              <p id="help-plz-disabled" class="help">Provide the postal code</p>
+              <p id="help-plz-disabled" class="ds-help">Provide the postal code</p>
             </div>
           </div>
 
-          <div class="form-col tablet:is-9">
-            <div class="field is-disabled">
-              <label class="label" for="city-disabled">City</label>
-              <div class="control">
+          <div class="ds-form-col tablet:is-9">
+            <div class="ds-field is-disabled">
+              <label class="ds-label" for="city-disabled">City</label>
+              <div class="ds-control">
                 <input
                   disabled
                   id="city-disabled"
-                  class="input"
+                  class="ds-input"
                   aria-describedby="help-city-disabled"
                   placeholder="Basel"
                 />
               </div>
-              <p id="help-city-disabled" class="help">Provide the city</p>
+              <p id="help-city-disabled" class="ds-help">Provide the city</p>
             </div>
           </div>
 
-          <div class="form-col">
-            <div class="field is-disabled">
-              <label class="label" for="country-disabled">Country</label>
-              <div class="control">
-                <select disabled id="country-disabled" class="select" aria-describedby="help-country-disabled">
+          <div class="ds-form-col">
+            <div class="ds-field is-disabled">
+              <label class="ds-label" for="country-disabled">Country</label>
+              <div class="ds-control">
+                <select disabled id="country-disabled" class="ds-select" aria-describedby="help-country-disabled">
                   <option value="">-- Select a country --</option>
                   <option value="ch">Switzerland</option>
                   <option value="de">Germany</option>
                   <option value="at">Austria</option>
                 </select>
               </div>
-              <p id="help-country-disabled" class="help">Provide the country</p>
+              <p id="help-country-disabled" class="ds-help">Provide the country</p>
             </div>
           </div>
 
-          <div class="form-col">
-            <fieldset class="field is-disabled">
-              <legend class="label">Languages</legend>
-              <div class="checkbox-group">
-                <label class="checkbox is-disabled">
+          <div class="ds-form-col">
+            <fieldset class="ds-field is-disabled">
+              <legend class="ds-label">Languages</legend>
+              <div class="ds-checkbox-group">
+                <label class="ds-checkbox is-disabled">
                   <input
                     disabled
                     required
@@ -233,7 +233,7 @@
                   />
                   German
                 </label>
-                <label class="checkbox is-disabled">
+                <label class="ds-checkbox is-disabled">
                   <input
                     disabled
                     required
@@ -245,22 +245,22 @@
                   English
                 </label>
               </div>
-              <p class="help" id="help-lang-disabled">What language do you speak?</p>
+              <p class="ds-help" id="help-lang-disabled">What language do you speak?</p>
             </fieldset>
           </div>
 
-          <div class="form-col">
-            <div class="field is-disabled">
-              <label class="label" for="comment-disabled">Comment</label>
-              <div class="control">
+          <div class="ds-form-col">
+            <div class="ds-field is-disabled">
+              <label class="ds-label" for="comment-disabled">Comment</label>
+              <div class="ds-control">
                 <textarea
                   disabled
                   id="comment-disabled"
-                  class="textarea"
+                  class="ds-textarea"
                   aria-describedby="help-comment-disabled"
                 ></textarea>
               </div>
-              <p id="help-comment-disabled" class="help">Add any additional comments</p>
+              <p id="help-comment-disabled" class="ds-help">Add any additional comments</p>
             </div>
           </div>
         </div>
@@ -269,12 +269,12 @@
       <!-- Invalid -->
       <section data-testid="invalid">
         <span>Invalid</span>
-        <div class="form">
-          <div class="form-col">
-            <fieldset class="field is-invalid">
-              <legend class="label">Gender</legend>
-              <div class="radio-group">
-                <label class="radio is-invalid">
+        <div class="ds-form">
+          <div class="ds-form-col">
+            <fieldset class="ds-field is-invalid">
+              <legend class="ds-label">Gender</legend>
+              <div class="ds-radio-group">
+                <label class="ds-radio is-invalid">
                   <input
                     aria-invalid="true"
                     required
@@ -284,7 +284,7 @@
                   />
                   Male
                 </label>
-                <label class="radio is-invalid">
+                <label class="ds-radio is-invalid">
                   <input
                     aria-invalid="true"
                     required
@@ -296,94 +296,94 @@
                   Female
                 </label>
               </div>
-              <p class="help" id="help-gender-invalid">Select your gender</p>
+              <p class="ds-help" id="help-gender-invalid">Select your gender</p>
             </fieldset>
           </div>
 
-          <div class="form-col tablet:is-6">
-            <div class="field is-invalid">
-              <label class="label" for="fname-invalid">First Name</label>
-              <div class="control">
+          <div class="ds-form-col tablet:is-6">
+            <div class="ds-field is-invalid">
+              <label class="ds-label" for="fname-invalid">First Name</label>
+              <div class="ds-control">
                 <input
                   aria-invalid="true"
                   id="fname-invalid"
-                  class="input"
+                  class="ds-input"
                   aria-describedby="help-fname-invalid"
                   value="Jane"
                 />
               </div>
-              <p id="help-fname-invalid" class="help">Provide the first name</p>
+              <p id="help-fname-invalid" class="ds-help">Provide the first name</p>
             </div>
           </div>
 
-          <div class="form-col tablet:is-6">
-            <div class="field is-invalid">
-              <label class="label" for="lname-invalid">Last Name</label>
-              <div class="control">
+          <div class="ds-form-col tablet:is-6">
+            <div class="ds-field is-invalid">
+              <label class="ds-label" for="lname-invalid">Last Name</label>
+              <div class="ds-control">
                 <input
                   aria-invalid="true"
                   id="lname-invalid"
-                  class="input"
+                  class="ds-input"
                   aria-describedby="help-lname-invalid"
                   value="Doe"
                 />
               </div>
-              <p id="help-lname-invalid" class="help">Provide the last name</p>
+              <p id="help-lname-invalid" class="ds-help">Provide the last name</p>
             </div>
           </div>
 
-          <div class="form-col tablet:is-3">
-            <div class="field is-invalid">
-              <label class="label" for="plz-invalid">PLZ</label>
-              <div class="control">
+          <div class="ds-form-col tablet:is-3">
+            <div class="ds-field is-invalid">
+              <label class="ds-label" for="plz-invalid">PLZ</label>
+              <div class="ds-control">
                 <input
                   aria-invalid="true"
                   id="plz-invalid"
-                  class="input"
+                  class="ds-input"
                   aria-describedby="help-plz-invalid"
                   placeholder="4000"
                 />
               </div>
-              <p id="help-plz-invalid" class="help">Provide the postal code</p>
+              <p id="help-plz-invalid" class="ds-help">Provide the postal code</p>
             </div>
           </div>
 
-          <div class="form-col tablet:is-9">
-            <div class="field is-invalid">
-              <label class="label" for="city-invalid">City</label>
-              <div class="control">
+          <div class="ds-form-col tablet:is-9">
+            <div class="ds-field is-invalid">
+              <label class="ds-label" for="city-invalid">City</label>
+              <div class="ds-control">
                 <input
                   aria-invalid="true"
                   id="city-invalid"
-                  class="input"
+                  class="ds-input"
                   aria-describedby="help-city-invalid"
                   placeholder="Basel"
                 />
               </div>
-              <p id="help-city-invalid" class="help">Provide the city</p>
+              <p id="help-city-invalid" class="ds-help">Provide the city</p>
             </div>
           </div>
 
-          <div class="form-col">
-            <div class="field is-invalid">
-              <label class="label" for="country-invalid">Country</label>
-              <div class="control">
-                <select aria-invalid="true" id="country-invalid" class="select" aria-describedby="help-country-invalid">
+          <div class="ds-form-col">
+            <div class="ds-field is-invalid">
+              <label class="ds-label" for="country-invalid">Country</label>
+              <div class="ds-control">
+                <select aria-invalid="true" id="country-invalid" class="ds-select" aria-describedby="help-country-invalid">
                   <option value="">-- Select a country --</option>
                   <option value="ch">Switzerland</option>
                   <option value="de">Germany</option>
                   <option value="at">Austria</option>
                 </select>
               </div>
-              <p id="help-country-invalid" class="help">Provide the country</p>
+              <p id="help-country-invalid" class="ds-help">Provide the country</p>
             </div>
           </div>
 
-          <div class="form-col">
-            <fieldset class="field is-invalid">
-              <legend class="label">Languages</legend>
-              <div class="checkbox-group">
-                <label class="checkbox is-invalid">
+          <div class="ds-form-col">
+            <fieldset class="ds-field is-invalid">
+              <legend class="ds-label">Languages</legend>
+              <div class="ds-checkbox-group">
+                <label class="ds-checkbox is-invalid">
                   <input
                     aria-invalid="true"
                     required
@@ -395,7 +395,7 @@
                   />
                   German
                 </label>
-                <label class="checkbox is-invalid">
+                <label class="ds-checkbox is-invalid">
                   <input
                     aria-invalid="true"
                     required
@@ -407,22 +407,22 @@
                   English
                 </label>
               </div>
-              <p class="help" id="help-lang-invalid">What language do you speak?</p>
+              <p class="ds-help" id="help-lang-invalid">What language do you speak?</p>
             </fieldset>
           </div>
 
-          <div class="form-col">
-            <div class="field is-invalid">
-              <label class="label" for="comment-invalid">Comment</label>
-              <div class="control">
+          <div class="ds-form-col">
+            <div class="ds-field is-invalid">
+              <label class="ds-label" for="comment-invalid">Comment</label>
+              <div class="ds-control">
                 <textarea
                   aria-invalid="true"
                   id="comment-invalid"
-                  class="textarea"
+                  class="ds-textarea"
                   aria-describedby="help-comment-invalid"
                 ></textarea>
               </div>
-              <p id="help-comment-invalid" class="help">Add any additional comments</p>
+              <p id="help-comment-invalid" class="ds-help">Add any additional comments</p>
             </div>
           </div>
         </div>
@@ -431,118 +431,118 @@
       <!-- Numeric Sizes: Full Grid -->
       <section data-testid="numeric-sizes">
         <span>Numeric Sizes (is-1 to is-12)</span>
-        <div class="form">
-          <div class="form-col is-1 s-bg-1 p-sm text-align-center">1</div>
-          <div class="form-col is-1 s-bg-2 p-sm text-align-center">1</div>
-          <div class="form-col is-1 s-bg-3 p-sm text-align-center">1</div>
-          <div class="form-col is-1 s-bg-1 p-sm text-align-center">1</div>
-          <div class="form-col is-1 s-bg-2 p-sm text-align-center">1</div>
-          <div class="form-col is-1 s-bg-3 p-sm text-align-center">1</div>
-          <div class="form-col is-1 s-bg-1 p-sm text-align-center">1</div>
-          <div class="form-col is-1 s-bg-2 p-sm text-align-center">1</div>
-          <div class="form-col is-1 s-bg-3 p-sm text-align-center">1</div>
-          <div class="form-col is-1 s-bg-1 p-sm text-align-center">1</div>
-          <div class="form-col is-1 s-bg-2 p-sm text-align-center">1</div>
-          <div class="form-col is-1 s-bg-3 p-sm text-align-center">1</div>
+        <div class="ds-form">
+          <div class="ds-form-col is-1 s-bg-1 p-sm text-align-center">1</div>
+          <div class="ds-form-col is-1 s-bg-2 p-sm text-align-center">1</div>
+          <div class="ds-form-col is-1 s-bg-3 p-sm text-align-center">1</div>
+          <div class="ds-form-col is-1 s-bg-1 p-sm text-align-center">1</div>
+          <div class="ds-form-col is-1 s-bg-2 p-sm text-align-center">1</div>
+          <div class="ds-form-col is-1 s-bg-3 p-sm text-align-center">1</div>
+          <div class="ds-form-col is-1 s-bg-1 p-sm text-align-center">1</div>
+          <div class="ds-form-col is-1 s-bg-2 p-sm text-align-center">1</div>
+          <div class="ds-form-col is-1 s-bg-3 p-sm text-align-center">1</div>
+          <div class="ds-form-col is-1 s-bg-1 p-sm text-align-center">1</div>
+          <div class="ds-form-col is-1 s-bg-2 p-sm text-align-center">1</div>
+          <div class="ds-form-col is-1 s-bg-3 p-sm text-align-center">1</div>
         </div>
       </section>
 
       <!-- Numeric Sizes: Various Widths -->
       <section data-testid="numeric-mixed">
         <span>Numeric Mixed (is-12, is-6, is-4, is-2)</span>
-        <div class="form">
-          <div class="form-col is-12 s-bg-1 p-sm text-align-center">12</div>
+        <div class="ds-form">
+          <div class="ds-form-col is-12 s-bg-1 p-sm text-align-center">12</div>
         </div>
-        <div class="form">
-          <div class="form-col is-6 s-bg-2 p-sm text-align-center">6</div>
-          <div class="form-col is-6 s-bg-3 p-sm text-align-center">6</div>
+        <div class="ds-form">
+          <div class="ds-form-col is-6 s-bg-2 p-sm text-align-center">6</div>
+          <div class="ds-form-col is-6 s-bg-3 p-sm text-align-center">6</div>
         </div>
-        <div class="form">
-          <div class="form-col is-4 s-bg-1 p-sm text-align-center">4</div>
-          <div class="form-col is-4 s-bg-2 p-sm text-align-center">4</div>
-          <div class="form-col is-4 s-bg-3 p-sm text-align-center">4</div>
+        <div class="ds-form">
+          <div class="ds-form-col is-4 s-bg-1 p-sm text-align-center">4</div>
+          <div class="ds-form-col is-4 s-bg-2 p-sm text-align-center">4</div>
+          <div class="ds-form-col is-4 s-bg-3 p-sm text-align-center">4</div>
         </div>
-        <div class="form">
-          <div class="form-col is-2 s-bg-1 p-sm text-align-center">2</div>
-          <div class="form-col is-2 s-bg-2 p-sm text-align-center">2</div>
-          <div class="form-col is-2 s-bg-3 p-sm text-align-center">2</div>
-          <div class="form-col is-2 s-bg-1 p-sm text-align-center">2</div>
-          <div class="form-col is-2 s-bg-2 p-sm text-align-center">2</div>
-          <div class="form-col is-2 s-bg-3 p-sm text-align-center">2</div>
+        <div class="ds-form">
+          <div class="ds-form-col is-2 s-bg-1 p-sm text-align-center">2</div>
+          <div class="ds-form-col is-2 s-bg-2 p-sm text-align-center">2</div>
+          <div class="ds-form-col is-2 s-bg-3 p-sm text-align-center">2</div>
+          <div class="ds-form-col is-2 s-bg-1 p-sm text-align-center">2</div>
+          <div class="ds-form-col is-2 s-bg-2 p-sm text-align-center">2</div>
+          <div class="ds-form-col is-2 s-bg-3 p-sm text-align-center">2</div>
         </div>
       </section>
 
       <!-- Semantic Sizes -->
       <section data-testid="semantic-sizes">
         <span>Semantic Sizes</span>
-        <div class="form">
-          <div class="form-col is-full s-bg-1 p-sm text-align-center">full</div>
+        <div class="ds-form">
+          <div class="ds-form-col is-full s-bg-1 p-sm text-align-center">full</div>
         </div>
-        <div class="form">
-          <div class="form-col is-half s-bg-2 p-sm text-align-center">half</div>
-          <div class="form-col is-half s-bg-3 p-sm text-align-center">half</div>
+        <div class="ds-form">
+          <div class="ds-form-col is-half s-bg-2 p-sm text-align-center">half</div>
+          <div class="ds-form-col is-half s-bg-3 p-sm text-align-center">half</div>
         </div>
-        <div class="form">
-          <div class="form-col is-one-third s-bg-1 p-sm text-align-center">one-third</div>
-          <div class="form-col is-two-thirds s-bg-2 p-sm text-align-center">two-thirds</div>
+        <div class="ds-form">
+          <div class="ds-form-col is-one-third s-bg-1 p-sm text-align-center">one-third</div>
+          <div class="ds-form-col is-two-thirds s-bg-2 p-sm text-align-center">two-thirds</div>
         </div>
-        <div class="form">
-          <div class="form-col is-one-quarter s-bg-3 p-sm text-align-center">one-quarter</div>
-          <div class="form-col is-three-quarters s-bg-1 p-sm text-align-center">three-quarters</div>
+        <div class="ds-form">
+          <div class="ds-form-col is-one-quarter s-bg-3 p-sm text-align-center">one-quarter</div>
+          <div class="ds-form-col is-three-quarters s-bg-1 p-sm text-align-center">three-quarters</div>
         </div>
       </section>
 
       <!-- Responsive: Full Width Mobile, Half Width Desktop -->
       <section data-testid="responsive-half">
         <span>Responsive (Full width on mobile, Half width on desktop)</span>
-        <div class="form">
-          <div class="form-col desktop:is-6 s-bg-1 p-sm text-align-center">full / half</div>
-          <div class="form-col desktop:is-6 s-bg-2 p-sm text-align-center">full / half</div>
+        <div class="ds-form">
+          <div class="ds-form-col desktop:is-6 s-bg-1 p-sm text-align-center">full / half</div>
+          <div class="ds-form-col desktop:is-6 s-bg-2 p-sm text-align-center">full / half</div>
         </div>
       </section>
 
       <!-- Responsive: Full Width Mobile, Third Width Desktop -->
       <section data-testid="responsive-thirds">
         <span>Responsive (Full width on mobile, One-third on desktop)</span>
-        <div class="form">
-          <div class="form-col desktop:is-4 s-bg-1 p-sm text-align-center">full / one-third</div>
-          <div class="form-col desktop:is-4 s-bg-2 p-sm text-align-center">full / one-third</div>
-          <div class="form-col desktop:is-4 s-bg-3 p-sm text-align-center">full / one-third</div>
+        <div class="ds-form">
+          <div class="ds-form-col desktop:is-4 s-bg-1 p-sm text-align-center">full / one-third</div>
+          <div class="ds-form-col desktop:is-4 s-bg-2 p-sm text-align-center">full / one-third</div>
+          <div class="ds-form-col desktop:is-4 s-bg-3 p-sm text-align-center">full / one-third</div>
         </div>
       </section>
 
       <!-- Responsive: Tablet and Desktop -->
       <section data-testid="responsive-multi-breakpoint">
         <span>Responsive (Full mobile, Half tablet, Quarter desktop)</span>
-        <div class="form">
-          <div class="form-col tablet:is-6 desktop:is-3 s-bg-1 p-sm text-align-center">full / half / quarter</div>
-          <div class="form-col tablet:is-6 desktop:is-3 s-bg-2 p-sm text-align-center">full / half / quarter</div>
-          <div class="form-col tablet:is-6 desktop:is-3 s-bg-3 p-sm text-align-center">full / half / quarter</div>
-          <div class="form-col tablet:is-6 desktop:is-3 s-bg-1 p-sm text-align-center">full / half / quarter</div>
+        <div class="ds-form">
+          <div class="ds-form-col tablet:is-6 desktop:is-3 s-bg-1 p-sm text-align-center">full / half / quarter</div>
+          <div class="ds-form-col tablet:is-6 desktop:is-3 s-bg-2 p-sm text-align-center">full / half / quarter</div>
+          <div class="ds-form-col tablet:is-6 desktop:is-3 s-bg-3 p-sm text-align-center">full / half / quarter</div>
+          <div class="ds-form-col tablet:is-6 desktop:is-3 s-bg-1 p-sm text-align-center">full / half / quarter</div>
         </div>
       </section>
 
       <!-- Semantic Responsive -->
       <section data-testid="semantic-responsive">
         <span>Semantic Responsive (Full mobile, Half desktop)</span>
-        <div class="form">
-          <div class="form-col desktop:is-half s-bg-2 p-sm text-align-center">full / half</div>
-          <div class="form-col desktop:is-half s-bg-3 p-sm text-align-center">full / half</div>
+        <div class="ds-form">
+          <div class="ds-form-col desktop:is-half s-bg-2 p-sm text-align-center">full / half</div>
+          <div class="ds-form-col desktop:is-half s-bg-3 p-sm text-align-center">full / half</div>
         </div>
       </section>
 
       <!-- Complex Layout -->
       <section data-testid="complex-layout">
         <span>Complex Layout (Full mobile, Half tablet, Various desktop)</span>
-        <div class="form">
-          <div class="form-col tablet:is-6 desktop:is-8 s-bg-1 p-sm text-align-center">full / half / various</div>
-          <div class="form-col tablet:is-6 desktop:is-4 s-bg-2 p-sm text-align-center">full / half / various</div>
+        <div class="ds-form">
+          <div class="ds-form-col tablet:is-6 desktop:is-8 s-bg-1 p-sm text-align-center">full / half / various</div>
+          <div class="ds-form-col tablet:is-6 desktop:is-4 s-bg-2 p-sm text-align-center">full / half / various</div>
         </div>
-        <div class="form mt-lg">
-          <div class="form-col tablet:is-3 desktop:is-3 s-bg-3 p-sm text-align-center">full / half / various</div>
-          <div class="form-col tablet:is-3 desktop:is-3 s-bg-1 p-sm text-align-center">full / half / various</div>
-          <div class="form-col tablet:is-3 desktop:is-3 s-bg-2 p-sm text-align-center">full / half / various</div>
-          <div class="form-col tablet:is-3 desktop:is-3 s-bg-3 p-sm text-align-center">full / half / various</div>
+        <div class="ds-form mt-lg">
+          <div class="ds-form-col tablet:is-3 desktop:is-3 s-bg-3 p-sm text-align-center">full / half / various</div>
+          <div class="ds-form-col tablet:is-3 desktop:is-3 s-bg-1 p-sm text-align-center">full / half / various</div>
+          <div class="ds-form-col tablet:is-3 desktop:is-3 s-bg-2 p-sm text-align-center">full / half / various</div>
+          <div class="ds-form-col tablet:is-3 desktop:is-3 s-bg-3 p-sm text-align-center">full / half / various</div>
         </div>
       </section>
     </main>

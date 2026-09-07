@@ -1,13 +1,13 @@
 @use '../../vars' as vars;
 @use './close.mixin' as close-mx;
 
-// CSS-ready alternative to the `<ds-close>` custom element — apply the `.close` class to a native `<button>` element.
+// CSS-ready alternative to the `<ds-close>` custom element — apply the `.ds-close` class to a native `<button>` element.
 
-.close {
+.ds-close {
   @include vars.base(close);
 }
 
-@include close-mx.style('.close');
+@include close-mx.style('.ds-close');
 
 /**
   * Variants and States
@@ -17,19 +17,19 @@
 
 //
 // Size Variants
-.close.is-sm {
+.ds-close.is-sm {
   --mod-close-p: var(--ds-close-padding-sm);
   --mod-close-size-icon: var(--ds-close-size-sm);
 }
 
-.close.is-md {
+.ds-close.is-md {
   --mod-close-p: var(--ds-close-padding-md);
   --mod-close-size-icon: var(--ds-close-size-md);
 }
 
 //
 // Inverted Variants
-.close.is-inverted:not(.is-disabled) {
+.ds-close.is-inverted:not(.is-disabled) {
   --mod-close-color-icon: var(--ds-close-inverted-color-icon-base);
   --mod-close-color-background-hover: var(--ds-close-inverted-color-background-hover);
   --mod-close-color-background-active: var(--ds-close-inverted-color-background-active);
@@ -38,7 +38,7 @@
 
 //
 // Disabled Variants
-.close.is-disabled:not(.is-inverted) {
+.ds-close.is-disabled:not(.is-inverted) {
   --mod-close-color-icon: var(--ds-close-primary-color-icon-disabled);
   --mod-close-color-background: var(--ds-close-primary-color-background-disabled);
   --mod-close-color-background-hover: var(--ds-close-primary-color-background-disabled);
@@ -46,7 +46,7 @@
   --mod-close-color-focus: var(--ds-alias-interaction-focus-color-base);
 }
 
-.close.is-inverted.is-disabled {
+.ds-close.is-inverted.is-disabled {
   --mod-close-color-icon: var(--ds-close-inverted-color-icon-disabled);
   --mod-close-color-background: var(--ds-close-inverted-color-background-disabled);
   --mod-close-color-background-hover: var(--ds-close-inverted-color-background-disabled);

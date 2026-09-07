@@ -66,7 +66,7 @@
 
 // ─── Close button ────────────────────────────────────────────────────────────
 
-:host .container ds-close {
+:host .ds-container ds-close {
   position: absolute;
   top: 1rem;
   right: 1rem;
@@ -74,7 +74,7 @@
 
 // ─── Container ───────────────────────────────────────────────────────────────
 
-:host .container {
+:host .ds-container {
   flex: 1;
   width: 100%;
   margin: 0 auto;

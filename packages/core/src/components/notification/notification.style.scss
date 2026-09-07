@@ -5,7 +5,7 @@
 
 $name: notification;
 $use-host: false !default;
-$css-selector: ('.notification');
+$css-selector: ('.ds-notification');
 $host-selector: ('#notification');
 
 /**
@@ -87,7 +87,7 @@ $host-selector: ('#notification');
   // Close
   // --------------------------------
   ds-close,
-  .close {
+  .ds-close {
     position: var(--_notification-close-position);
     top: var(--_notification-close-top);
     right: var(--_notification-close-right);
@@ -105,7 +105,7 @@ $host-selector: ('#notification');
     margin: 0 !important;
   }
 
-  &:has(.close) > h2::before,
+  &:has(.ds-close) > h2::before,
   &:has(ds-close) > h2::before {
     content: '';
     float: right;

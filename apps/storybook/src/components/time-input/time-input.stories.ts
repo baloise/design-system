@@ -17,18 +17,18 @@ const meta: Meta<Args> = {
   ...withRender(
     ({ label, description, disabled, invalid }) => `
       <div class="field${disabled ? ' is-disabled' : ''}${invalid ? ' is-danger' : ''}">
-        <label class="label" for="time-input-1">${label}</label>
-        <div class="control">
+        <label class="ds-label" for="time-input-1">${label}</label>
+        <div class="ds-control">
           <input
             type="time"
             id="time-input-1"
-            class="time-input"
+            class="ds-time-input"
             ${disabled ? 'disabled' : ''}
             ${invalid ? 'aria-invalid="true"' : ''}
             aria-describedby="time-input-help"
           />
         </div>
-        <p id="time-input-help" class="help">${description}</p>
+        <p id="time-input-help" class="ds-help">${description}</p>
       </div>
     `,
   ),

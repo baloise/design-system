@@ -7,7 +7,7 @@
 
 $use-host: false !default;
 $name: card;
-$css-selector: ('.card');
+$css-selector: ('.ds-card');
 $host-selector: ('#card');
 
 /**
@@ -64,17 +64,17 @@ $host-selector: ('#card');
   text-decoration: none;
 
   // Header
-  .card-header {
+  .ds-card-header {
     @include card-header.style();
   }
 
   // Content
-  .card-content {
+  .ds-card-content {
     @include typography.content();
   }
 
   // Actions as button group
-  .card-actions {
+  .ds-card-actions {
     @include button-group.style();
   }
 
@@ -115,10 +115,10 @@ $host-selector: ('#card');
   &.is-fullheight {
     height: 100%;
 
-    .card-content,
-    .card-content > .stack,
-    .card-content > .flex,
-    .card-content > .is-flex {
+    .ds-card-content,
+    .ds-card-content > .ds-stack,
+    .ds-card-content > .flex,
+    .ds-card-content > .is-flex {
       height: 100%;
     }
   }
@@ -141,7 +141,7 @@ $host-selector: ('#card');
 // Badge Positioning
 // --------------------------------
 @include hybrid.styles($css-selector, $use-host) {
-  > .badge:first-child,
+  > .ds-badge:first-child,
   > ds-badge:first-child {
     --badge-position: absolute;
     --badge-top: 0;
@@ -166,7 +166,7 @@ $host-selector: ('#card');
 // Tags Positioning
 // --------------------------------
 @include hybrid.styles($css-selector, $use-host) {
-  > .tag.is-center:first-child,
+  > .ds-tag.is-center:first-child,
   > ds-tag[position='center']:first-child {
     --tag-position: absolute;
     --tag-top: 0;
@@ -175,7 +175,7 @@ $host-selector: ('#card');
     transform: translateY(-50%);
   }
 
-  > .tag.is-left:first-child,
+  > .ds-tag.is-left:first-child,
   > ds-tag[position='left']:first-child {
     --tag-position: absolute;
     --tag-top: 0;
@@ -184,7 +184,7 @@ $host-selector: ('#card');
     transform: translateY(-50%);
   }
 
-  > .tag.is-right:first-child,
+  > .ds-tag.is-right:first-child,
   > ds-tag[position='right']:first-child {
     --tag-position: absolute;
     --tag-top: 0;
@@ -361,8 +361,8 @@ $spaces: ('sm', 'lg');
 // Image Teaser
 // --------------------------------
 
-@include hybrid.styles('.image-teaser ', $use-host) {
-  .card {
+@include hybrid.styles('.ds-image-teaser ', $use-host) {
+  .ds-card {
     margin-top: calc(var(--_card-gap) * -1 * 2);
     margin-left: calc(var(--_card-gap));
     margin-right: calc(var(--_card-gap));
@@ -371,21 +371,21 @@ $spaces: ('sm', 'lg');
 
   &.is-wide {
     @include tablet() {
-      .card {
+      .ds-card {
         width: 75%;
         margin-left: calc(var(--_card-gap) * 2);
         margin-right: calc(var(--_card-gap));
       }
 
       &.is-center {
-        .card {
+        .ds-card {
           margin-left: auto;
           margin-right: auto;
         }
       }
 
       &.is-right {
-        .card {
+        .ds-card {
           margin-left: auto;
           margin-right: calc(var(--_card-gap) * 2);
         }
@@ -393,7 +393,7 @@ $spaces: ('sm', 'lg');
     }
 
     @include desktop() {
-      .card {
+      .ds-card {
         width: 50%;
       }
     }
@@ -437,8 +437,8 @@ $spaces: ('sm', 'lg');
   }
 }
 
-a.image-link,
-button.image-link {
+a.ds-image-link,
+button.ds-image-link {
   cursor: pointer;
 
   picture {

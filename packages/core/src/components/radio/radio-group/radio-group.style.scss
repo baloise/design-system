@@ -6,5 +6,5 @@
   * Define here the component styles using the mixin to support host and non-host mode for hybrid components.
   */
 
-@include group.style('.radio-group');
-@include group.vertical('.radio-group');
+@include group.style('.ds-radio-group');
+@include group.vertical('.ds-radio-group');

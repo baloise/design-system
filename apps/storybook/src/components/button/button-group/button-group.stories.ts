@@ -32,8 +32,8 @@ export const BasicHtml = Story({
   ...withRender(
     ({ slot, ...args }) => `
   <div ${cssClasses({}, args, 'buttons')}>
-    <button class="button is-primary">Primary</button>
-    <button class="button is-secondary">Secondary</button>
+    <button class="ds-button is-primary">Primary</button>
+    <button class="ds-button is-secondary">Secondary</button>
   </div>
   `,
   ),

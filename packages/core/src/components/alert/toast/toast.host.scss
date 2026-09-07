@@ -145,7 +145,7 @@
   // Action Button
   // --------------------------------
   ds-button,
-  .button {
+  .ds-button {
     --button-mt: 0;
     grid-area: action;
     align-self: center;
@@ -154,7 +154,7 @@
   //
   // Close Button
   // --------------------------------
-  .close,
+  .ds-close,
   ds-close {
     grid-area: close;
     align-self: center;

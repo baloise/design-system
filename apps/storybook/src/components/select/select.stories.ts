@@ -44,17 +44,17 @@ Basic.storyName = '🧩 Basic'
 export const BasicHtml = Story({
   ...withRender(
     ({ ...args }) => `
-      <div class="field">
-        <label class="label" for="select-basic-html">${args.label}</label>
-        <div class="control">
-          <select class="select" id="select-basic-html" aria-describedby="select-basic-html-help">
+      <div class="ds-field">
+        <label class="ds-label" for="select-basic-html">${args.label}</label>
+        <div class="ds-control">
+          <select class="ds-select" id="select-basic-html" aria-describedby="select-basic-html-help">
             <option value="">-- Choose an option --</option>
             <option value="opt1">Option 1</option>
             <option value="opt2">Option 2</option>
             <option value="opt3">Option 3</option>
           </select>
         </div>
-        <span class="help" id="select-basic-html-help">${args.description}</span>
+        <span class="ds-help" id="select-basic-html-help">${args.description}</span>
       </div>
     `,
   ),

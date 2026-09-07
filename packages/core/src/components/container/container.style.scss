@@ -20,7 +20,7 @@ body {
   @include vars.local(container-py, 0);
 }
 
-.container {
+.ds-container {
   @include vars.local(container-max-width, var(--ds-alias-container-width-default));
 
   flex-grow: 1;

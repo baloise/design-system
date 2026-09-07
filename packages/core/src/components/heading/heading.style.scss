@@ -5,14 +5,14 @@
 
 $use-host: false !default;
 $name: heading;
-$css-selector: ('.heading', '.title', '.subtitle');
+$css-selector: ('.ds-heading', '.ds-title', '.ds-subtitle');
 $host-selector: ('#heading');
 
-// Only the root `.heading` element declares the css variables, so nested
-// `.title`/`.subtitle` spans inherit the computed values from their parent
+// Only the root `.ds-heading` element declares the css variables, so nested
+// `.ds-title`/`.ds-subtitle` spans inherit the computed values from their parent
 // heading instead of resetting them back to the defaults on themselves.
-$vars-selector: ('.heading', '.title', '.subtitle');
-$nested-vars-selector: ('.title', '.subtitle');
+$vars-selector: ('.ds-heading', '.ds-title', '.ds-subtitle');
+$nested-vars-selector: ('.ds-title', '.ds-subtitle');
 
 /**
  * Variables
@@ -57,8 +57,8 @@ $nested-vars-selector: ('.title', '.subtitle');
   text-align: var(--_heading-text-align);
   text-shadow: var(--_heading-shadow);
 
-  em:not(.text),
-  span:not(.text) {
+  em:not(.ds-text),
+  span:not(.ds-text) {
     font-weight: inherit;
   }
 
@@ -206,14 +206,14 @@ $size-aliases: (
 
 @include hybrid.styles-only($use-host) {
   @for $i from 1 through 5 {
-    h#{$i}.title,
-    h#{$i} .title,
-    h#{$i}.heading,
-    h#{$i} .heading,
-    [role='heading'][aria-level='#{$i}'].title,
-    [role='heading'][aria-level='#{$i}'] .title,
-    [role='heading'][aria-level='#{$i}'].heading,
-    [role='heading'][aria-level='#{$i}'] .heading {
+    h#{$i}.ds-title,
+    h#{$i} .ds-title,
+    h#{$i}.ds-heading,
+    h#{$i} .ds-heading,
+    [role='heading'][aria-level='#{$i}'].ds-title,
+    [role='heading'][aria-level='#{$i}'] .ds-title,
+    [role='heading'][aria-level='#{$i}'].ds-heading,
+    [role='heading'][aria-level='#{$i}'] .ds-heading {
       &:not(.is-subtitle) {
         @include size($i);
       }
@@ -224,10 +224,10 @@ $size-aliases: (
   }
 
   @for $i from 1 through 5 {
-    h#{$i}.subtitle,
-    h#{$i} .subtitle,
-    [role='heading'][aria-level='#{$i}'].subtitle,
-    [role='heading'][aria-level='#{$i}'] .subtitle {
+    h#{$i}.ds-subtitle,
+    h#{$i} .ds-subtitle,
+    [role='heading'][aria-level='#{$i}'].ds-subtitle,
+    [role='heading'][aria-level='#{$i}'] .ds-subtitle {
       @include size('light' + $i);
     }
   }

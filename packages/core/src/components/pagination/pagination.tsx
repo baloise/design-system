@@ -269,7 +269,7 @@ export class Pagination implements DsComponentInterface, DsBreakpointObserver {
         <button
           part="page"
           class={{
-            'button': true,
+            'ds-button': true,
             'is-square': true,
             'is-primary': isActive,
             'is-ghost': !isActive,
@@ -329,7 +329,7 @@ export class Pagination implements DsComponentInterface, DsBreakpointObserver {
               aria-label={leftControlTitle}
               title={leftControlTitle}
               class={{
-                'button': true,
+                'ds-button': true,
                 'is-square': true,
                 'is-disabled': this.value < 2,
                 [buttonColor]: !(this.value < 2),
@@ -348,7 +348,7 @@ export class Pagination implements DsComponentInterface, DsBreakpointObserver {
               aria-label={rightControlTitle}
               title={rightControlTitle}
               class={{
-                'button': true,
+                'ds-button': true,
                 'is-square': true,
                 'is-disabled': this.value === this.totalPages,
                 [buttonColor]: true,

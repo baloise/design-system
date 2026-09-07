@@ -43,7 +43,7 @@ const Story = StoryFactory<Args>(meta)
 export const Basic = Story({
   ...withRender(
     ({ ...args }) => `
-<div class="stack as-col">
+<div class="ds-stack as-col">
   <span>Before</span>
   <ds-divider ${props(args)}></ds-divider>
   <span>After</span>
@@ -59,7 +59,7 @@ BasicHtml.storyName = '🌍 Basic'
 export const Dashed = Story({
   ...withRender(
     () => `
-<div class="stack as-col">
+<div class="ds-stack as-col">
   <span>Before</span>
   <ds-divider dashed></ds-divider>
   <span>After</span>
@@ -78,7 +78,7 @@ DashedHtml.storyName = '🌍 Dashed'
 export const Vertical = Story({
   ...withRender(
     () => `
-<div class="stack as-row">
+<div class="ds-stack as-row">
   <span>Before</span>
   <ds-divider layout="vertical"></ds-divider>
   <span>After</span>

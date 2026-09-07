@@ -135,9 +135,9 @@ export const BrandIcons = Story({
 <ds-tabs fullwidth value="b">
   <ds-tab name="a">
     <ds-icon svg='${BrandIconHouseholdGreen}' size="lg" color="auto"></ds-icon>
-    <span class="stack gap-none">
+    <span class="ds-stack gap-none">
       <span>Tab A</span>
-      <span class="text text-sm">Subtitle</span>
+      <span class="ds-text text-sm">Subtitle</span>
     </span>
   </ds-tab>
   <ds-tab name="b">

@@ -33,7 +33,7 @@ Basic.storyName = '🧩 Basic'
 export const BasicHtml = Story({
   ...withRender(
     ({ slot }) => `
-<label class="checkbox">
+<label class="ds-checkbox">
   <input type="checkbox" />
   ${slot}
 </label>`,
@@ -53,11 +53,11 @@ Disabled.storyName = '🧩 Disabled'
 export const DisabledHtml = Story({
   ...withRender(
     () => `
-<label class="checkbox is-disabled">
+<label class="ds-checkbox is-disabled">
   <input type="checkbox" disabled />
   Unchecked
 </label>
-<label class="checkbox is-disabled">
+<label class="ds-checkbox is-disabled">
   <input type="checkbox" checked disabled />
   Checked
 </label>`,
@@ -77,11 +77,11 @@ Invalid.storyName = '🧩 Invalid'
 export const InvalidHtml = Story({
   ...withRender(
     () => `
-<label class="checkbox is-invalid">
+<label class="ds-checkbox is-invalid">
   <input type="checkbox" aria-invalid="true" />
   Unchecked
 </label>
-<label class="checkbox is-invalid">
+<label class="ds-checkbox is-invalid">
   <input type="checkbox" checked aria-invalid="true" />
   Checked
 </label>`,
@@ -103,19 +103,19 @@ Field.storyName = '🧩 Field'
 export const FieldHtml = Story({
   ...withRender(
     () => `
-<fieldset class="field">
-  <legend class="label">Label</legend>
-  <div class="checkbox-group">
-    <label class="checkbox">
+<fieldset class="ds-field">
+  <legend class="ds-label">Label</legend>
+  <div class="ds-checkbox-group">
+    <label class="ds-checkbox">
       <input type="checkbox" aria-describedby="cb-help" value="1" name="field" />
       Checkbox 1
     </label>
-    <label class="checkbox">
+    <label class="ds-checkbox">
       <input type="checkbox" aria-describedby="cb-help" value="2" name="field" />
       Checkbox 2
     </label>
   </div>
-  <p class="help" id="cb-help">This username is available</p>
+  <p class="ds-help" id="cb-help">This username is available</p>
 </fieldset>`,
   ),
 })
@@ -136,23 +136,23 @@ FieldVertical.storyName = '🧩 Field Vertical'
 export const FieldVerticalHtml = Story({
   ...withRender(
     () => `
-<fieldset class="field">
-  <legend class="label">Label</legend>
-  <div class="checkbox-group is-vertical">
-    <label class="checkbox">
+<fieldset class="ds-field">
+  <legend class="ds-label">Label</legend>
+  <div class="ds-checkbox-group is-vertical">
+    <label class="ds-checkbox">
       <input type="checkbox" name="heroes" value="steve-rogers" />
       Steve Rogers
     </label>
-    <label class="checkbox">
+    <label class="ds-checkbox">
       <input type="checkbox" name="heroes" value="tony-stark" />
       Tony Stark
     </label>
-    <label class="checkbox">
+    <label class="ds-checkbox">
       <input type="checkbox" name="heroes" value="black-widow" />
       Black Widow
     </label>
   </div>
-  <p class="help">Choose all that apply</p>
+  <p class="ds-help">Choose all that apply</p>
 </fieldset>`,
   ),
 })
@@ -179,21 +179,21 @@ export const FormHtml = Story({
   ...withRender(
     () => `
 <form>
-  <label class="checkbox">
+  <label class="ds-checkbox">
     <input type="checkbox" name="heroes" value="steve-rogers" />
     Steve Rogers
   </label>
-  <label class="checkbox">
+  <label class="ds-checkbox">
     <input type="checkbox" name="heroes" value="tony-stark" checked />
     Tony Stark
   </label>
-  <label class="checkbox">
+  <label class="ds-checkbox">
     <input type="checkbox" name="heroes" value="black-widow" />
     Black Widow
   </label>
   <br /><br />
-  <button type="submit" class="button is-primary">Submit</button>
-  <button type="reset" class="button is-link">Reset</button>
+  <button type="submit" class="ds-button is-primary">Submit</button>
+  <button type="reset" class="ds-button is-link">Reset</button>
 </form>`,
   ),
 })

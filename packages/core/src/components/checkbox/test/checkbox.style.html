@@ -9,15 +9,15 @@
   </head>
 
   <body>
-    <main class="container">
+    <main class="ds-container">
       <!-- Basic -->
       <section data-testid="basic">
         <span>Basic</span>
-        <label class="checkbox">
+        <label class="ds-checkbox">
           <input type="checkbox" />
           Unchecked
         </label>
-        <label class="checkbox">
+        <label class="ds-checkbox">
           <input type="checkbox" checked />
           Checked
         </label>
@@ -26,10 +26,10 @@
       <!-- No label -->
       <section data-testid="no-label">
         <span>No Label</span>
-        <label class="checkbox">
+        <label class="ds-checkbox">
           <input type="checkbox" />
         </label>
-        <label class="checkbox">
+        <label class="ds-checkbox">
           <input type="checkbox" checked />
         </label>
       </section>
@@ -37,11 +37,11 @@
       <!-- Disabled -->
       <section data-testid="disabled">
         <span>Disabled</span>
-        <label class="checkbox is-disabled">
+        <label class="ds-checkbox is-disabled">
           <input type="checkbox" disabled />
           Unchecked
         </label>
-        <label class="checkbox is-disabled">
+        <label class="ds-checkbox is-disabled">
           <input type="checkbox" checked disabled />
           Checked
         </label>
@@ -50,11 +50,11 @@
       <!-- Invalid -->
       <section data-testid="invalid">
         <span>Invalid</span>
-        <label class="checkbox is-invalid">
+        <label class="ds-checkbox is-invalid">
           <input type="checkbox" />
           Unchecked
         </label>
-        <label class="checkbox is-invalid">
+        <label class="ds-checkbox is-invalid">
           <input type="checkbox" checked />
           Checked
         </label>
@@ -63,11 +63,11 @@
       <!-- Invalid + Disabled -->
       <section data-testid="invalid-disabled">
         <span>Invalid + Disabled</span>
-        <label class="checkbox is-invalid is-disabled">
+        <label class="ds-checkbox is-invalid is-disabled">
           <input type="checkbox" disabled />
           Unchecked
         </label>
-        <label class="checkbox is-invalid is-disabled">
+        <label class="ds-checkbox is-invalid is-disabled">
           <input type="checkbox" checked disabled />
           Checked
         </label>
@@ -76,38 +76,38 @@
       <!-- Field -->
       <section data-testid="field">
         <span>Field</span>
-        <fieldset class="field">
-          <legend class="label">Label</legend>
-          <div class="checkbox-group">
-            <label class="checkbox">
+        <fieldset class="ds-field">
+          <legend class="ds-label">Label</legend>
+          <div class="ds-checkbox-group">
+            <label class="ds-checkbox">
               <input required type="checkbox" aria-describedby="help" value="1" name="field" />
               Checkbox 1
             </label>
-            <label class="checkbox">
+            <label class="ds-checkbox">
               <input required type="checkbox" aria-describedby="help" value="2" name="field" />
               Checkbox 2
             </label>
           </div>
-          <p class="help" id="help">This username is available</p>
+          <p class="ds-help" id="help">This username is available</p>
         </fieldset>
       </section>
 
       <!-- Field Vertical -->
       <section data-testid="field-vertical">
         <span>Field Vertical</span>
-        <fieldset class="field">
-          <legend class="label">Label</legend>
-          <div class="checkbox-group is-vertical">
-            <label class="checkbox">
+        <fieldset class="ds-field">
+          <legend class="ds-label">Label</legend>
+          <div class="ds-checkbox-group is-vertical">
+            <label class="ds-checkbox">
               <input required type="checkbox" name="field-vertical" value="1" aria-describedby="help-2" />
               Checkbox 1
             </label>
-            <label class="checkbox">
+            <label class="ds-checkbox">
               <input required type="checkbox" name="field-vertical" value="2" aria-describedby="help-2" />
               Checkbox 2
             </label>
           </div>
-          <p class="help" id="help-2">This username is available</p>
+          <p class="ds-help" id="help-2">This username is available</p>
         </fieldset>
       </section>
 
@@ -115,7 +115,7 @@
       <section data-testid="form">
         <span>Form</span>
         <form action="https://www.w3schools.com/action_page.php" target="_blank">
-          <label class="checkbox">
+          <label class="ds-checkbox">
             <input type="checkbox" name="terms" value="accepted" />
             Accept terms and conditions
           </label>
@@ -128,38 +128,38 @@
       <!-- Field Disabled -->
       <section data-testid="field-disabled">
         <span>Field Disabled</span>
-        <fieldset class="field is-disabled">
-          <legend class="label">Label</legend>
-          <div class="checkbox-group">
-            <label class="checkbox is-disabled">
+        <fieldset class="ds-field is-disabled">
+          <legend class="ds-label">Label</legend>
+          <div class="ds-checkbox-group">
+            <label class="ds-checkbox is-disabled">
               <input type="checkbox" name="field-disabled" disabled aria-describedby="help" />
               Checkbox 1
             </label>
-            <label class="checkbox is-disabled">
+            <label class="ds-checkbox is-disabled">
               <input type="checkbox" name="field-disabled" disabled aria-describedby="help" />
               Checkbox 2
             </label>
           </div>
-          <p class="help" id="help">This username is available</p>
+          <p class="ds-help" id="help">This username is available</p>
         </fieldset>
       </section>
 
       <!-- Field Invalid -->
       <section data-testid="field-invalid">
         <span>Field Invalid</span>
-        <fieldset class="field is-invalid">
-          <legend class="label">Label</legend>
-          <div class="checkbox-group">
-            <label class="checkbox is-invalid">
+        <fieldset class="ds-field is-invalid">
+          <legend class="ds-label">Label</legend>
+          <div class="ds-checkbox-group">
+            <label class="ds-checkbox is-invalid">
               <input type="checkbox" name="field-invalid" aria-invalid="true" aria-describedby="help" />
               Checkbox 1
             </label>
-            <label class="checkbox is-invalid">
+            <label class="ds-checkbox is-invalid">
               <input type="checkbox" name="field-invalid" aria-invalid="true" aria-describedby="help" />
               Checkbox 2
             </label>
           </div>
-          <p class="help" id="help">This username is available</p>
+          <p class="ds-help" id="help">This username is available</p>
         </fieldset>
       </section>
     </main>

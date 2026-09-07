@@ -34,12 +34,12 @@ Basic.storyName = '🧩 Basic'
 export const BasicHtml = Story({
   ...withRender(
     ({ label, description, ...args }) => `
-<div class="field">
-  <label class="label" for="textarea-basic">${label}</label>
-  <div class="control">
-    <textarea id="textarea-basic" class="textarea" aria-describedby="help-basic" ${props(args)}></textarea>
+<div class="ds-field">
+  <label class="ds-label" for="textarea-basic">${label}</label>
+  <div class="ds-control">
+    <textarea id="textarea-basic" class="ds-textarea" aria-describedby="help-basic" ${props(args)}></textarea>
   </div>
-  <p id="help-basic" class="help">${description}</p>
+  <p id="help-basic" class="ds-help">${description}</p>
 </div>
 `,
   ),

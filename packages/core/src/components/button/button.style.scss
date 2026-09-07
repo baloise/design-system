@@ -7,7 +7,7 @@
 
 $use-host: false !default;
 $name: button;
-$css-selector: ('.button');
+$css-selector: ('.ds-button');
 $host-selector: ('#button');
 
 /**
@@ -227,7 +227,7 @@ $host-selector: ('#button');
 
 @include hybrid.host($use-host) {
   :host ::slotted(ds-badge),
-  :host ::slotted(.badge) {
+  :host ::slotted(.ds-badge) {
     --badge-position: absolute;
     --badge-top: -0.5rem;
     --badge-right: -0.5rem;
@@ -235,7 +235,7 @@ $host-selector: ('#button');
 }
 
 @include hybrid.styles($css-selector, $use-host) {
-  .badge,
+  .ds-badge,
   ds-badge {
     --badge-position: absolute;
     --badge-top: -0.5rem;
@@ -290,7 +290,7 @@ $colors: (
     }
   }
 
-  @include hybrid.styles('.button', $use-host) {
+  @include hybrid.styles('.ds-button', $use-host) {
     &.is-#{$color}:not(.is-inverted):not(.is-disabled):not(.is-loading) {
       @include color($color);
     }
@@ -305,7 +305,7 @@ $colors: (
       }
     }
 
-    @include hybrid.styles('.button', $use-host) {
+    @include hybrid.styles('.ds-button', $use-host) {
       &.is-#{$color}.is-inverted:not(.is-disabled):not(.is-loading) {
         @include color(inverted);
       }
@@ -326,7 +326,7 @@ $inverted-colors: ('secondary', 'tertiary', 'ghost', 'text', 'link');
     }
   }
 
-  @include hybrid.styles('.button', $use-host) {
+  @include hybrid.styles('.ds-button', $use-host) {
     &.is-#{$color}.is-inverted:not(.is-disabled):not(.is-loading) {
       @include color('inverted-#{$color}');
     }
@@ -342,7 +342,7 @@ $inverted-colors: ('secondary', 'tertiary', 'ghost', 'text', 'link');
   }
 }
 
-@include hybrid.styles('.button', $use-host) {
+@include hybrid.styles('.ds-button', $use-host) {
   &.is-inverted:not(.is-disabled):not(.is-loading) {
     --mod-button-focus-shadow: var(--ds-alias-interaction-focus-color-inverted);
   }
@@ -369,7 +369,7 @@ $inverted-colors: ('secondary', 'tertiary', 'ghost', 'text', 'link');
   }
 }
 
-@include hybrid.styles('.button', $use-host) {
+@include hybrid.styles('.ds-button', $use-host) {
   &.is-sm,
   &.is-small {
     @include size-sm();
@@ -394,7 +394,7 @@ $inverted-colors: ('secondary', 'tertiary', 'ghost', 'text', 'link');
   }
 }
 
-@include hybrid.styles('.button', $use-host) {
+@include hybrid.styles('.ds-button', $use-host) {
   &.is-lg,
   &.is-large {
     @include size-lg();
@@ -417,7 +417,7 @@ $inverted-colors: ('secondary', 'tertiary', 'ghost', 'text', 'link');
   }
 }
 
-@include hybrid.styles('.button', $use-host) {
+@include hybrid.styles('.ds-button', $use-host) {
   &.is-flat {
     @include shape-flat();
   }
@@ -443,7 +443,7 @@ $inverted-colors: ('secondary', 'tertiary', 'ghost', 'text', 'link');
   }
 }
 
-@include hybrid.styles('.button', $use-host) {
+@include hybrid.styles('.ds-button', $use-host) {
   &.is-square:not(.is-sm),
   &.is-square:not(.is-small) {
     @include shape-square();
@@ -471,7 +471,7 @@ $inverted-colors: ('secondary', 'tertiary', 'ghost', 'text', 'link');
   }
 }
 
-@include hybrid.styles('.button', $use-host) {
+@include hybrid.styles('.ds-button', $use-host) {
   &.has-shadow:not(.is-link, .is-ghost) {
     --mod-button-box-shadow: var(--ds-alias-shadow-box-base);
   }
@@ -499,7 +499,7 @@ $inverted-colors: ('secondary', 'tertiary', 'ghost', 'text', 'link');
   }
 }
 
-@include hybrid.styles('.button', $use-host) {
+@include hybrid.styles('.ds-button', $use-host) {
   &.has-no-wrap {
     display: inline-block;
     text-overflow: ellipsis;
@@ -580,11 +580,11 @@ $inverted-colors: ('secondary', 'tertiary', 'ghost', 'text', 'link');
 }
 
 @include hybrid.styles-only($use-host) {
-  fieldset[disabled] .button,
-  .button.is-loading,
-  .button.is-disabled,
-  .button.is-inverted.is-disabled,
-  .button[disabled] {
+  fieldset[disabled] .ds-button,
+  .ds-button.is-loading,
+  .ds-button.is-disabled,
+  .ds-button.is-inverted.is-disabled,
+  .ds-button[disabled] {
     @include button-disabled();
   }
 }
@@ -593,7 +593,7 @@ $inverted-colors: ('secondary', 'tertiary', 'ghost', 'text', 'link');
 // Button Group
 // --------------------------------
 @include hybrid.styles-only($use-host) {
-  .buttons {
+  .ds-buttons {
     @include button-group.style();
   }
 }

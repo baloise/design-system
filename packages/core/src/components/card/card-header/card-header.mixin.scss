@@ -42,8 +42,8 @@
     grid-area: icon;
   }
 
-  & > .tag,
-  & > .tags,
+  & > .ds-tag,
+  & > .ds-tags,
   & > ds-tag,
   & > ds-tag-group,
   ::slotted(ds-tag),
@@ -52,21 +52,21 @@
     margin-bottom: 1rem;
   }
 
-  .title,
-  .heading,
+  .ds-title,
+  .ds-heading,
   ds-card-title {
     @include title.style();
   }
 
   & > p,
-  .subtitle,
+  .ds-subtitle,
   ds-card-subtitle {
     @include subtitle.style();
   }
 
-  .title,
-  .subtitle,
-  .heading {
+  .ds-title,
+  .ds-subtitle,
+  .ds-heading {
     margin: 0;
   }
 }
