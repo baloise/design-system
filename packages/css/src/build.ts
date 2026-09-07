@@ -4,6 +4,7 @@
  * Run with: node --import tsx/esm src/build.ts
  */
 import autoprefixer from 'autoprefixer'
+import cssnano from 'cssnano'
 import { glob } from 'glob'
 import { cpSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs'
 import { dirname, resolve } from 'node:path'
@@ -42,10 +43,28 @@ const sassLoadPaths = [
 ]
 
 const processor = postcss([autoprefixer])
+const minifier = postcss([cssnano({ preset: 'default' })])
 
 async function autoprefix(css: string): Promise<string> {
   const result = await processor.process(css, { from: undefined })
   return result.css
+}
+
+async function minify(css: string): Promise<string> {
+  const result = await minifier.process(css, { from: undefined })
+  return result.css
+}
+
+// Writes `<outPath>` and its minified `<outPath minus .css>.min.css` sibling.
+// `content` already carries its own `/*! ... */` banner, which cssnano preserves — no need to add another.
+async function writeCssWithMinified(outPath: string, content: string): Promise<void> {
+  writeFileSync(outPath, content)
+  const minPath = outPath.replace(/\.css$/, '.min.css')
+  const minified = await minify(content)
+  writeFileSync(minPath, minified)
+  const label = outPath.split('/packages/css/')[1] ?? outPath
+  const minLabel = minPath.split('/packages/css/')[1] ?? minPath
+  console.log(`\x1b[32m✔\x1b[0m ${label} written (${content.length} bytes) → ${minLabel} (${minified.length} bytes)`)
 }
 
 // --- Clean dist ---------------------------------------------------------------
@@ -193,9 +212,7 @@ const output = tokensCss ? `${tokensCss}\n${prefixedUtilities}` : prefixedUtilit
 
 const outDir = resolve(__dirname, '../dist/css')
 mkdirSync(outDir, { recursive: true })
-writeFileSync(resolve(outDir, 'utilities.css'), banner('Utilities') + output)
-
-console.log(`\x1b[32m✔\x1b[0m dist/css/utilities.css written (${output.length} bytes)`)
+await writeCssWithMinified(resolve(outDir, 'utilities.css'), banner('Utilities') + output)
 
 // --- Resolve token values into metadata ------------------------------------
 function buildTokenValueMap(obj: unknown, map: Record<string, string> = {}): Record<string, string> {
@@ -238,9 +255,7 @@ async function compileSass(entry: string, outPath: string, description: string):
   })
   const prefixed = await autoprefix(result.css)
   const content = banner(description) + prefixed
-  writeFileSync(outPath, content)
-  const label = outPath.split('/packages/css/')[1] ?? outPath
-  console.log(`\x1b[32m✔\x1b[0m ${label} written (${content.length} bytes)`)
+  await writeCssWithMinified(outPath, content)
 }
 
 const scssOutDir = resolve(__dirname, '../dist/scss')
@@ -282,10 +297,8 @@ const componentResult = await compileStringAsync(barrelContent, {
 })
 const prefixedComponentCss = await autoprefix(componentResult.css)
 const componentCssWithBanner = banner('Components') + prefixedComponentCss
-writeFileSync(resolve(outDir, 'components.css'), componentCssWithBanner)
-console.log(
-  `\x1b[32m✔ \x1b[0m dist/css/components.css written (${componentCssWithBanner.length} bytes, ${styleFiles.length} components)`,
-)
+await writeCssWithMinified(resolve(outDir, 'components.css'), componentCssWithBanner)
+console.log(`\x1b[32m✔\x1b[0m dist/css/components.css covers ${styleFiles.length} components`)
 
 // --- Write dist/scss/utilities.scss (pre-compiled, no SCSS source) ----------
 // UnoCSS output is plain CSS; expose via a forwarding stub for Sass consumers.
@@ -298,8 +311,7 @@ const baseCss = readFileSync(resolve(outDir, 'base.css'), 'utf8')
 const componentCssContent = readFileSync(resolve(outDir, 'components.css'), 'utf8')
 const allCss =
   banner('Full Bundle (Base + Components + Utilities)') + baseCss + '\n' + componentCssContent + '\n' + output
-writeFileSync(resolve(outDir, 'design-system.css'), allCss)
-console.log(`\x1b[32m✔\x1b[0m dist/css/design-system.css written (${allCss.length} bytes)`)
+await writeCssWithMinified(resolve(outDir, 'design-system.css'), allCss)
 
 // --- Build design-system.local.css (fonts with dev path + base + component + utilities)
 await compileSass(
@@ -315,9 +327,7 @@ const allLocalCss =
   componentCssContent +
   '\n' +
   output
-writeFileSync(resolve(outDir, 'design-system.local.css'), allLocalCss)
-writeFileSync(resolve(outDir, 'design-system.local.min.css'), allLocalCss)
-console.log(`\x1b[32m✔\x1b[0m dist/css/design-system.local.css written (${allLocalCss.length} bytes)`)
+await writeCssWithMinified(resolve(outDir, 'design-system.local.css'), allLocalCss)
 
 // --- Write dist/scss/design-system.scss (Sass entry that pulls base + component) ------
 const allScss = `@use './base';\n// component styles are compiled from packages/core — use components.css directly\n// utilities are UnoCSS-generated — use utilities.css directly\n`
