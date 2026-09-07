@@ -1,7 +1,3 @@
-export const SEGMENT_COLORS = ['', 'purple', 'green', 'yellow', 'red'] as const
-
-export type SegmentColor = (typeof SEGMENT_COLORS)[number]
-
 export interface SegmentItemCustomEvent<T> extends CustomEvent<T> {
   detail: T
   target: HTMLDsSegmentItemElement

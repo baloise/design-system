@@ -1,6 +1,6 @@
 import { Component, Element, h, Host, Prop } from '@stencil/core'
 import { HTMLStencilElement } from '@stencil/core/internal'
-import { Logger, type LogInstance, normalizeDeprecatedTShirtSize, hasValue, OneOf } from '@utils'
+import { Logger, type LogInstance, hasValue, OneOf } from '@utils'
 import { DsComponentInterface } from '@global'
 import { STACK_ALIGNMENTS, STACK_LAYOUTS, StackAlignment, StackDirection, StackLayout } from '../stack/stack.interfaces'
 import {
@@ -91,8 +91,6 @@ export class Content implements DsComponentInterface {
     const alignment = hasValue(this.alignment)
     const align = hasValue(this.align)
 
-    const space = normalizeDeprecatedTShirtSize(this.space) || ''
-
     let alignValue = this.align?.split(' ').join('-')
     if (this.alignment) {
       alignValue = this.alignment.split(' ').join('-')
@@ -119,7 +117,7 @@ export class Content implements DsComponentInterface {
           'as-col': direction === 'column',
           [`align-${alignValue}`]: align || alignment,
           [`text-${this.textAlign}`]: hasValue(this.textAlign),
-          [`has-space-${space}`]: hasValue(this.space),
+          [`has-space-${this.space}`]: hasValue(this.space),
         }}
       >
         <slot></slot>

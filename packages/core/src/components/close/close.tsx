@@ -1,5 +1,5 @@
 import { Element, Component, Host, Method, Prop, State, h } from '@stencil/core'
-import { normalizeDeprecatedTShirtSize, Logger, type LogInstance, hasValue, OneOf, Type } from '@utils'
+import { Logger, type LogInstance, hasValue, OneOf, Type } from '@utils'
 import {
   DsComponentInterface,
   DsConfigObserver,
@@ -107,7 +107,6 @@ export class Close implements DsComponentInterface, DsConfigObserver {
 
   render() {
     const label = i18nDsClose[this.language].close
-    const size = normalizeDeprecatedTShirtSize(this.size) || ''
 
     if (this.button) {
       return (
@@ -129,7 +128,7 @@ export class Close implements DsComponentInterface, DsConfigObserver {
     return (
       <Host
         class={{
-          [`is-${size}`]: hasValue(this.size),
+          [`is-${this.size}`]: hasValue(this.size),
           'is-inverted': this.inverted,
           'is-disabled': this.disabled,
         }}
