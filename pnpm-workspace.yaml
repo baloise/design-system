@@ -12,21 +12,21 @@ linkWorkspacePackages: true
 catalog:
   '@axe-core/playwright': 4.13.0
   '@stencil/core': 4.44.2
-  '@storybook/addon-docs': 10.5.10
-  '@storybook/addon-links': 10.5.10
-  '@storybook/html-vite': 10.5.10
-  '@typescript-eslint/utils': 8.68.0
+  '@storybook/addon-docs': 10.6.0
+  '@storybook/addon-links': 10.6.0
+  '@storybook/html-vite': 10.6.0
+  '@typescript-eslint/utils': 8.69.0
   compression: 1.8.1
   eslint: 10.9.1
   express: 5.2.1
   fast-deep-equal: 3.1.3
   fs-extra: 11.4.0
   lodash: 4.18.1
-  sass: 1.103.1
+  sass: 1.104.0
   serve-index: 1.9.2
   storybook: 10.5.2
   tslib: 2.8.1
-  tsx: 4.23.12
+  tsx: 4.23.13
   typescript: 5.6.3
   vite: 8.2.2
   vitest: 4.1.11
