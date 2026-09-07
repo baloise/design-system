@@ -263,7 +263,6 @@ $select-icon-arrow: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/20
     border: none;
     box-shadow: none;
     font-family: var(--_select-content-family);
-    z-index: var(--ds-alias-z-index-popup);
   }
 
   .ss-content {
@@ -276,6 +275,7 @@ $select-icon-arrow: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/20
     top: 100%;
     left: 0;
     width: 100%;
+    z-index: var(--ds-alias-z-index-popup);
 
     min-height: 0;
     max-height: 300px;
