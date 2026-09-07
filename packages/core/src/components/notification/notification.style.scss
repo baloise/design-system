@@ -264,7 +264,7 @@ $colors: (
 // Sizes
 // --------------------------------
 
-$sizes: ('sm', 'md');
+$sizes: ('sm');
 
 @mixin notification-sizes($size) {
   --mod-notification-p: var(--ds-card-padding-#{$size});

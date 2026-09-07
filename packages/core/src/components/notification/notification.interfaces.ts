@@ -1,4 +1,4 @@
-export const NOTIFICATION_SIZES = ['sm', 'md'] as const
+export const NOTIFICATION_SIZES = ['sm'] as const
 export const NOTIFICATION_COLORS = [
   'default',
   'info',

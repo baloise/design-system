@@ -4378,10 +4378,6 @@
           "$type": "dimension",
           "$value": "{📱 Device.↔️ Space.MD}"
         },
-        "MD": {
-          "$type": "dimension",
-          "$value": "{📱 Device.↔️ Space.MD}"
-        },
         "LG": {
           "$type": "dimension",
           "$value": "{📱 Device.↔️ Space.XL}"

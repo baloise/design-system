@@ -311,7 +311,7 @@ $backgrounds: (
 //
 // Space
 // --------------------------------
-$spaces: ('sm', 'md', 'lg');
+$spaces: ('sm', 'lg');
 
 @each $space in $spaces {
   @include hybrid.styles($css-selector, $use-host) {

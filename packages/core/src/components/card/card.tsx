@@ -148,7 +148,7 @@ export class Card implements DsComponentInterface {
 
   render() {
     const isImageTeaser = this.imageTeaser !== undefined && this.imageTeaser !== null
-    const space = normalizeDeprecatedTShirtSize(this.space) || ''
+    const space = normalizeDeprecatedTShirtSize(this.space)
 
     return (
       <Host
