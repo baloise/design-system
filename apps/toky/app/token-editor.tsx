@@ -5496,17 +5496,23 @@ export function TokenEditor({
     if (creates.length + updates.length + deletes.length === 0) return touchedIds
 
     const deleteIds = new Set(deletes.map(e => e.path.join('.')))
-    const updateById = new Map(updates.map(e => [e.path.join('.'), e]))
+    // Keyed by the id an update replaces — its pre-rename id (`movedFrom`) for an entry that
+    // renames a token's path in Figma, else its own (unchanged) path. A rename's `entry.path` is
+    // the *new* location, which is never a working token's current `id` — keying by movedFrom
+    // instead is what lets the lookup in the `.map` below still find it.
+    const updateByOldId = new Map(updates.map(e => [(e.movedFrom ?? e.path).join('.'), e]))
     for (const id of deleteIds) touchedIds.add(id)
-    for (const id of updateById.keys()) touchedIds.add(id)
+    for (const entry of updates) touchedIds.add(entry.path.join('.'))
     for (const entry of creates) touchedIds.add(entry.path.join('.'))
 
     setWorking(prev => {
       const next = prev
         .filter(w => !deleteIds.has(w.id))
         .map(w => {
-          const update = updateById.get(w.id)
-          return update ? { ...w, token: flatTokenFromPulledEntry(update, w.token.description) } : w
+          const update = updateByOldId.get(w.id)
+          if (!update) return w
+          const token = flatTokenFromPulledEntry(update, w.token.description)
+          return { id: token.path.join('.'), token }
         })
       for (const entry of creates) {
         const token = flatTokenFromPulledEntry(entry)

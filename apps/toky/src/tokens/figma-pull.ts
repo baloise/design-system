@@ -66,6 +66,15 @@ export interface PulledEntry {
   // $description is empty/absent and Figma's native description has something to offer;
   // undefined otherwise, meaning "leave whatever's already in JSON alone."
   description?: string
+  // Set only on a `kind: 'update'` entry that represents a pure rename in Figma — the variable's
+  // name no longer matches the local token's path (see buildBasePullPlan's `pathChanged` check),
+  // so `path` above is the *new* location and this is the *old* one. `undefined` for every other
+  // entry, meaning "path is unchanged, apply in place." Only plain (single-variableId) tokens
+  // support this today — a shadow/border/typography/responsive-dimension token's Figma identity
+  // spans several separately-nameable sub-variables, which could disagree on a renamed prefix in a
+  // way a single path can't represent; detecting that consistently is out of scope for now, so a
+  // composite token's rename in Figma still goes undetected, same as before this field existed.
+  movedFrom?: string[]
 }
 
 export interface PullConflict {
@@ -305,6 +314,7 @@ function entryFrom(
   figmaId: FigmaId,
   snapshot: DtcgSnapshot,
   description?: string,
+  movedFrom?: string[],
 ): PulledEntry {
   return {
     kind,
@@ -315,6 +325,7 @@ function entryFrom(
     rawValue: snapshot.referenceTarget ? null : snapshot.rawValue,
     referenceTarget: snapshot.referenceTarget,
     description,
+    movedFrom,
   }
 }
 
@@ -1517,7 +1528,19 @@ export function buildBasePullPlan(params: {
     const localDescription = workingEntry ? workingEntry.token.description : matched.description
     const descriptionFill = fillDescription(localDescription, variable.description)
 
-    if (snapshotEqual(figmaSnapshot, originalSnapshot) && !descriptionFill) continue // Figma unchanged since we last knew
+    // A pure rename in Figma — the variable's name no longer round-trips to the local token's own
+    // path via pathFromFigmaVariableName (figmaVariableName's inverse, scripts/figma-sync/lib/
+    // write.mjs:39-41). Only recognized when the renamed-to path still starts with a known layer
+    // segment, same "not eligible, skip rather than guess" policy the `!matched` create branch
+    // above already applies to `pathFromFigmaVariableName(variable.name)`. `movedFrom` carries the
+    // old path so applyBasePlan (token-editor.tsx) can move the token instead of leaving a stale
+    // duplicate behind at its old location.
+    const renamedPath = pathFromFigmaVariableName(variable.name)
+    const pathChanged = renamedPath.join('.') !== path && LAYER_BY_KEY[renamedPath[0]] !== undefined
+    const movedFrom = pathChanged ? matched.path : undefined
+    const targetPath = pathChanged ? renamedPath : matched.path
+
+    if (snapshotEqual(figmaSnapshot, originalSnapshot) && !descriptionFill && !pathChanged) continue // Figma unchanged since we last knew
 
     if (workingHasManualEdit) {
       if (snapshotEqual(workingSnapshot, figmaSnapshot) && !descriptionFill) continue // already converged
@@ -1546,7 +1569,9 @@ export function buildBasePullPlan(params: {
       continue
     }
 
-    plan.updates.push(entryFrom('update', matched.layer, matched.path, variable.id, figmaSnapshot, descriptionFill))
+    plan.updates.push(
+      entryFrom('update', matched.layer, targetPath, variable.id, figmaSnapshot, descriptionFill, movedFrom),
+    )
   }
 
   for (const token of original) {

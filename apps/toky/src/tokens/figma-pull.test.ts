@@ -728,6 +728,119 @@ describe('buildBasePullPlan', () => {
   })
 })
 
+describe('buildBasePullPlan — rename', () => {
+  it('proposes moving a token to its renamed-in-Figma path, value unchanged', () => {
+    const black = token({
+      path: ['🌐 Global', '🌈 Color', 'Black'],
+      figmaId: 'VariableID:black',
+      rawValue: { colorSpace: 'srgb', components: [0, 0, 0], alpha: 1, hex: '#000000' },
+    })
+    const v = variable({
+      id: 'VariableID:black',
+      name: '🌐 Global/🌈 Color/BlackRenameGugus',
+      valuesByMode: { [BASE_MODE]: { r: 0, g: 0, b: 0, a: 1 } }, // same value, only the name changed
+    })
+    const plan = buildBasePullPlan({
+      original: [black],
+      working: [working(black)],
+      figmaMeta: meta([v]),
+      baseModeId: BASE_MODE,
+    })
+    expect(plan.creates).toHaveLength(0)
+    expect(plan.deletes).toHaveLength(0)
+    expect(plan.updates).toHaveLength(1)
+    expect(plan.updates[0].path).toEqual(['🌐 Global', '🌈 Color', 'BlackRenameGugus'])
+    expect(plan.updates[0].movedFrom).toEqual(['🌐 Global', '🌈 Color', 'Black'])
+    expect(plan.updates[0].figmaId).toBe('VariableID:black')
+    expect((plan.updates[0].rawValue as { hex: string }).hex).toBe('#000000')
+  })
+
+  it('proposes moving a token back to its original path once renamed back in Figma', () => {
+    const renamed = token({
+      path: ['🌐 Global', '🌈 Color', 'BlackRenameGugus'],
+      figmaId: 'VariableID:black',
+      rawValue: { colorSpace: 'srgb', components: [0, 0, 0], alpha: 1, hex: '#000000' },
+    })
+    const v = variable({
+      id: 'VariableID:black',
+      name: '🌐 Global/🌈 Color/Black',
+      valuesByMode: { [BASE_MODE]: { r: 0, g: 0, b: 0, a: 1 } },
+    })
+    const plan = buildBasePullPlan({
+      original: [renamed],
+      working: [working(renamed)],
+      figmaMeta: meta([v]),
+      baseModeId: BASE_MODE,
+    })
+    expect(plan.updates).toHaveLength(1)
+    expect(plan.updates[0].path).toEqual(['🌐 Global', '🌈 Color', 'Black'])
+    expect(plan.updates[0].movedFrom).toEqual(['🌐 Global', '🌈 Color', 'BlackRenameGugus'])
+  })
+
+  it('bundles a rename and a value change into a single update, both applied together', () => {
+    const black = token({
+      path: ['🌐 Global', '🌈 Color', 'Black'],
+      figmaId: 'VariableID:black',
+      rawValue: { colorSpace: 'srgb', components: [0, 0, 0], alpha: 1, hex: '#000000' },
+    })
+    const v = variable({
+      id: 'VariableID:black',
+      name: '🌐 Global/🌈 Color/AlmostBlack',
+      valuesByMode: { [BASE_MODE]: { r: 0.1, g: 0.1, b: 0.1, a: 1 } }, // renamed AND recolored
+    })
+    const plan = buildBasePullPlan({
+      original: [black],
+      working: [working(black)],
+      figmaMeta: meta([v]),
+      baseModeId: BASE_MODE,
+    })
+    expect(plan.updates).toHaveLength(1)
+    expect(plan.updates[0].path).toEqual(['🌐 Global', '🌈 Color', 'AlmostBlack'])
+    expect(plan.updates[0].movedFrom).toEqual(['🌐 Global', '🌈 Color', 'Black'])
+    expect((plan.updates[0].rawValue as { hex: string }).hex).not.toBe('#000000')
+  })
+
+  it('does not propose a move when the Figma name still round-trips to the same local path', () => {
+    const black = token({
+      path: ['🌐 Global', '🌈 Color', 'Black'],
+      figmaId: 'VariableID:black',
+      rawValue: { colorSpace: 'srgb', components: [0, 0, 0], alpha: 1, hex: '#000000' },
+    })
+    const v = variable({
+      id: 'VariableID:black',
+      name: '🌐 Global/🌈 Color/Black',
+      valuesByMode: { [BASE_MODE]: { r: 0, g: 0, b: 0, a: 1 } },
+    })
+    const plan = buildBasePullPlan({
+      original: [black],
+      working: [working(black)],
+      figmaMeta: meta([v]),
+      baseModeId: BASE_MODE,
+    })
+    expect(plan.updates).toHaveLength(0)
+  })
+
+  it('does not propose a move into an unrecognized layer name', () => {
+    const black = token({
+      path: ['🌐 Global', '🌈 Color', 'Black'],
+      figmaId: 'VariableID:black',
+      rawValue: { colorSpace: 'srgb', components: [0, 0, 0], alpha: 1, hex: '#000000' },
+    })
+    const v = variable({
+      id: 'VariableID:black',
+      name: 'NotALayer/🌈 Color/Black',
+      valuesByMode: { [BASE_MODE]: { r: 0, g: 0, b: 0, a: 1 } },
+    })
+    const plan = buildBasePullPlan({
+      original: [black],
+      working: [working(black)],
+      figmaMeta: meta([v]),
+      baseModeId: BASE_MODE,
+    })
+    expect(plan.updates).toHaveLength(0)
+  })
+})
+
 describe('buildBasePullPlan — shadow', () => {
   const shadowFigmaId = {
     offsetX: 'VariableID:shadow:offsetX',
