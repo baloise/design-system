@@ -80,7 +80,7 @@
     "lottie-web": "5.8.1",
     "luxon": "3.7.2",
     "nouislider": "15.8.1",
-    "slim-select": "4.2.0",
+    "slim-select": "4.2.2",
     "tslib": "catalog:"
   },
   "devDependencies": {

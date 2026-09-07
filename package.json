@@ -71,14 +71,14 @@
     "@swc/cli": "0.8.1",
     "@types/fs-extra": "11.0.4",
     "@types/node": "24.13.3",
-    "@typescript-eslint/eslint-plugin": "8.68.0",
-    "@typescript-eslint/parser": "8.68.0",
+    "@typescript-eslint/eslint-plugin": "8.69.0",
+    "@typescript-eslint/parser": "8.69.0",
     "@typescript-eslint/utils": "catalog:",
     "@vitest/ui": "4.1.11",
     "archiver": "8.0.0",
     "compression": "catalog:",
     "cross-env": "7.0.3",
-    "cspell": "10.1.1",
+    "cspell": "10.2.1",
     "dotenv": "17.4.2",
     "eslint": "catalog:",
     "eslint-config-prettier": "10.1.8",
@@ -105,13 +105,13 @@
     "tsx": "catalog:",
     "turbo": "2.10.12",
     "typescript": "catalog:",
-    "typescript-eslint": "8.68.0",
+    "typescript-eslint": "8.69.0",
     "vite": "catalog:",
     "vitest": "catalog:"
   },
   "optionalDependencies": {
-    "@oxc-parser/binding-linux-arm64-gnu": "0.147.0",
-    "@oxc-parser/binding-linux-x64-gnu": "0.147.0"
+    "@oxc-parser/binding-linux-arm64-gnu": "0.148.0",
+    "@oxc-parser/binding-linux-x64-gnu": "0.148.0"
   },
   "pnpm": {
     "_comment": "overrides below kept in sync with pnpm-workspace.yaml — required for Vercel installs. See docs/adr/0005-duplicate-pnpm-overrides.md",
