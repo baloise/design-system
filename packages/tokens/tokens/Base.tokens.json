@@ -23333,6 +23333,12 @@
           ],
           "alpha": 1,
           "hex": "#000000"
+        },
+        "$extensions": {
+          "com.figma.variableId": "VariableID:150:77",
+          "com.figma.scopes": [
+            "ALL_SCOPES"
+          ]
         }
       }
     },
