@@ -56,6 +56,7 @@ import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover
 import { cn } from '@/lib/utils'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table'
+import { Textarea } from '@/components/ui/textarea'
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip'
 import { computeDiff, describeChangeStatus, effectiveValue, pathFor } from '@/src/tokens/edit'
 import type { ChangeStatus, TokenDiffEntry, WorkingToken } from '@/src/tokens/edit'
@@ -206,6 +207,7 @@ interface Draft {
   // mirroring `mobile`, so a responsive dimension draft still uses `value`/`unit`/`referenceTarget`
   // for its plain-fallback form alongside this.
   responsiveValue: ResponsiveDimensionValue | null
+  description: string
 }
 
 function emptyDraft(layer: TokenLayer = 'Global'): Draft {
@@ -221,6 +223,7 @@ function emptyDraft(layer: TokenLayer = 'Global'): Draft {
     borderValue: { color: undefined, width: undefined, style: undefined },
     typographyValue: { fontFamily: undefined, fontSize: undefined, fontWeight: undefined, lineHeight: undefined },
     responsiveValue: null,
+    description: '',
   }
 }
 
@@ -245,6 +248,7 @@ interface EditDraftState {
   referenceTarget: string
   malformed: boolean
   brands: Record<string, EditBrandDraft>
+  description: string
 }
 
 // Tokens are grouped for display by every dot-segment but the last — each
@@ -2073,6 +2077,20 @@ const TokenRow = memo(function TokenRow({
             </div>
           </TableCell>
           <TableCell className="max-h-8 p-0 px-1">
+            <button
+              type="button"
+              aria-label={`Description for ${token.name || 'token'}`}
+              onClick={() => handlers.onEdit(id)}
+              className="flex h-8 w-full items-center truncate px-1 text-left text-sm outline-none hover:bg-muted/30 focus-visible:ring-2 focus-visible:ring-ring"
+            >
+              {token.description ? (
+                <span className="truncate">{token.description}</span>
+              ) : (
+                <span className="truncate text-muted-foreground">Add description</span>
+              )}
+            </button>
+          </TableCell>
+          <TableCell className="max-h-8 p-0 px-1">
             {token.type === 'color' ? (
               <div className="group/tag flex items-center gap-1">
                 <Popover open={isPopoverOpen} onOpenChange={open => handlers.onPopoverOpenChange(id, open)}>
@@ -3154,7 +3172,7 @@ const TokenRow = memo(function TokenRow({
       )}
       {!hidden && cellErrors.length > 0 && (
         <TableRow className="bg-destructive/10 hover:bg-destructive/15">
-          <TableCell colSpan={4} className="p-0">
+          <TableCell colSpan={5} className="p-0">
             <Alert variant="destructive" role="alert" className="rounded-none border-0 border-t bg-transparent">
               <AlertDescription>{cellErrors.join(' ')}</AlertDescription>
             </Alert>
@@ -4077,6 +4095,7 @@ export function TokenEditor({
       figmaId: null,
       responsive: draft.type === 'dimension' ? draft.responsiveValue : null,
       resolvedResponsive: null,
+      description: draft.description.trim() || undefined,
     }
     setWorking(prev => [...prev, { id: `new-${draftIdCounter++}`, token }])
     setDraft(emptyDraft())
@@ -4270,6 +4289,7 @@ export function TokenEditor({
       referenceTarget: token.referenceTarget ?? '',
       malformed: false,
       brands,
+      description: token.description ?? '',
     })
     setEditModeOverride(null)
     setEditBrandModeOverride({})
@@ -4411,10 +4431,12 @@ export function TokenEditor({
         w.id === id
           ? {
               ...w,
-              token:
-                mode === 'value'
+              token: {
+                ...(mode === 'value'
                   ? { ...w.token, rawValue: parsedValue, referenceTarget: null }
-                  : { ...w.token, referenceTarget: editDraft.referenceTarget.trim() || null },
+                  : { ...w.token, referenceTarget: editDraft.referenceTarget.trim() || null }),
+                description: editDraft.description.trim() || undefined,
+              },
             }
           : w,
       ),
@@ -5039,7 +5061,7 @@ export function TokenEditor({
         style={{ top: tableHeaderHeight + depth * HEADER_ROW_HEIGHT }}
       >
         <TableCell
-          colSpan={4}
+          colSpan={5}
           className={cn('p-0 font-medium text-muted-foreground', textSizeClass)}
           style={{ paddingLeft: depth * 16 }}
         >
@@ -5396,7 +5418,11 @@ export function TokenEditor({
     setPendingBrands(prev => prev.filter(brand => brand !== name))
   }
 
-  function flatTokenFromPulledEntry(entry: PulledEntry): FlatToken {
+  // `entry.description` is fill-if-empty (undefined means "Figma had nothing new to offer, leave
+  // the local description exactly as it was") — `existingDescription` (the token being replaced,
+  // for a base update) is what it falls back to. A create has no existing token to fall back to,
+  // so its `entry.description` (possibly already undefined) is the final word.
+  function flatTokenFromPulledEntry(entry: PulledEntry, existingDescription?: string): FlatToken {
     return {
       path: entry.path,
       name: entry.path.slice(1).join('.'),
@@ -5412,6 +5438,7 @@ export function TokenEditor({
       // doesn't run on a freshly-applied pull entry directly) — null here is a transient gap, same
       // as `resolvedValue: undefined` above.
       resolvedResponsive: null,
+      description: entry.description ?? existingDescription,
     }
   }
 
@@ -5479,7 +5506,7 @@ export function TokenEditor({
         .filter(w => !deleteIds.has(w.id))
         .map(w => {
           const update = updateById.get(w.id)
-          return update ? { ...w, token: flatTokenFromPulledEntry(update) } : w
+          return update ? { ...w, token: flatTokenFromPulledEntry(update, w.token.description) } : w
         })
       for (const entry of creates) {
         const token = flatTokenFromPulledEntry(entry)
@@ -5759,7 +5786,7 @@ export function TokenEditor({
               <TableRow ref={tableHeaderRowRef} className="h-8 max-h-8">
                 <TableHead
                   scope="col"
-                  className="sticky top-0 z-20 rounded-tl-[10px] bg-[color-mix(in_oklch,var(--background),var(--muted)_50%)] py-0"
+                  className="sticky top-0 z-20 min-w-[180px] rounded-tl-[10px] bg-[color-mix(in_oklch,var(--background),var(--muted)_50%)] py-0"
                 >
                   <div className="flex items-center justify-between gap-2">
                     Name
@@ -5781,6 +5808,12 @@ export function TokenEditor({
                       <TooltipContent>{allGroupsCollapsed ? 'Expand all' : 'Collapse all'}</TooltipContent>
                     </Tooltip>
                   </div>
+                </TableHead>
+                <TableHead
+                  scope="col"
+                  className="sticky top-0 z-20 bg-[color-mix(in_oklch,var(--background),var(--muted)_50%)] py-0"
+                >
+                  Description
                 </TableHead>
                 <TableHead
                   scope="col"
@@ -5949,6 +5982,16 @@ export function TokenEditor({
                     onChange={e => setDraft(prev => ({ ...prev, name: sanitizePathInput(e.target.value) }))}
                   />
                 )}
+              </div>
+
+              <div className="space-y-1.5">
+                <Label htmlFor="new-token-description">Description</Label>
+                <Textarea
+                  id="new-token-description"
+                  value={draft.description}
+                  onChange={e => setDraft(prev => ({ ...prev, description: e.target.value }))}
+                  placeholder="Optional description"
+                />
               </div>
 
               <div className="space-y-1.5">
@@ -6393,6 +6436,16 @@ export function TokenEditor({
                           onChange={e =>
                             setEditDraft(prev => (prev ? { ...prev, name: sanitizePathInput(e.target.value) } : prev))
                           }
+                        />
+                      </div>
+
+                      <div className="space-y-1.5">
+                        <Label htmlFor="edit-token-description">Description</Label>
+                        <Textarea
+                          id="edit-token-description"
+                          value={editDraft.description}
+                          onChange={e => setEditDraft(prev => (prev ? { ...prev, description: e.target.value } : prev))}
+                          placeholder="Optional description"
                         />
                       </div>
 

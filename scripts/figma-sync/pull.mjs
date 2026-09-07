@@ -38,6 +38,7 @@ import {
   assignVariableIds,
   buildAliasPassPayload,
   buildCreatePassPayload,
+  buildDescriptionUpdatePayload,
   collectNewlyCreatedIds,
   resolveTempIds,
 } from './lib/write.mjs'
@@ -233,6 +234,16 @@ async function writePull({ baseTokens, brandNames, brandTokensByName }, figmaTok
   console.log(`Pass 2: writing ${aliasPass.variableModeValues.length} alias mode-value(s)…`)
   if (aliasPass.variableModeValues.length > 0) {
     await postVariables(figmaFileKey, figmaToken, aliasPass)
+  }
+
+  const descriptionPass = buildDescriptionUpdatePayload({
+    baseTokens,
+    idByPath,
+    remoteVariablesById: localVariables.variables,
+  })
+  console.log(`Pass 3: updating ${descriptionPass.variables.length} variable description(s)…`)
+  if (descriptionPass.variables.length > 0) {
+    await postVariables(figmaFileKey, figmaToken, descriptionPass)
   }
 
   const newIds = collectNewlyCreatedIds(baseTokens, idByPath)

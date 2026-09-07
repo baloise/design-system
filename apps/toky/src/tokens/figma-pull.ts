@@ -60,6 +60,10 @@ export interface PulledEntry {
   // above still carries the mobile-mirrored $value (decision 4); this carries the full
   // $extensions.com.helvetia.responsive object alongside it.
   responsive?: ResponsiveDimensionValue
+  // Fill-if-empty only (decision 9's pull rule) — set only when the local token's own
+  // $description is empty/absent and Figma's native description has something to offer;
+  // undefined otherwise, meaning "leave whatever's already in JSON alone."
+  description?: string
 }
 
 export interface PullConflict {
@@ -255,6 +259,7 @@ function entryFrom(
   path: string[],
   figmaId: FigmaId,
   snapshot: DtcgSnapshot,
+  description?: string,
 ): PulledEntry {
   return {
     kind,
@@ -264,7 +269,17 @@ function entryFrom(
     type: snapshot.type,
     rawValue: snapshot.referenceTarget ? null : snapshot.rawValue,
     referenceTarget: snapshot.referenceTarget,
+    description,
   }
+}
+
+// Fill-if-empty (decision 9's pull rule): Figma's description is only ever proposed when the
+// local token doesn't already have one of its own — never an overwrite.
+function fillDescription(
+  localDescription: string | undefined,
+  remoteDescription: string | undefined,
+): string | undefined {
+  return localDescription ? undefined : remoteDescription || undefined
 }
 
 // A shadow token's reconstructed value, from its 5 co-located Figma
@@ -418,7 +433,17 @@ function deriveShadowPullEntries(params: {
       continue
     }
 
-    updates.push(entryFrom('update', token.layer, token.path, idSet, figmaSnapshot))
+    const remoteDescription = figmaMeta.variables[idSet[SHADOW_SUB_PROPERTIES[0]]]?.description
+    updates.push(
+      entryFrom(
+        'update',
+        token.layer,
+        token.path,
+        idSet,
+        figmaSnapshot,
+        fillDescription(token.description, remoteDescription),
+      ),
+    )
   }
 
   return { creates, updates, deletes, skipped }
@@ -547,7 +572,17 @@ function deriveBorderPullEntries(params: {
         continue
       }
 
-      updates.push(entryFrom('update', token.layer, token.path, idSet, figmaSnapshot))
+      const remoteDescription = figmaMeta.variables[idSet[BORDER_SUB_PROPERTIES[0]]]?.description
+      updates.push(
+        entryFrom(
+          'update',
+          token.layer,
+          token.path,
+          idSet,
+          figmaSnapshot,
+          fillDescription(token.description, remoteDescription),
+        ),
+      )
       continue
     }
 
@@ -635,7 +670,17 @@ function deriveBorderPullEntries(params: {
       continue
     }
 
-    updates.push(entryFrom('update', token.layer, token.path, idSet, figmaSnapshot))
+    const remoteDescription = figmaMeta.variables[idSet[BORDER_SUB_PROPERTIES[0]]]?.description
+    updates.push(
+      entryFrom(
+        'update',
+        token.layer,
+        token.path,
+        idSet,
+        figmaSnapshot,
+        fillDescription(token.description, remoteDescription),
+      ),
+    )
   }
 
   return { creates, updates, deletes, skipped }
@@ -901,7 +946,17 @@ function deriveTypographyPullEntries(params: {
       continue
     }
 
-    updates.push(entryFrom('update', token.layer, token.path, idSet, figmaSnapshot))
+    const remoteDescription = figmaMeta.variables[idSet[TYPOGRAPHY_SUB_PROPERTIES[0]]]?.description
+    updates.push(
+      entryFrom(
+        'update',
+        token.layer,
+        token.path,
+        idSet,
+        figmaSnapshot,
+        fillDescription(token.description, remoteDescription),
+      ),
+    )
   }
 
   return { creates, updates, deletes, skipped }
@@ -1013,6 +1068,7 @@ function responsiveEntryFrom(
   path: string[],
   figmaId: FigmaId,
   responsive: Record<ResponsiveDimensionSubProperty, unknown>,
+  description?: string,
 ): PulledEntry {
   return {
     kind,
@@ -1024,6 +1080,7 @@ function responsiveEntryFrom(
     rawValue: responsive.mobile,
     referenceTarget: null,
     responsive: responsive as ResponsiveDimensionValue,
+    description,
   }
 }
 
@@ -1104,7 +1161,17 @@ function deriveResponsiveDimensionPullEntries(params: {
       continue
     }
 
-    updates.push(responsiveEntryFrom('update', token.layer, token.path, idSet, derived.responsive))
+    const remoteDescription = figmaMeta.variables[idSet[RESPONSIVE_DIMENSION_SUB_PROPERTIES[0]]]?.description
+    updates.push(
+      responsiveEntryFrom(
+        'update',
+        token.layer,
+        token.path,
+        idSet,
+        derived.responsive,
+        fillDescription(token.description, remoteDescription),
+      ),
+    )
   }
 
   return { creates, updates, deletes, skipped }
@@ -1311,7 +1378,14 @@ export function buildBasePullPlan(params: {
         const stagedSnapshot = snapshotOf(stagedOnly.token)
         if (snapshotEqual(figmaSnapshot, stagedSnapshot)) continue // nothing new since it was staged
         plan.updates.push(
-          entryFrom('update', stagedOnly.token.layer, stagedOnly.token.path, variable.id, figmaSnapshot),
+          entryFrom(
+            'update',
+            stagedOnly.token.layer,
+            stagedOnly.token.path,
+            variable.id,
+            figmaSnapshot,
+            fillDescription(stagedOnly.token.description, variable.description),
+          ),
         )
         continue
       }
@@ -1339,41 +1413,64 @@ export function buildBasePullPlan(params: {
       // would keep proposing the same "create" again.
       const unlinked = originalByPath.get(path.join('.'))
       if (unlinked && !unlinked.figmaId) {
-        plan.updates.push(entryFrom('update', unlinked.layer, unlinked.path, variable.id, figmaSnapshot))
+        plan.updates.push(
+          entryFrom(
+            'update',
+            unlinked.layer,
+            unlinked.path,
+            variable.id,
+            figmaSnapshot,
+            fillDescription(unlinked.description, variable.description),
+          ),
+        )
         continue
       }
 
-      plan.creates.push(entryFrom('create', layer, path, variable.id, figmaSnapshot))
+      plan.creates.push(entryFrom('create', layer, path, variable.id, figmaSnapshot, variable.description || undefined))
       continue
     }
 
     const originalSnapshot = snapshotOf(matched)
-    if (snapshotEqual(figmaSnapshot, originalSnapshot)) continue // Figma unchanged since we last knew
-
     const path = matched.path.join('.')
     const workingEntry = workingByPath.get(path)
     const workingSnapshot = workingEntry ? snapshotOf(workingEntry.token) : originalSnapshot
     const workingHasManualEdit = !snapshotEqual(workingSnapshot, originalSnapshot)
+    // Whatever's currently effective locally — a pending unsubmitted edit's description if one
+    // exists, else the last-known one — same "compare against working, not just original" pattern
+    // the value side already uses via workingSnapshot.
+    const localDescription = workingEntry ? workingEntry.token.description : matched.description
+    const descriptionFill = fillDescription(localDescription, variable.description)
+
+    if (snapshotEqual(figmaSnapshot, originalSnapshot) && !descriptionFill) continue // Figma unchanged since we last knew
 
     if (workingHasManualEdit) {
-      if (snapshotEqual(workingSnapshot, figmaSnapshot)) continue // already converged
-      plan.conflicts.push({
-        tokenId: workingEntry!.id,
-        path: matched.path,
-        layer: matched.layer,
-        figmaId: variable.id,
-        workingValue: snapshotToEffectiveValue(workingSnapshot),
-        figmaValue: snapshotToEffectiveValue(figmaSnapshot),
-        figma: {
-          type: figmaSnapshot.type,
-          rawValue: figmaSnapshot.rawValue,
-          referenceTarget: figmaSnapshot.referenceTarget,
-        },
-      })
+      if (snapshotEqual(workingSnapshot, figmaSnapshot) && !descriptionFill) continue // already converged
+      if (!snapshotEqual(figmaSnapshot, originalSnapshot)) {
+        plan.conflicts.push({
+          tokenId: workingEntry!.id,
+          path: matched.path,
+          layer: matched.layer,
+          figmaId: variable.id,
+          workingValue: snapshotToEffectiveValue(workingSnapshot),
+          figmaValue: snapshotToEffectiveValue(figmaSnapshot),
+          figma: {
+            type: figmaSnapshot.type,
+            rawValue: figmaSnapshot.rawValue,
+            referenceTarget: figmaSnapshot.referenceTarget,
+          },
+        })
+        continue
+      }
+      // The value itself hasn't diverged from Figma — only a description to fill, which is safe
+      // to propose regardless of an unrelated pending value edit sitting in working. Built from
+      // workingSnapshot, not originalSnapshot: applyBasePlan replaces the whole token from this
+      // entry (flatTokenFromPulledEntry), so using originalSnapshot here would silently revert
+      // the user's still-unsubmitted value edit back to the pre-edit value.
+      plan.updates.push(entryFrom('update', matched.layer, matched.path, variable.id, workingSnapshot, descriptionFill))
       continue
     }
 
-    plan.updates.push(entryFrom('update', matched.layer, matched.path, variable.id, figmaSnapshot))
+    plan.updates.push(entryFrom('update', matched.layer, matched.path, variable.id, figmaSnapshot, descriptionFill))
   }
 
   for (const token of original) {

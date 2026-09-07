@@ -239,6 +239,7 @@ export function buildCreatePassPayload({
           variableCollectionId: collectionId,
           resolvedType: SHADOW_SUB_PROPERTY_RESOLVED_TYPE[sub],
           scopes: token.figmaScopes ?? ['ALL_SCOPES'],
+          description: token.description ?? '',
         })
       }
       continue
@@ -256,6 +257,7 @@ export function buildCreatePassPayload({
           variableCollectionId: collectionId,
           resolvedType: BORDER_SUB_PROPERTY_RESOLVED_TYPE[sub],
           scopes: token.figmaScopes ?? ['ALL_SCOPES'],
+          description: token.description ?? '',
         })
       }
       continue
@@ -273,6 +275,7 @@ export function buildCreatePassPayload({
           variableCollectionId: collectionId,
           resolvedType: TYPOGRAPHY_SUB_PROPERTY_RESOLVED_TYPE[sub],
           scopes: token.figmaScopes ?? ['ALL_SCOPES'],
+          description: token.description ?? '',
         })
       }
       continue
@@ -290,6 +293,7 @@ export function buildCreatePassPayload({
           variableCollectionId: collectionId,
           resolvedType: RESPONSIVE_DIMENSION_SUB_PROPERTY_RESOLVED_TYPE[sub],
           scopes: token.figmaScopes ?? ['ALL_SCOPES'],
+          description: token.description ?? '',
         })
       }
       // The Device variable (MVP scope, isDeviceEligibleResponsiveDimensionToken) — lives in
@@ -307,6 +311,7 @@ export function buildCreatePassPayload({
           variableCollectionId: responsiveCollectionId,
           resolvedType: 'FLOAT',
           scopes: token.figmaScopes ?? ['ALL_SCOPES'],
+          description: token.description ?? '',
         })
       }
       continue
@@ -326,6 +331,7 @@ export function buildCreatePassPayload({
       variableCollectionId: collectionId,
       resolvedType: resolvedTypeFor(token.type),
       scopes: token.figmaScopes ?? ['ALL_SCOPES'],
+      description: token.description ?? '',
     })
   }
 
@@ -559,6 +565,60 @@ export function buildAliasPassPayload({
   }
 
   return { variableModeValues }
+}
+
+/**
+ * Pass 3: description-only UPDATEs for already-synced variables (decision 9
+ * — push always writes JSON's $description into Figma, including for
+ * variables that already existed before this run and so never go through
+ * buildCreatePassPayload's CREATE branch). Call after `resolveTempIds`, so
+ * every variable this run touches — freshly created or pre-existing — has a
+ * real id in `idByPath`. Base tokens only: description isn't per-brand.
+ *
+ * @param {object} params
+ * @param {import('./tokens.mjs').Token[]} params.baseTokens
+ * @param {Map<string, string | Record<string, string>>} params.idByPath
+ * @param {Record<string, { description?: string }>} params.remoteVariablesById Figma's current
+ *   local-variables meta.variables, keyed by id — this run's own CREATEs won't appear here yet
+ *   (they didn't exist when this was fetched), so their description is always "different from
+ *   remote" and gets folded into this pass redundantly with buildCreatePassPayload's CREATE —
+ *   harmless, since Figma's UPDATE with the same description is a no-op.
+ */
+export function buildDescriptionUpdatePayload({ baseTokens, idByPath, remoteVariablesById }) {
+  const variables = []
+  const seenVariableIds = new Set()
+
+  function pushIfChanged(id, description) {
+    if (!id || isTempId(id) || seenVariableIds.has(id)) return
+    seenVariableIds.add(id)
+    const remoteDescription = remoteVariablesById[id]?.description ?? ''
+    if (remoteDescription === description) return
+    variables.push({ action: 'UPDATE', id, description })
+  }
+
+  for (const token of baseTokens) {
+    if (!isPushableToken(token)) continue
+    const key = pathKey(token.path)
+    const variableId = idByPath.get(key)
+    const description = token.description ?? ''
+
+    if (
+      isSyncableShadowToken(token) ||
+      isSyncableBorderToken(token) ||
+      isSyncableTypographyToken(token) ||
+      isSyncableResponsiveDimensionToken(token)
+    ) {
+      const subProperties = subPropertiesForVariableIdShape(variableId)
+      for (const sub of subProperties) {
+        pushIfChanged(variableId[sub], description)
+      }
+      continue
+    }
+
+    pushIfChanged(variableId, description)
+  }
+
+  return { variables }
 }
 
 /**
