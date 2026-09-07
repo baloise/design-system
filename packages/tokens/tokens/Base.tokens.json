@@ -23303,7 +23303,7 @@
           }
         }
       },
-      "BlackRename": {
+      "BlackRenameGugus": {
         "$type": "color",
         "$value": {
           "colorSpace": "srgb",
