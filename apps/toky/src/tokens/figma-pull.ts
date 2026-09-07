@@ -203,6 +203,22 @@ function deriveValue(
     dtcgType = expectedType
   }
 
+  // A handful of tokens (e.g. Component.Sheet.Shadow) predate their current $type and were never
+  // migrated onto Figma's real VARIABLE_ALIAS mechanism (used by every other alias — including,
+  // for shadow/border/typography, aliasing each of their sub-variables individually) — instead
+  // their one Figma variable is a plain STRING holding the literal "{...}" reference text our own
+  // local reference syntax uses (see flatten.ts's REFERENCE_PATTERN). Recognized here by the
+  // mismatch it produces (local $type disagrees with what this Figma STRING would otherwise
+  // resolve to) plus the literal syntax itself, so it resolves to the same reference the local
+  // token's own value already parses to, instead of permanently disagreeing with the still-STRING
+  // Figma variable on every pull.
+  if (expectedType && expectedType !== dtcgType && typeof modeValue === 'string') {
+    const literalAliasMatch = /^\{(.+)\}$/.exec(modeValue)
+    if (literalAliasMatch) {
+      return { kind: 'alias', type: expectedType, referenceTarget: literalAliasMatch[1] }
+    }
+  }
+
   if (isFigmaAlias(modeValue)) {
     const target = baseIndex.get(modeValue.id)
     if (!target) {
@@ -401,6 +417,21 @@ function deriveShadowPullEntries(params: {
     if (!isShadowFigmaId(token.figmaId)) continue
     const idSet = token.figmaId
     const path = token.path.join('.')
+
+    // A shadow token's 5 Figma sub-variables can only ever encode one flat layer — a multi-layer
+    // shadow (array of >1 layers) or "none" (empty array) has no single-layer Figma counterpart to
+    // diff against, so deriveShadowValue would always reconstruct a single-layer object that can
+    // never equal the local array, flagging a false "changed" diff on every pull. Per
+    // docs/plans/shadow-token-type-plan.md (decisions 5/29/120/143), these aren't eligible for
+    // Figma sync — skip them the same way a brand-new/unmatched variable is skipped.
+    if (Array.isArray(token.rawValue)) {
+      skipped.push({
+        variableId: idSet.color,
+        name: `${token.path.join('/')} (shadow)`,
+        reason: 'Multi-layer or "none" shadow tokens have no single-layer Figma counterpart — skipped.',
+      })
+      continue
+    }
 
     // Any one of the 5 sub-variables missing from Figma entirely — treat
     // the whole shadow as deleted (unless working already dropped it).

@@ -15761,13 +15761,12 @@
         }
       },
       "Shadow": {
-        "$type": "string",
+        "$type": "shadow",
         "$value": "{🔗 Alias.🌓 Shadow.Box.Base}",
         "$extensions": {
           "com.figma.scopes": [
             "ALL_SCOPES"
           ],
-          "com.figma.type": "string",
           "com.figma.variableId": "VariableID:104:2046"
         }
       },

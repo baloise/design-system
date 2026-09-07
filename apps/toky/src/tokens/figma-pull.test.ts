@@ -638,6 +638,34 @@ describe('buildBasePullPlan', () => {
     const plan = buildBasePullPlan({ original: [white], working: [], figmaMeta: meta([]), baseModeId: BASE_MODE })
     expect(plan.deletes).toHaveLength(0)
   })
+
+  it('resolves a legacy STRING variable holding literal "{...}" reference text as an alias, not a string literal', () => {
+    // Component.Sheet.Shadow's shape: it predates the "shadow" $type and was never migrated onto a
+    // real Figma VARIABLE_ALIAS — its one Figma variable is a plain STRING holding the same literal
+    // reference text the local token's own $value already carries.
+    const sheetShadow = token({
+      path: ['🧩 Component', 'Sheet', 'Shadow'],
+      type: 'shadow',
+      figmaId: 'VariableID:legacy',
+      referenceTarget: '🔗 Alias.🌓 Shadow.Box.Base',
+      rawValue: undefined,
+    })
+    const v = variable({
+      id: 'VariableID:legacy',
+      name: '🧩 Component/Sheet/Shadow',
+      resolvedType: 'STRING',
+      valuesByMode: { [BASE_MODE]: '{🔗 Alias.🌓 Shadow.Box.Base}' },
+    })
+    const plan = buildBasePullPlan({
+      original: [sheetShadow],
+      working: [working(sheetShadow)],
+      figmaMeta: meta([v]),
+      baseModeId: BASE_MODE,
+    })
+    expect(plan.updates).toHaveLength(0)
+    expect(plan.creates).toHaveLength(0)
+    expect(plan.deletes).toHaveLength(0)
+  })
 })
 
 describe('buildBasePullPlan — shadow', () => {
@@ -746,6 +774,36 @@ describe('buildBasePullPlan — shadow', () => {
     expect(plan.updates).toHaveLength(0)
     expect(plan.deletes).toHaveLength(1)
     expect(plan.deletes[0].path).toEqual(shadow.path)
+  })
+
+  it('skips a "none" (empty-array) shadow token instead of proposing a false update', () => {
+    const none = token({ ...shadow, rawValue: [] })
+    const plan = buildBasePullPlan({
+      original: [none],
+      working: [working(none)],
+      figmaMeta: meta(shadowVariables()),
+      baseModeId: BASE_MODE,
+    })
+    expect(plan.updates).toHaveLength(0)
+    expect(plan.creates).toHaveLength(0)
+    expect(plan.deletes).toHaveLength(0)
+    expect(plan.skipped).toHaveLength(1)
+    expect(plan.skipped[0].reason).toMatch(/no single-layer Figma counterpart/)
+  })
+
+  it('skips a multi-layer shadow token instead of proposing a false update', () => {
+    const multiLayer = token({ ...shadow, rawValue: [shadow.rawValue, shadow.rawValue] })
+    const plan = buildBasePullPlan({
+      original: [multiLayer],
+      working: [working(multiLayer)],
+      figmaMeta: meta(shadowVariables()),
+      baseModeId: BASE_MODE,
+    })
+    expect(plan.updates).toHaveLength(0)
+    expect(plan.creates).toHaveLength(0)
+    expect(plan.deletes).toHaveLength(0)
+    expect(plan.skipped).toHaveLength(1)
+    expect(plan.skipped[0].reason).toMatch(/no single-layer Figma counterpart/)
   })
 
   it('does not propose deleting a shadow already removed from working', () => {
