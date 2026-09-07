@@ -23321,6 +23321,19 @@
             "com.figma.variableId": "VariableID:137:2766"
           }
         }
+      },
+      "HirschTest": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0,
+            0,
+            0
+          ],
+          "alpha": 1,
+          "hex": "#000000"
+        }
       }
     },
     "🔤 Font": {
