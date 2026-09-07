@@ -201,6 +201,31 @@ function isTempId(id) {
 }
 
 /**
+ * Every already-committed variableId a run is about to write against — used to catch, before any
+ * POST goes out, a token tree that was round-tripped against a *different* Figma file than
+ * `figmaFileKey` currently points at (e.g. testing against a sandbox file with the production
+ * tokens directory instead of TOKENS_DIR_OVERRIDE, see pull.mjs's file header). Pass 1 alone can't
+ * catch this — a stale id is only ever referenced (never re-created) — so a mismatch otherwise
+ * surfaces as a confusing 400 from Figma partway through pass 2, after pass 1 has already written.
+ *
+ * @param {import('./tokens.mjs').Token[]} baseTokens
+ * @returns {string[]} every real (non-empty) variableId baseTokens already carries, including each
+ *   sub-property id of a composite (shadow/border/typography/responsive dimension) token
+ */
+export function committedVariableIds(baseTokens) {
+  const ids = []
+  for (const token of baseTokens) {
+    if (!isPushableToken(token) || !token.variableId) continue
+    if (isCompositeVariableIdSet(token.variableId)) {
+      ids.push(...Object.values(token.variableId).filter(Boolean))
+    } else {
+      ids.push(token.variableId)
+    }
+  }
+  return ids
+}
+
+/**
  * @param {object} params
  * @param {import('./tokens.mjs').Token[]} params.baseTokens
  * @param {Record<string, import('./tokens.mjs').Token[]>} params.brandTokensByName e.g. { Base: [...], Tcs: [...] }
