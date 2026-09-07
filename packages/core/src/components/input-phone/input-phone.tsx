@@ -458,9 +458,7 @@ export class InputPhone implements DsComponentInterface, FieldInterface {
     const digitsBefore = countDigitsBefore(raw, caret)
     this.displayValue = this.formatter.formatLive(raw)
     this.pendingCaret =
-      digitsBefore === 0 && this.displayValue === '+'
-        ? 1
-        : caretFromDigitCount(this.displayValue, digitsBefore)
+      digitsBefore === 0 && this.displayValue === '+' ? 1 : caretFromDigitCount(this.displayValue, digitsBefore)
     this.nationalNumber = this.formatter.getNationalNumber()
     this.setInternalValue(this.formatter.getE164())
     this.dsInput.emit(this.eventDetail())
