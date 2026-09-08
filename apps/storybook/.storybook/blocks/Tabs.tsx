@@ -10,7 +10,7 @@ export const Tabs = ({ _children, tabs, index }: Props): React.ReactNode => {
       {/* Tab headers */}
       <div
         role="tablist"
-        className="buttons"
+        className="ds-buttons"
         style={{ display: 'flex', position: 'absolute', zIndex: 1, right: 4, top: 4, justifyContent: 'end' }}
       >
         {tabs.map((tab, index) => (
@@ -19,7 +19,7 @@ export const Tabs = ({ _children, tabs, index }: Props): React.ReactNode => {
             role="tab"
             key={tab.label}
             onClick={() => setActiveIndex(index)}
-            className={`button is-small ${activeIndex === index ? 'is-primary' : 'is-secondary'}`}
+            className={`ds-button is-small ${activeIndex === index ? 'is-primary' : 'is-secondary'}`}
           >
             {tab.label}
           </button>

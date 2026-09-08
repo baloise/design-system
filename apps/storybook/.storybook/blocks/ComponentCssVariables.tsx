@@ -35,14 +35,14 @@ const StyleTable = ({
   heading?: string
 }): React.ReactElement => (
   <div className="mb-large">
-    {heading && <h3 className="title text-xl mb-normal mt-large">{heading}</h3>}
+    {heading && <h3 className="ds-title text-xl mb-normal mt-large">{heading}</h3>}
     {styles.length === 0 ? (
       <div className="my-normal p-large bg-grey-light radius">
         <p className="text-small">No CSS variables defined.</p>
       </div>
     ) : (
       <>
-        <table className="table w-full is-striped mb-normal">
+        <table className="ds-table w-full is-striped mb-normal">
           <thead>
             <tr>
               <th>Variable</th>
@@ -93,7 +93,7 @@ export const ComponentCssVariables = ({ component, subComponents }: ComponentCss
     if (styles.length === 0) {
       return (
         <div className="sb-unstyled">
-          <h2 className="title text-2xl mb-normal">CSS Variables</h2>
+          <h2 className="ds-title text-2xl mb-normal">CSS Variables</h2>
           <div className="my-large p-large bg-grey-light radius">
             <p className="text-small">No CSS variables defined for this component.</p>
           </div>
@@ -103,12 +103,12 @@ export const ComponentCssVariables = ({ component, subComponents }: ComponentCss
 
     return (
       <div className="sb-unstyled my-large">
-        <h2 className="title text-2xl mb-normal">CSS Variables</h2>
+        <h2 className="ds-title text-2xl mb-normal">CSS Variables</h2>
         <p className="text-normal mb-normal">
           Use these CSS variables to adjust the appearance of individual component instances. For global theming, use
           design tokens instead.
         </p>
-        <table className="table w-full is-striped mb-large">
+        <table className="ds-table w-full is-striped mb-large">
           <thead>
             <tr>
               <th>Variable</th>
@@ -155,7 +155,7 @@ export const ComponentCssVariables = ({ component, subComponents }: ComponentCss
 
   return (
     <div className="sb-unstyled my-large">
-      <h2 className="title text-2xl mb-normal">CSS Variables</h2>
+      <h2 className="ds-title text-2xl mb-normal">CSS Variables</h2>
       <p className="text-normal mb-normal">
         Use these CSS variables to adjust the appearance of individual component instances. For global theming, use
         design tokens instead.

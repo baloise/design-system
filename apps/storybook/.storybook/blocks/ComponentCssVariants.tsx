@@ -25,13 +25,13 @@ const findComponent = (name: string) => {
 
 const VariantsTable = ({ variants, heading }: { variants: CssVariant[]; heading?: string }): React.ReactElement => (
   <div className="mb-large">
-    {heading && <h3 className="title text-xl mb-normal mt-large">{heading}</h3>}
+    {heading && <h3 className="ds-title text-xl mb-normal mt-large">{heading}</h3>}
     {variants.length === 0 ? (
       <div className="my-normal p-large bg-grey-light radius">
         <p className="text-small">No CSS variants defined.</p>
       </div>
     ) : (
-      <table className="table w-full is-striped mb-normal">
+      <table className="ds-table w-full is-striped mb-normal">
         <thead>
           <tr>
             <th>Variant</th>
@@ -72,7 +72,7 @@ export const ComponentCssVariants = ({ component, subComponents }: ComponentCssV
     if (variants.length === 0) {
       return (
         <div className="sb-unstyled">
-          <h2 className="title text-2xl mb-normal">CSS Variants</h2>
+          <h2 className="ds-title text-2xl mb-normal">CSS Variants</h2>
           <div className="my-large p-large bg-grey-light radius">
             <p className="text-small">No CSS variants defined for this component.</p>
           </div>
@@ -82,11 +82,11 @@ export const ComponentCssVariants = ({ component, subComponents }: ComponentCssV
 
     return (
       <div className="sb-unstyled my-large">
-        <h2 className="title text-2xl mb-normal">CSS Variants</h2>
+        <h2 className="ds-title text-2xl mb-normal">CSS Variants</h2>
         <p className="text-normal mb-normal">
           Apply these CSS variant classes to modify the appearance and behavior of the component.
         </p>
-        <table className="table w-full is-striped mb-large">
+        <table className="ds-table w-full is-striped mb-large">
           <thead>
             <tr>
               <th>Variant</th>
@@ -120,7 +120,7 @@ export const ComponentCssVariants = ({ component, subComponents }: ComponentCssV
 
   return (
     <div className="sb-unstyled my-large">
-      <h2 className="title text-2xl mb-normal">CSS Variants</h2>
+      <h2 className="ds-title text-2xl mb-normal">CSS Variants</h2>
       <p className="text-normal mb-normal">
         Apply these CSS variant classes to modify the appearance and behavior of the components.
       </p>

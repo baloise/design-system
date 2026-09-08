@@ -33,10 +33,10 @@ export const StylesQuote = ({ _tag }: StylesQuoteProps): React.ReactElement => {
     <div className="sb-unstyled flex gap-normal bg-grey-1 border-left-primary text-small text-primary my-medium p-normal radius-right-normal">
       <ds-icon color="primary" size="medium" name="design" style={{ marginTop: '2px' }}></ds-icon>
       <div>
-        <h3 className="title">Styles import</h3>
+        <h3 className="ds-title">Styles import</h3>
         <span>
           Make sure the <b>@baloise/ds-styles</b> package is already present in your project or follow the{' '}
-          <a className="link" onClick={() => navigate({ title: 'Development/Styles' })}>
+          <a className="ds-link" onClick={() => navigate({ title: 'Development/Styles' })}>
             installation guidelines
           </a>
           .
@@ -90,11 +90,11 @@ export const WebComponentQuote = ({ tag }: StylesQuoteProps): React.ReactElement
     <div className="sb-unstyled flex gap-normal bg-grey-1 border-left-primary text-small text-primary my-medium p-normal radius-right-normal">
       <ds-icon color="primary" size="medium" name="info" style={{ marginTop: '2px' }}></ds-icon>
       <div>
-        <h3 className="title">Installation</h3>
+        <h3 className="ds-title">Installation</h3>
         <span>
           Make sure the <b>@baloise/ds-core</b>, <b>@baloise/ds-angular</b> or <b>@baloise/ds-react</b> packages is
           already present in your project or follow the{' '}
-          <a className="link" onClick={() => navigate({ title: 'Development/Getting Started' })}>
+          <a className="ds-link" onClick={() => navigate({ title: 'Development/Getting Started' })}>
             installation guidelines
           </a>
           .

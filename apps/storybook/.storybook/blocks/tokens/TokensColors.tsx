@@ -6,7 +6,7 @@ export const TokensColors = ({ _overview }): React.ReactElement => {
   const list = tokens['🌐 Global']['🌈 Color']
 
   return (
-    <table className="sb-unstyled my-x-large table tokens" style={{ width: '100%' }}>
+    <table className="sb-unstyled my-x-large ds-table tokens" style={{ width: '100%' }}>
       <thead>
         <tr>
           <th style={{ width: '100%' }}>Token & Description</th>

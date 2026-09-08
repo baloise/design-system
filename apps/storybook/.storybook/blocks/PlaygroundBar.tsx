@@ -8,7 +8,7 @@ export const PlaygroundBar = ({ _of, _children }): React.ReactElement => {
     <Unstyled>
       {/* <div className="flex gap-normal justify-content-center">
         <a
-          className="button"
+          className="ds-button"
           onClick={() => {
             navigate({ storyId: resolvedOf.story.id })
           }}

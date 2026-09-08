@@ -26,7 +26,7 @@ export const CssTable = ({
         overflow: 'auto',
       }}
     >
-      <table className="table w-full bg-grey-1">
+      <table className="ds-table w-full bg-grey-1">
         <thead
           className="doc-table-head bg-grey-1 border-none"
           style={{ position: 'sticky', top: '0', left: '0', zIndex: '10' }}

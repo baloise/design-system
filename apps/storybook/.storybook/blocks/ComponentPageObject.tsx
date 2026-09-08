@@ -38,11 +38,11 @@ const renderParams = (params: POParam[]): string =>
 
 const MethodTable = ({ title, methods }: { title: string; methods: POMethod[] }) => (
   <div className="mb-large">
-    <h3 className="title text-xl mb-normal mt-large">{title}</h3>
+    <h3 className="ds-title text-xl mb-normal mt-large">{title}</h3>
     {methods.length === 0 ? (
       <p className="text-small">None defined.</p>
     ) : (
-      <table className="table w-full is-striped">
+      <table className="ds-table w-full is-striped">
         <thead>
           <tr>
             <th>Name</th>
@@ -92,7 +92,7 @@ test('example', async ({ page }) => {
 
 const InstallGuide = () => (
   <div className="sb-unstyled my-large">
-    <h2 className="title text-2xl mb-normal">Installation</h2>
+    <h2 className="ds-title text-2xl mb-normal">Installation</h2>
     <p className="text-normal mb-normal">Install the Playwright helper package:</p>
     <Source dark language="bash" code="npm install @baloise/ds-playwright" />
     <p className="text-normal mt-normal mb-normal">Replace the standard Playwright import in your test files:</p>
@@ -122,7 +122,7 @@ export const ComponentPageObject = ({ component }: ComponentPageObjectProps): Re
     <div className="sb-unstyled">
       {po ? (
         <>
-          <h2 className="title text-2xl mb-normal">Page Object</h2>
+          <h2 className="ds-title text-2xl mb-normal">Page Object</h2>
           <p className="text-normal mb-normal">
             Import <code>{po.class}</code> from <code>{po.import}</code> to interact with this component in Playwright
             tests.
@@ -130,8 +130,8 @@ export const ComponentPageObject = ({ component }: ComponentPageObjectProps): Re
 
           {po.locators.length > 0 && (
             <>
-              <h3 className="title text-xl mb-normal mt-large">Locators</h3>
-              <table className="table w-full is-striped mb-normal">
+              <h3 className="ds-title text-xl mb-normal mt-large">Locators</h3>
+              <table className="ds-table w-full is-striped mb-normal">
                 <thead>
                   <tr>
                     <th>Name</th>
@@ -157,7 +157,7 @@ export const ComponentPageObject = ({ component }: ComponentPageObjectProps): Re
           <MethodTable title="Actions" methods={po.actions} />
           <MethodTable title="Assertions" methods={po.assertions} />
 
-          <h2 className="title text-2xl mb-normal mt-xl">Example Test</h2>
+          <h2 className="ds-title text-2xl mb-normal mt-xl">Example Test</h2>
           <Source dark language="ts" code={generateExampleTest(tag, po)} />
         </>
       ) : (

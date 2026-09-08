@@ -38,14 +38,14 @@ const PartTable = ({
   heading?: string
 }): React.ReactElement => (
   <div className="mb-large">
-    {heading && <h3 className="title text-xl mb-normal mt-large">{heading}</h3>}
+    {heading && <h3 className="ds-title text-xl mb-normal mt-large">{heading}</h3>}
     {parts.length === 0 ? (
       <div className="my-normal p-large bg-grey-light radius">
         <p className="text-small">No shadow parts defined.</p>
       </div>
     ) : (
       <>
-        <table className="table w-full is-striped mb-normal">
+        <table className="ds-table w-full is-striped mb-normal">
           <thead>
             <tr>
               <th>Part</th>
@@ -96,7 +96,7 @@ export const ComponentParts = ({ component, subComponents }: ComponentPartsProps
     if (parts.length === 0) {
       return (
         <div className="sb-unstyled">
-          <h2 className="title text-2xl mb-normal">CSS Shadow Parts</h2>
+          <h2 className="ds-title text-2xl mb-normal">CSS Shadow Parts</h2>
           <div className="my-large p-large bg-grey-light radius">
             <p className="text-small">No shadow parts defined for this component.</p>
           </div>
@@ -106,13 +106,13 @@ export const ComponentParts = ({ component, subComponents }: ComponentPartsProps
 
     return (
       <div className="sb-unstyled my-large">
-        <h2 className="title text-2xl mb-normal">CSS Shadow Parts</h2>
+        <h2 className="ds-title text-2xl mb-normal">CSS Shadow Parts</h2>
         <p className="text-normal mb-normal">
           Shadow parts are named elements inside a web component that can be styled from outside using the{' '}
           <code>::part()</code> selector. This lets you customize specific internals without breaking Shadow DOM
           encapsulation.
         </p>
-        <table className="table w-full is-striped mb-large">
+        <table className="ds-table w-full is-striped mb-large">
           <thead>
             <tr>
               <th>Part</th>
@@ -157,7 +157,7 @@ export const ComponentParts = ({ component, subComponents }: ComponentPartsProps
 
   return (
     <div className="sb-unstyled my-large">
-      <h2 className="title text-2xl mb-normal">CSS Shadow Parts</h2>
+      <h2 className="ds-title text-2xl mb-normal">CSS Shadow Parts</h2>
       <p className="text-normal mb-normal">
         Shadow parts are named elements inside a web component that can be styled from outside using the{' '}
         <code>::part()</code> selector. This lets you customize specific internals without breaking Shadow DOM

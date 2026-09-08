@@ -2,7 +2,7 @@ import React from 'react'
 
 export const PackageTable = ({ _children }) => {
   return (
-    <table className="sb-unstyled table w-full is-striped mt-large">
+    <table className="sb-unstyled ds-table w-full is-striped mt-large">
       <thead>
         <tr>
           <th>Package</th>

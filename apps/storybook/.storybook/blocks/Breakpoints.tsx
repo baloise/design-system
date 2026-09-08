@@ -14,7 +14,7 @@ export const Block = ({ label = '' }) => (
 
 export const Breakpoints = ({ _children }) => {
   return (
-    <table className="sb-unstyled table w-full is-bordered my-large">
+    <table className="sb-unstyled ds-table w-full is-bordered my-large">
       <thead>
         <tr>
           <th style={{ width: '16.6%' }}>

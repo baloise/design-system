@@ -5,7 +5,7 @@ import { Clipboard } from '../Clipboard'
 export const TokensTextShadow = ({ _overview }): React.ReactElement => {
   const list = tokens.text.shadow
   return (
-    <table className="sb-unstyled my-x-large table tokens" style={{ width: '100%' }}>
+    <table className="sb-unstyled my-x-large ds-table tokens" style={{ width: '100%' }}>
       <thead>
         <tr>
           <th style={{ width: '50%' }}>Token & Description</th>

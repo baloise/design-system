@@ -5,7 +5,7 @@ import { Clipboard } from '../Clipboard'
 export const TokensContainersSize = ({ _overview }): React.ReactElement => {
   const list = tokens.container.size
   return (
-    <table className="sb-unstyled my-x-large table tokens" style={{ width: '100%' }}>
+    <table className="sb-unstyled my-x-large ds-table tokens" style={{ width: '100%' }}>
       <thead>
         <tr>
           <th style={{ width: '100%' }}>Token & Description</th>
@@ -40,7 +40,7 @@ export const TokensContainersSize = ({ _overview }): React.ReactElement => {
 export const TokensContainersSpace = ({ _overview }): React.ReactElement => {
   const list = tokens.container.space
   return (
-    <table className="sb-unstyled my-x-large table tokens" style={{ width: '100%' }}>
+    <table className="sb-unstyled my-x-large ds-table tokens" style={{ width: '100%' }}>
       <thead>
         <tr>
           <th style={{ width: '100%' }}>Token</th>

@@ -14,7 +14,7 @@ export const ColorCard = ({ background, color, small = false }): React.ReactElem
       style={{ minWidth: small ? '80px' : '120px', maxWidth: '220px' }}
     >
       <div
-        className={`px-small py-normal text-align-center radius-top-lg title text-x-large m-none`}
+        className={`px-small py-normal text-align-center radius-top-lg ds-title text-x-large m-none`}
         style={{
           minHeight: '32px',
           background: `var(--${colorVariable.name})`,
@@ -28,7 +28,7 @@ export const ColorCard = ({ background, color, small = false }): React.ReactElem
         {background ? 'A-a' : ''}
       </div>
       <div className={`radius-bottom-lg p-small text-align-center`}>
-        <div className="title text-normal text-primary">
+        <div className="ds-title text-normal text-primary">
           {colorVariable.name
             .replace('ds-global-color-', '')
             .replace('ds-alias-text-color-', '')

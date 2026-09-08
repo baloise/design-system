@@ -39,7 +39,7 @@ export const IconOverview = ({ _children }): React.ReactElement => {
     <div className="sb-unstyled">
       <div>
         <input
-          className="input"
+          className="ds-input"
           type="text"
           placeholder="Search icons"
           value={searchItem}

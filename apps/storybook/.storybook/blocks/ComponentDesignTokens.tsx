@@ -121,7 +121,7 @@ export const ComponentDesignTokens = ({
   if (tokens.length === 0) {
     return (
       <div className="sb-unstyled">
-        <h2 className="title text-2xl mb-normal">{title}</h2>
+        <h2 className="ds-title text-2xl mb-normal">{title}</h2>
         <div className="my-large p-large bg-grey-light radius">
           <p className="text-small">
             No {tokenType === 'alias' ? 'alias' : 'component'} tokens defined for this component.
@@ -136,9 +136,9 @@ export const ComponentDesignTokens = ({
 
   return (
     <div className="sb-unstyled my-large">
-      <h2 className="title text-2xl mb-normal">{title}</h2>
+      <h2 className="ds-title text-2xl mb-normal">{title}</h2>
       <p className="text-normal mb-normal" dangerouslySetInnerHTML={{ __html: description }} />
-      <table className="table  w-full mb-large">
+      <table className="ds-table w-full mb-large">
         <thead>
           <tr>
             <th>CSS Variable</th>

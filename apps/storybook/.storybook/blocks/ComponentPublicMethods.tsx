@@ -41,7 +41,7 @@ const findComponent = (name: string) => {
 
 const MethodList = ({ methods, heading }: { methods: ComponentMethod[]; heading?: string }): React.ReactElement => (
   <div className="mb-large">
-    {heading && <h3 className="title text-xl mb-normal mt-large">{heading}</h3>}
+    {heading && <h3 className="ds-title text-xl mb-normal mt-large">{heading}</h3>}
     {methods.length === 0 ? (
       <div className="my-normal p-large bg-grey-light radius">
         <p className="text-small">No public methods available.</p>
@@ -49,9 +49,9 @@ const MethodList = ({ methods, heading }: { methods: ComponentMethod[]; heading?
     ) : (
       methods.map((method, index) => (
         <div key={index} className="mb-large">
-          <h4 className="title text-lg mb-small">{method.name}</h4>
+          <h4 className="ds-title text-lg mb-small">{method.name}</h4>
           <pre className="bg-grey-light p-normal radius overflow-auto">
-            {method.docs && <p className="text text-normal text-primary mb-normal">{method.docs}</p>}
+            {method.docs && <p className="ds-text text-normal text-primary mb-normal">{method.docs}</p>}
             <code className="text-small font-family-monospace">{method.signature}</code>
           </pre>
         </div>
@@ -84,7 +84,7 @@ export const ComponentPublicMethods = ({
     if (methods.length === 0) {
       return (
         <div className="sb-unstyled">
-          <h2 className="title text-2xl mb-normal">{title}</h2>
+          <h2 className="ds-title text-2xl mb-normal">{title}</h2>
           <div className="my-large p-large bg-grey-light radius">
             <p className="text-small">No public methods available for this component.</p>
           </div>
@@ -94,13 +94,13 @@ export const ComponentPublicMethods = ({
 
     return (
       <div className="sb-unstyled my-large">
-        <h2 className="title text-2xl mb-normal">{title}</h2>
+        <h2 className="ds-title text-2xl mb-normal">{title}</h2>
         {description && <p className="text-normal mb-large">{description}</p>}
         {methods.map((method, index) => (
           <div key={index} className="mb-large">
-            <h3 className="title text-xl mb-small">{method.name}</h3>
+            <h3 className="ds-title text-xl mb-small">{method.name}</h3>
             <pre className="bg-grey-light p-normal radius overflow-auto">
-              {method.docs && <p className="text text-normal text-primary mb-normal">{method.docs}</p>}
+              {method.docs && <p className="ds-text text-normal text-primary mb-normal">{method.docs}</p>}
               <code className="text-small font-family-monospace">{method.signature}</code>
             </pre>
           </div>
@@ -121,7 +121,7 @@ export const ComponentPublicMethods = ({
 
   return (
     <div className="sb-unstyled my-large">
-      <h2 className="title text-2xl mb-normal">{title}</h2>
+      <h2 className="ds-title text-2xl mb-normal">{title}</h2>
       {description && <p className="text-normal mb-large">{description}</p>}
       {allEntries.map((entry, index) =>
         entry.notFound ? (
