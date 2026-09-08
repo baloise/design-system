@@ -585,7 +585,7 @@ These commands can be posted as a PR comment to trigger workflows:
 | --------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
 | `/update-screenshots` | Runs visual regression tests and commits updated snapshots to the PR branch. Use after intentional visual changes.           |
 | `/snapshot`           | Publishes a snapshot npm version (e.g. `1.2.3-pr123.0`) so you can install and test the PR in a real project before merging. |
-| `/cib`                | Posted on an **issue** — auto-creates a correctly named branch for that issue and posts the branch link as a comment.        |
+| `/cib`                | Posted on an **issue** — auto-creates a correctly named branch if the issue has a type label (`✨ feature`, `🐛 bug`, `🔧 chore`, …). Other labels such as `ready-for-agent` are skipped. |
 
 ## Deployment
 

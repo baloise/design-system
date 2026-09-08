@@ -93,7 +93,7 @@ Post these as a PR comment to trigger automation:
 | --------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `/update-screenshots` | Regenerates visual regression snapshots and commits them to your branch. Use after intentional visual changes.                                                                                           |
 | `/snapshot`           | Publishes a snapshot npm version from your branch so you can test it in a real project before merging. See [Snapshot Versions](docs/ARCHITECTURE.md#snapshot-versions-testing-before-merge) for details. |
-| `/cib`                | Post on an **issue** to auto-create a correctly named branch for it.                                                                                                                                     |
+| `/cib`                | Post on an **issue** to auto-create a correctly named branch. The issue must have a type label (`✨ feature`, `🐛 bug`, `🔧 chore`, …); other labels such as `ready-for-agent` are skipped.             |
 
 ## Reporting Issues
 
@@ -105,13 +105,13 @@ Start any contribution (bug fix or feature) by creating a GitHub issue:
 4. Provide a clear title and description
 5. Add labels and assign to a milestone if applicable
 
-Once the issue is created, use the `/cib` command in a comment on that issue to auto-generate a branch:
+Once the issue is created, add a type label (`✨ feature`, `🐛 bug`, `🔧 chore`, `♻️ refactor`, `🧪 test`, `💥 breaking change`, `⚡️ perf`, `🚀 release`, or `🛡️ lts`) and comment `/cib` on that issue to auto-generate a branch:
 
 ```
 /cib
 ```
 
-This creates a properly named branch (e.g., `feat/button-hover-state`) and opens a PR automatically.
+This creates a properly named branch (e.g., `feat/button-hover-state`) and opens a PR automatically. Without a type label the workflow runs but skips the issue.
 
 ## Fixing a Bug
 
