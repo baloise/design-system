@@ -4,6 +4,7 @@
 @use '../input/input.mixin' as input;
 
 $chevron-icon: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2010%2010'%3E%3Cpath%20fill='black'%20d='M5,7.874a1.238,1.238,0,0,1-.879-.364L.206,3.393A.75.75,0,1,1,1.294,2.36L4.819,6.072a.249.249,0,0,0,.362,0L8.706,2.36A.75.75,0,1,1,9.794,3.393L5.9,7.5A1.269,1.269,0,0,1,5,7.874Z'/%3E%3C/svg%3E");
+$search-icon: url("data:image/svg+xml,%3Csvg viewBox='0 0 14 14' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M2 6C2 3.79086 3.79086 2 6 2C8.20914 2 10 3.79086 10 6C10 8.20914 8.20914 10 6 10C3.79086 10 2 8.20914 2 6ZM6 0C2.68629 0 0 2.68629 0 6C0 9.31371 2.68629 12 6 12C7.29578 12 8.49562 11.5892 9.47642 10.8908L12.2929 13.7073C12.6834 14.0978 13.3166 14.0978 13.7071 13.7073C14.0976 13.3168 14.0976 12.6836 13.7071 12.2931L10.8907 9.47665C11.5892 8.49581 12 7.29588 12 6C12 2.68629 9.31371 0 6 0Z'/%3E%3C/svg%3E");
 
 /**
  * Variables
@@ -19,14 +20,24 @@ $chevron-icon: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/sv
  * @prop --input-phone-line-height: Line height of the number field text.
  * @prop --input-phone-flag-width: Width of the country flag.
  * @prop --input-phone-flag-height: Height of the country flag.
+ * @prop --input-phone-flag-empty-background: Background color of the flag placeholder when no country is selected.
+ * @prop --input-phone-flag-empty-radius: Border radius of the flag placeholder when no country is selected.
  * @prop --input-phone-popup-width: Width of the country picker popup.
  * @prop --input-phone-popup-background: Background color of the country picker popup.
  * @prop --input-phone-popup-shadow: Box shadow of the country picker popup.
+ * @prop --input-phone-popup-padding: Padding of the country picker popup.
+ * @prop --input-phone-popup-radius: Border radius of the country picker popup.
+ * @prop --input-phone-popup-border: Border of the country picker popup.
+ * @prop --input-phone-filter-placeholder-color: Placeholder text color of the country filter input.
+ * @prop --input-phone-scrollbar-color: Color of the country list scrollbar.
+ * @prop --input-phone-scrollbar-radius: Border radius of the country list scrollbar thumb.
+ * @prop --input-phone-scrollbar-border-width: Border width of the country list scrollbar thumb.
  * @prop --input-phone-option-color: Text color of a country option.
  * @prop --input-phone-option-background: Background color of a country option.
  * @prop --input-phone-option-hover-background: Background color of a hovered or keyboard-active country option.
  * @prop --input-phone-option-selected-background: Background color of the selected country option.
  * @prop --input-phone-option-border: Border color between country options.
+ * @prop --input-phone-option-radius: Border radius of a country option.
  * @prop --form-container-background: Background color of the input container.
  * @prop --form-container-border-color: Border color of the input container.
  * @prop --form-container-border-width: Border width of the input container.
@@ -59,14 +70,24 @@ $chevron-icon: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/sv
 
   @include vars.local(input-phone-flag-width, calc(var(--ds-device-space-base) * 1.5));
   @include vars.local(input-phone-flag-height, var(--ds-device-space-base));
+  @include vars.local(input-phone-flag-empty-background, var(--ds-input-phone-flag-background-color-empty));
+  @include vars.local(input-phone-flag-empty-radius, var(--ds-input-phone-flag-radius-empty));
   @include vars.local(input-phone-popup-width, 18.75rem);
-  @include vars.local(input-phone-popup-background, var(--ds-select-content-color-background));
+  @include vars.local(input-phone-popup-background, var(--ds-input-phone-popup-color-background));
   @include vars.local(input-phone-popup-shadow, var(--ds-select-content-shadow));
+  @include vars.local(input-phone-popup-padding, var(--ds-input-phone-popup-padding));
+  @include vars.local(input-phone-popup-radius, var(--ds-input-phone-popup-radius));
+  @include vars.local(input-phone-popup-border, var(--ds-input-phone-popup-border));
+  @include vars.local(input-phone-filter-placeholder-color, var(--ds-input-phone-filter-color-placeholder));
+  @include vars.local(input-phone-scrollbar-color, var(--ds-input-phone-scrollbar-color));
+  @include vars.local(input-phone-scrollbar-radius, var(--ds-input-phone-scrollbar-radius));
+  @include vars.local(input-phone-scrollbar-border-width, var(--ds-input-phone-scrollbar-border-width));
   @include vars.local(input-phone-option-color, var(--ds-select-option-color-text-base));
   @include vars.local(input-phone-option-background, var(--ds-select-option-color-background-base));
   @include vars.local(input-phone-option-hover-background, var(--ds-select-option-color-background-highlight));
   @include vars.local(input-phone-option-selected-background, var(--ds-select-option-color-background-selected));
   @include vars.local(input-phone-option-border, var(--ds-select-option-color-border));
+  @include vars.local(input-phone-option-radius, var(--ds-input-phone-option-radius));
 }
 
 /**
@@ -76,7 +97,7 @@ $chevron-icon: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/sv
 
 :host {
   @include form.field();
-  @include form.container();
+  @include form.container($active: false);
   @include form.label();
   @include form.description();
 
@@ -95,10 +116,6 @@ $chevron-icon: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/sv
     min-width: 0;
     gap: 0;
     padding-inline: 0;
-
-    &:focus-within:not(:active) {
-      border: var(--_form-container-border);
-    }
   }
 
   #input-segment {
@@ -108,7 +125,7 @@ $chevron-icon: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/sv
     align-self: stretch;
     display: flex;
     align-items: center;
-    padding-inline: 0.25rem 0.5rem;
+    padding-inline: 0.5rem;
   }
 }
 
@@ -126,7 +143,7 @@ $chevron-icon: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/sv
     flex-shrink: 0;
     align-self: stretch;
     margin: 0;
-    padding-inline: 0.75rem 0.5rem;
+    padding-inline: calc(0.5rem + 2px);
     border: none;
     border-inline-end: var(--_form-container-border);
     border-radius: 0;
@@ -162,6 +179,7 @@ $chevron-icon: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/sv
     inset-inline: calc(var(--ds-alias-border-width-base, 1px) * -1) 0;
     border-start-start-radius: var(--_form-container-radius);
     border-end-start-radius: var(--_form-container-radius);
+    width: 100%;
   }
 
   #input-segment:has(#input:focus-visible)::after {
@@ -181,7 +199,8 @@ $chevron-icon: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/sv
   }
 
   .flag.is-empty {
-    box-shadow: inset 0 0 0 1px var(--_input-phone-option-border);
+    background: var(--_input-phone-flag-empty-background);
+    border-radius: var(--_input-phone-flag-empty-radius);
   }
 
   .calling-code {
@@ -208,6 +227,21 @@ $chevron-icon: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/sv
   .chevron {
     transform: rotate(180deg);
   }
+
+  // The popup being open moves real DOM focus to the filter/list, so #country-trigger is no
+  // longer :focus-visible — keep showing its ring for as long as the popup it controls is open.
+  #country-trigger::after {
+    content: '';
+    position: absolute;
+    z-index: 1;
+    inset-block: calc(var(--ds-alias-border-width-base, 1px) * -1);
+    inset-inline: calc(var(--ds-alias-border-width-base, 1px) * -1) 0;
+    pointer-events: none;
+    border: var(--_form-container-focus-border);
+    border-start-start-radius: var(--_form-container-radius);
+    border-end-start-radius: var(--_form-container-radius);
+    width: 100%;
+  }
 }
 
 /**
@@ -226,21 +260,61 @@ $chevron-icon: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/sv
     box-sizing: border-box;
     width: min(var(--_input-phone-popup-width), 100%);
     max-height: 18.75rem;
-    margin: 0;
     background: var(--_input-phone-popup-background);
     box-shadow: var(--_input-phone-popup-shadow);
     overflow: hidden;
+
+    margin: var(--_input-phone-popup-padding) 0 0 0;
+    border-radius: var(--_input-phone-popup-radius);
+    padding: var(--_input-phone-popup-padding) 0;
+    border: var(--_input-phone-popup-border);
+
+    transition:
+      transform 0.2s,
+      opacity 0.2s,
+      -webkit-transform 0.2s;
+
+    opacity: 1;
+    transform: scaleY(1);
+    transform-origin: center top;
+
+    &[aria-hidden='true'] {
+      opacity: 0;
+      transform: scaleY(0);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      transition: none !important;
+      animation: none !important;
+    }
   }
 
   .filter {
+    position: relative;
     flex-shrink: 0;
     border-bottom: var(--_form-container-border);
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 0.5rem;
+      width: 14px;
+      height: 14px;
+      transform: translateY(-50%);
+      mask-image: $search-icon;
+      mask-size: 100%;
+      mask-repeat: no-repeat;
+      mask-position: center;
+      background-color: var(--_input-phone-filter-placeholder-color);
+      pointer-events: none;
+    }
 
     input {
       box-sizing: border-box;
       width: 100%;
       margin: 0;
-      padding: 0.5rem;
+      padding: 0.5rem 0.5rem 0.5rem calc(0.5rem + 14px + 0.5rem);
       border: none;
       border-radius: 0;
       outline: none;
@@ -249,6 +323,10 @@ $chevron-icon: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/sv
       color: var(--_input-phone-color);
       font-family: var(--_input-phone-family);
       font-size: var(--_input-phone-size);
+
+      @include input.placeholder {
+        color: var(--_input-phone-filter-placeholder-color);
+      }
     }
   }
 
@@ -259,6 +337,25 @@ $chevron-icon: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/sv
   #country-list {
     flex: 1;
     overflow: auto;
+    padding-top: var(--_input-phone-popup-padding);
+
+    scrollbar-width: thin;
+    scrollbar-color: var(--_input-phone-scrollbar-color) transparent;
+
+    &::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: var(--_input-phone-scrollbar-color);
+      background-clip: padding-box;
+      border: var(--_input-phone-scrollbar-border-width) solid transparent;
+      border-radius: var(--_input-phone-scrollbar-radius);
+    }
   }
 
   .option {
@@ -266,10 +363,12 @@ $chevron-icon: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/sv
     align-items: center;
     gap: 0.5rem;
     padding: 0.5rem;
-    border-bottom: 2px solid var(--_input-phone-option-border);
     background: var(--_input-phone-option-background);
     color: var(--_input-phone-option-color);
     cursor: pointer;
+
+    border-radius: var(--_input-phone-option-radius);
+    margin: 0 var(--_input-phone-popup-padding);
 
     &:last-child {
       border-bottom: none;
@@ -294,11 +393,11 @@ $chevron-icon: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/sv
 
   .option-code {
     flex-shrink: 0;
-    color: var(--_input-phone-color);
+    color: var(--_input-phone-placeholder);
   }
 
   .no-results {
-    padding: 0.75rem 0.5rem;
+    padding: 0.5rem;
     color: var(--_input-phone-placeholder);
   }
 }

@@ -12928,6 +12928,18 @@
               "com.figma.variableId": "VariableID:137:1676"
             }
           }
+        },
+        "Border": {
+          "$type": "border",
+          "$value": "{🔗 Alias.▭ Border.Composite.Grey}"
+        },
+        "Radius": {
+          "$type": "dimension",
+          "$value": "{🔗 Alias.🔵 Radius.MD}"
+        },
+        "Padding": {
+          "$type": "dimension",
+          "$value": "{🔗 Alias.↔️ Space.Padding.2XS}"
         }
       },
       "Search": {
@@ -21096,6 +21108,83 @@
               "desktop": "VariableID:137:2634"
             }
           }
+        }
+      }
+    },
+    "InputPhone": {
+      "Flag": {
+        "Radius": {
+          "Empty": {
+            "$type": "dimension",
+            "$value": "{🔗 Alias.🔵 Radius.Base}",
+            "$description": "Border radius of the country flag placeholder when no country is selected."
+          }
+        },
+        "Background": {
+          "Color": {
+            "Empty": {
+              "$type": "color",
+              "$value": "{🔗 Alias.🎨 Surface.GreyDark}",
+              "$description": "Background color of the country flag placeholder when no country is selected."
+            }
+          }
+        }
+      },
+      "Popup": {
+        "Color": {
+          "Background": {
+            "$type": "color",
+            "$value": "{🔗 Alias.🎨 Surface.White}",
+            "$description": "Background color of the country picker popup."
+          }
+        },
+        "Padding": {
+          "$type": "dimension",
+          "$value": "{🔗 Alias.↔️ Space.Padding.2XS}",
+          "$description": "Padding of the country picker popup."
+        },
+        "Radius": {
+          "$type": "dimension",
+          "$value": "{🔗 Alias.🔵 Radius.MD}",
+          "$description": "Border radius of the country picker popup."
+        },
+        "Border": {
+          "$type": "border",
+          "$value": "{🔗 Alias.▭ Border.Composite.Grey}",
+          "$description": "Border of the country picker popup."
+        }
+      },
+      "Filter": {
+        "Color": {
+          "Placeholder": {
+            "$type": "color",
+            "$value": "{🔗 Alias.🔤 Text.Color.Placeholder}",
+            "$description": "Placeholder text color of the country filter input."
+          }
+        }
+      },
+      "Scrollbar": {
+        "Color": {
+          "$type": "color",
+          "$value": "{🔗 Alias.▭ Border.Color.GreyLight}",
+          "$description": "Color of the country list scrollbar thumb."
+        },
+        "Radius": {
+          "$type": "dimension",
+          "$value": "{🔗 Alias.🔵 Radius.Rounded}",
+          "$description": "Border radius of the country list scrollbar thumb."
+        },
+        "BorderWidth": {
+          "$type": "dimension",
+          "$value": "{🔗 Alias.▭ Border.Width.Base}",
+          "$description": "Border width of the country list scrollbar thumb."
+        }
+      },
+      "Option": {
+        "Radius": {
+          "$type": "dimension",
+          "$value": "{🔗 Alias.🔵 Radius.Base}",
+          "$description": "Border radius of a country option."
         }
       }
     }

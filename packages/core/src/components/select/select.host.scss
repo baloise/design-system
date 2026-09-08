@@ -12,6 +12,7 @@ $select-icon-check: url("data:image/svg+xml,<svg viewBox='0 0 14 14' xmlns='http
 $select-icon-check-white: url("data:image/svg+xml,<svg viewBox='0 0 14 14' xmlns='http://www.w3.org/2000/svg'><path fill='%23ffffff' fill-rule='evenodd' clip-rule='evenodd' d='M13.637 1.19792C14.0627 1.54974 14.1227 2.18006 13.7708 2.60579L5.73084 12.335L5.72842 12.3379C5.54554 12.5575 5.31602 12.7336 5.05655 12.8534C4.79707 12.9731 4.51417 13.0336 4.22842 13.0302L4.22752 13.0302C3.93709 13.0266 3.65125 12.9573 3.39146 12.8274C3.13254 12.6979 2.9062 12.5117 2.72931 12.2826C2.72871 12.2818 2.72812 12.281 2.72752 12.2802L0.210633 9.04426C-0.128437 8.60831 -0.0499029 7.98003 0.386044 7.64096C0.821992 7.30189 1.45027 7.38043 1.78934 7.81638L4.25291 10.9838L12.2291 1.33176C12.5809 0.906034 13.2113 0.846112 13.637 1.19792Z'/></svg>");
 $select-icon-close: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 14'%3E%3Cpath fill-rule='evenodd' d='M1.70711 0.292893C1.31658 -0.0976311 0.683417 -0.0976311 0.292893 0.292893C-0.0976311 0.683417 -0.0976311 1.31658 0.292893 1.70711L5.58579 7L0.292893 12.2929C-0.0976311 12.6834 -0.0976311 13.3166 0.292893 13.7071C0.683417 14.0976 1.31658 14.0976 1.70711 13.7071L7 8.41421L12.2929 13.7071C12.6834 14.0976 13.3166 14.0976 13.7071 13.7071C14.0976 13.3166 14.0976 12.6834 13.7071 12.2929L8.41421 7L13.7071 1.70711C14.0976 1.31658 14.0976 0.683417 13.7071 0.292893C13.3166 -0.0976311 12.6834 -0.0976311 12.2929 0.292893L7 5.58579L1.70711 0.292893Z' clip-rule='evenodd'/%3E%3C/svg%3E");
 $select-icon-arrow: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2010%2010'%3E%3Cpath%20fill='black'%20d='M5,7.874a1.238,1.238,0,0,1-.879-.364L.206,3.393A.75.75,0,1,1,1.294,2.36L4.819,6.072a.249.249,0,0,0,.362,0L8.706,2.36A.75.75,0,1,1,9.794,3.393L5.9,7.5A1.269,1.269,0,0,1,5,7.874Z'/%3E%3C/svg%3E");
+$select-icon-search: url("data:image/svg+xml,%3Csvg viewBox='0 0 14 14' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M2 6C2 3.79086 3.79086 2 6 2C8.20914 2 10 3.79086 10 6C10 8.20914 8.20914 10 6 10C3.79086 10 2 8.20914 2 6ZM6 0C2.68629 0 0 2.68629 0 6C0 9.31371 2.68629 12 6 12C7.29578 12 8.49562 11.5892 9.47642 10.8908L12.2929 13.7073C12.6834 14.0978 13.3166 14.0978 13.7071 13.7073C14.0976 13.3168 14.0976 12.6836 13.7071 12.2931L10.8907 9.47665C11.5892 8.49581 12 7.29588 12 6C12 2.68629 9.31371 0 6 0Z'/%3E%3C/svg%3E");
 
 // Shared mask-icon plumbing for the SVGs above — only the sizing/position differ per usage.
 @mixin mask-icon($image, $size: 100%) {
@@ -47,6 +48,9 @@ $select-icon-arrow: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/20
  * @prop --select-content-family: Font family of the slim-select dropdown widget.
  * @prop --select-content-background-color: Background color of the dropdown content.
  * @prop --select-content-shadow: Box shadow of the dropdown content.
+ * @prop --select-content-border: Border of the dropdown content.
+ * @prop --select-content-radius: Border radius of the dropdown content.
+ * @prop --select-content-padding: Padding of the dropdown content.
  * @prop --select-search-text-color: Text color of the search input.
  * @prop --select-option-text-color: Text color of a dropdown option in its base state.
  * @prop --select-option-background-color: Background color of a dropdown option in its base state.
@@ -60,7 +64,7 @@ $select-icon-arrow: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/20
  * @prop --select-optgroup-background-color: Background color of an option group label.
  * @prop --select-optgroup-text-color: Text color of an option group label.
  * @prop --select-optgroup-weight: Font weight of an option group label.
- * @prop --select-icon-color: Color of the dropdown arrow icon and deselect icon.
+ * @prop --select-icon-color: Color of the dropdown arrow icon, search icon and deselect icon.
  * @prop --select-icon-hover-color: Color of the deselect icon on hover state.
  * @prop --select-icon-active-color: Color of the deselect icon on active state.
  * @prop --select-tag-background-color: Background color of a selected value tag.
@@ -95,6 +99,9 @@ $select-icon-arrow: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/20
   @include vars.local(select-content-family, var(--ds-select-content-family));
   @include vars.local(select-content-background-color, var(--ds-select-content-color-background));
   @include vars.local(select-content-shadow, var(--ds-select-content-shadow));
+  @include vars.local(select-content-border, var(--ds-select-content-border));
+  @include vars.local(select-content-radius, var(--ds-select-content-radius));
+  @include vars.local(select-content-padding, var(--ds-select-content-padding));
   @include vars.local(select-search-text-color, var(--ds-select-search-color-text));
 
   @include vars.local(select-option-text-color, var(--ds-select-option-color-text-base));
@@ -268,13 +275,16 @@ $select-icon-arrow: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/20
   .ss-content {
     background-color: var(--_select-content-background-color);
     box-shadow: var(--_select-content-shadow);
-    border: none;
+    border-radius: var(--_select-content-radius);
+    padding: var(--_select-content-padding) 0;
+
+    border: var(--_select-content-border);
     margin: 0 !important;
 
     position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
+    top: calc(100% + 4px);
+    left: -4px;
+    width: calc(100% + 8px);
     z-index: var(--ds-alias-z-index-popup);
 
     min-height: 0;
@@ -289,14 +299,54 @@ $select-icon-arrow: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/20
 }
 
 //
+// scrollbar
+:host {
+  .ss-content .ss-list {
+    scrollbar-width: thin;
+    scrollbar-color: var(--_select-option-border-color) transparent;
+
+    &::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: var(--_select-option-border-color);
+      background-clip: padding-box;
+      border: 2px solid transparent;
+      border-radius: 9999px;
+    }
+  }
+}
+
+//
 // search input
 :host {
-  .ss-content .ss-search {
-    border-width: 2px;
-    border-color: var(--_form-container-border-color);
+  .ss-content > .ss-search {
+    position: relative;
+    border-bottom: var(--_select-content-border);
+    margin-bottom: var(--_select-content-padding);
+    padding: 0 var(--_select-content-padding);
+
+    &::before {
+      @include mask-icon($select-icon-search);
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: calc(var(--_select-content-padding) * 3);
+      width: 14px;
+      height: 14px;
+      transform: translateY(-50%);
+      background-color: var(--_select-placeholder-color);
+      pointer-events: none;
+    }
 
     input {
       color: var(--_select-search-text-color);
+      padding-left: calc(var(--_select-content-padding) + var(--_select-content-padding) + 14px + var(--ss-spacing-l));
     }
 
     /* clears the ‘X’ from Internet Explorer */
@@ -319,6 +369,12 @@ $select-icon-arrow: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/20
     }
   }
 
+  .ss-list .ss-search {
+    padding: 0 calc(var(--_select-content-padding) * 2);
+    color: var(--_select-placeholder-color);
+    border: none;
+  }
+
   .ss-content .ss-list .ss-option .ss-search-highlight {
     font-weight: var(--_select-option-selected-weight);
     color: var(--_select-option-highlight-text-color);
@@ -333,12 +389,8 @@ $select-icon-arrow: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/20
     color: var(--_select-option-text-color);
     background-color: var(--_select-option-background-color);
     border-left: none !important;
-
-    border-bottom: 2px solid var(--_select-option-border-color);
-
-    &:last-child {
-      border-bottom: none;
-    }
+    border-radius: var(--ds-alias-radius-base);
+    margin: 0 var(--_select-content-padding);
 
     &::after {
       display: block;
@@ -350,6 +402,17 @@ $select-icon-arrow: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/20
       mask-position: center;
       margin-left: auto;
     }
+  }
+
+  // slim-select's own base stylesheet (slimselect.scss) paints its own dark, hard-coded
+  // hover fill on `:hover:not(.ss-disabled)` — independent of and visually inconsistent with
+  // our `.ss-highlighted` styling below. Now that hover is unified into `.ss-highlighted` via
+  // JS (select.picker.ts), neutralize the library's own hover paint so it never shows through.
+  // `:not(.ss-highlighted)` keeps this from also winning over (and canceling) the highlight
+  // styling below for the split-second both classes apply to the same option.
+  .ss-content .ss-list .ss-option:hover:not(.ss-disabled):not(.ss-highlighted) {
+    color: var(--_select-option-text-color);
+    background-color: var(--_select-option-background-color);
   }
 
   //
@@ -366,15 +429,14 @@ $select-icon-arrow: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/20
   }
 
   //
-  // highlighted (hover / keyboard navigation)
-  .ss-content .ss-list .ss-option:hover:not(.ss-disabled),
+  // pressed
   .ss-content .ss-list .ss-option:active:not(.ss-disabled) {
     background-color: var(--_select-option-hover-background-color);
     color: var(--_select-option-hover-text-color);
   }
 
   //
-  // highlighted (hover / keyboard navigation)
+  // highlighted (hover and keyboard navigation both drive the same .ss-highlighted class)
   .ss-content .ss-list .ss-option.ss-highlighted {
     background-color: var(--_select-option-highlight-background-color);
     color: var(--_select-option-highlight-text-color);
@@ -396,8 +458,6 @@ $select-icon-arrow: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/20
   .ss-main .ss-deselect {
     --close-color-icon: var(--_select-icon-color);
     --close-color-focus: var(--_select-focus-ring-color);
-
-    margin-inline: var(--ss-icon-spacing);
 
     @include hover {
       &:hover,
