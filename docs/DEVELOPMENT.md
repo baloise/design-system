@@ -45,7 +45,7 @@ pnpm install --frozen-lockfile
 
 # Start development
 pnpm start                # Core components dev server (http://localhost:3333)
-pnpm docs             # Storybook documentation (http://localhost:6006)
+pnpm run docs             # Storybook documentation (http://localhost:6006)
 ```
 
 The dev servers support hot reloading — changes to components and styles are reflected immediately.

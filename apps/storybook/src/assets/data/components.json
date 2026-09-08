@@ -8,7 +8,6 @@
     {
       "fileName": "accordion.tsx",
       "tag": "ds-accordion",
-      "readme": "# ds-accordion\n",
       "overview": "Accordion displays collapsible content sections with open/close toggle buttons and optional animations.\nPerfect for organizing large amounts of content into logical, expandable groups.",
       "usage": {},
       "docs": "Accordion displays collapsible content sections with open/close toggle buttons and optional animations.\nPerfect for organizing large amounts of content into logical, expandable groups.",
@@ -962,7 +961,6 @@
     {
       "fileName": "alert-container.tsx",
       "tag": "ds-alert-container",
-      "readme": "# ds-alert-container\n",
       "overview": "Alert Container manages and displays a queue of toast or snackbar notifications with automatic dismissal and deduplication.",
       "usage": {},
       "docs": "Alert Container manages and displays a queue of toast or snackbar notifications with automatic dismissal and deduplication.",
@@ -1228,7 +1226,6 @@
     {
       "fileName": "app.tsx",
       "tag": "ds-app",
-      "readme": "# ds-app\n",
       "overview": "App is a root wrapper component that provides global configuration, focus management, and responsive behavior context for all design system components.",
       "usage": {},
       "docs": "App is a root wrapper component that provides global configuration, focus management, and responsive behavior context for all design system components.",
@@ -1376,7 +1373,6 @@
     {
       "fileName": "app-footer.tsx",
       "tag": "ds-app-footer",
-      "readme": "# ds-app-footer\n\n\n",
       "overview": "AppFooter renders application level legal links, language selection, and social links.\nLink content is slot first to keep links crawlable and SEO friendly.\nLinks and social media are shown by default unless disabled.",
       "usage": {},
       "docs": "AppFooter renders application level legal links, language selection, and social links.\nLink content is slot first to keep links crawlable and SEO friendly.\nLinks and social media are shown by default unless disabled.",
@@ -1997,7 +1993,6 @@
     {
       "fileName": "app-navbar.tsx",
       "tag": "ds-app-navbar",
-      "readme": "# ds-app-navbar\n\n\n",
       "overview": "AppNavbar provides semantic navigation with responsive sidebar menu and keyboard support.",
       "usage": {},
       "docs": "AppNavbar provides semantic navigation with responsive sidebar menu and keyboard support.",
@@ -5026,7 +5021,6 @@
     {
       "fileName": "badge.tsx",
       "tag": "ds-badge",
-      "readme": "# ds-badge\n",
       "overview": "Badge displays a small indicator or counter on a child component to highlight notifications, counts, or status information.",
       "usage": {},
       "docs": "Badge displays a small indicator or counter on a child component to highlight notifications, counts, or status information.",
@@ -6230,7 +6224,6 @@
     {
       "fileName": "brand-icon.tsx",
       "tag": "ds-brand-icon",
-      "readme": "# ds-brand-icon\n",
       "overview": "Icon displays SVG icons with customizable color, size, rotation, and optional tile background.",
       "usage": {},
       "docs": "Icon displays SVG icons with customizable color, size, rotation, and optional tile background.",
@@ -7516,7 +7509,6 @@
     {
       "fileName": "button.tsx",
       "tag": "ds-button",
-      "readme": "# ds-button\n",
       "overview": "Button provides a clickable element for triggering actions, submitting forms, or navigating — supporting text, icons, or both.",
       "usage": {},
       "docs": "Button provides a clickable element for triggering actions, submitting forms, or navigating — supporting text, icons, or both.",
@@ -14195,7 +14187,6 @@
     {
       "fileName": "button-group.tsx",
       "tag": "ds-button-group",
-      "readme": "# ds-button-group\n",
       "overview": "Button group groups multiple buttons together with layout control for alignment and direction.",
       "usage": {},
       "docs": "Button group groups multiple buttons together with layout control for alignment and direction.",
@@ -14392,7 +14383,6 @@
     {
       "fileName": "card.tsx",
       "tag": "ds-card",
-      "readme": "# ds-card\n",
       "overview": "Card groups related content together in a contained, visually distinct container with optional header and footer.",
       "usage": {},
       "docs": "Card groups related content together in a contained, visually distinct container with optional header and footer.",
@@ -16239,7 +16229,6 @@
     {
       "fileName": "card-actions.tsx",
       "tag": "ds-card-actions",
-      "readme": "# ds-card-actions\n",
       "overview": "Card actions renders a container for action buttons or controls at the end of a card.",
       "usage": {},
       "docs": "Card actions renders a container for action buttons or controls at the end of a card.",
@@ -16329,7 +16318,6 @@
     {
       "fileName": "card-content.tsx",
       "tag": "ds-card-content",
-      "readme": "# ds-card-content\n",
       "overview": "Card content renders the main content area of a card for grouping body text and media.",
       "usage": {},
       "docs": "Card content renders the main content area of a card for grouping body text and media.",
@@ -16370,7 +16358,6 @@
     {
       "fileName": "card-header.tsx",
       "tag": "ds-card-header",
-      "readme": "# ds-card-header\n",
       "overview": "Card header renders the header section of a card with optional layout direction for title and image/icon.",
       "usage": {},
       "docs": "Card header renders the header section of a card with optional layout direction for title and image/icon.",
@@ -16453,7 +16440,6 @@
     {
       "fileName": "card-subtitle.tsx",
       "tag": "ds-card-subtitle",
-      "readme": "# ds-card-subtitle\n",
       "overview": "Card subtitle renders a subtitle heading for cards with customizable color and styling.",
       "usage": {},
       "docs": "Card subtitle renders a subtitle heading for cards with customizable color and styling.",
@@ -16591,7 +16577,6 @@
     {
       "fileName": "card-title.tsx",
       "tag": "ds-card-title",
-      "readme": "# ds-card-title\n",
       "overview": "Card title renders a semantic heading for card titles with flexible visual styling independent of heading level.",
       "usage": {},
       "docs": "Card title renders a semantic heading for card titles with flexible visual styling independent of heading level.",
@@ -16827,7 +16812,6 @@
     {
       "fileName": "carousel.tsx",
       "tag": "ds-carousel",
-      "readme": "# ds-carousel\n",
       "overview": "Carousel coordinates ds-carousel-item children into a scrollable, accessible slide interface. Supports an image slider and a product tile strip.",
       "usage": {},
       "docs": "Carousel coordinates ds-carousel-item children into a scrollable, accessible slide interface. Supports an image slider and a product tile strip.",
@@ -17454,7 +17438,6 @@
     {
       "fileName": "carousel-item.tsx",
       "tag": "ds-carousel-item",
-      "readme": "# ds-carousel-item\n",
       "overview": "Carousel Item is a single slide or product tile inside a ds-carousel.",
       "usage": {},
       "docs": "Carousel Item is a single slide or product tile inside a ds-carousel.",
@@ -17658,7 +17641,6 @@
     {
       "fileName": "checkbox.tsx",
       "tag": "ds-checkbox",
-      "readme": "# ds-checkbox\n",
       "overview": "Checkbox renders a checkbox form control for selecting multiple options from a group with optional label and help text.",
       "usage": {},
       "docs": "Checkbox renders a checkbox form control for selecting multiple options from a group with optional label and help text.",
@@ -19036,7 +19018,6 @@
     {
       "fileName": "checkbox-group.tsx",
       "tag": "ds-checkbox-group",
-      "readme": "# ds-checkbox-group\n",
       "overview": "Checkbox Group groups multiple checkboxes so multiple options can be selected within a form field.",
       "usage": {},
       "docs": "Checkbox Group groups multiple checkboxes so multiple options can be selected within a form field.",
@@ -19907,7 +19888,6 @@
     {
       "fileName": "close.tsx",
       "tag": "ds-close",
-      "readme": "# ds-close\n",
       "overview": "Close renders a button element for closing or dismissing UI components with customizable size and color.",
       "usage": {},
       "docs": "Close renders a button element for closing or dismissing UI components with customizable size and color.",
@@ -20766,7 +20746,6 @@
     {
       "fileName": "content.tsx",
       "tag": "ds-content",
-      "readme": "# ds-content\n",
       "overview": "Content arranges content with flexible layout, alignment, and spacing options for structural layouts.",
       "usage": {},
       "docs": "Content arranges content with flexible layout, alignment, and spacing options for structural layouts.",
@@ -21113,7 +21092,6 @@
     {
       "fileName": "data.tsx",
       "tag": "ds-data",
-      "readme": "# ds-data-value\n",
       "overview": "Data displays a list of label-value pairs in a organized, accessible format.\nSupports vertical and horizontal layouts with dividers always shown in vertical layout.",
       "usage": {},
       "docs": "Data displays a list of label-value pairs in a organized, accessible format.\nSupports vertical and horizontal layouts with dividers always shown in vertical layout.",
@@ -21238,7 +21216,6 @@
     {
       "fileName": "data-item.tsx",
       "tag": "ds-data-item",
-      "readme": "# ds-data-value\n",
       "overview": "DataItem is a container for label-value pairs within ds-data.\nProvides separate slots for label and value for semantic linking.",
       "usage": {},
       "docs": "DataItem is a container for label-value pairs within ds-data.\nProvides separate slots for label and value for semantic linking.",
@@ -21702,7 +21679,6 @@
     {
       "fileName": "data-label.tsx",
       "tag": "ds-data-label",
-      "readme": "# ds-data-value\n",
       "overview": "DataLabel is a label element for use within ds-data-item.\nIt displays a label with optional required indicator.",
       "usage": {},
       "docs": "DataLabel is a label element for use within ds-data-item.\nIt displays a label with optional required indicator.",
@@ -21789,7 +21765,6 @@
     {
       "fileName": "data-value.tsx",
       "tag": "ds-data-value",
-      "readme": "# ds-data-value\n",
       "overview": "DataValue is a value element for use within ds-data-item.\nPass-through slot container for value content.",
       "usage": {},
       "docs": "DataValue is a value element for use within ds-data-item.\nPass-through slot container for value content.",
@@ -21846,7 +21821,6 @@
     {
       "fileName": "date.tsx",
       "tag": "ds-date",
-      "readme": "# ds-date\n",
       "overview": "Date renders a masked date input field with an interactive calendar popup for date selection.",
       "usage": {},
       "docs": "Date renders a masked date input field with an interactive calendar popup for date selection.",
@@ -24060,7 +24034,6 @@
     {
       "fileName": "divider.tsx",
       "tag": "ds-divider",
-      "readme": "# ds-divider\n",
       "overview": "Divider renders a visual separator line for grouping or distinguishing content sections.",
       "usage": {},
       "docs": "Divider renders a visual separator line for grouping or distinguishing content sections.",
@@ -24497,7 +24470,6 @@
     {
       "fileName": "drawer.tsx",
       "tag": "ds-drawer",
-      "readme": "# ds-drawer\n",
       "overview": "Drawer displays a panel that slides up from the bottom of the screen.\nUses the native dialog element for accessible top-layer rendering, built-in focus management,\nand Escape-key handling.",
       "usage": {},
       "docs": "Drawer displays a panel that slides up from the bottom of the screen.\nUses the native dialog element for accessible top-layer rendering, built-in focus management,\nand Escape-key handling.",
@@ -25053,7 +25025,6 @@
     {
       "fileName": "file-upload.tsx",
       "tag": "ds-file-upload",
-      "readme": "# ds-file-upload\n",
       "overview": "FileUpload renders a drag-drop file upload area with optional file list, validation, and form field integration.",
       "usage": {},
       "docs": "FileUpload renders a drag-drop file upload area with optional file list, validation, and form field integration.",
@@ -27126,7 +27097,6 @@
     {
       "fileName": "heading.tsx",
       "tag": "ds-heading",
-      "readme": "# ds-heading\n",
       "overview": "Heading renders semantic HTML heading elements (h1–h6) with flexible styling options for visual hierarchy independent of markup level.",
       "usage": {},
       "docs": "Heading renders semantic HTML heading elements (h1–h6) with flexible styling options for visual hierarchy independent of markup level.",
@@ -28072,7 +28042,6 @@
     {
       "fileName": "hint.tsx",
       "tag": "ds-hint",
-      "readme": "# ds-hint\n",
       "overview": "Hint displays contextual help via an info-circle trigger button.\nOn touch viewports (< 1024 px) it opens a ds-drawer (bottom sheet);\non desktop it opens a ds-popup (floating panel).",
       "usage": {},
       "docs": "Hint displays contextual help via an info-circle trigger button.\nOn touch viewports (< 1024 px) it opens a ds-drawer (bottom sheet);\non desktop it opens a ds-popup (floating panel).",
@@ -28836,7 +28805,6 @@
     {
       "fileName": "hint-text.tsx",
       "tag": "ds-hint-text",
-      "readme": "# ds-hint-text\n",
       "overview": "Hint Text renders the body content inside a ds-hint panel. Place it as a direct child of ds-hint.\nProjects into the default slot of ds-hint.",
       "usage": {},
       "docs": "Hint Text renders the body content inside a ds-hint panel. Place it as a direct child of ds-hint.\nProjects into the default slot of ds-hint.",
@@ -28868,7 +28836,6 @@
     {
       "fileName": "hint-title.tsx",
       "tag": "ds-hint-title",
-      "readme": "# ds-hint-title\n",
       "overview": "Hint Title renders the heading inside a ds-hint panel. Place it as a direct child of ds-hint.\nUses light DOM (no shadow) so ds-hint's named slot projects the content correctly.",
       "usage": {},
       "docs": "Hint Title renders the heading inside a ds-hint panel. Place it as a direct child of ds-hint.\nUses light DOM (no shadow) so ds-hint's named slot projects the content correctly.",
@@ -28900,7 +28867,6 @@
     {
       "fileName": "icon.tsx",
       "tag": "ds-icon",
-      "readme": "# ds-icon\n",
       "overview": "Icon displays SVG icons with customizable color, size, rotation, and optional tile background.",
       "usage": {},
       "docs": "Icon displays SVG icons with customizable color, size, rotation, and optional tile background.",
@@ -28923,6 +28889,7 @@
         "ds-file-upload",
         "ds-hint",
         "ds-input",
+        "ds-input-phone",
         "ds-input-slider",
         "ds-input-stepper",
         "ds-item",
@@ -28970,6 +28937,9 @@
           "ds-icon"
         ],
         "ds-input": [
+          "ds-icon"
+        ],
+        "ds-input-phone": [
           "ds-icon"
         ],
         "ds-input-slider": [
@@ -29811,7 +29781,6 @@
     {
       "fileName": "input.tsx",
       "tag": "ds-input",
-      "readme": "# ds-input\n",
       "overview": "Input renders a text input field with validation, masking, autocomplete, and optional help/error messaging.",
       "usage": {},
       "docs": "Input renders a text input field with validation, masking, autocomplete, and optional help/error messaging.",
@@ -31603,9 +31572,985 @@
       "type": "web-component"
     },
     {
+      "fileName": "input-phone.tsx",
+      "tag": "ds-input-phone",
+      "overview": "Input phone renders an international phone number field with a country picker\n(flag + calling code) and a national-number input that live-formats as the user types.",
+      "usage": {},
+      "docs": "Input phone renders an international phone number field with a country picker\n(flag + calling code) and a national-number input that live-formats as the user types.",
+      "docsTags": [
+        {
+          "name": "slot",
+          "text": "invalid-text - Overrides the `invalidText` prop with custom markup, shown instead of the description when `invalid` is `true`."
+        },
+        {
+          "name": "part",
+          "text": "inner - The inner wrapper element containing label, control, and description."
+        },
+        {
+          "name": "part",
+          "text": "label - The label element."
+        },
+        {
+          "name": "part",
+          "text": "control - The control container wrapping the country trigger and number field."
+        },
+        {
+          "name": "part",
+          "text": "description - The description / validation message element."
+        },
+        {
+          "name": "part",
+          "text": "input - The native HTML input element for the national number."
+        },
+        {
+          "name": "part",
+          "text": "country-trigger - The country picker trigger button."
+        }
+      ],
+      "encapsulation": "shadow",
+      "dependents": [],
+      "dependencies": [
+        "ds-spinner",
+        "ds-icon"
+      ],
+      "dependencyGraph": {
+        "ds-input-phone": [
+          "ds-spinner",
+          "ds-icon"
+        ]
+      },
+      "props": [
+        {
+          "name": "color",
+          "type": "\"danger\" | \"primary\" | \"success\" | \"warning\"",
+          "complexType": {
+            "original": "InputColor",
+            "resolved": "\"danger\" | \"primary\" | \"success\" | \"warning\"",
+            "references": {
+              "InputColor": {
+                "location": "import",
+                "path": "../input/input.interfaces",
+                "id": "src/components/input/input.interfaces.ts::InputColor",
+                "referenceLocation": "InputColor"
+              }
+            }
+          },
+          "mutable": false,
+          "attr": "color",
+          "reflectToAttr": false,
+          "docs": "Defines the color of the input. The default value is `primary`.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "'primary'"
+            }
+          ],
+          "default": "'primary'",
+          "values": [
+            {
+              "value": "danger",
+              "type": "string"
+            },
+            {
+              "value": "primary",
+              "type": "string"
+            },
+            {
+              "value": "success",
+              "type": "string"
+            },
+            {
+              "value": "warning",
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "countries",
+          "type": "string | string[] | undefined",
+          "complexType": {
+            "original": "string | string[] | undefined",
+            "resolved": "string | string[] | undefined",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "countries",
+          "reflectToAttr": false,
+          "docs": "Allow-list of ISO 3166-1 alpha-2 country codes. Accepts a comma-separated\nstring or a string array. `undefined` / empty shows every country.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "undefined"
+            }
+          ],
+          "default": "undefined",
+          "values": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "string[]"
+            },
+            {
+              "type": "undefined"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "country",
+          "type": "string | undefined",
+          "complexType": {
+            "original": "string",
+            "resolved": "string | undefined",
+            "references": {}
+          },
+          "mutable": true,
+          "attr": "country",
+          "reflectToAttr": false,
+          "docs": "Live / controlled selected country (ISO 3166-1 alpha-2).",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "undefined"
+            }
+          ],
+          "optional": true,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "description",
+          "reflectToAttr": false,
+          "docs": "The description of the input, which is displayed below the input field.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "''"
+            }
+          ],
+          "default": "''",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "disabled",
+          "reflectToAttr": false,
+          "docs": "If `true`, the element is not mutable, focusable, or even submitted with the form.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "initialCountry",
+          "type": "string | undefined",
+          "complexType": {
+            "original": "string",
+            "resolved": "string | undefined",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "initial-country",
+          "reflectToAttr": false,
+          "docs": "Uncontrolled seed for the starting country. Read once during first load.",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "undefined"
+            }
+          ],
+          "optional": true,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "invalid",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "invalid",
+          "reflectToAttr": false,
+          "docs": "If `true` the component gets a invalid style.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "invalidText",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "invalid-text",
+          "reflectToAttr": false,
+          "docs": "The text to display when the input is in an invalid state.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "''"
+            }
+          ],
+          "default": "''",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "label",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "label",
+          "reflectToAttr": false,
+          "docs": "The label of the input, which is displayed above the input field.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "''"
+            }
+          ],
+          "default": "''",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "name",
+          "reflectToAttr": true,
+          "docs": "The name of the control, which is submitted with the form data.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "this.inputId"
+            }
+          ],
+          "default": "this.inputId",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "placeholder",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "placeholder",
+          "reflectToAttr": false,
+          "docs": "Instructional text that shows before the number field has a value.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "''"
+            }
+          ],
+          "default": "''",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "readonly",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "readonly",
+          "reflectToAttr": false,
+          "docs": "If `true` the element can not be mutated, meaning the user can not edit the control.\nThe country picker is disabled; the number field stays focusable and selectable.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "required",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "required",
+          "reflectToAttr": false,
+          "docs": "If `true`, the user must fill in a value before submitting a form.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "true"
+            }
+          ],
+          "default": "true",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "value",
+          "type": "null | string",
+          "complexType": {
+            "original": "string | null",
+            "resolved": "null | string",
+            "references": {}
+          },
+          "mutable": true,
+          "attr": "value",
+          "reflectToAttr": true,
+          "docs": "The canonical phone number value in E.164 format (e.g. `+41791234567`).",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "null"
+            }
+          ],
+          "default": "null",
+          "values": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        }
+      ],
+      "methods": [
+        {
+          "name": "getInputElement",
+          "returns": {
+            "type": "Promise<HTMLInputElement | undefined>",
+            "docs": ""
+          },
+          "complexType": {
+            "signature": "() => Promise<HTMLInputElement | undefined>",
+            "parameters": [],
+            "references": {
+              "Promise": {
+                "location": "global",
+                "id": "global::Promise"
+              },
+              "HTMLInputElement": {
+                "location": "global",
+                "id": "global::HTMLInputElement"
+              }
+            },
+            "return": "Promise<HTMLInputElement | undefined>"
+          },
+          "signature": "getInputElement() => Promise<HTMLInputElement | undefined>",
+          "parameters": [],
+          "docs": "Returns the native `<input>` element used under the hood.",
+          "docsTags": []
+        },
+        {
+          "name": "setFocus",
+          "returns": {
+            "type": "Promise<void>",
+            "docs": ""
+          },
+          "complexType": {
+            "signature": "() => Promise<void>",
+            "parameters": [],
+            "references": {
+              "Promise": {
+                "location": "global",
+                "id": "global::Promise"
+              }
+            },
+            "return": "Promise<void>"
+          },
+          "signature": "setFocus() => Promise<void>",
+          "parameters": [],
+          "docs": "Sets focus on the national-number field.",
+          "docsTags": []
+        }
+      ],
+      "events": [
+        {
+          "event": "dsBlur",
+          "detail": "FocusEvent",
+          "bubbles": true,
+          "complexType": {
+            "original": "FocusEvent",
+            "resolved": "FocusEvent",
+            "references": {
+              "FocusEvent": {
+                "location": "global",
+                "id": "global::FocusEvent"
+              }
+            }
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Emitted when the number field loses focus.",
+          "docsTags": []
+        },
+        {
+          "event": "dsChange",
+          "detail": "{ value: string | null; country: string; nationalNumber: string; }",
+          "bubbles": true,
+          "complexType": {
+            "original": "PhoneChangeDetail",
+            "resolved": "{ value: string | null; country: string; nationalNumber: string; }",
+            "references": {
+              "PhoneChangeDetail": {
+                "location": "import",
+                "path": "./input-phone.interfaces",
+                "id": "src/components/input-phone/input-phone.interfaces.ts::PhoneChangeDetail",
+                "referenceLocation": "PhoneChangeDetail"
+              }
+            }
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Emitted when the number field blurs, after the blur-time reformat.",
+          "docsTags": []
+        },
+        {
+          "event": "dsCountryChange",
+          "detail": "{ country: string; }",
+          "bubbles": true,
+          "complexType": {
+            "original": "PhoneCountryChangeDetail",
+            "resolved": "{ country: string; }",
+            "references": {
+              "PhoneCountryChangeDetail": {
+                "location": "import",
+                "path": "./input-phone.interfaces",
+                "id": "src/components/input-phone/input-phone.interfaces.ts::PhoneCountryChangeDetail",
+                "referenceLocation": "PhoneCountryChangeDetail"
+              }
+            }
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Emitted when the selected country changes through the picker.",
+          "docsTags": []
+        },
+        {
+          "event": "dsFocus",
+          "detail": "FocusEvent",
+          "bubbles": true,
+          "complexType": {
+            "original": "FocusEvent",
+            "resolved": "FocusEvent",
+            "references": {
+              "FocusEvent": {
+                "location": "global",
+                "id": "global::FocusEvent"
+              }
+            }
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Emitted when the number field receives focus.",
+          "docsTags": []
+        },
+        {
+          "event": "dsInput",
+          "detail": "{ value: string | null; country: string; nationalNumber: string; }",
+          "bubbles": true,
+          "complexType": {
+            "original": "PhoneInputDetail",
+            "resolved": "{ value: string | null; country: string; nationalNumber: string; }",
+            "references": {
+              "PhoneInputDetail": {
+                "location": "import",
+                "path": "./input-phone.interfaces",
+                "id": "src/components/input-phone/input-phone.interfaces.ts::PhoneInputDetail",
+                "referenceLocation": "PhoneInputDetail"
+              }
+            }
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Emitted on every keystroke or paste in the number field, after live formatting is applied.",
+          "docsTags": []
+        }
+      ],
+      "styles": [
+        {
+          "name": "--input-phone-color",
+          "docs": "Text color inside the number field."
+        },
+        {
+          "name": "--input-phone-placeholder",
+          "docs": "Placeholder text color."
+        },
+        {
+          "name": "--input-phone-family",
+          "docs": "Font family of the number field text."
+        },
+        {
+          "name": "--input-phone-weight",
+          "docs": "Font weight of the number field text."
+        },
+        {
+          "name": "--input-phone-size",
+          "docs": "Font size of the number field text."
+        },
+        {
+          "name": "--input-phone-line-height",
+          "docs": "Line height of the number field text."
+        },
+        {
+          "name": "--input-phone-flag-width",
+          "docs": "Width of the country flag."
+        },
+        {
+          "name": "--input-phone-flag-height",
+          "docs": "Height of the country flag."
+        },
+        {
+          "name": "--input-phone-popup-width",
+          "docs": "Width of the country picker popup."
+        },
+        {
+          "name": "--input-phone-popup-background",
+          "docs": "Background color of the country picker popup."
+        },
+        {
+          "name": "--input-phone-popup-shadow",
+          "docs": "Box shadow of the country picker popup."
+        },
+        {
+          "name": "--input-phone-option-color",
+          "docs": "Text color of a country option."
+        },
+        {
+          "name": "--input-phone-option-background",
+          "docs": "Background color of a country option."
+        },
+        {
+          "name": "--input-phone-option-hover-background",
+          "docs": "Background color of a hovered or keyboard-active country option."
+        },
+        {
+          "name": "--input-phone-option-selected-background",
+          "docs": "Background color of the selected country option."
+        },
+        {
+          "name": "--input-phone-option-border",
+          "docs": "Border color between country options."
+        },
+        {
+          "name": "--form-container-background",
+          "docs": "Background color of the input container."
+        },
+        {
+          "name": "--form-container-border-color",
+          "docs": "Border color of the input container."
+        },
+        {
+          "name": "--form-container-border-width",
+          "docs": "Border width of the input container."
+        },
+        {
+          "name": "--form-container-radius",
+          "docs": "Border radius of the input container."
+        },
+        {
+          "name": "--form-container-hover-background",
+          "docs": "Container background color on hover."
+        },
+        {
+          "name": "--form-container-active-background",
+          "docs": "Container background color when active."
+        },
+        {
+          "name": "--form-container-focus-background",
+          "docs": "Container background color when focused."
+        },
+        {
+          "name": "--form-container-hover-border",
+          "docs": "Container border color on hover."
+        },
+        {
+          "name": "--form-container-active-border",
+          "docs": "Container border color when active."
+        },
+        {
+          "name": "--form-container-focus-border",
+          "docs": "Container border color when focused."
+        },
+        {
+          "name": "--form-label-color",
+          "docs": "Text color of the label."
+        },
+        {
+          "name": "--form-label-family",
+          "docs": "Font family of the label."
+        },
+        {
+          "name": "--form-label-weight",
+          "docs": "Font weight of the label."
+        },
+        {
+          "name": "--form-label-size",
+          "docs": "Font size of the label."
+        },
+        {
+          "name": "--form-label-line-height",
+          "docs": "Line height of the label."
+        },
+        {
+          "name": "--form-description-color",
+          "docs": "Text color of the description."
+        },
+        {
+          "name": "--form-description-family",
+          "docs": "Font family of the description."
+        },
+        {
+          "name": "--form-description-weight",
+          "docs": "Font weight of the description."
+        },
+        {
+          "name": "--form-description-size",
+          "docs": "Font size of the description."
+        },
+        {
+          "name": "--form-description-line-height",
+          "docs": "Line height of the description."
+        }
+      ],
+      "slots": [
+        {
+          "name": "invalid-text",
+          "docs": "Overrides the `invalidText` prop with custom markup, shown instead of the description when `invalid` is `true`."
+        }
+      ],
+      "parts": [
+        {
+          "name": "control",
+          "docs": "The control container wrapping the country trigger and number field."
+        },
+        {
+          "name": "country-trigger",
+          "docs": "The country picker trigger button."
+        },
+        {
+          "name": "description",
+          "docs": "The description / validation message element."
+        },
+        {
+          "name": "inner",
+          "docs": "The inner wrapper element containing label, control, and description."
+        },
+        {
+          "name": "input",
+          "docs": "The native HTML input element for the national number."
+        },
+        {
+          "name": "label",
+          "docs": "The label element."
+        }
+      ],
+      "customStates": [],
+      "listeners": [
+        {
+          "event": "click",
+          "target": "document",
+          "capture": true,
+          "passive": false
+        },
+        {
+          "event": "reset",
+          "target": "document",
+          "capture": false,
+          "passive": false
+        }
+      ],
+      "pageObject": {
+        "class": "DsInputPhone",
+        "import": "@baloise/ds-playwright",
+        "locators": [
+          {
+            "name": "inner",
+            "type": "Locator",
+            "docs": ""
+          },
+          {
+            "name": "label",
+            "type": "Locator",
+            "docs": ""
+          },
+          {
+            "name": "control",
+            "type": "Locator",
+            "docs": ""
+          },
+          {
+            "name": "description",
+            "type": "Locator",
+            "docs": ""
+          },
+          {
+            "name": "nativeInput",
+            "type": "Locator",
+            "docs": ""
+          },
+          {
+            "name": "trigger",
+            "type": "Locator",
+            "docs": ""
+          },
+          {
+            "name": "filter",
+            "type": "Locator",
+            "docs": ""
+          },
+          {
+            "name": "listbox",
+            "type": "Locator",
+            "docs": ""
+          }
+        ],
+        "actions": [
+          {
+            "name": "fill",
+            "params": [
+              {
+                "name": "value",
+                "type": "string"
+              }
+            ],
+            "docs": ""
+          },
+          {
+            "name": "type",
+            "params": [
+              {
+                "name": "value",
+                "type": "string"
+              }
+            ],
+            "docs": ""
+          },
+          {
+            "name": "paste",
+            "params": [
+              {
+                "name": "value",
+                "type": "string"
+              }
+            ],
+            "docs": ""
+          },
+          {
+            "name": "blur",
+            "params": [],
+            "docs": ""
+          },
+          {
+            "name": "open",
+            "params": [],
+            "docs": ""
+          },
+          {
+            "name": "selectCountry",
+            "params": [
+              {
+                "name": "code",
+                "type": "string"
+              }
+            ],
+            "docs": ""
+          }
+        ],
+        "assertions": [
+          {
+            "name": "assertValue",
+            "params": [
+              {
+                "name": "value",
+                "type": "string"
+              }
+            ],
+            "docs": ""
+          },
+          {
+            "name": "assertNationalNumber",
+            "params": [
+              {
+                "name": "value",
+                "type": "string"
+              }
+            ],
+            "docs": ""
+          },
+          {
+            "name": "assertToBeDisabled",
+            "params": [],
+            "docs": ""
+          },
+          {
+            "name": "assertPickerDisabled",
+            "params": [],
+            "docs": ""
+          },
+          {
+            "name": "assertOpen",
+            "params": [],
+            "docs": ""
+          },
+          {
+            "name": "assertClosed",
+            "params": [],
+            "docs": ""
+          },
+          {
+            "name": "assertToContainText",
+            "params": [
+              {
+                "name": "text",
+                "type": "string"
+              }
+            ],
+            "docs": ""
+          }
+        ]
+      },
+      "type": "web-component"
+    },
+    {
       "fileName": "input-slider.tsx",
       "tag": "ds-input-slider",
-      "readme": "# ds-input-slider\n",
       "overview": "Input slider renders a noUiSlider-backed slider with validation and label/description messaging.",
       "usage": {},
       "docs": "Input slider renders a noUiSlider-backed slider with validation and label/description messaging.",
@@ -32453,7 +33398,6 @@
     {
       "fileName": "input-stepper.tsx",
       "tag": "ds-input-stepper",
-      "readme": "# ds-input-stepper\n",
       "overview": "Input stepper renders a numeric value flanked by decrease and increase buttons.",
       "usage": {},
       "docs": "Input stepper renders a numeric value flanked by decrease and increase buttons.",
@@ -33285,7 +34229,6 @@
     {
       "fileName": "item.tsx",
       "tag": "ds-item",
-      "readme": "# ds-item\n",
       "overview": "Item displays a list entry that supports plain content, accordion, link, and button variants with optional icon, label, and description slots.",
       "usage": {},
       "docs": "Item displays a list entry that supports plain content, accordion, link, and button variants with optional icon, label, and description slots.",
@@ -34242,7 +35185,6 @@
     {
       "fileName": "label.tsx",
       "tag": "ds-label",
-      "readme": "# ds-label\n",
       "overview": "Label renders a semantic HTML label element for form inputs with optional required indicator and customizable styling.",
       "usage": {},
       "docs": "Label renders a semantic HTML label element for form inputs with optional required indicator and customizable styling.",
@@ -34847,7 +35789,6 @@
     {
       "fileName": "list.tsx",
       "tag": "ds-list",
-      "readme": "# ds-list\n",
       "overview": "List renders semantic HTML list elements (ordered or unordered) for grouping related items.",
       "usage": {},
       "docs": "List renders semantic HTML list elements (ordered or unordered) for grouping related items.",
@@ -36060,7 +37001,6 @@
     {
       "fileName": "logo.tsx",
       "tag": "ds-logo",
-      "readme": "# ds-logo\n",
       "overview": "Logo displays animated Baloise or Helvetia brand logos with customizable color, size, and responsive sizing.",
       "usage": {},
       "docs": "Logo displays animated Baloise or Helvetia brand logos with customizable color, size, and responsive sizing.",
@@ -36420,7 +37360,6 @@
     {
       "fileName": "modal.tsx",
       "tag": "ds-modal",
-      "readme": "# ds-modal\n",
       "overview": "Modal displays content in a dialog overlay using the native dialog element.\nSupports both slot-based sub-components (ds-modal-header, ds-modal-body) and\ndirect named slots (slot=\"header\", slot=\"body\").",
       "usage": {},
       "docs": "Modal displays content in a dialog overlay using the native dialog element.\nSupports both slot-based sub-components (ds-modal-header, ds-modal-body) and\ndirect named slots (slot=\"header\", slot=\"body\").",
@@ -37062,7 +38001,6 @@
     {
       "fileName": "modal-body.tsx",
       "tag": "ds-modal-body",
-      "readme": "# ds-modal-body\n",
       "overview": "Modal Body renders the content area of a ds-modal. Place it as a direct child of ds-modal.",
       "usage": {},
       "docs": "Modal Body renders the content area of a ds-modal. Place it as a direct child of ds-modal.",
@@ -37094,7 +38032,6 @@
     {
       "fileName": "modal-header.tsx",
       "tag": "ds-modal-header",
-      "readme": "# ds-modal-header\n",
       "overview": "Modal Header renders the title area of a ds-modal. Place it as a direct child of ds-modal.\nIntentionally uses light DOM (no shadow) so that ds-modal's aria-labelledby can resolve\nthe heading text through the slot chain without crossing shadow boundaries.",
       "usage": {},
       "docs": "Modal Header renders the title area of a ds-modal. Place it as a direct child of ds-modal.\nIntentionally uses light DOM (no shadow) so that ds-modal's aria-labelledby can resolve\nthe heading text through the slot chain without crossing shadow boundaries.",
@@ -37126,7 +38063,6 @@
     {
       "fileName": "notification.tsx",
       "tag": "ds-notification",
-      "readme": "# ds-notification\n",
       "overview": "Notification presents inline feedback messages for success, warning, error, or informational states with optional close action.",
       "usage": {},
       "docs": "Notification presents inline feedback messages for success, warning, error, or informational states with optional close action.",
@@ -39333,7 +40269,6 @@
     {
       "fileName": "number-input.tsx",
       "tag": "ds-number-input",
-      "readme": "# ds-number-input\n",
       "overview": "Number input renders a specialized text input for numeric values with increment/decrement buttons, formatting, and validation.",
       "usage": {},
       "docs": "Number input renders a specialized text input for numeric values with increment/decrement buttons, formatting, and validation.",
@@ -40341,7 +41276,6 @@
     {
       "fileName": "pagination.tsx",
       "tag": "ds-pagination",
-      "readme": "# ds-pagination\n",
       "overview": "Pagination provides navigation controls for moving between pages of content with customizable size, alignment, and layout.",
       "usage": {},
       "docs": "Pagination provides navigation controls for moving between pages of content with customizable size, alignment, and layout.",
@@ -41193,7 +42127,6 @@
     {
       "fileName": "popup.tsx",
       "tag": "ds-popup",
-      "readme": "# ds-popup\n",
       "overview": "Popup displays anchored overlay content positioned relative to a trigger element.\nServes as a primitive for dropdowns, hints, menus, datepickers, and autocompletes.\n\nTrigger wiring:\n  Programmatic — set the `trigger` property to an HTMLElement; call `present()` / `dismiss()`.\n  Declarative  — add `data-popup=\"<id>\"` to any trigger element and set matching `id` on popup.",
       "usage": {},
       "docs": "Popup displays anchored overlay content positioned relative to a trigger element.\nServes as a primitive for dropdowns, hints, menus, datepickers, and autocompletes.\n\nTrigger wiring:\n  Programmatic — set the `trigger` property to an HTMLElement; call `present()` / `dismiss()`.\n  Declarative  — add `data-popup=\"<id>\"` to any trigger element and set matching `id` on popup.",
@@ -42167,7 +43100,6 @@
     {
       "fileName": "progress-bar.tsx",
       "tag": "ds-progress-bar",
-      "readme": "# ds-progress-bar\n",
       "overview": "Progress bar displays a visual indicator of progress or completion for a task or operation with percentage and label.",
       "usage": {},
       "docs": "Progress bar displays a visual indicator of progress or completion for a task or operation with percentage and label.",
@@ -42824,7 +43756,6 @@
     {
       "fileName": "radio.tsx",
       "tag": "ds-radio",
-      "readme": "# ds-radio\n",
       "overview": "Radio renders a radio button form control for selecting one option from a group with optional label and help text.",
       "usage": {},
       "docs": "Radio renders a radio button form control for selecting one option from a group with optional label and help text.",
@@ -44215,7 +45146,6 @@
     {
       "fileName": "radio-group.tsx",
       "tag": "ds-radio-group",
-      "readme": "# ds-radio-group\n",
       "overview": "Radio Group groups multiple radio inputs so only one option can be selected at a time within a form field.",
       "usage": {},
       "docs": "Radio Group groups multiple radio inputs so only one option can be selected at a time within a form field.",
@@ -45087,7 +46017,6 @@
     {
       "fileName": "segment.tsx",
       "tag": "ds-segment",
-      "readme": "# ds-segment\n",
       "overview": "Segment renders a group of button-like controls for selecting a single option from multiple choices with toggle behavior.",
       "usage": {},
       "docs": "Segment renders a group of button-like controls for selecting a single option from multiple choices with toggle behavior.",
@@ -46318,7 +47247,6 @@
     {
       "fileName": "segment-item.tsx",
       "tag": "ds-segment-item",
-      "readme": "# ds-segment-item\n",
       "overview": "Segment item represents an individual selectable option within a segment group control with radio-like toggle behavior.",
       "usage": {},
       "docs": "Segment item represents an individual selectable option within a segment group control with radio-like toggle behavior.",
@@ -46563,7 +47491,6 @@
     {
       "fileName": "select.tsx",
       "tag": "ds-select",
-      "readme": "# ds-select-option\n",
       "overview": "Select renders an accessible single- or multi-select dropdown backed by Slim Select,\nwith full form association and the standard DS field wrapper (label, description, validation).",
       "usage": {},
       "docs": "Select renders an accessible single- or multi-select dropdown backed by Slim Select,\nwith full form association and the standard DS field wrapper (label, description, validation).",
@@ -49889,7 +50816,6 @@
     {
       "fileName": "select-optgroup.tsx",
       "tag": "ds-select-optgroup",
-      "readme": "# ds-select-option\n",
       "overview": "Select optgroup groups `ds-select-option` elements under a label, as HTML markup — the\ngrouped counterpart to `ds-select-option`. The element itself renders nothing visible;\n`ds-select` reads its `label` and its `ds-select-option` children.",
       "usage": {},
       "docs": "Select optgroup groups `ds-select-option` elements under a label, as HTML markup — the\ngrouped counterpart to `ds-select-option`. The element itself renders nothing visible;\n`ds-select` reads its `label` and its `ds-select-option` children.",
@@ -50100,7 +51026,6 @@
     {
       "fileName": "select-option.tsx",
       "tag": "ds-select-option",
-      "readme": "# ds-select-option\n",
       "overview": "Select option declares a single selectable option as HTML markup, as an alternative to the\n`options` / `optionGroups` props on `ds-select` — useful for backend-only apps and easier\nmigration, where the consumer would rather render option markup than write JavaScript.\nThe element itself renders nothing visible; `ds-select` reads its `value`, `disabled`, and\ntext content and renders the actual dropdown option itself.",
       "usage": {},
       "docs": "Select option declares a single selectable option as HTML markup, as an alternative to the\n`options` / `optionGroups` props on `ds-select` — useful for backend-only apps and easier\nmigration, where the consumer would rather render option markup than write JavaScript.\nThe element itself renders nothing visible; `ds-select` reads its `value`, `disabled`, and\ntext content and renders the actual dropdown option itself.",
@@ -50340,7 +51265,6 @@
     {
       "fileName": "shape.tsx",
       "tag": "ds-shape",
-      "readme": "# ds-shape\n",
       "overview": "Shape renders decorative geometric shapes with customizable color, size, rotation, and variation.",
       "usage": {},
       "docs": "Shape renders decorative geometric shapes with customizable color, size, rotation, and variation.",
@@ -50586,7 +51510,6 @@
     {
       "fileName": "sheet.tsx",
       "tag": "ds-sheet",
-      "readme": "# ds-sheet\n",
       "overview": "Sheet displays a fixed panel anchored to the bottom of the viewport.\nUse it to surface persistent actions or contextual information without\nblocking the main content.",
       "usage": {},
       "docs": "Sheet displays a fixed panel anchored to the bottom of the viewport.\nUse it to surface persistent actions or contextual information without\nblocking the main content.",
@@ -50814,7 +51737,6 @@
     {
       "fileName": "snackbar.tsx",
       "tag": "ds-snackbar",
-      "readme": "# ds-snackbar\n",
       "overview": "Snackbar displays brief feedback messages at the bottom of the screen with optional action buttons and dismissal control.",
       "usage": {},
       "docs": "Snackbar displays brief feedback messages at the bottom of the screen with optional action buttons and dismissal control.",
@@ -52078,7 +53000,6 @@
     {
       "fileName": "spinner.tsx",
       "tag": "ds-spinner",
-      "readme": "# ds-spinner\n",
       "overview": "Spinner displays an animated loading indicator with customizable color, size, and variation.",
       "usage": {},
       "docs": "Spinner displays an animated loading indicator with customizable color, size, and variation.",
@@ -52099,6 +53020,7 @@
         "ds-date",
         "ds-file-upload",
         "ds-input",
+        "ds-input-phone",
         "ds-input-slider",
         "ds-input-stepper",
         "ds-number-input",
@@ -52122,6 +53044,9 @@
           "ds-spinner"
         ],
         "ds-input": [
+          "ds-spinner"
+        ],
+        "ds-input-phone": [
           "ds-spinner"
         ],
         "ds-input-slider": [
@@ -52805,7 +53730,6 @@
     {
       "fileName": "stack.tsx",
       "tag": "ds-stack",
-      "readme": "# ds-stack\n",
       "overview": "Stack arranges child elements in a vertical or horizontal layout with customizable spacing and alignment options.",
       "usage": {},
       "docs": "Stack arranges child elements in a vertical or horizontal layout with customizable spacing and alignment options.",
@@ -53554,7 +54478,6 @@
     {
       "fileName": "step.tsx",
       "tag": "ds-step",
-      "readme": "# ds-step\n",
       "overview": "Step renders a single step button inside a ds-steps group, showing a numbered circle, label, and connector line.",
       "usage": {},
       "docs": "Step renders a single step button inside a ds-steps group, showing a numbered circle, label, and connector line.",
@@ -53776,7 +54699,6 @@
     {
       "fileName": "step-panel.tsx",
       "tag": "ds-step-panel",
-      "readme": "# ds-step-panel\n",
       "overview": "Step Panel displays the content area associated with a ds-step, visible when its controlling step is selected.",
       "usage": {},
       "docs": "Step Panel displays the content area associated with a ds-step, visible when its controlling step is selected.",
@@ -53885,7 +54807,6 @@
     {
       "fileName": "steps.tsx",
       "tag": "ds-steps",
-      "readme": "# ds-steps\n",
       "overview": "Steps coordinates ds-step and ds-step-panel children into an accessible stepped interface, supporting panels and navigation variants.",
       "usage": {},
       "docs": "Steps coordinates ds-step and ds-step-panel children into an accessible stepped interface, supporting panels and navigation variants.",
@@ -55006,7 +55927,6 @@
     {
       "fileName": "tab.tsx",
       "tag": "ds-tab",
-      "readme": "# ds-tab\n",
       "overview": "Tab renders a single tab button inside a ds-tabs group, supporting both the panels and navigation variants.",
       "usage": {},
       "docs": "Tab renders a single tab button inside a ds-tabs group, supporting both the panels and navigation variants.",
@@ -55106,7 +56026,6 @@
     {
       "fileName": "tab-panel.tsx",
       "tag": "ds-tab-panel",
-      "readme": "# ds-tab-panel\n",
       "overview": "Tab Panel displays the content area associated with a ds-tab, visible when its controlling tab is selected.",
       "usage": {},
       "docs": "Tab Panel displays the content area associated with a ds-tab, visible when its controlling tab is selected.",
@@ -55215,7 +56134,6 @@
     {
       "fileName": "tabs.tsx",
       "tag": "ds-tabs",
-      "readme": "# ds-tabs\n",
       "overview": "Tabs coordinates ds-tab and ds-tab-panel children into an accessible tabbed interface, supporting panels and navigation variants.",
       "usage": {},
       "docs": "Tabs coordinates ds-tab and ds-tab-panel children into an accessible tabbed interface, supporting panels and navigation variants.",
@@ -56677,7 +57595,6 @@
     {
       "fileName": "tag.tsx",
       "tag": "ds-tag",
-      "readme": "# ds-tag\n",
       "overview": "Tag renders a compact label element for categorizing, filtering, or marking content with optional close button.",
       "usage": {},
       "docs": "Tag renders a compact label element for categorizing, filtering, or marking content with optional close button.",
@@ -58800,7 +59717,6 @@
     {
       "fileName": "tag-group.tsx",
       "tag": "ds-tag-group",
-      "readme": "# ds-tag-group\n",
       "overview": "Tag Group arranges multiple tag elements in a horizontal or wrapping layout.",
       "usage": {},
       "docs": "Tag Group arranges multiple tag elements in a horizontal or wrapping layout.",
@@ -58832,7 +59748,6 @@
     {
       "fileName": "text.tsx",
       "tag": "ds-text",
-      "readme": "# ds-text\n",
       "overview": "Text renders paragraph and article content with flexible sizing, styling, and semantic emphasis options.",
       "usage": {},
       "docs": "Text renders paragraph and article content with flexible sizing, styling, and semantic emphasis options.",
@@ -59852,7 +60767,6 @@
     {
       "fileName": "textarea.tsx",
       "tag": "ds-textarea",
-      "readme": "# ds-textarea\n",
       "overview": "Textarea renders a multi-line text input field with validation, resizing, and optional help/error messaging.",
       "usage": {},
       "docs": "Textarea renders a multi-line text input field with validation, resizing, and optional help/error messaging.",
@@ -61185,7 +62099,6 @@
     {
       "fileName": "toast.tsx",
       "tag": "ds-toast",
-      "readme": "# ds-toast\n",
       "overview": "Toast displays temporary notification messages that appear at the top of the page and auto-dismiss with optional action buttons and close control.",
       "usage": {},
       "docs": "Toast displays temporary notification messages that appear at the top of the page and auto-dismiss with optional action buttons and close control.",
@@ -62714,7 +63627,6 @@
     {
       "fileName": "toggle.tsx",
       "tag": "ds-toggle",
-      "readme": "# ds-toggle\n",
       "overview": "Toggle renders a switch-like form control for toggling between on/off states with optional label and help text.",
       "usage": {},
       "docs": "Toggle renders a switch-like form control for toggling between on/off states with optional label and help text.",
@@ -64112,7 +65024,6 @@
     {
       "fileName": "tooltip.tsx",
       "tag": "ds-tooltip",
-      "readme": "# ds-tooltip\n",
       "overview": "Tooltip displays contextual information when users hover over, focus on, or tap a trigger element.",
       "usage": {},
       "docs": "Tooltip displays contextual information when users hover over, focus on, or tap a trigger element.",
@@ -67149,6 +68060,21 @@
       "declaration": "export type InputChangeDetail = string | null",
       "docstring": "",
       "path": "src/components/input/input.interfaces.ts"
+    },
+    "src/components/input-phone/input-phone.interfaces.ts::PhoneInputDetail": {
+      "declaration": "{\n  value: string | null\n  country: string\n  nationalNumber: string\n}",
+      "docstring": "",
+      "path": "src/components/input-phone/input-phone.interfaces.ts"
+    },
+    "src/components/input-phone/input-phone.interfaces.ts::PhoneChangeDetail": {
+      "declaration": "{\n  value: string | null\n  country: string\n  nationalNumber: string\n}",
+      "docstring": "",
+      "path": "src/components/input-phone/input-phone.interfaces.ts"
+    },
+    "src/components/input-phone/input-phone.interfaces.ts::PhoneCountryChangeDetail": {
+      "declaration": "{\n  country: string\n}",
+      "docstring": "",
+      "path": "src/components/input-phone/input-phone.interfaces.ts"
     },
     "src/components/input-slider/input-slider.interfaces.ts::InputSliderBrandColor": {
       "declaration": "\"purple\" | \"red\" | \"yellow\" | \"green\"",
