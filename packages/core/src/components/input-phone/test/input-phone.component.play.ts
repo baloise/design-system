@@ -140,6 +140,24 @@ test.describe('country picker', () => {
     await expect(phone.trigger).toBeFocused()
   })
 
+  test('should keep the country picker within the viewport on a narrow screen', async ({ page }) => {
+    const viewportWidth = 320
+    await page.setViewportSize({ width: viewportWidth, height: 640 })
+    await page.mount(`
+      <div style="padding-inline: 3rem;">
+        <ds-input-phone label="Phone number" initial-country="CH"></ds-input-phone>
+      </div>
+    `)
+    const phone = new DsInputPhone(page.locator('ds-input-phone'))
+
+    await phone.open()
+
+    const popupBox = await phone.el.locator('#popup').boundingBox()
+    expect(popupBox).not.toBeNull()
+    expect(popupBox!.x).toBeGreaterThanOrEqual(0)
+    expect(popupBox!.x + popupBox!.width).toBeLessThanOrEqual(viewportWidth)
+  })
+
   test('should not draw nested browser outlines around the keyboard-focused segments', async ({ page }) => {
     await page.mount(`<ds-input-phone label="Phone number" initial-country="CH"></ds-input-phone>`)
     const phone = new DsInputPhone(page.locator('ds-input-phone'))

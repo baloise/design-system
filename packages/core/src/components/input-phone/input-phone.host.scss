@@ -224,8 +224,7 @@ $chevron-icon: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/sv
     display: flex;
     flex-direction: column;
     box-sizing: border-box;
-    width: var(--_input-phone-popup-width);
-    max-width: calc(100vw - 2rem);
+    width: min(var(--_input-phone-popup-width), 100%);
     max-height: 18.75rem;
     margin: 0;
     background: var(--_input-phone-popup-background);
