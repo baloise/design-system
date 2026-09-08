@@ -93,7 +93,9 @@ Post these as a PR comment to trigger automation:
 | --------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `/update-screenshots` | Regenerates visual regression snapshots and commits them to your branch. Use after intentional visual changes.                                                                                           |
 | `/snapshot`           | Publishes a snapshot npm version from your branch so you can test it in a real project before merging. See [Snapshot Versions](docs/ARCHITECTURE.md#snapshot-versions-testing-before-merge) for details. |
-| `/cib`                | Post on an **issue** to auto-create a correctly named branch. The issue must have a type label (`✨ feature`, `🐛 bug`, `🔧 chore`, …); other labels such as `ready-for-agent` are skipped.             |
+| `/cib`                | Post on an **issue** to auto-create a correctly named branch. The issue must have a type label (`✨ feature`, `🐛 bug`, `🔧 chore`, …); other labels such as `ready-for-agent` are skipped.              |
+
+`/cib` is an issue comment, not a PR comment. The type label chooses the branch prefix: `✨ feature` → `feat/…`, `🐛 bug` → `fix/…`, `🔧 chore` → `chore/…` (also `♻️ refactor`, `🧪 test`, `💥 breaking change`, `⚡️ perf`, `🚀 release`, `🛡️ lts`). Without one of those labels the workflow runs but creates nothing.
 
 ## Reporting Issues
 
