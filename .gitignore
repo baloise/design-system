@@ -71,6 +71,7 @@ packages/core/components
 packages/core/components/**/readme.md
 packages/core/src/components/**/readme.md
 packages/core/loader
+packages/core/hydrate
 packages/core/wwww
 packages/core/config/custom-elements/all.js
 packages/core/config/custom-elements/all.d.ts

@@ -41,12 +41,18 @@
       "import": "./loader/index.js",
       "require": "./loader/index.cjs.js"
     },
+    "./hydrate": {
+      "types": "./hydrate/index.d.ts",
+      "import": "./hydrate/index.mjs",
+      "require": "./hydrate/index.js"
+    },
     "./*": "./*"
   },
   "files": [
     "components/",
     "dist/",
     "docs/",
+    "hydrate/",
     "loader/"
   ],
   "scripts": {
