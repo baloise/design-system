@@ -428,7 +428,15 @@ Import the full stylesheet once, typically in `src/main.tsx`:
 import '@baloise/ds-css/css'
 ```
 
-If the application requires a smaller payload, import only `@baloise/ds-css/css/base` and add utilities as needed. Use `@baloise/ds-css/scss/mixins` to gain access to Sass mixins, such as breakpoints.
+For a smaller payload, import the layers separately. Keep this order so tokens and resets are available before component and utility styles:
+
+```typescript
+import '@baloise/ds-css/css/base'
+import '@baloise/ds-css/css/components'
+import '@baloise/ds-css/css/utilities'
+```
+
+Use `@baloise/ds-css/scss/mixins` to gain access to Sass mixins, such as breakpoints.
 
 ## Integrate Design System
 
