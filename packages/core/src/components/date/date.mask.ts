@@ -5,7 +5,7 @@ import type { DsRegion } from '@global'
 export type DateDisplayFormat = 'dd.MM.yyyy' | 'dd/MM/yyyy'
 
 export function getDisplayFormat(region: DsRegion): DateDisplayFormat {
-  if (region === 'BE') return 'dd/MM/yyyy'
+  if (region === 'BE' || region === 'ES' || region === 'IT') return 'dd/MM/yyyy'
   return 'dd.MM.yyyy'
 }
 

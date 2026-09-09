@@ -1,7 +1,6 @@
 import { Meta } from '@storybook/addon-docs/blocks'
 import {
   Banner,
-  ButtonCard,
   Footer,
   ImageCanvas,
   InfoQuote,
@@ -69,9 +68,13 @@ To start designing you'll need to download and install the custom favicons which
 
 <br/ >
 
-<ButtonCard label="favicons.zip" description="The favicons files" link="/assets/download/favicons.zip">
-  <ds-icon name="download" size="medium" />
-</ButtonCard>
+<div className="flex flex-direction-column align-items-center gap-2xs">
+  <a href="/assets/download/favicons.zip" target="_blank" className="ds-button is-tertiary is-lg is-wide" >
+    <ds-icon name="download" size="medium" />
+    favicons.zip
+  </a>
+  <span className="ds-text text-sm">The favicons files</span>
+</div>
 
 ## Shapes
 
@@ -268,9 +271,13 @@ To start designing you'll need to download and install the custom favicons which
 
 <br/ >
 
-<ButtonCard label="map-markers.zip" description="The map icons" link="/assets/download/map-markers.zip">
-  <ds-icon name="download" size="medium" />
-</ButtonCard>
+<div className="flex flex-direction-column align-items-center gap-2xs">
+  <a href="/assets/download/map-markers.zip" target="_blank" className="ds-button is-tertiary is-wide" >
+    <ds-icon name="download" size="medium" />
+    map-markers.zip
+  </a>
+  <span className="ds-text text-sm">The map icons</span>
+</div>
 
 <Footer>
   <LinkCards>

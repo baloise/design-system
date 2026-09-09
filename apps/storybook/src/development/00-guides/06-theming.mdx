@@ -1,55 +1,29 @@
-import { Markdown, Meta } from '@storybook/addon-docs/blocks'
-import {
-  AngularFramework,
-  Banner,
-  Code,
-  Footer,
-  HTMLFramework,
-  InfoQuote,
-  Lead,
-  LinkCard,
-  LinkCards,
-  NotAngularFramework,
-  PackageTable,
-  ReactFramework,
-  WarningQuote,
-} from '../../../.storybook/blocks'
+import { Meta } from '@storybook/addon-docs/blocks'
+import { Banner, Code, Footer, InfoQuote, Lead, LinkCard, LinkCards } from '../../../.storybook/blocks'
 
 <Meta title="Development/Theming" />
 
 <Banner label="Theming" section="Development" />
 
 <Lead>
-  The Helvetia Design System provides a versatile foundation that can be tailored and adjusted to match a brand's
-  identity. Customizing the appearance of Helvetia applications has never been simpler. As the framework is constructed
-  using CSS, it arrives with pre-existing default styles that can be modified and adjusted with remarkable ease.
+  Adjust the Design System to fit your brand — override a single component, or switch your whole
+  application to a different predefined brand.
 </Lead>
 
 ## CSS Variables
 
-Helvetia Design System components incorporate [CSS Variables](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties), enabling hassle-free customization of applications.
-CSS Variables enable a value to be stored in a single location and referenced in numerous other locations.
-They also facilitate dynamic CSS modification at runtime, a task that previously necessitated a CSS preprocessor.
-Thanks to CSS variables, it is simpler than ever to replace Helvetia Design System components to align with a brand or theme.
+Every value in the Design System — colors, spacing, typography, and each component's own styling —
+is exposed as a [CSS Variable](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties).
 
-## Compact theme
 
-The compact theme features a narrower layout with a reduced font size (14px instead of 16px). Additionally, spaces such as margins and paddings are adjusted to align with mobile dimensions, ensuring a more compact appearance.
+A CSS Variable is defined once and referenced everywhere, so overriding it in one place cascades
+everywhere it's used — no build step or preprocessor required.
 
-To activate the compact theme, import the theme-compact stylesheet into the root App component or a global stylesheet.
+## Customize Components
 
-It is recommended to import the theme-compact file at the end of your stylesheet, after the other imports from the Design System.
+### Globally
 
-<Code
-  language="js"
-  code={`
-@forward '@baloise/ds-styles/css/themes/compact';
-`}
-/>
-
-## Custom theme
-
-In an application, CSS variables can be established globally within the `:root` selector.
+Override a design token in `:root` and every component using it picks up the new value.
 
 <Code
   language="css"
@@ -63,9 +37,8 @@ In an application, CSS variables can be established globally within the `:root` 
 
 ### By Component
 
-To assign a CSS variable for a specific component, incorporate the variable within its selector.
-
-Change the default background to aqua
+Every component also exposes its own public variables. Target its selector to override just that
+component, everywhere it appears:
 
 <Code
   language="css"
@@ -76,7 +49,11 @@ ds-badge {
 `}
 />
 
-Change the background on an badge with the .my-badge class
+<br />
+
+Or scope it to a single instance with a class:
+
+<br />
 
 <Code
   language="css"
@@ -87,16 +64,70 @@ Change the background on an badge with the .my-badge class
 `}
 />
 
-### By JavaScript​
+<InfoQuote>
+  See [Component Variables](?path=/docs/tokens-component-variables--documentation) for the full
+  private/public/modifier/token variable cascade each component follows.
+</InfoQuote>
 
-Using [setProperty()](https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleDeclaration/setProperty) in JavaScript, CSS variables can also be altered:
+## Predefined Brand Themes
+
+A **theme** applies one brand's token overrides — colors, typography, and more — on top of the
+base styles, scoped under a `[data-theme="<brand>"]` selector (e.g. ERV, TCS). To activate one:
+
+<br />
+
+**1. Import the theme's tokens**
+
+Import the brand's compiled token stylesheet after `@baloise/ds-css/css/base.css` (see
+[Styles](?path=/docs/development-styles--documentation)) so its overrides win the cascade.
+
+<br />
 
 <Code
-  language="js"
+  language="css"
   code={`
-const el = document.querySelector('.my-badge')
-el.style.setProperty('--ds-badge-background', 'lime')
+@import '@baloise/ds-tokens/css/tcs.tokens.css';
 `}
 />
 
-<Footer />
+<br />
+<br />
+
+**2. Activate the theme**
+
+Set `data-theme="<brand>"` on your root element.
+
+<br />
+
+<Code
+  language="html"
+  noPreview
+  code={`
+<html data-theme="tcs">
+`}
+/>
+
+<InfoQuote>
+  Brand themes are actively being built out and aren't all published yet — check with the Design
+  System team for which brands are currently available to consume, and under which package path.
+</InfoQuote>
+
+### Requesting a New Brand
+
+Need a brand that isn't available yet? Open a
+[Theme Report](https://github.com/baloise/design-system/issues/new?template=theme_report.yml) —
+include a link to the brand's guidelines (colors, typography, logo) if you have one, so the
+Design System team can scope the token overrides.
+
+<Footer>
+  <LinkCards>
+    <LinkCard
+      pageTitle="Development/Styles"
+      description="Install and import the base, component, and utility styles the theming system builds on."
+    />
+    <LinkCard
+      pageTitle="Tokens/Component Variables"
+      description="The private/public/modifier/token CSS variable cascade every component follows."
+    />
+  </LinkCards>
+</Footer>

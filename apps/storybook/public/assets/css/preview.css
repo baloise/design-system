@@ -102,10 +102,10 @@
 a.sbdocs-a:not(.button) {
   color: var(--ds-global-color-primary-5);
   font-size: inherit;
-  font-weight: var(--ds-link-weight) !important;
+  font-weight: var(--ds-link-font-weight) !important;
   text-decoration: underline !important;
   text-underline-offset: 0.25rem !important;
-  text-decoration-thickness: var(--ds-link-border-width) !important;
+  text-decoration-thickness: var(--ds-link-underline-width) !important;
 }
 
 a.sbdocs-a.button {
@@ -114,7 +114,7 @@ a.sbdocs-a.button {
 
 .is-size-large a.sbdocs-a:not(.button) {
   font-size: var(--ds-device-text-size-lg);
-  line-height: var(--ds-alias-text-line-height-body);
+  line-height: var(--ds-alias-text-line-height-text);
 }
 
 /***************************************
@@ -134,11 +134,11 @@ a.sbdocs-a.button {
 }
 
 .sbdocs-content > ul li::marker {
-  color: var(--ds-list-marker-color);
+  color: var(--ds-list-marker-color-primary);
 }
 
 .sbdocs-content > ol li::marker {
-  color: var(--ds-list-marker-color);
+  color: var(--ds-list-marker-color-primary);
   font-weight: 800;
   font-size: 1.2rem;
 }
@@ -155,7 +155,7 @@ a.sbdocs-a.button {
 blockquote {
   color: var(--ds-global-color-primary-5) !important;
   font-size: var(--ds-device-text-size-sm) !important;
-  line-height: var(--ds-alias-text-line-height-body) !important;
+  line-height: var(--ds-alias-text-line-height-text) !important;
   padding: 1rem !important;
   background: #f9f3ff !important;
   background: #f9f3ff !important;
@@ -167,7 +167,7 @@ blockquote {
 blockquote > p {
   color: var(--ds-global-color-primary-5);
   font-size: var(--ds-device-text-size-sm) !important;
-  line-height: var(--ds-alias-text-line-height-body) !important;
+  line-height: var(--ds-alias-text-line-height-text) !important;
 }
 
 /***************************************
@@ -192,10 +192,10 @@ a > code {
   border: 1px solid var(--ds-global-color-primary-1) !important;
   color: var(--ds-global-color-primary-5) !important;
 
-  font-weight: var(--ds-link-weight) !important;
+  font-weight: var(--ds-link-font-weight) !important;
   text-decoration: underline !important;
   text-underline-offset: 0.25rem !important;
-  text-decoration-thickness: var(--ds-link-border-width) !important;
+  text-decoration-thickness: var(--ds-link-underline-width) !important;
 }
 
 /***************************************
@@ -329,7 +329,7 @@ a.sbdocs-a.text-decoration-none {
   border-radius: 4px !important;
   background: var(--ds-global-color-primary-6);
   box-shadow: none !important;
-  margin: 0 !important;
+  margin: 24px 0 !important;
 }
 
 .doc-code .docblock-source > div:last-child button,
@@ -520,7 +520,7 @@ div.has-visible-overflow > .docs-story > div:nth-child(2) {
   border-radius: 4px;
   padding: 4px;
   z-index: 100;
-  font-family: var(--ds-global-font-family-body);
+  font-family: var(--ds-global-font-family-text);
 }
 
 .clipboard-button:hover::after {

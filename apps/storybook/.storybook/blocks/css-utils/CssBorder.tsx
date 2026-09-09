@@ -6,13 +6,13 @@ export const CssBorderColors = () => (
     utility="border-color"
     search={['border', 'border-top', 'border-bottom', 'border-left', 'border-right']}
     example={item => (
-      <div className={`p-small ${item.class.includes('white') ? 'bg-primary' : ''}`}>
-        <div className={`${item.class} p-small`}></div>
+      <div className={`p-sm ${item.class.includes('white') ? 'bg-primary' : ''}`}>
+        <div className={`${item.class} p-sm`}></div>
       </div>
     )}
   />
 )
 
 export const CssBorderRadius = () => (
-  <CssUtilitiesTable utility="border" example={item => <div className={`bg-red ${item.class} p-small`}></div>} />
+  <CssUtilitiesTable utility="border" example={item => <div className={`bg-red ${item.class} p-sm`}></div>} />
 )

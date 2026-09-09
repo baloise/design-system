@@ -80,7 +80,7 @@ export const Sizes = Story({
     () => `
 <label class="ds-label is-small">Small Label</label>
 <label class="ds-label">Normal Label</label>
-<label class="ds-label is-large">Large Label</label>
+<label class="ds-label is-lg">Large Label</label>
 `,
   ),
 })

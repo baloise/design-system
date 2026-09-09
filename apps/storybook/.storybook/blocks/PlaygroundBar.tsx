@@ -6,7 +6,7 @@ export const PlaygroundBar = ({ _of, _children }): React.ReactElement => {
 
   return (
     <Unstyled>
-      {/* <div className="flex gap-normal justify-content-center">
+      {/* <div className="flex gap-base justify-content-center">
         <a
           className="ds-button"
           onClick={() => {

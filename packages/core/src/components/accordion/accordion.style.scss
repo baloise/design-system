@@ -218,7 +218,7 @@ details.ds-accordion:has(> summary.ds-button.at-end) {
   padding-bottom: 3rem;
 }
 
-details.ds-accordion:has(> summary.ds-button.is-small.at-end) {
+details.ds-accordion:has(> summary.ds-button.is-sm.at-end) {
   padding-bottom: 2rem;
 }
 
@@ -234,7 +234,7 @@ details.ds-accordion:has(> summary.ds-button.at-end) > summary.ds-button.at-end 
   padding-bottom: 3rem;
 }
 
-details.ds-accordion:has(> summary.ds-button.is-small.at-end) > summary.ds-button.is-small.at-end ~ * {
+details.ds-accordion:has(> summary.ds-button.is-sm.at-end) > summary.ds-button.is-sm.at-end ~ * {
   padding-bottom: 2rem;
 }
 

@@ -32,7 +32,7 @@ Basic.storyName = '🧩 Basic'
 
 export const DarkVariants = Story({
   ...withRender(
-    () => `<div class="mb-medium flex gap-small flex-direction-column">
+    () => `<div class="mb-md flex gap-sm flex-direction-column">
   <ds-progress-bar value="50"></ds-progress-bar>
   <ds-progress-bar value="50" color="purple"></ds-progress-bar>
   <ds-progress-bar value="50" color="yellow"></ds-progress-bar>
@@ -48,7 +48,7 @@ export const LightVariants = Story({
     backgrounds: { value: 'purple' },
   },
   ...withRender(
-    () => `<div class="mb-medium flex gap-small flex-direction-column">
+    () => `<div class="mb-md flex gap-sm flex-direction-column">
   <ds-progress-bar value="50" background="light"></ds-progress-bar>
   <ds-progress-bar value="50" background="light" color="purple"></ds-progress-bar>
   <ds-progress-bar value="50" background="light" color="yellow"></ds-progress-bar>

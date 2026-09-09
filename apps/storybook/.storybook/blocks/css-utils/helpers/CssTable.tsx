@@ -20,7 +20,7 @@ export const CssTable = ({
 
   return (
     <section
-      className="sb-unstyled pb-medium my-x-large bg-grey-1 radius px-medium"
+      className="sb-unstyled pb-md my-xl bg-grey-1 radius px-md"
       style={{
         maxHeight: '30rem',
         overflow: 'auto',
@@ -32,9 +32,9 @@ export const CssTable = ({
           style={{ position: 'sticky', top: '0', left: '0', zIndex: '10' }}
         >
           <tr>
-            <th className="pt-medium">Class</th>
-            <th className="pt-medium">Value</th>
-            {example ? <th className="pt-medium"></th> : ''}
+            <th className="pt-md">Class</th>
+            <th className="pt-md">Value</th>
+            {example ? <th className="pt-md"></th> : ''}
           </tr>
         </thead>
         <tbody>

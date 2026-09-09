@@ -109,7 +109,7 @@ export const ComponentDesignTokens = ({
 
     if (!componentInfo) {
       return (
-        <div className="sb-unstyled my-large p-large bg-orange-2 radius text-orange-dark">
+        <div className="sb-unstyled my-lg p-lg bg-orange-2 radius text-orange-dark">
           Component not found: {component}
         </div>
       )
@@ -121,9 +121,9 @@ export const ComponentDesignTokens = ({
   if (tokens.length === 0) {
     return (
       <div className="sb-unstyled">
-        <h2 className="ds-title text-2xl mb-normal">{title}</h2>
-        <div className="my-large p-large bg-grey-light radius">
-          <p className="text-small">
+        <h2 className="ds-title text-2xl mb-base">{title}</h2>
+        <div className="my-lg p-lg bg-grey-light radius">
+          <p className="text-sm">
             No {tokenType === 'alias' ? 'alias' : 'component'} tokens defined for this component.
           </p>
         </div>
@@ -135,10 +135,10 @@ export const ComponentDesignTokens = ({
   const exampleCode = `:root {\n${exampleTokens.map(t => `  ${t.cssVarName}: /* your value */;`).join('\n')}\n}`
 
   return (
-    <div className="sb-unstyled my-large">
-      <h2 className="ds-title text-2xl mb-normal">{title}</h2>
-      <p className="text-normal mb-normal" dangerouslySetInnerHTML={{ __html: description }} />
-      <table className="ds-table w-full mb-large">
+    <div className="sb-unstyled my-lg">
+      <h2 className="ds-title text-2xl mb-base">{title}</h2>
+      <p className="text-base mb-base" dangerouslySetInnerHTML={{ __html: description }} />
+      <table className="ds-table w-full mb-lg">
         <thead>
           <tr>
             <th>CSS Variable</th>
@@ -158,7 +158,7 @@ export const ComponentDesignTokens = ({
                   <Clipboard label={token.cssVarName} />
                 </td>
                 <td style={{ verticalAlign: 'middle', borderBottom: 'none', paddingBottom: '4px', paddingTop: '12px' }}>
-                  <div className="flex gap-small align-items-center">
+                  <div className="flex gap-sm align-items-center">
                     {color && (
                       <div
                         className="radius flex-shrink-0"
@@ -171,18 +171,18 @@ export const ComponentDesignTokens = ({
                       />
                     )}
                     <Clipboard label={token.nativeValue} />
-                    {/* <code className="text-small">{token.nativeValue}</code> */}
+                    {/* <code className="text-sm">{token.nativeValue}</code> */}
                   </div>
                 </td>
               </tr>
               <tr style={{ backgroundColor: bg, borderBottom: '2px solid var(--ds-global-color-grey-2)' }}>
-                <td className="text-x-small text-primary-light" style={{ paddingTop: '4px', paddingBottom: '12px' }}>
+                <td className="text-xs text-primary-light" style={{ paddingTop: '4px', paddingBottom: '12px' }}>
                   {token.name}
                 </td>
-                <td className="text-x-small text-primary-light" style={{ paddingTop: '4px', paddingBottom: '12px' }}>
+                <td className="text-xs text-primary-light" style={{ paddingTop: '4px', paddingBottom: '12px' }}>
                   {chain.map((entry, i) => (
                     <React.Fragment key={i}>
-                      {i > 0 && <span className="mx-x-small">→</span>}
+                      {i > 0 && <span className="mx-xs">→</span>}
                       <span title={entry.cssVar}>{entry.figmaName}</span>
                     </React.Fragment>
                   ))}
@@ -192,7 +192,7 @@ export const ComponentDesignTokens = ({
           )
         })}
       </table>
-      <p className="text-normal mb-small">Override globally by setting tokens on the :root selector:</p>
+      <p className="text-base mb-sm">Override globally by setting tokens on the :root selector:</p>
       <Source dark language="css" code={exampleCode} />
     </div>
   )

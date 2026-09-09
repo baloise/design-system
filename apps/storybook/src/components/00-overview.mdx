@@ -108,7 +108,7 @@ uniform design or appearance.
           1'234 CHF
         </ds-heading>
         <ds-content>
-          <p class="text-small m-none flex-1">Lorem ipsum dolor</p>
+          <p class="text-sm m-none flex-1">Lorem ipsum dolor</p>
         </ds-content>
         <ds-button-group>
           <ds-button>Next</ds-button>
@@ -210,11 +210,11 @@ These components serve to present data and information in a diverse range of for
     pageTitle="Components/Hint"
     description="Hint hides content with some additional description and shows it by clicking the icon. It can easily combined with the ds-data or ds-field component."
   >
-    <div class="py-normal">
+    <div class="py-base">
       <ds-icon name="info-circle" size="medium" style={{ position: 'absolute', top: '20%', left: '15%' }}></ds-icon>
-      <div class="bg-grey radius shadow p-normal" style={{ scale: '0.5', position: 'absolute', top: '-10%' }}>
+      <div class="bg-grey radius shadow p-base" style={{ scale: '0.5', position: 'absolute', top: '-10%' }}>
         <ds-stack layout="vertical">
-          <h4 class="ds-title text-large">Apple pie</h4>
+          <h4 class="ds-title text-lg">Apple pie</h4>
           <span>
             Apple pie, a quintessential dessert, combines the comforting aroma of baked apples with a flaky, golden
             crust.
@@ -534,11 +534,11 @@ Form components serve as tools for gathering user input through a range of metho
     pageTitle="Components"
     description="The form component wraps the form section. It helps to scroll to the first invalid field after a failed submit."
   >
-    <div class="bg-purple-2 radius-lg mb-small mt-xx-large" style={{ width: '30%', height: '16px' }}></div>
-    <div class="bg-purple-2 radius mb-medium" style={{ width: '100%', height: '48px' }}></div>
-    <div class="bg-purple-2 radius-lg mb-small mt-large" style={{ width: '30%', height: '16px' }}></div>
-    <div class="bg-purple-2 radius mb-large" style={{ width: '100%', height: '48px' }}></div>
-    <div class="bg-purple-2 radius p-normal" style={{ width: '20%', height: '48px' }}></div>
+    <div class="bg-purple-2 radius-lg mb-sm mt-2xl" style={{ width: '30%', height: '16px' }}></div>
+    <div class="bg-purple-2 radius mb-md" style={{ width: '100%', height: '48px' }}></div>
+    <div class="bg-purple-2 radius-lg mb-sm mt-lg" style={{ width: '30%', height: '16px' }}></div>
+    <div class="bg-purple-2 radius mb-lg" style={{ width: '100%', height: '48px' }}></div>
+    <div class="bg-purple-2 radius p-base" style={{ width: '20%', height: '48px' }}></div>
   </GridComponent>
   <GridComponent
     scale="0.5"
@@ -551,34 +551,34 @@ Form components serve as tools for gathering user input through a range of metho
   >
     <ds-form-grid>
       <ds-form-col>
-        <div class="bg-purple-2 radius mb-small" style={{ width: '100%', height: '48px' }}></div>
+        <div class="bg-purple-2 radius mb-sm" style={{ width: '100%', height: '48px' }}></div>
       </ds-form-col>
       <ds-form-col size="half">
-        <div class="bg-purple-2 radius mb-small" style={{ width: '100%', height: '48px' }}></div>
+        <div class="bg-purple-2 radius mb-sm" style={{ width: '100%', height: '48px' }}></div>
       </ds-form-col>
       <ds-form-col size="half">
-        <div class="bg-purple-2 radius mb-small" style={{ width: '100%', height: '48px' }}></div>
+        <div class="bg-purple-2 radius mb-sm" style={{ width: '100%', height: '48px' }}></div>
       </ds-form-col>
       <ds-form-col size="one-third">
-        <div class="bg-purple-2 radius mb-small" style={{ width: '100%', height: '48px' }}></div>
+        <div class="bg-purple-2 radius mb-sm" style={{ width: '100%', height: '48px' }}></div>
       </ds-form-col>
       <ds-form-col size="one-third">
-        <div class="bg-purple-2 radius mb-small" style={{ width: '100%', height: '48px' }}></div>
+        <div class="bg-purple-2 radius mb-sm" style={{ width: '100%', height: '48px' }}></div>
       </ds-form-col>
       <ds-form-col size="one-third">
-        <div class="bg-purple-2 radius mb-small" style={{ width: '100%', height: '48px' }}></div>
+        <div class="bg-purple-2 radius mb-sm" style={{ width: '100%', height: '48px' }}></div>
       </ds-form-col>
       <ds-form-col size="one-quarter">
-        <div class="bg-purple-2 radius mb-small" style={{ width: '100%', height: '48px' }}></div>
+        <div class="bg-purple-2 radius mb-sm" style={{ width: '100%', height: '48px' }}></div>
       </ds-form-col>
       <ds-form-col size="one-quarter">
-        <div class="bg-purple-2 radius mb-small" style={{ width: '100%', height: '48px' }}></div>
+        <div class="bg-purple-2 radius mb-sm" style={{ width: '100%', height: '48px' }}></div>
       </ds-form-col>
       <ds-form-col size="one-quarter">
-        <div class="bg-purple-2 radius mb-small" style={{ width: '100%', height: '48px' }}></div>
+        <div class="bg-purple-2 radius mb-sm" style={{ width: '100%', height: '48px' }}></div>
       </ds-form-col>
       <ds-form-col size="one-quarter">
-        <div class="bg-purple-2 radius mb-small" style={{ width: '100%', height: '48px' }}></div>
+        <div class="bg-purple-2 radius mb-sm" style={{ width: '100%', height: '48px' }}></div>
       </ds-form-col>
     </ds-form-grid>
   </GridComponent>
@@ -597,7 +597,7 @@ Form components serve as tools for gathering user input through a range of metho
     description="Input Group can combine various components to one field control."
   >
     <ds-stack layout="vertical">
-      <ds-input-group class="mb-normal">
+      <ds-input-group class="mb-base">
         <ds-icon name="call"></ds-icon>
         <ds-select style={{ maxWidth: '106px' }} value="DE">
           <ds-select-option label="DE" value="DE">
@@ -612,7 +612,7 @@ Form components serve as tools for gathering user input through a range of metho
         </ds-select>
         <ds-input placeholder="79 123 45 67"></ds-input>
       </ds-input-group>
-      <ds-input-group class="mb-normal">
+      <ds-input-group class="mb-base">
         <ds-tag size="small" closable>
           Tag
         </ds-tag>
@@ -716,9 +716,9 @@ Layout components enable the creation of dynamic and responsive layouts.
         </ds-app-navbar>
       </header>
       <main class="flex-1">
-        <div class="ds-container my-large">
-          <h1 class="ds-title text-xx-large">Welcome</h1>
-          <h2 class="ds-subtitle text-xx-large">We have the best apple pie</h2>
+        <div class="ds-container my-lg">
+          <h1 class="ds-title text-2xl">Welcome</h1>
+          <h2 class="ds-subtitle text-2xl">We have the best apple pie</h2>
         </div>
       </main>
       <div class="bg-primary" style={{ height: '3rem', width: '100%' }}></div>
@@ -797,14 +797,14 @@ Navigation components facilitate the movement between various views or pages.
     pageTitle="Components/Close"
     description="Close is used as a close button for modals, toast and other components."
   >
-    <div class="bg-purple-2 radius p-normal" style={{ marginLeft: '10%', width: '80%', height: '120px' }}>
+    <div class="bg-purple-2 radius p-base" style={{ marginLeft: '10%', width: '80%', height: '120px' }}>
       <ds-stack style={{ height: '24px' }}>
         <div class="bg-red-1 radius-lg" style={{ width: '100%', height: '16px' }}></div>
         <ds-close></ds-close>
       </ds-stack>
-      <div class="bg-red-1 radius-lg mt-normal" style={{ width: '80%', height: '10px' }}></div>
-      <div class="bg-red-1 radius-lg mt-x-small" style={{ width: '90%', height: '10px' }}></div>
-      <div class="bg-red-1 radius-lg mt-x-small" style={{ width: '60%', height: '10px' }}></div>
+      <div class="bg-red-1 radius-lg mt-base" style={{ width: '80%', height: '10px' }}></div>
+      <div class="bg-red-1 radius-lg mt-xs" style={{ width: '90%', height: '10px' }}></div>
+      <div class="bg-red-1 radius-lg mt-xs" style={{ width: '60%', height: '10px' }}></div>
     </div>
   </GridComponent>
   <GridComponent
@@ -815,8 +815,8 @@ Navigation components facilitate the movement between various views or pages.
     pageTitle="Components/Nav"
     description="Navigation component serves as a central hub for seamless user navigation within the applications."
   >
-    <div class="bg-primary mt-small" style={{ width: '100%', height: '24px' }}></div>
-    <div class="bg-white radius-lg mt-small p-x-small" style={{ marginLeft: '10%', width: '80%', height: '40px' }}>
+    <div class="bg-primary mt-sm" style={{ width: '100%', height: '24px' }}></div>
+    <div class="bg-white radius-lg mt-sm p-xs" style={{ marginLeft: '10%', width: '80%', height: '40px' }}>
       <ds-stack>
         <ds-logo style={{ scale: '0.5', marginLeft: '-24px' }}></ds-logo>
         <div class="bg-grey-3 radius-lg" style={{ width: '32px', height: '8px' }}></div>
@@ -878,7 +878,7 @@ Navigation components facilitate the movement between various views or pages.
         </ds-app-navbar-menu-end>
       </ds-app-navbar-menu>
     </ds-app-navbar>
-    <div class="ds-container mt-normal" style={{ height: '280px' }}>
+    <div class="ds-container mt-base" style={{ height: '280px' }}>
       <div class="h-full bg-purple-2 radius"></div>
     </div>
   </GridComponent>

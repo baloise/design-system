@@ -46,12 +46,12 @@ export const IconOverview = ({ _children }): React.ReactElement => {
           onChange={handleInputChange}
         />
       </div>
-      <div className="flex gap-normal my-normal">
+      <div className="flex gap-base my-base">
         <button
           onClick={_ => handleCollectionClick('ui-icons', 'primary')}
           className={`${
             color === 'primary' ? 'bg-primary text-white' : 'bg-primary-1'
-          } flex-1 border-none radius font-weight-bold py-small px-normal cursor-pointer doc-shadow-hover`}
+          } flex-1 border-none radius font-weight-bold py-sm px-base cursor-pointer doc-shadow-hover`}
         >
           UI Icons
         </button>
@@ -59,36 +59,36 @@ export const IconOverview = ({ _children }): React.ReactElement => {
           onClick={_ => handleCollectionClick('brand-icons', 'purple')}
           className={`${
             color === 'purple' ? 'bg-purple-5 text-white' : 'bg-purple-1'
-          } flex-1 border-none radius font-weight-bold py-small px-normal cursor-pointer doc-shadow-hover`}
+          } flex-1 border-none radius font-weight-bold py-sm px-base cursor-pointer doc-shadow-hover`}
         >
-          <small className="text-x-small block mb-x-small font-weight-regular">Brand Icons</small>Purple
+          <small className="text-xs block mb-xs font-weight-regular">Brand Icons</small>Purple
         </button>
         <button
           onClick={_ => handleCollectionClick('brand-icons', 'green')}
           className={`${
             color === 'green' ? 'bg-green-5 text-white' : 'bg-green-1'
-          } flex-1 border-none radius font-weight-bold py-small px-normal cursor-pointer doc-shadow-hover`}
+          } flex-1 border-none radius font-weight-bold py-sm px-base cursor-pointer doc-shadow-hover`}
         >
-          <small className="text-x-small block mb-x-small font-weight-regular">Brand Icons</small>Green
+          <small className="text-xs block mb-xs font-weight-regular">Brand Icons</small>Green
         </button>
         <button
           onClick={_ => handleCollectionClick('brand-icons', 'red')}
           className={`${
             color === 'red' ? 'bg-red-5 text-white' : 'bg-red-1'
-          } flex-1 border-none radius font-weight-bold py-small px-normal cursor-pointer doc-shadow-hover`}
+          } flex-1 border-none radius font-weight-bold py-sm px-base cursor-pointer doc-shadow-hover`}
         >
-          <small className="text-x-small block mb-x-small font-weight-regular">Brand Icons</small>Red
+          <small className="text-xs block mb-xs font-weight-regular">Brand Icons</small>Red
         </button>
         <button
           onClick={_ => handleCollectionClick('brand-icons', 'yellow')}
           className={`${
             color === 'yellow' ? 'bg-yellow-5 text-white' : 'bg-yellow-1'
-          } flex-1 border-none radius font-weight-bold py-small px-normal cursor-pointer doc-shadow-hover`}
+          } flex-1 border-none radius font-weight-bold py-sm px-base cursor-pointer doc-shadow-hover`}
         >
-          <small className="text-x-small block mb-x-small font-weight-regular">Brand Icons</small>Yellow
+          <small className="text-xs block mb-xs font-weight-regular">Brand Icons</small>Yellow
         </button>
       </div>
-      <div className="flex flex-wrap gap-xx-small mt-x-large">
+      <div className="flex flex-wrap gap-2xs mt-xl">
         {icons
           .filter(
             icon =>
@@ -99,7 +99,7 @@ export const IconOverview = ({ _children }): React.ReactElement => {
           .map(icon => (
             <div
               key={`${icon.collection}__${icon.name}`}
-              className={`bg-${icon.color}-1 radius px-x-small pt-medium pb-normal flex justify-content-center align-items-center gap-small flex-direction-column text-align-center`}
+              className={`bg-${icon.color}-1 radius px-xs pt-md pb-base flex justify-content-center align-items-center gap-sm flex-direction-column text-align-center`}
               style={{ width: '138px' }}
             >
               <img
@@ -108,7 +108,7 @@ export const IconOverview = ({ _children }): React.ReactElement => {
                 width={'64px'}
               />
               <span
-                className="text-x-small font-weight-bold flex justify-content-center align-items-center"
+                className="text-xs font-weight-bold flex justify-content-center align-items-center"
                 style={{ minHeight: '40px' }}
               >
                 {icon.name}

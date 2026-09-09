@@ -12,12 +12,12 @@ const Story = StoryFactory(meta)
 
 export const Gap = Story({
   ...withRender(
-    () => `<div class="flex flex-wrap gap-normal mb-normal">
+    () => `<div class="flex flex-wrap gap-base mb-base">
   <div class="flex-1 bg-red radius flex justify-content-center align-items-center">1</div>
   <div class="flex-1 bg-red radius flex justify-content-center align-items-center">2</div>
   <div class="flex-1 bg-red radius flex justify-content-center align-items-center">3</div>
 </div>
-<div class="flex flex-wrap gap-xx-large">
+<div class="flex flex-wrap gap-2xl">
   <div class="flex-1 bg-red radius flex justify-content-center align-items-center">1</div>
   <div class="flex-1 bg-red radius flex justify-content-center align-items-center">2</div>
   <div class="flex-1 bg-red radius flex justify-content-center align-items-center">3</div>
@@ -26,12 +26,12 @@ export const Gap = Story({
 })
 export const ColumnGap = Story({
   ...withRender(
-    () => `<div class="flex flex-wrap column-gap-x-small mb-normal bg-red-2">
+    () => `<div class="flex flex-wrap column-gap-xs mb-base bg-red-2">
   <div class="flex-1 bg-red radius flex justify-content-center align-items-center">1</div>
   <div class="flex-1 bg-red radius flex justify-content-center align-items-center">2</div>
   <div class="flex-1 bg-red radius flex justify-content-center align-items-center">3</div>
 </div>
-<div class="flex flex-wrap column-gap-large mb-normal bg-red-2 mt-normal">
+<div class="flex flex-wrap column-gap-lg mb-base bg-red-2 mt-base">
   <div class="flex-1 bg-red radius flex justify-content-center align-items-center">1</div>
   <div class="flex-1 bg-red radius flex justify-content-center align-items-center">2</div>
   <div class="flex-1 bg-red radius flex justify-content-center align-items-center">3</div>
@@ -40,7 +40,7 @@ export const ColumnGap = Story({
 })
 export const RowGap = Story({
   ...withRender(
-    () => `<div class="flex flex-wrap row-gap-large mb-normal bg-red-2">
+    () => `<div class="flex flex-wrap row-gap-lg mb-base bg-red-2">
   <div class="min-w-full flex-1 bg-red radius flex justify-content-center align-items-center">1</div>
   <div class="min-w-full flex-1 bg-red radius flex justify-content-center align-items-center">2</div>
 </div>`,

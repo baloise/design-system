@@ -366,7 +366,7 @@ To access the method of the component use the reference directly.
   <ds-select-option label="Soccer" value="soccer">Soccer</ds-select-option>
   <ds-select-option label="Other" value="other">Other</ds-select-option>
 </ds-select>
-<ds-button class="mt-normal" (click)="chooseTennis()">Choose Tennis</ds-button>
+<ds-button class="mt-base" (click)="chooseTennis()">Choose Tennis</ds-button>
 ```
 
 **app.component.ts**
@@ -441,7 +441,7 @@ function MethodComponent() {
           Other
         </BalSelectOption>
       </BalSelect>
-      <BalButton class="mt-normal" onClick={() => chooseTennis()}>
+      <BalButton class="mt-base" onClick={() => chooseTennis()}>
         Choose Tennis
       </BalButton>
     </div>

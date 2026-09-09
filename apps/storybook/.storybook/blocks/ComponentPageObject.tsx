@@ -37,10 +37,10 @@ const renderParams = (params: POParam[]): string =>
   params.length ? params.map(p => `${p.name}: ${p.type}`).join(', ') : '—'
 
 const MethodTable = ({ title, methods }: { title: string; methods: POMethod[] }) => (
-  <div className="mb-large">
-    <h3 className="ds-title text-xl mb-normal mt-large">{title}</h3>
+  <div className="mb-lg">
+    <h3 className="ds-title text-xl mb-base mt-lg">{title}</h3>
     {methods.length === 0 ? (
-      <p className="text-small">None defined.</p>
+      <p className="text-sm">None defined.</p>
     ) : (
       <table className="ds-table w-full is-striped">
         <thead>
@@ -56,8 +56,8 @@ const MethodTable = ({ title, methods }: { title: string; methods: POMethod[] })
               <td>
                 <code>{m.name}()</code>
               </td>
-              <td className="text-small">{renderParams(m.params)}</td>
-              <td className="text-small">{m.docs || '—'}</td>
+              <td className="text-sm">{renderParams(m.params)}</td>
+              <td className="text-sm">{m.docs || '—'}</td>
             </tr>
           ))}
         </tbody>
@@ -91,11 +91,11 @@ test('example', async ({ page }) => {
 }
 
 const InstallGuide = () => (
-  <div className="sb-unstyled my-large">
-    <h2 className="ds-title text-2xl mb-normal">Installation</h2>
-    <p className="text-normal mb-normal">Install the Playwright helper package:</p>
+  <div className="sb-unstyled my-lg">
+    <h2 className="ds-title text-2xl mb-base">Installation</h2>
+    <p className="text-base mb-base">Install the Playwright helper package:</p>
     <Source dark language="bash" code="npm install @baloise/ds-playwright" />
-    <p className="text-normal mt-normal mb-normal">Replace the standard Playwright import in your test files:</p>
+    <p className="text-base mt-base mb-base">Replace the standard Playwright import in your test files:</p>
     <Source
       dark
       language="ts"
@@ -109,9 +109,7 @@ export const ComponentPageObject = ({ component }: ComponentPageObjectProps): Re
 
   if (!componentInfo) {
     return (
-      <div className="sb-unstyled my-large p-large bg-orange-2 radius text-orange-dark">
-        Component not found: {component}
-      </div>
+      <div className="sb-unstyled my-lg p-lg bg-orange-2 radius text-orange-dark">Component not found: {component}</div>
     )
   }
 
@@ -122,16 +120,16 @@ export const ComponentPageObject = ({ component }: ComponentPageObjectProps): Re
     <div className="sb-unstyled">
       {po ? (
         <>
-          <h2 className="ds-title text-2xl mb-normal">Page Object</h2>
-          <p className="text-normal mb-normal">
+          <h2 className="ds-title text-2xl mb-base">Page Object</h2>
+          <p className="text-base mb-base">
             Import <code>{po.class}</code> from <code>{po.import}</code> to interact with this component in Playwright
             tests.
           </p>
 
           {po.locators.length > 0 && (
             <>
-              <h3 className="ds-title text-xl mb-normal mt-large">Locators</h3>
-              <table className="ds-table w-full is-striped mb-normal">
+              <h3 className="ds-title text-xl mb-base mt-lg">Locators</h3>
+              <table className="ds-table w-full is-striped mb-base">
                 <thead>
                   <tr>
                     <th>Name</th>
@@ -145,8 +143,8 @@ export const ComponentPageObject = ({ component }: ComponentPageObjectProps): Re
                       <td>
                         <code>{loc.name}</code>
                       </td>
-                      <td className="text-small">{loc.type}</td>
-                      <td className="text-small">{loc.docs || '—'}</td>
+                      <td className="text-sm">{loc.type}</td>
+                      <td className="text-sm">{loc.docs || '—'}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -157,12 +155,12 @@ export const ComponentPageObject = ({ component }: ComponentPageObjectProps): Re
           <MethodTable title="Actions" methods={po.actions} />
           <MethodTable title="Assertions" methods={po.assertions} />
 
-          <h2 className="ds-title text-2xl mb-normal mt-xl">Example Test</h2>
+          <h2 className="ds-title text-2xl mb-base mt-xl">Example Test</h2>
           <Source dark language="ts" code={generateExampleTest(tag, po)} />
         </>
       ) : (
-        <div className="my-large p-large bg-grey-light radius">
-          <p className="text-small">No page object available for this component yet.</p>
+        <div className="my-lg p-lg bg-grey-light radius">
+          <p className="text-sm">No page object available for this component yet.</p>
         </div>
       )}
       <InstallGuide />

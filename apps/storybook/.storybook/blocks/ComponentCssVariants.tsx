@@ -24,14 +24,14 @@ const findComponent = (name: string) => {
 }
 
 const VariantsTable = ({ variants, heading }: { variants: CssVariant[]; heading?: string }): React.ReactElement => (
-  <div className="mb-large">
-    {heading && <h3 className="ds-title text-xl mb-normal mt-large">{heading}</h3>}
+  <div className="mb-lg">
+    {heading && <h3 className="ds-title text-xl mb-base mt-lg">{heading}</h3>}
     {variants.length === 0 ? (
-      <div className="my-normal p-large bg-grey-light radius">
-        <p className="text-small">No CSS variants defined.</p>
+      <div className="my-base p-lg bg-grey-light radius">
+        <p className="text-sm">No CSS variants defined.</p>
       </div>
     ) : (
-      <table className="ds-table w-full is-striped mb-normal">
+      <table className="ds-table w-full is-striped mb-base">
         <thead>
           <tr>
             <th>Variant</th>
@@ -44,7 +44,7 @@ const VariantsTable = ({ variants, heading }: { variants: CssVariant[]; heading?
               <td>
                 <Clipboard label={`.${variant.name}`} />
               </td>
-              <td className="text-small">{variant.docs}</td>
+              <td className="text-sm">{variant.docs}</td>
             </tr>
           ))}
         </tbody>
@@ -58,9 +58,7 @@ export const ComponentCssVariants = ({ component, subComponents }: ComponentCssV
 
   if (!componentInfo) {
     return (
-      <div className="sb-unstyled my-large p-large bg-orange-2 radius text-orange-dark">
-        Component not found: {component}
-      </div>
+      <div className="sb-unstyled my-lg p-lg bg-orange-2 radius text-orange-dark">Component not found: {component}</div>
     )
   }
 
@@ -72,21 +70,21 @@ export const ComponentCssVariants = ({ component, subComponents }: ComponentCssV
     if (variants.length === 0) {
       return (
         <div className="sb-unstyled">
-          <h2 className="ds-title text-2xl mb-normal">CSS Variants</h2>
-          <div className="my-large p-large bg-grey-light radius">
-            <p className="text-small">No CSS variants defined for this component.</p>
+          <h2 className="ds-title text-2xl mb-base">CSS Variants</h2>
+          <div className="my-lg p-lg bg-grey-light radius">
+            <p className="text-sm">No CSS variants defined for this component.</p>
           </div>
         </div>
       )
     }
 
     return (
-      <div className="sb-unstyled my-large">
-        <h2 className="ds-title text-2xl mb-normal">CSS Variants</h2>
-        <p className="text-normal mb-normal">
+      <div className="sb-unstyled my-lg">
+        <h2 className="ds-title text-2xl mb-base">CSS Variants</h2>
+        <p className="text-base mb-base">
           Apply these CSS variant classes to modify the appearance and behavior of the component.
         </p>
-        <table className="ds-table w-full is-striped mb-large">
+        <table className="ds-table w-full is-striped mb-lg">
           <thead>
             <tr>
               <th>Variant</th>
@@ -99,7 +97,7 @@ export const ComponentCssVariants = ({ component, subComponents }: ComponentCssV
                 <td>
                   <Clipboard label={`.${variant.name}`} />
                 </td>
-                <td className="text-small">{variant.docs}</td>
+                <td className="text-sm">{variant.docs}</td>
               </tr>
             ))}
           </tbody>
@@ -119,17 +117,15 @@ export const ComponentCssVariants = ({ component, subComponents }: ComponentCssV
   })
 
   return (
-    <div className="sb-unstyled my-large">
-      <h2 className="ds-title text-2xl mb-normal">CSS Variants</h2>
-      <p className="text-normal mb-normal">
+    <div className="sb-unstyled my-lg">
+      <h2 className="ds-title text-2xl mb-base">CSS Variants</h2>
+      <p className="text-base mb-base">
         Apply these CSS variant classes to modify the appearance and behavior of the components.
       </p>
       {allEntries.map((entry, index) => (
         <div key={index}>
           {entry.notFound && (
-            <div className="my-large p-large bg-orange-2 radius text-orange-dark">
-              Component not found: {entry.heading}
-            </div>
+            <div className="my-lg p-lg bg-orange-2 radius text-orange-dark">Component not found: {entry.heading}</div>
           )}
           {!entry.notFound && <VariantsTable variants={entry.variants} heading={entry.heading} />}
         </div>

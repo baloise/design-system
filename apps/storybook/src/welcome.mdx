@@ -132,7 +132,7 @@ import StyleDictionaryLogo from './assets/images/style-dictionary-logo.png'
     <div style={{ maxWidth: '1000px', margin: '0 auto' }}>
       <h2 className="ds-title is-2xl mb-md">Advantages</h2>
       <p>In this section key advantages of the library are listed which are part of the Helvetia Design System.</p>
-      <div className="ds-grid is-multiline mt-medium" style={{ '--ds-column-gap': '.5rem' }}>
+      <div className="ds-grid is-multiline mt-md" style={{ '--ds-column-gap': '.5rem' }}>
         <div className="ds-col is-6">
           <article className="ds-card h-full ">
             <header class="ds-card-header">
@@ -329,7 +329,7 @@ reach you.
     ].map(({ name, description, icon }) => (
       <div
         key={name}
-        className="ds-card flex flex-direction-column align-items-center gap-x-small text-align-center flex-1"
+        className="ds-card flex flex-direction-column align-items-center gap-xs text-align-center flex-1"
         style={{ minWidth: '160px' }}
       >
         <div className="ds-tech-icon">{icon}</div>
@@ -371,7 +371,7 @@ We support the **last 2 versions** of all major browsers.
     ].map(({ name, icon }) => (
       <div
         key={name}
-        className="ds-card flex flex-direction-column align-items-center gap-x-small text-align-center flex-1"
+        className="ds-card flex flex-direction-column align-items-center gap-xs text-align-center flex-1"
         style={{ minWidth: '80px' }}
       >
         <img src={icon} alt={name} width="48" height="48" />

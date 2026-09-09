@@ -3,7 +3,7 @@ import { Clipboard } from '../Clipboard'
 
 export const TokensFont = ({ _overview }): React.ReactElement => {
   return (
-    <table className="sb-unstyled my-x-large ds-table tokens" style={{ width: '100%' }}>
+    <table className="sb-unstyled my-xl ds-table tokens" style={{ width: '100%' }}>
       <thead>
         <tr>
           <th style={{ minWidth: '220px' }}>Example</th>
@@ -14,15 +14,15 @@ export const TokensFont = ({ _overview }): React.ReactElement => {
       <tbody>
         <tr>
           <td style={{ verticalAlign: 'top' }}>
-            <span className="font-family-heading font-weight-bold text-primary text-medium">Bold Headline</span>
+            <span className="font-family-heading font-weight-bold text-primary text-md">Bold Headline</span>
             <br />
-            <span className="font-family-heading text-primary text-medium">Light Headline</span>
+            <span className="font-family-heading text-primary text-md">Light Headline</span>
           </td>
           <td style={{ verticalAlign: 'top' }}>
-            <p className="font-weight-bold text-large mt-none mb-x-small">
-              Title <span className="text-medium">(BaloiseCreateHeadline)</span>
+            <p className="font-weight-bold text-lg mt-none mb-xs">
+              Title <span className="text-md">(BaloiseCreateHeadline)</span>
             </p>
-            <p className="m-none text-small">Should only be used for headings and buttons</p>
+            <p className="m-none text-sm">Should only be used for headings and buttons</p>
           </td>
           <td style={{ verticalAlign: 'top' }}>
             <Clipboard label={'ds-font-family-heading'} value={`var(--ds-font-family-heading)`} />
@@ -30,15 +30,15 @@ export const TokensFont = ({ _overview }): React.ReactElement => {
         </tr>
         <tr>
           <td style={{ verticalAlign: 'top' }}>
-            <span className="font-family-text font-weight-bold text-primary text-medium">Bold Text</span>
+            <span className="font-family-text font-weight-bold text-primary text-md">Bold Text</span>
             <br />
-            <span className="font-family-text text-primary text-medium">Regular Text</span>
+            <span className="font-family-text text-primary text-md">Regular Text</span>
           </td>
           <td style={{ verticalAlign: 'top' }}>
-            <p className="font-weight-bold text-large mt-none mb-x-small">
-              Text <span className="text-medium">(BaloiseCreateText)</span>
+            <p className="font-weight-bold text-lg mt-none mb-xs">
+              Text <span className="text-md">(BaloiseCreateText)</span>
             </p>
-            <p className="m-none text-small">Should only be used for body texts and form controls</p>
+            <p className="m-none text-sm">Should only be used for body texts and form controls</p>
           </td>
           <td style={{ verticalAlign: 'top' }}>
             <Clipboard label={'ds-font-family-text'} value={`var(--ds-font-family-text)`} />

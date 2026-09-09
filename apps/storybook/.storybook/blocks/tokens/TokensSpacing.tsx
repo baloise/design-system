@@ -5,7 +5,7 @@ import { Clipboard } from '../Clipboard'
 export const TokensSpacing = ({ _overview }): React.ReactElement => {
   const list = tokens['🔗 Alias']['↔️ Space']
   return (
-    <table className="sb-unstyled my-x-large ds-table tokens" style={{ width: '100%' }}>
+    <table className="sb-unstyled my-xl ds-table tokens" style={{ width: '100%' }}>
       <thead>
         <tr>
           <th style={{ width: '100%' }}>Token & Description</th>
@@ -28,7 +28,7 @@ export const TokensSpacing = ({ _overview }): React.ReactElement => {
                   <Clipboard label={name} value={`var(--${name})`} />
                 </td>
                 <td>
-                  <p className={`mt-none mb-none text-small font-weight-bold py-xx-small`}>
+                  <p className={`mt-none mb-none text-sm font-weight-bold py-2xs`}>
                     {responsive.mobile} / {responsive.tablet} / {responsive.desktop}
                   </p>
                 </td>

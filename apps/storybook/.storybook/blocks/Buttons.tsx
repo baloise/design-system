@@ -22,17 +22,17 @@ export const ButtonCard = ({ children, target, color, icon, link, label, descrip
       <Tag
         {...linkObj}
         style={{ flex: 1 }}
-        className={`sb-unstyled button mb-none flex flex-1 w-full flex-direction-row gap-lg ${
+        className={`sb-unstyled ds-button mb-none flex flex-1 w-full flex-direction-row gap-lg ${
           color ? (color === 'grey' ? 'is-tertiary' : `is-brand-${color}`) : 'is-secondary'
-        } p-normal text-large`}
+        } p-base text-lg`}
       >
-        <span className="w-fit flex justify-content-center text-xx-large text-align-center">
+        <span className="w-fit flex justify-content-center text-2xl text-align-center">
           {icon}
           {children}
         </span>
         <div className="flex-1 w-full flex flex-direction-column">
-          <span className="block ds-title text-medium text-align-left mb-none">{label}</span>
-          <span className="block ds-text text-small text-align-left">{description}</span>
+          <span className="block ds-title text-md text-align-left mb-none">{label}</span>
+          <span className="block ds-text text-sm text-align-left">{description}</span>
         </div>
       </Tag>
     )
@@ -42,16 +42,16 @@ export const ButtonCard = ({ children, target, color, icon, link, label, descrip
     <Tag
       {...linkObj}
       style={{ flex: 1 }}
-      className={`sb-unstyled button mb-none flex flex-1 flex-direction-column ${
+      className={`sb-unstyled ds-button mb-none flex flex-1 flex-direction-column ${
         color ? (color === 'grey' ? 'is-tertiary' : `is-brand-${color}`) : 'is-secondary'
-      } p-normal text-large`}
+      } p-base text-lg`}
     >
-      <span className="flex justify-content-center text-xx-large text-align-center">
+      <span className="flex justify-content-center text-2xl text-align-center">
         {icon}
         {children}
       </span>
-      <span className="block ds-title text-medium text-align-center mb-none">{label}</span>
-      <span className="block ds-text text-small text-align-center">{description}</span>
+      <span className="block ds-title text-md text-align-center mb-none">{label}</span>
+      <span className="block ds-text text-sm text-align-center">{description}</span>
     </Tag>
   )
 }
@@ -64,10 +64,10 @@ export const LinkCard = ({ _children, _color, _icon, label, description, pageTit
   const content = (
     <>
       <div className="flex-1 flex flex-direction-column justify-content-center align-items-start">
-        <span className="block ds-title text-normal mb-none">{label || pageTitle}</span>
-        <span className="block ds-text text-align-left is-small">{description}</span>
+        <span className="block ds-title text-base mb-none">{label || pageTitle}</span>
+        <span className="block ds-text text-align-left is-sm">{description}</span>
       </div>
-      <span className="flex justify-content-center align-items-center text-xx-large text-align-center">
+      <span className="flex justify-content-center align-items-center text-2xl text-align-center">
         <ds-icon name="nav-go-right"></ds-icon>
       </span>
     </>
@@ -115,7 +115,7 @@ export const GridComponents = ({ children }) => {
   return (
     <ds-app>
       <div
-        className="sb-unstyled ds-grid is-multiline mt-normal"
+        className="sb-unstyled ds-grid is-multiline mt-base"
         style={{ '--ds-column-gap': '.5rem', 'userSelect': 'none' }}
       >
         {children}
@@ -149,10 +149,10 @@ export const GridComponent = ({
       <div className="h-full">
         <a
           onClick={() => navigate({ title: pageTitle })}
-          className={`flex flex-direction-column gap-normal justify-content-center align-items-center bg-white p-normal h-full radius shadow doc-shadow-large-hover cursor-pointer`}
+          className={`flex flex-direction-column gap-base justify-content-center align-items-center bg-white p-base h-full radius shadow doc-shadow-large-hover cursor-pointer`}
         >
           <div
-            className={`bg-purple-1 radius w-full flex ${flexPosition} ${fullscreen ? '' : 'p-small'}`}
+            className={`bg-purple-1 radius w-full flex ${flexPosition} ${fullscreen ? '' : 'p-sm'}`}
             style={{ height: '200px', minHeight: '200px', maxWidth: '200%', overflow: 'hidden', position: 'relative' }}
           >
             <div
@@ -173,7 +173,7 @@ export const GridComponent = ({
             </div>
           </div>
           <div className="flex-1 h-full w-full">
-            <h2 className="ds-title text-medium mb-xx-small" id={label}>
+            <h2 className="ds-title text-md mb-2xs" id={label}>
               {label}
             </h2>
             <small className="h-full">{description}</small>
@@ -186,7 +186,7 @@ export const GridComponent = ({
 
 export const GridCards = ({ children }) => {
   return (
-    <div className="sb-unstyled ds-grid is-multiline mt-normal" style={{ '--ds-column-gap': '.5rem' }}>
+    <div className="sb-unstyled ds-grid is-multiline mt-base" style={{ '--ds-column-gap': '.5rem' }}>
       {children}
     </div>
   )
@@ -198,7 +198,7 @@ export const GridCard = ({ _children, color, pageTitle, svg, label, description 
       <div className="h-full">
         <button
           onClick={() => navigate({ title: pageTitle })}
-          className={`ds-button flex gap-normal justify-content-center align-items-center is-brand-${color} p-normal h-full w-full`}
+          className={`ds-button flex gap-base justify-content-center align-items-center is-brand-${color} p-base h-full w-full`}
         >
           {svg ? (
             <div style={{ minWidth: '80px' }}>
@@ -209,13 +209,13 @@ export const GridCard = ({ _children, color, pageTitle, svg, label, description 
           )}
           {svg ? (
             <div className="flex-1 h-full text-align-left">
-              <h2 className="ds-title text-large mb-xx-small">{label}</h2>
-              <span className="ds-text text-small h-full">{description}</span>
+              <h2 className="ds-title text-lg mb-2xs">{label}</h2>
+              <span className="ds-text text-sm h-full">{description}</span>
             </div>
           ) : (
             <div className="flex-1 h-full text-align-left">
-              <h2 className="ds-title text-medium mb-xx-small">{label}</h2>
-              <small className="ds-text text-small h-full">{description}</small>
+              <h2 className="ds-title text-md mb-2xs">{label}</h2>
+              <small className="ds-text text-sm h-full">{description}</small>
             </div>
           )}
           {!svg ? (

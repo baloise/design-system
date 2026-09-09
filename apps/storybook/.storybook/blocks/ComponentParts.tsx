@@ -37,15 +37,15 @@ const PartTable = ({
   parts: Array<{ name: string; description: string }>
   heading?: string
 }): React.ReactElement => (
-  <div className="mb-large">
-    {heading && <h3 className="ds-title text-xl mb-normal mt-large">{heading}</h3>}
+  <div className="mb-lg">
+    {heading && <h3 className="ds-title text-xl mb-base mt-lg">{heading}</h3>}
     {parts.length === 0 ? (
-      <div className="my-normal p-large bg-grey-light radius">
-        <p className="text-small">No shadow parts defined.</p>
+      <div className="my-base p-lg bg-grey-light radius">
+        <p className="text-sm">No shadow parts defined.</p>
       </div>
     ) : (
       <>
-        <table className="ds-table w-full is-striped mb-normal">
+        <table className="ds-table w-full is-striped mb-base">
           <thead>
             <tr>
               <th>Part</th>
@@ -58,7 +58,7 @@ const PartTable = ({
                 <td>
                   <Clipboard label={part.name} />
                 </td>
-                <td className="text-small">{part.description}</td>
+                <td className="text-sm">{part.description}</td>
               </tr>
             ))}
           </tbody>
@@ -81,9 +81,7 @@ export const ComponentParts = ({ component, subComponents }: ComponentPartsProps
 
   if (!componentInfo) {
     return (
-      <div className="sb-unstyled my-large p-large bg-orange-2 radius text-orange-dark">
-        Component not found: {component}
-      </div>
+      <div className="sb-unstyled my-lg p-lg bg-orange-2 radius text-orange-dark">Component not found: {component}</div>
     )
   }
 
@@ -96,23 +94,23 @@ export const ComponentParts = ({ component, subComponents }: ComponentPartsProps
     if (parts.length === 0) {
       return (
         <div className="sb-unstyled">
-          <h2 className="ds-title text-2xl mb-normal">CSS Shadow Parts</h2>
-          <div className="my-large p-large bg-grey-light radius">
-            <p className="text-small">No shadow parts defined for this component.</p>
+          <h2 className="ds-title text-2xl mb-base">CSS Shadow Parts</h2>
+          <div className="my-lg p-lg bg-grey-light radius">
+            <p className="text-sm">No shadow parts defined for this component.</p>
           </div>
         </div>
       )
     }
 
     return (
-      <div className="sb-unstyled my-large">
-        <h2 className="ds-title text-2xl mb-normal">CSS Shadow Parts</h2>
-        <p className="text-normal mb-normal">
+      <div className="sb-unstyled my-lg">
+        <h2 className="ds-title text-2xl mb-base">CSS Shadow Parts</h2>
+        <p className="text-base mb-base">
           Shadow parts are named elements inside a web component that can be styled from outside using the{' '}
           <code>::part()</code> selector. This lets you customize specific internals without breaking Shadow DOM
           encapsulation.
         </p>
-        <table className="ds-table w-full is-striped mb-large">
+        <table className="ds-table w-full is-striped mb-lg">
           <thead>
             <tr>
               <th>Part</th>
@@ -125,12 +123,12 @@ export const ComponentParts = ({ component, subComponents }: ComponentPartsProps
                 <td>
                   <Clipboard label={part.name} />
                 </td>
-                <td className="text-small">{part.description}</td>
+                <td className="text-sm">{part.description}</td>
               </tr>
             ))}
           </tbody>
         </table>
-        <p className="text-normal mb-small">Target a part directly in your stylesheet:</p>
+        <p className="text-base mb-sm">Target a part directly in your stylesheet:</p>
         <Source
           dark
           language="css"
@@ -156,16 +154,16 @@ export const ComponentParts = ({ component, subComponents }: ComponentPartsProps
   })
 
   return (
-    <div className="sb-unstyled my-large">
-      <h2 className="ds-title text-2xl mb-normal">CSS Shadow Parts</h2>
-      <p className="text-normal mb-normal">
+    <div className="sb-unstyled my-lg">
+      <h2 className="ds-title text-2xl mb-base">CSS Shadow Parts</h2>
+      <p className="text-base mb-base">
         Shadow parts are named elements inside a web component that can be styled from outside using the{' '}
         <code>::part()</code> selector. This lets you customize specific internals without breaking Shadow DOM
         encapsulation.
       </p>
       {allEntries.map((entry, index) =>
         entry.notFound ? (
-          <div key={index} className="my-large p-large bg-orange-2 radius text-orange-dark">
+          <div key={index} className="my-lg p-lg bg-orange-2 radius text-orange-dark">
             Component not found: {entry.heading}
           </div>
         ) : (

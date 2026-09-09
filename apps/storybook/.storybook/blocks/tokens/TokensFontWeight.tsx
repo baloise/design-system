@@ -6,7 +6,7 @@ export const TokensFontWeight = ({ _overview }): React.ReactElement => {
   const list = tokens.font.weight
 
   return (
-    <table className="sb-unstyled my-x-large ds-table tokens" style={{ width: '100%' }}>
+    <table className="sb-unstyled my-xl ds-table tokens" style={{ width: '100%' }}>
       <thead>
         <tr>
           <th style={{ width: '100%' }}>Token & Description</th>
@@ -24,11 +24,11 @@ export const TokensFontWeight = ({ _overview }): React.ReactElement => {
                 <Clipboard label={item.name} value={`var(--${item.name})`} />
               </td>
               <td style={{ verticalAlign: 'top' }} className="border-none">
-                <p className={`mt-none mb-x-small text-small font-weight-bold py-xx-small`}>{item.$value}</p>
+                <p className={`mt-none mb-xs text-sm font-weight-bold py-2xs`}>{item.$value}</p>
               </td>
               <td style={{ verticalAlign: 'top' }} className="border-none">
                 <div
-                  className={`radius text-primary text-x-large flex justify-content-center align-items-center`}
+                  className={`radius text-primary text-xl flex justify-content-center align-items-center`}
                   style={{ width: '48px', height: '48px', fontWeight: `var(--${item.name})` }}
                 >
                   Aa
@@ -37,7 +37,7 @@ export const TokensFontWeight = ({ _overview }): React.ReactElement => {
             </tr>
             <tr>
               <td colSpan={3} className={'border-bottom-grey'}>
-                <p className="m-none text-small mb-small">{item.comment}</p>
+                <p className="m-none text-sm mb-sm">{item.comment}</p>
               </td>
             </tr>
           </tbody>

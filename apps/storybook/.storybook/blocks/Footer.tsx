@@ -45,8 +45,8 @@ export const Footer = ({ children }) => {
       >
         <div style={{ paddingTop: '4rem', paddingBottom: '2rem' }}>
           <div className="ds-container" style={{ maxWidth: '1000px', paddingLeft: '0', paddingRight: '0' }}>
-            <div className="mb-large">
-              <p className="mb-small">
+            <div className="mb-lg">
+              <p className="mb-sm">
                 If you experience any issues while using a component, please head over to the{' '}
                 <a
                   className="sbdocs-a"
@@ -58,8 +58,8 @@ export const Footer = ({ children }) => {
                 </a>{' '}
                 for more guidelines and help.
               </p>
-              <p className="mb-medium">This page is open source. Noticed a typo? Or something unclear?</p>
-              <div className="flex gap-normal flex-wrap">
+              <p className="mb-md">This page is open source. Noticed a typo? Or something unclear?</p>
+              <div className="flex gap-base flex-wrap">
                 <a className="ds-link" target="_blank" href={githubEditUrl} style={{ width: 'auto' }}>
                   Edit this page on GitHub
                 </a>
@@ -77,14 +77,14 @@ export const Footer = ({ children }) => {
             <hr className="ds-divider" />
 
             <div style={{ paddingTop: '1.5rem' }}>
-              <div className="flex gap-medium justify-content-space-between align-items-center mb-medium flex-wrap">
+              <div className="flex gap-md justify-content-space-between align-items-center mb-md flex-wrap">
                 <div>
-                  <p className="mb-xx-small is-bold">© 2026 Helvetia Baloise Holding AG</p>
-                  <p className="text-small" style={{ opacity: 0.7, margin: 0 }}>
+                  <p className="mb-2xs is-bold">© 2026 Helvetia Baloise Holding AG</p>
+                  <p className="text-sm" style={{ opacity: 0.7, margin: 0 }}>
                     Created with accessibility and simplicity in mind
                   </p>
                 </div>
-                <div className="flex gap-small flex-wrap">
+                <div className="flex gap-sm flex-wrap">
                   <a
                     className="ds-link"
                     href="https://www.helvetia-baloise.com/corporate/hb/en/home/about-us/contact/imprint.html"

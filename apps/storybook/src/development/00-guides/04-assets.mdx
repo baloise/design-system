@@ -1,97 +1,82 @@
-import { Markdown, Meta } from '@storybook/addon-docs/blocks'
-import {
-  AngularFramework,
-  Banner,
-  Code,
-  Footer,
-  HTMLFramework,
-  InfoQuote,
-  Lead,
-  LinkCard,
-  LinkCards,
-  NotAngularFramework,
-  PackageTable,
-  ReactFramework,
-  WarningQuote,
-} from '../../../.storybook/blocks'
+import { Meta } from '@storybook/addon-docs/blocks'
+import { Banner, Footer, InfoQuote, Lead, LinkCard, LinkCards } from '../../../.storybook/blocks'
 
 <Meta title="Development/Assets" />
 
 <Banner label="Assets" section="Development" />
 
+<Lead>Fonts, favicons, and Google Maps styling are all shipped from a single package: `@baloise/ds-assets`.</Lead>
+
+Install it once, then copy over whichever assets your application needs.
+
+```bash
+npm add -D @baloise/ds-assets copyfiles
+```
+
+<InfoQuote>
+  **copyfiles** copies the files you need into your own `src/assets` folder at install time, so
+  they're under version control with the rest of your app rather than reached into inside
+  `node_modules` at runtime.
+</InfoQuote>
+
 ## Font
 
-By default the custom fonts are provided from a static web server. However, if the
-fonts need to provided locally then please check out the next section.
+By default, `@baloise/ds-css/css/base.css` (and `all.css`) ship with **no** `@font-face` rules —
+text renders in the browser's fallback font until you self-host the BaloiseCreate fonts.
 
-CSS-Utilities are provide by the CSS-Framework, which is already included in the components packages.
+<br/>
 
-To do this, the tool **copyfiles** is recommended for copying the font files into your assets folder.
+**1. Copy the font files**
 
-After installing the copyfiles dependency, it is necessary to define the copy commands in the **package.json** file.
+Add a copy script to your `package.json`. `postinstall` keeps it running automatically whenever
+`@baloise/ds-assets` is installed or updated.
 
 ```json
 "scripts": {
   "postinstall": "npm run copy:assets",
   "copy:assets": "npm run copy:fonts",
-  "copy:fonts": "copyfiles --flat node_modules/@baloise/ds-assets/src/fonts/* src/assets/fonts",
+  "copy:fonts": "copyfiles --flat node_modules/@baloise/ds-assets/src/fonts/*.woff2 node_modules/@baloise/ds-assets/src/fonts/*.woff src/assets/fonts"
 }
 ```
-
-To copy all the assets run the npm installation script.
 
 ```bash
 npm install
 ```
 
-### Custom path
+**2. Use the self-hosted stylesheet**
 
-To modify the path to the self-provided font files, SASS must be used. In the main SASS file of your application, add the SASS variable `$font-path` at the top of the page.
+Swap `base.css`/`all.css` for the `.local` variant, which points its `@font-face` rules at
+`/assets/fonts/` — the folder you just copied the files into.
 
-```css
-// change variable before the import
-$font-path: '~assets/fonts';
+```html
+<link rel="stylesheet" href="node_modules/@baloise/ds-css/css/base.local.css" />
 ```
 
-After declaring the `$font-path` variable, the SASS font file that utilizes this variable to generate the correct path should be imported.
-
-```css
-// Custom font faces
-@forward '@baloise/ds-styles/sass/font';
-```
+<InfoQuote>
+  Using the base/components/utilities split instead of `all.css`? Swap in `base.local.css` for
+  `base.css` only — `components.css` and `utilities.css` stay the same either way.
+</InfoQuote>
 
 ## Favicon
 
-First install the favicons library
+**1. Copy the favicon files**
 
-```bash
-npm add -D @baloise/ds-favicons copyfiles
-```
-
-To add favicons to your web application use the tool "copyfiles" to copy the favicon files into your assets folder.
-
-After installing the "copyfiles" dependency, it's necessary to define the copy command in your "package.json" file.
-Create a new script named `copy:favicons` and adjust the second path to match your application.
+Favicons ship in six colors (`primary`, `green`, `purple`, `red`, `white`, `yellow`) — swap the
+folder name in the path below to pick one.
 
 ```json
 "scripts": {
   "postinstall": "npm run copy:assets",
   "copy:assets": "npm run copy:favicons",
-  "copy:favicons": "copyfiles --flat node_modules/@baloise/ds-favicons/assets/icons/primary/* src/assets/favicons"
+  "copy:favicons": "copyfiles --flat node_modules/@baloise/ds-assets/src/favicons/primary/* src/assets/favicons"
 }
 ```
-
-Favicons are available in multiple colors (primary, green, purple, red, white, and yellow).
-In this example primary color is used, but it can be switch by changing the folder name
-from the first path.
-
-To copy the fonts run the following command.
 
 ```bash
 npm install
 ```
 
-The final step is to add the favicon to the index.html file of your application.
+**2. Reference them in `index.html`**
 
 ```html
 <link rel="apple-touch-icon" sizes="180x180" href="./assets/favicons/apple-touch-icon.png" />
@@ -99,52 +84,63 @@ The final step is to add the favicon to the index.html file of your application.
 <link rel="icon" type="image/png" sizes="16x16" href="./assets/favicons/favicon-16x16.png" />
 <link rel="manifest" href="./assets/favicons/site.webmanifest" />
 <link rel="shortcut icon" type="image/x-icon" href="./assets/favicons/favicon.ico" />
-<meta name="msapplication-config" content="./assets/favicon/browserconfig.xml" />
+<meta name="msapplication-config" content="./assets/favicons/browserconfig.xml" />
 <meta name="msapplication-TileColor" content="#ffffff" />
 <meta name="theme-color" content="#ffffff" />
 ```
 
 ## Google Maps
 
-The map markers and styles are provided in a separate package `@baloise/ds-maps`.
-
-First install the maps package
+Map styles and markers are exported directly from `@baloise/ds-assets` — no separate package or
+copy step needed.
 
 ```bash
-npm install @baloise/ds-maps
-npm install @types/googlemaps --save-dev
+npm install @baloise/ds-assets
+npm install @types/google.maps --save-dev
 ```
 
-Check out the [Google Maps JavaScript API Loader](https://github.com/googlemaps/js-api-loader)
+Check out the [Google Maps JavaScript API Loader](https://github.com/googlemaps/js-api-loader) for
+loading the Maps API itself.
 
 ### Styles
 
-After installing import the **balMapTypeStyles** into your Google Maps config object.
+Import `MapTypeStyles` into your Google Maps config object.
 
 ```ts
-import { dsMapTypeStyles } from '@baloise/ds-maps'
+import { MapTypeStyles } from '@baloise/ds-assets'
 
-const myMap = new google.maps.map(myMapElement, {
+const myMap = new google.maps.Map(myMapElement, {
   ...
-  styles: dsMapTypeStyles
+  styles: MapTypeStyles,
 })
 ```
 
 ### Markers
 
-To set a marker import the svg `balMapMarkerDefault` and pass it as the icon url.
+Import a marker constant (e.g. `balMapMarkerDefault`) and pass it as the icon URL.
 
 ```ts
-import { dsMapMarkerDefault } from '@baloise/ds-maps'
+import { balMapMarkerDefault } from '@baloise/ds-assets'
 
 new google.maps.Marker({
   position: { lat: 36.6163, lng: -100.61 },
   map,
   icon: {
-    url: dsMapMarkerDefault,
+    url: balMapMarkerDefault,
   },
   title: 'My Marker',
 })
 ```
 
-<Footer />
+<Footer>
+  <LinkCards>
+    <LinkCard
+      pageTitle="Development/Getting Started"
+      description="How to install and integrate the Design System into your application."
+    />
+    <LinkCard
+      pageTitle="Foundation/Brand Assets"
+      description="Logo, favicon, and shape usage guidelines."
+    />
+  </LinkCards>
+</Footer>

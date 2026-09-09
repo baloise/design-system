@@ -817,38 +817,32 @@ export class InputPhone implements DsComponentInterface, FieldInterface {
             aria-labelledby="country-list-label"
             aria-activedescendant={this.activeCode ? this.optionId(this.activeCode) : undefined}
           >
-            {visible.length === 0 && <div class="no-results">{i18n.noResults}</div>}
-            {visible.map(country => {
-              const name = getCountryName(country.code, this.language)
-              const selectedOption = country.code === this.resolvedCountry
-              const active = country.code === this.activeCode
-              return (
-                <div
-                  id={this.optionId(country.code)}
-                  role="option"
-                  aria-selected={selectedOption ? 'true' : 'false'}
-                  class={{
-                    'option': true,
-                    'is-selected': selectedOption,
-                    'is-active': active,
-                  }}
-                  onMouseDown={this.handleOptionMouseDown}
-                  onClick={() => this.handleOptionClick(country.code)}
-                  onMouseEnter={() => this.handleOptionMouseEnter(country.code)}
-                >
-                  <img
-                    class="flag"
-                    src={getFlagUrl(country.code)}
-                    alt=""
-                    aria-hidden="true"
-                    draggable={false}
-                    loading="lazy"
-                  />
-                  <span class="option-name">{name}</span>
-                  <span class="option-code">+{country.callingCode}</span>
-                </div>
-              )
-            })}
+            {this.pickerOpen && visible.length === 0 && <div class="no-results">{i18n.noResults}</div>}
+            {this.pickerOpen &&
+              visible.map(country => {
+                const name = getCountryName(country.code, this.language)
+                const selectedOption = country.code === this.resolvedCountry
+                const active = country.code === this.activeCode
+                return (
+                  <div
+                    id={this.optionId(country.code)}
+                    role="option"
+                    aria-selected={selectedOption ? 'true' : 'false'}
+                    class={{
+                      'option': true,
+                      'is-selected': selectedOption,
+                      'is-active': active,
+                    }}
+                    onMouseDown={this.handleOptionMouseDown}
+                    onClick={() => this.handleOptionClick(country.code)}
+                    onMouseEnter={() => this.handleOptionMouseEnter(country.code)}
+                  >
+                    <img class="flag" src={getFlagUrl(country.code)} alt="" aria-hidden="true" draggable={false} />
+                    <span class="option-name">{name}</span>
+                    <span class="option-code">+{country.callingCode}</span>
+                  </div>
+                )
+              })}
           </div>
         </div>
       </Field>
