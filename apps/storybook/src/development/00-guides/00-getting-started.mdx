@@ -14,13 +14,13 @@ import {
   WarningQuote,
 } from '../../../.storybook/blocks'
 
-
-
 <Meta title="Development/Getting Started" />
 
 <Banner label="Getting Started" section="Development" />
 
-<Lead>A guide to integrate Design System Components into your application.</Lead>
+<Lead>
+  A guide to integrate Design System Components into your application.
+</Lead>
 
 All the Helvetia Design System packages are available on [NPM](https://www.npmjs.com/).
 
@@ -376,10 +376,10 @@ If you do not have a React app yet, create one with [Vite](https://vite.dev/guid
 <InfoQuote>
   **Recommendations**
 
-- Use **TypeScript**. `@baloise/ds-react` ships its own types; no extra `@types` package or `tsconfig` flags are needed.
-- Use **SCSS** as stylesheet format to access breakpoint mixins and more. A pre-built CSS bundle is also available.
-- `react` and `react-dom` **18** or **19** are required as peer dependencies.
-
+  - Use **TypeScript**. `@baloise/ds-react` ships its own types; no extra `@types` package or `tsconfig` flags are
+    needed.
+  - Use **SCSS** as stylesheet format to access breakpoint mixins and more. A pre-built CSS bundle is also available.
+  - `react` and `react-dom` **18** or **19** are required as peer dependencies.
 </InfoQuote>
 
 ### Vite
@@ -408,11 +408,19 @@ Event handlers use the `onDs*` prefix (for example `onDsClick`) and receive the 
 
 Install the React bindings. This package includes the generated component wrappers.
 
-<Code language="bash" noPreview code={`npm install @baloise/ds-react`} />
+<Code
+  language="bash"
+  noPreview
+  code={`npm install @baloise/ds-react`}
+/>
 
 Also install the global styles:
 
-<Code language="bash" noPreview code={`npm install @baloise/ds-css`} />
+<Code
+  language="bash"
+  noPreview
+  code={`npm install @baloise/ds-css`}
+/>
 
 ## Import Styles
 
@@ -436,6 +444,7 @@ It applies optional region, language, and brand defaults. If you omit the call, 
 
 ```typescript
 import { bootstrapDesignSystem } from '@baloise/ds-react'
+
 import '@baloise/ds-css/css'
 
 bootstrapDesignSystem()
@@ -458,11 +467,13 @@ Wrap the application in `DsApp` and import the components you use.
 
 **main.tsx**
 
-```typescript
+```tsx
+import { bootstrapDesignSystem } from '@baloise/ds-react'
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import { bootstrapDesignSystem } from '@baloise/ds-react'
-import { App } from './App'
+
+import App from './App'
+
 import '@baloise/ds-css/css'
 
 bootstrapDesignSystem()
@@ -476,18 +487,27 @@ createRoot(document.getElementById('root')!).render(
 
 **App.tsx**
 
-```typescript
+```tsx
 import { DsApp, DsAppFooter, DsButton, DsHeading } from '@baloise/ds-react'
 
 function App() {
   return (
     <DsApp className="has-sticky-footer">
-      <header>{/* Header content */}</header>
-      <main className="container">
-        <DsHeading>Hello World!</DsHeading>
-        <DsButton>Button</DsButton>
+      <header>
+        {/* Header content */}
+      </header>
+      <main className="ds-container">
+        {/* Your application content */}
+        <DsHeading>
+          Hello World!
+        </DsHeading>
+        <DsButton>
+          Button
+        </DsButton>
       </main>
-      <DsAppFooter>{/* Footer content */}</DsAppFooter>
+      <DsAppFooter>
+        {/* Footer content */}
+      </DsAppFooter>
     </DsApp>
   )
 }
@@ -506,34 +526,28 @@ export default App
 <Footer>
   <LinkCards>
     <LinkCard
-      pageTitle={'Development/Assets'}
-      description={'Guides for installing the font locally, favicons and Google maps styles.'}
+      pageTitle="Development/Assets"
+      description="Guides for installing the font locally, favicons and Google maps styles."
     />
     <LinkCard
-      pageTitle={'Development/Component'}
-      description={
-        'By using the standardized web platform APIs and Web Components the Design System achieved that the components can be used across any framework or no framework at all'
-      }
+      pageTitle="Development/Component"
+      description="By using the standardized web platform APIs and Web Components the Design System achieved that the components can be used across any framework or no framework at all"
     />
     <LinkCard
-      pageTitle={'Development/Form'}
-      description={
-        'The indispensable form controls, designed for maximum clarity. Form elements are used in combination with the CSS grid system'
-      }
+      pageTitle="Development/Form"
+      description="The indispensable form controls, designed for maximum clarity. Form elements are used in combination with the CSS grid system"
     />
     <LinkCard
-      pageTitle={'Development/Internationalization'}
-      description={'The Internationalization API of the browser provides the Design System number and date formats'}
+      pageTitle="Development/Internationalization"
+      description="The Internationalization API of the browser provides the Design System number and date formats"
     />
     <LinkCard
-      pageTitle={'Development/Theming'}
-      description={
-        "The Helvetia Design System provides a versatile foundation that can be tailored and adjusted to match a brand's identity. Customizing the appearance of Helvetia applications has never been simpler"
-      }
+      pageTitle="Development/Theming"
+      description="The Helvetia Design System provides a versatile foundation that can be tailored and adjusted to match a brand's identity. Customizing the appearance of Helvetia applications has never been simpler"
     />
     <LinkCard
-      pageTitle={'Development/Testing'}
-      description={'The Helvetia Design System provides a collection of utility functions to test the web-components'}
+      pageTitle="Development/Testing"
+      description="The Helvetia Design System provides a collection of utility functions to test the web-components"
     />
   </LinkCards>
 </Footer>
