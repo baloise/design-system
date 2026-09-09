@@ -7,12 +7,12 @@ export const BADGE_DOC_CONFIG = {
   section: 'Components / Badge',
   color: 'red' as const,
   tabs: [
-    { label: 'Overview', storyId: 'components-badge--badge' },
-    { label: 'Usage', storyId: 'components-badge--usage' },
-    { label: 'Variants', storyId: 'components-badge--variants-overview' },
-    { label: 'Styling', storyId: 'components-badge--styling' },
-    { label: 'Accessibility', storyId: 'components-badge--accessibility' },
-    { label: 'Testing', storyId: 'components-badge--testing' },
+    { label: 'Overview', storyId: 'components-badge-badge--badge' },
+    { label: 'Usage', storyId: 'components-badge-usage--usage' },
+    { label: 'Variants', storyId: 'components-badge-variants-overview--overview' },
+    { label: 'Styling', storyId: 'components-badge-styling--styling' },
+    { label: 'Accessibility', storyId: 'components-badge-accessibility--accessibility' },
+    { label: 'Testing', storyId: 'components-badge-testing--testing' },
   ],
 }
 

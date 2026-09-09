@@ -6,12 +6,12 @@ export const APP_FOOTER_DOC_CONFIG = {
   section: 'Components / AppFooter',
   color: 'purple' as const,
   tabs: [
-    { label: 'Overview', storyId: 'components-appfooter--app-footer' },
-    { label: 'Usage', storyId: 'components-appfooter--usage' },
-    { label: 'Variants', storyId: 'components-appfooter--variants-overview' },
-    { label: 'Styling', storyId: 'components-appfooter--styling' },
-    { label: 'Accessibility', storyId: 'components-appfooter--accessibility' },
-    { label: 'Testing', storyId: 'components-appfooter--testing' },
+    { label: 'Overview', storyId: 'components-appfooter-app-footer--app-footer' },
+    { label: 'Usage', storyId: 'components-appfooter-usage--usage' },
+    { label: 'Variants', storyId: 'components-appfooter-variants-overview--overview' },
+    { label: 'Styling', storyId: 'components-appfooter-styling--styling' },
+    { label: 'Accessibility', storyId: 'components-appfooter-accessibility--accessibility' },
+    { label: 'Testing', storyId: 'components-appfooter-testing--testing' },
   ],
 }
 

@@ -7,12 +7,12 @@ export const RADIO_DOC_CONFIG = {
   section: 'Components / Forms / Radio',
   color: 'purple' as const,
   tabs: [
-    { label: 'Overview', storyId: 'components-forms-radio--radio' },
-    { label: 'Usage', storyId: 'components-forms-radio--usage' },
-    { label: 'Variants', storyId: 'components-forms-radio--variants-overview' },
-    { label: 'Styling', storyId: 'components-forms-radio--styling' },
-    { label: 'Accessibility', storyId: 'components-forms-radio--accessibility' },
-    { label: 'Testing', storyId: 'components-forms-radio--testing' },
+    { label: 'Overview', storyId: 'components-forms-radio-radio--radio' },
+    { label: 'Usage', storyId: 'components-forms-radio-usage--usage' },
+    { label: 'Variants', storyId: 'components-forms-radio-variants-overview--overview' },
+    { label: 'Styling', storyId: 'components-forms-radio-styling--styling' },
+    { label: 'Accessibility', storyId: 'components-forms-radio-accessibility--accessibility' },
+    { label: 'Testing', storyId: 'components-forms-radio-testing--testing' },
   ],
 }
 

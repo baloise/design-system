@@ -6,12 +6,12 @@ export const INPUTPHONE_DOC_CONFIG = {
   section: 'Components / InputPhone',
   color: 'purple' as const,
   tabs: [
-    { label: 'Overview', storyId: 'components-inputphone--input-phone' },
-    { label: 'Usage', storyId: 'components-inputphone--usage' },
-    { label: 'Variants', storyId: 'components-inputphone--variants-overview' },
-    { label: 'Styling', storyId: 'components-inputphone--styling' },
-    { label: 'Accessibility', storyId: 'components-inputphone--accessibility' },
-    { label: 'Testing', storyId: 'components-inputphone--testing' },
+    { label: 'Overview', storyId: 'components-inputphone-input-phone--input-phone' },
+    { label: 'Usage', storyId: 'components-inputphone-usage--usage' },
+    { label: 'Variants', storyId: 'components-inputphone-variants-overview--overview' },
+    { label: 'Styling', storyId: 'components-inputphone-styling--styling' },
+    { label: 'Accessibility', storyId: 'components-inputphone-accessibility--accessibility' },
+    { label: 'Testing', storyId: 'components-inputphone-testing--testing' },
   ],
 }
 

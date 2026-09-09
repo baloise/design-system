@@ -11,7 +11,7 @@ export const Tabs = ({ _children, tabs, index }: Props): React.ReactNode => {
       <div
         role="tablist"
         className="ds-buttons"
-        style={{ display: 'flex', position: 'absolute', zIndex: 1, right: 4, top: 4, justifyContent: 'end' }}
+        style={{ display: 'flex', position: 'absolute', zIndex: 11, right: 4, top: 4, justifyContent: 'end' }}
       >
         {tabs.map((tab, index) => (
           <button

@@ -7,12 +7,12 @@ export const INPUT_DOC_CONFIG = {
   section: 'Components / Forms / Input',
   color: 'purple' as const,
   tabs: [
-    { label: 'Overview', storyId: 'components-forms-input--input' },
-    { label: 'Usage', storyId: 'components-forms-input--usage' },
-    { label: 'Variants', storyId: 'components-forms-input--variants-overview' },
-    { label: 'Styling', storyId: 'components-forms-input--styling' },
-    { label: 'Accessibility', storyId: 'components-forms-input--accessibility' },
-    { label: 'Testing', storyId: 'components-forms-input--testing' },
+    { label: 'Overview', storyId: 'components-forms-input-input--input' },
+    { label: 'Usage', storyId: 'components-forms-input-usage--usage' },
+    { label: 'Variants', storyId: 'components-forms-input-variants-overview--overview' },
+    { label: 'Styling', storyId: 'components-forms-input-styling--styling' },
+    { label: 'Accessibility', storyId: 'components-forms-input-accessibility--accessibility' },
+    { label: 'Testing', storyId: 'components-forms-input-testing--testing' },
   ],
 }
 

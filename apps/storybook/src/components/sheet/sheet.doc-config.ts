@@ -6,12 +6,12 @@ export const SHEET_DOC_CONFIG = {
   section: 'Components / Sheet',
   color: 'purple' as const,
   tabs: [
-    { label: 'Overview', storyId: 'components-sheet--sheet' },
-    { label: 'Usage', storyId: 'components-sheet--usage' },
-    { label: 'Variants', storyId: 'components-sheet--variants-overview' },
-    { label: 'Styling', storyId: 'components-sheet--styling' },
-    { label: 'Accessibility', storyId: 'components-sheet--accessibility' },
-    { label: 'Testing', storyId: 'components-sheet--testing' },
+    { label: 'Overview', storyId: 'components-sheet-sheet--sheet' },
+    { label: 'Usage', storyId: 'components-sheet-usage--usage' },
+    { label: 'Variants', storyId: 'components-sheet-variants-overview--overview' },
+    { label: 'Styling', storyId: 'components-sheet-styling--styling' },
+    { label: 'Accessibility', storyId: 'components-sheet-accessibility--accessibility' },
+    { label: 'Testing', storyId: 'components-sheet-testing--testing' },
   ],
 }
 
