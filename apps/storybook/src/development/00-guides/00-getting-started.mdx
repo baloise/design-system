@@ -43,7 +43,9 @@ If you do not have an Angular app yet create one with [Angular CLI](https://angu
 <InfoQuote>
 If the projects requires translations, then install [\{TRANSLOCO\}](https://ngneat.github.io/transloco/) before the Helvetia Design System.
 
-<Code language="bash" noPreview code={`npm add -E @ngneat/transloco`} />
+```bash
+npm add -E @ngneat/transloco
+```
 
 Configure project:
 
@@ -55,7 +57,9 @@ npx ng add @ngneat/transloco
 
 Lets install the schematics to configure and add the design system to an Angular project.
 
-<Code language="bash" noPreview code={`npm add -D -E @baloise/ds-devkit`} />
+```bash
+npm add -D -E @baloise/ds-devkit
+```
 
 Install the library using Angular CLI:
 
@@ -69,7 +73,9 @@ Continue here for the manual installation guide without schematics.
 
 Let's install the latest Angular components. This package includes the Font, Token, Icon, and CSS-Utilities packages.
 
-<Code language="bash" noPreview code={`npm install @baloise/ds-angular`} />
+```bash
+npm install @baloise/ds-Angular
+```
 
 ### Import Styles
 
@@ -369,7 +375,7 @@ Here is how you can integrate it into your project.
 
 <ReactFramework>
 
-## Prerequisite
+## Installation
 
 If you do not have a React app yet, create one with [Vite](https://vite.dev/guide/) (recommended for SPAs) or [Next.js](https://nextjs.org/docs/app/getting-started).
 
@@ -382,17 +388,15 @@ If you do not have a React app yet, create one with [Vite](https://vite.dev/guid
   - `react` and `react-dom` **18** or **19** are required as peer dependencies.
 </InfoQuote>
 
-## Installation
-
 Install the React bindings and the global styles. Both packages are required.
 
 ```bash
-npm install @baloise/ds-react @baloise/ds-css
-# or
-pnpm add @baloise/ds-react @baloise/ds-css
+npm add -E @baloise/ds-react @baloise/ds-css
+// or
+pnpm add -E @baloise/ds-react @baloise/ds-css
 ```
 
-## Import Styles
+## Usage
 
 Component styles are automatically loaded lazily in the browser. Global CSS (fonts, resets, utilities) needs to be imported into the application.
 
@@ -410,9 +414,11 @@ import '@baloise/ds-css/css/components'
 import '@baloise/ds-css/css/utilities'
 ```
 
-Use `@baloise/ds-css/scss/mixins` to gain access to Sass mixins, such as breakpoints.
 
-## Integrate Design System
+<LinkCard
+  pageTitle="Development/Responsive"
+  description="Breakpoint mixins, CSS utilities, and the breakpoint service."
+/>
 
 ### bootstrapDesignSystem
 
