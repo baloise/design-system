@@ -369,82 +369,126 @@ Here is how you can integrate it into your project.
 
 <ReactFramework>
 
-### Installation
+## Prerequisite
 
-Install the Design System and his dependencies.
+If you do not have a React app yet, create one with [Vite](https://vite.dev/guide/) (recommended for SPAs) or [Next.js](https://nextjs.org/docs/app/getting-started).
 
+<InfoQuote>
+  **Recommendations**
+
+- Use **TypeScript**. `@baloise/ds-react` ships its own types; no extra `@types` package or `tsconfig` flags are needed.
+- Use **SCSS** as stylesheet format to access breakpoint mixins and more. A pre-built CSS bundle is also available.
+- `react` and `react-dom` **18** or **19** are required as peer dependencies.
+
+</InfoQuote>
+
+### Vite
+
+Vite is the recommended setup for a client-side React SPA. Scaffold a TypeScript app, then install the Design System as described below. The app entry is `src/main.tsx`.
+
+```bash
+npm create vite@latest my-app -- --template react-ts
 ```
-npm install @baloise/ds-react
-```
+
+### Create React App
+
+[Create React App](https://create-react-app.dev/) is in maintenance mode. An existing CRA app still works as a client-side SPA. The app entry is `src/index.tsx` (or `src/index.js`).
+
+### Next.js
+
+`@baloise/ds-react` is client-only today. Import Design System components from files marked `'use client'`. Call `bootstrapDesignSystem()` at module scope in a client entry file (imported from the root layout), not inside a component function.
+
+## TypeScript
+
+`@baloise/ds-react` publishes TypeScript declarations (`types` in `package.json` points at `dist/index.d.ts`). After installing the package, component props, events, and the `bootstrapDesignSystem` config are typed — no extra `@types/*` package or `tsconfig.json` changes are required.
+
+Event handlers use the `onDs*` prefix (for example `onDsClick`) and receive the custom event, not a React synthetic event.
+
+## Installation
+
+Install the React bindings. This package includes the generated component wrappers.
+
+<Code language="bash" noPreview code={`npm install @baloise/ds-react`} />
+
+Also install the global styles:
+
+<Code language="bash" noPreview code={`npm install @baloise/ds-css`} />
 
 ## Import Styles
 
-Component styles are automatically loaded lazily in the browser. However, CSS Utilities and other
-fundamentals need to be imported into the global stylesheet of the application. These stylesheets can be
-imported as either **SASS** or **CSS** files.
+Component styles are automatically loaded lazily in the browser. Global CSS (fonts, resets, utilities) needs to be imported into the application.
 
-Use `@baloise/ds-styles/sass/mixins` to gain access to SASS mixins, such as breakpoints.
-
-The following suggestion for importing files is recommended for greater flexibility, ensuring only necessary styles are included in the bundle.
-However, if the application requires all styles regardless of payload size, simply import the stylesheet `@baloise/ds-styles/sass/all`
-, which has all style definitions.
-
-<Code
-  language="css"
-  noPreview
-  code={`
-// SASS mixins and variables
-@forward '@baloise/ds-styles/sass/mixins';
-
-// Resets CSS for all browser
-@forward '@baloise/ds-styles/css/normalize';
-@forward '@baloise/ds-styles/css/structure';
-
-// Custom font faces
-@forward '@baloise/ds-styles/sass/font';
-
-// Core CSS, always required
-@forward '@baloise/ds-styles/css/core';
-
-// CSS utilities classes (optional)
-@forward '@baloise/ds-styles/css/utilities/background';
-@forward '@baloise/ds-styles/css/utilities/border';
-@forward '@baloise/ds-styles/css/utilities/elevation';
-@forward '@baloise/ds-styles/css/utilities/flex';
-@forward '@baloise/ds-styles/css/utilities/interaction';
-@forward '@baloise/ds-styles/css/utilities/layout';
-@forward '@baloise/ds-styles/css/utilities/sizing';
-@forward '@baloise/ds-styles/css/utilities/spacing';
-@forward '@baloise/ds-styles/css/utilities/typography';
-`}
-/>
-
-### Integrate Design System
-
-Add the `BalApp` to your root element.
+Import the full stylesheet once, typically in `src/main.tsx`:
 
 ```typescript
-import './App.scss'
-import {
-  useDesignSystem,
-  BalApp,
-  BalHeading,
-  Button,
-  Footer,
-} from '@baloise/ds-react'
+import '@baloise/ds-css/css'
+```
+
+If the application requires a smaller payload, import only `@baloise/ds-css/css/base` and add utilities as needed. Use `@baloise/ds-css/scss/mixins` to gain access to Sass mixins, such as breakpoints.
+
+## Integrate Design System
+
+### bootstrapDesignSystem
+
+`bootstrapDesignSystem` initializes the Design System for a React app. Call it **once** at **module scope** in the app entry — `src/main.tsx` (Vite), `src/index.tsx` (Create React App), or a client entry imported from a Next.js root layout — **before** `createRoot(...).render(...)`. It is not a React hook; do not call it inside a component function.
+
+It applies optional region, language, and brand defaults. If you omit the call, components still work with the default config.
+
+```typescript
+import { bootstrapDesignSystem } from '@baloise/ds-react'
+import '@baloise/ds-css/css'
+
+bootstrapDesignSystem()
+
+// or with defaults:
+bootstrapDesignSystem({
+  defaults: {
+    region: 'CH',
+    language: 'de',
+    allowedLanguages: ['de', 'fr', 'it', 'en'],
+  },
+})
+```
+
+Region and language can also be changed at runtime. See **Development/Internationalization**.
+
+### App root
+
+Wrap the application in `DsApp` and import the components you use.
+
+**main.tsx**
+
+```typescript
+import { StrictMode } from 'react'
+import { createRoot } from 'react-dom/client'
+import { bootstrapDesignSystem } from '@baloise/ds-react'
+import { App } from './App'
+import '@baloise/ds-css/css'
+
+bootstrapDesignSystem()
+
+createRoot(document.getElementById('root')!).render(
+  <StrictMode>
+    <App />
+  </StrictMode>,
+)
+```
+
+**App.tsx**
+
+```typescript
+import { DsApp, DsAppFooter, DsButton, DsHeading } from '@baloise/ds-react'
 
 function App() {
-  useDesignSystem()
-
   return (
-    <BalApp className="has-sticky-footer">
-      <header></header>
+    <DsApp className="has-sticky-footer">
+      <header>{/* Header content */}</header>
       <main className="container">
-        <BalHeading>Hello World!</BalHeading>
-        <BalButton>Button</BalButton>
+        <DsHeading>Hello World!</DsHeading>
+        <DsButton>Button</DsButton>
       </main>
-      <BalFooter></BalFooter>
-    </BalApp>
+      <DsAppFooter>{/* Footer content */}</DsAppFooter>
+    </DsApp>
   )
 }
 
