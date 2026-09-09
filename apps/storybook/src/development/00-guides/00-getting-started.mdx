@@ -382,38 +382,14 @@ If you do not have a React app yet, create one with [Vite](https://vite.dev/guid
   - `react` and `react-dom` **18** or **19** are required as peer dependencies.
 </InfoQuote>
 
-### Vite
-
-Vite is the recommended setup for a client-side React SPA. Scaffold a TypeScript app, then install the Design System as described below. The app entry is `src/main.tsx`.
-
-```bash
-npm create vite@latest my-app -- --template react-ts
-```
-
-### Next.js
-
-`@baloise/ds-react` is client-only today. Import Design System components from files marked `'use client'`. Call `bootstrapDesignSystem()` at module scope in a client entry file (imported from the root layout), not inside a component function.
-
-## TypeScript
-
-`@baloise/ds-react` publishes TypeScript declarations (`types` in `package.json` points at `dist/index.d.ts`). After installing the package, component props, events, and the `bootstrapDesignSystem` config are typed — no extra `@types/*` package or `tsconfig.json` changes are required.
-
-Event handlers use the `onDs*` prefix (for example `onDsClick`) and receive the custom event, not a React synthetic event.
-
 ## Installation
 
-Install the React bindings. This package includes the generated component wrappers.
+Install the React bindings and the global styles. Both packages are required.
 
 ```bash
-npm install @baloise/ds-react
-```
-
-Also install the global styles:
-
-```bash
-npm install @baloise/ds-css
+npm install @baloise/ds-react @baloise/ds-css
 # or
-pnpm add @baloise/ds-css
+pnpm add @baloise/ds-react @baloise/ds-css
 ```
 
 ## Import Styles
@@ -442,30 +418,7 @@ Use `@baloise/ds-css/scss/mixins` to gain access to Sass mixins, such as breakpo
 
 `bootstrapDesignSystem` initializes the Design System for a React app. Call it **once** at **module scope** in the app entry — `src/main.tsx` (Vite) or a client entry imported from a Next.js root layout — **before** `createRoot(...).render(...)`. It is not a React hook; do not call it inside a component function.
 
-It applies optional region, language, and brand defaults. If you omit the call, components still work with the default config.
-
-```typescript
-import { bootstrapDesignSystem } from '@baloise/ds-react'
-
-import '@baloise/ds-css/css'
-
-bootstrapDesignSystem()
-
-// or with defaults:
-bootstrapDesignSystem({
-  defaults: {
-    region: 'CH',
-    language: 'de',
-    allowedLanguages: ['de', 'fr', 'it', 'en'],
-  },
-})
-```
-
-Region and language can also be changed at runtime. See **Development/Internationalization**.
-
-### App root
-
-Wrap the application in `DsApp` and import the components you use.
+It applies optional region, language, and brand defaults. If you omit the call, components still work with the default config. Region and language can also be changed at runtime. See **Development/Internationalization**.
 
 **main.tsx**
 
@@ -478,7 +431,13 @@ import App from './App'
 
 import '@baloise/ds-css/css'
 
-bootstrapDesignSystem()
+bootstrapDesignSystem({
+  defaults: {
+    region: 'CH',
+    language: 'de',
+    allowedLanguages: ['de', 'fr', 'it', 'en'],
+  },
+})
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
@@ -486,6 +445,10 @@ createRoot(document.getElementById('root')!).render(
   </StrictMode>,
 )
 ```
+
+### App root
+
+Wrap the application in `DsApp` and import the components you use.
 
 **App.tsx**
 
@@ -516,6 +479,26 @@ function App() {
 
 export default App
 ```
+
+## Frameworks
+
+### Vite
+
+Vite is the recommended setup for a client-side React SPA. Scaffold a TypeScript app, then install the Design System as described above. The app entry is `src/main.tsx`.
+
+```bash
+npm create vite@latest my-app -- --template react-ts
+```
+
+### Next.js
+
+`@baloise/ds-react` is client-only today. Import Design System components from files marked `'use client'`. Call `bootstrapDesignSystem()` at module scope in a client entry file (imported from the root layout), not inside a component function.
+
+### TypeScript
+
+`@baloise/ds-react` publishes TypeScript declarations (`types` in `package.json` points at `dist/index.d.ts`). After installing the package, component props, events, and the `bootstrapDesignSystem` config are typed — no extra `@types/*` package or `tsconfig.json` changes are required.
+
+Event handlers use the `onDs*` prefix (for example `onDsClick`) and receive the custom event, not a React synthetic event.
 
 </ReactFramework>
 
