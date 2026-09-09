@@ -8,7 +8,7 @@ import {
 import * as ContainerStories from './container.stories'
 import { CONTAINER_DOC_CONFIG, getContainerTabs } from './container.doc-config'
 
-<Meta title="Components/Container/Usage" />
+<Meta title="Components/Container/Usage" name="Usage" />
 <Banner label={'Usage'} section={CONTAINER_DOC_CONFIG.section} color={CONTAINER_DOC_CONFIG.color} />
 <BannerTabs of={ContainerStories} tabs={getContainerTabs('usage')} />
 
@@ -75,7 +75,7 @@ import { CONTAINER_DOC_CONFIG, getContainerTabs } from './container.doc-config'
       title: 'Incorrect: Adding extra padding wrapper',
       content: (
         <p style={{ margin: '0.5rem 0 0 0' }}>
-          <code>{'<div class="container"><div style="padding: 2rem">content</div></div>'}</code>
+          <code>{'<div class="ds-container"><div style="padding: 2rem">content</div></div>'}</code>
         </p>
       ),
       description: 'Container already handles padding; extra wrappers cause excessive spacing.',

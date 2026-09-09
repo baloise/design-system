@@ -104,13 +104,13 @@ if (isDesktop) {
 
 ```html
 <!-- Default theme -->
-<section class="card">
+<section class="ds-card">
   <h2>Default Theme</h2>
   <p>Uses primary colors from the system</p>
 </section>
 
 <!-- Custom override -->
-<section class="card" style="--ds-alias-bg-color-primary: var(--ds-alias-bg-color-secondary);">
+<section class="ds-card" style="--ds-alias-bg-color-primary: var(--ds-alias-bg-color-secondary);">
   <h2>Secondary Theme</h2>
   <p>Uses secondary colors instead</p>
 </section>
@@ -162,14 +162,12 @@ Always use `--ds-device-*` tokens for responsive values — the bare name auto-s
 
 ## Exported Formats
 
+Tokens are available in multiple formats for different environments:
 <Markdown>
   {`
-Tokens are available in multiple formats for different environments:
-
 | Format         | Location                     | Use Case            |
 | -------------- | ---------------------------- | ------------------- |
 | **CSS**        | \`dist/css/base.tokens.css\`   | Web, CSS-in-JS      |
-| **Sass**       | \`dist/sass/base.tokens.scss\` | Sass projects       |
 | **JSON**       | \`dist/js/base.tokens.js\`     | JavaScript, Node.js |
 | **JSON (Web)** | \`dist/web/base.tokens.json\`  | API consumption     |
   `}

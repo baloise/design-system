@@ -12,22 +12,28 @@ const Story = StoryFactory(meta)
 
 export const BoxShadow = Story({
   ...withRender(
-    () => `<div class="flex align-items-center justify-content-center gap-xx-large">
-    <div class="shadow flex align-items-center justify-content-center bg-red radius p-normal">shadow</div>
-    <div class="shadow-elevated flex align-items-center justify-content-center bg-red radius p-normal">shadow-elevated</div>
+    () => `<div class="flex align-items-center justify-content-center gap-2xl">
+    <div class="shadow flex align-items-center justify-content-center bg-red radius p-base">shadow</div>
+    <div class="shadow-elevated flex align-items-center justify-content-center bg-red radius p-base">shadow-elevated</div>
 </div>`,
   ),
 })
 export const TextShadow = Story({
   ...withRender(
-    () =>
-      `<p class="text-shadow">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>`,
+    () => `<div class="flex gap-base flex-wrap">
+    <div class="flex-1 p-lg radius" style="background: linear-gradient(135deg, var(--ds-global-color-primary-6), var(--ds-global-color-info-3), var(--ds-global-color-success-5)); min-width: 12rem;">
+      <p class="text-on-primary text-shadow mb-none">With text-shadow</p>
+    </div>
+    <div class="flex-1 p-lg radius" style="background: linear-gradient(135deg, var(--ds-global-color-primary-6), var(--ds-global-color-info-3), var(--ds-global-color-success-5)); min-width: 12rem;">
+      <p class="text-on-primary mb-none">Without text-shadow</p>
+    </div>
+</div>`,
   ),
 })
 export const PseudoStates = Story({
   ...withRender(
-    () => `<div class="bg-red-3 hover:shadow active:shadow-large cursor-pointer">
-  <p class="p-normal">Hover and click me!</p>
+    () => `<div class="bg-red-3 hover:shadow active:shadow-elevated cursor-pointer">
+  <p class="p-base">Hover and click me!</p>
 </div>`,
   ),
 })

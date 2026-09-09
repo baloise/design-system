@@ -17,7 +17,7 @@ const meta: Meta<Args> = {
     ...withComponentControls({ tag }),
   },
   ...withRender(
-    () => `<div class="ds-container bg-red-light p-large radius flex gap-xl">
+    () => `<div class="ds-container bg-red-light p-lg radius flex gap-xl">
     <div class="flex-1">
       <h1 class="ds-title is-2xl">This page could not be found.</h1>
       <p class="ds-subtitle is-2xl">A reasons for this could be a misspelled URL.</p>

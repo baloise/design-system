@@ -5,7 +5,7 @@ import { Clipboard } from '../Clipboard'
 export const TokensBorderRadius = ({ _overview }): React.ReactElement => {
   const list = tokens['🔗 Alias']['🔵 Radius']
   return (
-    <table className="sb-unstyled my-x-large table tokens" style={{ width: '100%' }}>
+    <table className="sb-unstyled my-xl ds-table tokens" style={{ width: '100%' }}>
       <thead>
         <tr>
           <th style={{ width: '100%' }}>Token & Description</th>
@@ -23,7 +23,7 @@ export const TokensBorderRadius = ({ _overview }): React.ReactElement => {
                 <Clipboard label={item.name} value={`var(--${item.name})`} />
               </td>
               <td>
-                <p className={`text-small font-weight-bold`}>{item.$value}</p>
+                <p className={`text-sm font-weight-bold`}>{item.$value}</p>
               </td>
               <td className="flex justify-content-center">
                 <div
@@ -38,7 +38,7 @@ export const TokensBorderRadius = ({ _overview }): React.ReactElement => {
             </tr>
             {/* <tr>
               <td colSpan={3} className="border-bottom-grey">
-                <p className="m-none text-small mb-small">{item.comment}</p>
+                <p className="m-none text-sm mb-sm">{item.comment}</p>
               </td>
             </tr> */}
           </tbody>

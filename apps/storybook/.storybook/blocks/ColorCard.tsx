@@ -14,7 +14,7 @@ export const ColorCard = ({ background, color, small = false }): React.ReactElem
       style={{ minWidth: small ? '80px' : '120px', maxWidth: '220px' }}
     >
       <div
-        className={`px-small py-normal text-align-center radius-top-lg title text-x-large m-none`}
+        className={`px-sm py-base text-align-center radius-top-lg ds-title text-xl m-none`}
         style={{
           minHeight: '32px',
           background: `var(--${colorVariable.name})`,
@@ -27,22 +27,22 @@ export const ColorCard = ({ background, color, small = false }): React.ReactElem
       >
         {background ? 'A-a' : ''}
       </div>
-      <div className={`radius-bottom-lg p-small text-align-center`}>
-        <div className="title text-normal text-primary">
+      <div className={`radius-bottom-lg p-sm text-align-center`}>
+        <div className="ds-title text-base text-primary">
           {colorVariable.name
             .replace('ds-global-color-', '')
             .replace('ds-alias-text-color-', '')
             .replace('ds-alias-surface-', '')}
         </div>
-        <div className="text-small text-primary">{colorVariable.$value}</div>
-        {/* <div className="text-small text-primary">{color}</div> */}
+        <div className="text-sm text-primary">{colorVariable.$value}</div>
+        {/* <div className="text-sm text-primary">{color}</div> */}
       </div>
     </div>
   )
 }
 
 export const ColorCards = ({ children }) => {
-  return <div className="flex justify-content-center flex-wrap gap-small my-normal">{children}</div>
+  return <div className="flex justify-content-center flex-wrap gap-sm my-base">{children}</div>
 }
 
 export const ColorCardRow = ({ _children, color }) => {

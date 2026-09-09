@@ -104,16 +104,16 @@ NoWrap.storyName = '🌍 No Wrap'
 export const Spacing = Story({
   ...withRender(
     () => `<div>
-    <div class="bg-primary-1 flex mb-small">
+    <div class="bg-primary-1 flex mb-sm">
       <h4 class="ds-title has-space-all">All</h4>
     </div>
-    <div class="bg-primary-1 flex mb-small">
+    <div class="bg-primary-1 flex mb-sm">
       <h4 class="ds-title has-space-none">None</h4>
     </div>
-    <div class="bg-primary-1 flex mb-small">
+    <div class="bg-primary-1 flex mb-sm">
       <h4 class="ds-title has-space-top">Top</h4>
     </div>
-    <div class="bg-primary-1 flex mb-small">
+    <div class="bg-primary-1 flex mb-sm">
       <h4 class="ds-title has-space-bottom">Bottom</h4>
     </div>
   </div>`,

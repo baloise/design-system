@@ -72,7 +72,7 @@ export const NestedText = Story({
   ...withRender(
     ({ slot }) => `
 <p><b>Primary paragraph</b> ${slot}</p>
-<p class="text-primary-light text-small"><b>Secondary paragraph</b> used for hints</p>
+<p class="text-primary-light text-sm"><b>Secondary paragraph</b> used for hints</p>
 `,
   ),
 })
@@ -130,16 +130,16 @@ Sizes.storyName = '🌍 Sizes'
 export const Spacing = Story({
   ...withRender(
     () => `<div>
-    <div class="bg-primary-1 flex mb-small">
+    <div class="bg-primary-1 flex mb-sm">
       <p class="ds-text has-space-all">All</p>
     </div>
-    <div class="bg-primary-1 flex mb-small">
+    <div class="bg-primary-1 flex mb-sm">
       <p class="ds-text has-space-none">None</p>
     </div>
-    <div class="bg-primary-1 flex mb-small">
+    <div class="bg-primary-1 flex mb-sm">
       <p class="ds-text has-space-top">Top</p>
     </div>
-    <div class="bg-primary-1 flex mb-small">
+    <div class="bg-primary-1 flex mb-sm">
       <p class="ds-text has-space-bottom">Bottom</p>
     </div>
   </div>`,

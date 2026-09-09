@@ -7,12 +7,12 @@ export const NUMBER_INPUT_DOC_CONFIG = {
   section: 'Components / Forms / Number-input',
   color: 'purple' as const,
   tabs: [
-    { label: 'Overview', storyId: 'components-forms-number-input--number-input' },
-    { label: 'Usage', storyId: 'components-forms-number-input--usage' },
-    { label: 'Variants', storyId: 'components-forms-number-input--variants-overview' },
-    { label: 'Styling', storyId: 'components-forms-number-input--styling' },
-    { label: 'Accessibility', storyId: 'components-forms-number-input--accessibility' },
-    { label: 'Testing', storyId: 'components-forms-number-input--testing' },
+    { label: 'Overview', storyId: 'components-forms-number-input-number-input--number-input' },
+    { label: 'Usage', storyId: 'components-forms-number-input-usage--usage' },
+    { label: 'Variants', storyId: 'components-forms-number-input-variants-overview--overview' },
+    { label: 'Styling', storyId: 'components-forms-number-input-styling--styling' },
+    { label: 'Accessibility', storyId: 'components-forms-number-input-accessibility--accessibility' },
+    { label: 'Testing', storyId: 'components-forms-number-input-testing--testing' },
   ],
 }
 

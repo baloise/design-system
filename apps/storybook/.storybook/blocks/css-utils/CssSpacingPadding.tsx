@@ -3,7 +3,7 @@ import React from 'react'
 import { CssPropertyTable } from './helpers/CssPropertyTable'
 
 export const CssSpacingPadding = ({}): React.ReactElement => {
-  const obj = tokens['🔗 Alias']['↔️ Space']
+  const obj = tokens['📱 Device']['↔️ Space']
   const keys = Object.keys(obj)
 
   const values = keys.map(key => {

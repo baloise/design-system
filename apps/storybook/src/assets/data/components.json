@@ -32237,6 +32237,14 @@
           "docs": "Height of the country flag."
         },
         {
+          "name": "--input-phone-flag-empty-background",
+          "docs": "Background color of the flag placeholder when no country is selected."
+        },
+        {
+          "name": "--input-phone-flag-empty-radius",
+          "docs": "Border radius of the flag placeholder when no country is selected."
+        },
+        {
           "name": "--input-phone-popup-width",
           "docs": "Width of the country picker popup."
         },
@@ -32247,6 +32255,34 @@
         {
           "name": "--input-phone-popup-shadow",
           "docs": "Box shadow of the country picker popup."
+        },
+        {
+          "name": "--input-phone-popup-padding",
+          "docs": "Padding of the country picker popup."
+        },
+        {
+          "name": "--input-phone-popup-radius",
+          "docs": "Border radius of the country picker popup."
+        },
+        {
+          "name": "--input-phone-popup-border",
+          "docs": "Border of the country picker popup."
+        },
+        {
+          "name": "--input-phone-filter-placeholder-color",
+          "docs": "Placeholder text color of the country filter input."
+        },
+        {
+          "name": "--input-phone-scrollbar-color",
+          "docs": "Color of the country list scrollbar."
+        },
+        {
+          "name": "--input-phone-scrollbar-radius",
+          "docs": "Border radius of the country list scrollbar thumb."
+        },
+        {
+          "name": "--input-phone-scrollbar-border-width",
+          "docs": "Border width of the country list scrollbar thumb."
         },
         {
           "name": "--input-phone-option-color",
@@ -32267,6 +32303,10 @@
         {
           "name": "--input-phone-option-border",
           "docs": "Border color between country options."
+        },
+        {
+          "name": "--input-phone-option-radius",
+          "docs": "Border radius of a country option."
         },
         {
           "name": "--form-container-background",
@@ -32394,6 +32434,295 @@
           "target": "document",
           "capture": false,
           "passive": false
+        }
+      ],
+      "tokens": [
+        {
+          "name": "🧩 Component / InputPhone / Flag / Radius / Empty",
+          "cssVarName": "--ds-inputphone-flag-radius-empty",
+          "value": "{🔗 Alias.🔵 Radius.Base}",
+          "nativeValue": "{\"value\":0.25,\"unit\":\"rem\"}",
+          "inheritance": [
+            {
+              "cssVar": "--ds-dimension-radius-4",
+              "figmaName": "Global / Dimension / Radius / 4"
+            },
+            {
+              "cssVar": "--ds-radius-base",
+              "figmaName": "Alias / Radius / Base"
+            },
+            {
+              "cssVar": "--ds-inputphone-flag-radius-empty",
+              "figmaName": "Component / InputPhone / Flag / Radius / Empty"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "InputPhone",
+            "Flag",
+            "Radius",
+            "Empty"
+          ]
+        },
+        {
+          "name": "🧩 Component / InputPhone / Flag / Background / Color / Empty",
+          "cssVarName": "--ds-inputphone-flag-background-color-empty",
+          "value": "{🔗 Alias.🎨 Surface.GreyDark}",
+          "nativeValue": "#D0D0D0",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-grey-3",
+              "figmaName": "Global / Color / Grey / 3"
+            },
+            {
+              "cssVar": "--ds-surface-greydark",
+              "figmaName": "Alias / Surface / GreyDark"
+            },
+            {
+              "cssVar": "--ds-inputphone-flag-background-color-empty",
+              "figmaName": "Component / InputPhone / Flag / Background / Color / Empty"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "InputPhone",
+            "Flag",
+            "Background",
+            "Color",
+            "Empty"
+          ]
+        },
+        {
+          "name": "🧩 Component / InputPhone / Popup / Color / Background",
+          "cssVarName": "--ds-inputphone-popup-color-background",
+          "value": "{🔗 Alias.🎨 Surface.White}",
+          "nativeValue": "#FFFFFF",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-white",
+              "figmaName": "Global / Color / White"
+            },
+            {
+              "cssVar": "--ds-surface-white",
+              "figmaName": "Alias / Surface / White"
+            },
+            {
+              "cssVar": "--ds-inputphone-popup-color-background",
+              "figmaName": "Component / InputPhone / Popup / Color / Background"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "InputPhone",
+            "Popup",
+            "Color",
+            "Background"
+          ]
+        },
+        {
+          "name": "🧩 Component / InputPhone / Popup / Padding",
+          "cssVarName": "--ds-inputphone-popup-padding",
+          "value": "{🔗 Alias.↔️ Space.Padding.2XS}",
+          "nativeValue": "{\"value\":0.25,\"unit\":\"rem\"}",
+          "inheritance": [
+            {
+              "cssVar": "--ds-dimension-space-4",
+              "figmaName": "Global / Dimension / Space / 4"
+            },
+            {
+              "cssVar": "--ds-space-padding-2xs",
+              "figmaName": "Alias / Space / Padding / 2XS"
+            },
+            {
+              "cssVar": "--ds-inputphone-popup-padding",
+              "figmaName": "Component / InputPhone / Popup / Padding"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "InputPhone",
+            "Popup",
+            "Padding"
+          ]
+        },
+        {
+          "name": "🧩 Component / InputPhone / Popup / Radius",
+          "cssVarName": "--ds-inputphone-popup-radius",
+          "value": "{🔗 Alias.🔵 Radius.MD}",
+          "nativeValue": "{\"value\":0.375,\"unit\":\"rem\"}",
+          "inheritance": [
+            {
+              "cssVar": "--ds-dimension-radius-6",
+              "figmaName": "Global / Dimension / Radius / 6"
+            },
+            {
+              "cssVar": "--ds-radius-md",
+              "figmaName": "Alias / Radius / MD"
+            },
+            {
+              "cssVar": "--ds-inputphone-popup-radius",
+              "figmaName": "Component / InputPhone / Popup / Radius"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "InputPhone",
+            "Popup",
+            "Radius"
+          ]
+        },
+        {
+          "name": "🧩 Component / InputPhone / Popup / Border",
+          "cssVarName": "--ds-inputphone-popup-border",
+          "value": "{🔗 Alias.▭ Border.Composite.Grey}",
+          "nativeValue": "{\"color\":\"{🔗 Alias.▭ Border.Color.GreyLight}\",\"width\":\"{🔗 Alias.▭ Border.Width.Base}\",\"style\":\"{🔗 Alias.▭ Border.Style.Solid}\"}",
+          "inheritance": [
+            {
+              "cssVar": "--ds-border-composite-grey",
+              "figmaName": "Alias / Border / Composite / Grey"
+            },
+            {
+              "cssVar": "--ds-inputphone-popup-border",
+              "figmaName": "Component / InputPhone / Popup / Border"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "InputPhone",
+            "Popup",
+            "Border"
+          ]
+        },
+        {
+          "name": "🧩 Component / InputPhone / Filter / Color / Placeholder",
+          "cssVarName": "--ds-inputphone-filter-color-placeholder",
+          "value": "{🔗 Alias.🔤 Text.Color.Placeholder}",
+          "nativeValue": "#656EA8",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-primary-3",
+              "figmaName": "Global / Color / Primary / 3"
+            },
+            {
+              "cssVar": "--ds-text-color-placeholder",
+              "figmaName": "Alias / Text / Color / Placeholder"
+            },
+            {
+              "cssVar": "--ds-inputphone-filter-color-placeholder",
+              "figmaName": "Component / InputPhone / Filter / Color / Placeholder"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "InputPhone",
+            "Filter",
+            "Color",
+            "Placeholder"
+          ]
+        },
+        {
+          "name": "🧩 Component / InputPhone / Scrollbar / Color",
+          "cssVarName": "--ds-inputphone-scrollbar-color",
+          "value": "{🔗 Alias.▭ Border.Color.GreyLight}",
+          "nativeValue": "#E8E8E8",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-grey-2",
+              "figmaName": "Global / Color / Grey / 2"
+            },
+            {
+              "cssVar": "--ds-border-color-greylight",
+              "figmaName": "Alias / Border / Color / GreyLight"
+            },
+            {
+              "cssVar": "--ds-inputphone-scrollbar-color",
+              "figmaName": "Component / InputPhone / Scrollbar / Color"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "InputPhone",
+            "Scrollbar",
+            "Color"
+          ]
+        },
+        {
+          "name": "🧩 Component / InputPhone / Scrollbar / Radius",
+          "cssVarName": "--ds-inputphone-scrollbar-radius",
+          "value": "{🔗 Alias.🔵 Radius.Rounded}",
+          "nativeValue": "{\"value\":9999,\"unit\":\"px\"}",
+          "inheritance": [
+            {
+              "cssVar": "--ds-dimension-radius-9999",
+              "figmaName": "Global / Dimension / Radius / 9999"
+            },
+            {
+              "cssVar": "--ds-radius-rounded",
+              "figmaName": "Alias / Radius / Rounded"
+            },
+            {
+              "cssVar": "--ds-inputphone-scrollbar-radius",
+              "figmaName": "Component / InputPhone / Scrollbar / Radius"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "InputPhone",
+            "Scrollbar",
+            "Radius"
+          ]
+        },
+        {
+          "name": "🧩 Component / InputPhone / Scrollbar / BorderWidth",
+          "cssVarName": "--ds-inputphone-scrollbar-borderwidth",
+          "value": "{🔗 Alias.▭ Border.Width.Base}",
+          "nativeValue": "{\"value\":0.125,\"unit\":\"rem\"}",
+          "inheritance": [
+            {
+              "cssVar": "--ds-dimension-border-1",
+              "figmaName": "Global / Dimension / Border / 1"
+            },
+            {
+              "cssVar": "--ds-border-width-base",
+              "figmaName": "Alias / Border / Width / Base"
+            },
+            {
+              "cssVar": "--ds-inputphone-scrollbar-borderwidth",
+              "figmaName": "Component / InputPhone / Scrollbar / BorderWidth"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "InputPhone",
+            "Scrollbar",
+            "BorderWidth"
+          ]
+        },
+        {
+          "name": "🧩 Component / InputPhone / Option / Radius",
+          "cssVarName": "--ds-inputphone-option-radius",
+          "value": "{🔗 Alias.🔵 Radius.Base}",
+          "nativeValue": "{\"value\":0.25,\"unit\":\"rem\"}",
+          "inheritance": [
+            {
+              "cssVar": "--ds-dimension-radius-4",
+              "figmaName": "Global / Dimension / Radius / 4"
+            },
+            {
+              "cssVar": "--ds-radius-base",
+              "figmaName": "Alias / Radius / Base"
+            },
+            {
+              "cssVar": "--ds-inputphone-option-radius",
+              "figmaName": "Component / InputPhone / Option / Radius"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "InputPhone",
+            "Option",
+            "Radius"
+          ]
         }
       ],
       "pageObject": {
@@ -48299,6 +48628,18 @@
           "docs": "Box shadow of the dropdown content."
         },
         {
+          "name": "--select-content-border",
+          "docs": "Border of the dropdown content."
+        },
+        {
+          "name": "--select-content-radius",
+          "docs": "Border radius of the dropdown content."
+        },
+        {
+          "name": "--select-content-padding",
+          "docs": "Padding of the dropdown content."
+        },
+        {
           "name": "--select-search-text-color",
           "docs": "Text color of the search input."
         },
@@ -48352,7 +48693,7 @@
         },
         {
           "name": "--select-icon-color",
-          "docs": "Color of the dropdown arrow icon and deselect icon."
+          "docs": "Color of the dropdown arrow icon, search icon and deselect icon."
         },
         {
           "name": "--select-icon-hover-color",
@@ -50100,6 +50441,80 @@
           ]
         },
         {
+          "name": "🧩 Component / Select / Content / Border",
+          "cssVarName": "--ds-select-content-border",
+          "value": "{🔗 Alias.▭ Border.Composite.Grey}",
+          "nativeValue": "{\"color\":\"{🔗 Alias.▭ Border.Color.GreyLight}\",\"width\":\"{🔗 Alias.▭ Border.Width.Base}\",\"style\":\"{🔗 Alias.▭ Border.Style.Solid}\"}",
+          "inheritance": [
+            {
+              "cssVar": "--ds-border-composite-grey",
+              "figmaName": "Alias / Border / Composite / Grey"
+            },
+            {
+              "cssVar": "--ds-select-content-border",
+              "figmaName": "Component / Select / Content / Border"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Select",
+            "Content",
+            "Border"
+          ]
+        },
+        {
+          "name": "🧩 Component / Select / Content / Radius",
+          "cssVarName": "--ds-select-content-radius",
+          "value": "{🔗 Alias.🔵 Radius.MD}",
+          "nativeValue": "{\"value\":0.375,\"unit\":\"rem\"}",
+          "inheritance": [
+            {
+              "cssVar": "--ds-dimension-radius-6",
+              "figmaName": "Global / Dimension / Radius / 6"
+            },
+            {
+              "cssVar": "--ds-radius-md",
+              "figmaName": "Alias / Radius / MD"
+            },
+            {
+              "cssVar": "--ds-select-content-radius",
+              "figmaName": "Component / Select / Content / Radius"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Select",
+            "Content",
+            "Radius"
+          ]
+        },
+        {
+          "name": "🧩 Component / Select / Content / Padding",
+          "cssVarName": "--ds-select-content-padding",
+          "value": "{🔗 Alias.↔️ Space.Padding.2XS}",
+          "nativeValue": "{\"value\":0.25,\"unit\":\"rem\"}",
+          "inheritance": [
+            {
+              "cssVar": "--ds-dimension-space-4",
+              "figmaName": "Global / Dimension / Space / 4"
+            },
+            {
+              "cssVar": "--ds-space-padding-2xs",
+              "figmaName": "Alias / Space / Padding / 2XS"
+            },
+            {
+              "cssVar": "--ds-select-content-padding",
+              "figmaName": "Component / Select / Content / Padding"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Select",
+            "Content",
+            "Padding"
+          ]
+        },
+        {
           "name": "🧩 Component / Select / Search / Color / Text",
           "cssVarName": "--ds-select-search-color-text",
           "value": "{🔗 Alias.🔤 Text.Color.Primary}",
@@ -50920,6 +51335,18 @@
           "docs": "Box shadow of the dropdown content."
         },
         {
+          "name": "--select-content-border",
+          "docs": "Border of the dropdown content."
+        },
+        {
+          "name": "--select-content-radius",
+          "docs": "Border radius of the dropdown content."
+        },
+        {
+          "name": "--select-content-padding",
+          "docs": "Padding of the dropdown content."
+        },
+        {
           "name": "--select-search-text-color",
           "docs": "Text color of the search input."
         },
@@ -50973,7 +51400,7 @@
         },
         {
           "name": "--select-icon-color",
-          "docs": "Color of the dropdown arrow icon and deselect icon."
+          "docs": "Color of the dropdown arrow icon, search icon and deselect icon."
         },
         {
           "name": "--select-icon-hover-color",
@@ -51159,6 +51586,18 @@
           "docs": "Box shadow of the dropdown content."
         },
         {
+          "name": "--select-content-border",
+          "docs": "Border of the dropdown content."
+        },
+        {
+          "name": "--select-content-radius",
+          "docs": "Border radius of the dropdown content."
+        },
+        {
+          "name": "--select-content-padding",
+          "docs": "Padding of the dropdown content."
+        },
+        {
           "name": "--select-search-text-color",
           "docs": "Text color of the search input."
         },
@@ -51212,7 +51651,7 @@
         },
         {
           "name": "--select-icon-color",
-          "docs": "Color of the dropdown arrow icon and deselect icon."
+          "docs": "Color of the dropdown arrow icon, search icon and deselect icon."
         },
         {
           "name": "--select-icon-hover-color",
@@ -67982,12 +68421,12 @@
       "path": "src/components/file-upload/file-upload.interfaces.ts"
     },
     "src/global/index.ts::DsLanguage": {
-      "declaration": "export type DsLanguage =\n  DsSwissLanguage | DsLuxembourgLanguage | DsLuxembourgInternationalLanguage | DsBelgiumLanguage | DsGermanLanguage",
+      "declaration": "export type DsLanguage =\n  | DsSwissLanguage\n  | DsLuxembourgLanguage\n  | DsLuxembourgInternationalLanguage\n  | DsBelgiumLanguage\n  | DsGermanLanguage\n  | DsAustriaLanguage\n  | DsSpainLanguage\n  | DsItalyLanguage",
       "docstring": "",
       "path": "src/global/index.ts"
     },
     "src/global/index.ts::DsRegion": {
-      "declaration": "export type DsRegion = 'CH' | 'DE' | 'BE' | 'LU'",
+      "declaration": "export type DsRegion = 'CH' | 'DE' | 'BE' | 'LU' | 'AT' | 'ES' | 'IT'",
       "docstring": "",
       "path": "src/global/index.ts"
     },

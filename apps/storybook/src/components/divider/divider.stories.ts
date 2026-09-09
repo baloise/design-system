@@ -15,7 +15,7 @@ const meta: Meta<Args> = {
   ...withRender(
     ({ ...args }) =>
       `
-<div class="stack ${args.layout === 'vertical' ? 'as-row' : 'as-col'}">
+<div class="ds-stack ${args.layout === 'vertical' ? 'as-row' : 'as-col'}">
   <span>Before</span>
   <hr ${cssClasses(
     {

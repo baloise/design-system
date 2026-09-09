@@ -5,7 +5,7 @@ import { Clipboard } from '../Clipboard'
 export const TokensZIndex = ({ _overview }): React.ReactElement => {
   const list = tokens['🔗 Alias']['🗂️ ZIndex']
   return (
-    <table className="sb-unstyled my-x-large table tokens" style={{ width: '100%' }}>
+    <table className="sb-unstyled my-xl ds-table tokens" style={{ width: '100%' }}>
       <thead>
         <tr>
           <th style={{ width: '100%' }}>Token & Description</th>
@@ -22,12 +22,12 @@ export const TokensZIndex = ({ _overview }): React.ReactElement => {
                 <Clipboard label={item.name} value={`var(--${item.name})`} />
               </td>
               <td>
-                <p className={`text-small text-weight-bold`}>{item.$value}</p>
+                <p className={`text-sm text-weight-bold`}>{item.$value}</p>
               </td>
             </tr>
             {/* <tr>
               <td colSpan={2} className="border-bottom-grey">
-                <p className="m-none text-small mb-small">{item.comment}</p>
+                <p className="m-none text-sm mb-sm">{item.comment}</p>
               </td>
             </tr> */}
           </tbody>

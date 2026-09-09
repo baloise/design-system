@@ -7,12 +7,12 @@ export const LINK_DOC_CONFIG = {
   section: 'Components / Link',
   color: 'purple' as const,
   tabs: [
-    { label: 'Overview', storyId: 'components-link--link' },
-    { label: 'Usage', storyId: 'components-link--usage' },
-    { label: 'Variants', storyId: 'components-link--variants-overview' },
-    { label: 'Styling', storyId: 'components-link--styling' },
-    { label: 'Accessibility', storyId: 'components-link--accessibility' },
-    { label: 'Testing', storyId: 'components-link--testing' },
+    { label: 'Overview', storyId: 'components-link-link--link' },
+    { label: 'Usage', storyId: 'components-link-usage--usage' },
+    { label: 'Variants', storyId: 'components-link-variants-overview--overview' },
+    { label: 'Styling', storyId: 'components-link-styling--styling' },
+    { label: 'Accessibility', storyId: 'components-link-accessibility--accessibility' },
+    { label: 'Testing', storyId: 'components-link-testing--testing' },
   ],
 }
 

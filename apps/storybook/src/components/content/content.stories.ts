@@ -96,15 +96,15 @@ export const Space = Story({
     <ds-label class="bg-green-2">Default Space</ds-label>
     <ds-text class="bg-green-2">Content helps to align text nodes inside a section.</ds-text>
   </ds-content>
-  <ds-content space="x-small" class="bg-red-2 mt-medium">
+  <ds-content space="x-small" class="bg-red-2 mt-md">
     <ds-label class="bg-green-2">X Small Space</ds-label>
     <ds-text class="bg-green-2">Content helps to align text nodes inside a section.</ds-text>
   </ds-content>
-  <ds-content space="small" class="bg-red-2 mt-medium">
+  <ds-content space="small" class="bg-red-2 mt-md">
     <ds-label class="bg-green-2">Small Space</ds-label>
     <ds-text class="bg-green-2">Content helps to align text nodes inside a section.</ds-text>
   </ds-content>
-  <ds-content space="normal" class="bg-red-2 mt-medium">
+  <ds-content space="normal" class="bg-red-2 mt-md">
     <ds-label class="bg-green-2">Normal Space</ds-label>
     <ds-text class="bg-green-2">Content helps to align text nodes inside a section.</ds-text>
   </ds-content>
@@ -120,15 +120,15 @@ export const SpaceHtml = Story({
     <label class="ds-label bg-green-2">Default Space</label>
     <span class="bg-green-2">Content helps to align text nodes inside a section.</span>
   </div>
-  <div class="ds-stack-content has-space-xs bg-red-2 mt-medium">
+  <div class="ds-stack-content has-space-xs bg-red-2 mt-md">
     <label class="ds-label bg-green-2">X Small Space</label>
     <span class="bg-green-2">Content helps to align text nodes inside a section.</span>
   </div>
-  <div class="ds-stack-content has-space-sm bg-red-2 mt-medium">
+  <div class="ds-stack-content has-space-sm bg-red-2 mt-md">
     <label class="ds-label bg-green-2">Small Space</label>
     <span class="bg-green-2">Content helps to align text nodes inside a section.</span>
   </div>
-  <div class="ds-stack-content has-space-base bg-red-2 mt-medium">
+  <div class="ds-stack-content has-space-base bg-red-2 mt-md">
     <label class="ds-label bg-green-2">Normal Space</label>
     <span class="bg-green-2">Content helps to align text nodes inside a section.</span>
   </div>

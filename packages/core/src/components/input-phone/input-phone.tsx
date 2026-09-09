@@ -456,9 +456,26 @@ export class InputPhone implements DsComponentInterface, FieldInterface {
 
     const caret = input.selectionStart ?? raw.length
     const digitsBefore = countDigitsBefore(raw, caret)
-    this.displayValue = this.formatter.formatLive(raw)
-    this.pendingCaret =
-      digitsBefore === 0 && this.displayValue === '+' ? 1 : caretFromDigitCount(this.displayValue, digitsBefore)
+    const formatted = this.formatter.formatLive(raw)
+    const nextCaret = digitsBefore === 0 && formatted === '+' ? 1 : caretFromDigitCount(formatted, digitsBefore)
+
+    this.displayValue = formatted
+    this.pendingCaret = nextCaret
+
+    // Stencil only re-syncs the native input's `value` when `displayValue` actually changes
+    // between renders — typing characters the formatter discards entirely (letters, symbols)
+    // can leave `displayValue` unchanged (e.g. still ''), so the disallowed characters the
+    // user just typed would otherwise stay visible in the field. Force the DOM back in sync.
+    if (input.value !== formatted) {
+      input.value = formatted
+      try {
+        input.setSelectionRange(nextCaret, nextCaret)
+      } catch {
+        // Some environments reject setSelectionRange on unfocused inputs.
+      }
+      this.pendingCaret = null
+    }
+
     this.nationalNumber = this.formatter.getNationalNumber()
     this.setInternalValue(this.formatter.getE164())
     this.dsInput.emit(this.eventDetail())
@@ -773,36 +790,36 @@ export class InputPhone implements DsComponentInterface, FieldInterface {
             {...this.inheritedAttributes}
           />
         </div>
-        {this.pickerOpen && (
-          <div id="popup">
-            <div class="filter">
-              <label class="sr-only" htmlFor="country-filter">
-                {i18n.filterCountries}
-              </label>
-              <input
-                id="country-filter"
-                ref={el => (this.filterEl = el as HTMLInputElement)}
-                type="text"
-                autocomplete="off"
-                aria-controls="country-list"
-                placeholder={i18n.filterCountries}
-                value={this.filterQuery}
-                onInput={ev => this.handleFilterInput(ev as InputEvent)}
-                onKeyDown={this.handleFilterKeyDown}
-              />
-            </div>
-            <span id="country-list-label" class="sr-only">
-              {i18n.selectCountry}
-            </span>
-            <div
-              id="country-list"
-              role="listbox"
-              tabIndex={0}
-              aria-labelledby="country-list-label"
-              aria-activedescendant={this.activeCode ? this.optionId(this.activeCode) : undefined}
-            >
-              {visible.length === 0 && <div class="no-results">{i18n.noResults}</div>}
-              {visible.map(country => {
+        <div id="popup" aria-hidden={this.pickerOpen ? 'false' : 'true'} inert={this.pickerOpen ? undefined : true}>
+          <div class="filter">
+            <label class="sr-only" htmlFor="country-filter">
+              {i18n.filterCountries}
+            </label>
+            <input
+              id="country-filter"
+              ref={el => (this.filterEl = el as HTMLInputElement)}
+              type="text"
+              autocomplete="off"
+              aria-controls="country-list"
+              placeholder={i18n.filterCountries}
+              value={this.filterQuery}
+              onInput={ev => this.handleFilterInput(ev as InputEvent)}
+              onKeyDown={this.handleFilterKeyDown}
+            />
+          </div>
+          <span id="country-list-label" class="sr-only">
+            {i18n.selectCountry}
+          </span>
+          <div
+            id="country-list"
+            role="listbox"
+            tabIndex={0}
+            aria-labelledby="country-list-label"
+            aria-activedescendant={this.activeCode ? this.optionId(this.activeCode) : undefined}
+          >
+            {this.pickerOpen && visible.length === 0 && <div class="no-results">{i18n.noResults}</div>}
+            {this.pickerOpen &&
+              visible.map(country => {
                 const name = getCountryName(country.code, this.language)
                 const selectedOption = country.code === this.resolvedCountry
                 const active = country.code === this.activeCode
@@ -820,22 +837,14 @@ export class InputPhone implements DsComponentInterface, FieldInterface {
                     onClick={() => this.handleOptionClick(country.code)}
                     onMouseEnter={() => this.handleOptionMouseEnter(country.code)}
                   >
-                    <img
-                      class="flag"
-                      src={getFlagUrl(country.code)}
-                      alt=""
-                      aria-hidden="true"
-                      draggable={false}
-                      loading="lazy"
-                    />
+                    <img class="flag" src={getFlagUrl(country.code)} alt="" aria-hidden="true" draggable={false} />
                     <span class="option-name">{name}</span>
                     <span class="option-code">+{country.callingCode}</span>
                   </div>
                 )
               })}
-            </div>
           </div>
-        )}
+        </div>
       </Field>
     )
   }

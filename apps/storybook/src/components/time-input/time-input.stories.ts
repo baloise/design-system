@@ -16,7 +16,7 @@ const meta: Meta<Args> = {
   },
   ...withRender(
     ({ label, description, disabled, invalid }) => `
-      <div class="field${disabled ? ' is-disabled' : ''}${invalid ? ' is-danger' : ''}">
+      <div class="ds-field${disabled ? ' is-disabled' : ''}${invalid ? ' is-danger' : ''}">
         <label class="ds-label" for="time-input-1">${label}</label>
         <div class="ds-control">
           <input

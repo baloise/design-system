@@ -70,7 +70,7 @@ export const Variants = Story({
   <ds-button color="secondary">Secondary</ds-button>
   <ds-button color="tertiary">Tertiary</ds-button>
 </ds-button-group>
-<ds-button-group class="mt-normal">
+<ds-button-group class="mt-base">
   <ds-button color="link">Link</ds-button>
 </ds-button-group>`,
   ),
@@ -84,7 +84,7 @@ export const VariantsHtml = Story({
   <button class="ds-button is-secondary">Secondary</button>
   <button class="ds-button is-tertiary">Tertiary</button>
 </div>
-<div class="ds-buttons mt-normal">
+<div class="ds-buttons mt-base">
   <button class="ds-button is-link">Link</button>
 </div>`,
   ),
@@ -117,7 +117,7 @@ SizesHtml.storyName = '🌍 Sizes'
 
 export const Inverted = Story({
   ...withRender(
-    () => `<div class="ds-stack bg-primary p-normal">
+    () => `<div class="ds-stack bg-primary p-base">
   <ds-button-group>
     <ds-button inverted color="primary">Primary</ds-button>
     <ds-button inverted color="secondary">Secondary</ds-button>
@@ -132,7 +132,7 @@ Inverted.storyName = '🧩 Inverted'
 
 export const InvertedHtml = Story({
   ...withRender(
-    () => `<div class="ds-stack bg-primary p-normal">
+    () => `<div class="ds-stack bg-primary p-base">
   <div class="ds-buttons">
     <button class="ds-button is-inverted is-primary">Primary</button>
     <button class="ds-button is-inverted is-secondary">Secondary</button>
@@ -349,7 +349,7 @@ export const Link = Story({
   ...withRender(
     () => `<div class="ds-stack">
   <a class="ds-link"> Link</a>
-  <div class="bg-primary p-normal">
+  <div class="bg-primary p-base">
     <a class="ds-link is-inverted"> Inverted Link</a>
   </div>
   </div>`,

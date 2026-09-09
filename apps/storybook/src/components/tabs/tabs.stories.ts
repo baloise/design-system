@@ -85,7 +85,7 @@ ColorVariants.storyName = '🧩 Color Variants'
 export const Inverted = Story({
   ...withRender(
     () => `
-<div class="bg-primary p-normal">
+<div class="bg-primary p-base">
   <ds-tabs inverted>
     <ds-tab name="a">Tab A</ds-tab>
     <ds-tab name="b">Tab B</ds-tab>

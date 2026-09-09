@@ -6,12 +6,12 @@ export const INPUTSLIDER_DOC_CONFIG = {
   section: 'Components / InputSlider',
   color: 'purple' as const,
   tabs: [
-    { label: 'Overview', storyId: 'components-inputslider--input-slider' },
-    { label: 'Usage', storyId: 'components-inputslider--usage' },
-    { label: 'Variants', storyId: 'components-inputslider--variants-overview' },
-    { label: 'Styling', storyId: 'components-inputslider--styling' },
-    { label: 'Accessibility', storyId: 'components-inputslider--accessibility' },
-    { label: 'Testing', storyId: 'components-inputslider--testing' },
+    { label: 'Overview', storyId: 'components-inputslider-input-slider--input-slider' },
+    { label: 'Usage', storyId: 'components-inputslider-usage--usage' },
+    { label: 'Variants', storyId: 'components-inputslider-variants-overview--overview' },
+    { label: 'Styling', storyId: 'components-inputslider-styling--styling' },
+    { label: 'Accessibility', storyId: 'components-inputslider-accessibility--accessibility' },
+    { label: 'Testing', storyId: 'components-inputslider-testing--testing' },
   ],
 }
 

@@ -36,9 +36,13 @@
     display: inline-flex;
     vertical-align: top;
     border: none;
+
     @if $background {
       background: var(--_close-color-background);
+    } @else {
+      background: transparent;
     }
+
     border-radius: var(--_close-radius);
 
     width: var(--_close-size-icon);

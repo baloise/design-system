@@ -229,7 +229,7 @@ export const Inverted = Story({
   },
   ...withRender(
     ({ ...args }) => `
-<div class="bg-primary p-normal">
+<div class="bg-primary p-base">
   <ds-list ${props(args)}>
     <ds-item variant="link" label="Internal Link" href="www.helvetia.com" target="_blank"></ds-item>
     <ds-item
@@ -260,7 +260,7 @@ export const InvertedHtml = Story({
   args: {},
   ...withRender(
     () => `
-<div class="bg-primary p-normal">
+<div class="bg-primary p-base">
   <ul class="ds-list is-inverted">
     <li>
       <a class="ds-item" href="www.helvetia.com" target="_blank">
@@ -337,7 +337,7 @@ export const AccordionListNested = Story({
     ({ ...args }) => `
 <ds-list ${props(args)}>
   <ds-item variant="accordion" label="Switzerland" label-level="h4">
-    <ds-list slot="accordion-content" class="ml-large">
+    <ds-list slot="accordion-content" class="ml-lg">
       <ds-item variant="accordion" label="Bern">
         <p slot="accordion-content">
           Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reiciendis, distinctio laborum. Numquam
@@ -362,7 +362,7 @@ export const AccordionListNested = Story({
     </ds-list>
   </ds-item>
   <ds-item variant="accordion" label="Belgium" label-level="h4">
-    <ds-list slot="accordion-content" class="ml-large">
+    <ds-list slot="accordion-content" class="ml-lg">
       <ds-item variant="accordion" label="Brüssel">
         <p slot="accordion-content">
           Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reiciendis, distinctio laborum. Numquam

@@ -131,8 +131,9 @@ const typographyRules = typographyBuild.rules
 const typographySafelist = typographyBuild.safelist
 const typographyRawCSS = typographyBuild.rawCSS
 
-// Add elevation to responsive base (z-index and shadow are responsive)
-const responsiveBaseWithElevation = [...responsiveBase, ...elevationSafelist]
+// Add elevation and spacing (margin/padding/gap) to responsive base — they're all built from
+// the responsive 📱 Device space tokens, so each class has a per-breakpoint counterpart too.
+const responsiveBaseWithElevation = [...responsiveBase, ...elevationSafelist, ...spacingSafelist]
 const fullResponsiveSafelist = breakpointPrefixes.flatMap(bp => responsiveBaseWithElevation.map(cls => `${bp}:${cls}`))
 
 // Shadow pseudo-class variants (derived from elevation safelist)
