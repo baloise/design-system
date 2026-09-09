@@ -731,6 +731,9 @@ importers:
       eslint:
         specifier: 'catalog:'
         version: 10.9.1(jiti@2.7.0)(supports-color@8.1.1)
+      jsdom:
+        specifier: 30.0.1
+        version: 30.0.1
       react:
         specifier: 19.2.8
         version: 19.2.8
@@ -740,6 +743,9 @@ importers:
       typescript:
         specifier: 'catalog:'
         version: 5.6.3
+      vitest:
+        specifier: 'catalog:'
+        version: 4.1.11(@types/node@24.13.3)(@vitest/ui@4.1.11)(jsdom@30.0.1)(vite@8.2.2(@types/node@24.13.3)(esbuild@0.28.2)(jiti@2.7.0)(less@4.8.0(supports-color@8.1.1))(sass-embedded@1.100.0)(sass@1.104.0)(tsx@4.23.13)(yaml@2.9.0))
 
   packages/tokens:
     devDependencies:
@@ -5518,9 +5524,6 @@ packages:
   flat-cache@4.0.1:
     resolution: {integrity: sha512-f7ccFPK3SXFHpx15UIGyRJ/FJQctuKZ0zVuN3frBo4HnK3cay9VEW0R6yPYFHC0AgqhukPzKjq22t5DmAyqGyw==}
     engines: {node: '>=16'}
-
-  flatted@3.4.2:
-    resolution: {integrity: sha512-PjDse7RzhcPkIJwy5t7KPWQSZ9cAbzQXcafsetQoD7sOJRQlGikNbx7yZp2OotDnJyrDcbyRq3Ttb18iYOqkxA==}
 
   flatted@3.4.4:
     resolution: {integrity: sha512-5+ybhBZANEJxaH3X5evAFatUxLfEHSr7n6kYJ+1Qd0mUqr4eu9gIf6GDbWHf8RJijHrjjO8G+la14SlL2SeS1Q==}
@@ -11482,7 +11485,7 @@ snapshots:
     dependencies:
       '@vitest/utils': 4.1.11
       fflate: 0.8.3
-      flatted: 3.4.2
+      flatted: 3.4.4
       pathe: 2.0.3
       sirv: 3.0.2
       tinyglobby: 0.2.17
@@ -12836,8 +12839,6 @@ snapshots:
     dependencies:
       flatted: 3.4.4
       keyv: 4.5.4
-
-  flatted@3.4.2: {}
 
   flatted@3.4.4: {}
 

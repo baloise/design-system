@@ -6,7 +6,11 @@ import { App } from './App'
 
 import '@baloise/ds-css/css'
 
-bootstrapDesignSystem()
+bootstrapDesignSystem({
+  defaults: {
+    animated: false,
+  },
+})
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
