@@ -390,10 +390,6 @@ Vite is the recommended setup for a client-side React SPA. Scaffold a TypeScript
 npm create vite@latest my-app -- --template react-ts
 ```
 
-### Create React App
-
-[Create React App](https://create-react-app.dev/) is in maintenance mode. An existing CRA app still works as a client-side SPA. The app entry is `src/index.tsx` (or `src/index.js`).
-
 ### Next.js
 
 `@baloise/ds-react` is client-only today. Import Design System components from files marked `'use client'`. Call `bootstrapDesignSystem()` at module scope in a client entry file (imported from the root layout), not inside a component function.
@@ -438,7 +434,7 @@ If the application requires a smaller payload, import only `@baloise/ds-css/css/
 
 ### bootstrapDesignSystem
 
-`bootstrapDesignSystem` initializes the Design System for a React app. Call it **once** at **module scope** in the app entry — `src/main.tsx` (Vite), `src/index.tsx` (Create React App), or a client entry imported from a Next.js root layout — **before** `createRoot(...).render(...)`. It is not a React hook; do not call it inside a component function.
+`bootstrapDesignSystem` initializes the Design System for a React app. Call it **once** at **module scope** in the app entry — `src/main.tsx` (Vite) or a client entry imported from a Next.js root layout — **before** `createRoot(...).render(...)`. It is not a React hook; do not call it inside a component function.
 
 It applies optional region, language, and brand defaults. If you omit the call, components still work with the default config.
 
