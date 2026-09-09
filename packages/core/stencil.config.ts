@@ -134,8 +134,20 @@ export const config: Config = {
         dir: 'components',
       }),
     /**
+     * Node-compatible SSR renderer used by the React output target's hydrateModule.
+     * Produces `hydrate/` at the package root, published as `@baloise/ds-core/hydrate`.
+     *
+     * {@link https://stenciljs.com/docs/hydrate-app}
+     */
+    !IS_DS_DEVELOPMENT &&
+      !IS_DS_DOCUMENTATION && {
+        type: 'dist-hydrate-script',
+        dir: './hydrate',
+      },
+    /**
      * Generates React component wrappers for each Stencil component in ../react/src/generated,
      * consumed by the @baloise/ds-react package. Requires the dist-custom-elements output target above.
+     * With hydrateModule set, also emits `components.server.ts` for Node SSR.
      *
      * {@link https://www.npmjs.com/package/@stencil/react-output-target}
      */
