@@ -1,37 +1,37 @@
 import { Component, signal } from '@angular/core'
 import { FormControl, FormGroup, ReactiveFormsModule, ValidationErrors, ValidatorFn } from '@angular/forms'
-import { DsInput } from '@baloise/ds-angular'
+import { DsNumberInput } from '@baloise/ds-angular'
 
 const requiredWithMessage = (message: string): ValidatorFn => {
-  return (control): ValidationErrors | null => (control.value ? null : { required: message })
+  return (control): ValidationErrors | null => (control.value !== null ? null : { required: message })
 }
 
 @Component({
-  selector: 'app-input-demo',
-  imports: [DsInput, ReactiveFormsModule],
-  templateUrl: './input-demo.html',
+  selector: 'app-number-input-demo',
+  imports: [DsNumberInput, ReactiveFormsModule],
+  templateUrl: './number-input-demo.html',
 })
-export class InputDemo {
-  protected readonly inputValue = signal('')
+export class NumberInputDemo {
+  protected readonly numberInputValue = signal<number | null>(null)
 
   protected readonly reactiveForm = new FormGroup({
-    name: new FormControl('Alice', {
+    amount: new FormControl<number | null>(1, {
       validators: requiredWithMessage('This field is required'),
     }),
   })
 
   protected readonly autoInvalidOffForm = new FormGroup({
-    name: new FormControl('Alice', {
+    amount: new FormControl<number | null>(1, {
       validators: requiredWithMessage('This field is required'),
     }),
   })
 
-  protected onInput(event: CustomEvent<string | null>) {
-    this.inputValue.set(event.detail ?? '')
+  protected onInput(event: CustomEvent<number | null>) {
+    this.numberInputValue.set(event.detail ?? null)
   }
 
   protected toggleReactiveFormDisabled() {
-    const control = this.reactiveForm.controls.name
+    const control = this.reactiveForm.controls.amount
     if (control.disabled) {
       control.enable()
     } else {
@@ -40,6 +40,6 @@ export class InputDemo {
   }
 
   protected setReactiveFormValue() {
-    this.reactiveForm.controls.name.setValue('Carol')
+    this.reactiveForm.controls.amount.setValue(3)
   }
 }

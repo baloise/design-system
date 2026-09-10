@@ -1,4 +1,4 @@
-import { ElementRef, inject, Injector, OnDestroy, OnInit } from '@angular/core'
+import { ChangeDetectorRef, ElementRef, inject, Injector, OnDestroy, OnInit } from '@angular/core'
 import { ControlValueAccessor, NgControl, ValidationErrors } from '@angular/forms'
 import { Subscription } from 'rxjs'
 
@@ -39,6 +39,7 @@ export class DsValueAccessor<
   K extends keyof Element,
 > implements ControlValueAccessor {
   private ngControl: NgControl | null = null
+  private cdr: ChangeDetectorRef | null = null
   private statusSubscription?: Subscription
   // The `AbstractControl` instance currently backing `statusSubscription`, so `subscribeToControl()` can
   // tell a rebind (e.g. a consumer replacing the whole `FormGroup`) apart from a no-op re-check.
@@ -56,6 +57,15 @@ export class DsValueAccessor<
 
   private readonly handleChange = (event: Event) => {
     this.onChange((event as CustomEvent<Element[K]>).detail)
+    // `changeEvent`/`blurEvent` are plain DOM events dispatched by the custom element and picked up via a
+    // raw `addEventListener` (see `init()`) rather than an Angular-generated template listener — so in a
+    // zoneless app (no `zone.js`, e.g. `provideZonelessChangeDetection()` or simply no `zone.js` polyfill)
+    // nothing tells Angular's scheduler that anything changed: `onChange()` above does update the bound
+    // `FormControl`'s value synchronously, but without this, that update is only rendered whenever some
+    // *other*, Angular-tracked event happens to trigger a check later. `markForCheck()` marks this view and
+    // its ancestors dirty and schedules a check with the zoneless scheduler, so the new value actually
+    // reaches the DOM right away instead of appearing "stuck" until an unrelated interaction.
+    this.cdr?.markForCheck()
   }
 
   private readonly handleBlur = () => {
@@ -65,6 +75,9 @@ export class DsValueAccessor<
     // so invalid state always reacts to the control's own authoritative state rather than assuming
     // `blurEvent` and the change event fire in any particular order relative to each other.
     this.onTouched()
+    // See `handleChange()` above for why this is needed: `onTouched()` can flip `touched`/`invalid` on the
+    // control, and that too originates from a raw DOM listener the zoneless scheduler doesn't know about.
+    this.cdr?.markForCheck()
   }
 
   init(): void {
@@ -73,6 +86,7 @@ export class DsValueAccessor<
     // Resolved lazily (not from the constructor) to avoid a circular dependency: NgControl depends on the
     // NG_VALUE_ACCESSOR the wrapper component provides.
     this.ngControl = this.injector.get(NgControl, null)
+    this.cdr = this.injector.get(ChangeDetectorRef)
 
     this.element.addEventListener(this.config.changeEvent, this.handleChange)
     this.element.addEventListener(this.config.blurEvent, this.handleBlur)

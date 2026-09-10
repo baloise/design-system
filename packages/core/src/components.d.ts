@@ -2193,6 +2193,11 @@ export namespace Components {
      */
     interface DsNumberInput {
         /**
+          * If `true`, disables the automatic `invalid`/`invalidText` behavior that the `@baloise/ds-angular` integration applies when the bound `NgControl` is touched and invalid. Only affects the Angular integration; it is a no-op in other framework integrations.
+          * @default false
+         */
+        "autoInvalidOff": boolean;
+        /**
           * Defines the color state of the input.
           * @default 'primary'
          */
@@ -7419,6 +7424,11 @@ declare namespace LocalJSX {
      */
     interface DsNumberInput {
         /**
+          * If `true`, disables the automatic `invalid`/`invalidText` behavior that the `@baloise/ds-angular` integration applies when the bound `NgControl` is touched and invalid. Only affects the Angular integration; it is a no-op in other framework integrations.
+          * @default false
+         */
+        "autoInvalidOff"?: boolean;
+        /**
           * Defines the color state of the input.
           * @default 'primary'
          */
@@ -9504,6 +9514,7 @@ declare namespace LocalJSX {
         "size": NotificationSize;
     }
     interface DsNumberInputAttributes {
+        "autoInvalidOff": boolean;
         "color": InputColor;
         "debounce": number;
         "decimal": number;

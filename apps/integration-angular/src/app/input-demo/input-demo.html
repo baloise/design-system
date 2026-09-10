@@ -11,3 +11,13 @@
   Toggle disabled
 </button>
 <button data-testid="set-reactive-value" type="button" (click)="setReactiveFormValue()">Set to Carol</button>
+
+<form [formGroup]="autoInvalidOffForm">
+  <ds-input
+    data-testid="auto-invalid-off-input"
+    name="auto-invalid-off-input"
+    label="Name"
+    autoInvalidOff
+    formControlName="name"
+  />
+</form>
