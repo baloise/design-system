@@ -47,10 +47,10 @@ These improvements help our components work seamlessly across all supported fram
 
 | Component        | Type     | Shadow | Docs | A11y | Visual | Component | Tokens | Figma |
 | ---------------- | -------- | ------ | ---- | ---- | ------ | --------- | ------ | ----- |
-| app              | WC       | ✅     | ⬜   | ⛔   | ⛔     | ✅        | ⛔     | ⛔    |
-| body             | CSS      | ✅     | ⬜   | ✅   | ✅     | ✅        | ✅     | ⬜    |
-| icon             | WC       | ✅     | ⬜   | ✅   | ✅     | ✅        | ✅     | ⬜    |
-| brand-icon       | WC       | ✅     | ⬜   | ✅   | ✅     | ✅        | ✅     | ⬜    |
+| app              | WC       | ✅     | ✅   | ⛔   | ⛔     | ✅        | ⛔     | ⛔    |
+| body             | CSS      | ✅     | ✅   | ✅   | ✅     | ✅        | ✅     | ⬜    |
+| icon             | WC       | ✅     | ✅   | ✅   | ✅     | ✅        | ✅     | ⬜    |
+| brand-icon       | WC       | ✅     | ✅   | ✅   | ✅     | ✅        | ✅     | ⬜    |
 | heading          | WC & CSS | ✅     | ⬜   | ✅   | ✅     | ✅        | ✅     | ⬜    |
 | text             | WC & CSS | ✅     | ⬜   | ✅   | ✅     | ✅        | ✅     | ⬜    |
 | label            | WC & CSS | ✅     | ⬜   | ✅   | ✅     | ✅        | ✅     | ⬜    |
