@@ -18,7 +18,7 @@ a {
   align-items: center;
   min-height: 2.5rem;
   gap: 0.5rem;
-  padding: var(--_tabs-tab-space-y) var(--_tabs-tab-space-x);
+  padding: var(--_tabs-tab-py) var(--_tabs-tab-px);
   background: none;
   border: none;
   cursor: pointer;
@@ -184,7 +184,7 @@ a ::slotted(ds-icon.is-filled:not(.is-auto)) {
   align-items: center;
   min-height: 2.5rem;
   gap: 0.5rem;
-  padding: var(--_tabs-tab-space-y) var(--_tabs-tab-space-x);
+  padding: var(--_tabs-tab-py) var(--_tabs-tab-px);
   color: var(--_tabs-tab-unselected-color-base);
   font-family: var(--_tabs-tab-unselected-font-family);
   font-size: var(--_tabs-tab-unselected-font-size);

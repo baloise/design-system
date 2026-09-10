@@ -3,7 +3,7 @@ import { Banner, BannerTabs, Code, Footer, Lead, UsageExamples } from '../../../
 import * as LinkStories from './link.stories'
 import { LINK_DOC_CONFIG, getLinkTabs } from './link.doc-config'
 
-<Meta title="Components/Link/Usage" />
+<Meta title="Components/Link/Usage" name="Usage" />
 
 <Banner label={'Usage'} section={LINK_DOC_CONFIG.section} color={LINK_DOC_CONFIG.color} />
 
@@ -39,7 +39,7 @@ Always use meaningful link text. Avoid generic "Click here" or "Read more".
       title: 'Correct: Descriptive link text',
       content: (
         <div>
-          <a href="#" className="link">
+          <a href="#" className="ds-link">
             Learn about our accessibility standards
           </a>
         </div>
@@ -51,7 +51,7 @@ Always use meaningful link text. Avoid generic "Click here" or "Read more".
       title: 'Incorrect: Generic link text',
       content: (
         <div>
-          <a href="#" className="link">
+          <a href="#" className="ds-link">
             Click here
           </a>
         </div>

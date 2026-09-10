@@ -16,7 +16,7 @@
  * @prop --app-footer-line-height: Line height of the app-footer text.
  *
  * @prop --app-footer-gap: Gap between the app-footer elements.
- * @prop --app-footer-space-y: Vertical padding of the app-footer.
+ * @prop --app-footer-py: Vertical padding of the app-footer.
  *
  * @prop --app-footer-link-color: Text color of the app-footer links.
  * @prop --app-footer-link-color-hover: Text color of the app-footer links on hover.
@@ -36,7 +36,7 @@
   @include vars.local(app-footer-line-height, var(--ds-app-footer-typo-line-height));
 
   @include vars.local(app-footer-gap, var(--ds-app-footer-gap));
-  @include vars.local(app-footer-space-y, var(--ds-app-footer-space-y));
+  @include vars.local(app-footer-py, var(--ds-app-footer-padding-y));
 
   @include vars.local(app-footer-link-color, var(--ds-app-footer-link-color-text-base));
   @include vars.local(app-footer-link-color-hover, var(--ds-app-footer-link-color-text-hover));
@@ -53,10 +53,10 @@
   background: var(--_app-footer-color-background);
 
   margin: 0 auto;
-  padding-block: var(--_app-footer-space-y);
-  padding-inline: var(--_container-space-x, var(--ds-alias-container-space-device));
+  padding-block: var(--_app-footer-py);
+  padding-inline: var(--_container-px, var(--ds-device-container-space));
   width: 100%;
-  max-width: var(--_container-max-width, var(--ds-alias-container-width-base));
+  max-width: var(--_container-max-width, var(--ds-alias-container-width-default));
 
   &.is-fluid {
     max-width: var(--ds-alias-container-width-fluid);

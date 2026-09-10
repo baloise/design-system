@@ -51,23 +51,23 @@ export const CssUtilitiesTable = ({
 
   return (
     <section
-      className="sb-unstyled pb-medium my-x-large bg-grey-1 radius px-medium"
+      className="sb-unstyled pb-md my-xl bg-grey-1 radius px-md"
       style={{
         maxHeight: '30rem',
         overflow: 'auto',
       }}
     >
-      <table className="table w-full bg-grey-1">
+      <table className="ds-table w-full bg-grey-1">
         <thead
           className="doc-table-head bg-grey-1 border-none"
           style={{ position: 'sticky', top: '0', left: '0', overflow: 'hidden', zIndex: 10 }}
         >
           <tr>
-            <th className="pt-medium" style={{ minWidth: '220px' }}>
+            <th className="pt-md" style={{ minWidth: '220px' }}>
               Class
             </th>
-            <th className="pt-medium">Property</th>
-            {example ? <th className="pt-medium"></th> : ''}
+            <th className="pt-md">Property</th>
+            {example ? <th className="pt-md"></th> : ''}
           </tr>
         </thead>
         <tbody>
@@ -77,7 +77,7 @@ export const CssUtilitiesTable = ({
                 <Clipboard label={item.class} />
               </td>
               <td>
-                <pre className="doc-table-pre text-small">
+                <pre className="doc-table-pre text-sm">
                   {Array.isArray(item.property) ? item.property.join(', ') : item.property}
                   {value && item.property && item.value ? ': ' : ''}
                   {value && item.value}
@@ -113,25 +113,25 @@ export const CssPropertyTable = ({
 
   return (
     <section
-      className="sb-unstyled pb-medium my-x-large bg-grey-1 radius px-medium"
+      className="sb-unstyled pb-md my-xl bg-grey-1 radius px-md"
       style={{
         maxHeight: '30rem',
         overflow: 'auto',
       }}
     >
-      <table className="table w-full bg-grey-1">
+      <table className="ds-table w-full bg-grey-1">
         <thead
           className="doc-table-head bg-grey-1 border-none"
           style={{ position: 'sticky', top: '0', left: '0', overflow: 'hidden', zIndex: 10 }}
         >
           <tr>
-            <th className="pt-medium" style={{ minWidth: '220px' }}>
+            <th className="pt-md" style={{ minWidth: '220px' }}>
               Class
             </th>
-            <th className="pt-medium">Property</th>
-            {responsive ? <th className="pt-medium">Mobile</th> : ''}
-            {responsive ? <th className="pt-medium">Tablet</th> : ''}
-            {responsive ? <th className="pt-medium">Desktop</th> : ''}
+            <th className="pt-md">Property</th>
+            {responsive ? <th className="pt-md">Mobile</th> : ''}
+            {responsive ? <th className="pt-md">Tablet</th> : ''}
+            {responsive ? <th className="pt-md">Desktop</th> : ''}
           </tr>
         </thead>
         <tbody>
@@ -141,7 +141,7 @@ export const CssPropertyTable = ({
                 <Clipboard label={`${prefix}${withoutProperty ? '' : `${property}-`}${item.key}`} />
               </td>
               <td>
-                <pre className="doc-table-pre text-small">
+                <pre className="doc-table-pre text-sm">
                   {property || item.property}
                   {(property || item.property) && item.value ? ': ' : ''}
                   {item.value}

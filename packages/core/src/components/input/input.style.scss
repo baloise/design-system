@@ -4,7 +4,7 @@
 
 $use-host: false !default;
 $name: input;
-$css-selector: ('.input');
+$css-selector: ('.ds-input');
 $host-selector: ('#input');
 
 /**
@@ -14,7 +14,7 @@ $host-selector: ('#input');
  * These variables can be used in the component styles below and later on be overridden in themes.
  */
 
-.input {
+.ds-input {
   @include input.vars('input');
 }
 
@@ -24,4 +24,4 @@ $host-selector: ('#input');
   * Define here the component styles using the mixin to support host and non-host mode for hybrid components.
   */
 
-@include input.style('input', '.input');
+@include input.style('input', '.ds-input');

@@ -11,8 +11,8 @@ import type { FlatToken } from './types'
 // to avoid.
 describe('tokenNameToCssVar', () => {
   it('matches a component token, stripping the 🧩 Component path segment', () => {
-    // dist/css/base.tokens.css: --ds-card-color-base-text: inherit;
-    expect(tokenNameToCssVar(['🧩 Component', 'Card', 'Color', 'Base', 'Text'])).toBe('ds-card-color-base-text')
+    // dist/css/base.tokens.css: --ds-card-color-default-text: inherit;
+    expect(tokenNameToCssVar(['🧩 Component', 'Card', 'Color', 'Default', 'Text'])).toBe('ds-card-color-default-text')
   })
 
   it('matches a global color token', () => {

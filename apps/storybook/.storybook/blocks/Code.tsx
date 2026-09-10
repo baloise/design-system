@@ -9,13 +9,11 @@ export const Code = ({ code, preview, language, border = false, noPreview = unde
   return (
     <section className={`sb-unstyled  ${noPreview === true ? 'doc-code-no-preview' : 'doc-code'}`}>
       <div
-        className={`${noPreview === true ? 'hidden ' : ''}p-medium radius-top-normal ${
-          border ? 'border-grey' : 'bg-grey-1'
-        }`}
+        className={`${noPreview === true ? 'hidden ' : ''}p-md radius-top border-grey`}
         dangerouslySetInnerHTML={{ __html: preview || code }}
       ></div>
       <div
-        style={{ marginTop: noPreview === true ? '0px' : '-24px' }}
+        style={{ marginTop: noPreview === true ? '0px' : '-26px' }}
         className={`${noPreview === true ? 'radius' : ''}`}
       >
         <Source dark language={language || 'html'} code={code} />

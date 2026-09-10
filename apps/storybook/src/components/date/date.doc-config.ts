@@ -6,12 +6,12 @@ export const DATE_DOC_CONFIG = {
   section: 'Components / Date',
   color: 'purple' as const,
   tabs: [
-    { label: 'Overview', storyId: 'components-date--date' },
-    { label: 'Usage', storyId: 'components-date--usage' },
-    { label: 'Variants', storyId: 'components-date--variants-overview' },
-    { label: 'Styling', storyId: 'components-date--styling' },
-    { label: 'Accessibility', storyId: 'components-date--accessibility' },
-    { label: 'Testing', storyId: 'components-date--testing' },
+    { label: 'Overview', storyId: 'components-date-date--date' },
+    { label: 'Usage', storyId: 'components-date-usage--usage' },
+    { label: 'Variants', storyId: 'components-date-variants-overview--overview' },
+    { label: 'Styling', storyId: 'components-date-styling--styling' },
+    { label: 'Accessibility', storyId: 'components-date-accessibility--accessibility' },
+    { label: 'Testing', storyId: 'components-date-testing--testing' },
   ],
 }
 

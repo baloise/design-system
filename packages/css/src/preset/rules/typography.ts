@@ -7,7 +7,7 @@ import { flattenTokens, type RuleMetadata } from '../utils'
  *
  * Sources:
  *  - 🔗 Alias › 🔤 Text › Color      → text-* color classes
- *  - 🔗 Alias › 🔤 Text › Size       → text-* size classes
+ *  - 📱 Device › 🔤 Text › Size      → text-* size classes
  *  - 🔗 Alias › 🔤 Text › Family     → font-family-* classes
  *  - 🔗 Alias › 🔤 Text › Weight     → font-weight-* classes
  *  - 🔗 Alias › 🔤 Text › LineHeight → line-height-* classes
@@ -22,6 +22,7 @@ export function buildTypographyRules(tokensJsonPath: string): {
 } {
   const json = JSON.parse(readFileSync(tokensJsonPath, 'utf8'))
   const textAlias = json['🔗 Alias']?.['🔤 Text'] ?? {}
+  const textDevice = json['📱 Device']?.['🔤 Text'] ?? {}
 
   const rules: Rule[] = []
   const safelist: string[] = []
@@ -46,11 +47,12 @@ export function buildTypographyRules(tokensJsonPath: string): {
     addRule(className, { color: `var(--${token.name}) !important` }, token.name)
   }
 
-  // 2. Text size tokens — one responsive class per size using the -device token.
-  // Each size group (None, XS, SM…) carries a $extensions.com.helvetia.responsive
-  // block directly; we derive the canonical size name from the JSON key and
-  // reference the -device CSS variable so the class responds to breakpoints automatically.
-  const sizeCategory = (textAlias['Size'] ?? {}) as Record<string, unknown>
+  // 2. Text size tokens — one responsive class per size using the auto-switching
+  // --ds-device-text-size-* var. Each size group (None, XS, SM…) carries a
+  // $extensions.com.helvetia.responsive block directly; we derive the canonical
+  // size name from the JSON key and reference the bare Device CSS variable so
+  // the class responds to breakpoints automatically.
+  const sizeCategory = (textDevice['Size'] ?? {}) as Record<string, unknown>
   const sizeAliases: Record<string, string> = {
     'xs': 'x-small',
     'sm': 'small',
@@ -65,7 +67,7 @@ export function buildTypographyRules(tokensJsonPath: string): {
   }
   for (const key of Object.keys(sizeCategory)) {
     const size = key.toLowerCase()
-    const tokenName = `ds-alias-text-size-${size}-device`
+    const tokenName = `ds-device-text-size-${size}`
     addRule(`text-${size}`, { 'font-size': `var(--${tokenName}) !important` }, tokenName)
     if (size in sizeAliases) {
       const aliasName = `text-${sizeAliases[size]}`

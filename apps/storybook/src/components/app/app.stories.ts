@@ -17,8 +17,8 @@ const meta: Meta<Args> = {
     </ds-app-navbar>
   </header>
   <main>
-    <div class="container my-large">
-      <h1 class="title">Hello World!</h1>
+    <div class="ds-container my-lg">
+      <h1 class="ds-title">Hello World!</h1>
       <!-- Page content -->
     </div>
   </main>

@@ -1,4 +1,4 @@
-export type TokenLayer = 'Global' | 'Alias' | 'Component'
+export type TokenLayer = 'Global' | 'Alias' | 'Device' | 'Component'
 
 export type ResolutionError = 'missing-reference' | 'circular-reference'
 
@@ -28,6 +28,9 @@ export interface FlatToken {
   name: string
   layer: TokenLayer
   type: string
+  // Optional free-text description, DTCG $description sibling to $type/$value.
+  // Shared across brands — brand-override FlatTokens never set their own.
+  description?: string
   rawValue: unknown
   referenceTarget: string | null
   resolvedValue: unknown

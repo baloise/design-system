@@ -7,12 +7,12 @@ export const TAG_DOC_CONFIG = {
   section: 'Components / Tag',
   color: 'green' as const,
   tabs: [
-    { label: 'Overview', storyId: 'components-tag--tag' },
-    { label: 'Usage', storyId: 'components-tag--usage' },
-    { label: 'Variants', storyId: 'components-tag--variants-overview' },
-    { label: 'Styling', storyId: 'components-tag--styling' },
-    { label: 'Accessibility', storyId: 'components-tag--accessibility' },
-    { label: 'Testing', storyId: 'components-tag--testing' },
+    { label: 'Overview', storyId: 'components-tag-tag--tag' },
+    { label: 'Usage', storyId: 'components-tag-usage--usage' },
+    { label: 'Variants', storyId: 'components-tag-variants-overview--overview' },
+    { label: 'Styling', storyId: 'components-tag-styling--styling' },
+    { label: 'Accessibility', storyId: 'components-tag-accessibility--accessibility' },
+    { label: 'Testing', storyId: 'components-tag-testing--testing' },
   ],
 }
 

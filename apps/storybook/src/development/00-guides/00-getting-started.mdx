@@ -14,13 +14,13 @@ import {
   WarningQuote,
 } from '../../../.storybook/blocks'
 
-
-
-<Meta title="Development/Getting Started" />
+<Meta title="Development/Getting Started" name="Getting Started" />
 
 <Banner label="Getting Started" section="Development" />
 
-<Lead>A guide to integrate Design System Components into your application.</Lead>
+<Lead>
+  A guide to integrate Design System Components into your application.
+</Lead>
 
 All the Helvetia Design System packages are available on [NPM](https://www.npmjs.com/).
 
@@ -43,7 +43,9 @@ If you do not have an Angular app yet create one with [Angular CLI](https://angu
 <InfoQuote>
 If the projects requires translations, then install [\{TRANSLOCO\}](https://ngneat.github.io/transloco/) before the Helvetia Design System.
 
-<Code language="bash" noPreview code={`npm add -E @ngneat/transloco`} />
+```bash
+npm add -E @ngneat/transloco
+```
 
 Configure project:
 
@@ -55,7 +57,9 @@ npx ng add @ngneat/transloco
 
 Lets install the schematics to configure and add the design system to an Angular project.
 
-<Code language="bash" noPreview code={`npm add -D -E @baloise/ds-devkit`} />
+```bash
+npm add -D -E @baloise/ds-devkit
+```
 
 Install the library using Angular CLI:
 
@@ -69,45 +73,27 @@ Continue here for the manual installation guide without schematics.
 
 Let's install the latest Angular components. This package includes the Font, Token, Icon, and CSS-Utilities packages.
 
-<Code language="bash" noPreview code={`npm install @baloise/ds-angular`} />
+```bash
+npm install @baloise/ds-Angular
+```
 
 ### Import Styles
 
-Component styles are automatically loaded lazily in the browser. However, CSS Utilities and other
-fundamentals need to be imported into the global stylesheet of the application. These stylesheets can be
-imported as either **SASS** or **CSS** files.
-
-Use `@baloise/ds-styles/sass/mixins` to gain access to SASS mixins, such as breakpoints.
-
-The following suggestion for importing files is recommended for greater flexibility, ensuring only necessary styles are included in the bundle.
-However, if the application requires all styles regardless of payload size, simply import the stylesheet `@baloise/ds-styles/sass/all`
-, which has all style definitions.
+Add these to your global stylesheet (e.g. `styles.scss`). Only **Base** is required — add the others as you need them:
 
 ```css
-// SASS mixins and variables
-@forward '@baloise/ds-styles/sass/mixins';
+// 1. Base — design tokens, CSS reset, and structural styles. Always required.
+@use '@baloise/ds-css/scss/base';
 
-// Resets CSS for all browser
-@forward '@baloise/ds-styles/css/normalize';
-@forward '@baloise/ds-styles/css/structure';
+// 2. Components — only needed if you use the CSS-only classes (e.g. `class="ds-button"`)
+//    instead of the web components (`<ds-button>`), which load their styles automatically.
+@import '@baloise/ds-css/css/components';
 
-// Custom font faces
-@forward '@baloise/ds-styles/css/font';
-
-// Core CSS, always required
-@forward '@baloise/ds-styles/css/core';
-
-// CSS utilities classes (optional)
-@forward '@baloise/ds-styles/css/utilities/background';
-@forward '@baloise/ds-styles/css/utilities/border';
-@forward '@baloise/ds-styles/css/utilities/elevation';
-@forward '@baloise/ds-styles/css/utilities/flex';
-@forward '@baloise/ds-styles/css/utilities/interaction';
-@forward '@baloise/ds-styles/css/utilities/layout';
-@forward '@baloise/ds-styles/css/utilities/sizing';
-@forward '@baloise/ds-styles/css/utilities/spacing';
-@forward '@baloise/ds-styles/css/utilities/typography';
+// 3. Utilities — spacing, layout, typography, color helpers, etc. Optional.
+@import '@baloise/ds-css/css/utilities';
 ```
+
+For SASS mixins (breakpoints, etc.) without any styles, import `@baloise/ds-css/scss/mixins` instead.
 
 ### Standalone
 
@@ -127,36 +113,37 @@ export const appConfig: ApplicationConfig = {
 
 **app.component.ts**
 
-To use the custom web components add the schema `CUSTOM_ELEMENTS_SCHEMA` to your root angular component.
-In each app component, import the necessary Helvetia Design System components or a bundled set.
+Layout elements like `ds-app` and `ds-app-footer` are web components, so add the schema
+`CUSTOM_ELEMENTS_SCHEMA` to your root angular component and import the bundle that registers them.
 
 ```typescript
 import { CUSTOM_ELEMENTS_SCHEMA, Component } from '@angular/core'
 import { CommonModule } from '@angular/common'
-import { BalLayoutBundle, Heading, Button } from '@baloise/ds-angular'
+import { BalLayoutBundle } from '@baloise/ds-angular'
 
 @Component({
   selector: 'app-root',
   standalone: true,
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  imports: [CommonModule, ...BalLayoutBundle, BalHeading, BalButton],
+  imports: [CommonModule, ...BalLayoutBundle],
 })
 export class AppComponent {}
 ```
 
 **app.component.html**
 
-Add the `ds-app` to your `app.component.html` root element.
+Add the `ds-app` to your `app.component.html` root element. Elements like the button and heading
+below are plain HTML styled with a CSS class — no import or registration needed.
 
 ```html
 <ds-app class="has-sticky-footer">
   <header>
     <!-- Header content -->
   </header>
-  <main class="container">
+  <main class="ds-container">
     <!-- Your application content -->
-    <ds-heading>Hello World!</ds-heading>
-    <ds-button>Button</ds-button>
+    <h1 class="ds-heading">Hello World!</h1>
+    <button class="ds-button">Button</button>
   </main>
   <ds-app-footer>
     <!-- Footer content -->
@@ -175,7 +162,7 @@ For each angular sub module you need to import the `DesignSystemModule` to provi
 ```typescript
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core'
 import { BrowserModule } from '@angular/platform-browser'
-import { BalButton, Heading, LayoutBundle, provideDesignSystem } from '@baloise/ds-angular'
+import { BalLayoutBundle, provideDesignSystem } from '@baloise/ds-angular'
 import { AppComponent } from './app.component'
 
 @NgModule({
@@ -185,8 +172,6 @@ import { AppComponent } from './app.component'
     // Provide all components and value accessors to the app module.
     provideDesignSystem(),
     ...BalLayoutBundle,
-    BalHeading,
-    BalButton,
   ],
   providers: [],
   bootstrap: [AppComponent],
@@ -208,10 +193,10 @@ Add the `ds-app` to your `app.component.html` root element.
   <header>
     <!-- Header content -->
   </header>
-  <main class="container">
+  <main class="ds-container">
     <!-- Your application content -->
-    <ds-heading>Hello World!</ds-heading>
-    <ds-button>Button</ds-button>
+    <h1 class="ds-heading">Hello World!</h1>
+    <button class="ds-button">Button</button>
   </main>
   <ds-app-footer>
     <!-- Footer content -->
@@ -230,18 +215,20 @@ Add the `ds-app` to your `app.component.html` root element.
 
 <HTMLFramework>
 
-### Node Modules
+## Installation
 
-This is the recommended setup for HTML5 applications or server-side-rendering application, because it is
-under version control with the help of npm.
+No build tool, no framework — just an `index.html` file. This is the recommended setup for
+static sites, server-rendered pages, or any HTML5 app you keep under version control with npm.
 
+```bash
+npm add -E @baloise/ds-core @baloise/ds-css
+// or
+pnpm add -E @baloise/ds-core @baloise/ds-css
 ```
-npm add -E @baloise/ds-core
-```
 
-After that create a `index.html` file and add the following 2 references to your `<head></head>`.
+## Usage
 
-Add the `ds-app` to your root element.
+Create an `index.html` file in your project root and add the following:
 
 ```html
 <!doctype html>
@@ -251,56 +238,74 @@ Add the `ds-app` to your root element.
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Helvetia Design System</title>
-    <link rel="stylesheet" href="node_modules/@baloise/ds-styles/css/all.css" />
+
+    <!-- Configure the Design System before it boots -->
+    <meta
+      name="design-system-config"
+      data-brand="helvetia"
+      data-region="CH"
+      data-language="de"
+      data-allowed-languages="de,fr,it,en"
+    />
+
+    <!-- Required: design tokens, CSS reset, and structural styles -->
+    <link rel="stylesheet" href="node_modules/@baloise/ds-css/css/base.css" />
+    <!-- Optional: only needed if you use the CSS-only classes (e.g. class="ds-button") instead of the web components (<ds-button>) -->
+    <link rel="stylesheet" href="node_modules/@baloise/ds-css/css/components.css" />
+    <!-- Optional: only needed if you use utility classes (spacing, layout, typography, color helpers, etc.) -->
+    <link rel="stylesheet" href="node_modules/@baloise/ds-css/css/utilities.css" />
+
+    <!-- Register the web components used in markup -->
     <script
       type="module"
       src="node_modules/@baloise/ds-core/dist/design-system/design-system.esm.js"
     ></script>
     <script nomodule src="node_modules/@baloise/ds-core/dist/design-system/design-system.js"></script>
+
   </head>
+
   <body>
     <ds-app>
-      <main class="container mt-normal">
-        <ds-heading>Hello World</ds-heading>
-        <ds-button>Button</ds-button>
+      <main class="ds-container mt-base">
+        <h1 class="ds-heading">Hello World</h1>
+        <button class="ds-button">Button</button>
       </main>
     </ds-app>
   </body>
 </html>
 ```
 
-<InfoQuote>
-**TIP**
+Here's a complete, working page — the language/region `<meta>` tag, stylesheet, and scripts all
+live in `<head>`; `ds-app` wraps the page content in `<body>`.
 
-If your bundler can't code-split (e.g. a single-file/IIFE build) and you're hand-registering
-components individually via `@baloise/ds-core/components/*.js`, import `initialize`/
-`initializeDesignSystem` from `@baloise/ds-core/initialize` instead of the bare
-`@baloise/ds-core` specifier — it's a dynamic-import-free entry point that doesn't pull in
-Stencil's lazy-component loader for every component.
+<br />
 
-</InfoQuote>
+**What each part does**
+
+- **`<meta name="design-system-config">`** — sets brand, region, and language before the app
+  boots. Optional, but recommended so there's no flash of default config. See "Configure Language
+  & Region" further below.
+- **The three stylesheets** — `base.css` (design tokens, CSS reset, structural styles) is the
+  only one you really need. `components.css` adds the CSS-only classes (`.ds-button`,
+  `.ds-heading`, ...) used below. `utilities.css` (spacing, layout, typography, color helpers) is
+  entirely optional — drop it if you don't use utility classes.
+- **`<script type="module">` / `<script nomodule>`** — registers the web components (`<ds-app>`,
+  `<ds-stage>`, etc.) used in markup. The `nomodule` variant is a fallback for browsers without
+  ES module support.
+- **`<ds-app>`** — the root layout web component; wrap your page content in it.
+- **`<h1 class="ds-heading">` / `<button class="ds-button">`** — plain HTML styled with a CSS
+  class. No script needed for these — only elements that need JS behavior (like `<ds-app>`) are
+  web components.
 
 ### CDN
 
-As part of Helvetia Design System, (Content Delivery Network) [CDN](https://www.jsdelivr.com/) (Content Delivery Network) is included.
-
-However, it's important to emphasize that the CDN integration, it is not advisable
-for production applications. This recommendation stems from the fact that it depends on a third-party
-service to host and distribute the assets via the CDN.
-
-<InfoQuote>
-**TIP**
-
-To avoid potential breaking changes, it is recommended to use a specific version directly rather than relying on the latest version.
-
-Like => `https://cdn.jsdelivr.net/npm/@baloise/ds-styles@16/css/all.css`
-
-</InfoQuote>
-
-Add the following 4 references to your `<head></head>`
+Prototyping or don't want to install anything? Load everything straight from
+[jsDelivr](https://www.jsdelivr.com/), a CDN, by adding these to `<head></head>`:
 
 ```html
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@baloise/ds-styles/css/all.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@baloise/ds-css/css/base.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@baloise/ds-css/css/components.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@baloise/ds-css/css/utilities.css" />
 <script
   type="module"
   src="https://cdn.jsdelivr.net/npm/@baloise/ds-core/dist/design-system/design-system.esm.js"
@@ -311,53 +316,18 @@ Add the following 4 references to your `<head></head>`
 ></script>
 ```
 
-Here is how you can integrate it into your project.
+Same as before, only `base.css` is really required — drop `utilities.css` if you don't use utility
+classes. The rest of the page (the `<meta name="design-system-config">` tag, `<ds-app>`, etc.) works
+exactly like the "Plain HTML" example above — only where the CSS/JS come from changes.
 
-```html
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>CDN Template</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@baloise/ds-styles/css/all.css" />
-    <script
-      type="module"
-      src="https://cdn.jsdelivr.net/npm/@baloise/ds-core/dist/design-system/design-system.esm.js"
-    ></script>
-    <script
-      nomodule
-      src="https://cdn.jsdelivr.net/npm/@baloise/ds-core/dist/design-system/design-system.js"
-    ></script>
-  </head>
-  <body>
-    <ds-app class="has-sticky-footer">
-      <header>
-        <ds-app-navbar>
-          <ds-app-navbar-brand href="/" target="_blank">Design System</ds-app-navbar-brand>
-        </ds-app-navbar>
-      </header>
-      <ds-stage color="green" size="small">
-        <ds-stage-body>
-          <ds-heading>Welcome to the</ds-heading>
-          <ds-heading subtitle>Helvetia Design System</ds-heading>
-        </ds-stage-body>
-      </ds-stage>
-      <main class="container mt-xx-large">
-        <p>
-          The Helvetia Design System consists of UI components and a clearly defined visual style, released as both code
-          implementations and design artifacts to build any number of web applications.
-        </p>
-        <ds-button href="https://design.baloise.dev" target="_blank"> Check out the Documentation</ds-button>
-      </main>
-      <ds-app-footer>
-        <!-- Footer content -->
-      </ds-app-footer>
-    </ds-app>
-  </body>
-</html>
-```
+<InfoQuote>
+**TIP**
+
+Not recommended for production — it depends on a third party to host and distribute the assets.
+Pin a specific version rather than relying on the latest one:
+`https://cdn.jsdelivr.net/npm/@baloise/ds-css@16/css/base.css`
+
+</InfoQuote>
 
 </HTMLFramework>
 
@@ -369,87 +339,138 @@ Here is how you can integrate it into your project.
 
 <ReactFramework>
 
-### Installation
+## Installation
 
-Install the Design System and his dependencies.
+If you do not have a React app yet, create one with [Vite](https://vite.dev/guide/) (recommended for SPAs) or [Next.js](https://nextjs.org/docs/app/getting-started).
 
+<InfoQuote>
+  **Recommendations**
+
+  - Use **TypeScript**. `@baloise/ds-react` ships its own types; no extra `@types` package or `tsconfig` flags are
+    needed.
+  - Use **SCSS** as stylesheet format to access breakpoint mixins and more. A pre-built CSS bundle is also available.
+  - `react` and `react-dom` **18** or **19** are required as peer dependencies.
+</InfoQuote>
+
+Install the React bindings and the global styles. Both packages are required.
+
+```bash
+npm add -E @baloise/ds-react @baloise/ds-css
+// or
+pnpm add -E @baloise/ds-react @baloise/ds-css
 ```
-npm install @baloise/ds-react
-```
 
-## Import Styles
+## Usage
 
-Component styles are automatically loaded lazily in the browser. However, CSS Utilities and other
-fundamentals need to be imported into the global stylesheet of the application. These stylesheets can be
-imported as either **SASS** or **CSS** files.
+Component styles are automatically loaded lazily in the browser. Global CSS (fonts, resets, utilities) needs to be imported into the application.
 
-Use `@baloise/ds-styles/sass/mixins` to gain access to SASS mixins, such as breakpoints.
-
-The following suggestion for importing files is recommended for greater flexibility, ensuring only necessary styles are included in the bundle.
-However, if the application requires all styles regardless of payload size, simply import the stylesheet `@baloise/ds-styles/sass/all`
-, which has all style definitions.
-
-<Code
-  language="css"
-  noPreview
-  code={`
-// SASS mixins and variables
-@forward '@baloise/ds-styles/sass/mixins';
-
-// Resets CSS for all browser
-@forward '@baloise/ds-styles/css/normalize';
-@forward '@baloise/ds-styles/css/structure';
-
-// Custom font faces
-@forward '@baloise/ds-styles/sass/font';
-
-// Core CSS, always required
-@forward '@baloise/ds-styles/css/core';
-
-// CSS utilities classes (optional)
-@forward '@baloise/ds-styles/css/utilities/background';
-@forward '@baloise/ds-styles/css/utilities/border';
-@forward '@baloise/ds-styles/css/utilities/elevation';
-@forward '@baloise/ds-styles/css/utilities/flex';
-@forward '@baloise/ds-styles/css/utilities/interaction';
-@forward '@baloise/ds-styles/css/utilities/layout';
-@forward '@baloise/ds-styles/css/utilities/sizing';
-@forward '@baloise/ds-styles/css/utilities/spacing';
-@forward '@baloise/ds-styles/css/utilities/typography';
-`}
-/>
-
-### Integrate Design System
-
-Add the `BalApp` to your root element.
+Import the full stylesheet once, typically in `src/main.tsx`:
 
 ```typescript
-import './App.scss'
-import {
-  useDesignSystem,
-  BalApp,
-  BalHeading,
-  Button,
-  Footer,
-} from '@baloise/ds-react'
+import '@baloise/ds-css/css'
+```
+
+For a smaller payload, import the layers separately. Keep this order so tokens and resets are available before component and utility styles:
+
+```typescript
+// Required: design tokens, CSS reset, and structural styles
+import '@baloise/ds-css/css/base'
+// Optional: only needed if you use the CSS-only classes (e.g. class="ds-button") instead of the web components (<ds-button>)
+import '@baloise/ds-css/css/components'
+// Optional: only needed if you use utility classes (spacing, layout, typography, color helpers, etc.)
+import '@baloise/ds-css/css/utilities'
+```
+
+<LinkCard
+  pageTitle="Development/Responsive"
+  description="Breakpoint mixins, CSS utilities, and the breakpoint service."
+/>
+
+### bootstrapDesignSystem
+
+`bootstrapDesignSystem` initializes the Design System for a React app. Call it **once** at **module scope** in the app entry — `src/main.tsx` (Vite) or a client entry imported from a Next.js root layout — **before** `createRoot(...).render(...)`. It is not a React hook; do not call it inside a component function.
+
+It applies optional region, language, and brand defaults. If you omit the call, components still work with the default config. Region and language can also be changed at runtime. See **Development/Internationalization**.
+
+**main.tsx**
+
+```tsx
+import { bootstrapDesignSystem } from '@baloise/ds-react'
+import { StrictMode } from 'react'
+import { createRoot } from 'react-dom/client'
+
+import App from './App'
+
+import '@baloise/ds-css/css'
+
+bootstrapDesignSystem({
+  defaults: {
+    region: 'CH',
+    language: 'de',
+    allowedLanguages: ['de', 'fr', 'it', 'en'],
+  },
+})
+
+createRoot(document.getElementById('root')!).render(
+  <StrictMode>
+    <App />
+  </StrictMode>,
+)
+```
+
+### App root
+
+Wrap the application in `DsApp` and import the components you use.
+
+**App.tsx**
+
+```tsx
+import { DsApp, DsAppFooter, DsButton, DsHeading } from '@baloise/ds-react'
 
 function App() {
-  useDesignSystem()
-
   return (
-    <BalApp className="has-sticky-footer">
-      <header></header>
-      <main className="container">
-        <BalHeading>Hello World!</BalHeading>
-        <BalButton>Button</BalButton>
+    <DsApp className="has-sticky-footer">
+      <header>
+        {/* Header content */}
+      </header>
+      <main className="ds-container">
+        {/* Your application content */}
+        <DsHeading>
+          Hello World!
+        </DsHeading>
+        <DsButton>
+          Button
+        </DsButton>
       </main>
-      <BalFooter></BalFooter>
-    </BalApp>
+      <DsAppFooter>
+        {/* Footer content */}
+      </DsAppFooter>
+    </DsApp>
   )
 }
 
 export default App
 ```
+
+## Frameworks
+
+### Vite
+
+Vite is the recommended setup for a client-side React SPA. Scaffold a TypeScript app, then install the Design System as described above. The app entry is `src/main.tsx`.
+
+```bash
+npm create vite@latest my-app -- --template react-ts
+```
+
+### Next.js
+
+`@baloise/ds-react` is client-only today. Import Design System components from files marked `'use client'`. Call `bootstrapDesignSystem()` at module scope in a client entry file (imported from the root layout), not inside a component function.
+
+### TypeScript
+
+`@baloise/ds-react` publishes TypeScript declarations (`types` in `package.json` points at `dist/index.d.ts`). After installing the package, component props, events, and the `bootstrapDesignSystem` config are typed — no extra `@types/*` package or `tsconfig.json` changes are required.
+
+Event handlers use the `onDs*` prefix (for example `onDsClick`) and receive the custom event, not a React synthetic event.
 
 </ReactFramework>
 
@@ -462,34 +483,28 @@ export default App
 <Footer>
   <LinkCards>
     <LinkCard
-      pageTitle={'Development/Assets'}
-      description={'Guides for installing the font locally, favicons and Google maps styles.'}
+      pageTitle="Development/Assets"
+      description="Guides for installing the font locally, favicons and Google maps styles."
     />
     <LinkCard
-      pageTitle={'Development/Component'}
-      description={
-        'By using the standardized web platform APIs and Web Components the Design System achieved that the components can be used across any framework or no framework at all'
-      }
+      pageTitle="Development/Component"
+      description="By using the standardized web platform APIs and Web Components the Design System achieved that the components can be used across any framework or no framework at all"
     />
     <LinkCard
-      pageTitle={'Development/Form'}
-      description={
-        'The indispensable form controls, designed for maximum clarity. Form elements are used in combination with the CSS grid system'
-      }
+      pageTitle="Development/Form"
+      description="The indispensable form controls, designed for maximum clarity. Form elements are used in combination with the CSS grid system"
     />
     <LinkCard
-      pageTitle={'Development/Internationalization'}
-      description={'The Internationalization API of the browser provides the Design System number and date formats'}
+      pageTitle="Development/Internationalization"
+      description="The Internationalization API of the browser provides the Design System number and date formats"
     />
     <LinkCard
-      pageTitle={'Development/Theming'}
-      description={
-        "The Helvetia Design System provides a versatile foundation that can be tailored and adjusted to match a brand's identity. Customizing the appearance of Helvetia applications has never been simpler"
-      }
+      pageTitle="Development/Theming"
+      description="The Helvetia Design System provides a versatile foundation that can be tailored and adjusted to match a brand's identity. Customizing the appearance of Helvetia applications has never been simpler"
     />
     <LinkCard
-      pageTitle={'Development/Testing'}
-      description={'The Helvetia Design System provides a collection of utility functions to test the web-components'}
+      pageTitle="Development/Testing"
+      description="The Helvetia Design System provides a collection of utility functions to test the web-components"
     />
   </LinkCards>
 </Footer>

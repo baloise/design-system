@@ -288,7 +288,7 @@ export class Accordion implements DsComponentInterface, DsConfigObserver {
             part="summary"
             onClick={ev => this.handleToggle(ev, !this.open)}
             class={{
-              'button': this.button,
+              'ds-button': this.button,
               'is-wide': this.buttonWide,
               [`is-${this.buttonColor}`]: !!this.buttonColor,
               [`is-${this.buttonSize}`]: !!this.buttonSize,

@@ -52,7 +52,7 @@ export class Sheet implements DsComponentInterface {
       <Host>
         <div
           class={{
-            'container': true,
+            'ds-container': true,
             'is-fluid': isFluid,
             'is-compact': isCompact,
           }}

@@ -2,16 +2,16 @@
 @use '../../../vars' as vars;
 
 /**
- * @prop --step-panel-padding: Padding inside the step panel.
+ * @prop --step-panel-p: Padding inside the step panel.
  */
 
 :host {
-  @include vars.local(step-panel-padding, var(--ds-step-panel-padding));
+  @include vars.local(step-panel-p, var(--ds-step-panel-padding));
 
   display: none;
 }
 
 :host(.is-selected) {
   display: block;
-  padding: var(--_step-panel-padding);
+  padding: var(--_step-panel-p);
 }

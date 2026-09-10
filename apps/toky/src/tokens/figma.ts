@@ -13,6 +13,7 @@ export interface FigmaVariable {
   resolvedType: string
   valuesByMode: Record<string, unknown>
   scopes: string[]
+  description: string
 }
 
 export interface FigmaVariableCollection {
@@ -20,6 +21,10 @@ export interface FigmaVariableCollection {
   name: string
   modes: { modeId: string; name: string }[]
   defaultModeId: string
+  // true for a collection published by a linked library rather than owned by this file — e.g. a
+  // shared "Space"/"Typography" collection enabled as a library. findCollectionAndModes in
+  // figma-pull.ts must ignore these; the design tokens sync only ever owns one local collection.
+  remote?: boolean
 }
 
 export interface FigmaVariablesMeta {
@@ -59,5 +64,24 @@ export async function getFigmaVariables(fileKey: string, token: string): Promise
   }
 
   const json = (await response.json()) as { meta: FigmaVariablesMeta }
+  snapFloatVariableNoise(json.meta)
   return json.meta
+}
+
+// Figma's REST API round-trips FLOAT variables through 32-bit floats, so a value authored as e.g.
+// 1.3 or 0.3 comes back as 1.2999999523162842 or 0.30000001192092896 — real drift, not a value
+// anyone entered. Left alone, that noise both gets written into the token file verbatim and (since
+// isLiteralValueEqual in figma-map.ts only special-cases color with a tolerance, per ADR-0002)
+// trips a false "changed" diff on every single pull. Snapping once here, at the one place every
+// FLOAT variable's value enters this app, fixes both — every downstream reader (deriveValue's
+// plain number/dimension branches, the shadow/border/typography sub-value readers) sees the clean
+// decimal a designer actually authored, without each of those call sites needing its own rounding.
+function snapFloatVariableNoise(meta: FigmaVariablesMeta): void {
+  for (const variable of Object.values(meta.variables)) {
+    if (variable.resolvedType !== 'FLOAT') continue
+    for (const [modeId, value] of Object.entries(variable.valuesByMode)) {
+      if (typeof value !== 'number' || !Number.isFinite(value) || value === 0) continue
+      variable.valuesByMode[modeId] = Number(value.toPrecision(6))
+    }
+  }
 }

@@ -9,7 +9,7 @@ const meta: Meta<Args> = {
   argTypes: {},
   ...withRender(
     () => `
-<table class="table is-wide">
+<table class="ds-table is-wide">
   <thead>
     <tr>
       <th>Name</th>
@@ -54,7 +54,7 @@ Basic.storyName = '🧩 Basic'
 export const Striped = Story({
   ...withRender(
     () => `
-<table class="table is-wide is-striped is-hoverable">
+<table class="ds-table is-wide is-striped is-hoverable">
   <thead>
     <tr>
       <th>Name</th>
@@ -93,7 +93,7 @@ Striped.storyName = '🧩 Striped'
 export const Narrow = Story({
   ...withRender(
     () => `
-<table class="table is-narrow">
+<table class="ds-table is-narrow">
   <thead>
     <tr>
       <th>Name</th>

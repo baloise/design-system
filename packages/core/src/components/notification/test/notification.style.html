@@ -11,11 +11,11 @@
     <script nomodule src="/build/design-system.js"></script>
   </head>
   <body>
-    <main class="container">
+    <main class="ds-container">
       <!-- Basic Style -->
       <section data-testid="basic">
         <span>Basic</span>
-        <section class="notification" role="status" aria-live="polite" aria-atomic="true">
+        <section class="ds-notification" role="status" aria-live="polite" aria-atomic="true">
           <ds-close></ds-close>
           <h2>Information</h2>
           <strong>Strong</strong>
@@ -25,14 +25,14 @@
             <li>two</li>
             <li>three</li>
           </ul>
-          <button class="button">Click me!</button>
+          <button class="ds-button">Click me!</button>
         </section>
       </section>
 
       <!-- Long Content -->
       <section data-testid="long-content">
         <span>Long Content</span>
-        <section class="notification has-no-icon is-sm" role="status" aria-live="polite" aria-atomic="true">
+        <section class="ds-notification has-no-icon" role="status" aria-live="polite" aria-atomic="true">
           <ds-close></ds-close>
           <h2>
             Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
@@ -56,12 +56,12 @@
       <!-- No Icon -->
       <section data-testid="no-icon">
         <span>No Icon</span>
-        <section class="notification has-no-icon is-sm" role="status" aria-live="polite" aria-atomic="true">
+        <section class="ds-notification has-no-icon is-sm" role="status" aria-live="polite" aria-atomic="true">
           <ds-close></ds-close>
           <h2>Information</h2>
           <p>Your changes have been saved.</p>
         </section>
-        <section class="notification has-no-icon" role="status" aria-live="polite" aria-atomic="true">
+        <section class="ds-notification has-no-icon" role="status" aria-live="polite" aria-atomic="true">
           <ds-close></ds-close>
           <h2>Information</h2>
           <p>Your changes have been saved.</p>
@@ -71,23 +71,23 @@
       <!-- Colors -->
       <section class="flex gap-small flex-direction-column" data-testid="colors">
         <span>Colors</span>
-        <section class="notification" role="status" aria-live="polite" aria-atomic="true">
+        <section class="ds-notification" role="status" aria-live="polite" aria-atomic="true">
           <h2>Default</h2>
           <p>Your changes have been saved.</p>
         </section>
-        <section class="notification is-info" role="status" aria-live="polite" aria-atomic="true">
+        <section class="ds-notification is-info" role="status" aria-live="polite" aria-atomic="true">
           <h2>Information</h2>
           <p>Your changes have been saved.</p>
         </section>
-        <section class="notification is-success" role="status" aria-live="polite" aria-atomic="true">
+        <section class="ds-notification is-success" role="status" aria-live="polite" aria-atomic="true">
           <h2>Success</h2>
           <p>Your changes have been saved.</p>
         </section>
-        <section class="notification is-warning" role="status" aria-live="polite" aria-atomic="true">
+        <section class="ds-notification is-warning" role="status" aria-live="polite" aria-atomic="true">
           <h2>Warning</h2>
           <p>Your changes have been saved.</p>
         </section>
-        <section class="notification is-danger" role="status" aria-live="polite" aria-atomic="true">
+        <section class="ds-notification is-danger" role="status" aria-live="polite" aria-atomic="true">
           <h2>Danger</h2>
           <p>Your changes have been saved.</p>
         </section>
@@ -96,34 +96,54 @@
       <!-- Outline -->
       <section class="flex gap-small flex-direction-column" data-testid="outline">
         <span>Outline</span>
-        <section class="notification has-no-icon is-outline-base" role="status" aria-live="polite" aria-atomic="true">
+        <section
+          class="ds-notification has-no-icon is-outline-default"
+          role="status"
+          aria-live="polite"
+          aria-atomic="true"
+        >
           <h2>Heading</h2>
           <p>
             <ds-brand-icon src="/assets/images/brand-icons/car-green.svg"></ds-brand-icon> Your changes have been saved.
           </p>
         </section>
-        <section class="notification has-no-icon is-outline-purple" role="status" aria-live="polite" aria-atomic="true">
+        <section
+          class="ds-notification has-no-icon is-outline-purple"
+          role="status"
+          aria-live="polite"
+          aria-atomic="true"
+        >
           <h2>Heading</h2>
           <p>
             <ds-brand-icon color="purple" src="/assets/images/brand-icons/car-green.svg"></ds-brand-icon> Your changes
             have been saved.
           </p>
         </section>
-        <section class="notification has-no-icon is-outline-green" role="status" aria-live="polite" aria-atomic="true">
+        <section
+          class="ds-notification has-no-icon is-outline-green"
+          role="status"
+          aria-live="polite"
+          aria-atomic="true"
+        >
           <h2>Heading</h2>
           <p>
             <ds-brand-icon color="green" src="/assets/images/brand-icons/car-green.svg"></ds-brand-icon> Your changes
             have been saved.
           </p>
         </section>
-        <section class="notification has-no-icon is-outline-yellow" role="status" aria-live="polite" aria-atomic="true">
+        <section
+          class="ds-notification has-no-icon is-outline-yellow"
+          role="status"
+          aria-live="polite"
+          aria-atomic="true"
+        >
           <h2>Heading</h2>
           <p>
             <ds-brand-icon color="yellow" src="/assets/images/brand-icons/car-green.svg"></ds-brand-icon> Your changes
             have been saved.
           </p>
         </section>
-        <section class="notification has-no-icon is-outline-red" role="status" aria-live="polite" aria-atomic="true">
+        <section class="ds-notification has-no-icon is-outline-red" role="status" aria-live="polite" aria-atomic="true">
           <h2>Heading</h2>
           <p>
             <ds-brand-icon color="red" src="/assets/images/brand-icons/car-green.svg"></ds-brand-icon> Your changes have
@@ -135,16 +155,12 @@
       <!-- Sizes-->
       <section class="flex gap-small flex-direction-column" data-testid="sizes">
         <span>Sizes</span>
-        <section class="notification is-outline-purple is-sm" role="status" aria-live="polite" aria-atomic="true">
+        <section class="ds-notification is-outline-purple is-sm" role="status" aria-live="polite" aria-atomic="true">
           <h2>Small</h2>
           <p>Your changes have been saved.</p>
         </section>
-        <section class="notification is-outline-purple" role="status" aria-live="polite" aria-atomic="true">
+        <section class="ds-notification is-outline-purple" role="status" aria-live="polite" aria-atomic="true">
           <h2>Default</h2>
-          <p>Your changes have been saved.</p>
-        </section>
-        <section class="notification is-outline-purple is-md" role="status" aria-live="polite" aria-atomic="true">
-          <h2>Medium</h2>
           <p>Your changes have been saved.</p>
         </section>
       </section>

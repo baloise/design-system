@@ -6,12 +6,12 @@ export const POPUP_DOC_CONFIG = {
   section: 'Components / Popup',
   color: 'purple' as const,
   tabs: [
-    { label: 'Overview', storyId: 'components-popup--popup' },
-    { label: 'Usage', storyId: 'components-popup--usage' },
-    { label: 'Variants', storyId: 'components-popup--variants-overview' },
-    { label: 'Styling', storyId: 'components-popup--styling' },
-    { label: 'Accessibility', storyId: 'components-popup--accessibility' },
-    { label: 'Testing', storyId: 'components-popup--testing' },
+    { label: 'Overview', storyId: 'components-popup-popup--popup' },
+    { label: 'Usage', storyId: 'components-popup-usage--usage' },
+    { label: 'Variants', storyId: 'components-popup-variants-overview--overview' },
+    { label: 'Styling', storyId: 'components-popup-styling--styling' },
+    { label: 'Accessibility', storyId: 'components-popup-accessibility--accessibility' },
+    { label: 'Testing', storyId: 'components-popup-testing--testing' },
   ],
 }
 

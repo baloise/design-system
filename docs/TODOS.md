@@ -1,7 +1,5 @@
 # TODO's
 
-2
-
 ## Ongoing Improvements
 
 | Item                                     | Description                                                                           | Status |
@@ -23,18 +21,17 @@
 | Check deps of core                       | Do we need all of them                                                                | ✅     |
 | Create config as meta                    | Add new possability to add config values via html meta                                | ✅     |
 | React                                    | Add frameworks back after migrating too shadow dom                                    | ✅     |
-| Add missing regions 2.0                  | Austria, Spain, Italy                                                                 | ⬜     |
+| Verify desing tokens                     | Check if the tokens follow our style-guide                                            | ✅     |
 | Angular bindings                         | Add frameworks back after migrating too shadow dom                                    | ✅     |
-| Angular forms integration                | ControlValueAccessor/reactive-forms wiring for form components (deferred by ADR-0006) | ⬜     |
+| Angular forms integration                | ControlValueAccessor/reactive-forms wiring for form components (deferred by ADR-0006) | ✅     |
+| Add missing regions 2.0                  | Austria, Spain, Italy                                                                 | ✅     |
 | Create Migration Bal                     | Create migration plan for ex-baloise                                                  | ⬜     |
-| Verify desing tokens                     | Check if the tokens follow our style-guide                                            | ⬜     |
 | Figma Sync                               | Finish the github actions to sync tokens                                              | ⬜     |
 | Gap Analyses Material                    | Check Components use cases                                                            | ⬜     |
 | Gap Parttern Lib                         | Check Components use cases                                                            | ⬜     |
 | Create Migration Hel                     | Create migration plan for ex-helvetia                                                 | ⬜     |
 | Brand Icons                              | Update brand icons                                                                    | ⬜     |
 | Brand Icons API                          | Create a task to automate the update                                                  | ⬜     |
-| Check min height of 48px to 40px         | Verify if we can reduce the standard height 0f 48px to 40px                           | ⬜     |
 
 ## Componentes
 
@@ -81,7 +78,7 @@ These improvements help our components work seamlessly across all supported fram
 | list             | WC & CSS | ✅     | ⬜   | ✅   | ✅     | ✅        | ✅     | ⬜    |
 | accordion        | WC       | ✅     | ⬜   | ✅   | ✅     | ✅        | ✅     | ⬜    |
 | carousel         | WC       | ✅     | ⬜   | ✅   | ✅     | ✅        | ✅     | ⬜    |
-| data             | WC       | ✅     | ⬜   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
+| data             | WC       | ✅     | ⬜   | ✅   | ✅     | ✅        | ✅     | ⬜    |
 | -- ALERTS --     | ###      | ###    | ###  | ###  | ###    | ###       | ###    | ###   |
 | notification     | WC & CSS | ✅     | ⬜   | ✅   | ✅     | ✅        | ✅     | ⬜    |
 | snackbar         | WC       | ✅     | ⬜   | ✅   | ✅     | ✅        | ✅     | ⬜    |
@@ -102,19 +99,18 @@ These improvements help our components work seamlessly across all supported fram
 | -- FORMS --      | ###      | ###    | ###  | ###  | ###    | ###       | ###    | ###   |
 | input            | WC & CSS | ✅     | ⬜   | ✅   | ✅     | ✅        | ✅     | ⬜    |
 | textarea         | WC & CSS | ✅     | ⬜   | ✅   | ✅     | ✅        | ✅     | ⬜    |
-| time-input       | WC & CSS | ✅     | ⬜   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
-| number-input     | WC       | ✅     | ⬜   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
-| input-slider     | WC       | ✅     | ⬜   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
-| input-stepper    | WC       | ✅     | ⬜   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
-| select           | WC & CSS | ✅     | ⬜   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
-| date             | WC       | ✅     | ⬜   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
-| radio            | WC & CSS | ✅     | ⬜   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
-| toggle           | WC & CSS | ✅     | ⬜   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
-| checkbox         | WC & CSS | ✅     | ⬜   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
-| segment          | WC & CSS | ✅     | ⬜   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
-
-| file-upload | WC | ✅ | ⬜ | ✅ | ✅ | ✅ | ⬜ | ⬜ |
-| ag-grid | Lib | ✅ | ✅ | ✅ | ✅ | ✅ | ⬜ | ⬜ |
+| time-input       | WC & CSS | ✅     | ⬜   | ✅   | ✅     | ✅        | ✅     | ⬜    |
+| number-input     | WC       | ✅     | ⬜   | ✅   | ✅     | ✅        | ✅     | ⬜    |
+| input-slider     | WC       | ✅     | ⬜   | ✅   | ✅     | ✅        | ✅     | ⬜    |
+| input-stepper    | WC       | ✅     | ⬜   | ✅   | ✅     | ✅        | ✅     | ⬜    |
+| select           | WC & CSS | ✅     | ⬜   | ✅   | ✅     | ✅        | ✅     | ⬜    |
+| date             | WC       | ✅     | ⬜   | ✅   | ✅     | ✅        | ✅     | ⬜    |
+| radio            | WC & CSS | ✅     | ⬜   | ✅   | ✅     | ✅        | ✅     | ⬜    |
+| toggle           | WC & CSS | ✅     | ⬜   | ✅   | ✅     | ✅        | ✅     | ⬜    |
+| checkbox         | WC & CSS | ✅     | ⬜   | ✅   | ✅     | ✅        | ✅     | ⬜    |
+| segment          | WC & CSS | ✅     | ⬜   | ✅   | ✅     | ✅        | ✅     | ⬜    |
+| file-upload      | WC       | ✅     | ⬜   | ✅   | ✅     | ✅        | ✅     | ⬜    |
+| ag-grid          | Lib      | ✅     | ✅   | ✅   | ✅     | ✅        | ✅     | ⬜    |
 
 ## Tokens & Figma
 

@@ -20,8 +20,8 @@
  * @prop --badge-icon-size: Size of the icon inside the badge.
  * @prop --badge-icon-color: Color of the icon inside the badge.
  * @prop --badge-gap: Gap between icon and text in the badge.
- * @prop --badge-padding-inline: Horizontal padding inside the badge.
- * @prop --badge-padding-block: Vertical padding inside the badge.
+ * @prop --badge-px: Horizontal padding inside the badge.
+ * @prop --badge-py: Vertical padding inside the badge.
  */
 
 :host {
@@ -34,16 +34,16 @@
   @include vars.local(badge-min-width, var(--ds-badge-size-base-height));
   @include vars.local(badge-height, var(--ds-badge-size-base-height));
   @include vars.local(badge-radius, var(--ds-badge-size-base-radius));
-  @include vars.local(badge-color-background, var(--ds-badge-base-color-background));
-  @include vars.local(badge-color-text, var(--ds-badge-base-color-text));
-  @include vars.local(badge-pulse-color, var(--ds-badge-base-color-background));
+  @include vars.local(badge-color-background, var(--ds-badge-default-color-background));
+  @include vars.local(badge-color-text, var(--ds-badge-default-color-text));
+  @include vars.local(badge-pulse-color, var(--ds-badge-default-color-background));
 
   @include vars.local(badge-icon-size, var(--ds-badge-size-base-icon));
-  @include vars.local(badge-icon-color, var(--ds-badge-base-color-text));
+  @include vars.local(badge-icon-color, var(--ds-badge-default-color-text));
 
-  @include vars.local(badge-gap, var(--ds-badge-size-base-space));
-  @include vars.local(badge-padding-inline, var(--ds-badge-size-base-space));
-  @include vars.local(badge-padding-block, var(--ds-badge-size-base-space));
+  @include vars.local(badge-gap, var(--ds-badge-size-base-gap));
+  @include vars.local(badge-px, var(--ds-badge-size-base-padding));
+  @include vars.local(badge-py, var(--ds-badge-size-base-padding));
 }
 
 /**
@@ -74,8 +74,8 @@
   font-family: var(--_badge-font-family);
   font-weight: var(--_badge-font-weight);
   gap: var(--_badge-gap);
-  padding-inline: var(--_badge-padding-inline);
-  padding-block: var(--_badge-padding-block);
+  padding-inline: var(--_badge-px);
+  padding-block: var(--_badge-py);
 
   ds-icon {
     --icon-size: var(--_badge-icon-size);
@@ -97,6 +97,7 @@
 // the `disabled` group, which carries the same grey-on-light-grey palette.
 $colors: (
   'disabled': 'disabled',
+  'info': 'info',
   'success': 'success',
   'warning': 'warning',
   'danger': 'danger',
@@ -122,12 +123,11 @@ $colors: (
   --mod-badge-icon-size: var(--ds-badge-size-sm-icon);
   --mod-badge-font-size: var(--ds-badge-size-sm-font);
 
-  --mod-badge-gap: var(--ds-badge-size-sm-space);
-  --mod-badge-padding-inline: var(--ds-badge-size-sm-space);
-  --mod-badge-padding-block: var(--ds-badge-size-sm-space);
+  --mod-badge-gap: var(--ds-badge-size-sm-gap);
+  --mod-badge-px: var(--ds-badge-size-sm-padding);
+  --mod-badge-py: var(--ds-badge-size-sm-padding);
 
   max-width: var(--ds-badge-size-sm-height);
-  padding: 0;
   overflow: hidden;
 
   > * {
@@ -142,9 +142,9 @@ $colors: (
   --mod-badge-font-size: var(--ds-badge-size-lg-font);
   --mod-badge-icon-size: var(--ds-badge-size-lg-icon);
 
-  --mod-badge-gap: var(--ds-badge-size-lg-space);
-  --mod-badge-padding-inline: var(--ds-badge-size-lg-space);
-  --mod-badge-padding-block: var(--ds-badge-size-lg-space);
+  --mod-badge-gap: var(--ds-badge-size-lg-gap);
+  --mod-badge-px: var(--ds-badge-size-lg-padding);
+  --mod-badge-py: var(--ds-badge-size-lg-padding);
 }
 
 /**

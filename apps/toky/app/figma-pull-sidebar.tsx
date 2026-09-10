@@ -61,7 +61,9 @@ function PullPlanSection({
       {items.length > 0 && (
         <ul className="space-y-1">
           {items.map(({ entry, badge, variant }) => {
-            const before = beforeFor(entry.path)
+            // A renamed entry's local counterpart sits at its pre-rename path (movedFrom), not the
+            // new one — see figma-pull.ts's `movedFrom` doc comment.
+            const before = beforeFor(entry.movedFrom ?? entry.path)
             const key = pullEntryKey(scope, entry.path)
             return (
               <li
@@ -76,7 +78,14 @@ function PullPlanSection({
                   className="size-4 shrink-0 accent-primary"
                 />
                 <div className="min-w-0 flex-1">
-                  <p className="truncate">{entry.path.join('/')}</p>
+                  {entry.movedFrom ? (
+                    <p className="truncate">
+                      {entry.movedFrom.join('/')} <span className="text-muted-foreground">→</span>{' '}
+                      {entry.path.join('/')}
+                    </p>
+                  ) : (
+                    <p className="truncate">{entry.path.join('/')}</p>
+                  )}
                   <p className="mt-0.5 flex min-w-0 items-center gap-1.5 text-xs text-muted-foreground">
                     {entry.kind !== 'create' && before && (
                       <span className={cn('min-w-0', entry.kind === 'delete' && 'line-through')}>
@@ -92,7 +101,7 @@ function PullPlanSection({
                   </p>
                 </div>
                 <Badge variant={variant} className="shrink-0">
-                  {badge}
+                  {entry.movedFrom ? 'Renamed' : badge}
                 </Badge>
               </li>
             )

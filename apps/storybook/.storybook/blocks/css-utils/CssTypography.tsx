@@ -8,10 +8,19 @@ export const CssTypographyColors = (): React.ReactElement => (
     utility="typography"
     search="color"
     example={item => {
+      const style: React.CSSProperties = { display: 'flex', alignItems: 'center', justifyContent: 'center' }
       if (item.class.includes('inverted') || item.class.includes('white')) {
-        return <div className={`${item.class} bg-primary p-small font-weight-bold text-medium`}>Aa</div>
+        return (
+          <div className={`${item.class} bg-primary p-sm font-weight-bold text-md`} style={style}>
+            Aa
+          </div>
+        )
       }
-      return <div className={`${item.class} p-small font-weight-bold text-medium`}>Aa</div>
+      return (
+        <div className={`${item.class} p-sm font-weight-bold text-md`} style={style}>
+          Aa
+        </div>
+      )
     }}
   />
 )
@@ -20,7 +29,7 @@ export const CssTypographyFamily = (): React.ReactElement => (
   <CssUtilitiesTable
     utility="typography"
     search="font-family"
-    example={item => <div className={`${item.class} p-small font-weight-bold text-medium`}>Aa</div>}
+    example={item => <div className={`${item.class} p-sm font-weight-bold text-md`}>Aa</div>}
   />
 )
 
@@ -51,7 +60,7 @@ function formatSizeValue(value: unknown): string | undefined {
 }
 
 export const CssTypographySize = (): React.ReactElement => {
-  const sizeCategory = tokens['🔗 Alias']['🔤 Text'].Size
+  const sizeCategory = tokens['📱 Device']['🔤 Text'].Size
 
   const sizeTokens = Object.fromEntries(
     Object.keys(sizeCategory).map(key => {
@@ -61,7 +70,7 @@ export const CssTypographySize = (): React.ReactElement => {
       return [
         size,
         {
-          name: `ds-alias-text-size-${size}-device`,
+          name: `ds-device-text-size-${size}`,
           $value: formatSizeValue(responsive?.mobile) ?? item.$value,
         },
       ]
@@ -71,6 +80,6 @@ export const CssTypographySize = (): React.ReactElement => {
   return CssTable({
     tokens: sizeTokens,
     css: 'text',
-    example: item => <div className={`text-${item.key} font-weight-bold text-align-center p-xx-small`}>Aa</div>,
+    example: item => <div className={`text-${item.key} font-weight-bold text-align-center p-2xs`}>Aa</div>,
   })
 }

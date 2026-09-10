@@ -17,7 +17,6 @@ import {
   dsBreakpoints,
   ListenToBreakpoints,
   rOnLoad,
-  normalizeDeprecatedTShirtSize,
   hasValue,
   Logger,
   type LogInstance,
@@ -216,7 +215,6 @@ export class Logo implements DsComponentInterface, DsBreakpointObserver, DsConfi
    */
 
   render() {
-    const size = normalizeDeprecatedTShirtSize(this.size) || ''
     const LogoElement =
       this.brand === 'helvetia' || (!hasValue(this.brand) && this.configBrand === 'helvetia') ? (
         <LogoHelvetia onlyText={this.animated} height={this.getHeight()} />
@@ -229,8 +227,8 @@ export class Logo implements DsComponentInterface, DsBreakpointObserver, DsConfi
         class={{
           'is-animated': this.isAnimated,
           'is-inverted': this.color === 'inverted',
-          'is-sm': size === 'sm',
-          'is-lg': size === 'lg',
+          'is-sm': this.size === 'sm',
+          'is-lg': this.size === 'lg',
         }}
       >
         <div

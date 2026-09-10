@@ -7,7 +7,7 @@
 
 $use-host: false !default;
 $name: card;
-$css-selector: ('.card');
+$css-selector: ('.ds-card');
 $host-selector: ('#card');
 
 /**
@@ -18,16 +18,16 @@ $host-selector: ('#card');
  */
 
 @include vars.hybrid($name, $css-selector, $use-host) {
-  @include vars.local(card-color-background, var(--ds-card-color-base-background));
-  @include vars.local(card-color-text, var(--ds-card-color-base-text));
-  @include vars.local(card-color-border, var(--ds-card-color-base-border));
+  @include vars.local(card-color-background, var(--ds-card-color-default-background));
+  @include vars.local(card-color-text, var(--ds-card-color-default-text));
+  @include vars.local(card-color-border, var(--ds-card-color-default-border));
   @include vars.local(card-radius, var(--ds-card-radius));
   @include vars.local(card-shadow, var(--ds-card-shadow-base));
-  @include vars.local(card-gap, var(--ds-card-space-base-device));
-  @include vars.local(card-padding-left, var(--ds-card-space-base-device));
-  @include vars.local(card-padding-right, var(--ds-card-space-base-device));
-  @include vars.local(card-padding-top, var(--ds-card-space-base-device));
-  @include vars.local(card-padding-bottom, var(--ds-card-space-base-device));
+  @include vars.local(card-gap, var(--ds-card-gap-base));
+  @include vars.local(card-pl, var(--ds-card-padding-base));
+  @include vars.local(card-pr, var(--ds-card-padding-base));
+  @include vars.local(card-pt, var(--ds-card-padding-base));
+  @include vars.local(card-pb, var(--ds-card-padding-base));
 
   @include vars.local(card-header-grid-template-columns, 1fr auto);
   @include vars.local(card-header-margin-left, 0);
@@ -57,24 +57,24 @@ $host-selector: ('#card');
   border: var(--_card-color-border);
   box-shadow: var(--_card-shadow);
   gap: var(--_card-gap);
-  padding-left: var(--_card-padding-left);
-  padding-right: var(--_card-padding-right);
-  padding-top: var(--_card-padding-top);
-  padding-bottom: var(--_card-padding-bottom);
+  padding-left: var(--_card-pl);
+  padding-right: var(--_card-pr);
+  padding-top: var(--_card-pt);
+  padding-bottom: var(--_card-pb);
   text-decoration: none;
 
   // Header
-  .card-header {
+  .ds-card-header {
     @include card-header.style();
   }
 
   // Content
-  .card-content {
+  .ds-card-content {
     @include typography.content();
   }
 
   // Actions as button group
-  .card-actions {
+  .ds-card-actions {
     @include button-group.style();
   }
 
@@ -115,10 +115,10 @@ $host-selector: ('#card');
   &.is-fullheight {
     height: 100%;
 
-    .card-content,
-    .card-content > .stack,
-    .card-content > .flex,
-    .card-content > .is-flex {
+    .ds-card-content,
+    .ds-card-content > .ds-stack,
+    .ds-card-content > .flex,
+    .ds-card-content > .is-flex {
       height: 100%;
     }
   }
@@ -141,7 +141,7 @@ $host-selector: ('#card');
 // Badge Positioning
 // --------------------------------
 @include hybrid.styles($css-selector, $use-host) {
-  > .badge:first-child,
+  > .ds-badge:first-child,
   > ds-badge:first-child {
     --badge-position: absolute;
     --badge-top: 0;
@@ -166,7 +166,7 @@ $host-selector: ('#card');
 // Tags Positioning
 // --------------------------------
 @include hybrid.styles($css-selector, $use-host) {
-  > .tag.is-center:first-child,
+  > .ds-tag.is-center:first-child,
   > ds-tag[position='center']:first-child {
     --tag-position: absolute;
     --tag-top: 0;
@@ -175,7 +175,7 @@ $host-selector: ('#card');
     transform: translateY(-50%);
   }
 
-  > .tag.is-left:first-child,
+  > .ds-tag.is-left:first-child,
   > ds-tag[position='left']:first-child {
     --tag-position: absolute;
     --tag-top: 0;
@@ -184,7 +184,7 @@ $host-selector: ('#card');
     transform: translateY(-50%);
   }
 
-  > .tag.is-right:first-child,
+  > .ds-tag.is-right:first-child,
   > ds-tag[position='right']:first-child {
     --tag-position: absolute;
     --tag-top: 0;
@@ -252,10 +252,10 @@ $host-selector: ('#card');
 // --------------------------------
 @mixin dense {
   --mod-card-shadow: var(--ds-card-shadow-flat);
-  --mod-card-padding-left: 0;
-  --mod-card-padding-right: 0;
-  --mod-card-padding-top: 0;
-  --mod-card-padding-bottom: 0;
+  --mod-card-pl: 0;
+  --mod-card-pr: 0;
+  --mod-card-pt: 0;
+  --mod-card-pb: 0;
 }
 
 @include hybrid.styles($css-selector, $use-host) {
@@ -311,30 +311,30 @@ $backgrounds: (
 //
 // Space
 // --------------------------------
-$spaces: ('sm', 'md', 'lg');
+$spaces: ('sm', 'lg');
 
 @each $space in $spaces {
   @include hybrid.styles($css-selector, $use-host) {
     &.has-space-#{$space} {
-      --mod-card-gap: var(--ds-card-space-#{$space}-device);
+      --mod-card-gap: var(--ds-card-gap-#{$space});
     }
     &.has-space-#{$space}:not(.is-dense) {
-      --mod-card-padding-left: var(--ds-card-space-#{$space}-device);
-      --mod-card-padding-right: var(--ds-card-space-#{$space}-device);
-      --mod-card-padding-top: var(--ds-card-space-#{$space}-device);
-      --mod-card-padding-bottom: var(--ds-card-space-#{$space}-device);
+      --mod-card-pl: var(--ds-card-padding-#{$space});
+      --mod-card-pr: var(--ds-card-padding-#{$space});
+      --mod-card-pt: var(--ds-card-padding-#{$space});
+      --mod-card-pb: var(--ds-card-padding-#{$space});
     }
   }
 
   @include hybrid.host($use-host) {
     :host(.has-space-#{$space}) {
-      --mod-card-gap: var(--ds-card-space-#{$space}-device);
+      --mod-card-gap: var(--ds-card-gap-#{$space});
     }
     :host(.has-space-#{$space}:not(.is-dense)) {
-      --mod-card-padding-left: var(--ds-card-space-#{$space}-device);
-      --mod-card-padding-right: var(--ds-card-space-#{$space}-device);
-      --mod-card-padding-top: var(--ds-card-space-#{$space}-device);
-      --mod-card-padding-bottom: var(--ds-card-space-#{$space}-device);
+      --mod-card-pl: var(--ds-card-padding-#{$space});
+      --mod-card-pr: var(--ds-card-padding-#{$space});
+      --mod-card-pt: var(--ds-card-padding-#{$space});
+      --mod-card-pb: var(--ds-card-padding-#{$space});
     }
   }
 }
@@ -347,15 +347,6 @@ $spaces: ('sm', 'md', 'lg');
   &.is-tile {
     --mod-card-header-grid-template-columns: auto 1fr auto;
     --mod-card-header-grid-template-areas: 'icon title .' 'icon subtitle subtitle';
-
-    @include tablet() {
-      --mod-card-padding-left: calc(
-        var(--ds-card-space-base-device) + var(--ds-brand-icon-tile-size-lg-device) + calc(var(--_card-gap) / 2)
-      );
-      --mod-card-header-margin-left: calc(
-        calc(var(--ds-brand-icon-tile-size-lg-device) * -1) - calc(var(--_card-gap) / 2)
-      );
-    }
   }
 }
 
@@ -363,15 +354,6 @@ $spaces: ('sm', 'md', 'lg');
   :host(.is-tile) {
     --mod-card-header-grid-template-columns: auto 1fr auto;
     --mod-card-header-grid-template-areas: 'icon title .' 'icon subtitle subtitle';
-
-    @include tablet() {
-      --mod-card-padding-left: calc(
-        var(--ds-card-space-base-device) + var(--ds-brand-icon-tile-size-lg-device) + calc(var(--_card-gap) / 2)
-      );
-      --mod-card-header-margin-left: calc(
-        calc(var(--ds-brand-icon-tile-size-lg-device) * -1) - calc(var(--_card-gap) / 2)
-      );
-    }
   }
 }
 
@@ -379,8 +361,8 @@ $spaces: ('sm', 'md', 'lg');
 // Image Teaser
 // --------------------------------
 
-@include hybrid.styles('.image-teaser ', $use-host) {
-  .card {
+@include hybrid.styles('.ds-image-teaser ', $use-host) {
+  .ds-card {
     margin-top: calc(var(--_card-gap) * -1 * 2);
     margin-left: calc(var(--_card-gap));
     margin-right: calc(var(--_card-gap));
@@ -389,21 +371,21 @@ $spaces: ('sm', 'md', 'lg');
 
   &.is-wide {
     @include tablet() {
-      .card {
+      .ds-card {
         width: 75%;
         margin-left: calc(var(--_card-gap) * 2);
         margin-right: calc(var(--_card-gap));
       }
 
       &.is-center {
-        .card {
+        .ds-card {
           margin-left: auto;
           margin-right: auto;
         }
       }
 
       &.is-right {
-        .card {
+        .ds-card {
           margin-left: auto;
           margin-right: calc(var(--_card-gap) * 2);
         }
@@ -411,7 +393,7 @@ $spaces: ('sm', 'md', 'lg');
     }
 
     @include desktop() {
-      .card {
+      .ds-card {
         width: 50%;
       }
     }
@@ -455,8 +437,8 @@ $spaces: ('sm', 'md', 'lg');
   }
 }
 
-a.image-link,
-button.image-link {
+a.ds-image-link,
+button.ds-image-link {
   cursor: pointer;
 
   picture {

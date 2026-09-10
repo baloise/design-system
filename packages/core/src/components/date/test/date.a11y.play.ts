@@ -20,6 +20,12 @@ test('invalid', async ({ page, a11y }) => {
   await a11y('ds-date')
 })
 
+test('inline', async ({ page, a11y }) => {
+  await page.mount(`<ds-date label="Date of birth" inline></ds-date>`)
+  await page.locator('.air-datepicker-cell.-day-:not(.-other-month-)').first().waitFor({ state: 'visible' })
+  await a11y('ds-date')
+})
+
 test('with picker open', async ({ page, a11y }) => {
   await page.mount(`<ds-date label="Date of birth"></ds-date>`)
   const date = new DsDate(page.locator('ds-date'))

@@ -37,13 +37,13 @@ export const UsageExamples = ({ items }: UsageExamplesProps): React.ReactElement
 
           return (
             <div key={index} style={{ display: 'flex', flexDirection: 'column' }}>
-              <div className="stack as-row align-top-start">
+              <div className="ds-stack as-row align-top-start">
                 <ds-icon
                   name={iconName}
                   size="md"
                   style={{ '--icon-color': iconColor } as React.CSSProperties}
                 ></ds-icon>
-                <h4 className="title" style={{ color: titleColor, marginBottom: '1rem' }}>
+                <h4 className="ds-title" style={{ color: titleColor, marginBottom: '1rem' }}>
                   {item.title}
                 </h4>
               </div>

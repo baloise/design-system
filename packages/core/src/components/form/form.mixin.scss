@@ -38,7 +38,12 @@
 // $bordered: false drops the background/border/hover/active/focus-within styling entirely,
 // keeping only the structural layout rules — for controls (e.g. ds-input-slider) whose own
 // control already reads as the interactive surface and doesn't need the shared "boxed" look.
-@mixin container($selector: '#container', $bordered: true) {
+//
+// $active: false drops only the :active/.is-pressed container-wide border — for components
+// with multiple independently-focusable sub-elements (e.g. ds-input-phone's country trigger
+// and number field) where a plain click anywhere in #container must not flash a container-wide
+// active border; the component scopes its own focus/active styling to the clicked sub-element.
+@mixin container($selector: '#container', $bordered: true, $active: true) {
   #{$selector} {
     box-sizing: border-box;
     clear: both;
@@ -55,25 +60,27 @@
       border: var(--_form-container-border);
       border-radius: var(--_form-container-radius);
 
-      @include hover {
-        &:hover,
-        &.is-hovered {
-          background: var(--_form-container-hover-background);
-          border: var(--_form-container-hover-border);
+      @if $active {
+        @include hover {
+          &:hover,
+          &.is-hovered {
+            background: var(--_form-container-hover-background);
+            border: var(--_form-container-hover-border);
+          }
         }
-      }
 
-      &:active,
-      &.is-pressed {
-        background: var(--_form-container-active-background);
-        border: var(--_form-container-active-border);
-      }
+        &:active,
+        &.is-pressed {
+          background: var(--_form-container-active-background);
+          border: var(--_form-container-active-border);
+        }
 
-      &:focus-within,
-      &.is-focused {
-        &:not(:active) {
-          background: var(--_form-container-focus-background);
-          border: var(--_form-container-focus-border);
+        &:focus-within,
+        &.is-focused {
+          &:not(:active) {
+            background: var(--_form-container-focus-background);
+            border: var(--_form-container-focus-border);
+          }
         }
       }
     }

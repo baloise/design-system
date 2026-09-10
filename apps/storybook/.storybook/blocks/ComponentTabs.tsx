@@ -67,7 +67,7 @@ export const ComponentTabs: React.FC<ComponentTabsProps> = ({ tabs, defaultTab }
             role="tab"
             aria-selected={activeTab === tab.id}
             aria-controls={`panel-${tab.id}`}
-            className="title hover:text-primary-hover active:text-primary-active"
+            className="ds-title hover:text-primary-hover active:text-primary-active"
             style={{
               padding: '12px 24px',
               border: 'none',

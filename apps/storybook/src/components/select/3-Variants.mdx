@@ -3,7 +3,7 @@ import { Banner, BannerTabs, CanvasTabs, CanvasWithCodePen, Footer, StoryHeading
 import * as SelectStories from './select.stories'
 import { SELECT_DOC_CONFIG, getSelectTabs } from './select.doc-config'
 
-<Meta title="Components/Select/Variants/Overview" />
+<Meta title="Components/Select/Variants/Overview" name="Overview" />
 
 <StoryHeading of={SelectStories.Basic} hidden></StoryHeading>
 
@@ -18,7 +18,7 @@ import { SELECT_DOC_CONFIG, getSelectTabs } from './select.doc-config'
 
 Default single select with a label and description. The web component enhances a native `<select>` via Slim Select; a plain HTML/CSS equivalent is available when JavaScript enhancement isn't needed.
 
-<CanvasTabs htmlOf={SelectStories.BasicHtml} of={SelectStories.Basic} />
+<CanvasTabs htmlOf={SelectStories.BasicHtml} of={SelectStories.Basic} overflowVisible={true} />
 
 {/* ------------------------------------------------------ */}
 
@@ -34,7 +34,7 @@ A search input inside the dropdown lets users filter options by typing.
 
 A clear button resets the selection back to `null`.
 
-<CanvasWithCodePen of={SelectStories.Clearable} sourceState="shown" />
+<CanvasWithCodePen of={SelectStories.Clearable} sourceState="shown" overflowVisible={true} />
 
 {/* ------------------------------------------------------ */}
 
@@ -42,7 +42,7 @@ A clear button resets the selection back to `null`.
 
 Multiple selection allows users to pick several values at once.
 
-<CanvasWithCodePen of={SelectStories.Multiple} sourceState="shown" />
+<CanvasWithCodePen of={SelectStories.Multiple} sourceState="shown" overflowVisible={true}/>
 
 {/* ------------------------------------------------------ */}
 
@@ -50,6 +50,6 @@ Multiple selection allows users to pick several values at once.
 
 Options can be organized under labeled groups with `optionGroups`.
 
-<CanvasWithCodePen of={SelectStories.Grouped} sourceState="shown" />
+<CanvasWithCodePen of={SelectStories.Grouped} sourceState="shown" overflowVisible={true}/>
 
 <Footer />

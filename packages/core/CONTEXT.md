@@ -44,7 +44,7 @@ The system supports **three component architectures**:
 - **Has**: `.style.scss` file (global CSS classes)
 - **No**: `.host.scss` file
 - **Usage**: Plain HTML elements with CSS classes, no JavaScript
-- **Example**: `<button class="button is-primary">Click me</button>`
+- **Example**: `<button class="ds-button is-primary">Click me</button>`
 - **Skills**: No stories, limited tests (visual + a11y only)
 - **Identification**: Check for `.style.scss` only (not `.host.scss`)
 
@@ -52,7 +52,7 @@ The system supports **three component architectures**:
 
 - **Has**: Both `.host.scss` (Shadow DOM) and `.style.scss` (global CSS)
 - **Usage**: Supports both web component mode and CSS-only mode
-- **Example**: Works as both `<ds-button>` and `<button class="button">`
+- **Example**: Works as both `<ds-button>` and `<button class="ds-button">`
 - **Skills**: Minimal stories (no prop controls), limited tests
 - **Identification**: Check for both `.host.scss` AND `.style.scss`
 
@@ -161,9 +161,20 @@ Most components expose these variable groups:
 
 **Spacing Variables:**
 
-- `--{component}-px` — horizontal padding
-- `--{component}-py` — vertical padding
-- `--{component}-m` — margin (sometimes)
+Margin and padding both use the same seven-suffix shorthand — all sides, then the two axis
+shorthands, then the four individual sides:
+
+| Suffix | Side         | Margin example     | Padding example    |
+| ------ | ------------ | ------------------ | ------------------ |
+| `-m`   | all sides    | `--{component}-m`  | `--{component}-p`  |
+| `-mx`  | left + right | `--{component}-mx` | `--{component}-px` |
+| `-my`  | top + bottom | `--{component}-my` | `--{component}-py` |
+| `-ml`  | left         | `--{component}-ml` | `--{component}-pl` |
+| `-mr`  | right        | `--{component}-mr` | `--{component}-pr` |
+| `-mt`  | top          | `--{component}-mt` | `--{component}-pt` |
+| `-mb`  | bottom       | `--{component}-mb` | `--{component}-pb` |
+
+Margin's suffix set is generated for free by `vars.margin($name)` (see `packages/core/src/vars.scss`'s `margin-vars` mixin), which every component using `vars.base($name)` picks up automatically. Padding has no shared mixin yet, so it's authored by hand per component — existing examples spell out the full word rather than using the `-p`/`-px`/`-py` shorthand (`--_container-padding-x`/`--_container-padding-y`, `--_notification-padding`). Follow whichever style the component already uses for its other spacing vars; the shorthand table above is the target scheme once/if padding gets a shared mixin like margin's.
 
 **Typography Variables:**
 
@@ -419,7 +430,11 @@ adding a calendar-icon trigger that opens a date-picker popup. Shared vocabulary
   attribute reflection exposes.
 - **Display value** — the localized string the user sees and types in the masked
   field (e.g. `13.07.2026` for CH). Derived from DS locale config; never the
-  model value. **luxon** bridges display ⇄ model.
+  model value. Display ⇄ model conversion is native `Date` only (no Luxon) —
+  Switzerland used Local Mean Time until June 1894, and the native `Date`
+  engine and Luxon's `Intl`-based engine can disagree on the pre-1894 offset,
+  shifting the calendar day by one if a `Date` crosses between them. See the
+  comment on `nativeDateToISO` in `date.mask.ts`.
 - **Trigger** — the calendar-icon `<button>` at the end of the field. It is the
   **only** gesture that opens/toggles the popup; focusing the text input just
   places the typing cursor. `disabled` turns both off; `readonly` is display-only.
@@ -552,27 +567,35 @@ danger`) shared with `ds-input`/`ds-number-input`. `bal-input-slider` had
 
 ## Phone Field (ds-input-phone)
 
-`ds-input-phone` is a planned form control (see
+`ds-input-phone` is a form control (see
 [docs/plans/ds-input-phone-plan.md](../../docs/plans/ds-input-phone-plan.md))
 for entering an international phone number: a country picker (flag +
 calling code) paired with a national-number text field, formatted via
-`libphonenumber-js`. It is **standalone** — its own native `<input>` and its
-own `Field` wrapper, a sibling to `ds-input`/`ds-select` rather than
-composing either. Shared vocabulary:
+`libphonenumber-js`. It is **standalone** — its own native `<input>` and
+`Field` wrapper (`packages/core/src/components/input/field.util.tsx`), a
+sibling to `ds-input`/`ds-select` rather than composing either. Shared
+vocabulary:
 
 - **Model value** — the canonical `value`, an **E.164 string**
   (e.g. `+41791234567`). Self-contained (encodes the country), unambiguous,
   what a form submits. Never the thing the user directly edits.
 - **National number** — the digits displayed and typed into the number
   field (e.g. `79 123 45 67`), always relative to the currently selected
-  country. Reformatted live via `AsYouType` while typing, and again on blur
-  for a stable final form. Carried alongside `value`/`country` in
+  country. Its display is the international grouping without the calling
+  code already shown by the country picker. A national trunk prefix (such
+  as Swiss `0`) may remain while typing but is removed on blur; a
+  significant leading zero (such as an Italian landline's `0`) remains.
+  Reformatted live via `AsYouType` while typing, and again on blur for a
+  stable final form. Carried alongside `value`/`country` in
   `dsChange`/`dsInput` event payloads as `nationalNumber` so consumers don't
   need to re-derive it from the E.164 string.
 - **`initialCountry`** — uncontrolled seed for the starting country,
   read once. **`country`** — the live/controlled current selection,
   readable and settable after first render, updated by user interaction or
   externally, and re-validated against `countries` whenever either changes.
+  Entering an international `+` or `00` calling code in the number field
+  also updates `country` and removes that calling code from the visible
+  national number.
   Distinct props because a form control that lets a user actively repick
   its country needs "starting state" and "current state" to not be the same
   slot.

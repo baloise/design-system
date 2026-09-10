@@ -47,7 +47,7 @@
  * @prop --form-description-size - Font size of form description.
  */
 
-.field {
+.ds-field {
   @include form.vars-field();
   @include form.vars-label();
   @include form.vars-container();
@@ -60,30 +60,28 @@
   * Define here the component styles using the mixin to support host and non-host mode for hybrid components.
   */
 
-.field {
+.ds-field {
   @include form.field();
-  @include form.label('.label');
-  @include form.container('.control');
-  @include form.description('.help');
+  @include form.label('.ds-label');
+  @include form.container('.ds-control');
+  @include form.description('.ds-help');
 }
 
-.field {
+.ds-field {
   width: 100%;
   flex: 1;
 }
 
-.field + .field,
 .ds-field + .ds-field {
   margin-top: 0.5rem;
 }
 
-.field:not(:last-child),
 .ds-field:not(:last-child) {
   margin-bottom: 0.25rem;
 }
 
-.field.is-danger .help::before,
-.field.is-invalid .help::before {
+.ds-field.is-danger .ds-help::before,
+.ds-field.is-invalid .ds-help::before {
   content: '';
   height: 1rem;
   width: 0.875rem;
@@ -97,7 +95,12 @@
 }
 
 // Add space to reserve it for upcoming help text so the user will not have any flickering.
-.field:not(:has(.help)) {
+// Scoped to :not(.hydrated) — Stencil's hydration marker on every custom element — because
+// `:has()` cannot see past a shadow boundary: a hybrid component's `.ds-help`/`#description`
+// lives in its shadow root, so this selector would always read as "no help text" for it and
+// add a phantom bottom margin even when the component is already rendering visible help text
+// (it reserves its own space internally instead, see form.mixin.scss's `description()` mixin).
+.ds-field:not(:has(.ds-help)):not(.hydrated) {
   margin-bottom: 1.375rem;
 }
 
@@ -105,14 +108,14 @@
 // Form + Grid
 // --------------------------------
 
-.form {
+.ds-form {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   row-gap: 0.25rem;
   margin-inline: -1rem;
 
-  .form-col {
+  .ds-form-col {
     // Default to full width on all breakpoints
     flex: 0 0 100%;
     padding-inline: 1rem;
@@ -303,8 +306,8 @@
 //
 // Invalid or Color Danger
 // --------------------------------
-.field.is-invalid,
-.field.is-danger {
+.ds-field.is-invalid,
+.ds-field.is-danger {
   --mod-form-container-border: var(--ds-form-danger-container-border);
   --mod-form-description-color: var(--ds-form-danger-description-color);
   --mod-form-container-hover-border: var(--ds-form-danger-container-border);
@@ -314,8 +317,8 @@
 //
 // Valid or Color Success
 // --------------------------------
-.field.is-valid,
-.field.is-success {
+.ds-field.is-valid,
+.ds-field.is-success {
   --mod-form-container-border: var(--ds-form-success-container-border);
   --mod-form-description-color: var(--ds-form-success-description-color);
   --mod-form-container-hover-border: var(--ds-form-success-container-border);
@@ -325,7 +328,7 @@
 //
 // Color Warning
 // --------------------------------
-.field.is-warning {
+.ds-field.is-warning {
   --mod-form-container-border: var(--ds-form-warning-container-border);
   --mod-form-description-color: var(--ds-form-warning-description-color);
   --mod-form-container-hover-border: var(--ds-form-warning-container-border);
@@ -335,13 +338,13 @@
 //
 // Disabled
 // --------------------------------
-.field.is-disabled {
+.ds-field.is-disabled {
   &,
-  .label,
-  .help,
-  .input,
-  .textarea,
-  .select {
+  .ds-label,
+  .ds-help,
+  .ds-input,
+  .ds-textarea,
+  .ds-select {
     pointer-events: none;
     cursor: default;
   }

@@ -225,7 +225,7 @@ export class Drawer implements DsComponentInterface, DsConfigObserver {
         >
           <div
             class={{
-              'container': true,
+              'ds-container': true,
               'is-fluid': this.container === 'fluid',
               'is-compact': this.container === 'compact',
             }}

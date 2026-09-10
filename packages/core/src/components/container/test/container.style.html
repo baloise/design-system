@@ -10,7 +10,7 @@
     <script type="module" src="/build/design-system.esm.js"></script>
     <script nomodule src="/build/design-system.js"></script>
     <style>
-      .container {
+      .ds-container {
         background: rgba(0, 120, 255, 0.06);
         outline: 1px dashed rgba(0, 120, 255, 0.3);
       }
@@ -21,15 +21,15 @@
       <!-- Default -->
       <section data-testid="default">
         <span>Default</span>
-        <div class="container">
-          <p>Default container — constrained to <code>--ds-alias-container-width-base</code> on desktop.</p>
+        <div class="ds-container">
+          <p>Default container — constrained to <code>--ds-alias-container-width-default</code> on desktop.</p>
         </div>
       </section>
 
       <!-- Fluid -->
       <section data-testid="fluid">
         <span>Fluid</span>
-        <div class="container is-fluid">
+        <div class="ds-container is-fluid">
           <p>Fluid container — expands to <code>--ds-alias-container-width-fluid</code>.</p>
         </div>
       </section>
@@ -37,7 +37,7 @@
       <!-- Compact -->
       <section data-testid="compact">
         <span>Compact</span>
-        <div class="container is-compact">
+        <div class="ds-container is-compact">
           <p>Compact container — constrained to <code>--ds-alias-container-width-compact</code>.</p>
         </div>
       </section>

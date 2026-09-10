@@ -1,5 +1,5 @@
 import { Component, h, Host, Prop, Element } from '@stencil/core'
-import { normalizeDeprecatedTShirtSize, Logger, type LogInstance, hasValue, OneOf, Type } from '@utils'
+import { Logger, type LogInstance, hasValue, OneOf, Type } from '@utils'
 import {
   CARD_ALIGNMENTS,
   CARD_IMAGE_TEASERS,
@@ -148,7 +148,6 @@ export class Card implements DsComponentInterface {
 
   render() {
     const isImageTeaser = this.imageTeaser !== undefined && this.imageTeaser !== null
-    const space = normalizeDeprecatedTShirtSize(this.space) || ''
 
     return (
       <Host
@@ -157,7 +156,7 @@ export class Card implements DsComponentInterface {
           [`is-image-teaser-${this.imageTeaser}`]: isImageTeaser,
           [`is-dense`]: this.dense,
           [`is-${this.colorTypeClass}`]: hasValue(this.color) && this.colorTypeClass !== 'white',
-          [`has-space-${space}`]: hasValue(this.space),
+          [`has-space-${this.space}`]: hasValue(this.space),
           [`is-fullheight`]: this.fullheight,
           [`is-flat`]: !!this.flat,
           [`is-tile`]: !!this.tile,

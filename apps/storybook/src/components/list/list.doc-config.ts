@@ -7,12 +7,12 @@ export const LIST_DOC_CONFIG = {
   section: 'Components / List',
   color: 'green' as const,
   tabs: [
-    { label: 'Overview', storyId: 'components-list--list' },
-    { label: 'Usage', storyId: 'components-list--usage' },
-    { label: 'Variants', storyId: 'components-list--variants-overview' },
-    { label: 'Styling', storyId: 'components-list--styling' },
-    { label: 'Accessibility', storyId: 'components-list--accessibility' },
-    { label: 'Testing', storyId: 'components-list--testing' },
+    { label: 'Overview', storyId: 'components-list-list--list' },
+    { label: 'Usage', storyId: 'components-list-usage--usage' },
+    { label: 'Variants', storyId: 'components-list-variants-overview--overview' },
+    { label: 'Styling', storyId: 'components-list-styling--styling' },
+    { label: 'Accessibility', storyId: 'components-list-accessibility--accessibility' },
+    { label: 'Testing', storyId: 'components-list-testing--testing' },
   ],
 }
 

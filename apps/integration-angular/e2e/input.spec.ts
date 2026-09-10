@@ -34,3 +34,16 @@ test('ds-input reactive form: initial value, updates, disabled, and touched+inva
   await expect(nativeInput).toHaveAttribute('aria-invalid', 'true')
   await expect(reactiveInput.locator('[role="alert"]')).toHaveText('This field is required')
 })
+
+test('ds-input reactive form: autoInvalidOff suppresses automatic invalid state', async ({ page }) => {
+  await page.goto('/')
+
+  const autoInvalidOffInput = page.getByTestId('auto-invalid-off-input')
+  const nativeInput = autoInvalidOffInput.locator('input')
+
+  await nativeInput.fill('')
+  await nativeInput.blur()
+
+  await expect(nativeInput).not.toHaveAttribute('aria-invalid', 'true')
+  await expect(autoInvalidOffInput.locator('[role="alert"]')).toHaveCount(0)
+})

@@ -24,7 +24,7 @@
  * @prop --select-placeholder - Text color of the select placeholder text.
  */
 
-.select {
+.ds-select {
   @include input.vars('select');
 }
 
@@ -33,10 +33,10 @@
  * --------------------------------
  */
 
-.field {
-  @include input.style('select', '.select');
+.ds-field {
+  @include input.style('select', '.ds-select');
 
-  .control {
+  .ds-control {
     select {
       flex: 1;
       min-width: 0;

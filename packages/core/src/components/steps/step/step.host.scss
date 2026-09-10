@@ -36,7 +36,7 @@
   font-family: var(--_steps-step-font-family);
   font-size: var(--_steps-step-font-size);
   font-weight: var(--_steps-step-font-weight);
-  line-height: var(--_steps-step-line-height);
+  line-height: 1;
   transition:
     background-color 180ms ease,
     color 180ms ease;
@@ -105,6 +105,7 @@
 }
 
 :host(.is-disabled) .step-label {
+  color: var(--_steps-step-color-disabled);
   opacity: 0.4;
 }
 
@@ -219,6 +220,11 @@
 :host(.is-navigation.is-selected) ::slotted(a),
 :host(.is-navigation) ::slotted([aria-current]) {
   color: var(--_steps-step-color-selected);
+}
+
+:host(.is-navigation.is-disabled) ::slotted(a) {
+  color: var(--_steps-step-color-disabled);
+  opacity: 0.4;
 }
 
 :host(.is-navigation) ::slotted(a:focus-visible) {

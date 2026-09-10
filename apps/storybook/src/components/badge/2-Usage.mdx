@@ -14,7 +14,7 @@ import * as BadgeStories from './badge.stories'
 import BadgeParts from './badge.parts.svg'
 import { BADGE_DOC_CONFIG, getBadgeTabs } from './badge.doc-config'
 
-<Meta title="Components/Badge/Usage" />
+<Meta title="Components/Badge/Usage" name="Usage" />
 <Banner label={'Usage'} section={BADGE_DOC_CONFIG.section} color={BADGE_DOC_CONFIG.color} />
 <BannerTabs
   of={BadgeStories}
@@ -46,7 +46,7 @@ The most important guideline is keeping badge content short and concise. Here's 
       type: 'correct',
       title: 'Correct: Short & Concise',
       content: (
-        <button className="button is-primary">
+        <button className="ds-button is-primary">
           <ds-badge color="danger">5</ds-badge>
           Notifications
         </button>
@@ -57,7 +57,7 @@ The most important guideline is keeping badge content short and concise. Here's 
       type: 'incorrect',
       title: 'Incorrect: Too Long',
       content: (
-        <button className="button">
+        <button className="ds-button">
           <ds-badge color="danger">You have 5 unread messages</ds-badge>
           Notifications
         </button>

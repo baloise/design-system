@@ -18,7 +18,7 @@ const meta: Meta<Args> = {
   ...withRender(
     ({ slot, ...args }) => `
 <div class="flex justify-content-center align-items-center p-lg">
-  <button class="button" id="tooltip-basic" type="button">Hover over me</button>
+  <button class="ds-button" id="tooltip-basic" type="button">Hover over me</button>
   <ds-tooltip ${props(args)}>${slot}</ds-tooltip>
 </div>`,
   ),
@@ -41,7 +41,7 @@ export const PlacementTop = Story({
   ...withRender(
     ({ slot, ...args }) => `
 <div class="flex justify-content-center align-items-center p-lg">
-  <button class="button" id="tooltip-placement-top" type="button">Trigger</button>
+  <button class="ds-button" id="tooltip-placement-top" type="button">Trigger</button>
   <ds-tooltip ${props(args)}>${slot}</ds-tooltip>
 </div>`,
   ),
@@ -53,7 +53,7 @@ export const PlacementRight = Story({
   ...withRender(
     ({ slot, ...args }) => `
 <div class="flex justify-content-center align-items-center p-lg">
-  <button class="button" id="tooltip-placement-right" type="button">Trigger</button>
+  <button class="ds-button" id="tooltip-placement-right" type="button">Trigger</button>
   <ds-tooltip ${props(args)}>${slot}</ds-tooltip>
 </div>`,
   ),
@@ -65,7 +65,7 @@ export const PlacementBottom = Story({
   ...withRender(
     ({ slot, ...args }) => `
 <div class="flex justify-content-center align-items-center p-lg">
-  <button class="button" id="tooltip-placement-bottom" type="button">Trigger</button>
+  <button class="ds-button" id="tooltip-placement-bottom" type="button">Trigger</button>
   <ds-tooltip ${props(args)}>${slot}</ds-tooltip>
 </div>`,
   ),
@@ -77,7 +77,7 @@ export const PlacementLeft = Story({
   ...withRender(
     ({ slot, ...args }) => `
 <div class="flex justify-content-center align-items-center p-lg">
-  <button class="button" id="tooltip-placement-left" type="button">Trigger</button>
+  <button class="ds-button" id="tooltip-placement-left" type="button">Trigger</button>
   <ds-tooltip ${props(args)}>${slot}</ds-tooltip>
 </div>`,
   ),
@@ -93,7 +93,7 @@ export const ContentWidth = Story({
   ...withRender(
     ({ slot, ...args }) => `
 <div class="flex justify-content-center align-items-center p-xl">
-  <button class="button" id="tooltip-content-width" type="button">Trigger</button>
+  <button class="ds-button" id="tooltip-content-width" type="button">Trigger</button>
   <ds-tooltip ${props(args)}>${slot}</ds-tooltip>
 </div>`,
   ),

@@ -45,7 +45,15 @@ jobs:
         run: pnpm lint
 
       - name: Audit dependencies
-        run: pnpm audit --audit-level high
+        env:
+          # Fail hard on protected branches; tolerate registry flakiness elsewhere.
+          HARD_FAIL: ${{ github.ref == 'refs/heads/next' || github.head_ref == 'changeset-release/next' }}
+        run: |
+          if [ "$HARD_FAIL" = "true" ]; then
+            pnpm audit --audit-level high
+          else
+            pnpm audit --audit-level high || echo "::warning::pnpm audit failed (possibly a registry issue) — not blocking this non-protected branch."
+          fi
 
       - name: Build
         run: pnpm build

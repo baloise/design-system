@@ -68,8 +68,8 @@ RequiredAndOptional.storyName = '🌍 Required And Optional'
 export const States = Story({
   ...withRender(
     () => `
-<label class="label is-danger">Invalid Label</label>
-<label class="label is-disabled">Disabled Label</label>
+<label class="ds-label is-danger">Invalid Label</label>
+<label class="ds-label is-disabled">Disabled Label</label>
 `,
   ),
 })
@@ -78,9 +78,9 @@ States.storyName = '🌍 States'
 export const Sizes = Story({
   ...withRender(
     () => `
-<label class="label is-small">Small Label</label>
-<label class="label">Normal Label</label>
-<label class="label is-large">Large Label</label>
+<label class="ds-label is-small">Small Label</label>
+<label class="ds-label">Normal Label</label>
+<label class="ds-label is-lg">Large Label</label>
 `,
   ),
 })

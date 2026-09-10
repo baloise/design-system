@@ -152,7 +152,7 @@ pre[class*='language-'] {
 }
 
 .token.function {
-  color: var(--ds-global-color-light-blue-3) !important;
+  color: var(--ds-global-color-sky-3) !important;
 }
 
 .token.keyword.module {
@@ -176,7 +176,7 @@ pre[class*='language-'] {
 }
 
 .token.builtin {
-  color: var(--ds-global-color-light-blue-2) !important;
+  color: var(--ds-global-color-sky-2) !important;
 }
 
 .token.console.class-name,
@@ -217,7 +217,7 @@ pre[class*='language-'] {
 
 .language-scss .token.property,
 .language-css .token.property {
-  color: var(--ds-global-color-light-blue-2) !important;
+  color: var(--ds-global-color-sky-2) !important;
 }
 
 .language-diff {

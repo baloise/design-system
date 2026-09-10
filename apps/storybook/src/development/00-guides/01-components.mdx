@@ -13,7 +13,7 @@ import {
   WarningQuote,
 } from '../../../.storybook/blocks'
 
-<Meta title="Development/Component" />
+<Meta title="Development/Component" name="Component" />
 
 <Banner label="Component" section="Development" />
 
@@ -45,7 +45,7 @@ export class AppModule {}
 
 ```html
 <ds-app>
-  <main class="container">
+  <main class="ds-container">
     <ds-heading>Hello World</ds-heading>
   <main>
 </ds-app>
@@ -63,7 +63,7 @@ export class AppModule {}
 
 ```html
 <ds-app>
-  <main class="container">
+  <main class="ds-container">
     <ds-heading>Hello World</ds-heading>
   <main>
 </ds-app>
@@ -112,7 +112,7 @@ import { App, Heading } from "@baloise/ds-react";
 function App() {
   return (
     <BalApp>
-      <main class="container">
+      <main class="ds-container">
         <BalHeading>Hello World</BalHeading>
       <main>
     </BalApp>
@@ -366,7 +366,7 @@ To access the method of the component use the reference directly.
   <ds-select-option label="Soccer" value="soccer">Soccer</ds-select-option>
   <ds-select-option label="Other" value="other">Other</ds-select-option>
 </ds-select>
-<ds-button class="mt-normal" (click)="chooseTennis()">Choose Tennis</ds-button>
+<ds-button class="mt-base" (click)="chooseTennis()">Choose Tennis</ds-button>
 ```
 
 **app.component.ts**
@@ -441,7 +441,7 @@ function MethodComponent() {
           Other
         </BalSelectOption>
       </BalSelect>
-      <BalButton class="mt-normal" onClick={() => chooseTennis()}>
+      <BalButton class="mt-base" onClick={() => chooseTennis()}>
         Choose Tennis
       </BalButton>
     </div>
