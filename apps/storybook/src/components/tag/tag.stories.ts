@@ -25,7 +25,7 @@ const meta: Meta<Args> = {
         ...css('size', (size: string) => `is-${size}`),
       },
       args,
-      'tag',
+      'ds-tag',
     )}>
   ${
     args.icon

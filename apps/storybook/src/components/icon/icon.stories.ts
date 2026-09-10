@@ -1,4 +1,3 @@
-import { BrandIconCarCrashWithAnimalGreen } from '@baloise/ds-assets'
 import type { JSX } from '@baloise/ds-core'
 import type { Meta } from '@storybook/html-vite'
 import { props, StoryFactory, withComponentControls, withRender } from '../../utils'
@@ -160,3 +159,20 @@ export const Sizes = Story({
   ),
 })
 Sizes.storyName = '🧩 Sizes'
+
+export const Colors = Story({
+  ...withRender(
+    () =>
+      `<div class="ds-stack">
+      ${['primary', 'info', 'grey', 'success', 'danger', 'warning']
+        .map(
+          item => `<div class="ds-stack as-row">
+      <ds-icon name="info-circle" size="lg" color="${item}"></ds-icon>
+      <span>${item}</span>
+    </div>`,
+        )
+        .join(' ')}
+</div>`,
+  ),
+})
+Colors.storyName = '🧩 Colors'

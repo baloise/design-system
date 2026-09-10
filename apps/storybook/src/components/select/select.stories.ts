@@ -5,7 +5,7 @@ import { props, StoryFactory, withComponentControls, withRender } from '../../ut
 type Args = JSX.DsSelect
 
 const meta: Meta<Args> = {
-  title: 'Components/Select/Variants',
+  title: 'Components/Forms/Select/Variants',
   args: {
     label: 'Country',
     description: 'Select your country of residence',

@@ -1,0 +1,81 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+import { Banner, BannerTabs, Footer, UsageExamples } from '../../../.storybook/blocks'
+import * as GridStories from './grid.stories'
+import { GRID_DOC_CONFIG, getGridTabs } from './grid.doc-config'
+
+<Meta title="Components/Grid/Usage" name="Usage" />
+<Banner label={'Usage'} section={GRID_DOC_CONFIG.section} color={GRID_DOC_CONFIG.color} />
+<BannerTabs of={GridStories} tabs={getGridTabs('usage')} />
+
+## When to Use
+
+- Arranging content into rows and columns for page layouts, forms, or card groups.
+- Building responsive layouts where column widths need to change per breakpoint.
+- Laying out a fixed number of items that should share available width equally or in fixed proportions.
+
+## When NOT to Use
+
+- For form field layout specifically — use the `ds-form` grid, which already wraps this behaviour.
+- For single-item width constraints on a page — use `ds-container` instead.
+- For lists of unknown length that should wrap into a card grid with fixed-size tiles — a plain CSS grid may be simpler than the 12-column flex model.
+
+## Do's and Don'ts
+
+### Column Nesting
+
+<UsageExamples
+  items={[
+    {
+      type: 'correct',
+      title: 'Correct: Columns inside a grid',
+      content: (
+        <div class="ds-grid">
+          <div class="ds-col">Column 1</div>
+          <div class="ds-col">Column 2</div>
+        </div>
+      ),
+      description: 'Every `ds-col` is a direct child of a `ds-grid` so the flex sizing rules apply correctly.',
+    },
+    {
+      type: 'incorrect',
+      title: 'Incorrect: Column without a grid',
+      content: <div class="ds-col">Column without a grid</div>,
+      description:
+        'A `ds-col` used outside of `ds-grid` has no gap/width context and renders as a plain block element.',
+    },
+  ]}
+/>
+
+### Wrapping Behavior
+
+<UsageExamples
+  items={[
+    {
+      type: 'correct',
+      title: 'Correct: is-multiline for more than one row',
+      content: (
+        <div class="ds-grid is-multiline">
+          <div class="ds-col is-half">1</div>
+          <div class="ds-col is-half">2</div>
+          <div class="ds-col is-half">3</div>
+        </div>
+      ),
+      description: 'Add `is-multiline` when the number of columns can exceed one row on smaller breakpoints.',
+    },
+    {
+      type: 'incorrect',
+      title: 'Incorrect: relying on default wrapping',
+      content: (
+        <div class="ds-grid">
+          <div class="ds-col is-half">1</div>
+          <div class="ds-col is-half">2</div>
+          <div class="ds-col is-half">3</div>
+        </div>
+      ),
+      description:
+        'Without `is-multiline`, columns shrink to fit a single row instead of wrapping, so extra columns squeeze rather than flow to a new line.',
+    },
+  ]}
+/>
+
+<Footer />

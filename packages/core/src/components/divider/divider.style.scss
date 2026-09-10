@@ -147,37 +147,39 @@ $spaces: ('none', '2xs', 'xs', 'sm', 'base', 'md', 'lg', 'xl', '2xl', '3xl');
 // --------------------------------
 
 @mixin dashedHorizontal() {
-  &.is-dashed:not(.is-vertical) {
-    background: repeating-linear-gradient(
-      90deg,
-      var(--_divider-color) 0,
-      var(--_divider-color) 8px,
-      transparent 8px,
-      transparent 16px
-    );
-  }
+  background: repeating-linear-gradient(
+    90deg,
+    var(--_divider-color) 0,
+    var(--_divider-color) 8px,
+    transparent 8px,
+    transparent 16px
+  );
 }
 
 @mixin dashedVertical() {
-  &.is-dashed.is-vertical {
-    background: repeating-linear-gradient(
-      180deg,
-      var(--_divider-color) 0,
-      var(--_divider-color) 8px,
-      transparent 8px,
-      transparent 16px
-    );
-  }
+  background: repeating-linear-gradient(
+    180deg,
+    var(--_divider-color) 0,
+    var(--_divider-color) 8px,
+    transparent 8px,
+    transparent 16px
+  );
 }
 
 @include hybrid.styles($css-selector, $use-host) {
-  @include dashedHorizontal();
-  @include dashedVertical();
+  &.is-dashed:not(.is-vertical) {
+    @include dashedHorizontal();
+  }
+  &.is-dashed.is-vertical {
+    @include dashedVertical();
+  }
 }
 
 @include hybrid.host($use-host) {
-  :host {
+  :host(:not(.is-vertical).is-dashed) {
     @include dashedHorizontal();
+  }
+  :host(.is-vertical.is-dashed) {
     @include dashedVertical();
   }
 }

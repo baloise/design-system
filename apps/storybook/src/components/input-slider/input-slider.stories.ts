@@ -7,7 +7,7 @@ type Args = JSX.DsInputSlider
 const tag = 'ds-input-slider'
 
 const meta: Meta<Args> = {
-  title: 'Components/InputSlider/Variants',
+  title: 'Components/Forms/InputSlider/Variants',
   args: {
     label: 'Volume',
     description: '0–100',

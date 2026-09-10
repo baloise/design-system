@@ -1,0 +1,77 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+import { A11yGuidelines, Banner, BannerTabs, Footer } from '../../../.storybook/blocks'
+import * as GridStories from './grid.stories'
+import { GRID_DOC_CONFIG, getGridTabs } from './grid.doc-config'
+
+<Meta title="Components/Grid/Accessibility" name="Accessibility" />
+
+<Banner label={'Accessibility'} section={GRID_DOC_CONFIG.section} color={GRID_DOC_CONFIG.color} />
+
+<BannerTabs of={GridStories} tabs={getGridTabs('accessibility')} />
+
+## Guidelines
+
+<A11yGuidelines
+  items={[
+    {
+      type: 'do',
+      title: 'Use semantic elements inside columns',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          <code>ds-grid</code> and <code>ds-col</code> only control layout — wrap content in semantic elements
+          (<code>section</code>, <code>article</code>, <code>nav</code>, headings) so the document outline and
+          landmarks remain meaningful regardless of visual column order.
+        </p>
+      ),
+    },
+    {
+      type: 'do',
+      title: 'Match visual order to source order',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Keep DOM order the same as reading order. Screen readers and keyboard navigation follow source order, not
+          the visual column layout produced by flex sizing.
+        </p>
+      ),
+    },
+    {
+      type: 'do',
+      title: 'Verify reflow at 320px and 400% zoom',
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Test multi-column layouts down to a 320px viewport and at 400% zoom to confirm columns wrap without
+          clipping or requiring horizontal scrolling, per WCAG 1.4.10 Reflow.
+        </p>
+      ),
+    },
+    {
+      type: 'dont',
+      title: "Don't use offset classes to fake reading order",
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          Avoid using <code>is-offset-*</code> classes purely to visually reorder columns whose DOM order doesn't
+          match — this creates a mismatch between visual and programmatic reading order that confuses screen reader
+          and keyboard users.
+        </p>
+      ),
+    },
+    {
+      type: 'dont',
+      title: "Don't nest interactive controls without labels",
+      content: (
+        <p style={{ margin: '0.5rem 0 0 0' }}>
+          A grid column is a layout container, not a form control — form fields placed inside still need their own
+          <code>label</code>, <code>aria-label</code>, or <code>aria-describedby</code> association.
+        </p>
+      ),
+    },
+  ]}
+/>
+
+## References
+
+- [MDN: CSS Flexible Box Layout](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_flexible_box_layout) - the layout model `ds-grid` and `ds-col` are built on.
+- [WCAG 2.2 — 1.4.10 Reflow](https://www.w3.org/WAI/WCAG22/Understanding/reflow.html) - content must reflow without loss of information or functionality at narrow viewports and high zoom.
+- [WCAG 2.2 — 1.3.2 Meaningful Sequence](https://www.w3.org/WAI/WCAG22/Understanding/meaningful-sequence.html) - the programmatic reading order must match the visual presentation order.
+
+<Footer />

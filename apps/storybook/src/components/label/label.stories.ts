@@ -28,7 +28,7 @@ const meta: Meta<Args> = {
         noWrap: 'has-no-wrap',
       },
       args,
-      'label',
+      'ds-label',
     )}>${slot}</label>
   `,
   ),

@@ -7,7 +7,7 @@ type Args = JSX.DsInputStepper
 const tag = 'ds-input-stepper'
 
 const meta: Meta<Args> = {
-  title: 'Components/InputStepper/Variants',
+  title: 'Components/Forms/InputStepper/Variants',
   args: {
     label: 'Quantity',
     value: 5,

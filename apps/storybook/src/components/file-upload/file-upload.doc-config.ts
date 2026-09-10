@@ -3,15 +3,15 @@
  */
 
 export const FILEUPLOAD_DOC_CONFIG = {
-  section: 'Components / FileUpload',
+  section: 'Components / Forms / FileUpload',
   color: 'purple' as const,
   tabs: [
-    { label: 'Overview', storyId: 'components-fileupload-fileupload--fileupload' },
-    { label: 'Usage', storyId: 'components-fileupload-usage--usage' },
-    { label: 'Variants', storyId: 'components-fileupload-variants-overview--overview' },
-    { label: 'Styling', storyId: 'components-fileupload-styling--styling' },
-    { label: 'Accessibility', storyId: 'components-fileupload-accessibility--accessibility' },
-    { label: 'Testing', storyId: 'components-fileupload-testing--testing' },
+    { label: 'Overview', storyId: 'components-forms-fileupload-fileupload--fileupload' },
+    { label: 'Usage', storyId: 'components-forms-fileupload-usage--usage' },
+    { label: 'Variants', storyId: 'components-forms-fileupload-variants-overview--overview' },
+    { label: 'Styling', storyId: 'components-forms-fileupload-styling--styling' },
+    { label: 'Accessibility', storyId: 'components-forms-fileupload-accessibility--accessibility' },
+    { label: 'Testing', storyId: 'components-forms-fileupload-testing--testing' },
   ],
 }
 

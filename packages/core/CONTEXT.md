@@ -88,7 +88,7 @@ This is enforced automatically, not just by convention: `libs/output-target-web/
 ### Naming Conventions
 
 - **Custom element prefix**: `ds-` (e.g., `<ds-button>`, `<ds-card>`)
-- **Usage-context prefix**: `ds-app-*` for components built for application (product) usage, as opposed to marketing/website usage (e.g. `ds-app-navbar`, `ds-app-footer`). Each usage context gets its own component rather than a variant prop on a shared one — a future website-context navbar would be `ds-web-navbar`, not a prop on `ds-app-navbar`. Unrelated to `ds-app`, the root wrapper component. See ADR-0026.
+- **Usage-context prefix**: `ds-app-*` for components built for application (product) usage, as opposed to marketing/website usage (e.g. `ds-app-navbar`, `ds-app-footer`). Each usage context gets its own component rather than a variant prop on a shared one — a future website-context navbar would be `ds-web-navbar`, not a prop on `ds-app-navbar`. Unrelated to `ds-root`, the root wrapper component (renamed from `ds-app` in ADR-0028). See ADR-0026, ADR-0028.
 - **Event naming**: `ds<Name>` (e.g., `dsChange`, `dsCloseClick`)
 - **Handler naming**: `listenTo<Event>` (@Listen), `<Prop>Changed` (@Watch), `handle<Event>` (DOM handlers)
 - **CSS classes**: `.is-<state>` for states (e.g., `.is-disabled`, `.is-primary`), `.mod-<variant>` for modifiers

@@ -1,0 +1,47 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+import { Banner, BannerTabs, CanvasWithCodePen, Footer, StoryHeading } from '../../../.storybook/blocks'
+import * as GridStories from './grid.stories'
+import { GRID_DOC_CONFIG, getGridTabs } from './grid.doc-config'
+
+<Meta title="Components/Grid/Variants/Overview" name="Overview" />
+
+<StoryHeading of={GridStories.Basic} hidden></StoryHeading>
+
+<Banner label={'Variants'} section={GRID_DOC_CONFIG.section} color={GRID_DOC_CONFIG.color} />
+
+<BannerTabs of={GridStories} tabs={getGridTabs('variants')} />
+
+{/* STORIES */}
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={GridStories.ColumnSizes}></StoryHeading>
+
+Use `is-*` fraction classes (`is-half`, `is-one-third`, `is-two-thirds`, `is-one-quarter`, `is-three-quarters`) or numeric classes (`is-1` through `is-12`) on a `ds-col` to set a fixed width; columns without a size class share the remaining space equally.
+
+<CanvasWithCodePen of={GridStories.ColumnSizes} sourceState="shown" />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={GridStories.Multiline}></StoryHeading>
+
+Add `is-multiline` to the grid so columns wrap onto additional rows once they no longer fit on one line.
+
+<CanvasWithCodePen of={GridStories.Multiline} sourceState="shown" />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={GridStories.Gapless}></StoryHeading>
+
+Add `is-gapless` to remove the gap between columns, useful for edge-to-edge layouts like image galleries.
+
+<CanvasWithCodePen of={GridStories.Gapless} sourceState="shown" />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={GridStories.Mobile}></StoryHeading>
+
+Add `is-mobile` to force the grid into a flex row from the smallest breakpoint up, instead of only from tablet and above.
+
+<CanvasWithCodePen of={GridStories.Mobile} sourceState="shown" />
+
+<Footer />
