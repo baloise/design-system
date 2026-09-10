@@ -3,6 +3,8 @@ import {
   Banner,
   BannerTabs,
   Footer,
+  LinkCard,
+  LinkCards,
   UsageExamples,
 } from '../../../.storybook/blocks'
 import * as ModalStories from './modal.stories'
@@ -28,4 +30,11 @@ import { MODAL_DOC_CONFIG, getModalTabs } from './modal.doc-config'
 - For complex multi-step workflows — break them into separate pages instead.
 - As a substitute for inline validation or contextual help.
 
-<Footer />
+<Footer>
+  <LinkCards>
+    <LinkCard
+      pageTitle="Development/Overlays"
+      description="Learn how to present a modal with HTML and JavaScript or React."
+    />
+  </LinkCards>
+</Footer>

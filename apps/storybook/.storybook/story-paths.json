@@ -371,6 +371,7 @@
   "development-guides-form": "development/00-guides/02-form.mdx",
   "development-guides-getting-started": "development/00-guides/00-getting-started.mdx",
   "development-guides-internationalization": "development/00-guides/03-internationalization.mdx",
+  "development-guides-overlays": "development/00-guides/09-overlays.mdx",
   "development-guides-responsive": "development/00-guides/07-responsive.mdx",
   "development-guides-styles": "development/00-guides/05-styles.mdx",
   "development-guides-testing": "development/00-guides/08-testing.mdx",

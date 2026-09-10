@@ -3,6 +3,8 @@ import {
   Banner,
   BannerTabs,
   Footer,
+  LinkCard,
+  LinkCards,
   StoryHeading,
   UsageExamples,
 } from '../../../.storybook/blocks'
@@ -29,4 +31,11 @@ import { SNACKBAR_DOC_CONFIG, getSnackbarTabs } from './snackbar.doc-config'
 - For inline validation feedback on form fields — use field-level error messages
 
 
-<Footer />
+<Footer>
+  <LinkCards>
+    <LinkCard
+      pageTitle="Development/Overlays"
+      description="Learn how to present and dismiss a snackbar with JavaScript or React."
+    />
+  </LinkCards>
+</Footer>
