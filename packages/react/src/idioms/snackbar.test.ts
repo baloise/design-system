@@ -6,6 +6,8 @@ import { useSnackbar } from './snackbar'
 
 const create = vi.fn()
 const remove = vi.fn()
+const defineDsAlertContainer = vi.fn()
+const defineDsSnackbar = vi.fn()
 
 vi.mock('@baloise/ds-core', () => ({
   dsSnackbarController: {
@@ -13,6 +15,14 @@ vi.mock('@baloise/ds-core', () => ({
     remove: (...args: unknown[]) => remove(...args),
     removeAll: vi.fn(),
   },
+}))
+
+vi.mock('@baloise/ds-core/components/ds-alert-container.js', () => ({
+  defineCustomElement: (...args: unknown[]) => defineDsAlertContainer(...args),
+}))
+
+vi.mock('@baloise/ds-core/components/ds-snackbar.js', () => ({
+  defineCustomElement: (...args: unknown[]) => defineDsSnackbar(...args),
 }))
 
 const options: Alert = {
@@ -33,6 +43,14 @@ describe('useSnackbar', () => {
 
   afterEach(() => {
     vi.clearAllMocks()
+  })
+
+  test('registers overlay custom elements so controllers can create them', () => {
+    const { unmount } = renderHook(() => useSnackbar())
+
+    expect(defineDsAlertContainer).toHaveBeenCalled()
+    expect(defineDsSnackbar).toHaveBeenCalled()
+    unmount()
   })
 
   test('present creates a snackbar with the given options', async () => {

@@ -6,6 +6,8 @@ import { useToast } from './toast'
 
 const create = vi.fn()
 const remove = vi.fn()
+const defineDsAlertContainer = vi.fn()
+const defineDsToast = vi.fn()
 
 vi.mock('@baloise/ds-core', () => ({
   dsToastController: {
@@ -13,6 +15,14 @@ vi.mock('@baloise/ds-core', () => ({
     remove: (...args: unknown[]) => remove(...args),
     removeAll: vi.fn(),
   },
+}))
+
+vi.mock('@baloise/ds-core/components/ds-alert-container.js', () => ({
+  defineCustomElement: (...args: unknown[]) => defineDsAlertContainer(...args),
+}))
+
+vi.mock('@baloise/ds-core/components/ds-toast.js', () => ({
+  defineCustomElement: (...args: unknown[]) => defineDsToast(...args),
 }))
 
 const options: Alert = {
@@ -33,6 +43,14 @@ describe('useToast', () => {
 
   afterEach(() => {
     vi.clearAllMocks()
+  })
+
+  test('registers overlay custom elements so controllers can create them', () => {
+    const { unmount } = renderHook(() => useToast())
+
+    expect(defineDsAlertContainer).toHaveBeenCalled()
+    expect(defineDsToast).toHaveBeenCalled()
+    unmount()
   })
 
   test('present creates a toast with the given options', async () => {

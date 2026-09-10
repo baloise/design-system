@@ -38,6 +38,7 @@ This is not a custom output target. Generation stays stock; only the public barr
 ## Consequences
 
 - Overlay consumers get a React-idiomatic API instead of fighting mutable `open` or importing vanilla controllers from `@baloise/ds-core`.
+- `useToast` / `useSnackbar` must call Stencil's `defineCustomElement()` for the tags their controllers create at runtime. The shared controller hook defines `ds-alert-container` inline, while each public hook defines `ds-toast` or `ds-snackbar` inline. The generated wrappers are `/*@__PURE__*/`, so hiding them from the public barrel would otherwise let consumer bundlers drop the custom-element definitions. The type-specific imports remain separate so each hook tree-shakes independently.
 - Adding a new `ds-*` component still only requires the Stencil generator, except that `packages/react/src/components.ts` must list it if it should stay public — unit tests fail when a generated wrapper is neither hidden nor re-exported.
 - `useModal()` is not functional until core accepts `ModalOptions.component` (#2120). `Modal`, `useToast()`, and `useSnackbar()` do not depend on that work.
 - ADR-0003's "no `libs/output-target-react`" decision remains in force. A future Next.js/SSR wrapper would still need its own design.

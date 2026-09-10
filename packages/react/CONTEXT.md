@@ -23,6 +23,8 @@ A **controlled overlay component** (`Modal`) wraps a generated Stencil proxy and
 
 A **controller hook** (`useToast`, `useSnackbar`) returns `[present, dismiss]` and delegates to the vanilla-JS controllers already exported from `@baloise/ds-core`. Toast/snackbar content is data-driven (`Alert`); there is no JSX injection.
 
+The controllers create `ds-alert-container` / `ds-toast` / `ds-snackbar` with `document.createElement`, so those custom elements must still be defined even though their generated React wrappers are not public. The shared controller hook directly defines `ds-alert-container`; each public hook directly defines its visual element (`ds-toast` or `ds-snackbar`). Importing the generated wrappers is not enough, because they are marked `/*@__PURE__*/` and consumer bundlers (Vite in `apps/integration-react`) tree-shake unused ones. The type-specific imports remain isolated so a toast-only app does not pull in `ds-snackbar`, and vice versa.
+
 `useModal()` will present JSX by passing a detached `HTMLElement` as `ModalOptions.component` once that lands in core. It does not need a React `FrameworkDelegate`.
 
 ### Build
