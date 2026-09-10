@@ -1,27 +1,6 @@
 import { dsModalController, type ModalOptions } from '@baloise/ds-core'
-import { ComponentProps, ComponentRef, forwardRef, useCallback, useRef, type ReactNode } from 'react'
+import { useCallback, useRef, type ReactNode } from 'react'
 import { createRoot, type Root } from 'react-dom/client'
-import { DsModal } from '../generated/components'
-
-export type ModalProps = ComponentProps<typeof DsModal> & {
-  onOpenChange?: (open: boolean) => void
-}
-
-export const Modal = forwardRef<ComponentRef<typeof DsModal>, ModalProps>(function Modal(
-  { onOpenChange, onDsDidDismiss, ...props },
-  ref,
-) {
-  return (
-    <DsModal
-      {...props}
-      ref={ref}
-      onDsDidDismiss={event => {
-        onOpenChange?.(false)
-        onDsDidDismiss?.(event)
-      }}
-    />
-  )
-})
 
 /**
  * Imperative modal hook. `present()` injects React content via `ModalOptions.component`,

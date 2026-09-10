@@ -12,8 +12,7 @@ export const bootstrapDesignSystem = (config: DsReactConfig = {}) => {
 }
 
 export type * from './generated/components'
-export * from './components'
-export { Modal, useModal } from './idioms/modal'
-export type { ModalProps } from './idioms/modal'
-export { useToast } from './idioms/toast'
-export { useSnackbar } from './idioms/snackbar'
+export * from './wrappers'
+export { Modal } from './components/modal'
+export type { ModalProps } from './components/modal'
+export * from './hooks'

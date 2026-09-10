@@ -5,8 +5,9 @@ import { describe, expect, test } from 'vitest'
 
 const root = dirname(fileURLToPath(import.meta.url))
 const generatedSource = readFileSync(join(root, 'generated/components.ts'), 'utf8')
-const publicSource = readFileSync(join(root, 'components.ts'), 'utf8')
+const publicSource = readFileSync(join(root, 'wrappers.ts'), 'utf8')
 const indexSource = readFileSync(join(root, 'index.ts'), 'utf8')
+const hooksSource = readFileSync(join(root, 'hooks/index.ts'), 'utf8')
 
 const HIDDEN_WRAPPERS = ['DsAlertContainer', 'DsModal', 'DsSnackbar', 'DsToast'] as const
 
@@ -29,9 +30,15 @@ describe('public API', () => {
     expect(missing).toEqual([])
   })
 
-  test('exports overlay idioms from the public barrel', () => {
-    expect(indexSource).toContain("export { Modal, useModal } from './idioms/modal'")
-    expect(indexSource).toContain("export { useToast } from './idioms/toast'")
-    expect(indexSource).toContain("export { useSnackbar } from './idioms/snackbar'")
+  test('exports overlay components and hooks from the public barrel', () => {
+    expect(indexSource).toContain("export { Modal } from './components/modal'")
+    expect(indexSource).toContain("export * from './hooks'")
+    expect(hooksSource).toContain("export { useModal } from './use-modal'")
+    expect(hooksSource).toContain("export { useToast } from './use-toast'")
+    expect(hooksSource).toContain("export { useSnackbar } from './use-snackbar'")
+  })
+
+  test('does not export internal hooks', () => {
+    expect(hooksSource).not.toContain('use-alert-controller')
   })
 })

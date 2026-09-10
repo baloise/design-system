@@ -1,15 +1,11 @@
 import { act } from 'react'
 import { afterEach, beforeEach, describe, expect, test, vi } from 'vitest'
 import { renderHook } from '../test/render'
-import { useModal } from './modal'
+import { useModal } from './use-modal'
 
 const create = vi.fn()
 const dismiss = vi.fn()
 const addEventListener = vi.fn()
-
-vi.mock('../generated/components', () => ({
-  DsModal: () => null,
-}))
 
 vi.mock('@baloise/ds-core', () => ({
   dsModalController: {

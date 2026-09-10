@@ -1,5 +1,5 @@
 /**
- * Public generated wrappers. Overlay components with hand-authored idioms
+ * Public generated wrappers. Overlays with hand-authored components or hooks
  * (`DsModal`, `DsToast`, `DsSnackbar`, `DsAlertContainer`) are intentionally omitted.
  */
 export {

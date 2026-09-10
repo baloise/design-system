@@ -2,15 +2,15 @@ import { act } from 'react'
 import { afterEach, beforeEach, describe, expect, test, vi } from 'vitest'
 import type { Alert } from '@baloise/ds-core'
 import { renderHook } from '../test/render'
-import { useToast } from './toast'
+import { useSnackbar } from './use-snackbar'
 
 const create = vi.fn()
 const remove = vi.fn()
 const defineDsAlertContainer = vi.fn()
-const defineDsToast = vi.fn()
+const defineDsSnackbar = vi.fn()
 
 vi.mock('@baloise/ds-core', () => ({
-  dsToastController: {
+  dsSnackbarController: {
     create: (...args: unknown[]) => create(...args),
     remove: (...args: unknown[]) => remove(...args),
     removeAll: vi.fn(),
@@ -21,23 +21,23 @@ vi.mock('@baloise/ds-core/components/ds-alert-container.js', () => ({
   defineCustomElement: (...args: unknown[]) => defineDsAlertContainer(...args),
 }))
 
-vi.mock('@baloise/ds-core/components/ds-toast.js', () => ({
-  defineCustomElement: (...args: unknown[]) => defineDsToast(...args),
+vi.mock('@baloise/ds-core/components/ds-snackbar.js', () => ({
+  defineCustomElement: (...args: unknown[]) => defineDsSnackbar(...args),
 }))
 
 const options: Alert = {
-  heading: 'Saved',
-  message: 'Your changes have been saved.',
+  heading: 'Offline',
+  message: 'You are currently offline.',
   closable: true,
   closeHandler: () => undefined,
   actionHandler: () => undefined,
 }
 
-describe('useToast', () => {
+describe('useSnackbar', () => {
   beforeEach(() => {
     create.mockReset()
     remove.mockReset()
-    create.mockResolvedValue('toast-1')
+    create.mockResolvedValue('snackbar-1')
     remove.mockResolvedValue(undefined)
   })
 
@@ -46,15 +46,15 @@ describe('useToast', () => {
   })
 
   test('registers overlay custom elements so controllers can create them', () => {
-    const { unmount } = renderHook(() => useToast())
+    const { unmount } = renderHook(() => useSnackbar())
 
     expect(defineDsAlertContainer).toHaveBeenCalled()
-    expect(defineDsToast).toHaveBeenCalled()
+    expect(defineDsSnackbar).toHaveBeenCalled()
     unmount()
   })
 
-  test('present creates a toast with the given options', async () => {
-    const { result, unmount } = renderHook(() => useToast())
+  test('present creates a snackbar with the given options', async () => {
+    const { result, unmount } = renderHook(() => useSnackbar())
     const [present] = result.current
 
     await act(async () => {
@@ -66,8 +66,8 @@ describe('useToast', () => {
     unmount()
   })
 
-  test('dismiss removes the toast that present created', async () => {
-    const { result, unmount } = renderHook(() => useToast())
+  test('dismiss removes the snackbar that present created', async () => {
+    const { result, unmount } = renderHook(() => useSnackbar())
     const [present, dismiss] = result.current
 
     await act(async () => {
@@ -78,19 +78,7 @@ describe('useToast', () => {
     })
 
     expect(remove).toHaveBeenCalledTimes(1)
-    expect(remove).toHaveBeenCalledWith('toast-1')
-    unmount()
-  })
-
-  test('dismiss does nothing when no toast was presented', async () => {
-    const { result, unmount } = renderHook(() => useToast())
-    const [, dismiss] = result.current
-
-    await act(async () => {
-      await dismiss()
-    })
-
-    expect(remove).not.toHaveBeenCalled()
+    expect(remove).toHaveBeenCalledWith('snackbar-1')
     unmount()
   })
 })
