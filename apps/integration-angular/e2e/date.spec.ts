@@ -44,6 +44,43 @@ test('ds-date clearing the whole date via backspace updates the reactive value l
   await expect(page.getByTestId('reactive-date-value')).toHaveText('Reactive value:')
 })
 
+test('ds-date deleting only the year then blurring clears the value instead of reverting', async ({ page }) => {
+  await page.goto('/')
+
+  const dateInput = page.getByTestId('date').locator('[part="input"]')
+  await dateInput.click()
+  await dateInput.pressSequentially('15.01.2026')
+  await expect(page.getByTestId('date-value')).toHaveText('Date value: 2026-01-15')
+
+  await dateInput.press('End')
+  for (let i = 0; i < '2026'.length; i++) {
+    await dateInput.press('Backspace')
+  }
+  await dateInput.blur()
+
+  await expect(dateInput).toHaveValue('')
+  await expect(page.getByTestId('date-value')).toHaveText('Date value:')
+})
+
+test('ds-date reactive form: deleting only the year then blurring clears the reactive value', async ({ page }) => {
+  await page.goto('/')
+
+  const reactiveDate = page.getByTestId('reactive-date')
+  const nativeInput = reactiveDate.locator('[part="input"]')
+
+  await expect(nativeInput).toHaveValue('15.01.2024')
+
+  await nativeInput.click()
+  await nativeInput.press('End')
+  for (let i = 0; i < '2024'.length; i++) {
+    await nativeInput.press('Backspace')
+  }
+  await nativeInput.blur()
+
+  await expect(nativeInput).toHaveValue('__.__.____')
+  await expect(page.getByTestId('reactive-date-value')).toHaveText('Reactive value:')
+})
+
 test('ds-date reactive form: initial value, updates, disabled, and touched+invalid', async ({ page }) => {
   await page.goto('/')
 

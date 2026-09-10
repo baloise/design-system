@@ -559,6 +559,13 @@ export class DsDate implements DsComponentInterface, FieldInterface, FormControl
         // rather than snapping back to the last committed `value`. See `displayValue`'s declaration.
         this.displayValue = this.dateMask?.getDisplayText() ?? ''
 
+        // Keep FormControl's own bookkeeping of "what's currently in the field" in sync with the mask's
+        // live ISO (or `null` while incomplete). Without this, deleting part of a complete date (e.g. just
+        // the year) leaves `control.inputValue` stuck on the last *complete* ISO — `isEmpty()` below only
+        // catches a fully-cleared field, not a partially-edited one — so blur's `setValue(inputValue)`
+        // (see `FormControl.onBlur`) would resurrect that stale date instead of committing the clear.
+        this.control.inputValue = isoValue
+
         // Field fully cleared by backspace/DEL rather than the clear button — treat it as a clear too.
         // Gated on `event`, which IMask only supplies for a real keystroke: any of our own internal mask
         // resets (out-of-range revert, `clearIfIncomplete` on blur, locale/format changes, ...) fire this
