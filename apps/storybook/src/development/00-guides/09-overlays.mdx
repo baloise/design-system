@@ -3,12 +3,9 @@ import {
   Banner,
   Footer,
   HTMLFramework,
-  InfoQuote,
   Lead,
   LinkCard,
   LinkCards,
-  ReactFramework,
-  WarningQuote,
 } from '../../../.storybook/blocks'
 
 <Meta title="Development/Overlays" />
@@ -98,107 +95,5 @@ if (snackbarId) {
 ```
 
 </HTMLFramework>
-
-<ReactFramework>
-
-## React
-
-Import the overlay component and hooks from `@baloise/ds-react`.
-
-<InfoQuote>
-  Use `Modal`, `useToast`, and `useSnackbar`. The generated `DsModal`, `DsToast`, and `DsSnackbar` wrappers are not
-  public exports.
-</InfoQuote>
-
-### Modal
-
-Use `Modal` as a controlled component. Update `open` through `onOpenChange` so React state stays synchronized when the
-user closes the modal with Escape, the close button, or the backdrop.
-
-```tsx
-import { useState } from 'react'
-import { DsButton, DsModalBody, DsModalHeader, Modal } from '@baloise/ds-react'
-
-export function ModalExample() {
-  const [isOpen, setIsOpen] = useState(false)
-
-  return (
-    <>
-      <DsButton onDsClick={() => setIsOpen(true)}>Open modal</DsButton>
-      <Modal open={isOpen} onOpenChange={setIsOpen}>
-        <DsModalHeader>Confirm action</DsModalHeader>
-        <DsModalBody>
-          <p>Do you want to continue?</p>
-        </DsModalBody>
-      </Modal>
-    </>
-  )
-}
-```
-
-<WarningQuote>
-  Imperative modal presentation with `useModal()` is not available yet. Use the controlled `Modal` component.
-</WarningQuote>
-
-### Toast
-
-`useToast()` returns `present` and `dismiss` functions. Pass notification content as data; toast content is not JSX.
-
-```tsx
-import { DsButton, useToast } from '@baloise/ds-react'
-
-export function ToastExample() {
-  const [presentToast, dismissToast] = useToast()
-
-  const showToast = () =>
-    presentToast({
-      heading: 'Saved',
-      message: 'Your changes have been saved.',
-      closable: true,
-      duration: 5000,
-      closeHandler: () => undefined,
-      actionHandler: () => undefined,
-    })
-
-  return (
-    <>
-      <DsButton onDsClick={showToast}>Show toast</DsButton>
-      <DsButton onDsClick={() => dismissToast()}>Dismiss toast</DsButton>
-    </>
-  )
-}
-```
-
-### Snackbar
-
-`useSnackbar()` uses the same `[present, dismiss]` pattern. Use a snackbar when the message should remain available
-until it is dismissed.
-
-```tsx
-import { DsButton, useSnackbar } from '@baloise/ds-react'
-
-export function SnackbarExample() {
-  const [presentSnackbar, dismissSnackbar] = useSnackbar()
-
-  const showSnackbar = () =>
-    presentSnackbar({
-      heading: 'Offline',
-      message: 'You are currently offline.',
-      closable: true,
-      duration: 'infinite',
-      closeHandler: () => undefined,
-      actionHandler: () => undefined,
-    })
-
-  return (
-    <>
-      <DsButton onDsClick={showSnackbar}>Show snackbar</DsButton>
-      <DsButton onDsClick={() => dismissSnackbar()}>Dismiss snackbar</DsButton>
-    </>
-  )
-}
-```
-
-</ReactFramework>
 
 <Footer />

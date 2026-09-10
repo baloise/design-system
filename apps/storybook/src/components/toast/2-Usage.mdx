@@ -3,8 +3,10 @@ import {
   Banner,
   BannerTabs,
   Footer,
+  InfoQuote,
   LinkCard,
   LinkCards,
+  ReactFramework,
   StoryHeading,
   UsageExamples,
 } from '../../../.storybook/blocks'
@@ -86,6 +88,43 @@ import { TOAST_DOC_CONFIG, getToastTabs } from './toast.doc-config'
     },
   ]}
 />
+
+<ReactFramework>
+
+## Present and dismiss a toast
+
+`useToast()` returns `present` and `dismiss` functions. Pass notification content as data; toast content is not JSX.
+
+<InfoQuote>
+  Import `useToast` from `@baloise/ds-react`. The generated `DsToast` wrapper is not a public export.
+</InfoQuote>
+
+```tsx
+import { DsButton, useToast } from '@baloise/ds-react'
+
+export function ToastExample() {
+  const [presentToast, dismissToast] = useToast()
+
+  const showToast = () =>
+    presentToast({
+      heading: 'Saved',
+      message: 'Your changes have been saved.',
+      closable: true,
+      duration: 5000,
+      closeHandler: () => undefined,
+      actionHandler: () => undefined,
+    })
+
+  return (
+    <>
+      <DsButton onDsClick={showToast}>Show toast</DsButton>
+      <DsButton onDsClick={() => dismissToast()}>Dismiss toast</DsButton>
+    </>
+  )
+}
+```
+
+</ReactFramework>
 
 <Footer>
   <LinkCards>

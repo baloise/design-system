@@ -3,9 +3,12 @@ import {
   Banner,
   BannerTabs,
   Footer,
+  InfoQuote,
   LinkCard,
   LinkCards,
+  ReactFramework,
   UsageExamples,
+  WarningQuote,
 } from '../../../.storybook/blocks'
 import * as ModalStories from './modal.stories'
 import { MODAL_DOC_CONFIG, getModalTabs } from './modal.doc-config'
@@ -29,6 +32,44 @@ import { MODAL_DOC_CONFIG, getModalTabs } from './modal.doc-config'
 - When the content is too large to fit comfortably in a dialog — consider a dedicated page or side panel.
 - For complex multi-step workflows — break them into separate pages instead.
 - As a substitute for inline validation or contextual help.
+
+<ReactFramework>
+
+## Controlled modal
+
+Use `Modal` as a controlled component. Update `open` through `onOpenChange` so React state stays synchronized when the
+user closes the modal with Escape, the close button, or the backdrop.
+
+<InfoQuote>
+  Import `Modal` from `@baloise/ds-react`. The generated `DsModal` wrapper is not a public export.
+</InfoQuote>
+
+```tsx
+import { useState } from 'react'
+import { DsButton, DsModalBody, DsModalHeader, Modal } from '@baloise/ds-react'
+
+export function ModalExample() {
+  const [isOpen, setIsOpen] = useState(false)
+
+  return (
+    <>
+      <DsButton onDsClick={() => setIsOpen(true)}>Open modal</DsButton>
+      <Modal open={isOpen} onOpenChange={setIsOpen}>
+        <DsModalHeader>Confirm action</DsModalHeader>
+        <DsModalBody>
+          <p>Do you want to continue?</p>
+        </DsModalBody>
+      </Modal>
+    </>
+  )
+}
+```
+
+<WarningQuote>
+  Imperative modal presentation with `useModal()` is not available yet. Use the controlled `Modal` component.
+</WarningQuote>
+
+</ReactFramework>
 
 <Footer>
   <LinkCards>

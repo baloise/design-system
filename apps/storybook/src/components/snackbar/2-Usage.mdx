@@ -3,8 +3,10 @@ import {
   Banner,
   BannerTabs,
   Footer,
+  InfoQuote,
   LinkCard,
   LinkCards,
+  ReactFramework,
   StoryHeading,
   UsageExamples,
 } from '../../../.storybook/blocks'
@@ -30,6 +32,43 @@ import { SNACKBAR_DOC_CONFIG, getSnackbarTabs } from './snackbar.doc-config'
 - For critical errors that require immediate user attention — use **Alert** in a modal dialog
 - For inline validation feedback on form fields — use field-level error messages
 
+<ReactFramework>
+
+## Present and dismiss a snackbar
+
+`useSnackbar()` returns `present` and `dismiss` functions. Use a snackbar when the message should remain available until
+it is dismissed.
+
+<InfoQuote>
+  Import `useSnackbar` from `@baloise/ds-react`. The generated `DsSnackbar` wrapper is not a public export.
+</InfoQuote>
+
+```tsx
+import { DsButton, useSnackbar } from '@baloise/ds-react'
+
+export function SnackbarExample() {
+  const [presentSnackbar, dismissSnackbar] = useSnackbar()
+
+  const showSnackbar = () =>
+    presentSnackbar({
+      heading: 'Offline',
+      message: 'You are currently offline.',
+      closable: true,
+      duration: 'infinite',
+      closeHandler: () => undefined,
+      actionHandler: () => undefined,
+    })
+
+  return (
+    <>
+      <DsButton onDsClick={showSnackbar}>Show snackbar</DsButton>
+      <DsButton onDsClick={() => dismissSnackbar()}>Dismiss snackbar</DsButton>
+    </>
+  )
+}
+```
+
+</ReactFramework>
 
 <Footer>
   <LinkCards>
