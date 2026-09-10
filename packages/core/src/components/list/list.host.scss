@@ -46,5 +46,5 @@
   */
 :host(.is-lg) {
   --mod-list-item-min-height: var(--ds-list-item-size-lg-min-height);
-  --mod-list-item-space: var(--ds-list-item-size-lg-space);
+  --mod-list-item-py: var(--ds-list-item-size-lg-padding-y);
 }

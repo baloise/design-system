@@ -4,8 +4,8 @@
 /**
  * @prop --tabs-border-base: Border of the tablist border track. Set to transparent to hide it.
  * @prop --tabs-gap: Gap between tab buttons.
- * @prop --tabs-tab-space-x: Horizontal padding inside each tab button.
- * @prop --tabs-tab-space-y: Vertical padding inside each tab button.
+ * @prop --tabs-tab-px: Horizontal padding inside each tab button.
+ * @prop --tabs-tab-py: Vertical padding inside each tab button.
  * @prop --tabs-tab-unselected-color-base: Text color of an unselected tab button.
  * @prop --tabs-tab-unselected-color-hover: Text color of a hovered, unselected tab button.
  * @prop --tabs-tab-unselected-color-active: Text color of a pressed, unselected tab button.
@@ -17,20 +17,20 @@
  * @prop --tabs-indicator-selected-base: Indicator border of the selected tab.
  * @prop --tabs-indicator-selected-hover: Indicator border of a hovered, selected tab.
  * @prop --tabs-tab-color-focus: Color of the keyboard focus ring on tab buttons.
- * @prop --tabs-panel-space-x: Horizontal padding inside the content panel.
- * @prop --tabs-panel-space-y: Vertical padding inside the content panel.
+ * @prop --tabs-panel-px: Horizontal padding inside the content panel.
+ * @prop --tabs-panel-py: Vertical padding inside the content panel.
  * @prop --tabs-vertical-gap: Gap between the tablist and the content panel in vertical mode.
  * @prop --tabs-scroll-fade-bg: Background color for the edge-fade gradient beside the carousel buttons.
  */
 
 :host {
-  @include vars.local(tabs-border-base, var(--ds-tabs-border-base));
+  @include vars.local(tabs-border-base, var(--ds-tabs-border-default));
   @include vars.local(tabs-gap, var(--ds-tabs-gap));
-  @include vars.local(tabs-panel-space-x, var(--ds-tabs-panel-space-x));
-  @include vars.local(tabs-panel-space-y, var(--ds-tabs-panel-space-y));
+  @include vars.local(tabs-panel-px, var(--ds-tabs-panel-padding-x));
+  @include vars.local(tabs-panel-py, var(--ds-tabs-panel-padding-y));
   @include vars.local(tabs-vertical-gap, var(--ds-tabs-vertical-gap));
-  @include vars.local(tabs-tab-space-x, var(--ds-tabs-tab-space-x));
-  @include vars.local(tabs-tab-space-y, var(--ds-tabs-tab-space-y));
+  @include vars.local(tabs-tab-px, var(--ds-tabs-tab-padding-x));
+  @include vars.local(tabs-tab-py, var(--ds-tabs-tab-padding-y));
   @include vars.local(tabs-tab-unselected-font-family, var(--ds-tabs-tab-unselected-typo-font-family));
   @include vars.local(tabs-tab-unselected-font-size, var(--ds-tabs-tab-unselected-typo-font-size));
   @include vars.local(tabs-tab-unselected-font-weight, var(--ds-tabs-tab-unselected-typo-font-weight));
@@ -116,7 +116,7 @@
   --_tabs-indicator-selected-base: var(--ds-alias-border-width-base) solid var(--ds-alias-text-color-white);
   --_tabs-indicator-selected-hover: var(--ds-alias-border-width-base) solid var(--ds-alias-text-color-white);
   --_tabs-tab-color-focus: var(--ds-alias-interaction-focus-color-inverted);
-  --_tabs-scroll-fade-bg: var(--ds-alias-background-color-primary);
+  --_tabs-scroll-fade-bg: var(--ds-alias-surface-primary);
   --_tabs-scroll-btn-color-text: var(--ds-alias-text-color-white);
   --_tabs-scroll-btn-color-hover-background: rgba(255, 255, 255, 0.12);
   --_tabs-scroll-btn-color-hover-text: var(--ds-alias-text-color-white);
@@ -355,11 +355,11 @@
 }
 
 :host ::slotted(ds-tab-panel) {
-  --tab-panel-padding: var(--_tabs-panel-space-y) var(--_tabs-panel-space-x);
+  --tab-panel-p: var(--_tabs-panel-py) var(--_tabs-panel-px);
 }
 
 :host(.is-vertical) ::slotted(ds-tab-panel) {
-  --tab-panel-padding: 0.5rem 0 0;
+  --tab-panel-p: 0.5rem 0 0;
 }
 
 // Navigation mode — <nav> must not create its own block context

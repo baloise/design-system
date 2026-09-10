@@ -1,4 +1,4 @@
-export const DATE_COLORS = ['primary', 'danger', 'success', 'warning', ''] as const
+export const DATE_COLORS = ['primary', 'danger', 'success', 'warning'] as const
 
 export type DateColor = (typeof DATE_COLORS)[number]
 

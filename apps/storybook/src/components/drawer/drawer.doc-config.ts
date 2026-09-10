@@ -6,12 +6,12 @@ export const DRAWER_DOC_CONFIG = {
   section: 'Components / Drawer',
   color: 'purple' as const,
   tabs: [
-    { label: 'Overview', storyId: 'components-drawer--drawer' },
-    { label: 'Usage', storyId: 'components-drawer--usage' },
-    { label: 'Variants', storyId: 'components-drawer--variants-overview' },
-    { label: 'Styling', storyId: 'components-drawer--styling' },
-    { label: 'Accessibility', storyId: 'components-drawer--accessibility' },
-    { label: 'Testing', storyId: 'components-drawer--testing' },
+    { label: 'Overview', storyId: 'components-drawer-drawer--drawer' },
+    { label: 'Usage', storyId: 'components-drawer-usage--usage' },
+    { label: 'Variants', storyId: 'components-drawer-variants-overview--overview' },
+    { label: 'Styling', storyId: 'components-drawer-styling--styling' },
+    { label: 'Accessibility', storyId: 'components-drawer-accessibility--accessibility' },
+    { label: 'Testing', storyId: 'components-drawer-testing--testing' },
   ],
 }
 

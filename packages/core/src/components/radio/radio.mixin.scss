@@ -6,7 +6,7 @@
  * --------------------------------
  * $wrapper — the element that contains input[type="radio"] + label.
  *   Web component: ':host'
- *   CSS-only:      '.radio'
+ *   CSS-only:      '.ds-radio'
  */
 
 @mixin vars($wrapper: ':host') {
@@ -24,7 +24,7 @@
 
     // Tile
     @include vars.local(radio-tile-radius, var(--ds-alias-radius-base));
-    @include vars.local(radio-tile-padding, 1rem);
+    @include vars.local(radio-tile-p, 1rem);
     @include vars.local(radio-tile-border-width, var(--ds-alias-border-width-base));
 
     @include vars.local(radio-tile-base-background-color, inherit);
@@ -91,7 +91,7 @@
 }
 
 // Web component: :host is a thin shell, the inner label is the flex/style container.
-// CSS-only:      label.radio is the flex/style container directly — no inner label.
+// CSS-only:      label.ds-radio is the flex/style container directly — no inner label.
 @mixin layout($wrapper: ':host') {
   @if $wrapper == ':host' {
     :host {
@@ -138,7 +138,7 @@
   }
 
   #{$wrapper} input[type='radio']:focus-visible {
-    outline: var(--ds-alias-interaction-focus-width, 2px) solid var(--ds-alias-interaction-focus-color-base);
+    outline: var(--ds-alias-interaction-focus-size-outer, 2px) solid var(--ds-alias-interaction-focus-color-base);
     outline-offset: 2px;
     border-radius: var(--_radio-radius);
   }

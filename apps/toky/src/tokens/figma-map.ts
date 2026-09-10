@@ -33,6 +33,21 @@ const DTCG_TYPE_BY_RESOLVED_TYPE: Record<string, string> = {
   BOOLEAN: 'boolean',
 }
 
+// Figma's Variables UI expects a percentage for line height, not this codebase's raw CSS-style
+// multiplier (1.3, not 130) — inverse of
+// scripts/figma-sync/lib/figma-value.mjs's LINE_HEIGHT_PERCENT_MULTIPLIER (reimplemented here, not
+// imported — Node-only module, outside apps/toky's module boundary, per this file's header).
+// Applies to both a standalone `number`-typed LineHeight token and a `typography` composite
+// token's `lineHeight` sub-value.
+export const LINE_HEIGHT_PERCENT_MULTIPLIER = 100
+
+// Mirrors scripts/figma-sync/lib/figma-value.mjs's isLineHeightNumberToken — "LineHeight" anywhere
+// in the path is this codebase's only way to tell a LineHeight `number` token apart from
+// Opacity/ZIndex/Radius, which share the same $type but must stay a raw unitless number.
+export function isLineHeightPath(path: string[]): boolean {
+  return path.includes('LineHeight')
+}
+
 export function dtcgTypeFor(resolvedType: string): string {
   const dtcgType = DTCG_TYPE_BY_RESOLVED_TYPE[resolvedType]
   if (!dtcgType) {

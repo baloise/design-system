@@ -9,15 +9,15 @@
   </head>
 
   <body>
-    <main class="container">
+    <main class="ds-container">
       <!-- Basic -->
       <section data-testid="basic">
         <span>Basic</span>
-        <label class="radio">
+        <label class="ds-radio">
           <input type="radio" />
           Unchecked
         </label>
-        <label class="radio">
+        <label class="ds-radio">
           <input type="radio" checked />
           Checked
         </label>
@@ -26,10 +26,10 @@
       <!-- No label -->
       <section data-testid="no-label">
         <span>No Label</span>
-        <label class="radio">
+        <label class="ds-radio">
           <input type="radio" />
         </label>
-        <label class="radio">
+        <label class="ds-radio">
           <input type="radio" checked />
         </label>
       </section>
@@ -37,11 +37,11 @@
       <!-- Disabled -->
       <section data-testid="disabled">
         <span>Disabled</span>
-        <label class="radio is-disabled">
+        <label class="ds-radio is-disabled">
           <input type="radio" disabled />
           Unchecked
         </label>
-        <label class="radio is-disabled">
+        <label class="ds-radio is-disabled">
           <input type="radio" checked disabled />
           Checked
         </label>
@@ -50,11 +50,11 @@
       <!-- Invalid -->
       <section data-testid="invalid">
         <span>Invalid</span>
-        <label class="radio is-invalid">
+        <label class="ds-radio is-invalid">
           <input type="radio" />
           Unchecked
         </label>
-        <label class="radio is-invalid">
+        <label class="ds-radio is-invalid">
           <input type="radio" checked />
           Checked
         </label>
@@ -63,11 +63,11 @@
       <!-- Invalid + Disabled -->
       <section data-testid="invalid-disabled">
         <span>Invalid + Disabled</span>
-        <label class="radio is-invalid is-disabled">
+        <label class="ds-radio is-invalid is-disabled">
           <input type="radio" disabled />
           Unchecked
         </label>
-        <label class="radio is-invalid is-disabled">
+        <label class="ds-radio is-invalid is-disabled">
           <input type="radio" checked disabled />
           Checked
         </label>
@@ -76,39 +76,39 @@
       <!-- Field -->
       <section data-testid="field">
         <span>Field</span>
-        <fieldset class="field">
-          <legend class="label">Label</legend>
-          <div class="radio-group">
-            <label class="radio">
+        <fieldset class="ds-field">
+          <legend class="ds-label">Label</legend>
+          <div class="ds-radio-group">
+            <label class="ds-radio">
               <input required type="radio" name="required" aria-describedby="help" />
               Radio 1
             </label>
-            <label class="radio">
+            <label class="ds-radio">
               <input required type="radio" name="required" aria-describedby="help" />
               Radio 2
             </label>
           </div>
-          <p class="help" id="help">This username is available</p>
+          <p class="ds-help" id="help">This username is available</p>
         </fieldset>
       </section>
 
       <!-- Field Vertical -->
       <section data-testid="field-vertical">
         <span>Field Vertical</span>
-        <fieldset class="field">
-          <legend class="label">Label</legend>
-          <div class="radio-group is-vertical">
-            <label class="radio">
+        <fieldset class="ds-field">
+          <legend class="ds-label">Label</legend>
+          <div class="ds-radio-group is-vertical">
+            <label class="ds-radio">
               <input required type="radio" name="required" aria-describedby="help" />
               Radio 1
             </label>
-            <label class="radio">
+            <label class="ds-radio">
               <input required type="radio" name="required" aria-describedby="help" />
               Radio 2
             </label>
           </div>
 
-          <p class="help" id="help">This username is available</p>
+          <p class="ds-help" id="help">This username is available</p>
         </fieldset>
       </section>
 
@@ -116,7 +116,7 @@
       <section data-testid="form">
         <span>Form</span>
         <form action="https://www.w3schools.com/action_page.php" target="_blank">
-          <label class="radio">
+          <label class="ds-radio">
             <input type="radio" name="terms" value="accepted" />
             Accept terms and conditions
           </label>
@@ -129,38 +129,38 @@
       <!-- Field Disabled -->
       <section data-testid="field-disabled">
         <span>Field Disabled</span>
-        <fieldset class="field is-disabled">
-          <legend class="label">Label</legend>
-          <div class="radio-group">
-            <label class="radio is-disabled">
+        <fieldset class="ds-field is-disabled">
+          <legend class="ds-label">Label</legend>
+          <div class="ds-radio-group">
+            <label class="ds-radio is-disabled">
               <input type="radio" name="field-disabled" disabled aria-describedby="help" />
               Radio 1
             </label>
-            <label class="radio is-disabled">
+            <label class="ds-radio is-disabled">
               <input type="radio" name="field-disabled" disabled aria-describedby="help" />
               Radio 2
             </label>
           </div>
-          <p class="help" id="help">This username is available</p>
+          <p class="ds-help" id="help">This username is available</p>
         </fieldset>
       </section>
 
       <!-- Field Invalid -->
       <section data-testid="field-invalid">
         <span>Field Invalid</span>
-        <fieldset class="field is-invalid">
-          <legend class="label">Label</legend>
-          <div class="radio-group">
-            <label class="radio is-invalid">
+        <fieldset class="ds-field is-invalid">
+          <legend class="ds-label">Label</legend>
+          <div class="ds-radio-group">
+            <label class="ds-radio is-invalid">
               <input type="radio" name="field-invalid" aria-invalid="true" aria-describedby="help" />
               Radio 1
             </label>
-            <label class="radio is-invalid">
+            <label class="ds-radio is-invalid">
               <input type="radio" name="field-invalid" aria-invalid="true" aria-describedby="help" />
               Radio 2
             </label>
           </div>
-          <p class="help" id="help">This username is available</p>
+          <p class="ds-help" id="help">This username is available</p>
         </fieldset>
       </section>
     </main>

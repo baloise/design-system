@@ -43,27 +43,27 @@ Basic.storyName = '🧩 Basic'
 
 export const BasicHtml = Story({
   ...withRender(
-    () => ` <ul class="list">
-    <li class="item">
-      <h5 class="item-title">Item 2</h5>
+    () => ` <ul class="ds-list">
+    <li class="ds-item">
+      <h5 class="ds-item-title">Item 2</h5>
     </li>
-    <li class="item">
-      <div class="item-content">
-        <h5 class="item-title">Item 2</h5>
-        <span class="item-text">This is a description for item</span>
+    <li class="ds-item">
+      <div class="ds-item-content">
+        <h5 class="ds-item-title">Item 2</h5>
+        <span class="ds-item-text">This is a description for item</span>
       </div>
     </li>
-    <li class="item">
-      <div class="item-content">
-        <h5 class="item-title">Item 3</h5>
-        <span class="item-text">This is a description for item</span>
+    <li class="ds-item">
+      <div class="ds-item-content">
+        <h5 class="ds-item-title">Item 3</h5>
+        <span class="ds-item-text">This is a description for item</span>
       </div>
     </li>
-    <li class="item">
+    <li class="ds-item">
       <ds-icon name="file"></ds-icon>
-      <div class="item-content">
-        <h5 class="item-title">Item 3</h5>
-        <span class="item-text">This is a description for item</span>
+      <div class="ds-item-content">
+        <h5 class="ds-item-title">Item 3</h5>
+        <span class="ds-item-text">This is a description for item</span>
       </div>
     </li>
   </ul>
@@ -105,27 +105,27 @@ export const LinkedListHtml = Story({
   args: {},
   ...withRender(
     () => `
-        <ul class="list">
+        <ul class="ds-list">
           <li>
-            <a class="item" href="www.helvetia.com" target="_blank">
-              <span class="item-content">Internal Link</span>
+            <a class="ds-item" href="www.helvetia.com" target="_blank">
+              <span class="ds-item-content">Internal Link</span>
               <ds-icon name="nav-go-right"></ds-icon>
             </a>
           </li>
           <li>
-            <a class="item" href="www.helvetia.com" target="_blank">
-              <span class="item-content">
-                <span class="item-title">External Link</span>
-                <span class="item-text">Description</span>
+            <a class="ds-item" href="www.helvetia.com" target="_blank">
+              <span class="ds-item-content">
+                <span class="ds-item-title">External Link</span>
+                <span class="ds-item-text">Description</span>
               </span>
               <ds-icon name="link"></ds-icon>
             </a>
           </li>
           <li>
-            <a class="item is-disabled" aria-disabled="true" tabindex="-1">
-              <span class="item-content">
-                <span class="item-title">Disabled Link</span>
-                <span class="item-text">Description</span>
+            <a class="ds-item is-disabled" aria-disabled="true" tabindex="-1">
+              <span class="ds-item-content">
+                <span class="ds-item-title">Disabled Link</span>
+                <span class="ds-item-text">Description</span>
               </span>
               <ds-icon name="link" disabled></ds-icon>
             </a>
@@ -166,53 +166,53 @@ export const DownloadListHtml = Story({
   args: {},
   ...withRender(
     () => `
-      <ul class="list">
+      <ul class="ds-list">
           <li>
-            <button class="item">
+            <button class="ds-item">
               <ds-icon name="file"></ds-icon>
-              <span class="item-content">
-                <span class="item-title">Document</span>
-                <span class="item-text">PDF - 98KB</span>
+              <span class="ds-item-content">
+                <span class="ds-item-title">Document</span>
+                <span class="ds-item-text">PDF - 98KB</span>
               </span>
               <ds-icon name="download" size="small"></ds-icon>
             </button>
           </li>
           <li>
-            <button class="item">
+            <button class="ds-item">
               <ds-icon name="picture"></ds-icon>
-              <span class="item-content">
-                <span class="item-title">Picture</span>
-                <span class="item-text">PNG - 140KB</span>
+              <span class="ds-item-content">
+                <span class="ds-item-title">Picture</span>
+                <span class="ds-item-text">PNG - 140KB</span>
               </span>
               <ds-icon name="download" size="small"></ds-icon>
             </button>
           </li>
           <li>
-            <button class="item">
+            <button class="ds-item">
               <ds-icon name="video"></ds-icon>
-              <span class="item-content">
-                <span class="item-title">Video</span>
-                <span class="item-text">MP4 - 61MB</span>
+              <span class="ds-item-content">
+                <span class="ds-item-title">Video</span>
+                <span class="ds-item-text">MP4 - 61MB</span>
               </span>
               <ds-icon name="download" size="small"></ds-icon>
             </button>
           </li>
           <li>
-            <button class="item">
+            <button class="ds-item">
               <ds-icon name="audio"></ds-icon>
-              <span class="item-content">
-                <span class="item-title">Audio</span>
-                <span class="item-text">MP3 - 5MB</span>
+              <span class="ds-item-content">
+                <span class="ds-item-title">Audio</span>
+                <span class="ds-item-text">MP3 - 5MB</span>
               </span>
               <ds-icon name="download" size="small"></ds-icon>
             </button>
           </li>
           <li>
-            <button class="item is-disabled" disabled>
+            <button class="ds-item is-disabled" disabled>
               <ds-icon name="file" disabled></ds-icon>
-              <span class="item-content">
-                <span class="item-title">Disabled Document</span>
-                <span class="item-text">PDF - 98KB</span>
+              <span class="ds-item-content">
+                <span class="ds-item-title">Disabled Document</span>
+                <span class="ds-item-text">PDF - 98KB</span>
               </span>
               <ds-icon name="download" disabled size="small"></ds-icon>
             </button>
@@ -229,7 +229,7 @@ export const Inverted = Story({
   },
   ...withRender(
     ({ ...args }) => `
-<div class="bg-primary p-normal">
+<div class="bg-primary p-base">
   <ds-list ${props(args)}>
     <ds-item variant="link" label="Internal Link" href="www.helvetia.com" target="_blank"></ds-item>
     <ds-item
@@ -260,28 +260,28 @@ export const InvertedHtml = Story({
   args: {},
   ...withRender(
     () => `
-<div class="bg-primary p-normal">
-  <ul class="list is-inverted">
+<div class="bg-primary p-base">
+  <ul class="ds-list is-inverted">
     <li>
-      <a class="item" href="www.helvetia.com" target="_blank">
-        <span class="item-content">Internal Link</span>
+      <a class="ds-item" href="www.helvetia.com" target="_blank">
+        <span class="ds-item-content">Internal Link</span>
         <ds-icon name="nav-go-right"></ds-icon>
       </a>
     </li>
     <li>
-      <a class="item" href="www.helvetia.com" target="_blank">
-        <span class="item-content">
-          <span class="item-title">External Link</span>
-          <span class="item-text">Description</span>
+      <a class="ds-item" href="www.helvetia.com" target="_blank">
+        <span class="ds-item-content">
+          <span class="ds-item-title">External Link</span>
+          <span class="ds-item-text">Description</span>
         </span>
         <ds-icon name="link"></ds-icon>
       </a>
     </li>
     <li>
-      <a class="item is-disabled" aria-disabled="true" tabindex="-1">
-        <span class="item-content">
-          <span class="item-title">Disabled Link</span>
-          <span class="item-text">Description</span>
+      <a class="ds-item is-disabled" aria-disabled="true" tabindex="-1">
+        <span class="ds-item-content">
+          <span class="ds-item-title">Disabled Link</span>
+          <span class="ds-item-text">Description</span>
         </span>
         <ds-icon name="link" disabled></ds-icon>
       </a>
@@ -337,7 +337,7 @@ export const AccordionListNested = Story({
     ({ ...args }) => `
 <ds-list ${props(args)}>
   <ds-item variant="accordion" label="Switzerland" label-level="h4">
-    <ds-list slot="accordion-content" class="ml-large">
+    <ds-list slot="accordion-content" class="ml-lg">
       <ds-item variant="accordion" label="Bern">
         <p slot="accordion-content">
           Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reiciendis, distinctio laborum. Numquam
@@ -362,7 +362,7 @@ export const AccordionListNested = Story({
     </ds-list>
   </ds-item>
   <ds-item variant="accordion" label="Belgium" label-level="h4">
-    <ds-list slot="accordion-content" class="ml-large">
+    <ds-list slot="accordion-content" class="ml-lg">
       <ds-item variant="accordion" label="Brüssel">
         <p slot="accordion-content">
           Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reiciendis, distinctio laborum. Numquam

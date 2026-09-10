@@ -42,9 +42,9 @@ Basic.storyName = '🧩 Basic'
 export const BasicHtml = Story({
   ...withRender(
     () => `
-<fieldset class="field">
-  <legend class="label">Fruits</legend>
-  <div class="segment">
+<fieldset class="ds-field">
+  <legend class="ds-label">Fruits</legend>
+  <div class="ds-segment">
     <label>
       <input type="radio" name="basic" value="apple" checked />
       <span>Apple</span>
@@ -58,7 +58,7 @@ export const BasicHtml = Story({
       <span>Banana</span>
     </label>
   </div>
-  <p class="help">Choose your favorite fruit</p>
+  <p class="ds-help">Choose your favorite fruit</p>
 </fieldset>`,
   ),
 })
@@ -78,9 +78,9 @@ Vertical.storyName = '🧩 Vertical'
 export const VerticalHtml = Story({
   ...withRender(
     () => `
-<fieldset class="field">
-  <legend class="label">Fruits</legend>
-  <div class="segment is-vertical">
+<fieldset class="ds-field">
+  <legend class="ds-label">Fruits</legend>
+  <div class="ds-segment is-vertical">
     <label>
       <input type="radio" name="vertical" value="apple" checked />
       <span>Apple</span>
@@ -92,7 +92,7 @@ export const VerticalHtml = Story({
       <span class="description">A small red fruit</span>
     </label>
   </div>
-  <p class="help">Choose your favorite fruit</p>
+  <p class="ds-help">Choose your favorite fruit</p>
 </fieldset>`,
   ),
 })
@@ -112,9 +112,9 @@ Disabled.storyName = '🧩 Disabled'
 export const DisabledHtml = Story({
   ...withRender(
     () => `
-<fieldset class="field is-disabled">
-  <legend class="label">Fruits</legend>
-  <div class="segment is-disabled">
+<fieldset class="ds-field is-disabled">
+  <legend class="ds-label">Fruits</legend>
+  <div class="ds-segment is-disabled">
     <label>
       <input type="radio" name="disabled" value="apple" checked disabled />
       <span>Apple</span>
@@ -126,7 +126,7 @@ export const DisabledHtml = Story({
       <span class="description">A small red fruit</span>
     </label>
   </div>
-  <p class="help">Choose your favorite fruit</p>
+  <p class="ds-help">Choose your favorite fruit</p>
 </fieldset>`,
   ),
 })
@@ -153,9 +153,9 @@ Invalid.storyName = '🧩 Invalid'
 export const InvalidHtml = Story({
   ...withRender(
     () => `
-<fieldset class="field is-danger">
-  <legend class="label">Fruits</legend>
-  <div class="segment is-danger">
+<fieldset class="ds-field is-danger">
+  <legend class="ds-label">Fruits</legend>
+  <div class="ds-segment is-danger">
     <label>
       <input type="radio" name="invalid" value="apple" checked aria-invalid="true" />
       <span>Apple</span>
@@ -167,7 +167,7 @@ export const InvalidHtml = Story({
       <span class="description">A small red fruit</span>
     </label>
   </div>
-  <p class="help">Please select a fruit</p>
+  <p class="ds-help">Please select a fruit</p>
 </fieldset>`,
   ),
 })

@@ -6,12 +6,12 @@ export const FILEUPLOAD_DOC_CONFIG = {
   section: 'Components / FileUpload',
   color: 'purple' as const,
   tabs: [
-    { label: 'Overview', storyId: 'components-fileupload--file-upload' },
-    { label: 'Usage', storyId: 'components-fileupload--usage' },
-    { label: 'Variants', storyId: 'components-fileupload--variants-overview' },
-    { label: 'Styling', storyId: 'components-fileupload--styling' },
-    { label: 'Accessibility', storyId: 'components-fileupload--accessibility' },
-    { label: 'Testing', storyId: 'components-fileupload--testing' },
+    { label: 'Overview', storyId: 'components-fileupload-fileupload--fileupload' },
+    { label: 'Usage', storyId: 'components-fileupload-usage--usage' },
+    { label: 'Variants', storyId: 'components-fileupload-variants-overview--overview' },
+    { label: 'Styling', storyId: 'components-fileupload-styling--styling' },
+    { label: 'Accessibility', storyId: 'components-fileupload-accessibility--accessibility' },
+    { label: 'Testing', storyId: 'components-fileupload-testing--testing' },
   ],
 }
 

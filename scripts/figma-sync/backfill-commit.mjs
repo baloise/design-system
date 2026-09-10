@@ -10,8 +10,9 @@
  * touches Base.tokens.json — the token was already gone once the Toky PR
  * merged, there's nothing here to patch.
  *
- * Reads NEW_IDS / REMOVED_IDS (JSON, from pull.mjs's outputs) from the
- * environment. Run with: node scripts/figma-sync/backfill-commit.mjs
+ * Reads NEW_IDS_FILE / REMOVED_IDS_FILE (paths to JSON files pull.mjs wrote, from its outputs) —
+ * or, for small local test payloads only, the inline-JSON NEW_IDS / REMOVED_IDS env vars.
+ * Run with: node scripts/figma-sync/backfill-commit.mjs
  *
  * TOKENS_DIR_OVERRIDE (optional, shared with pull.mjs/conflict-check.mjs):
  * switches out of the real GitHub API entirely — no GITHUB_TOKEN needed.
@@ -24,7 +25,7 @@
  *     (TOKENS_DIR_OVERRIDE must point inside a git working tree).
  * Never set either in figma-sync.yml.
  */
-import { writeFileSync } from 'node:fs'
+import { readFileSync, writeFileSync } from 'node:fs'
 import { resolve } from 'node:path'
 import { applyVariableIdPatch, buildSyncState, loadSyncStateFile } from './lib/baseline.mjs'
 import { commitFiles, getFileContent } from './lib/github.mjs'
@@ -126,9 +127,18 @@ function buildCommitMessage(newIds, removedIds) {
   return `chore(tokens): ${parts.join(', ')}\n\nAutomated — see docs/adr/0017-direct-commit-variableid-backfill.md.`
 }
 
+// A full-tree first sync can produce thousands of entries — too much JSON to pass safely through
+// an env var (see pull.mjs's matching comment on why it writes a file instead of a raw output).
+// NEW_IDS/REMOVED_IDS (inline JSON) remain supported for small local test payloads.
+function readIdsInput(fileEnvVar, inlineEnvVar) {
+  const filePath = process.env[fileEnvVar]
+  if (filePath) return JSON.parse(readFileSync(filePath, 'utf-8'))
+  return process.env[inlineEnvVar] ? JSON.parse(process.env[inlineEnvVar]) : []
+}
+
 async function main() {
-  const newIds = process.env.NEW_IDS ? JSON.parse(process.env.NEW_IDS) : []
-  const removedIds = process.env.REMOVED_IDS ? JSON.parse(process.env.REMOVED_IDS) : []
+  const newIds = readIdsInput('NEW_IDS_FILE', 'NEW_IDS')
+  const removedIds = readIdsInput('REMOVED_IDS_FILE', 'REMOVED_IDS')
 
   if (newIds.length === 0 && removedIds.length === 0) {
     console.log('No new or removed variableIds — nothing to write.')

@@ -1,0 +1,456 @@
+@use '@baloise/ds-css/dist/scss/mixins' as *;
+@use '../../vars' as vars;
+@use '../form/form.mixin' as form;
+@use '../input/input.mixin' as input;
+
+$chevron-icon: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2010%2010'%3E%3Cpath%20fill='black'%20d='M5,7.874a1.238,1.238,0,0,1-.879-.364L.206,3.393A.75.75,0,1,1,1.294,2.36L4.819,6.072a.249.249,0,0,0,.362,0L8.706,2.36A.75.75,0,1,1,9.794,3.393L5.9,7.5A1.269,1.269,0,0,1,5,7.874Z'/%3E%3C/svg%3E");
+$search-icon: url("data:image/svg+xml,%3Csvg viewBox='0 0 14 14' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M2 6C2 3.79086 3.79086 2 6 2C8.20914 2 10 3.79086 10 6C10 8.20914 8.20914 10 6 10C3.79086 10 2 8.20914 2 6ZM6 0C2.68629 0 0 2.68629 0 6C0 9.31371 2.68629 12 6 12C7.29578 12 8.49562 11.5892 9.47642 10.8908L12.2929 13.7073C12.6834 14.0978 13.3166 14.0978 13.7071 13.7073C14.0976 13.3168 14.0976 12.6836 13.7071 12.2931L10.8907 9.47665C11.5892 8.49581 12 7.29588 12 6C12 2.68629 9.31371 0 6 0Z'/%3E%3C/svg%3E");
+
+/**
+ * Variables
+ * --------------------------------
+ * Define here the css variables for the component to be able to use it in host or non-host mode
+ * These variables can be used in the component styles below and later on be overridden in themes.
+ *
+ * @prop --input-phone-color: Text color inside the number field.
+ * @prop --input-phone-placeholder: Placeholder text color.
+ * @prop --input-phone-family: Font family of the number field text.
+ * @prop --input-phone-weight: Font weight of the number field text.
+ * @prop --input-phone-size: Font size of the number field text.
+ * @prop --input-phone-line-height: Line height of the number field text.
+ * @prop --input-phone-flag-width: Width of the country flag.
+ * @prop --input-phone-flag-height: Height of the country flag.
+ * @prop --input-phone-flag-empty-background: Background color of the flag placeholder when no country is selected.
+ * @prop --input-phone-flag-empty-radius: Border radius of the flag placeholder when no country is selected.
+ * @prop --input-phone-popup-width: Width of the country picker popup.
+ * @prop --input-phone-popup-background: Background color of the country picker popup.
+ * @prop --input-phone-popup-shadow: Box shadow of the country picker popup.
+ * @prop --input-phone-popup-padding: Padding of the country picker popup.
+ * @prop --input-phone-popup-radius: Border radius of the country picker popup.
+ * @prop --input-phone-popup-border: Border of the country picker popup.
+ * @prop --input-phone-filter-placeholder-color: Placeholder text color of the country filter input.
+ * @prop --input-phone-scrollbar-color: Color of the country list scrollbar.
+ * @prop --input-phone-scrollbar-radius: Border radius of the country list scrollbar thumb.
+ * @prop --input-phone-scrollbar-border-width: Border width of the country list scrollbar thumb.
+ * @prop --input-phone-option-color: Text color of a country option.
+ * @prop --input-phone-option-background: Background color of a country option.
+ * @prop --input-phone-option-hover-background: Background color of a hovered or keyboard-active country option.
+ * @prop --input-phone-option-selected-background: Background color of the selected country option.
+ * @prop --input-phone-option-border: Border color between country options.
+ * @prop --input-phone-option-radius: Border radius of a country option.
+ * @prop --form-container-background: Background color of the input container.
+ * @prop --form-container-border-color: Border color of the input container.
+ * @prop --form-container-border-width: Border width of the input container.
+ * @prop --form-container-radius: Border radius of the input container.
+ * @prop --form-container-hover-background: Container background color on hover.
+ * @prop --form-container-active-background: Container background color when active.
+ * @prop --form-container-focus-background: Container background color when focused.
+ * @prop --form-container-hover-border: Container border color on hover.
+ * @prop --form-container-active-border: Container border color when active.
+ * @prop --form-container-focus-border: Container border color when focused.
+ * @prop --form-label-color: Text color of the label.
+ * @prop --form-label-family: Font family of the label.
+ * @prop --form-label-weight: Font weight of the label.
+ * @prop --form-label-size: Font size of the label.
+ * @prop --form-label-line-height: Line height of the label.
+ * @prop --form-description-color: Text color of the description.
+ * @prop --form-description-family: Font family of the description.
+ * @prop --form-description-weight: Font weight of the description.
+ * @prop --form-description-size: Font size of the description.
+ * @prop --form-description-line-height: Line height of the description.
+ */
+
+:host {
+  @include form.vars-field();
+  @include form.vars-container();
+  @include form.vars-label();
+  @include form.vars-description();
+
+  @include input.vars('input-phone');
+
+  @include vars.local(input-phone-flag-width, calc(var(--ds-device-space-base) * 1.5));
+  @include vars.local(input-phone-flag-height, var(--ds-device-space-base));
+  @include vars.local(input-phone-flag-empty-background, var(--ds-input-phone-flag-background-color-empty));
+  @include vars.local(input-phone-flag-empty-radius, var(--ds-input-phone-flag-radius-empty));
+  @include vars.local(input-phone-popup-width, 18.75rem);
+  @include vars.local(input-phone-popup-background, var(--ds-input-phone-popup-color-background));
+  @include vars.local(input-phone-popup-shadow, var(--ds-select-content-shadow));
+  @include vars.local(input-phone-popup-padding, var(--ds-input-phone-popup-padding));
+  @include vars.local(input-phone-popup-radius, var(--ds-input-phone-popup-radius));
+  @include vars.local(input-phone-popup-border, var(--ds-input-phone-popup-border));
+  @include vars.local(input-phone-filter-placeholder-color, var(--ds-input-phone-filter-color-placeholder));
+  @include vars.local(input-phone-scrollbar-color, var(--ds-input-phone-scrollbar-color));
+  @include vars.local(input-phone-scrollbar-radius, var(--ds-input-phone-scrollbar-radius));
+  @include vars.local(input-phone-scrollbar-border-width, var(--ds-input-phone-scrollbar-border-width));
+  @include vars.local(input-phone-option-color, var(--ds-select-option-color-text-base));
+  @include vars.local(input-phone-option-background, var(--ds-select-option-color-background-base));
+  @include vars.local(input-phone-option-hover-background, var(--ds-select-option-color-background-highlight));
+  @include vars.local(input-phone-option-selected-background, var(--ds-select-option-color-background-selected));
+  @include vars.local(input-phone-option-border, var(--ds-select-option-color-border));
+  @include vars.local(input-phone-option-radius, var(--ds-input-phone-option-radius));
+}
+
+/**
+ * Basic Component Styles
+ * --------------------------------
+ */
+
+:host {
+  @include form.field();
+  @include form.container($active: false);
+  @include form.label();
+  @include form.description();
+
+  @include input.style('input-phone');
+
+  min-width: 0;
+
+  #inner {
+    @include form.field();
+
+    min-width: 0;
+  }
+
+  #container {
+    position: relative;
+    min-width: 0;
+    gap: 0;
+    padding-inline: 0;
+  }
+
+  #input-segment {
+    box-sizing: border-box;
+    min-width: 0;
+    flex: 1 1 0%;
+    align-self: stretch;
+    display: flex;
+    align-items: center;
+    padding-inline: 0.5rem;
+  }
+}
+
+/**
+ * Country trigger and number field
+ * --------------------------------
+ */
+
+:host {
+  #country-trigger {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-shrink: 0;
+    align-self: stretch;
+    margin: 0;
+    padding-inline: calc(0.5rem + 2px);
+    border: none;
+    border-inline-end: var(--_form-container-border);
+    border-radius: 0;
+    outline: none;
+    background: transparent;
+    color: var(--_input-phone-color);
+    font-family: var(--_input-phone-family);
+    font-weight: var(--_input-phone-weight);
+    font-size: var(--_input-phone-size);
+    line-height: var(--_input-phone-line-height);
+    cursor: pointer;
+
+    &:disabled {
+      cursor: default;
+    }
+  }
+
+  #input-segment {
+    position: relative;
+  }
+
+  #country-trigger:focus-visible::after,
+  #input-segment:has(#input:focus-visible)::after {
+    content: '';
+    position: absolute;
+    z-index: 1;
+    inset-block: calc(var(--ds-alias-border-width-base, 1px) * -1);
+    pointer-events: none;
+    border: var(--_form-container-focus-border);
+  }
+
+  #country-trigger:focus-visible::after {
+    inset-inline: calc(var(--ds-alias-border-width-base, 1px) * -1) 0;
+    border-start-start-radius: var(--_form-container-radius);
+    border-end-start-radius: var(--_form-container-radius);
+    width: 100%;
+  }
+
+  #input-segment:has(#input:focus-visible)::after {
+    inset-inline: calc(var(--ds-alias-border-width-base, 1px) * -1);
+    border-start-end-radius: var(--_form-container-radius);
+    border-end-end-radius: var(--_form-container-radius);
+  }
+
+  .flag {
+    display: block;
+    width: var(--_input-phone-flag-width);
+    height: var(--_input-phone-flag-height);
+    object-fit: cover;
+    border-radius: 0.125rem;
+    flex-shrink: 0;
+    background: var(--_form-container-background);
+  }
+
+  .flag.is-empty {
+    background: var(--_input-phone-flag-empty-background);
+    border-radius: var(--_input-phone-flag-empty-radius);
+  }
+
+  .calling-code {
+    white-space: nowrap;
+  }
+
+  .chevron {
+    display: block;
+    width: 0.75rem;
+    height: 0.75rem;
+    flex-shrink: 0;
+    mask-image: $chevron-icon;
+    mask-size: 100%;
+    mask-repeat: no-repeat;
+    mask-position: center;
+    background-color: var(--_input-phone-color);
+    transition: transform 0.2s ease-in-out;
+  }
+}
+
+:host(.is-open) {
+  z-index: var(--ds-alias-z-index-popup);
+
+  .chevron {
+    transform: rotate(180deg);
+  }
+
+  // The popup being open moves real DOM focus to the filter/list, so #country-trigger is no
+  // longer :focus-visible — keep showing its ring for as long as the popup it controls is open.
+  #country-trigger::after {
+    content: '';
+    position: absolute;
+    z-index: 1;
+    inset-block: calc(var(--ds-alias-border-width-base, 1px) * -1);
+    inset-inline: calc(var(--ds-alias-border-width-base, 1px) * -1) 0;
+    pointer-events: none;
+    border: var(--_form-container-focus-border);
+    border-start-start-radius: var(--_form-container-radius);
+    border-end-start-radius: var(--_form-container-radius);
+    width: 100%;
+  }
+}
+
+/**
+ * Country picker popup
+ * --------------------------------
+ */
+
+:host {
+  #popup {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: var(--ds-alias-z-index-popup);
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    width: min(var(--_input-phone-popup-width), 100%);
+    max-height: 18.75rem;
+    background: var(--_input-phone-popup-background);
+    box-shadow: var(--_input-phone-popup-shadow);
+    overflow: hidden;
+
+    margin: var(--_input-phone-popup-padding) 0 0 0;
+    border-radius: var(--_input-phone-popup-radius);
+    padding: var(--_input-phone-popup-padding) 0;
+    border: var(--_input-phone-popup-border);
+
+    transition:
+      transform 0.2s,
+      opacity 0.2s,
+      -webkit-transform 0.2s;
+
+    opacity: 1;
+    transform: scaleY(1);
+    transform-origin: center top;
+
+    &[aria-hidden='true'] {
+      opacity: 0;
+      transform: scaleY(0);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      transition: none !important;
+      animation: none !important;
+    }
+  }
+
+  .filter {
+    position: relative;
+    flex-shrink: 0;
+    border-bottom: var(--_form-container-border);
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 0.5rem;
+      width: 14px;
+      height: 14px;
+      transform: translateY(-50%);
+      mask-image: $search-icon;
+      mask-size: 100%;
+      mask-repeat: no-repeat;
+      mask-position: center;
+      background-color: var(--_input-phone-filter-placeholder-color);
+      pointer-events: none;
+    }
+
+    input {
+      box-sizing: border-box;
+      width: 100%;
+      margin: 0;
+      padding: 0.5rem 0.5rem 0.5rem calc(0.5rem + 14px + 0.5rem);
+      border: none;
+      border-radius: 0;
+      outline: none;
+      box-shadow: none;
+      background: transparent;
+      color: var(--_input-phone-color);
+      font-family: var(--_input-phone-family);
+      font-size: var(--_input-phone-size);
+
+      @include input.placeholder {
+        color: var(--_input-phone-filter-placeholder-color);
+      }
+    }
+  }
+
+  .sr-only {
+    @include sr-only;
+  }
+
+  #country-list {
+    flex: 1;
+    overflow: auto;
+    padding-top: var(--_input-phone-popup-padding);
+
+    scrollbar-width: thin;
+    scrollbar-color: var(--_input-phone-scrollbar-color) transparent;
+
+    &::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: var(--_input-phone-scrollbar-color);
+      background-clip: padding-box;
+      border: var(--_input-phone-scrollbar-border-width) solid transparent;
+      border-radius: var(--_input-phone-scrollbar-radius);
+    }
+  }
+
+  .option {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem;
+    background: var(--_input-phone-option-background);
+    color: var(--_input-phone-option-color);
+    cursor: pointer;
+
+    border-radius: var(--_input-phone-option-radius);
+    margin: 0 var(--_input-phone-popup-padding);
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+
+  .option.is-selected {
+    background: var(--_input-phone-option-selected-background);
+  }
+
+  .option.is-active {
+    background: var(--_input-phone-option-hover-background);
+  }
+
+  .option-name {
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .option-code {
+    flex-shrink: 0;
+    color: var(--_input-phone-placeholder);
+  }
+
+  .no-results {
+    padding: 0.5rem;
+    color: var(--_input-phone-placeholder);
+  }
+}
+
+/**
+ * Variants and States
+ * --------------------------------
+ */
+
+:host(.is-danger) {
+  --mod-form-container-border: var(--ds-form-danger-container-border);
+  --mod-form-description-color: var(--ds-form-danger-description-color);
+  --mod-form-container-hover-border: var(--ds-form-danger-container-border);
+  --mod-form-container-active-border: var(--ds-form-danger-container-border);
+}
+
+:host(.is-success) {
+  --mod-form-container-border: var(--ds-form-success-container-border);
+  --mod-form-description-color: var(--ds-form-success-description-color);
+  --mod-form-container-hover-border: var(--ds-form-success-container-border);
+  --mod-form-container-active-border: var(--ds-form-success-container-border);
+}
+
+:host(.is-warning) {
+  --mod-form-container-border: var(--ds-form-warning-container-border);
+  --mod-form-description-color: var(--ds-form-warning-description-color);
+  --mod-form-container-hover-border: var(--ds-form-warning-container-border);
+  --mod-form-container-active-border: var(--ds-form-warning-container-border);
+}
+
+:host(.is-disabled) {
+  &,
+  #label,
+  #description,
+  #input,
+  #country-trigger {
+    pointer-events: none;
+    cursor: default;
+  }
+
+  --mod-form-container-background: var(--ds-form-disabled-container-background);
+  --mod-form-container-border: var(--ds-form-disabled-container-border);
+  --mod-form-label-color: var(--ds-form-disabled-label-color);
+  --mod-form-description-color: var(--ds-form-disabled-description-color);
+
+  --mod-input-phone-color: var(--ds-form-disabled-control-value-color);
+  --mod-input-phone-placeholder: var(--ds-form-disabled-control-placeholder-color);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :host {
+    .chevron {
+      transition: none;
+    }
+  }
+}

@@ -416,7 +416,7 @@ export class Segment implements DsComponentInterface, Omit<FieldInterface, 'colo
               {item.svg && <ds-icon svg={item.svg}></ds-icon>}
               {!this.iconOnly && (
                 <span id="content">
-                  <span class="label">{item.label}</span>
+                  <span class="ds-label">{item.label}</span>
                   {item.description && <span class="description">{item.description}</span>}
                 </span>
               )}

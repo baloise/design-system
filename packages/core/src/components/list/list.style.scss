@@ -14,16 +14,16 @@
  * These variables can be used in the component styles below and later on be overridden in themes.
  */
 
-ul.list .item,
-ol.list .item,
-ul.list li details,
-ol.list li details {
+ul.ds-list .ds-item,
+ol.ds-list .ds-item,
+ul.ds-list li details,
+ol.ds-list li details {
   @include vars.focus(list-item);
 
   @include vars.local(list-item-grid-template-columns, 1fr);
   @include vars.local(list-item-min-height, var(--ds-list-item-size-base-min-height));
   @include vars.local(list-item-gap, var(--ds-list-item-gap));
-  @include vars.local(list-item-space, var(--ds-list-item-size-base-space));
+  @include vars.local(list-item-py, var(--ds-list-item-size-base-padding-y));
   @include vars.local(list-item-content-gap, var(--ds-list-item-content-gap));
 
   @include vars.local(list-item-color, var(--ds-list-item-color-text-base));
@@ -73,8 +73,8 @@ ol.list li details {
 
 //
 // List
-ul.list,
-ol.list {
+ul.ds-list,
+ol.ds-list {
   display: block;
   margin: 0;
   padding: 0;
@@ -83,22 +83,22 @@ ol.list {
 
 //
 // List Items
-ol.list li,
-ul.list li {
+ol.ds-list li,
+ul.ds-list li {
   position: relative;
   display: grid;
   box-sizing: border-box;
 }
 
-ol.list li:not(.item),
-ul.list li:not(.item) {
+ol.ds-list li:not(.ds-item),
+ul.ds-list li:not(.ds-item) {
   grid-template-columns: 1fr;
 }
 
-ol.list li.item,
-ol.list li .item,
-ul.list li.item,
-ul.list li .item {
+ol.ds-list li.ds-item,
+ol.ds-list li .ds-item,
+ul.ds-list li.ds-item,
+ul.ds-list li .ds-item {
   min-height: var(--_list-item-min-height);
   // grid-template-columns: var(--_list-item-grid-template-columns);
 
@@ -116,8 +116,8 @@ ul.list li .item {
   text-align: left;
   font-family: var(--_list-item-title-family);
 
-  padding: var(--_list-item-space) 0;
-  padding-bottom: calc(var(--_list-item-space) + 2px);
+  padding: var(--_list-item-py) 0;
+  padding-bottom: calc(var(--_list-item-py) + 2px);
 
   //
   // Icons
@@ -125,7 +125,7 @@ ul.list li .item {
     flex-shrink: 0;
   }
 
-  .item-content + ds-icon {
+  .ds-item-content + ds-icon {
     --icon-size: var(--_list-item-action-icon-size);
     --icon-inner-size: var(--_list-item-action-icon-size);
     --icon-color: var(--_list-item-color);
@@ -133,14 +133,14 @@ ul.list li .item {
 
   //
   // Content
-  .item-content {
+  .ds-item-content {
     flex: 1;
     display: flex;
     flex-direction: column;
     gap: var(--_list-item-content-gap);
   }
 
-  .item-title {
+  .ds-item-title {
     font-family: var(--_list-item-title-family);
     font-weight: var(--_list-item-title-weight);
     font-size: var(--_list-item-title-size);
@@ -148,8 +148,8 @@ ul.list li .item {
     margin: 0;
   }
 
-  .item-text,
-  .item-subtitle {
+  .ds-item-text,
+  .ds-item-subtitle {
     font-family: var(--_list-item-text-family);
     font-weight: var(--_list-item-text-weight);
     font-size: var(--_list-item-text-size);
@@ -171,10 +171,10 @@ ul.list li .item {
   * Link inside list item
   */
 
-ol.list li a.item,
-ol.list li button.item,
-ul.list li a.item,
-ul.list li button.item {
+ol.ds-list li a.ds-item,
+ol.ds-list li button.ds-item,
+ul.ds-list li a.ds-item,
+ul.ds-list li button.ds-item {
   @include font-smoothing();
   @include unselectable();
 
@@ -194,17 +194,17 @@ ul.list li button.item {
   }
 }
 
-ol.list li a.item:not(.is-disabled),
-ol.list li button.item:not(.is-disabled),
-ul.list li a.item:not(.is-disabled),
-ul.list li button.item:not(.is-disabled) {
+ol.ds-list li a.ds-item:not(.is-disabled),
+ol.ds-list li button.ds-item:not(.is-disabled),
+ul.ds-list li a.ds-item:not(.is-disabled),
+ul.ds-list li button.ds-item:not(.is-disabled) {
   @include hover {
     &:hover,
     &.is-hovered {
       --mod-list-item-border-color: var(--_list-item-border-color-hover);
 
       color: var(--_list-item-color-hover);
-      .item-content + ds-icon {
+      .ds-item-content + ds-icon {
         --icon-color: var(--_list-item-color-hover);
       }
     }
@@ -215,7 +215,7 @@ ul.list li button.item:not(.is-disabled) {
     --mod-list-item-border-color: var(--_list-item-border-color-active);
 
     color: var(--_list-item-color-active);
-    .item-content + ds-icon {
+    .ds-item-content + ds-icon {
       --icon-color: var(--_list-item-color-active);
     }
   }
@@ -243,8 +243,8 @@ ul.list li button.item:not(.is-disabled) {
   * Accordion inside list item
   */
 
-ol.list li details,
-ul.list li details {
+ol.ds-list li details,
+ul.ds-list li details {
   position: relative;
   padding: 0;
 
@@ -273,16 +273,16 @@ ul.list li details {
 /**
   * Inverted
   * --------------------------------
-  * Can be applied to the list container (ul.list/ol.list) to cascade to all items,
-  * or directly on an individual .item/details element.
+  * Can be applied to the list container (ul.ds-list/ol.ds-list) to cascade to all items,
+  * or directly on an individual .ds-item/details element.
   */
 
-ul.list.is-inverted,
-ol.list.is-inverted,
-ul.list .item.is-inverted,
-ol.list .item.is-inverted,
-ul.list li details.is-inverted,
-ol.list li details.is-inverted {
+ul.ds-list.is-inverted,
+ol.ds-list.is-inverted,
+ul.ds-list .ds-item.is-inverted,
+ol.ds-list .ds-item.is-inverted,
+ul.ds-list li details.is-inverted,
+ol.ds-list li details.is-inverted {
   --mod-list-item-color: var(--ds-list-item-inverted-color-text-base);
   --mod-list-item-color-hover: var(--ds-list-item-inverted-color-text-hover);
   --mod-list-item-color-active: var(--ds-list-item-inverted-color-text-active);
@@ -296,28 +296,28 @@ ol.list li details.is-inverted {
 /**
   * Size
   * --------------------------------
-  * Can be applied to the list container (ul.list/ol.list) to cascade to all items,
-  * or directly on an individual .item/details element.
+  * Can be applied to the list container (ul.ds-list/ol.ds-list) to cascade to all items,
+  * or directly on an individual .ds-item/details element.
   */
 
-ul.list.is-lg,
-ol.list.is-lg,
-ul.list .item.is-lg,
-ol.list .item.is-lg,
-ul.list li details.is-lg,
-ol.list li details.is-lg {
+ul.ds-list.is-lg,
+ol.ds-list.is-lg,
+ul.ds-list .ds-item.is-lg,
+ol.ds-list .ds-item.is-lg,
+ul.ds-list li details.is-lg,
+ol.ds-list li details.is-lg {
   --mod-list-item-min-height: var(--ds-list-item-size-lg-min-height);
-  --mod-list-item-space: var(--ds-list-item-size-lg-space);
+  --mod-list-item-py: var(--ds-list-item-size-lg-padding-y);
 }
 
 /**
   * Disabled
   */
 
-ul.list li.item.is-disabled,
-ul.list li .item.is-disabled,
-ol.list li.item.is-disabled,
-ol.list li .item.is-disabled {
+ul.ds-list li.ds-item.is-disabled,
+ul.ds-list li .ds-item.is-disabled,
+ol.ds-list li.ds-item.is-disabled,
+ol.ds-list li .ds-item.is-disabled {
   pointer-events: none !important;
   cursor: default !important;
 
@@ -334,6 +334,6 @@ ol.list li .item.is-disabled {
   */
 
 ds-item [slot='content'] {
-  font-size: var(--ds-alias-text-size-sm);
+  font-size: var(--ds-device-text-size-sm);
   @include typography.content(false);
 }

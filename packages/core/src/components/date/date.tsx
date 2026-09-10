@@ -562,7 +562,14 @@ export class DsDate implements DsComponentInterface, FieldInterface, FormControl
         language={this.language}
         inputId="input"
       >
-        {this.inline && <div id="inline" ref={el => (this.popupHostEl = el as HTMLDivElement)}></div>}
+        {this.inline && (
+          <div
+            id="inline"
+            role="group"
+            aria-label={chooseDateLabel}
+            ref={el => (this.popupHostEl = el as HTMLDivElement)}
+          ></div>
+        )}
         {!this.inline && (
           <>
             <input

@@ -27,7 +27,7 @@
  * @prop --time-input-placeholder - Text color of the time input placeholder text.
  */
 
-.time-input {
+.ds-time-input {
   @include input.vars('time-input');
 }
 
@@ -36,10 +36,10 @@
  * --------------------------------
  */
 
-.field {
-  @include input.style('time-input', '.time-input');
+.ds-field {
+  @include input.style('time-input', '.ds-time-input');
 
-  .control {
+  .ds-control {
     input[type='time'] {
       // Remove browser defaults
       appearance: none;

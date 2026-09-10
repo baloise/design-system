@@ -19,12 +19,19 @@
       "require": "./dist/preset/index.cjs"
     },
     "./css": "./dist/css/design-system.css",
-    "./css/all": "./dist/css/all.css",
-    "./css/all.local": "./dist/css/all.local.css",
+    "./css/all": "./dist/css/design-system.css",
+    "./css/all.min": "./dist/css/design-system.min.css",
+    "./css/all.local": "./dist/css/design-system.local.css",
+    "./css/all.local.min": "./dist/css/design-system.local.min.css",
     "./css/base": "./dist/css/base.css",
+    "./css/base.min": "./dist/css/base.min.css",
+    "./css/base.local": "./dist/css/base.local.css",
+    "./css/base.local.min": "./dist/css/base.local.min.css",
     "./css/components": "./dist/css/components.css",
+    "./css/components.min": "./dist/css/components.min.css",
     "./css/utilities": "./dist/css/utilities.css",
-    "./scss/all": "./dist/scss/all.scss",
+    "./css/utilities.min": "./dist/css/utilities.min.css",
+    "./scss/all": "./dist/scss/design-system.scss",
     "./scss/base": "./dist/scss/base.scss",
     "./scss/mixins": "./dist/scss/mixins.scss",
     "./scss/utilities": "./dist/scss/utilities.scss"
@@ -41,9 +48,10 @@
   },
   "devDependencies": {
     "autoprefixer": "10.5.4",
-    "postcss": "8.5.19",
+    "cssnano": "9.0.3",
+    "postcss": "8.5.28",
     "sass": "catalog:",
     "tsx": "catalog:",
-    "unocss": "66.8.1"
+    "unocss": "66.9.2"
   }
 }

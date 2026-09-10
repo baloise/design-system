@@ -33,7 +33,7 @@ Basic.storyName = '🧩 Basic'
 
 export const Variants = Story({
   ...withRender(
-    () => `<div class="flex gap-small flex-direction-column">
+    () => `<div class="flex gap-sm flex-direction-column">
   <ds-toast closable> Your changes have been saved. </ds-toast>
   <ds-toast color="info" action="Okay"> Your changes have been saved. </ds-toast>
   <ds-toast color="info" closable action="Okay"> Your changes have been saved. </ds-toast>
@@ -55,7 +55,7 @@ Variants.storyName = '🧩 Variants'
 
 export const Colors = Story({
   ...withRender(
-    () => `<div class="flex gap-small flex-direction-column">
+    () => `<div class="flex gap-sm flex-direction-column">
   <ds-toast heading="Default"> Your changes have been saved. </ds-toast>
   <ds-toast color="info" heading="Information"> Your changes have been saved. </ds-toast>
   <ds-toast color="success" heading="Success"> Your changes have been saved. </ds-toast>

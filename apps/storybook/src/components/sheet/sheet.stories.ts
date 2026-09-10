@@ -8,7 +8,7 @@ const meta: Meta<Args> = {
   title: 'Components/Sheet/Variants',
   args: {
     slot: `<ds-heading level="h4" space="bottom">BaloiseCombi</ds-heading>
-<p class="text-normal mb-normal">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+<p class="text-base mb-base">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
 <ds-button-group direction="auto" align="right" space="top">
   <ds-button>Main Action</ds-button>
   <ds-button color="secondary">Secondary Action</ds-button>

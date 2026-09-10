@@ -72,7 +72,7 @@ export const NestedText = Story({
   ...withRender(
     ({ slot }) => `
 <p><b>Primary paragraph</b> ${slot}</p>
-<p class="text-primary-light text-small"><b>Secondary paragraph</b> used for hints</p>
+<p class="text-primary-light text-sm"><b>Secondary paragraph</b> used for hints</p>
 `,
   ),
 })
@@ -81,26 +81,26 @@ NestedText.storyName = '🌍 Nested Text'
 export const Colors = Story({
   ...withRender(
     () => `
-<p class="text">Base</p>
-<p class="text is-primary">Primary</p>
-<p class="text is-primary-hover">Primary Hover</p>
-<p class="text is-primary-active">Primary Active</p>
-<p class="text is-inverted-primary">Inverted Primary</p>
-<p class="text is-inverted-primary-hover">Inverted Primary Hover</p>
-<p class="text is-inverted-primary-active">Inverted Primary Active</p>
-<p class="text is-primary-light">Primary Light</p>
-<p class="text is-hint">Hint</p>
-<p class="text is-grey-light">Grey Light</p>
-<p class="text is-grey">Grey</p>
-<p class="text is-grey-dark">Grey Dark</p>
-<p class="text is-disabled">Disabled</p>
-<p class="text is-inverted-disabled">Inverted Disabled</p>
-<p class="text is-info">Info</p>
-<p class="text is-warning">Warning</p>
-<p class="text is-success">Success</p>
-<p class="text is-danger">Danger</p>
-<p class="text is-danger-hover">Danger Hover</p>
-<p class="text is-danger-active">Danger Active</p>
+<p class="ds-text">Base</p>
+<p class="ds-text is-primary">Primary</p>
+<p class="ds-text is-primary-hover">Primary Hover</p>
+<p class="ds-text is-primary-active">Primary Active</p>
+<p class="ds-text is-inverted-primary">Inverted Primary</p>
+<p class="ds-text is-inverted-primary-hover">Inverted Primary Hover</p>
+<p class="ds-text is-inverted-primary-active">Inverted Primary Active</p>
+<p class="ds-text is-primary-light">Primary Light</p>
+<p class="ds-text is-hint">Hint</p>
+<p class="ds-text is-grey-light">Grey Light</p>
+<p class="ds-text is-grey">Grey</p>
+<p class="ds-text is-grey-dark">Grey Dark</p>
+<p class="ds-text is-disabled">Disabled</p>
+<p class="ds-text is-inverted-disabled">Inverted Disabled</p>
+<p class="ds-text is-info">Info</p>
+<p class="ds-text is-warning">Warning</p>
+<p class="ds-text is-success">Success</p>
+<p class="ds-text is-danger">Danger</p>
+<p class="ds-text is-danger-hover">Danger Hover</p>
+<p class="ds-text is-danger-active">Danger Active</p>
 `,
   ),
 })
@@ -109,19 +109,19 @@ Colors.storyName = '🌍 Colors'
 export const Sizes = Story({
   ...withRender(
     () => `
-<p class="text is-lead">lead</p>
-<p class="text is-block">block</p>
-<hr class="divider has-space-xl"/>
-<p class="text is-xs">x-small</p>
-<p class="text is-sm">small</p>
-<p class="text is-base">normal</p>
-<p class="text is-md">medium</p>
-<p class="text is-lg">large</p>
-<p class="text is-xl">x-large</p>
-<p class="text is-2xl">xx-large</p>
-<p class="text is-3xl">xxx-large</p>
-<p class="text is-4xl">xxxx-large</p>
-<p class="text is-5xl">xxxxx-large</p>
+<p class="ds-text is-lead">lead</p>
+<p class="ds-text is-block">block</p>
+<hr class="ds-divider has-space-xl"/>
+<p class="ds-text is-xs">x-small</p>
+<p class="ds-text is-sm">small</p>
+<p class="ds-text is-base">normal</p>
+<p class="ds-text is-md">medium</p>
+<p class="ds-text is-lg">large</p>
+<p class="ds-text is-xl">x-large</p>
+<p class="ds-text is-2xl">xx-large</p>
+<p class="ds-text is-3xl">xxx-large</p>
+<p class="ds-text is-4xl">xxxx-large</p>
+<p class="ds-text is-5xl">xxxxx-large</p>
 `,
   ),
 })
@@ -130,17 +130,17 @@ Sizes.storyName = '🌍 Sizes'
 export const Spacing = Story({
   ...withRender(
     () => `<div>
-    <div class="bg-primary-1 flex mb-small">
-      <p class="text has-space-all">All</p>
+    <div class="bg-primary-1 flex mb-sm">
+      <p class="ds-text has-space-all">All</p>
     </div>
-    <div class="bg-primary-1 flex mb-small">
-      <p class="text has-space-none">None</p>
+    <div class="bg-primary-1 flex mb-sm">
+      <p class="ds-text has-space-none">None</p>
     </div>
-    <div class="bg-primary-1 flex mb-small">
-      <p class="text has-space-top">Top</p>
+    <div class="bg-primary-1 flex mb-sm">
+      <p class="ds-text has-space-top">Top</p>
     </div>
-    <div class="bg-primary-1 flex mb-small">
-      <p class="text has-space-bottom">Bottom</p>
+    <div class="bg-primary-1 flex mb-sm">
+      <p class="ds-text has-space-bottom">Bottom</p>
     </div>
   </div>`,
   ),
@@ -150,8 +150,8 @@ Spacing.storyName = '🌍 Spacing'
 export const FontFamily = Story({
   ...withRender(
     () => `
-      <p class="text is-title">Title</p>
-      <p class="text">Text</p>
+      <p class="ds-text is-title">Title</p>
+      <p class="ds-text">Text</p>
   `,
   ),
 })
@@ -160,9 +160,9 @@ FontFamily.storyName = '🌍 Font Family'
 export const FontWeight = Story({
   ...withRender(
     () => `
-      <p class="text is-bold">Bold Text</p>
-      <p class="text is-regular">Regular Text</p>
-      <p class="text is-subtitle">Light Text</p>
+      <p class="ds-text is-bold">Bold Text</p>
+      <p class="ds-text is-regular">Regular Text</p>
+      <p class="ds-text is-subtitle">Light Text</p>
   `,
   ),
 })

@@ -42,7 +42,7 @@ export const UiIcons = Story({
   },
   ...withRender(
     () =>
-      `<div class="flex gap-medium flex-wrap">
+      `<div class="flex gap-md flex-wrap">
       ${[
         'youtube',
         'xing',
@@ -133,7 +133,7 @@ export const UiIcons = Story({
       ]
         .sort()
         .map(
-          item => `<div class="flex gap-small flex-wrap align-items-center" style="min-width: 220px">
+          item => `<div class="flex gap-sm flex-wrap align-items-center" style="min-width: 220px">
       <ds-icon name="${item}" size="md"></ds-icon>
       <span>${item}</span>
     </div>`,
@@ -147,10 +147,10 @@ UiIcons.storyName = '🧩 UI Icons'
 export const Sizes = Story({
   ...withRender(
     () =>
-      `<div class="stack">
+      `<div class="ds-stack">
       ${['sm', 'base', 'md', 'lg', 'xl']
         .map(
-          item => `<div class="stack as-row">
+          item => `<div class="ds-stack as-row">
       <ds-icon name="info-circle" size="${item}"></ds-icon>
       <span>${item}</span>
     </div>`,

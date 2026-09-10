@@ -124,8 +124,30 @@ interface DtcgShadowLayer {
   inset?: boolean
 }
 
-/** One shadow layer -> one CSS box-shadow value, e.g. 'inset 0px 4px 0.25rem 0px rgba(0, 0, 0, 0.15)'. */
-const shadowLayerToCss = (layer: DtcgShadowLayer): string | null => {
+/**
+ * Paths of `$type: "shadow"` tokens that feed the CSS `text-shadow` property rather than
+ * `box-shadow`. Unlike box-shadow, `text-shadow` syntax has no `spread` term — only
+ * `offsetX offsetY [blur] color` is legal — so a `spread` value (even `0`) makes the whole
+ * declaration invalid and the browser silently drops it. These are the only tokens in the set
+ * that back a `text-shadow`; every other `shadow` token backs `box-shadow` and keeps its spread.
+ */
+const TEXT_SHADOW_PATHS = new Set([
+  '🌐 Global.🔤 Font.Shadow.0',
+  '🌐 Global.🔤 Font.Shadow.1',
+  '🔗 Alias.🌓 Shadow.Text',
+  '🔗 Alias.🔤 Text.Shadow.Elevated',
+  '🧩 Component.Heading.Shadow',
+  '🧩 Component.Text.Shadow',
+])
+
+const isTextShadowPath = (path: string[] | undefined): boolean =>
+  path !== undefined && TEXT_SHADOW_PATHS.has(path.join('.'))
+
+/**
+ * One shadow layer -> one CSS box-shadow value, e.g. 'inset 0px 4px 0.25rem 0px rgba(0, 0, 0, 0.15)'.
+ * Omits the `spread` term when `textShadow` is true, since `text-shadow` doesn't support it.
+ */
+const shadowLayerToCss = (layer: DtcgShadowLayer, textShadow: boolean): string | null => {
   const color = colorValueToCss(layer.color)
   const offsetX = dimensionValueToCss(layer.offsetX)
   const offsetY = dimensionValueToCss(layer.offsetY)
@@ -134,24 +156,26 @@ const shadowLayerToCss = (layer: DtcgShadowLayer): string | null => {
   if (color === null || offsetX === null || offsetY === null || blur === null || spread === null) {
     return null
   }
-  return `${layer.inset ? 'inset ' : ''}${offsetX} ${offsetY} ${blur} ${spread} ${color}`
+  const spreadTerm = textShadow ? '' : `${spread} `
+  return `${layer.inset ? 'inset ' : ''}${offsetX} ${offsetY} ${blur} ${spreadTerm}${color}`
 }
 
 /**
  * Turns a shadow token's value (a single shadow object, an array of them, or an empty array for
- * "no shadow") into a CSS-ready box-shadow value. Reuses colorValueToCss/dimensionValueToCss per
- * sub-value rather than Style Dictionary's own built-in shadow transform, which renders color as
- * `rgb(0% 0% 0% / 0.25)` (colorjs.io's default) instead of this codebase's `rgba(0, 0, 0, 0.25)`/
- * hex convention — see docs/plans/shadow-token-type-plan.md.
+ * "no shadow") into a CSS-ready box-shadow (or text-shadow, see TEXT_SHADOW_PATHS) value. Reuses
+ * colorValueToCss/dimensionValueToCss per sub-value rather than Style Dictionary's own built-in
+ * shadow transform, which renders color as `rgb(0% 0% 0% / 0.25)` (colorjs.io's default) instead
+ * of this codebase's `rgba(0, 0, 0, 0.25)`/hex convention — see docs/plans/shadow-token-type-plan.md.
  */
-export const shadowValueToCss = (value: unknown): string | null => {
+export const shadowValueToCss = (value: unknown, path?: string[]): string | null => {
+  const textShadow = isTextShadowPath(path)
   if (Array.isArray(value)) {
     if (value.length === 0) return 'none'
-    const layers = value.map(v => shadowLayerToCss(v as DtcgShadowLayer))
+    const layers = value.map(v => shadowLayerToCss(v as DtcgShadowLayer, textShadow))
     return layers.every((layer): layer is string => layer !== null) ? layers.join(', ') : null
   }
   if (typeof value === 'object' && value !== null) {
-    return shadowLayerToCss(value as DtcgShadowLayer)
+    return shadowLayerToCss(value as DtcgShadowLayer, textShadow)
   }
   return null
 }
@@ -321,7 +345,7 @@ export const resolvedValueToCss = (value: unknown, type: string, path: string[])
     return dimensionValueToCss(value)
   }
   if (type === 'shadow') {
-    return shadowValueToCss(value)
+    return shadowValueToCss(value, path)
   }
   if (type === 'border') {
     return borderValueToCss(value)

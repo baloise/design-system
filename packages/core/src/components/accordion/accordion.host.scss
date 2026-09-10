@@ -57,7 +57,7 @@
 }
 
 // Summary
-:host #summary:not(.button) {
+:host #summary:not(.ds-button) {
   @include unselectable();
 
   cursor: pointer;

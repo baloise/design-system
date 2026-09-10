@@ -31,16 +31,18 @@ import { tokenNameToCssVar } from './css-naming.js'
  * everything else falls back to its already-resolved literal from `css`.
  *
  * A field (in practice: `fontSize`) that references a *responsive* dimension token (one carrying
- * `$extensions[RESPONSIVE_DIMENSION_EXTENSION_KEY]`, e.g. `Alias.Text.Size.3XL`) is special-cased
- * to reference that alias's `-device` var instead of its bare one. Style Dictionary's own
- * `outputReferences` has no notion of the `-mobile`/`-tablet`/`-desktop`/`-device` convention — left
- * alone it renders the bare `var(--ds-alias-text-size-3xl)`, which mirrors only the alias's mobile
- * value (decision 4 in docs/plans/responsive-dimension-token-plan.md) and never changes at wider
- * breakpoints. The `-device` var, by contrast, gets redefined inside this same formatter's
- * `@media` blocks (see `ds/css/variables-responsive`/`-brand` below), so referencing it is what
- * makes a typography token like `--ds-heading-bold-level1` responsive without itself needing a
- * per-breakpoint redeclaration. CSS-only (`referenceSyntax === 'css'`): the SCSS platform never
- * emits `-device` vars (no media queries there), so its bare reference is left untouched.
+ * `$extensions[RESPONSIVE_DIMENSION_EXTENSION_KEY]`, e.g. `Device.Text.Size.3XL`) is special-cased
+ * to reference that token's bare (auto-switching) var explicitly, by path, rather than trusting
+ * Style Dictionary's own `outputReferences` to do it — which only ever renders the referenced
+ * token's own bare name, but does so *before* this formatter's `-mobile`/`-tablet`/`-desktop`
+ * expansion runs, so nothing here can rely on it accidentally being right. The bare
+ * `--ds-device-text-size-3xl` var, is the auto-switching one (see `docs/plans/
+ * device-token-layer-plan.md` decision 5 — the layer itself being named "device" retired the old
+ * `-device` suffix), redefined inside this same formatter's `@media` blocks (see
+ * `ds/css/variables-responsive`/`-brand` below), so referencing it is what makes a typography
+ * token like `--ds-heading-bold-level1` responsive without itself needing a per-breakpoint
+ * redeclaration. CSS-only (`referenceSyntax === 'css'`): the SCSS platform never emits per-
+ * breakpoint vars (no media queries there), so its bare reference is left untouched.
  */
 function expandTypographyTokens(tokens: TransformedToken[], referenceSyntax: ReferenceSyntax): TransformedToken[] {
   const responsiveDimensionPaths = computeResponsiveDimensionPaths(tokens)
@@ -54,7 +56,7 @@ function expandTypographyTokens(tokens: TransformedToken[], referenceSyntax: Ref
     const refMatch = typeof rawField === 'string' ? /^\{(.+)\}$/.exec(rawField) : null
     if (!referenceSyntax || !refMatch) return css[field]
     if (referenceSyntax === 'css' && responsiveDimensionPaths.has(refMatch[1])) {
-      return `var(--${tokenNameToCssVar(refMatch[1].split('.'))}-device)`
+      return `var(--${tokenNameToCssVar(refMatch[1].split('.'))})`
     }
     return wrapReference(refMatch[1], referenceSyntax)
   }
@@ -136,14 +138,14 @@ function computeResponsiveDimensionPaths(tokens: TransformedToken[]): Set<string
 /**
  * Mirrors expandTypographyTokens's fontSize special-case (see its own comment) for every other
  * token whose *whole* `$value` is a `{reference}` to a responsive dimension token — e.g. a plain
- * Component.Popup.Space aliasing Alias.Space.MD. Left to Style Dictionary's own `outputReferences`,
- * such a token renders `var(--ds-alias-space-md)`, which only ever reflects the alias's mobile
- * value; this rewrites it to `var(--ds-alias-space-md-device)` instead, so it picks up the
- * per-breakpoint redeclarations the `ds/css/variables-*` formatters emit in their own `@media`
- * blocks. Typography tokens are skipped — their 4 longhand fields already get this treatment
+ * Component.Popup.Space aliasing Device.Space.MD. Left to Style Dictionary's own
+ * `outputReferences`, such a token would render `var(--ds-device-space-md)` — which, post the
+ * device-token-layer-plan naming change, *is* already the auto-switching var, so this mainly
+ * exists to make that explicit and immune to `outputReferences` timing (see this function's twin
+ * above). Typography tokens are skipped — their 4 longhand fields already get this treatment
  * per-field in expandTypographyTokens, and re-running it here on their (object-shaped) `$value`
  * would be a no-op anyway. CSS-only, same reasoning as expandTypographyTokens: SCSS never emits
- * `-device` vars.
+ * per-breakpoint vars.
  */
 function resolveResponsiveDimensionReferences(
   tokens: TransformedToken[],
@@ -159,7 +161,7 @@ function resolveResponsiveDimensionReferences(
     const match = typeof rawValue === 'string' ? /^\{(.+)\}$/.exec(rawValue) : null
     if (!match || !responsiveDimensionPaths.has(match[1])) return token
 
-    const deviceValue = `var(--${tokenNameToCssVar(match[1].split('.'))}-device)`
+    const deviceValue = `var(--${tokenNameToCssVar(match[1].split('.'))})`
     return { ...token, value: deviceValue, $value: deviceValue, original: { ...token.original, $value: deviceValue } }
   })
 }
@@ -270,19 +272,20 @@ function expandResponsiveDimensionTokens(
   return expanded
 }
 
-// Every token's `path[0]` is one of these three top-level source-tree groups, in the order Style
+// Every token's `path[0]` is one of these four top-level source-tree groups, in the order Style
 // Dictionary is fed the DTCG source (see `tokens/Base.tokens.json`'s top-level keys). Untouched by
 // `name/kebab` or any other transform — those only ever rewrite `.name`/`.value`, never `.path` —
 // so grouping by `path[0]` stays reliable no matter which format/transform pipeline ran first.
 const TOKEN_ORIGIN_GROUPS: { pathSegment: string; label: string }[] = [
   { pathSegment: '🌐 Global', label: 'Global tokens' },
   { pathSegment: '🔗 Alias', label: 'Alias tokens' },
+  { pathSegment: '📱 Device', label: 'Device tokens' },
   { pathSegment: '🧩 Component', label: 'Component tokens' },
 ]
 
 /**
  * Thin wrapper around `formattedVariables` that partitions `dictionary.allTokens` into
- * Global/Alias/Component groups (see TOKEN_ORIGIN_GROUPS) and renders each through
+ * Global/Alias/Device/Component groups (see TOKEN_ORIGIN_GROUPS) and renders each through
  * `formattedVariables` under its own `/* ... *\/` comment header, in that fixed order — so
  * generated output always reads primitives first, then their semantic aliases, then
  * component-level overrides, regardless of source JSON key order or any prior name-based
@@ -324,43 +327,28 @@ export const registerCustomFormatters = (sd: typeof StyleDictionary) => {
         ),
       } as Dictionary
 
-      // find reponsive tokens in dictionary which ends with -mobile, -tablet or -desktop
+      // find responsive tokens in dictionary which end with -mobile, -tablet or -desktop
       const baseTokensOriginal = dictionary.allTokens.filter(token => token.name.endsWith('-mobile'))
-      // create a deeop copy of base tokens
-      const baseTokens = JSON.parse(JSON.stringify(baseTokensOriginal))
-      const deviceBaseTokens = JSON.parse(JSON.stringify(baseTokensOriginal))
 
       //
-      // Base tokens
+      // Base tokens (bare name = auto-switching, per docs/plans/device-token-layer-plan.md
+      // decision 5 — the mobile clone becomes the unsuffixed declaration directly, there's no
+      // longer a separate mobile-mirrored fallback var distinct from the auto-switching one)
       // ------------------------------------------------------
 
-      // same as mobile but without the suffix
+      const baseTokens = JSON.parse(JSON.stringify(baseTokensOriginal))
       baseTokens.forEach(token => {
         token.name = token.name.replace('-mobile', '')
       })
-
       const baseDictionary = {
         ...dictionary,
         allTokens: baseTokens,
       } as Dictionary
 
-      //
-      // Device tokens
-      // ------------------------------------------------------
-
-      // same as mobile but without the suffix
-      deviceBaseTokens.forEach(token => {
-        token.name = token.name.replace('-mobile', '-device')
-      })
-      const deviceBaseDictionary = {
-        ...dictionary,
-        allTokens: deviceBaseTokens,
-      } as Dictionary
-
       const tabletTokensOriginal = dictionary.allTokens.filter(token => token.name.endsWith('-tablet'))
       const deviceTabletTokens = JSON.parse(JSON.stringify(tabletTokensOriginal))
       deviceTabletTokens.forEach(token => {
-        token.name = token.name.replace('-tablet', '-device')
+        token.name = token.name.replace('-tablet', '')
       })
       const deviceTabletDictionary = {
         ...dictionary,
@@ -370,57 +358,12 @@ export const registerCustomFormatters = (sd: typeof StyleDictionary) => {
       const desktopTokensOriginal = dictionary.allTokens.filter(token => token.name.endsWith('-desktop'))
       const deviceDesktopTokens = JSON.parse(JSON.stringify(desktopTokensOriginal))
       deviceDesktopTokens.forEach(token => {
-        token.name = token.name.replace('-desktop', '-device')
+        token.name = token.name.replace('-desktop', '')
       })
       const deviceDesktopDictionary = {
         ...dictionary,
         allTokens: deviceDesktopTokens,
       } as Dictionary
-
-      // const mobileCss =
-      //   ':root {\n' +
-      //   formattedVariables({
-      //     format: propertyFormatNames.css,
-      //     dictionary,
-      //     outputReferences,
-      //     usesDtcg: true,
-      //   }) +
-      //   '\n\n' +
-      //   '  /* Base tokens */\n' +
-      //   formattedVariables({
-      //     format: propertyFormatNames.css,
-      //     dictionary: baseDictionary,
-      //     outputReferences,
-      //     usesDtcg: true,
-      //   }) +
-      //   '\n\n' +
-      //   '  /* Device tokens */\n' +
-      //   formattedVariables({
-      //     format: propertyFormatNames.css,
-      //     dictionary: deviceBaseDictionary,
-      //     outputReferences,
-      //     usesDtcg: true,
-      //   }) +
-      //   '\n}\n\n' +
-      //   '/* Device tokens: Tablet */\n' +
-      //   `\n@media (min-width: 769px) {\n` +
-      //   formattedVariables({
-      //     format: propertyFormatNames.css,
-      //     dictionary: deviceTabletDictionary,
-      //     outputReferences,
-      //     usesDtcg: true,
-      //   }) +
-      //   `\n}\n\n` +
-      //   '/* Device tokens: Desktop */\n' +
-      //   `\n@media (min-width: 1024px) {\n` +
-      //   formattedVariables({
-      //     format: propertyFormatNames.css,
-      //     dictionary: deviceDesktopDictionary,
-      //     outputReferences,
-      //     usesDtcg: true,
-      //   }) +
-      //   `\n}\n` +
-      //   '\n'
 
       return (
         header +
@@ -432,18 +375,10 @@ export const registerCustomFormatters = (sd: typeof StyleDictionary) => {
           usesDtcg: true,
         }) +
         '\n\n' +
-        '  /* Base tokens */\n' +
-        formattedVariablesByOrigin({
-          format: propertyFormatNames.css,
-          dictionary: baseDictionary,
-          outputReferences,
-          usesDtcg: true,
-        }) +
-        '\n\n' +
         '  /* Device tokens */\n' +
         formattedVariablesByOrigin({
           format: propertyFormatNames.css,
-          dictionary: deviceBaseDictionary,
+          dictionary: baseDictionary,
           outputReferences,
           usesDtcg: true,
         }) +
@@ -502,29 +437,24 @@ export const registerCustomFormatters = (sd: typeof StyleDictionary) => {
 
       const baseTokensOriginal = sourceTokens.filter(token => token.name.endsWith('-mobile'))
       const baseTokens = JSON.parse(JSON.stringify(baseTokensOriginal))
-      const deviceBaseTokens = JSON.parse(JSON.stringify(baseTokensOriginal))
 
       baseTokens.forEach(token => {
         token.name = token.name.replace('-mobile', '')
       })
-      deviceBaseTokens.forEach(token => {
-        token.name = token.name.replace('-mobile', '-device')
-      })
 
       const baseDictionary = { ...dictionary, allTokens: baseTokens } as Dictionary
-      const deviceBaseDictionary = { ...dictionary, allTokens: deviceBaseTokens } as Dictionary
 
       const tabletTokensOriginal = sourceTokens.filter(token => token.name.endsWith('-tablet'))
       const deviceTabletTokens = JSON.parse(JSON.stringify(tabletTokensOriginal))
       deviceTabletTokens.forEach(token => {
-        token.name = token.name.replace('-tablet', '-device')
+        token.name = token.name.replace('-tablet', '')
       })
       const deviceTabletDictionary = { ...dictionary, allTokens: deviceTabletTokens } as Dictionary
 
       const desktopTokensOriginal = sourceTokens.filter(token => token.name.endsWith('-desktop'))
       const deviceDesktopTokens = JSON.parse(JSON.stringify(desktopTokensOriginal))
       deviceDesktopTokens.forEach(token => {
-        token.name = token.name.replace('-desktop', '-device')
+        token.name = token.name.replace('-desktop', '')
       })
       const deviceDesktopDictionary = { ...dictionary, allTokens: deviceDesktopTokens } as Dictionary
 
@@ -537,17 +467,10 @@ export const registerCustomFormatters = (sd: typeof StyleDictionary) => {
           outputReferences,
           usesDtcg: true,
         }) +
-        '\n\n  /* Base tokens */\n' +
-        formattedVariablesByOrigin({
-          format: propertyFormatNames.css,
-          dictionary: baseDictionary,
-          outputReferences,
-          usesDtcg: true,
-        }) +
         '\n\n  /* Device tokens */\n' +
         formattedVariablesByOrigin({
           format: propertyFormatNames.css,
-          dictionary: deviceBaseDictionary,
+          dictionary: baseDictionary,
           outputReferences,
           usesDtcg: true,
         }) +

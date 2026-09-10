@@ -4,7 +4,7 @@
  * @prop --popup-background: Background color of the popup panel.
  * @prop --popup-radius: Border radius of the popup panel.
  * @prop --popup-shadow: Box shadow of the popup panel.
- * @prop --popup-padding: Padding inside the popup panel.
+ * @prop --popup-p: Padding inside the popup panel.
  * @prop --popup-min-width: Minimum width of the popup panel.
  * @prop --popup-max-width: Maximum width of the popup panel.
  * @prop --popup-z-index: Z-index stacking level of the popup layer.
@@ -19,7 +19,7 @@
   @include vars.local(popup-background, var(--ds-popup-color-background));
   @include vars.local(popup-radius, var(--ds-popup-radius));
   @include vars.local(popup-shadow, var(--ds-popup-shadow));
-  @include vars.local(popup-padding, var(--ds-popup-space));
+  @include vars.local(popup-p, var(--ds-popup-padding));
   @include vars.local(popup-min-width, var(--ds-popup-min-width));
   @include vars.local(popup-max-width, none);
   @include vars.local(popup-z-index, var(--ds-popup-z-index));
@@ -59,7 +59,7 @@
   background: var(--_popup-background);
   border-radius: var(--_popup-radius);
   box-shadow: var(--_popup-shadow);
-  padding: var(--_popup-padding);
+  padding: var(--_popup-p);
   min-width: var(--_popup-min-width);
   max-width: var(--_popup-max-width);
 
@@ -95,7 +95,7 @@
 }
 
 :host(.is-closable) [part='panel'] {
-  padding-right: calc(var(--_popup-padding) + var(--_popup-padding));
+  padding-right: calc(var(--_popup-p) + var(--_popup-p));
 }
 
 // ─── Arrow ────────────────────────────────────────────────────────────────────

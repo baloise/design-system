@@ -1,17 +1,27 @@
 import { DsLogger } from '@utils'
 import { AppFooterLink, AppFooterSocialLink } from '../../components/app-footer/app-footer.interfaces'
 
-export type DsRegion = 'CH' | 'DE' | 'BE' | 'LU'
+export type DsRegion = 'CH' | 'DE' | 'BE' | 'LU' | 'AT' | 'ES' | 'IT'
 
 export type DsSwissLanguage = 'de' | 'fr' | 'it' | 'en'
 export type DsLuxembourgLanguage = 'fr' | 'de' | 'en'
 export type DsLuxembourgInternationalLanguage = DsLuxembourgLanguage | 'es' | 'pl' | 'pt' | 'sv' | 'fi'
 export type DsBelgiumLanguage = 'fr' | 'nl'
 export type DsGermanLanguage = 'de'
+export type DsAustriaLanguage = 'de'
+export type DsSpainLanguage = 'es'
+export type DsItalyLanguage = 'it'
 export type DsBrand = 'baloise' | 'helvetia'
 
 export type DsLanguage =
-  DsSwissLanguage | DsLuxembourgLanguage | DsLuxembourgInternationalLanguage | DsBelgiumLanguage | DsGermanLanguage
+  | DsSwissLanguage
+  | DsLuxembourgLanguage
+  | DsLuxembourgInternationalLanguage
+  | DsBelgiumLanguage
+  | DsGermanLanguage
+  | DsAustriaLanguage
+  | DsSpainLanguage
+  | DsItalyLanguage
 
 export type DsIcons = { [key: string]: string }
 

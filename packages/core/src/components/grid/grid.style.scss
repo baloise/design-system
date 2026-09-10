@@ -1,98 +1,98 @@
 @use 'sass:math';
 @use '@baloise/ds-css/dist/scss/mixins' as *;
 
-.grid {
+.ds-grid {
   --ds-column-gap: 1rem;
 }
 
-.grid {
+.ds-grid {
   flex-basis: 0;
   flex-grow: 1;
   flex-shrink: 1;
 }
-.col {
+.ds-col {
   display: block;
   flex-basis: 0;
   flex-grow: 1;
   flex-shrink: 1;
   padding: var(--ds-column-gap);
-  .grid.is-mobile > &.is-narrow {
+  .ds-grid.is-mobile > &.is-narrow {
     flex: none;
     width: unset;
   }
-  .grid.is-mobile > &.is-full {
+  .ds-grid.is-mobile > &.is-full {
     flex: none;
     width: 100%;
   }
-  .grid.is-mobile > &.is-three-quarters {
+  .ds-grid.is-mobile > &.is-three-quarters {
     flex: none;
     width: 75%;
   }
-  .grid.is-mobile > &.is-two-thirds {
+  .ds-grid.is-mobile > &.is-two-thirds {
     flex: none;
     width: 66.6666%;
   }
-  .grid.is-mobile > &.is-half {
+  .ds-grid.is-mobile > &.is-half {
     flex: none;
     width: 50%;
   }
-  .grid.is-mobile > &.is-one-third {
+  .ds-grid.is-mobile > &.is-one-third {
     flex: none;
     width: 33.3333%;
   }
-  .grid.is-mobile > &.is-one-quarter {
+  .ds-grid.is-mobile > &.is-one-quarter {
     flex: none;
     width: 25%;
   }
-  .grid.is-mobile > &.is-one-fifth {
+  .ds-grid.is-mobile > &.is-one-fifth {
     flex: none;
     width: 20%;
   }
-  .grid.is-mobile > &.is-two-fifths {
+  .ds-grid.is-mobile > &.is-two-fifths {
     flex: none;
     width: 40%;
   }
-  .grid.is-mobile > &.is-three-fifths {
+  .ds-grid.is-mobile > &.is-three-fifths {
     flex: none;
     width: 60%;
   }
-  .grid.is-mobile > &.is-four-fifths {
+  .ds-grid.is-mobile > &.is-four-fifths {
     flex: none;
     width: 80%;
   }
-  .grid.is-mobile > &.is-offset-three-quarters {
+  .ds-grid.is-mobile > &.is-offset-three-quarters {
     @include ltr-property('margin', 75%, false);
   }
-  .grid.is-mobile > &.is-offset-two-thirds {
+  .ds-grid.is-mobile > &.is-offset-two-thirds {
     @include ltr-property('margin', 66.6666%, false);
   }
-  .grid.is-mobile > &.is-offset-half {
+  .ds-grid.is-mobile > &.is-offset-half {
     @include ltr-property('margin', 50%, false);
   }
-  .grid.is-mobile > &.is-offset-one-third {
+  .ds-grid.is-mobile > &.is-offset-one-third {
     @include ltr-property('margin', 33.3333%, false);
   }
-  .grid.is-mobile > &.is-offset-one-quarter {
+  .ds-grid.is-mobile > &.is-offset-one-quarter {
     @include ltr-property('margin', 25%, false);
   }
-  .grid.is-mobile > &.is-offset-one-fifth {
+  .ds-grid.is-mobile > &.is-offset-one-fifth {
     @include ltr-property('margin', 20%, false);
   }
-  .grid.is-mobile > &.is-offset-two-fifths {
+  .ds-grid.is-mobile > &.is-offset-two-fifths {
     @include ltr-property('margin', 40%, false);
   }
-  .grid.is-mobile > &.is-offset-three-fifths {
+  .ds-grid.is-mobile > &.is-offset-three-fifths {
     @include ltr-property('margin', 60%, false);
   }
-  .grid.is-mobile > &.is-offset-four-fifths {
+  .ds-grid.is-mobile > &.is-offset-four-fifths {
     @include ltr-property('margin', 80%, false);
   }
   @for $i from 0 through 12 {
-    .grid.is-mobile > &.is-#{$i} {
+    .ds-grid.is-mobile > &.is-#{$i} {
       flex: none;
       width: math.percentage(math.div($i, 12));
     }
-    .grid.is-mobile > &.is-offset-#{$i} {
+    .ds-grid.is-mobile > &.is-offset-#{$i} {
       @include ltr-property('margin', math.percentage(math.div($i, 12)), false);
     }
   }
@@ -611,7 +611,7 @@
     }
   }
 }
-.grid {
+.ds-grid {
   @include ltr-property('margin', (calc(var(--ds-column-gap) * -1)), false);
   @include ltr-property('margin', (calc(var(--ds-column-gap) * -1)));
   margin-top: (calc(var(--ds-column-gap) * -1));
@@ -628,7 +628,7 @@
     @include ltr-property('margin', 0, false);
     @include ltr-property('margin', 0);
     margin-top: 0;
-    & > .col {
+    & > .ds-col {
       margin: 0;
       padding: 0 !important;
     }

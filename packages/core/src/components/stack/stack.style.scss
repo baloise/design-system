@@ -7,55 +7,55 @@ $stack-space: ('2xs', 'xs', 'sm', 'base', 'md', 'lg', 'xl', '2xl');
   */
 
 @mixin gap($space, $property: gap) {
-  #{$property}: var(--ds-alias-space-#{$space}-device);
+  #{$property}: var(--ds-device-space-#{$space});
 }
 
 @mixin p($space) {
-  padding: var(--ds-alias-space-#{$space}-device);
+  padding: var(--ds-device-space-#{$space});
 }
 
 @mixin px($space) {
-  padding-left: var(--ds-alias-space-#{$space}-device);
-  padding-right: var(--ds-alias-space-#{$space}-device);
+  padding-left: var(--ds-device-space-#{$space});
+  padding-right: var(--ds-device-space-#{$space});
 }
 
 @mixin py($space) {
-  padding-top: var(--ds-alias-space-#{$space}-device);
-  padding-bottom: var(--ds-alias-space-#{$space}-device);
+  padding-top: var(--ds-device-space-#{$space});
+  padding-bottom: var(--ds-device-space-#{$space});
 }
 
 /**
   * Basic Style
   */
-.stack,
-.stack-content {
+.ds-stack,
+.ds-stack-content {
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
   flex-flow: column nowrap;
 }
 
-.stack {
+.ds-stack {
   gap: 1rem;
 }
 
-.stack-content {
+.ds-stack-content {
   flex: 1;
   height: 100%;
   gap: 0.25rem;
 }
 
-.stack > .stack,
-.stack > .stack-content {
+.ds-stack > .ds-stack,
+.ds-stack > .ds-stack-content {
   align-self: stretch;
 }
 
-.stack.is-horizontal > .stack-content {
+.ds-stack.is-horizontal > .ds-stack-content {
   align-self: center;
 }
 
-.stack,
-.stack-content {
+.ds-stack,
+.ds-stack-content {
   &.has-wrap {
     flex-wrap: wrap;
   }
@@ -216,7 +216,7 @@ $stack-space: ('2xs', 'xs', 'sm', 'base', 'md', 'lg', 'xl', '2xl');
 /**
  * Text Alignment for stack-content
  */
-.stack-content {
+.ds-stack-content {
   &,
   &.align-top-left,
   &.align-top-start,
@@ -259,8 +259,8 @@ $stack-space: ('2xs', 'xs', 'sm', 'base', 'md', 'lg', 'xl', '2xl');
   }
 }
 
-.stack,
-.stack-content {
+.ds-stack,
+.ds-stack-content {
   // fit-content
   &.fit-content {
     flex: unset;
@@ -382,29 +382,29 @@ $stack-space: ('2xs', 'xs', 'sm', 'base', 'md', 'lg', 'xl', '2xl');
 
 //
 // custom position
-.stack > ds-radio {
+.ds-stack > ds-radio {
   margin-top: -0.25rem;
 }
 
 //
 // reset margin botton space
 ds-content > ds-text,
-.stack-content > ds-text,
-ds-content > .text,
-.stack-content > .text,
-.stack > ds-text,
-.stack > ds-label,
-.stack > ds-heading,
-.stack > ds-heading:not(:last-child),
-.stack > .label,
-.stack > .heading,
-.stack > .heading:not(:last-child),
-.stack > .title,
-.stack > .title:not(:last-child),
-.stack > .subtitle,
-.stack > .subtitle:not(:last-child),
-.stack > .link,
-.stack > .is-link,
-.stack > p {
+.ds-stack-content > ds-text,
+ds-content > .ds-text,
+.ds-stack-content > .ds-text,
+.ds-stack > ds-text,
+.ds-stack > ds-label,
+.ds-stack > ds-heading,
+.ds-stack > ds-heading:not(:last-child),
+.ds-stack > .ds-label,
+.ds-stack > .ds-heading,
+.ds-stack > .ds-heading:not(:last-child),
+.ds-stack > .ds-title,
+.ds-stack > .ds-title:not(:last-child),
+.ds-stack > .ds-subtitle,
+.ds-stack > .ds-subtitle:not(:last-child),
+.ds-stack > .ds-link,
+.ds-stack > .is-link,
+.ds-stack > p {
   margin: 0;
 }

@@ -3,7 +3,7 @@ import { LinkCard, LinkCards } from './Buttons'
 
 export const WelcomeGuide = ({ _children }) => {
   return (
-    <div className="sb-unstyled my-welcome-guide my-large">
+    <div className="sb-unstyled my-welcome-guide my-lg">
       <LinkCards>
         <LinkCard
           pageTitle={'Development/Getting Started'}

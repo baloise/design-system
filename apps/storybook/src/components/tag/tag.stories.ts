@@ -75,7 +75,7 @@ ClosableHtml.storyName = '🌍 Closable'
 export const TagGroup = Story({
   ...withRender(
     () => `
-<div class="tags">
+<div class="ds-tags">
   <ds-tag>Primary</ds-tag>
   <ds-tag color="success">Success</ds-tag>
   <ds-tag color="danger">Danger</ds-tag>
@@ -87,10 +87,10 @@ TagGroup.storyName = '🧩 Tag Group'
 export const TagGroupHtml = Story({
   ...withRender(
     () => `
-<div class="tags">
-  <span class="tag">Primary</span>
-  <span class="tag is-success">Success</span>
-  <span class="tag is-danger">Danger</span>
+<div class="ds-tags">
+  <span class="ds-tag">Primary</span>
+  <span class="ds-tag is-success">Success</span>
+  <span class="ds-tag is-danger">Danger</span>
 </div>`,
   ),
 })
@@ -99,7 +99,7 @@ TagGroupHtml.storyName = '🌍 Tag Group'
 export const Colors = Story({
   ...withRender(
     () => `
-<div class="tags">
+<div class="ds-tags">
   <ds-tag>Default</ds-tag>
   <ds-tag color="primary">Primary</ds-tag>
   <ds-tag color="info">Info</ds-tag>
@@ -108,28 +108,28 @@ export const Colors = Story({
   <ds-tag color="danger">Danger</ds-tag>
 </div>
 <br>
-<div class="tags">
+<div class="ds-tags">
   <ds-tag color="purple-dark">Purple</ds-tag>
   <ds-tag color="red-dark">Red</ds-tag>
   <ds-tag color="yellow-dark">Yellow</ds-tag>
   <ds-tag color="green-dark">Green</ds-tag>
 </div>
 <br>
-<div class="tags">
+<div class="ds-tags">
   <ds-tag color="purple">Purple</ds-tag>
   <ds-tag color="red">Red</ds-tag>
   <ds-tag color="yellow">Yellow</ds-tag>
   <ds-tag color="green">Green</ds-tag>
 </div>
 <br>
-<div class="tags">
+<div class="ds-tags">
   <ds-tag color="purple-light">Purple</ds-tag>
   <ds-tag color="red-light">Red</ds-tag>
   <ds-tag color="yellow-light">Yellow</ds-tag>
   <ds-tag color="green-light">Green</ds-tag>
 </div>
 <br>
-<div class="tags">
+<div class="ds-tags">
   <ds-tag color="disabled">Disabled</ds-tag>
 </div>
     `,
@@ -140,38 +140,38 @@ Colors.storyName = '🧩 Colors'
 export const ColorsHtml = Story({
   ...withRender(
     () => `
-<div class="tags">
-  <span class="tag">Default</span>
-  <span class="tag is-primary">Primary</span>
-  <span class="tag is-info">Info</span>
-  <span class="tag is-success">Success</span>
-  <span class="tag is-warning">Warning</span>
-  <span class="tag is-danger">Danger</span>
+<div class="ds-tags">
+  <span class="ds-tag">Default</span>
+  <span class="ds-tag is-primary">Primary</span>
+  <span class="ds-tag is-info">Info</span>
+  <span class="ds-tag is-success">Success</span>
+  <span class="ds-tag is-warning">Warning</span>
+  <span class="ds-tag is-danger">Danger</span>
 </div>
 <br>
-<div class="tags">
-  <span class="tag is-purple-dark">Purple</span>
-  <span class="tag is-red-dark">Red</span>
-  <span class="tag is-yellow-dark">Yellow</span>
-  <span class="tag is-green-dark">Green</span>
+<div class="ds-tags">
+  <span class="ds-tag is-purple-dark">Purple</span>
+  <span class="ds-tag is-red-dark">Red</span>
+  <span class="ds-tag is-yellow-dark">Yellow</span>
+  <span class="ds-tag is-green-dark">Green</span>
 </div>
 <br>
-<div class="tags">
-  <span class="tag is-purple">Purple</span>
-  <span class="tag is-red">Red</span>
-  <span class="tag is-yellow">Yellow</span>
-  <span class="tag is-green">Green</span>
+<div class="ds-tags">
+  <span class="ds-tag is-purple">Purple</span>
+  <span class="ds-tag is-red">Red</span>
+  <span class="ds-tag is-yellow">Yellow</span>
+  <span class="ds-tag is-green">Green</span>
 </div>
 <br>
-<div class="tags">
-  <span class="tag is-purple-light">Purple</span>
-  <span class="tag is-red-light">Red</span>
-  <span class="tag is-yellow-light">Yellow</span>
-  <span class="tag is-green-light">Green</span>
+<div class="ds-tags">
+  <span class="ds-tag is-purple-light">Purple</span>
+  <span class="ds-tag is-red-light">Red</span>
+  <span class="ds-tag is-yellow-light">Yellow</span>
+  <span class="ds-tag is-green-light">Green</span>
 </div>
 <br>
-<div class="tags">
-  <span class="tag is-disabled">Disabled</span>
+<div class="ds-tags">
+  <span class="ds-tag is-disabled">Disabled</span>
 </div>
     `,
   ),

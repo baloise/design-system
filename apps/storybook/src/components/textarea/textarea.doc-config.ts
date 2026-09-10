@@ -7,12 +7,12 @@ export const TEXTAREA_DOC_CONFIG = {
   section: 'Components / Forms / Textarea',
   color: 'purple' as const,
   tabs: [
-    { label: 'Overview', storyId: 'components-forms-textarea--textarea' },
-    { label: 'Usage', storyId: 'components-forms-textarea--usage' },
-    { label: 'Variants', storyId: 'components-forms-textarea--variants-overview' },
-    { label: 'Styling', storyId: 'components-forms-textarea--styling' },
-    { label: 'Accessibility', storyId: 'components-forms-textarea--accessibility' },
-    { label: 'Testing', storyId: 'components-forms-textarea--testing' },
+    { label: 'Overview', storyId: 'components-forms-textarea-textarea--textarea' },
+    { label: 'Usage', storyId: 'components-forms-textarea-usage--usage' },
+    { label: 'Variants', storyId: 'components-forms-textarea-variants-overview--overview' },
+    { label: 'Styling', storyId: 'components-forms-textarea-styling--styling' },
+    { label: 'Accessibility', storyId: 'components-forms-textarea-accessibility--accessibility' },
+    { label: 'Testing', storyId: 'components-forms-textarea-testing--testing' },
   ],
 }
 

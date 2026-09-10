@@ -6,12 +6,12 @@ export const FORM_DOC_CONFIG = {
   section: 'Components / Form',
   color: 'purple' as const,
   tabs: [
-    { label: 'Overview', storyId: 'components-form--form' },
-    { label: 'Usage', storyId: 'components-form--usage' },
-    { label: 'Variants', storyId: 'components-form--variants-overview' },
-    { label: 'Styling', storyId: 'components-form--styling' },
-    { label: 'Accessibility', storyId: 'components-form--accessibility' },
-    { label: 'Testing', storyId: 'components-form--testing' },
+    { label: 'Overview', storyId: 'components-form-form--form' },
+    { label: 'Usage', storyId: 'components-form-usage--usage' },
+    { label: 'Variants', storyId: 'components-form-variants-overview--overview' },
+    { label: 'Styling', storyId: 'components-form-styling--styling' },
+    { label: 'Accessibility', storyId: 'components-form-accessibility--accessibility' },
+    { label: 'Testing', storyId: 'components-form-testing--testing' },
   ],
 }
 

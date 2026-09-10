@@ -64,6 +64,8 @@ export class SelectPickerController {
   private config: SelectPickerConfig
   private typeAheadBuffer = ''
   private typeAheadLastTime = 0
+  private lastPointerX: number | undefined
+  private lastPointerY: number | undefined
 
   constructor(config: SelectPickerConfig) {
     this.config = config
@@ -150,7 +152,7 @@ export class SelectPickerController {
       events: {
         afterChange: (newVal: Option[]) => this.config.onChange(newVal),
         afterOpen: () => {
-          this.highlightFirstOption()
+          this.highlightOnOpen()
           this.config.onOpen()
         },
         afterClose: () => this.config.onClose(),
@@ -162,16 +164,61 @@ export class SelectPickerController {
     this.fixKeyboardOpen()
     this.fixOptionFocus()
     this.fixTypeAhead()
+    this.fixHoverHighlight()
     this.highlightFirstOption()
   }
 
   // slim-select never auto-highlights an option: arrow keys are the only built-in trigger.
-  // We want the first matching option highlighted whenever the list opens or a search
-  // narrows the results, so keyboard users can immediately Enter/Space it. Skip it if
-  // something is already highlighted (e.g. from a previous arrow-key navigation).
+  // We want the first matching option highlighted whenever a search narrows the results, so
+  // keyboard users can immediately Enter/Space it. Skip it if something is already highlighted
+  // (e.g. from a previous arrow-key navigation).
   private highlightFirstOption() {
     if (this.config.popupEl.querySelector('.ss-highlighted')) return
     this.slimSelect?.render.highlight('down')
+  }
+
+  // On open, resume at the selected option (scrolled into view) rather than always resetting
+  // to the top of the list, so opening the dropdown shows "where you are." Falls back to the
+  // first option when nothing is selected. Skips entirely if something is already highlighted
+  // (e.g. a previous arrow-key navigation left the list open in a filtered state).
+  private highlightOnOpen() {
+    if (this.config.popupEl.querySelector('.ss-highlighted')) return
+    const selected = this.config.popupEl.querySelector<HTMLDivElement>('.ss-option.ss-selected:not(.ss-disabled)')
+    if (selected) {
+      this.setHighlightedOption(selected)
+    } else {
+      this.highlightFirstOption()
+    }
+  }
+
+  // slim-select's hover styling is pure CSS (`.ss-option:hover`) and never touches the real
+  // `.ss-highlighted` state, so mouse and keyboard position can silently diverge — two different
+  // rows can look "highlighted" at once. Route hover through the same setHighlightedOption() path
+  // arrow keys and type-ahead use, so there is a single source of truth for both visuals and
+  // aria-activedescendant. Use pointerenter (capture phase, since it doesn't bubble) delegated on
+  // the popup for a single listener; ignore touch input, disabled options, and — critically —
+  // "phantom" events fired when ensureElementInView() scrolls a new option under a stationary
+  // cursor during arrow-key navigation (detected by comparing clientX/clientY against the last
+  // genuine pointer position).
+  private fixHoverHighlight() {
+    this.config.popupEl.addEventListener('pointerenter', ev => this.handlePointerEnter(ev as PointerEvent), {
+      capture: true,
+    })
+  }
+
+  private handlePointerEnter(ev: PointerEvent) {
+    if (ev.pointerType !== 'mouse') return
+
+    const moved = ev.clientX !== this.lastPointerX || ev.clientY !== this.lastPointerY
+    this.lastPointerX = ev.clientX
+    this.lastPointerY = ev.clientY
+    if (!moved) return
+
+    const target = ev.target as HTMLElement
+    const option = target.closest<HTMLDivElement>('.ss-option:not(.ss-disabled)')
+    if (!option) return
+
+    this.setHighlightedOption(option)
   }
 
   // Shadow DOM event retargeting makes e.target null inside slim-select's keyup handler.

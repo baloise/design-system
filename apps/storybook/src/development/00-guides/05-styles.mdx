@@ -1,22 +1,7 @@
-import { Markdown, Meta } from '@storybook/addon-docs/blocks'
-import {
-  AngularFramework,
-  Banner,
-  Code,
-  Footer,
-  HTMLFramework,
-  InfoQuote,
-  Lead,
-  LinkCard,
-  LinkCards,
-  NotAngularFramework,
-  PackageTable,
-  ReactFramework,
-  Tabs,
-  WarningQuote,
-} from '../../../.storybook/blocks'
+import { Meta } from '@storybook/addon-docs/blocks'
+import { Banner, Code, Footer, InfoQuote, Lead, LinkCard, LinkCards, Tabs } from '../../../.storybook/blocks'
 
-<Meta title="Development/Styles" />
+<Meta title="Development/Styles" name="Styles" />
 
 <Banner label="Styles" section="Development" />
 
@@ -28,23 +13,23 @@ import {
 ## Installation
 
 To use the Helvetia Design System styles in your project, first install the
-`@baloise/ds-styles` package via npm or yarn:
+`@baloise/ds-css` package via npm or pnpm:
 
 ```bash
-npm install @baloise/ds-styles
+npm install @baloise/ds-css
 # or
-yarn add @baloise/ds-styles
+pnpm add @baloise/ds-css
 ```
 
 ## Import
 
-The Helvetia Design System styles are organized into three main categories: core, utility, and component styles.
+`@baloise/ds-css` is built from the same [Design Tokens](?path=/docs/tokens-all-tokens--documentation)
+that drive the rest of the system, and ships as three pieces you import separately — only **Base**
+is required:
 
-### Core
+### Base
 
-The core styles include resets, structure, fonts, and essential component styles.
-These styles are required for the proper functioning of the Design System components.
-You can import the core styles into your global stylesheet as follows:
+Design tokens as CSS variables, a CSS reset, and structural styles. Always required.
 
 <Tabs
   tabs={[
@@ -54,7 +39,7 @@ You can import the core styles into your global stylesheet as follows:
         <Code
           language="css"
           code={`
-@import '@baloise/ds-styles/css/basic.css';
+@import '@baloise/ds-css/css/base.css';
 `}
         />
       ),
@@ -65,7 +50,7 @@ You can import the core styles into your global stylesheet as follows:
         <Code
           language="css"
           code={`
-@forward '@baloise/ds-styles/sass/basic';
+@use '@baloise/ds-css/scss/base';
 `}
         />
       ),
@@ -73,10 +58,10 @@ You can import the core styles into your global stylesheet as follows:
   ]}
 />
 
-### Utility
+### Components
 
-The utility styles provide a set of helper classes for common CSS properties such as layout, spacing, typography, and more.
-These styles are optional and can be imported based on your project's requirements.
+CSS-only classes (`.ds-button`, `.ds-heading`, ...) for using components as plain HTML instead of
+the web components (`<ds-button>`, which load their styles automatically). Optional.
 
 <Tabs
   tabs={[
@@ -86,40 +71,7 @@ These styles are optional and can be imported based on your project's requiremen
         <Code
           language="css"
           code={`
-@import '@baloise/ds-styles/css/utilities/background.css';
-@import '@baloise/ds-styles/css/utilities/border.css';
-@import '@baloise/ds-styles/css/utilities/elevation.css';
-@import '@baloise/ds-styles/css/utilities/flex.css';
-@import '@baloise/ds-styles/css/utilities/interaction.css';
-@import '@baloise/ds-styles/css/utilities/layout.css';
-@import '@baloise/ds-styles/css/utilities/sizing.css';
-@import '@baloise/ds-styles/css/utilities/spacing.css';
-@import '@baloise/ds-styles/css/utilities/typography.css';
-
-// or if you want to import all utility styles
-@import '@baloise/ds-styles/css/utilities/all.css';
-`}
-        />
-      ),
-    },
-    {
-      label: 'Sass',
-      content: (
-        <Code
-          language="css"
-          code={`
-@forward '@baloise/ds-styles/css/utilities/background';
-@forward '@baloise/ds-styles/css/utilities/border';
-@forward '@baloise/ds-styles/css/utilities/elevation';
-@forward '@baloise/ds-styles/css/utilities/flex';
-@forward '@baloise/ds-styles/css/utilities/interaction';
-@forward '@baloise/ds-styles/css/utilities/layout';
-@forward '@baloise/ds-styles/css/utilities/sizing';
-@forward '@baloise/ds-styles/css/utilities/spacing';
-@forward '@baloise/ds-styles/css/utilities/typography';
-
-// or if you want to import all utility styles
-@forward '@baloise/ds-styles/css/utilities/all';
+@import '@baloise/ds-css/css/components.css';
 `}
         />
       ),
@@ -127,14 +79,9 @@ These styles are optional and can be imported based on your project's requiremen
   ]}
 />
 
-### Component
+### Utilities
 
-Each component in the Helvetia Design System has its own stylesheet that can be imported individually.
-This allows you to include only the styles for the components you are using in your project, reducing the overall bundle size.
-
-> However, if you prefer to use the **web components**, the styles of the component gets **loaded automatically**.
-
-To import the styles for a specific component, use the following syntax:
+Helper classes for spacing, layout, typography, color, and more. Optional.
 
 <Tabs
   tabs={[
@@ -144,100 +91,38 @@ To import the styles for a specific component, use the following syntax:
         <Code
           language="css"
           code={`
-@import '@baloise/ds-styles/css/components/ds-badge.css';
-@import '@baloise/ds-styles/css/components/ds-tag.css';
-
-// or if you want to import all component styles
-@import '@baloise/ds-styles/css/components/all.css';
-`}
-        />
-      ),
-    },
-    {
-      label: 'Sass',
-      content: (
-        <Code
-          language="css"
-          code={`
-@forward '@baloise/ds-styles/css/components/badge';
-@forward '@baloise/ds-styles/css/components/tag';
-
-// or if you want to import all component styles
-@forward '@baloise/ds-styles/css/components/all';
+@import '@baloise/ds-css/css/utilities.css';
 `}
         />
       ),
     },
   ]}
 />
+
+<InfoQuote>
+  Components and Utilities only ship as compiled CSS (no per-component or per-utility-category
+  files) — `@baloise/ds-css/scss/mixins` is still available separately if you just need the Sass
+  breakpoint mixins without any styles.
+</InfoQuote>
+
+<br />
+<br />
+
+<LinkCards>
+  <LinkCard
+    pageTitle="CSS Utilities/Overview"
+    description="Browse every utility class — spacing, layout, typography, background, borders, and more."
+  />
+  <LinkCard
+    pageTitle="Components/Overview"
+    description="Browse every component, available both as a web component and as a CSS-only class."
+  />
+</LinkCards>
 
 ## Themes
 
-### Compact
-
-The compact theme features a narrower layout with a reduced font size (14px instead of 16px). Additionally, spaces such as margins and paddings are adjusted to align with mobile dimensions, ensuring a more compact appearance.
-
-To activate the compact theme, import the theme-compact stylesheet into the root App component or a global stylesheet.
-
-It is recommended to import the theme-compact file at the end of your stylesheet, after the other imports from the Design System.
-
-<Tabs
-  tabs={[
-    {
-      label: 'CSS',
-      content: (
-        <Code
-          language="css"
-          code={`@import '@baloise/ds-styles/css/themes/compact.css';`}
-        />
-      ),
-    },
-    {
-      label: 'Sass',
-      content: (
-        <Code
-          language="css"
-          code={`@forward '@baloise/ds-styles/css/themes/compact';`}
-        />
-      ),
-    },
-  ]}
-/>
-
-### White label 🧪
-
-The white label themes allow you to quickly adapt the Design System styles to match specific brand guidelines.
-
-<Tabs
-  tabs={[
-    {
-      label: 'CSS',
-      content: (
-        <Code
-          language="css"
-          code={`
-@import '@baloise/ds-styles/css/themes/tcs.css';
-// or
-@import '@baloise/ds-styles/css/themes/santander.css';
-`}
-        />
-      ),
-    },
-    {
-      label: 'Sass',
-      content: (
-        <Code
-          language="css"
-          code={`
-@forward '@baloise/ds-styles/css/themes/tcs';
-// or
-@forward '@baloise/ds-styles/css/themes/santander';
-`}
-        />
-      ),
-    },
-  ]}
-/>
-
+Themes are the Design System's multi-brand solution — a theme applies one brand's tokens (e.g.
+ERV, TCS) on top of the base styles. See [Theming](?path=/docs/development-theming--documentation)
+for how to activate a predefined theme, customize individual components, and request a new brand.
 
 <Footer />

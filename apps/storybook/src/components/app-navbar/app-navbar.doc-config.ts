@@ -6,12 +6,12 @@ export const APP_NAVBAR_DOC_CONFIG = {
   section: 'Components / AppNavbar',
   color: 'purple' as const,
   tabs: [
-    { label: 'Overview', storyId: 'components-appnavbar--app-navbar' },
-    { label: 'Usage', storyId: 'components-appnavbar--usage' },
-    { label: 'Variants', storyId: 'components-appnavbar--variants-overview' },
-    { label: 'Styling', storyId: 'components-appnavbar--styling' },
-    { label: 'Accessibility', storyId: 'components-appnavbar--accessibility' },
-    { label: 'Testing', storyId: 'components-appnavbar--testing' },
+    { label: 'Overview', storyId: 'components-appnavbar-app-navbar--app-navbar' },
+    { label: 'Usage', storyId: 'components-appnavbar-usage--usage' },
+    { label: 'Variants', storyId: 'components-appnavbar-variants-overview--overview' },
+    { label: 'Styling', storyId: 'components-appnavbar-styling--styling' },
+    { label: 'Accessibility', storyId: 'components-appnavbar-accessibility--accessibility' },
+    { label: 'Testing', storyId: 'components-appnavbar-testing--testing' },
   ],
 }
 

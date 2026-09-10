@@ -78,6 +78,7 @@ export function flattenTokens(tree, path = []) {
         value: parseValue(node.$value),
         variableId: extensions['com.figma.variableId'] ?? undefined,
         figmaScopes: extensions['com.figma.scopes'] ?? undefined,
+        description: typeof node.$description === 'string' ? node.$description : undefined,
         // A dimension token's breakpoint values (docs/plans/responsive-dimension-token-plan.md) —
         // undefined for every other type and for a plain (non-responsive) dimension token.
         responsive: extensions['com.helvetia.responsive'] ?? undefined,

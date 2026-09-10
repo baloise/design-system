@@ -32,6 +32,7 @@ function variable(partial: Partial<FigmaVariable> & Pick<FigmaVariable, 'id' | '
     resolvedType: 'COLOR',
     valuesByMode: {},
     scopes: [],
+    description: '',
     ...partial,
   }
 }
@@ -290,6 +291,62 @@ describe('buildBasePullPlan', () => {
     const plan = buildBasePullPlan({
       original: [white],
       working: [working(white)],
+      figmaMeta: meta([v]),
+      baseModeId: BASE_MODE,
+    })
+    expect(plan.updates).toHaveLength(0)
+  })
+
+  it('fills $description from Figma when the local token has none, even if the value is unchanged', () => {
+    const v = variable({
+      id: white.figmaId as string,
+      name: 'x',
+      valuesByMode: { [BASE_MODE]: { r: 1, g: 1, b: 1, a: 1 } },
+      description: 'Pure white.',
+    })
+    const plan = buildBasePullPlan({
+      original: [white],
+      working: [working(white)],
+      figmaMeta: meta([v]),
+      baseModeId: BASE_MODE,
+    })
+    expect(plan.updates).toHaveLength(1)
+    expect(plan.updates[0].description).toBe('Pure white.')
+  })
+
+  it('fills a description without clobbering an unrelated pending value edit still sitting in working', () => {
+    // Figma's value hasn't changed since `original`, but `working` has a pending, unsubmitted
+    // value edit — a description fill must not revert that edit back to the original value.
+    const editedWhite = { ...white, rawValue: { colorSpace: 'srgb', components: [0, 0, 0], alpha: 1, hex: '#000000' } }
+    const v = variable({
+      id: white.figmaId as string,
+      name: 'x',
+      valuesByMode: { [BASE_MODE]: { r: 1, g: 1, b: 1, a: 1 } }, // unchanged from `original`
+      description: 'Pure white.',
+    })
+    const plan = buildBasePullPlan({
+      original: [white],
+      working: [working(editedWhite)],
+      figmaMeta: meta([v]),
+      baseModeId: BASE_MODE,
+    })
+    expect(plan.conflicts).toHaveLength(0)
+    expect(plan.updates).toHaveLength(1)
+    expect(plan.updates[0].description).toBe('Pure white.')
+    expect((plan.updates[0].rawValue as { hex: string }).hex).toBe('#000000') // the pending edit, preserved
+  })
+
+  it('never overwrites an existing local $description, even when Figma disagrees', () => {
+    const documentedWhite = { ...white, description: 'Already documented.' }
+    const v = variable({
+      id: white.figmaId as string,
+      name: 'x',
+      valuesByMode: { [BASE_MODE]: { r: 1, g: 1, b: 1, a: 1 } },
+      description: 'A different description from Figma.',
+    })
+    const plan = buildBasePullPlan({
+      original: [documentedWhite],
+      working: [working(documentedWhite)],
       figmaMeta: meta([v]),
       baseModeId: BASE_MODE,
     })
@@ -581,6 +638,207 @@ describe('buildBasePullPlan', () => {
     const plan = buildBasePullPlan({ original: [white], working: [], figmaMeta: meta([]), baseModeId: BASE_MODE })
     expect(plan.deletes).toHaveLength(0)
   })
+
+  it('resolves a legacy STRING variable holding literal "{...}" reference text as an alias, not a string literal', () => {
+    // Component.Sheet.Shadow's shape: it predates the "shadow" $type and was never migrated onto a
+    // real Figma VARIABLE_ALIAS — its one Figma variable is a plain STRING holding the same literal
+    // reference text the local token's own $value already carries.
+    const sheetShadow = token({
+      path: ['🧩 Component', 'Sheet', 'Shadow'],
+      type: 'shadow',
+      figmaId: 'VariableID:legacy',
+      referenceTarget: '🔗 Alias.🌓 Shadow.Box.Base',
+      rawValue: undefined,
+    })
+    const v = variable({
+      id: 'VariableID:legacy',
+      name: '🧩 Component/Sheet/Shadow',
+      resolvedType: 'STRING',
+      valuesByMode: { [BASE_MODE]: '{🔗 Alias.🌓 Shadow.Box.Base}' },
+    })
+    const plan = buildBasePullPlan({
+      original: [sheetShadow],
+      working: [working(sheetShadow)],
+      figmaMeta: meta([v]),
+      baseModeId: BASE_MODE,
+    })
+    expect(plan.updates).toHaveLength(0)
+    expect(plan.creates).toHaveLength(0)
+    expect(plan.deletes).toHaveLength(0)
+  })
+
+  it("divides a matched LineHeight number token's Figma percentage back to a raw multiplier", () => {
+    const lineHeight2 = token({
+      path: ['🌐 Global', '🔤 Font', 'LineHeight', '2'],
+      type: 'number',
+      figmaId: 'VariableID:lineheight-2',
+      rawValue: 1.3,
+      resolvedValue: 1.3,
+    })
+    const v = variable({
+      id: 'VariableID:lineheight-2',
+      name: '🌐 Global/🔤 Font/LineHeight/2',
+      resolvedType: 'FLOAT',
+      valuesByMode: { [BASE_MODE]: 150 }, // changed in Figma from 130% to 150%
+    })
+    const plan = buildBasePullPlan({
+      original: [lineHeight2],
+      working: [working(lineHeight2)],
+      figmaMeta: meta([v]),
+      baseModeId: BASE_MODE,
+    })
+    expect(plan.updates).toHaveLength(1)
+    expect(plan.updates[0].rawValue).toBe(1.5)
+  })
+
+  it("divides an unmatched (new) LineHeight number variable's Figma percentage, keyed off its name", () => {
+    const v = variable({
+      id: 'VariableID:lineheight-new',
+      name: '🌐 Global/🔤 Font/LineHeight/5',
+      resolvedType: 'FLOAT',
+      valuesByMode: { [BASE_MODE]: 175 },
+    })
+    const plan = buildBasePullPlan({ original: [], working: [], figmaMeta: meta([v]), baseModeId: BASE_MODE })
+    expect(plan.creates).toHaveLength(1)
+    expect(plan.creates[0].rawValue).toBe(1.75)
+  })
+
+  it('does not scale a plain (non-LineHeight) number token, e.g. Opacity', () => {
+    const opacity = token({
+      path: ['🔗 Alias', '🌫️ Opacity', 'Half'],
+      type: 'number',
+      figmaId: 'VariableID:opacity-half',
+      rawValue: 0.5,
+      resolvedValue: 0.5,
+    })
+    const v = variable({
+      id: 'VariableID:opacity-half',
+      name: '🔗 Alias/🌫️ Opacity/Half',
+      resolvedType: 'FLOAT',
+      valuesByMode: { [BASE_MODE]: 0.6 },
+    })
+    const plan = buildBasePullPlan({
+      original: [opacity],
+      working: [working(opacity)],
+      figmaMeta: meta([v]),
+      baseModeId: BASE_MODE,
+    })
+    expect(plan.updates).toHaveLength(1)
+    expect(plan.updates[0].rawValue).toBe(0.6)
+  })
+})
+
+describe('buildBasePullPlan — rename', () => {
+  it('proposes moving a token to its renamed-in-Figma path, value unchanged', () => {
+    const black = token({
+      path: ['🌐 Global', '🌈 Color', 'Black'],
+      figmaId: 'VariableID:black',
+      rawValue: { colorSpace: 'srgb', components: [0, 0, 0], alpha: 1, hex: '#000000' },
+    })
+    const v = variable({
+      id: 'VariableID:black',
+      name: '🌐 Global/🌈 Color/BlackRenameGugus',
+      valuesByMode: { [BASE_MODE]: { r: 0, g: 0, b: 0, a: 1 } }, // same value, only the name changed
+    })
+    const plan = buildBasePullPlan({
+      original: [black],
+      working: [working(black)],
+      figmaMeta: meta([v]),
+      baseModeId: BASE_MODE,
+    })
+    expect(plan.creates).toHaveLength(0)
+    expect(plan.deletes).toHaveLength(0)
+    expect(plan.updates).toHaveLength(1)
+    expect(plan.updates[0].path).toEqual(['🌐 Global', '🌈 Color', 'BlackRenameGugus'])
+    expect(plan.updates[0].movedFrom).toEqual(['🌐 Global', '🌈 Color', 'Black'])
+    expect(plan.updates[0].figmaId).toBe('VariableID:black')
+    expect((plan.updates[0].rawValue as { hex: string }).hex).toBe('#000000')
+  })
+
+  it('proposes moving a token back to its original path once renamed back in Figma', () => {
+    const renamed = token({
+      path: ['🌐 Global', '🌈 Color', 'BlackRenameGugus'],
+      figmaId: 'VariableID:black',
+      rawValue: { colorSpace: 'srgb', components: [0, 0, 0], alpha: 1, hex: '#000000' },
+    })
+    const v = variable({
+      id: 'VariableID:black',
+      name: '🌐 Global/🌈 Color/Black',
+      valuesByMode: { [BASE_MODE]: { r: 0, g: 0, b: 0, a: 1 } },
+    })
+    const plan = buildBasePullPlan({
+      original: [renamed],
+      working: [working(renamed)],
+      figmaMeta: meta([v]),
+      baseModeId: BASE_MODE,
+    })
+    expect(plan.updates).toHaveLength(1)
+    expect(plan.updates[0].path).toEqual(['🌐 Global', '🌈 Color', 'Black'])
+    expect(plan.updates[0].movedFrom).toEqual(['🌐 Global', '🌈 Color', 'BlackRenameGugus'])
+  })
+
+  it('bundles a rename and a value change into a single update, both applied together', () => {
+    const black = token({
+      path: ['🌐 Global', '🌈 Color', 'Black'],
+      figmaId: 'VariableID:black',
+      rawValue: { colorSpace: 'srgb', components: [0, 0, 0], alpha: 1, hex: '#000000' },
+    })
+    const v = variable({
+      id: 'VariableID:black',
+      name: '🌐 Global/🌈 Color/AlmostBlack',
+      valuesByMode: { [BASE_MODE]: { r: 0.1, g: 0.1, b: 0.1, a: 1 } }, // renamed AND recolored
+    })
+    const plan = buildBasePullPlan({
+      original: [black],
+      working: [working(black)],
+      figmaMeta: meta([v]),
+      baseModeId: BASE_MODE,
+    })
+    expect(plan.updates).toHaveLength(1)
+    expect(plan.updates[0].path).toEqual(['🌐 Global', '🌈 Color', 'AlmostBlack'])
+    expect(plan.updates[0].movedFrom).toEqual(['🌐 Global', '🌈 Color', 'Black'])
+    expect((plan.updates[0].rawValue as { hex: string }).hex).not.toBe('#000000')
+  })
+
+  it('does not propose a move when the Figma name still round-trips to the same local path', () => {
+    const black = token({
+      path: ['🌐 Global', '🌈 Color', 'Black'],
+      figmaId: 'VariableID:black',
+      rawValue: { colorSpace: 'srgb', components: [0, 0, 0], alpha: 1, hex: '#000000' },
+    })
+    const v = variable({
+      id: 'VariableID:black',
+      name: '🌐 Global/🌈 Color/Black',
+      valuesByMode: { [BASE_MODE]: { r: 0, g: 0, b: 0, a: 1 } },
+    })
+    const plan = buildBasePullPlan({
+      original: [black],
+      working: [working(black)],
+      figmaMeta: meta([v]),
+      baseModeId: BASE_MODE,
+    })
+    expect(plan.updates).toHaveLength(0)
+  })
+
+  it('does not propose a move into an unrecognized layer name', () => {
+    const black = token({
+      path: ['🌐 Global', '🌈 Color', 'Black'],
+      figmaId: 'VariableID:black',
+      rawValue: { colorSpace: 'srgb', components: [0, 0, 0], alpha: 1, hex: '#000000' },
+    })
+    const v = variable({
+      id: 'VariableID:black',
+      name: 'NotALayer/🌈 Color/Black',
+      valuesByMode: { [BASE_MODE]: { r: 0, g: 0, b: 0, a: 1 } },
+    })
+    const plan = buildBasePullPlan({
+      original: [black],
+      working: [working(black)],
+      figmaMeta: meta([v]),
+      baseModeId: BASE_MODE,
+    })
+    expect(plan.updates).toHaveLength(0)
+  })
 })
 
 describe('buildBasePullPlan — shadow', () => {
@@ -689,6 +947,36 @@ describe('buildBasePullPlan — shadow', () => {
     expect(plan.updates).toHaveLength(0)
     expect(plan.deletes).toHaveLength(1)
     expect(plan.deletes[0].path).toEqual(shadow.path)
+  })
+
+  it('skips a "none" (empty-array) shadow token instead of proposing a false update', () => {
+    const none = token({ ...shadow, rawValue: [] })
+    const plan = buildBasePullPlan({
+      original: [none],
+      working: [working(none)],
+      figmaMeta: meta(shadowVariables()),
+      baseModeId: BASE_MODE,
+    })
+    expect(plan.updates).toHaveLength(0)
+    expect(plan.creates).toHaveLength(0)
+    expect(plan.deletes).toHaveLength(0)
+    expect(plan.skipped).toHaveLength(1)
+    expect(plan.skipped[0].reason).toMatch(/no single-layer Figma counterpart/)
+  })
+
+  it('skips a multi-layer shadow token instead of proposing a false update', () => {
+    const multiLayer = token({ ...shadow, rawValue: [shadow.rawValue, shadow.rawValue] })
+    const plan = buildBasePullPlan({
+      original: [multiLayer],
+      working: [working(multiLayer)],
+      figmaMeta: meta(shadowVariables()),
+      baseModeId: BASE_MODE,
+    })
+    expect(plan.updates).toHaveLength(0)
+    expect(plan.creates).toHaveLength(0)
+    expect(plan.deletes).toHaveLength(0)
+    expect(plan.skipped).toHaveLength(1)
+    expect(plan.skipped[0].reason).toMatch(/no single-layer Figma counterpart/)
   })
 
   it('does not propose deleting a shadow already removed from working', () => {
@@ -989,7 +1277,9 @@ describe('buildBasePullPlan — typography', () => {
     const fontFamily = overrides?.fontFamily ?? 'BaloiseCreateHeadline'
     const fontSize = overrides?.fontSize ?? 16
     const fontWeight = overrides?.fontWeight ?? 'Bold'
-    const lineHeight = overrides?.lineHeight ?? 1.3
+    // Figma-side value — a percentage (130), not this codebase's raw multiplier (1.3). See
+    // LINE_HEIGHT_PERCENT_MULTIPLIER.
+    const lineHeight = overrides?.lineHeight ?? 130
     return [
       variable({
         id: typographyFigmaId.fontFamily,
@@ -1178,6 +1468,10 @@ describe('buildBasePullPlan — responsive dimension', () => {
     mobile: 'VariableID:responsive:mobile',
     tablet: 'VariableID:responsive:tablet',
     desktop: 'VariableID:responsive:desktop',
+    // Figma's real 4th sub-variable, undocumented by RESPONSIVE_DIMENSION_SUB_PROPERTIES — the
+    // concrete anchor another token's alias actually points at, since nothing can alias to "a set
+    // of 3" (see the 'resolves a Component alias...' test below).
+    device: 'VariableID:responsive:device',
   }
 
   const space16 = token({
@@ -1228,8 +1522,42 @@ describe('buildBasePullPlan — responsive dimension', () => {
         resolvedType: 'FLOAT',
         valuesByMode: { [BASE_MODE]: overrides?.desktop ?? 32 },
       }),
+      variable({
+        id: responsiveFigmaId.device,
+        name: 'x/Device',
+        resolvedType: 'FLOAT',
+        valuesByMode: { [BASE_MODE]: overrides?.mobile ?? 16 },
+      }),
     ]
   }
+
+  it('resolves a Component token that aliases a responsive-dimension primitive’s "device" sub-variable', () => {
+    // e.g. Component.AppFooter.Gap -> {📱 Device.↔️ Space.Base} in real Base.tokens.json — Figma's
+    // alias points at the responsive-dimension token's own extra "device" variable, since nothing
+    // can alias to "a set of 3" breakpoints.
+    const gap = token({
+      path: ['🧭 Component', 'AppFooter', 'Gap'],
+      type: 'dimension',
+      figmaId: 'VariableID:gap',
+      rawValue: { value: 16, unit: 'px' },
+      referenceTarget: responsive.path.join('.'),
+    })
+    const v = variable({
+      id: 'VariableID:gap',
+      name: '🧭 Component/AppFooter/Gap',
+      resolvedType: 'FLOAT',
+      valuesByMode: { [BASE_MODE]: { type: 'VARIABLE_ALIAS', id: responsiveFigmaId.device } },
+    })
+    const plan = buildBasePullPlan({
+      original: [...responsivePrimitives, responsive, gap],
+      working: [working(responsive), working(gap)],
+      figmaMeta: meta([...responsiveVariables(), v]),
+      baseModeId: BASE_MODE,
+    })
+    expect(plan.skipped).toHaveLength(0)
+    expect(plan.updates).toHaveLength(0)
+    expect(plan.creates).toHaveLength(0)
+  })
 
   it('is a no-op when all 3 sub-variables still match the local resolved responsive value', () => {
     const plan = buildBasePullPlan({
@@ -1493,7 +1821,9 @@ describe('buildBrandPullPlan — typography', () => {
         id: typographyFigmaId.lineHeight,
         name: 'x/LineHeight',
         resolvedType: 'FLOAT',
-        valuesByMode: { [TCS_MODE]: 1.3 },
+        // Figma-side value — a percentage (130), not this codebase's raw multiplier (1.3). See
+        // LINE_HEIGHT_PERCENT_MULTIPLIER.
+        valuesByMode: { [TCS_MODE]: 130 },
       }),
     ]
   }
