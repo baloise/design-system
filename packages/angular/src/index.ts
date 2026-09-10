@@ -16,4 +16,5 @@ export const bootstrapDesignSystem = (config: DsAngularConfig = {}) => {
 export * from './generated/proxies'
 export * from './forms/value-accessor'
 export { DsInput } from './forms/ds-input'
+export { DsTextarea } from './forms/ds-textarea'
 export { DsNumberInput } from './forms/ds-number-input'
