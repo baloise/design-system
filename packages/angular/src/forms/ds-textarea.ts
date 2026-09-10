@@ -21,5 +21,5 @@ import { withValueAccessor } from './value-accessor'
 export class DsTextarea extends withValueAccessor<HTMLDsTextareaElement, 'value'>({
   changeEvent: 'dsChange',
   blurEvent: 'dsBlur',
-  valueProp: 'value'
+  valueProp: 'value',
 })(DsTextareaElement) {}
