@@ -3,15 +3,15 @@
  */
 
 export const DATE_DOC_CONFIG = {
-  section: 'Components / Date',
+  section: 'Components / Forms / Date',
   color: 'purple' as const,
   tabs: [
-    { label: 'Overview', storyId: 'components-date-date--date' },
-    { label: 'Usage', storyId: 'components-date-usage--usage' },
-    { label: 'Variants', storyId: 'components-date-variants-overview--overview' },
-    { label: 'Styling', storyId: 'components-date-styling--styling' },
-    { label: 'Accessibility', storyId: 'components-date-accessibility--accessibility' },
-    { label: 'Testing', storyId: 'components-date-testing--testing' },
+    { label: 'Overview', storyId: 'components-forms-date-date--date' },
+    { label: 'Usage', storyId: 'components-forms-date-usage--usage' },
+    { label: 'Variants', storyId: 'components-forms-date-variants-overview--overview' },
+    { label: 'Styling', storyId: 'components-forms-date-styling--styling' },
+    { label: 'Accessibility', storyId: 'components-forms-date-accessibility--accessibility' },
+    { label: 'Testing', storyId: 'components-forms-date-testing--testing' },
   ],
 }
 

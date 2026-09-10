@@ -43,7 +43,7 @@ export class Shape implements DsComponentInterface {
    */
   @Prop()
   @OneOf(SHAPE_COLORS)
-  readonly color: ShapeColor = 'green'
+  readonly color: ShapeColor = 'purple'
 
   /**
    * The shape rotation

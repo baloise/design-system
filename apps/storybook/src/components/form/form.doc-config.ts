@@ -3,15 +3,15 @@
  */
 
 export const FORM_DOC_CONFIG = {
-  section: 'Components / Form',
+  section: 'Components / Forms / Form',
   color: 'purple' as const,
   tabs: [
-    { label: 'Overview', storyId: 'components-form-form--form' },
-    { label: 'Usage', storyId: 'components-form-usage--usage' },
-    { label: 'Variants', storyId: 'components-form-variants-overview--overview' },
-    { label: 'Styling', storyId: 'components-form-styling--styling' },
-    { label: 'Accessibility', storyId: 'components-form-accessibility--accessibility' },
-    { label: 'Testing', storyId: 'components-form-testing--testing' },
+    { label: 'Overview', storyId: 'components-forms-form-form--form' },
+    { label: 'Usage', storyId: 'components-forms-form-usage--usage' },
+    { label: 'Variants', storyId: 'components-forms-form-variants-overview--overview' },
+    { label: 'Styling', storyId: 'components-forms-form-styling--styling' },
+    { label: 'Accessibility', storyId: 'components-forms-form-accessibility--accessibility' },
+    { label: 'Testing', storyId: 'components-forms-form-testing--testing' },
   ],
 }
 

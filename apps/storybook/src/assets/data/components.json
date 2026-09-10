@@ -67818,10 +67818,140 @@
     {
       "tag": "grid",
       "type": "css-only",
-      "docs": "",
+      "docs": "Grid provides a flexible, mobile-first 12-column layout system for arranging content in rows and columns.\nColumns default to equal width and wrap in a flex row; add sizing, offset, and behaviour modifiers to\ncontrol column widths, gaps, alignment, and responsiveness per breakpoint.",
       "styles": [],
       "tokens": [],
-      "properties": []
+      "properties": [],
+      "variants": [
+        {
+          "name": "is-multiline",
+          "docs": "Allows columns to wrap onto multiple lines instead of a single row."
+        },
+        {
+          "name": "is-gapless",
+          "docs": "Removes the gap between columns."
+        },
+        {
+          "name": "is-centered",
+          "docs": "Centers columns horizontally within the grid."
+        },
+        {
+          "name": "is-vcentered",
+          "docs": "Vertically centers columns within the grid."
+        },
+        {
+          "name": "is-mobile",
+          "docs": "Forces the grid to behave as flex from the smallest breakpoint up, instead of only from tablet."
+        },
+        {
+          "name": "is-desktop",
+          "docs": "Only switches to flex layout from the desktop breakpoint up, instead of tablet."
+        },
+        {
+          "name": "is-narrow",
+          "docs": "Column shrinks to fit its content instead of stretching to fill available space."
+        },
+        {
+          "name": "is-full",
+          "docs": "Column takes the full width (100%) of the grid."
+        },
+        {
+          "name": "is-half",
+          "docs": "Column takes 50% of the grid width (6 out of 12 columns)."
+        },
+        {
+          "name": "is-one-third",
+          "docs": "Column takes 33.33% of the grid width (4 out of 12 columns)."
+        },
+        {
+          "name": "is-two-thirds",
+          "docs": "Column takes 66.66% of the grid width (8 out of 12 columns)."
+        },
+        {
+          "name": "is-one-quarter",
+          "docs": "Column takes 25% of the grid width (3 out of 12 columns)."
+        },
+        {
+          "name": "is-three-quarters",
+          "docs": "Column takes 75% of the grid width (9 out of 12 columns)."
+        },
+        {
+          "name": "is-one-fifth",
+          "docs": "Column takes 20% of the grid width."
+        },
+        {
+          "name": "is-two-fifths",
+          "docs": "Column takes 40% of the grid width."
+        },
+        {
+          "name": "is-three-fifths",
+          "docs": "Column takes 60% of the grid width."
+        },
+        {
+          "name": "is-four-fifths",
+          "docs": "Column takes 80% of the grid width."
+        },
+        {
+          "name": "is-offset-half",
+          "docs": "Offsets the column by 50% of the grid width."
+        },
+        {
+          "name": "is-offset-one-third",
+          "docs": "Offsets the column by 33.33% of the grid width."
+        },
+        {
+          "name": "is-offset-one-quarter",
+          "docs": "Offsets the column by 25% of the grid width."
+        },
+        {
+          "name": "gap-none",
+          "docs": "Sets the column gap to the none spacing token."
+        },
+        {
+          "name": "gap-3xs",
+          "docs": "Sets the column gap to the 3xs spacing token."
+        },
+        {
+          "name": "gap-2xs",
+          "docs": "Sets the column gap to the 2xs spacing token."
+        },
+        {
+          "name": "gap-xs",
+          "docs": "Sets the column gap to the xs spacing token."
+        },
+        {
+          "name": "gap-sm",
+          "docs": "Sets the column gap to the sm spacing token."
+        },
+        {
+          "name": "gap-base",
+          "docs": "Sets the column gap to the base spacing token."
+        },
+        {
+          "name": "gap-md",
+          "docs": "Sets the column gap to the md spacing token."
+        },
+        {
+          "name": "gap-lg",
+          "docs": "Sets the column gap to the lg spacing token."
+        },
+        {
+          "name": "gap-xl",
+          "docs": "Sets the column gap to the xl spacing token."
+        },
+        {
+          "name": "gap-2xl",
+          "docs": "Sets the column gap to the 2xl spacing token."
+        },
+        {
+          "name": "gap-3xl",
+          "docs": "Sets the column gap to the 3xl spacing token."
+        },
+        {
+          "name": "gap-4xl",
+          "docs": "Sets the column gap to the 4xl spacing token."
+        }
+      ]
     },
     {
       "tag": "link",

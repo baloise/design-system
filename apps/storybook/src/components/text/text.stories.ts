@@ -31,7 +31,7 @@ const meta: Meta<Args> = {
           shadow: 'has-shadow',
         },
         args,
-        'text',
+        'ds-text',
       )}>${slot}</p>`,
   ),
 }

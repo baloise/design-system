@@ -44,7 +44,7 @@ import { SelectBlurDetail, SelectChangeDetail, SelectClickDetail, SelectFocusDet
 import { ShapeColor, ShapeRotation, ShapeVariation } from "./components/shape/shape.interfaces";
 import { SheetContainerSize } from "./components/sheet/sheet.interfaces";
 import { SnackbarActionClickDetail, SnackbarCloseClickDetail, SnackbarColor } from "./components/alert/snackbar/snackbar.interfaces";
-import { SpinnerColor, SpinnerLabelPosition, SpinnerSize, SpinnerVariation } from "./components/spinner/spinner.interfaces";
+import { SpinnerLabelPosition, SpinnerSize, SpinnerVariation } from "./components/spinner/spinner.interfaces";
 import { StepsChangeDetail, StepsColor } from "./components/steps/steps.interfaces";
 import { TabsChangeDetail, TabsColor, TabsVerticalColSize } from "./components/tabs/tabs.interfaces";
 import { TagCloseClickDetail, TagColor, TagPlacement, TagSize } from "./components/tag/tag.interfaces";
@@ -92,7 +92,7 @@ export { SelectBlurDetail, SelectChangeDetail, SelectClickDetail, SelectFocusDet
 export { ShapeColor, ShapeRotation, ShapeVariation } from "./components/shape/shape.interfaces";
 export { SheetContainerSize } from "./components/sheet/sheet.interfaces";
 export { SnackbarActionClickDetail, SnackbarCloseClickDetail, SnackbarColor } from "./components/alert/snackbar/snackbar.interfaces";
-export { SpinnerColor, SpinnerLabelPosition, SpinnerSize, SpinnerVariation } from "./components/spinner/spinner.interfaces";
+export { SpinnerLabelPosition, SpinnerSize, SpinnerVariation } from "./components/spinner/spinner.interfaces";
 export { StepsChangeDetail, StepsColor } from "./components/steps/steps.interfaces";
 export { TabsChangeDetail, TabsColor, TabsVerticalColSize } from "./components/tabs/tabs.interfaces";
 export { TagCloseClickDetail, TagColor, TagPlacement, TagSize } from "./components/tag/tag.interfaces";
@@ -2947,7 +2947,7 @@ export namespace Components {
     interface DsShape {
         /**
           * The shape color
-          * @default 'green'
+          * @default 'purple'
          */
         "color": ShapeColor;
         /**
@@ -3050,11 +3050,6 @@ export namespace Components {
      * Spinner displays an animated loading indicator with customizable color, size, and variation.
      */
     interface DsSpinner {
-        /**
-          * **Deprecated:** Use inverted="true" for white spinner instead.
-          * @default 'primary'
-         */
-        "color": SpinnerColor;
         "configChanged": (state: DsConfigState) => Promise<void>;
         /**
           * If `true` the component will not add the spinner animation svg
@@ -3080,11 +3075,6 @@ export namespace Components {
           * Defines the size of the spinner. If `sm` the spinner is smaller.
          */
         "size"?: SpinnerSize;
-        /**
-          * **Deprecated:** Use size="sm" instead.
-          * @default false
-         */
-        "small": boolean;
         /**
           * Defines the look of the spinner
           * @default 'logo'
@@ -8287,7 +8277,7 @@ declare namespace LocalJSX {
     interface DsShape {
         /**
           * The shape color
-          * @default 'green'
+          * @default 'purple'
          */
         "color"?: ShapeColor;
         /**
@@ -8396,11 +8386,6 @@ declare namespace LocalJSX {
      */
     interface DsSpinner {
         /**
-          * **Deprecated:** Use inverted="true" for white spinner instead.
-          * @default 'primary'
-         */
-        "color"?: SpinnerColor;
-        /**
           * If `true` the component will not add the spinner animation svg
           * @default false
          */
@@ -8424,11 +8409,6 @@ declare namespace LocalJSX {
           * Defines the size of the spinner. If `sm` the spinner is smaller.
          */
         "size"?: SpinnerSize;
-        /**
-          * **Deprecated:** Use size="sm" instead.
-          * @default false
-         */
-        "small"?: boolean;
         /**
           * Defines the look of the spinner
           * @default 'logo'
@@ -9743,11 +9723,9 @@ declare namespace LocalJSX {
         "visible": boolean;
     }
     interface DsSpinnerAttributes {
-        "color": SpinnerColor;
         "deactivated": boolean;
         "inverted": boolean;
         "size": SpinnerSize;
-        "small": boolean;
         "label": string;
         "labelPosition": SpinnerLabelPosition;
         "variation": SpinnerVariation;

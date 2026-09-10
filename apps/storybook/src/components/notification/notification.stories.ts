@@ -25,7 +25,7 @@ const meta: Meta<Args> = {
         noIcon: 'has-no-icon',
       },
       args,
-      'notification',
+      'ds-notification',
     )}>
   <h2>${heading}</h2>
   ${slot}
