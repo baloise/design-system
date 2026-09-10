@@ -20,6 +20,12 @@ export class NumberInputDemo {
     }),
   })
 
+  protected readonly autoInvalidOffForm = new FormGroup({
+    amount: new FormControl<number | null>(1, {
+      validators: requiredWithMessage('This field is required'),
+    }),
+  })
+
   protected onInput(event: CustomEvent<number | null>) {
     this.numberInputValue.set(event.detail ?? null)
   }

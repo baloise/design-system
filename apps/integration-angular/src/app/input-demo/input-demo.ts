@@ -20,6 +20,12 @@ export class InputDemo {
     }),
   })
 
+  protected readonly autoInvalidOffForm = new FormGroup({
+    name: new FormControl('Alice', {
+      validators: requiredWithMessage('This field is required'),
+    }),
+  })
+
   protected onInput(event: CustomEvent<string | null>) {
     this.inputValue.set(event.detail ?? '')
   }

@@ -21,3 +21,13 @@
   Toggle disabled
 </button>
 <button data-testid="set-reactive-number-value" type="button" (click)="setReactiveFormValue()">Set to 3</button>
+
+<form [formGroup]="autoInvalidOffForm">
+  <ds-number-input
+    data-testid="auto-invalid-off-number-input"
+    name="auto-invalid-off-number-input"
+    label="Amount"
+    autoInvalidOff
+    formControlName="amount"
+  />
+</form>
