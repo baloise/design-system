@@ -56,7 +56,7 @@ re-declared with its own `@Component({selector: 'ds-input', ...})` and the `NG_V
 
 Resolving `NgControl` happens in `DsValueAccessor.init()` (called from `DsInput.ngOnInit()`) via `Injector.get()` rather than constructor injection, to avoid a circular dependency (`NgControl` depends on the `NG_VALUE_ACCESSOR` this component provides). Subscribing to the resolved control's `events` is further deferred to a microtask, because `NgControl.control` (e.g. `FormControlName.control`) is itself assigned by that directive's own `ngOnChanges` — which has no guaranteed order relative to this component's own `ngOnInit`. `events` (not `statusChanges`) is used so a bare `markAsTouched()`/`markAllAsTouched()` (e.g. a submit-button pattern with no value or status change) still re-derives invalid state.
 
-This retires the "no form component / reactive-forms integration" limitation from [ADR-0006](../../docs/adr/0006-ds-angular-uses-stock-output-target.md) for `ds-input`, `ds-number-input` and `ds-date`, following the "thin wrapper layer on top of the generated standalone components" path that ADR anticipated; other form components still get only the plain generated wrapper until their own ticket adds a `withValueAccessor` usage.
+This retires the "no form component / reactive-forms integration" limitation from [ADR-0006](../../docs/adr/0006-ds-angular-uses-stock-output-target.md) for `ds-input`, `ds-number-input`, `ds-textarea` and `ds-date`, following the "thin wrapper layer on top of the generated standalone components" path that ADR anticipated; other form components still get only the plain generated wrapper until their own ticket adds a `withValueAccessor` usage.
 
 ### Verifying the package works
 
