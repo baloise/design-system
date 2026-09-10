@@ -45937,6 +45937,35 @@
           "setter": false
         },
         {
+          "name": "autoInvalidOff",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "auto-invalid-off",
+          "reflectToAttr": true,
+          "docs": "If `true`, disables the automatic `invalid`/`invalidText` behavior that the `@baloise/ds-angular` integration\napplies when the bound `NgControl` is touched and invalid. Only affects the Angular integration; it is a no-op\nin other framework integrations.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
           "name": "color",
           "type": "\"danger\" | \"primary\" | \"success\" | \"warning\"",
           "complexType": {

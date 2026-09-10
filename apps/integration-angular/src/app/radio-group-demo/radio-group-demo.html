@@ -1,0 +1,33 @@
+<h2>Radio group demo</h2>
+
+<form [formGroup]="reactiveForm">
+  <ds-radio-group
+    data-testid="reactive-radio-group"
+    name="reactive-radio-group"
+    label="Plan"
+    allowEmptySelection
+    formControlName="plan"
+  >
+    <ds-radio data-testid="reactive-radio-basic" value="basic" label="Basic" />
+    <ds-radio data-testid="reactive-radio-premium" value="premium" label="Premium" />
+  </ds-radio-group>
+</form>
+<p data-testid="reactive-radio-value">Reactive value: {{ reactiveForm.controls.plan.value }}</p>
+<button data-testid="toggle-reactive-radio-disabled" type="button" (click)="toggleReactiveFormDisabled()">
+  Toggle disabled
+</button>
+<button data-testid="set-reactive-radio-value" type="button" (click)="setReactiveFormValue()">Set to premium</button>
+
+<form [formGroup]="autoInvalidOffForm">
+  <ds-radio-group
+    data-testid="auto-invalid-off-radio-group"
+    name="auto-invalid-off-radio-group"
+    label="Plan"
+    allowEmptySelection
+    autoInvalidOff
+    formControlName="plan"
+  >
+    <ds-radio data-testid="auto-invalid-off-radio-basic" value="basic" label="Basic" />
+    <ds-radio data-testid="auto-invalid-off-radio-premium" value="premium" label="Premium" />
+  </ds-radio-group>
+</form>
