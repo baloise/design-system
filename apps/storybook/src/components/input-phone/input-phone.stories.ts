@@ -7,7 +7,7 @@ type Args = JSX.DsInputPhone
 const tag = 'ds-input-phone'
 
 const meta: Meta<Args> = {
-  title: 'Components/InputPhone/Variants',
+  title: 'Components/Forms/InputPhone/Variants',
   args: {
     label: 'Phone number',
     initialCountry: 'CH',

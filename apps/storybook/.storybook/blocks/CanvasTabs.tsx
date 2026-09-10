@@ -2,6 +2,7 @@ import { global } from '@storybook/global'
 import React from 'react'
 import { ModuleExport } from 'storybook/internal/types'
 import { CanvasWithCodePen } from './CanvasWithCodePen'
+import { SyncStoryArgs } from './SyncStoryArgs'
 import { Tabs } from './Tabs'
 
 type CanvasTabsProps = {
@@ -46,5 +47,10 @@ export const CanvasTabs = ({
     content: <CanvasWithCodePen of={htmlOf} sourceState={sourceState} overflowVisible={overflowVisible} />,
   }
 
-  return <Tabs tabs={resolvedHtmlFirst ? [htmlTab, wcTab] : [wcTab, htmlTab]} />
+  return (
+    <>
+      <SyncStoryArgs from={ofStory} to={htmlOf} />
+      <Tabs tabs={resolvedHtmlFirst ? [htmlTab, wcTab] : [wcTab, htmlTab]} />
+    </>
+  )
 }

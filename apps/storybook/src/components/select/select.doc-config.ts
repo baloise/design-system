@@ -3,15 +3,15 @@
  */
 
 export const SELECT_DOC_CONFIG = {
-  section: 'Components / Select',
+  section: 'Components / Forms / Select',
   color: 'purple' as const,
   tabs: [
-    { label: 'Overview', storyId: 'components-select-select--select' },
-    { label: 'Usage', storyId: 'components-select-usage--usage' },
-    { label: 'Variants', storyId: 'components-select-variants-overview--overview' },
-    { label: 'Styling', storyId: 'components-select-styling--styling' },
-    { label: 'Accessibility', storyId: 'components-select-accessibility--accessibility' },
-    { label: 'Testing', storyId: 'components-select-testing--testing' },
+    { label: 'Overview', storyId: 'components-forms-select-select--select' },
+    { label: 'Usage', storyId: 'components-forms-select-usage--usage' },
+    { label: 'Variants', storyId: 'components-forms-select-variants-overview--overview' },
+    { label: 'Styling', storyId: 'components-forms-select-styling--styling' },
+    { label: 'Accessibility', storyId: 'components-forms-select-accessibility--accessibility' },
+    { label: 'Testing', storyId: 'components-forms-select-testing--testing' },
   ],
 }
 

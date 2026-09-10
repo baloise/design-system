@@ -381,6 +381,7 @@ export class Textarea implements DsComponentInterface, FieldInterface, FormContr
 
   render() {
     const isInvalid = this.invalid || this.hasInvalidTextSlotContent
+    const value = (this.value || '').toString()
 
     return (
       <Field
@@ -414,6 +415,7 @@ export class Textarea implements DsComponentInterface, FieldInterface, FormContr
           cols={this.cols}
           rows={this.rows}
           wrap={this.wrap ? this.wrap : undefined}
+          value={value}
           onClick={ev => this.handleClick(ev)}
           onFocus={ev => this.handleFocus(ev)}
           onBlur={ev => this.handleBlur(ev)}

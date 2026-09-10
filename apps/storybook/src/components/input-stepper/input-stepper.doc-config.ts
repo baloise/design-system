@@ -1,13 +1,13 @@
 export const INPUTSTEPPER_DOC_CONFIG = {
-  section: 'Components / InputStepper',
+  section: 'Components / Forms / InputStepper',
   color: 'purple' as const,
   tabs: [
-    { label: 'Overview', storyId: 'components-inputstepper-input-stepper--input-stepper' },
-    { label: 'Usage', storyId: 'components-inputstepper-usage--usage' },
-    { label: 'Variants', storyId: 'components-inputstepper-variants-overview--overview' },
-    { label: 'Styling', storyId: 'components-inputstepper-styling--styling' },
-    { label: 'Accessibility', storyId: 'components-inputstepper-accessibility--accessibility' },
-    { label: 'Testing', storyId: 'components-inputstepper-testing--testing' },
+    { label: 'Overview', storyId: 'components-forms-inputstepper-input-stepper--input-stepper' },
+    { label: 'Usage', storyId: 'components-forms-inputstepper-usage--usage' },
+    { label: 'Variants', storyId: 'components-forms-inputstepper-variants-overview--overview' },
+    { label: 'Styling', storyId: 'components-forms-inputstepper-styling--styling' },
+    { label: 'Accessibility', storyId: 'components-forms-inputstepper-accessibility--accessibility' },
+    { label: 'Testing', storyId: 'components-forms-inputstepper-testing--testing' },
   ],
 }
 

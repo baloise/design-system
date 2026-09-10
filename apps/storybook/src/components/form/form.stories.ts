@@ -4,7 +4,7 @@ import { StoryFactory, withRender } from '../../utils'
 type Args = Record<string, unknown>
 
 const meta: Meta<Args> = {
-  title: 'Components/Form/Variants',
+  title: 'Components/Forms/Form/Variants',
   args: {},
   argTypes: {},
   ...withRender(

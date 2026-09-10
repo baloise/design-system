@@ -167,9 +167,9 @@ export const Alignment = Story({
   ...withRender(
     () => `
 <ds-stack align="center" class="bg-red-light p-base radius">
-  <ds-icon name="date" size="md"></ds-icon>
+  <ds-icon name="date" size="lg"></ds-icon>
   <ds-content class="align-top-center">
-    <ds-label>My Item</ds-label>
+    <ds-heading level="h3">My Item</ds-heading>
     <ds-text>Item is used to easaly group components and not be concered about the correct spacing.</ds-text>
   </ds-content>
   <ds-button>Button</ds-button>
@@ -182,9 +182,9 @@ export const AlignmentHtml = Story({
   ...withRender(
     () => `
 <div class="ds-stack as-col align-center bg-red-light p-base radius">
-  <ds-icon name="date" size="md"></ds-icon>
+  <ds-icon name="date" size="lg"></ds-icon>
   <div class="ds-stack-content align-center">
-    <label class="ds-label">My Item</label>
+    <h3 class="ds-title">My Item</h3>
     <span>Item is used to easaly group components and not be concered about the correct spacing.</span>
   </div>
   <button class="ds-button">Button</button>
@@ -289,127 +289,3 @@ export const PaddingHtml = Story({
   ),
 })
 PaddingHtml.storyName = '🌍 Padding'
-
-export const TeaserCards = Story({
-  ...withRender(
-    () => `<div class="ds-grid">
-  <div class="ds-col is-one-third">
-    <article class="ds-card is-purple-light is-fullheight">
-      <div class="ds-card-content">
-        <ds-stack align="center" space="lg">
-          <ds-icon svg='${BrandIconPiggyBankPurple}' color="auto" size="2xl"></ds-icon>
-          <ds-content class="align-top-center">
-            <h3 class="ds-title is-centered">Teaser Card</h3>
-            The item component can easily be combined with the card component to achieve a nice
-            teaser layout.
-          </ds-content>
-          <ds-button>Button</ds-button>
-        </ds-stack>
-      </div>
-    </article>
-  </div>
-  <div class="ds-col is-one-third">
-    <article class="ds-card is-yellow-light is-fullheight">
-      <div class="ds-card-content">
-        <ds-stack align="center" space="lg">
-          <ds-icon svg='${BrandIconSafeSavingChildTangerine}' color="auto" size="2xl"></ds-icon>
-          <ds-content class="align-top-center">
-            <h3 class="ds-title is-centered">Auto Height</h3>
-            The height of the cards adjust to the longest in the row.
-          </ds-content>
-          <ds-button>Button</ds-button>
-        </ds-stack>
-      </div>
-    </article>
-  </div>
-  <div class="ds-col is-one-third">
-    <article class="ds-card is-red-light is-fullheight">
-      <div class="ds-card-content">
-        <ds-stack align="center" space="lg">
-          <ds-icon svg='${BrandIconInvestSaveChfRed}' color="auto" size="2xl"></ds-icon>
-          <ds-content class="align-top-center">
-            <h3 class="ds-title is-centered">Item Component</h3>
-            Item is used to easaly group components and not be concered about the correct spacing.
-          </ds-content>
-          <ds-button>Button</ds-button>
-        </ds-stack>
-      </div>
-    </article>
-  </div>
-</div>`,
-  ),
-})
-TeaserCards.storyName = '🧩 Teaser Cards'
-
-export const TeaserCardsHtml = Story({
-  ...withRender(
-    () => `<div class="ds-grid">
-  <div class="ds-col is-one-third">
-    <article class="ds-card is-purple-light is-fullheight">
-      <div class="ds-card-content">
-        <div class="ds-stack align-center has-space-lg">
-          <ds-icon svg='${BrandIconPiggyBankPurple}' color="auto" size="2xl"></ds-icon>
-          <div class="ds-stack-content align-top-center">
-            <h3 class="ds-title is-centered">Teaser Card</h3>
-            The item component can easily be combined with the card component to achieve a nice
-            teaser layout.
-          </div>
-          <button class="ds-button">Button</button>
-        </div>
-      </div>
-    </article>
-  </div>
-  <div class="ds-col is-one-third">
-    <article class="ds-card is-yellow-light is-fullheight">
-      <div class="ds-card-content">
-        <div class="ds-stack align-center has-space-lg">
-          <ds-icon svg='${BrandIconSafeSavingChildTangerine}' color="auto" size="2xl"></ds-icon>
-          <div class="ds-stack-content align-top-center">
-            <h3 class="ds-title is-centered">Auto Height</h3>
-            The height of the cards adjust to the longest in the row.
-          </div>
-          <button class="ds-button">Button</button>
-        </div>
-      </div>
-    </article>
-  </div>
-  <div class="ds-col is-one-third">
-      <article class="ds-card is-red-light is-fullheight">
-      <div class="ds-card-content">
-        <div class="ds-stack align-center has-space-lg">
-          <ds-icon svg='${BrandIconInvestSaveChfRed}' color="auto" size="2xl"></ds-icon>
-          <div class="ds-stack-content align-top-center">
-            <h3 class="ds-title is-centered">Item Component</h3>
-            Item is used to easaly group components and not be concered about the correct spacing.
-          </div>
-          <button class="ds-button">Button</button>
-        </div>
-      </div>
-    </article>
-  </div>
-</div>`,
-  ),
-})
-TeaserCardsHtml.storyName = '🌍 Teaser Cards'
-
-export const StackedTabs = Story({
-  args: {
-    align: 'center',
-    space: 'base',
-  },
-  ...withRender(
-    ({ ...args }) => `<ds-stack ${props(args)}>
-  <ds-tabs value="tab-a">
-    <ds-tab-item value="tab-a" label="Tab A Tab A Tab A"></ds-tab-item>
-    <ds-tab-item value="tab-b" label="Tab B Tab B Tab B"></ds-tab-item>
-    <ds-tab-item value="tab-c" label="Tab C Tab C Tab C"></ds-tab-item>
-    <ds-tab-item value="tab-d" label="Tab D Tab D Tab D"></ds-tab-item>
-    <ds-tab-item value="tab-e" label="Tab E Tab E Tab E Tab E Tab E Tab E"></ds-tab-item>
-    <ds-tab-item value="tab-f" label="Tab F Tab F Tab F Tab F Tab F Tab F"></ds-tab-item>
-    <ds-tab-item value="tab-g" label="Tab G Tab G Tab G Tab G Tab G Tab G"></ds-tab-item>
-  </ds-tabs>
-  <ds-button no-wrap>Click me!</ds-button>
-</ds-stack>`,
-  ),
-})
-StackedTabs.storyName = '🧩 Stacked Tabs'

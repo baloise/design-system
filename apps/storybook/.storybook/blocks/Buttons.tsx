@@ -145,7 +145,7 @@ export const GridComponent = ({
         : 'justify-content-center align-items-center'
 
   return (
-    <div className="ds-col is-6">
+    <div className="ds-col mobile:is-12 tablet:is-6 desktop:is-4">
       <div className="h-full">
         <a
           onClick={() => navigate({ title: pageTitle })}

@@ -1,6 +1,53 @@
+/**
+ * Grid provides a flexible, mobile-first 12-column layout system for arranging content in rows and columns.
+ * Columns default to equal width and wrap in a flex row; add sizing, offset, and behaviour modifiers to
+ * control column widths, gaps, alignment, and responsiveness per breakpoint.
+ *
+ * @variant is-multiline - Allows columns to wrap onto multiple lines instead of a single row.
+ * @variant is-gapless - Removes the gap between columns.
+ * @variant is-centered - Centers columns horizontally within the grid.
+ * @variant is-vcentered - Vertically centers columns within the grid.
+ * @variant is-mobile - Forces the grid to behave as flex from the smallest breakpoint up, instead of only from tablet.
+ * @variant is-desktop - Only switches to flex layout from the desktop breakpoint up, instead of tablet.
+ * @variant is-narrow - Column shrinks to fit its content instead of stretching to fill available space.
+ * @variant is-full - Column takes the full width (100%) of the grid.
+ * @variant is-half - Column takes 50% of the grid width (6 out of 12 columns).
+ * @variant is-one-third - Column takes 33.33% of the grid width (4 out of 12 columns).
+ * @variant is-two-thirds - Column takes 66.66% of the grid width (8 out of 12 columns).
+ * @variant is-one-quarter - Column takes 25% of the grid width (3 out of 12 columns).
+ * @variant is-three-quarters - Column takes 75% of the grid width (9 out of 12 columns).
+ * @variant is-one-fifth - Column takes 20% of the grid width.
+ * @variant is-two-fifths - Column takes 40% of the grid width.
+ * @variant is-three-fifths - Column takes 60% of the grid width.
+ * @variant is-four-fifths - Column takes 80% of the grid width.
+ * @variant is-offset-half - Offsets the column by 50% of the grid width.
+ * @variant is-offset-one-third - Offsets the column by 33.33% of the grid width.
+ * @variant is-offset-one-quarter - Offsets the column by 25% of the grid width.
+ * @variant gap-none - Sets the column gap to the none spacing token.
+ * @variant gap-3xs - Sets the column gap to the 3xs spacing token.
+ * @variant gap-2xs - Sets the column gap to the 2xs spacing token.
+ * @variant gap-xs - Sets the column gap to the xs spacing token.
+ * @variant gap-sm - Sets the column gap to the sm spacing token.
+ * @variant gap-base - Sets the column gap to the base spacing token.
+ * @variant gap-md - Sets the column gap to the md spacing token.
+ * @variant gap-lg - Sets the column gap to the lg spacing token.
+ * @variant gap-xl - Sets the column gap to the xl spacing token.
+ * @variant gap-2xl - Sets the column gap to the 2xl spacing token.
+ * @variant gap-3xl - Sets the column gap to the 3xl spacing token.
+ * @variant gap-4xl - Sets the column gap to the 4xl spacing token.
+ */
+
 @use 'sass:math';
 @use '@baloise/ds-css/dist/scss/mixins' as *;
 
+/**
+ * Variables
+ * --------------------------------
+ * Define here the css variables for the component to be able to use it in host or non-host mode
+ * These variables can be used in the component styles below and later on be overridden in themes.
+ *
+ * @prop --ds-column-gap - Gap between grid columns, applied as padding on columns and negative margin on the grid.
+ */
 .ds-grid {
   --ds-column-gap: 1rem;
 }
@@ -657,5 +704,70 @@
     &.is-desktop {
       display: flex;
     }
+  }
+}
+
+/**
+ * Gap size utilities
+ * --------------------------------
+ * Override --ds-column-gap so the shared `.gap-*` spacing utility classes also control
+ * the grid's column gap, since ds-grid implements spacing via margin/padding rather than
+ * the native CSS `gap` property. See the `@variant gap-*` entries above.
+ *
+ * The shared `.gap-*` utility (packages/css) also sets the native `gap` property with
+ * `!important` for flex/grid containers that rely on it (e.g. ds-stack). ds-grid does not
+ * use native `gap`, so it must be reset back to 0 here — otherwise it stacks on top of the
+ * padding-based gutter below and over-widens columns past 100%, breaking `is-*` sizing.
+ * `.ds-grid.gap-*` outranks the utility's `.gap-*` on specificity, so this wins even though
+ * both declarations are `!important`.
+ */
+.ds-grid {
+  &.gap-none {
+    --ds-column-gap: calc(var(--ds-device-space-none) / 2);
+    gap: 0 !important;
+  }
+  &.gap-3xs {
+    --ds-column-gap: calc(var(--ds-device-space-3xs) / 2);
+    gap: 0 !important;
+  }
+  &.gap-2xs {
+    --ds-column-gap: calc(var(--ds-device-space-2xs) / 2);
+    gap: 0 !important;
+  }
+  &.gap-xs {
+    --ds-column-gap: calc(var(--ds-device-space-xs) / 2);
+    gap: 0 !important;
+  }
+  &.gap-sm {
+    --ds-column-gap: calc(var(--ds-device-space-sm) / 2);
+    gap: 0 !important;
+  }
+  &.gap-base {
+    --ds-column-gap: calc(var(--ds-device-space-base) / 2);
+    gap: 0 !important;
+  }
+  &.gap-md {
+    --ds-column-gap: calc(var(--ds-device-space-md) / 2);
+    gap: 0 !important;
+  }
+  &.gap-lg {
+    --ds-column-gap: calc(var(--ds-device-space-lg) / 2);
+    gap: 0 !important;
+  }
+  &.gap-xl {
+    --ds-column-gap: calc(var(--ds-device-space-xl) / 2);
+    gap: 0 !important;
+  }
+  &.gap-2xl {
+    --ds-column-gap: calc(var(--ds-device-space-2xl) / 2);
+    gap: 0 !important;
+  }
+  &.gap-3xl {
+    --ds-column-gap: calc(var(--ds-device-space-3xl) / 2);
+    gap: 0 !important;
+  }
+  &.gap-4xl {
+    --ds-column-gap: calc(var(--ds-device-space-4xl) / 2);
+    gap: 0 !important;
   }
 }

@@ -6,7 +6,7 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { AccordionButtonColor, AccordionButtonSize, AccordionMarker, AccordionMarkerPosition, AccordionSummaryLevel, AccordionToggleDetail } from "./components/accordion/accordion.interfaces";
-import { DsConfigState, DsLanguage, DsRegion } from "./global/index";
+import { DsBrand, DsConfigState, DsLanguage, DsRegion } from "./global/index";
 import { Alert, AlertComponent, AlertContainerSize, AlertType } from "./components/alert/alert-container.interfaces";
 import { AppFooterContainer, AppFooterLanguageChangeDetail } from "./components/app-footer/app-footer.interfaces";
 import { AppNavbarContainer } from "./components/app-navbar/app-navbar.interfaces";
@@ -44,7 +44,7 @@ import { SelectBlurDetail, SelectChangeDetail, SelectClickDetail, SelectFocusDet
 import { ShapeColor, ShapeRotation, ShapeVariation } from "./components/shape/shape.interfaces";
 import { SheetContainerSize } from "./components/sheet/sheet.interfaces";
 import { SnackbarActionClickDetail, SnackbarCloseClickDetail, SnackbarColor } from "./components/alert/snackbar/snackbar.interfaces";
-import { SpinnerColor, SpinnerLabelPosition, SpinnerSize, SpinnerVariation } from "./components/spinner/spinner.interfaces";
+import { SpinnerLabelPosition, SpinnerSize, SpinnerVariation } from "./components/spinner/spinner.interfaces";
 import { StepsChangeDetail, StepsColor } from "./components/steps/steps.interfaces";
 import { TabsChangeDetail, TabsColor, TabsVerticalColSize } from "./components/tabs/tabs.interfaces";
 import { TagCloseClickDetail, TagColor, TagPlacement, TagSize } from "./components/tag/tag.interfaces";
@@ -54,7 +54,7 @@ import { ToastActionClickDetail, ToastCloseClickDetail, ToastColor, ToastDuratio
 import { ToggleBlurDetail, ToggleChangeDetail, ToggleFocusDetail, ToggleGroupColumns, ToggleLabelPosition, ToggleTileColor } from "./components/toggle/toggle.interfaces";
 import { TooltipDidAnimateDetail, TooltipPlacement, TooltipWillAnimateDetail } from "./components/tooltip/tooltip.interfaces";
 export { AccordionButtonColor, AccordionButtonSize, AccordionMarker, AccordionMarkerPosition, AccordionSummaryLevel, AccordionToggleDetail } from "./components/accordion/accordion.interfaces";
-export { DsConfigState, DsLanguage, DsRegion } from "./global/index";
+export { DsBrand, DsConfigState, DsLanguage, DsRegion } from "./global/index";
 export { Alert, AlertComponent, AlertContainerSize, AlertType } from "./components/alert/alert-container.interfaces";
 export { AppFooterContainer, AppFooterLanguageChangeDetail } from "./components/app-footer/app-footer.interfaces";
 export { AppNavbarContainer } from "./components/app-navbar/app-navbar.interfaces";
@@ -92,7 +92,7 @@ export { SelectBlurDetail, SelectChangeDetail, SelectClickDetail, SelectFocusDet
 export { ShapeColor, ShapeRotation, ShapeVariation } from "./components/shape/shape.interfaces";
 export { SheetContainerSize } from "./components/sheet/sheet.interfaces";
 export { SnackbarActionClickDetail, SnackbarCloseClickDetail, SnackbarColor } from "./components/alert/snackbar/snackbar.interfaces";
-export { SpinnerColor, SpinnerLabelPosition, SpinnerSize, SpinnerVariation } from "./components/spinner/spinner.interfaces";
+export { SpinnerLabelPosition, SpinnerSize, SpinnerVariation } from "./components/spinner/spinner.interfaces";
 export { StepsChangeDetail, StepsColor } from "./components/steps/steps.interfaces";
 export { TabsChangeDetail, TabsColor, TabsVerticalColSize } from "./components/tabs/tabs.interfaces";
 export { TagCloseClickDetail, TagColor, TagPlacement, TagSize } from "./components/tag/tag.interfaces";
@@ -216,10 +216,27 @@ export namespace Components {
      */
     interface DsApp {
         /**
+          * Comma separated list of languages the app allows selecting. Falls back to the global config default when unset.
+         */
+        "allowedLanguages"?: string;
+        /**
           * Disables all animation inside the ds-app. Can be used for simplify e2e testing.
           * @default true
          */
         "animated": boolean;
+        /**
+          * Sets the active brand for all design system components. Falls back to the global config default when unset.
+         */
+        "brand"?: DsBrand;
+        "configChanged": (state: DsConfigState) => Promise<void>;
+        /**
+          * Language used when `language` is not part of `allowedLanguages`. Falls back to the global config default when unset.
+         */
+        "fallbackLanguage"?: DsLanguage;
+        /**
+          * Sets the active language for all design system components. Falls back to the global config default when unset.
+         */
+        "language"?: DsLanguage;
         /**
           * @default ''
          */
@@ -228,6 +245,10 @@ export namespace Components {
           * @default false
          */
         "ready": boolean;
+        /**
+          * Sets the active region for all design system components. Falls back to the global config default when unset.
+         */
+        "region"?: DsRegion;
         /**
           * Sets focus on the given elements using the app's focus-visible handling.
          */
@@ -2936,7 +2957,7 @@ export namespace Components {
     interface DsShape {
         /**
           * The shape color
-          * @default 'green'
+          * @default 'purple'
          */
         "color": ShapeColor;
         /**
@@ -3039,11 +3060,6 @@ export namespace Components {
      * Spinner displays an animated loading indicator with customizable color, size, and variation.
      */
     interface DsSpinner {
-        /**
-          * **Deprecated:** Use inverted="true" for white spinner instead.
-          * @default 'primary'
-         */
-        "color": SpinnerColor;
         "configChanged": (state: DsConfigState) => Promise<void>;
         /**
           * If `true` the component will not add the spinner animation svg
@@ -3069,11 +3085,6 @@ export namespace Components {
           * Defines the size of the spinner. If `sm` the spinner is smaller.
          */
         "size"?: SpinnerSize;
-        /**
-          * **Deprecated:** Use size="sm" instead.
-          * @default false
-         */
-        "small": boolean;
         /**
           * Defines the look of the spinner
           * @default 'logo'
@@ -3921,6 +3932,12 @@ declare global {
     };
     interface HTMLDsAppElementEventMap {
         "dsAppReady": void;
+        "dsAnimatedChange": boolean;
+        "dsBrandChange": DsBrand;
+        "dsRegionChange": DsRegion;
+        "dsLanguageChange": DsLanguage;
+        "dsAllowedLanguagesChange": DsLanguage[];
+        "dsFallbackLanguageChange": DsLanguage;
     }
     /**
      * App is a root wrapper component that provides global configuration, focus management, and responsive behavior context for all design system components.
@@ -5279,22 +5296,66 @@ declare namespace LocalJSX {
      */
     interface DsApp {
         /**
+          * Comma separated list of languages the app allows selecting. Falls back to the global config default when unset.
+         */
+        "allowedLanguages"?: string;
+        /**
           * Disables all animation inside the ds-app. Can be used for simplify e2e testing.
           * @default true
          */
         "animated"?: boolean;
         /**
+          * Sets the active brand for all design system components. Falls back to the global config default when unset.
+         */
+        "brand"?: DsBrand;
+        /**
+          * Language used when `language` is not part of `allowedLanguages`. Falls back to the global config default when unset.
+         */
+        "fallbackLanguage"?: DsLanguage;
+        /**
+          * Sets the active language for all design system components. Falls back to the global config default when unset.
+         */
+        "language"?: DsLanguage;
+        /**
           * @default ''
          */
         "logger"?: string;
+        /**
+          * Emitted when the `allowedLanguages` value changes in the global config.
+         */
+        "onDsAllowedLanguagesChange"?: (event: DsAppCustomEvent<DsLanguage[]>) => void;
+        /**
+          * Emitted when the `animated` value changes in the global config.
+         */
+        "onDsAnimatedChange"?: (event: DsAppCustomEvent<boolean>) => void;
         /**
           * Emitted when app is ready and painted.
          */
         "onDsAppReady"?: (event: DsAppCustomEvent<void>) => void;
         /**
+          * Emitted when the `brand` value changes in the global config.
+         */
+        "onDsBrandChange"?: (event: DsAppCustomEvent<DsBrand>) => void;
+        /**
+          * Emitted when the `fallbackLanguage` value changes in the global config.
+         */
+        "onDsFallbackLanguageChange"?: (event: DsAppCustomEvent<DsLanguage>) => void;
+        /**
+          * Emitted when the `language` value changes in the global config.
+         */
+        "onDsLanguageChange"?: (event: DsAppCustomEvent<DsLanguage>) => void;
+        /**
+          * Emitted when the `region` value changes in the global config.
+         */
+        "onDsRegionChange"?: (event: DsAppCustomEvent<DsRegion>) => void;
+        /**
           * @default false
          */
         "ready"?: boolean;
+        /**
+          * Sets the active region for all design system components. Falls back to the global config default when unset.
+         */
+        "region"?: DsRegion;
     }
     /**
      * AppFooter renders application level legal links, language selection, and social links.
@@ -8236,7 +8297,7 @@ declare namespace LocalJSX {
     interface DsShape {
         /**
           * The shape color
-          * @default 'green'
+          * @default 'purple'
          */
         "color"?: ShapeColor;
         /**
@@ -8345,11 +8406,6 @@ declare namespace LocalJSX {
      */
     interface DsSpinner {
         /**
-          * **Deprecated:** Use inverted="true" for white spinner instead.
-          * @default 'primary'
-         */
-        "color"?: SpinnerColor;
-        /**
           * If `true` the component will not add the spinner animation svg
           * @default false
          */
@@ -8373,11 +8429,6 @@ declare namespace LocalJSX {
           * Defines the size of the spinner. If `sm` the spinner is smaller.
          */
         "size"?: SpinnerSize;
-        /**
-          * **Deprecated:** Use size="sm" instead.
-          * @default false
-         */
-        "small"?: boolean;
         /**
           * Defines the look of the spinner
           * @default 'logo'
@@ -9118,6 +9169,11 @@ declare namespace LocalJSX {
     }
     interface DsAppAttributes {
         "animated": boolean;
+        "brand": DsBrand;
+        "region": DsRegion;
+        "language": DsLanguage;
+        "allowedLanguages": string;
+        "fallbackLanguage": DsLanguage;
         "ready": boolean;
         "logger": string;
     }
@@ -9689,11 +9745,9 @@ declare namespace LocalJSX {
         "visible": boolean;
     }
     interface DsSpinnerAttributes {
-        "color": SpinnerColor;
         "deactivated": boolean;
         "inverted": boolean;
         "size": SpinnerSize;
-        "small": boolean;
         "label": string;
         "labelPosition": SpinnerLabelPosition;
         "variation": SpinnerVariation;
