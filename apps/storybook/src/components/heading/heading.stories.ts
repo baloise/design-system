@@ -7,6 +7,20 @@ type Args = JSX.DsHeading & { slot: string }
 const tag = 'ds-heading'
 const css = createCssMappings(tag)
 
+// Mirrors packages/core/src/components/heading/heading.const.ts HEADING_TAG_MAP —
+// `level` picks the actual HTML tag, independent of the `is-*` size class.
+const HTML_TAG_MAP: Record<string, string> = {
+  'display': 'h1',
+  'display-2': 'h1',
+  'h1': 'h1',
+  'h2': 'h2',
+  'h3': 'h3',
+  'h4': 'h4',
+  'h5': 'h5',
+  'span': 'span',
+  'p': 'p',
+}
+
 const meta: Meta<Args> = {
   title: 'Components/Heading/Variants',
   args: {
@@ -15,24 +29,22 @@ const meta: Meta<Args> = {
   argTypes: {
     ...withComponentControls({ tag }),
   },
-  ...withRender(
-    ({ slot, ...args }) => `
-<h1 ${cssClasses(
+  ...withRender(({ slot, ...args }) => {
+    const htmlTag = HTML_TAG_MAP[args.level as string] ?? 'h1'
+    return `
+<${htmlTag} ${cssClasses(
       {
         ...css('color', (color: string) => `is-${color}`),
-        ...css('level', (level: string) => `is-${level.startsWith('h') ? `is-${level.substring(1)}` : `is-${level}`}`),
-        ...css(
-          'visualLevel',
-          (level: string) => `is-${level.startsWith('h') ? `is-${level.substring(1)}` : `is-${level}`}`,
-        ),
-        subtitle: 'subtitle',
+        ...css('level', (level: string) => `is-${level.startsWith('h') ? level.substring(1) : level}`),
+        ...css('visualLevel', (level: string) => `is-${level.startsWith('h') ? level.substring(1) : level}`),
+        subtitle: 'ds-subtitle',
         noWrap: 'has-no-wrap',
         shadow: 'has-shadow',
       },
       args,
-      'title',
-    )}>${slot}</h1>`,
-  ),
+      'ds-title',
+    )}>${slot}</${htmlTag}>`
+  }),
 }
 
 export default meta

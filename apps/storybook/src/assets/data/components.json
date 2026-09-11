@@ -1245,6 +1245,32 @@
       "dependencyGraph": {},
       "props": [
         {
+          "name": "allowedLanguages",
+          "type": "string | undefined",
+          "complexType": {
+            "original": "string",
+            "resolved": "string | undefined",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "allowed-languages",
+          "reflectToAttr": true,
+          "docs": "Comma separated list of languages the app allows selecting. Falls back to the global config default when unset.",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "undefined"
+            }
+          ],
+          "optional": true,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
           "name": "animated",
           "type": "boolean",
           "complexType": {
@@ -1269,6 +1295,242 @@
             }
           ],
           "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "brand",
+          "type": "\"baloise\" | \"helvetia\" | undefined",
+          "complexType": {
+            "original": "DsBrand",
+            "resolved": "\"baloise\" | \"helvetia\" | undefined",
+            "references": {
+              "DsBrand": {
+                "location": "import",
+                "path": "@global",
+                "id": "src/global/index.ts::DsBrand",
+                "referenceLocation": "DsBrand"
+              }
+            }
+          },
+          "mutable": false,
+          "attr": "brand",
+          "reflectToAttr": true,
+          "docs": "Sets the active brand for all design system components. Falls back to the global config default when unset.",
+          "docsTags": [],
+          "values": [
+            {
+              "value": "baloise",
+              "type": "string"
+            },
+            {
+              "value": "helvetia",
+              "type": "string"
+            },
+            {
+              "type": "undefined"
+            }
+          ],
+          "optional": true,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "fallbackLanguage",
+          "type": "\"de\" | \"en\" | \"es\" | \"fi\" | \"fr\" | \"it\" | \"nl\" | \"pl\" | \"pt\" | \"sv\" | undefined",
+          "complexType": {
+            "original": "DsLanguage",
+            "resolved": "\"de\" | \"en\" | \"es\" | \"fi\" | \"fr\" | \"it\" | \"nl\" | \"pl\" | \"pt\" | \"sv\" | undefined",
+            "references": {
+              "DsLanguage": {
+                "location": "import",
+                "path": "@global",
+                "id": "src/global/index.ts::DsLanguage",
+                "referenceLocation": "DsLanguage"
+              }
+            }
+          },
+          "mutable": false,
+          "attr": "fallback-language",
+          "reflectToAttr": true,
+          "docs": "Language used when `language` is not part of `allowedLanguages`. Falls back to the global config default when unset.",
+          "docsTags": [],
+          "values": [
+            {
+              "value": "de",
+              "type": "string"
+            },
+            {
+              "value": "en",
+              "type": "string"
+            },
+            {
+              "value": "es",
+              "type": "string"
+            },
+            {
+              "value": "fi",
+              "type": "string"
+            },
+            {
+              "value": "fr",
+              "type": "string"
+            },
+            {
+              "value": "it",
+              "type": "string"
+            },
+            {
+              "value": "nl",
+              "type": "string"
+            },
+            {
+              "value": "pl",
+              "type": "string"
+            },
+            {
+              "value": "pt",
+              "type": "string"
+            },
+            {
+              "value": "sv",
+              "type": "string"
+            },
+            {
+              "type": "undefined"
+            }
+          ],
+          "optional": true,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "language",
+          "type": "\"de\" | \"en\" | \"es\" | \"fi\" | \"fr\" | \"it\" | \"nl\" | \"pl\" | \"pt\" | \"sv\" | undefined",
+          "complexType": {
+            "original": "DsLanguage",
+            "resolved": "\"de\" | \"en\" | \"es\" | \"fi\" | \"fr\" | \"it\" | \"nl\" | \"pl\" | \"pt\" | \"sv\" | undefined",
+            "references": {
+              "DsLanguage": {
+                "location": "import",
+                "path": "@global",
+                "id": "src/global/index.ts::DsLanguage",
+                "referenceLocation": "DsLanguage"
+              }
+            }
+          },
+          "mutable": false,
+          "attr": "language",
+          "reflectToAttr": true,
+          "docs": "Sets the active language for all design system components. Falls back to the global config default when unset.",
+          "docsTags": [],
+          "values": [
+            {
+              "value": "de",
+              "type": "string"
+            },
+            {
+              "value": "en",
+              "type": "string"
+            },
+            {
+              "value": "es",
+              "type": "string"
+            },
+            {
+              "value": "fi",
+              "type": "string"
+            },
+            {
+              "value": "fr",
+              "type": "string"
+            },
+            {
+              "value": "it",
+              "type": "string"
+            },
+            {
+              "value": "nl",
+              "type": "string"
+            },
+            {
+              "value": "pl",
+              "type": "string"
+            },
+            {
+              "value": "pt",
+              "type": "string"
+            },
+            {
+              "value": "sv",
+              "type": "string"
+            },
+            {
+              "type": "undefined"
+            }
+          ],
+          "optional": true,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "region",
+          "type": "\"AT\" | \"BE\" | \"CH\" | \"DE\" | \"ES\" | \"IT\" | \"LU\" | undefined",
+          "complexType": {
+            "original": "DsRegion",
+            "resolved": "\"AT\" | \"BE\" | \"CH\" | \"DE\" | \"ES\" | \"IT\" | \"LU\" | undefined",
+            "references": {
+              "DsRegion": {
+                "location": "import",
+                "path": "@global",
+                "id": "src/global/index.ts::DsRegion",
+                "referenceLocation": "DsRegion"
+              }
+            }
+          },
+          "mutable": false,
+          "attr": "region",
+          "reflectToAttr": true,
+          "docs": "Sets the active region for all design system components. Falls back to the global config default when unset.",
+          "docsTags": [],
+          "values": [
+            {
+              "value": "AT",
+              "type": "string"
+            },
+            {
+              "value": "BE",
+              "type": "string"
+            },
+            {
+              "value": "CH",
+              "type": "string"
+            },
+            {
+              "value": "DE",
+              "type": "string"
+            },
+            {
+              "value": "ES",
+              "type": "string"
+            },
+            {
+              "value": "IT",
+              "type": "string"
+            },
+            {
+              "value": "LU",
+              "type": "string"
+            },
+            {
+              "type": "undefined"
+            }
+          ],
+          "optional": true,
           "required": false,
           "getter": false,
           "setter": false
@@ -1316,6 +1578,41 @@
       ],
       "events": [
         {
+          "event": "dsAllowedLanguagesChange",
+          "detail": "DsLanguage[]",
+          "bubbles": true,
+          "complexType": {
+            "original": "DsLanguage[]",
+            "resolved": "DsLanguage[]",
+            "references": {
+              "DsLanguage": {
+                "location": "import",
+                "path": "@global",
+                "id": "src/global/index.ts::DsLanguage",
+                "referenceLocation": "DsLanguage"
+              }
+            }
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Emitted when the `allowedLanguages` value changes in the global config.",
+          "docsTags": []
+        },
+        {
+          "event": "dsAnimatedChange",
+          "detail": "boolean",
+          "bubbles": true,
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Emitted when the `animated` value changes in the global config.",
+          "docsTags": []
+        },
+        {
           "event": "dsAppReady",
           "detail": "void",
           "bubbles": true,
@@ -1327,6 +1624,90 @@
           "cancelable": true,
           "composed": true,
           "docs": "Emitted when app is ready and painted.",
+          "docsTags": []
+        },
+        {
+          "event": "dsBrandChange",
+          "detail": "\"baloise\" | \"helvetia\"",
+          "bubbles": true,
+          "complexType": {
+            "original": "DsBrand",
+            "resolved": "\"baloise\" | \"helvetia\"",
+            "references": {
+              "DsBrand": {
+                "location": "import",
+                "path": "@global",
+                "id": "src/global/index.ts::DsBrand",
+                "referenceLocation": "DsBrand"
+              }
+            }
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Emitted when the `brand` value changes in the global config.",
+          "docsTags": []
+        },
+        {
+          "event": "dsFallbackLanguageChange",
+          "detail": "\"de\" | \"en\" | \"es\" | \"fi\" | \"fr\" | \"it\" | \"nl\" | \"pl\" | \"pt\" | \"sv\"",
+          "bubbles": true,
+          "complexType": {
+            "original": "DsLanguage",
+            "resolved": "\"de\" | \"en\" | \"es\" | \"fi\" | \"fr\" | \"it\" | \"nl\" | \"pl\" | \"pt\" | \"sv\"",
+            "references": {
+              "DsLanguage": {
+                "location": "import",
+                "path": "@global",
+                "id": "src/global/index.ts::DsLanguage",
+                "referenceLocation": "DsLanguage"
+              }
+            }
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Emitted when the `fallbackLanguage` value changes in the global config.",
+          "docsTags": []
+        },
+        {
+          "event": "dsLanguageChange",
+          "detail": "\"de\" | \"en\" | \"es\" | \"fi\" | \"fr\" | \"it\" | \"nl\" | \"pl\" | \"pt\" | \"sv\"",
+          "bubbles": true,
+          "complexType": {
+            "original": "DsLanguage",
+            "resolved": "\"de\" | \"en\" | \"es\" | \"fi\" | \"fr\" | \"it\" | \"nl\" | \"pl\" | \"pt\" | \"sv\"",
+            "references": {
+              "DsLanguage": {
+                "location": "import",
+                "path": "@global",
+                "id": "src/global/index.ts::DsLanguage",
+                "referenceLocation": "DsLanguage"
+              }
+            }
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Emitted when the `language` value changes in the global config.",
+          "docsTags": []
+        },
+        {
+          "event": "dsRegionChange",
+          "detail": "\"AT\" | \"BE\" | \"CH\" | \"DE\" | \"ES\" | \"IT\" | \"LU\"",
+          "bubbles": true,
+          "complexType": {
+            "original": "DsRegion",
+            "resolved": "\"AT\" | \"BE\" | \"CH\" | \"DE\" | \"ES\" | \"IT\" | \"LU\"",
+            "references": {
+              "DsRegion": {
+                "location": "import",
+                "path": "@global",
+                "id": "src/global/index.ts::DsRegion",
+                "referenceLocation": "DsRegion"
+              }
+            }
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Emitted when the `region` value changes in the global config.",
           "docsTags": []
         }
       ],
@@ -28985,10 +29366,10 @@
       "props": [
         {
           "name": "color",
-          "type": "\"danger\" | \"grey\" | \"info\" | \"primary\" | \"primary-light\" | \"success\" | \"warning\" | undefined",
+          "type": "\"danger\" | \"grey\" | \"info\" | \"primary\" | \"success\" | \"warning\" | undefined",
           "complexType": {
             "original": "IconColor",
-            "resolved": "\"danger\" | \"grey\" | \"info\" | \"primary\" | \"primary-light\" | \"success\" | \"warning\" | undefined",
+            "resolved": "\"danger\" | \"grey\" | \"info\" | \"primary\" | \"success\" | \"warning\" | undefined",
             "references": {
               "IconColor": {
                 "location": "import",
@@ -29021,10 +29402,6 @@
               "type": "string"
             },
             {
-              "value": "primary-light",
-              "type": "string"
-            },
-            {
               "value": "success",
               "type": "string"
             },
@@ -29042,7 +29419,7 @@
           "setter": false,
           "oneOfValues": [
             "primary",
-            "primary-light",
+            "info",
             "grey",
             "success",
             "danger",
@@ -67470,10 +67847,140 @@
     {
       "tag": "grid",
       "type": "css-only",
-      "docs": "",
+      "docs": "Grid provides a flexible, mobile-first 12-column layout system for arranging content in rows and columns.\nColumns default to equal width and wrap in a flex row; add sizing, offset, and behaviour modifiers to\ncontrol column widths, gaps, alignment, and responsiveness per breakpoint.",
       "styles": [],
       "tokens": [],
-      "properties": []
+      "properties": [],
+      "variants": [
+        {
+          "name": "is-multiline",
+          "docs": "Allows columns to wrap onto multiple lines instead of a single row."
+        },
+        {
+          "name": "is-gapless",
+          "docs": "Removes the gap between columns."
+        },
+        {
+          "name": "is-centered",
+          "docs": "Centers columns horizontally within the grid."
+        },
+        {
+          "name": "is-vcentered",
+          "docs": "Vertically centers columns within the grid."
+        },
+        {
+          "name": "is-mobile",
+          "docs": "Forces the grid to behave as flex from the smallest breakpoint up, instead of only from tablet."
+        },
+        {
+          "name": "is-desktop",
+          "docs": "Only switches to flex layout from the desktop breakpoint up, instead of tablet."
+        },
+        {
+          "name": "is-narrow",
+          "docs": "Column shrinks to fit its content instead of stretching to fill available space."
+        },
+        {
+          "name": "is-full",
+          "docs": "Column takes the full width (100%) of the grid."
+        },
+        {
+          "name": "is-half",
+          "docs": "Column takes 50% of the grid width (6 out of 12 columns)."
+        },
+        {
+          "name": "is-one-third",
+          "docs": "Column takes 33.33% of the grid width (4 out of 12 columns)."
+        },
+        {
+          "name": "is-two-thirds",
+          "docs": "Column takes 66.66% of the grid width (8 out of 12 columns)."
+        },
+        {
+          "name": "is-one-quarter",
+          "docs": "Column takes 25% of the grid width (3 out of 12 columns)."
+        },
+        {
+          "name": "is-three-quarters",
+          "docs": "Column takes 75% of the grid width (9 out of 12 columns)."
+        },
+        {
+          "name": "is-one-fifth",
+          "docs": "Column takes 20% of the grid width."
+        },
+        {
+          "name": "is-two-fifths",
+          "docs": "Column takes 40% of the grid width."
+        },
+        {
+          "name": "is-three-fifths",
+          "docs": "Column takes 60% of the grid width."
+        },
+        {
+          "name": "is-four-fifths",
+          "docs": "Column takes 80% of the grid width."
+        },
+        {
+          "name": "is-offset-half",
+          "docs": "Offsets the column by 50% of the grid width."
+        },
+        {
+          "name": "is-offset-one-third",
+          "docs": "Offsets the column by 33.33% of the grid width."
+        },
+        {
+          "name": "is-offset-one-quarter",
+          "docs": "Offsets the column by 25% of the grid width."
+        },
+        {
+          "name": "gap-none",
+          "docs": "Sets the column gap to the none spacing token."
+        },
+        {
+          "name": "gap-3xs",
+          "docs": "Sets the column gap to the 3xs spacing token."
+        },
+        {
+          "name": "gap-2xs",
+          "docs": "Sets the column gap to the 2xs spacing token."
+        },
+        {
+          "name": "gap-xs",
+          "docs": "Sets the column gap to the xs spacing token."
+        },
+        {
+          "name": "gap-sm",
+          "docs": "Sets the column gap to the sm spacing token."
+        },
+        {
+          "name": "gap-base",
+          "docs": "Sets the column gap to the base spacing token."
+        },
+        {
+          "name": "gap-md",
+          "docs": "Sets the column gap to the md spacing token."
+        },
+        {
+          "name": "gap-lg",
+          "docs": "Sets the column gap to the lg spacing token."
+        },
+        {
+          "name": "gap-xl",
+          "docs": "Sets the column gap to the xl spacing token."
+        },
+        {
+          "name": "gap-2xl",
+          "docs": "Sets the column gap to the 2xl spacing token."
+        },
+        {
+          "name": "gap-3xl",
+          "docs": "Sets the column gap to the 3xl spacing token."
+        },
+        {
+          "name": "gap-4xl",
+          "docs": "Sets the column gap to the 4xl spacing token."
+        }
+      ]
     },
     {
       "tag": "link",
@@ -68094,6 +68601,21 @@
       "docstring": "Events that occur due to the user interacting with a pointing device (such as a mouse). Common events using this interface include click, dblclick, mouseup, mousedown.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent)",
       "path": "src/components/alert/toast/toast.interfaces.ts"
     },
+    "src/global/index.ts::DsBrand": {
+      "declaration": "export type DsBrand = 'baloise' | 'helvetia'",
+      "docstring": "",
+      "path": "src/global/index.ts"
+    },
+    "src/global/index.ts::DsRegion": {
+      "declaration": "export type DsRegion = 'CH' | 'DE' | 'BE' | 'LU' | 'AT' | 'ES' | 'IT'",
+      "docstring": "",
+      "path": "src/global/index.ts"
+    },
+    "src/global/index.ts::DsLanguage": {
+      "declaration": "export type DsLanguage =\n  | DsSwissLanguage\n  | DsLuxembourgLanguage\n  | DsLuxembourgInternationalLanguage\n  | DsBelgiumLanguage\n  | DsGermanLanguage\n  | DsAustriaLanguage\n  | DsSpainLanguage\n  | DsItalyLanguage",
+      "docstring": "",
+      "path": "src/global/index.ts"
+    },
     "src/components/app-footer/app-footer.interfaces.ts::AppFooterContainer": {
       "declaration": "\"default\" | \"fluid\" | \"compact\"",
       "docstring": "",
@@ -68448,16 +68970,6 @@
       "declaration": "interface FocusEvent extends UIEvent {\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/FocusEvent/relatedTarget) */\n    readonly relatedTarget: EventTarget | null;\n}",
       "docstring": "Focus-related events like focus, blur, focusin, or focusout.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/FocusEvent)",
       "path": "src/components/file-upload/file-upload.interfaces.ts"
-    },
-    "src/global/index.ts::DsLanguage": {
-      "declaration": "export type DsLanguage =\n  | DsSwissLanguage\n  | DsLuxembourgLanguage\n  | DsLuxembourgInternationalLanguage\n  | DsBelgiumLanguage\n  | DsGermanLanguage\n  | DsAustriaLanguage\n  | DsSpainLanguage\n  | DsItalyLanguage",
-      "docstring": "",
-      "path": "src/global/index.ts"
-    },
-    "src/global/index.ts::DsRegion": {
-      "declaration": "export type DsRegion = 'CH' | 'DE' | 'BE' | 'LU' | 'AT' | 'ES' | 'IT'",
-      "docstring": "",
-      "path": "src/global/index.ts"
     },
     "src/components/heading/heading.interfaces.ts::HeadingSpace": {
       "declaration": "\"none\" | \"top\" | \"bottom\" | \"all\"",

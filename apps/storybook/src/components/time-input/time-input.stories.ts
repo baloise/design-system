@@ -9,7 +9,7 @@ type Args = {
 }
 
 const meta: Meta<Args> = {
-  title: 'Components/Time Input/Variants',
+  title: 'Components/Forms/Time Input/Variants',
   args: {
     label: 'Select a time',
     description: 'Select the desired time',

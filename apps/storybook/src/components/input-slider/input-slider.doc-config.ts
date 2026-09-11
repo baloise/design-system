@@ -3,15 +3,15 @@
  */
 
 export const INPUTSLIDER_DOC_CONFIG = {
-  section: 'Components / InputSlider',
+  section: 'Components / Forms / InputSlider',
   color: 'purple' as const,
   tabs: [
-    { label: 'Overview', storyId: 'components-inputslider-input-slider--input-slider' },
-    { label: 'Usage', storyId: 'components-inputslider-usage--usage' },
-    { label: 'Variants', storyId: 'components-inputslider-variants-overview--overview' },
-    { label: 'Styling', storyId: 'components-inputslider-styling--styling' },
-    { label: 'Accessibility', storyId: 'components-inputslider-accessibility--accessibility' },
-    { label: 'Testing', storyId: 'components-inputslider-testing--testing' },
+    { label: 'Overview', storyId: 'components-forms-inputslider-input-slider--input-slider' },
+    { label: 'Usage', storyId: 'components-forms-inputslider-usage--usage' },
+    { label: 'Variants', storyId: 'components-forms-inputslider-variants-overview--overview' },
+    { label: 'Styling', storyId: 'components-forms-inputslider-styling--styling' },
+    { label: 'Accessibility', storyId: 'components-forms-inputslider-accessibility--accessibility' },
+    { label: 'Testing', storyId: 'components-forms-inputslider-testing--testing' },
   ],
 }
 

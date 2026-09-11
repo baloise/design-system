@@ -28,7 +28,7 @@ const meta: Meta<Args> = {
         loading: 'is-loading',
       },
       args,
-      'button',
+      'ds-button',
     )}>${slot}</button>
 `,
   ),
@@ -97,7 +97,6 @@ export const Sizes = Story({
   <ds-button size="sm">Small</ds-button>
   <ds-button>Normal</ds-button>
   <ds-button size="lg">Large</ds-button>
-  <ds-button size="xl">X-Large</ds-button>
 </ds-button-group>`,
   ),
 })
@@ -109,7 +108,6 @@ export const SizesHtml = Story({
   <button class="ds-button is-sm">Small</button>
   <button class="ds-button">Normal</button>
   <button class="ds-button is-lg">Large</button>
-  <button class="ds-button is-xl">X-Large</button>
 </div>`,
   ),
 })
@@ -170,7 +168,6 @@ export const States = Story({
   ...withRender(
     () => `<ds-button-group>
   <ds-button loading>loading...</ds-button>
-  <ds-button loading disabled>loading...</ds-button>
   <ds-button disabled>Disabled</ds-button>
 </ds-button-group>`,
   ),
@@ -180,12 +177,8 @@ States.storyName = '🧩 States'
 export const StatesHtml = Story({
   ...withRender(
     () => `<div class="ds-buttons">
-  <button class="ds-button is-loading">
+  <button class="ds-button is-loading is-disabled">
     <ds-spinner></ds-spinner>
-    loading...
-  </button>
-  <button class="ds-button is-loading" disabled>
-    <ds-spinner variation="circle"></ds-spinner>
     loading...
   </button>
   <button class="ds-button" disabled>Disabled</button>

@@ -1,4 +1,4 @@
-export const ICON_COLORS = ['primary', 'primary-light', 'grey', 'success', 'danger', 'info', 'warning'] as const
+export const ICON_COLORS = ['primary', 'info', 'grey', 'success', 'danger', 'info', 'warning'] as const
 
 export const ICON_SIZES = ['sm', 'md', 'lg', 'xl'] as const
 

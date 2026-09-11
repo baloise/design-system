@@ -12,11 +12,9 @@ import {
   DsComponentInterface,
 } from '@global'
 import {
-  SPINNER_COLORS,
   SPINNER_LABEL_POSITIONS,
   SPINNER_SIZES,
   SPINNER_VARIATIONS,
-  SpinnerColor,
   SpinnerLabelPosition,
   SpinnerSize,
   SpinnerVariation,
@@ -61,13 +59,6 @@ export class Spinner implements DsComponentInterface, DsConfigObserver {
    */
 
   /**
-   * **Deprecated:** Use inverted="true" for white spinner instead.
-   */
-  @Prop()
-  @OneOf(SPINNER_COLORS)
-  readonly color: SpinnerColor = 'primary'
-
-  /**
    * If `true` the component will not add the spinner animation svg
    */
   @Prop()
@@ -97,13 +88,6 @@ export class Spinner implements DsComponentInterface, DsConfigObserver {
   @Prop({ mutable: true })
   @OneOf(SPINNER_SIZES)
   size?: SpinnerSize
-
-  /**
-   * **Deprecated:** Use size="sm" instead.
-   */
-  @Prop()
-  @Type('boolean')
-  readonly small: boolean = false
 
   /**
    * Visible label rendered next to the spinner. When omitted a translated aria-label is applied automatically.
@@ -264,11 +248,6 @@ export class Spinner implements DsComponentInterface, DsConfigObserver {
   render() {
     const ariaLabel = this.label || i18nDsSpinner[this.language].loading
 
-    let size = this.size
-    if (this.small === true) {
-      size = 'sm'
-    }
-
     return (
       <Host
         role="progressbar"
@@ -276,8 +255,8 @@ export class Spinner implements DsComponentInterface, DsConfigObserver {
         class={{
           'is-animated': this.animated,
           'is-circle': this.variation === 'circle',
-          'is-sm': size === 'sm',
-          'is-inverted': this.color === 'inverted' || this.inverted,
+          'is-sm': this.size === 'sm',
+          'is-inverted': this.inverted,
           'is-label-right': hasValue(this.label) && this.labelPosition === 'right',
           'is-label-bottom': hasValue(this.label) && this.labelPosition === 'bottom',
         }}

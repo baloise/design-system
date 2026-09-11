@@ -1,101 +1,86 @@
 import { Meta, Markdown } from '@storybook/addon-docs/blocks'
-import { Banner, Footer, InfoQuote, Lead } from '../../../.storybook/blocks'
+import { Banner, Footer, InfoQuote, Lead, LinkCard } from '../../../.storybook/blocks'
 
 <Meta title="Development/Testing" name="Testing" />
 
 <Banner label="Testing" section="Development" />
 
 <Lead>
-  The Helvetia Design System tests its components with Playwright, using a Page Object model to keep tests
-  readable and maintainable.
+  Test the Design System's web components inside your own Angular, React, or plain JS application with
+  `@baloise/ds-playwright` — a thin wrapper around Playwright that waits for components to be ready and
+  ships Page Objects for every component.
 </Lead>
 
-Due to the asynchronous execution of these web components, it becomes essential to ensure proper
-synchronization within tests. The `@baloise/ds-playwright` package takes care of this for you —
-mounting components, waiting for the Design System to be ready, and exposing custom matchers.
+Design System components are asynchronous web components: they upgrade, render, and apply attribute
+changes after a tick. A plain Playwright test can race that upgrade and interact with the element too
+early. `@baloise/ds-playwright` re-exports Playwright's `test` and `expect` with this synchronization
+built in, so tests behave the same whether the component was rendered by Angular, React, or plain HTML.
 
-## Test Types
+## Installation
 
-| Test Type       | File Pattern         | Purpose                      | Assertions                          |
-| ---------------- | --------------------- | ----------------------------- | ------------------------------------- |
-| **Interaction** | `.component.play.ts` | User interactions, events    | Custom matchers for events          |
-| **Visual**      | `.visual.play.ts`    | Visual regression            | Screenshot comparisons              |
-| **A11y**        | `.a11y.play.ts`      | Accessibility compliance     | axe-core checks + manual assertions |
+```bash
+npm install -D @baloise/ds-playwright
+```
+
+Then swap the import in your test files — everything else about writing a Playwright test stays the same:
+
+```typescript
+// Before
+import { test, expect } from '@playwright/test'
+
+// After
+import { test, expect } from '@baloise/ds-playwright'
+```
 
 <InfoQuote>
-  Run `pnpm play` to open the Playwright UI test explorer, or `pnpm play -- --grep="<test name>"` to run a single
-  test from the command line.
+  This package only helps with **end-to-end tests that run in a real browser**. Component behavior relies
+  on Shadow DOM and custom element upgrades, which jsdom does not fully support — prefer Playwright over a
+  jsdom-based runner (Jest, Vitest) when a test needs to interact with a Design System component.
 </InfoQuote>
 
 ## Page Objects
 
-A **Page Object** (PO) is a class that encapsulates the interaction logic for a component. Instead of
-querying the DOM directly, tests call PO methods:
-
-```typescript
-import { expect } from '@playwright/test'
-import { PageObject } from './page-object'
-import { E2ELocator } from '../page/utils'
-
-export class DsButton extends PageObject {
-  constructor(el: E2ELocator) {
-    super(el)
-  }
-
-  async click() {
-    await this.el.click()
-  }
-
-  async assertToBeDisabled() {
-    await expect(this.el).toHaveAttribute('disabled')
-  }
-}
-```
-
-Benefits:
-
-- **Maintainability** — if the component's internal structure changes, only the PO needs updating
-- **Readability** — tests read like plain English
-- **Reusability** — every test for a component shares the same PO
-
-Every component ships its PO in `packages/playwright/src/lib/components/<component>.po.ts`, exported from
-`@baloise/ds-playwright`.
-
-## Mounting Components
-
-Mount components in the test body — never in `beforeEach` — to keep tests isolated and their intent clear.
+Every component ships a **Page Object** — a class with typed locators and helper methods for interacting
+with that component, so tests don't need to know its internal DOM structure. Wrap a `page.locator(...)`
+pointing at the component's tag and call methods on it instead of querying the DOM directly.
 
 ```typescript
 import { DsButton, expect, test } from '@baloise/ds-playwright'
 
-test.describe('component', () => {
-  test('should have a default slot', async ({ page }) => {
-    await page.mount(`
-      <ds-button>Click me</ds-button>
-    `)
+test('submits the form', async ({ page }) => {
+  await page.goto('/checkout')
 
-    const dsButton = new DsButton(page.locator('ds-button'))
+  const submitButton = new DsButton(page.locator('ds-button[type="submit"]'))
 
-    await dsButton.assertToBeVisible()
-    await dsButton.assertToContainText('Click me')
-  })
+  await submitButton.assertToBeVisible()
+  await submitButton.click()
 })
 ```
 
+Each component's documentation page lists its Page Object's locators, actions, and assertions under its
+**Testing** tab — check there for the exact class name and methods available for the component under test.
+
+<br />
+
+<LinkCard
+  pageTitle="Components/Button/Testing"
+  description="The DsButton Page Object used in the examples on this page — locators, actions, and assertions."
+/>
+
 ## Events
 
-Spy on custom events fired by a component and assert on them with the built-in matchers.
+Spy on custom events a component fires and assert on them with the built-in matchers.
 
 ```typescript
-test('should fire dsClick event', async ({ page }) => {
-  await page.mount(`
-    <ds-button>Click me</ds-button>
-  `)
+import { DsButton, expect, test } from '@baloise/ds-playwright'
 
-  const dsButton = new DsButton(page.locator('ds-button'))
-  const spy = await dsButton.el.spyOnEvent('dsClick')
+test('fires dsClick when clicked', async ({ page }) => {
+  await page.goto('/checkout')
 
-  await dsButton.click()
+  const submitButton = new DsButton(page.locator('ds-button'))
+  const spy = await page.spyOnEvent('dsClick')
+
+  await submitButton.click()
 
   expect(spy).toHaveReceivedEventTimes(1)
 })
@@ -113,48 +98,16 @@ test('should fire dsClick event', async ({ page }) => {
 
 ## Accessibility Testing
 
-A11y tests verify WCAG 2.2 AA compliance using the `a11y` fixture, which runs axe-core checks against a mounted
-component.
+The `a11y` fixture runs axe-core (WCAG 2.2 AA rules) against a selector on the current page — useful for
+catching accessibility regressions introduced by how your app composes or styles Design System components.
 
 ```typescript
 import { test } from '@baloise/ds-playwright'
 
-test('basic', async ({ page, a11y }) => {
-  await page.mount(`<ds-button>Button</ds-button>`)
-  await a11y('ds-button')
+test('checkout form is accessible', async ({ page, a11y }) => {
+  await page.goto('/checkout')
+  await a11y('form')
 })
 ```
-
-Components with no a11y tests cannot merge.
-
-## Visual Regression Testing
-
-Visual tests render a static HTML fixture and compare screenshots of each variant against an approved baseline.
-
-```typescript
-import { expectScreenshot, screenshot, test } from '@baloise/ds-playwright'
-
-const TAG = 'button'
-const VARIANTS = ['basic', 'disabled', 'loading']
-
-const image = screenshot(TAG)
-
-test.describe('style', () => {
-  test.beforeEach('Setup', async ({ page }) => {
-    await page.setupVisualTest(`/components/${TAG}/test/${TAG}.style.html`)
-  })
-
-  VARIANTS.forEach(variant => {
-    test(variant, async ({ page }) => {
-      const el = page.getByTestId(variant)
-      await expectScreenshot(el, image(`style-${variant}`))
-    })
-  })
-})
-```
-
-Snapshots live next to the test file in `<component>.visual.play.ts-snapshots/` and are tracked in git.
-After an intentional visual change, re-baseline the snapshots with the `/update-screenshots` bot command on the
-pull request — never commit updated snapshots generated locally.
 
 <Footer />

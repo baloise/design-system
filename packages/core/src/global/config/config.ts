@@ -68,6 +68,17 @@ export class Config {
     }
   }
 
+  get fallbackLanguage(): DsLanguage {
+    return this._config.fallbackLanguage
+  }
+
+  set fallbackLanguage(fallbackLanguage: DsLanguage) {
+    if (fallbackLanguage !== this._config.fallbackLanguage) {
+      this._config.fallbackLanguage = fallbackLanguage
+      this._notify()
+    }
+  }
+
   get icons(): DsIcons {
     return this._config.icons
   }

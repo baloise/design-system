@@ -1,5 +1,5 @@
 import { Config } from './config'
-import { DsConfigState, DsIcons, DsLanguage, DsRegion } from './config.types'
+import { DsBrand, DsConfigState, DsIcons, DsLanguage, DsRegion } from './config.types'
 import { DsConfigObserver } from './observable/observer'
 
 import { dsBrowser } from '@utils'
@@ -55,11 +55,27 @@ export const detachComponentFromConfig = (observer: DsConfigObserver): void => {
   }
 }
 
+export const updateDsBrand = (brand: DsBrand): void => {
+  const config = useDsConfig()
+
+  if (config) {
+    config.brand = brand
+  }
+}
+
 export const updateDsLanguage = (language: DsLanguage): void => {
   const config = useDsConfig()
 
   if (config) {
     config.language = language
+  }
+}
+
+export const updateDsFallbackLanguage = (fallbackLanguage: DsLanguage): void => {
+  const config = useDsConfig()
+
+  if (config) {
+    config.fallbackLanguage = fallbackLanguage
   }
 }
 
