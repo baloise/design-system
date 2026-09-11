@@ -98,7 +98,11 @@ export interface DateMaskConfig {
   inputEl: HTMLInputElement
   format: DateDisplayFormat
   initialValue: string | null
-  onAccept: (iso: string | null) => void
+  // `event` is the native DOM event that triggered the change (e.g. `input`) when a real keystroke
+  // caused it, or `undefined` when the mask value was set programmatically (`.value =`/`.typedValue =`,
+  // as in `syncFromISO`/`clearIfIncomplete`/`expandShortInput`). Consumers use its presence to tell a
+  // genuine user edit apart from an internal reset, instead of tracking that themselves.
+  onAccept: (iso: string | null, event: Event | undefined) => void
   onComplete: (iso: string) => void
 }
 
@@ -118,7 +122,7 @@ export class DateMask {
   constructor(
     private inputEl: HTMLInputElement,
     format: DateDisplayFormat,
-    private onAccept: (isoValue: string | null) => void,
+    private onAccept: (isoValue: string | null, event: Event | undefined) => void,
     private onComplete: (isoValue: string) => void,
   ) {
     this.format = format
@@ -181,8 +185,11 @@ export class DateMask {
       },
     } as any)
 
-    this.mask.on('accept', () => {
-      this.onAccept(this.getISO())
+    // IMask passes the native event that caused the change (only present for a real keystroke — it's
+    // `undefined` for any of our own programmatic `.value =`/`.typedValue =` assignments), so we forward
+    // it rather than swallow it. See `DateMaskConfig.onAccept`.
+    this.mask.on('accept', (event: Event | undefined) => {
+      this.onAccept(this.getISO(), event)
     })
 
     this.mask.on('complete', () => {
@@ -191,10 +198,28 @@ export class DateMask {
     })
   }
 
-  private getISO(): string | null {
+  getISO(): string | null {
     const typed = this.mask?.typedValue as Date | undefined
     if (!typed || isNaN(typed.getTime())) return null
     return nativeDateToISO(typed)
+  }
+
+  /**
+   * The mask's current, possibly incomplete, display text (e.g. `"01.01.200_"` mid-edit). Lets the host
+   * component keep its render-time display state in sync with what the mask has live-typed, instead of
+   * only being able to derive display text from the last *complete* ISO value.
+   */
+  getDisplayText(): string {
+    return this.mask?.value ?? ''
+  }
+
+  /**
+   * Whether no digits are typed at all (vs. an incomplete date like `"01.01.___"`). Uses the display
+   * text, not `unmaskedValue` — for a `Date`-typed mask that keeps the divider literals (e.g. `".."`),
+   * so it's never actually falsy.
+   */
+  isEmpty(): boolean {
+    return !/\d/.test(this.mask?.value ?? '')
   }
 
   setLazy(lazy: boolean) {

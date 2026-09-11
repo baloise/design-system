@@ -72,6 +72,15 @@ export class DsDate implements DsComponentInterface, FieldInterface, FormControl
   @State() isOpen = false
   @State() hasInvalidTextSlotContent = false
 
+  // The native input's display text (e.g. `"01.01.200_"` mid-edit). Deliberately its own state rather
+  // than derived inline in `render()` from `value` (`isoToDisplay(this.value, ...)`): IMask owns the
+  // native input's DOM value during typing, and re-deriving from `value` on every render would let *any*
+  // unrelated re-render (or an echoed no-op `value` change from a consumer round-tripping `dsInput` back
+  // into `[value]`) stomp whatever the user is mid-typing. Kept in sync explicitly wherever the mask's
+  // displayed text can change — see `initMask()`'s `onAccept`, `handleClearClick`, the picker's
+  // `onSelect`, `listenToReset`, and the real-external-change branch of `valueChanged()`.
+  @State() displayValue = ''
+
   private disconnectInvalidTextSlotWatcher?: () => void
 
   @Watch('isOpen')
@@ -102,9 +111,17 @@ export class DsDate implements DsComponentInterface, FieldInterface, FormControl
 
   @Watch('value')
   protected valueChanged() {
-    if (!this.updatingFromMask) {
+    // Skip when the incoming value already matches what the mask currently represents. This guards
+    // against consumers that echo `dsInput` (emitted on every keystroke, `null`/`''` while the date is
+    // incomplete) straight back into `[value]`: without this check, that round-trip would resync the
+    // mask — and, via `displayValue`, the rendered input — to the same (often empty) value and wipe out
+    // what the user is still typing. Both sides are normalized through `|| null` since consumers may
+    // echo an incomplete/absent date as `''` rather than `null` (e.g. `event.detail ?? ''`).
+    const currentISO = this.dateMask?.getISO() ?? null
+    if (!this.updatingFromMask && (this.value || null) !== currentISO) {
       this.dateMask?.syncFromISO(this.value)
       this.datePicker?.syncFromValue(this.value)
+      this.displayValue = isoToDisplay(this.value, getDisplayFormat(this.region))
     }
   }
 
@@ -338,6 +355,7 @@ export class DsDate implements DsComponentInterface, FieldInterface, FormControl
 
   componentWillLoad() {
     this.inheritedAttributes = inheritAttributes(this.el, ['aria-label', 'tabindex', 'title', 'data-hj-allow'])
+    this.displayValue = isoToDisplay(this.value, getDisplayFormat(this.region))
   }
 
   componentDidLoad() {
@@ -361,6 +379,7 @@ export class DsDate implements DsComponentInterface, FieldInterface, FormControl
           this.value = iso
           this.control.inputValue = iso
           this.dateMask?.syncFromISO(iso)
+          this.displayValue = isoToDisplay(iso, getDisplayFormat(this.region))
           this.dsChange.emit(iso)
           if (this.inline) this.dsBlur.emit(new FocusEvent('blur'))
           this.updatingFromMask = false
@@ -422,8 +441,9 @@ export class DsDate implements DsComponentInterface, FieldInterface, FormControl
     // We queue a fix that directly restores the display format to the DOM input.
     setTimeout(() => {
       const nativeEl = this.control.nativeEl as HTMLInputElement | undefined
+      this.displayValue = isoToDisplay(this.value, getDisplayFormat(this.region))
       if (nativeEl) {
-        nativeEl.value = isoToDisplay(this.value, getDisplayFormat(this.region))
+        nativeEl.value = this.displayValue
       }
       this.datePicker?.syncFromValue(this.value)
     })
@@ -443,6 +463,7 @@ export class DsDate implements DsComponentInterface, FieldInterface, FormControl
     this.language = state.language
     this.region = state.region
     this.dateMask?.updateFormat(getDisplayFormat(state.region))
+    this.displayValue = this.dateMask?.getDisplayText() ?? isoToDisplay(this.value, getDisplayFormat(state.region))
     this.datePicker?.updateLocale(state.language, state.region)
   }
 
@@ -487,6 +508,7 @@ export class DsDate implements DsComponentInterface, FieldInterface, FormControl
 
   private handleBlur = (ev: FocusEvent) => {
     this.dateMask?.clearIfIncomplete()
+    this.displayValue = this.dateMask?.getDisplayText() ?? ''
     this.dateMask?.setLazy(!this.value)
     this.control.onBlur(ev)
   }
@@ -497,19 +519,31 @@ export class DsDate implements DsComponentInterface, FieldInterface, FormControl
   }
 
   private handleClearClick = () => {
-    this.updatingFromMask = true
-    this.value = null
-    this.control.inputValue = null
-    this.dateMask?.syncFromISO(null)
-    this.datePicker?.clear({ silent: true })
-    this.dsChange.emit(null)
-    this.updatingFromMask = false
+    this.clearValue({ resetMask: true })
   }
 
   /**
    * PRIVATE METHODS
    * ─────────────────────────────────────────────────────
    */
+
+  /**
+   * Un-sets `value` and emits `dsChange`, like the clear button. `resetMask: false` skips re-syncing the
+   * mask — used from `onAccept` where the mask is already empty, avoiding a recursive `accept` and a
+   * placeholder flicker.
+   */
+  private clearValue({ resetMask }: { resetMask: boolean }) {
+    this.updatingFromMask = true
+    this.value = null
+    this.control.inputValue = null
+    if (resetMask) {
+      this.dateMask?.syncFromISO(null)
+      this.displayValue = ''
+    }
+    this.datePicker?.clear({ silent: true })
+    this.dsChange.emit(null)
+    this.updatingFromMask = false
+  }
 
   private initMask() {
     const inputEl = this.control.nativeEl as HTMLInputElement | undefined
@@ -519,11 +553,35 @@ export class DsDate implements DsComponentInterface, FieldInterface, FormControl
       inputEl,
       format: getDisplayFormat(this.region),
       initialValue: this.value,
-      onAccept: isoValue => {
+      onAccept: (isoValue, event) => {
+        // Mirror the mask's own live (possibly incomplete) display text into state so a re-render
+        // triggered by anything else while the user is mid-edit reflects what's actually in the input
+        // rather than snapping back to the last committed `value`. See `displayValue`'s declaration.
+        this.displayValue = this.dateMask?.getDisplayText() ?? ''
+
+        // Keep FormControl's own bookkeeping of "what's currently in the field" in sync with the mask's
+        // live ISO (or `null` while incomplete). Without this, deleting part of a complete date (e.g. just
+        // the year) leaves `control.inputValue` stuck on the last *complete* ISO — `isEmpty()` below only
+        // catches a fully-cleared field, not a partially-edited one — so blur's `setValue(inputValue)`
+        // (see `FormControl.onBlur`) would resurrect that stale date instead of committing the clear.
+        this.control.inputValue = isoValue
+
+        // Field fully cleared by backspace/DEL rather than the clear button — treat it as a clear too.
+        // Gated on `event`, which IMask only supplies for a real keystroke: any of our own internal mask
+        // resets (out-of-range revert, `clearIfIncomplete` on blur, locale/format changes, ...) fire this
+        // same `accept` with `event` `undefined`, so they can never be mistaken for the user clearing the
+        // field — no need to thread `updatingFromMask` through every place that touches the mask.
+        if (event && this.value !== null && this.dateMask?.isEmpty()) {
+          this.clearValue({ resetMask: false })
+        }
+
         this.dsInput.emit(isoValue)
       },
       onComplete: isoValue => {
         if (!checkIsWithinRange(isoValue, this.min, this.max, this.minYearProp, this.maxYearProp, this.allowedDates)) {
+          // Reject the typed date and blank the mask display — a revert, not a clear, so `value`/`dsChange`
+          // are left untouched. Safe to leave `updatingFromMask` alone: the reset happens outside any
+          // input event, so `onAccept` sees `event === undefined` and skips its own-clear check.
           raf(() => this.dateMask?.syncFromISO(null))
           return
         }
@@ -543,7 +601,6 @@ export class DsDate implements DsComponentInterface, FieldInterface, FormControl
    */
 
   render() {
-    const displayValue = isoToDisplay(this.value, getDisplayFormat(this.region))
     const triggerLabel = i18nDsTriggerButton[this.language].openCalendar
     const chooseDateLabel = i18nDsTriggerButton[this.language].chooseDate
     const isInvalid = this.invalid || this.hasInvalidTextSlotContent
@@ -587,7 +644,7 @@ export class DsDate implements DsComponentInterface, FieldInterface, FormControl
               placeholder={this.placeholder || ''}
               readonly={this.readonly}
               required={this.required}
-              value={displayValue}
+              value={this.displayValue}
               onClick={ev => this.handleClick(ev)}
               onFocus={ev => this.handleFocus(ev)}
               onBlur={ev => this.handleBlur(ev)}
