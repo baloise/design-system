@@ -26,7 +26,7 @@ import {
 
 The code is designed to improve the performance of the application by lazy loading each component to the browser
 only when it is needed. Additionally, sub-components will be automatically resolved and loaded as well. To ensure
-that the Design System is initialized correctly, it is crucial that the application is wrapped in the ds-app component
+that the Design System is initialized correctly, it is crucial that the application is wrapped in the ds-root component
 
 <AngularFramework>
 
@@ -44,11 +44,11 @@ export class AppModule {}
 **app.component.html**
 
 ```html
-<ds-app>
+<ds-root>
   <main class="ds-container">
     <ds-heading>Hello World</ds-heading>
   <main>
-</ds-app>
+</ds-root>
 ```
 
 </AngularFramework>
@@ -62,11 +62,11 @@ export class AppModule {}
 <HTMLFramework>
 
 ```html
-<ds-app>
+<ds-root>
   <main class="ds-container">
     <ds-heading>Hello World</ds-heading>
   <main>
-</ds-app>
+</ds-root>
 ```
 
 ### When is the component ready
@@ -107,15 +107,15 @@ Import the components that are used inside the template and that is it.
 
 ```tsx
 import React from "react";
-import { App, Heading } from "@baloise/ds-react";
+import { DsRoot, DsHeading } from "@baloise/ds-react";
 
 function App() {
   return (
-    <BalApp>
-      <main class="ds-container">
-        <BalHeading>Hello World</BalHeading>
-      <main>
-    </BalApp>
+    <DsRoot>
+      <main className="ds-container">
+        <DsHeading>Hello World</DsHeading>
+      </main>
+    </DsRoot>
   );
 }
 

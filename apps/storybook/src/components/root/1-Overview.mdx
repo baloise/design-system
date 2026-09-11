@@ -1,0 +1,36 @@
+import { Controls, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  CanvasWithCodePen,
+  BannerTabs,
+  ComponentPublicMethods,
+  ComponentTabs,
+  ComponentLead,
+  Footer,
+} from '../../../.storybook/blocks'
+import * as RootStories from './root.stories'
+import { ROOT_DOC_CONFIG, getRootTabs } from './root.doc-config'
+
+<Meta title="Components/Root/Root" name="Root" />
+
+<Banner label={'Root'} section={ROOT_DOC_CONFIG.section} color={ROOT_DOC_CONFIG.color} />
+
+<BannerTabs of={RootStories} tabs={getRootTabs('overview')} />
+
+<ComponentLead component="root" />
+
+<CanvasWithCodePen of={RootStories.Basic} sourceState="shown" />
+
+<ComponentTabs
+  tabs={[
+    {
+      id: 'ds-root',
+      label: 'Root',
+      content: <Controls of={RootStories.Basic} />,
+    },
+  ]}
+/>
+
+<ComponentPublicMethods component="root" />
+
+<Footer />
