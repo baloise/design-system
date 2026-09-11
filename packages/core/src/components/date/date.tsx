@@ -582,6 +582,7 @@ export class DsDate implements DsComponentInterface, FieldInterface, FormControl
           // Reject the typed date and blank the mask display — a revert, not a clear, so `value`/`dsChange`
           // are left untouched. Safe to leave `updatingFromMask` alone: the reset happens outside any
           // input event, so `onAccept` sees `event === undefined` and skips its own-clear check.
+          this.control.inputValue = this.value
           raf(() => this.dateMask?.syncFromISO(null))
           return
         }
@@ -628,7 +629,7 @@ export class DsDate implements DsComponentInterface, FieldInterface, FormControl
           ></div>
         )}
         {!this.inline && (
-          <>
+          <Fragment>
             <input
               id="input"
               part="input"
@@ -688,7 +689,7 @@ export class DsDate implements DsComponentInterface, FieldInterface, FormControl
                 ref={el => (this.popupHostEl = el as HTMLDivElement)}
               ></div>
             )}
-          </>
+          </Fragment>
         )}
       </Field>
     )
