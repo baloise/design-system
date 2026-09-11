@@ -1,5 +1,5 @@
 ---
-'@baloise/ds-react': major
+'@baloise/ds-react': minor
 ---
 
-**react**: Add Modal, useToast, and useSnackbar idioms; stop exporting raw overlay wrappers
+**react**: Add Modal, useToast, and useSnackbar idioms; deprecate raw overlay wrappers

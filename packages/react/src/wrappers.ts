@@ -1,6 +1,8 @@
 /**
- * Public generated wrappers. Overlays with hand-authored components or hooks
- * (`DsModal`, `DsToast`, `DsSnackbar`, `DsAlertContainer`) are intentionally omitted.
+ * Public generated wrappers.
+ *
+ * Overlay wrappers with hand-authored replacements stay public but are marked
+ * `@deprecated`. Prefer `Modal`, `useToast`, and `useSnackbar`.
  */
 export {
   DsAccordion,
@@ -75,3 +77,25 @@ export {
   DsToggle,
   DsTooltip,
 } from './generated/components'
+
+/**
+ * @deprecated Use `useToast` or `useSnackbar` instead. `DsAlertContainer` is the
+ * internal overlay host those hooks already manage.
+ */
+export { DsAlertContainer } from './generated/components'
+
+/**
+ * @deprecated Use `Modal` instead. The generated wrapper does not keep React
+ * `open` state in sync when the modal self-dismisses.
+ */
+export { DsModal } from './generated/components'
+
+/**
+ * @deprecated Use `useSnackbar` instead.
+ */
+export { DsSnackbar } from './generated/components'
+
+/**
+ * @deprecated Use `useToast` instead.
+ */
+export { DsToast } from './generated/components'

@@ -9,24 +9,20 @@ const publicSource = readFileSync(join(root, 'wrappers.ts'), 'utf8')
 const indexSource = readFileSync(join(root, 'index.ts'), 'utf8')
 const hooksSource = readFileSync(join(root, 'hooks/index.ts'), 'utf8')
 
-const HIDDEN_WRAPPERS = ['DsAlertContainer', 'DsModal', 'DsSnackbar', 'DsToast'] as const
+const DEPRECATED_WRAPPERS = ['DsAlertContainer', 'DsModal', 'DsSnackbar', 'DsToast'] as const
 
 const generatedNames = [...generatedSource.matchAll(/^export const (Ds\w+):/gm)].map(match => match[1])
 
 describe('public API', () => {
-  test('does not re-export raw overlay wrappers', () => {
-    for (const name of HIDDEN_WRAPPERS) {
+  test('marks overlay wrappers as deprecated', () => {
+    for (const name of DEPRECATED_WRAPPERS) {
       expect(generatedNames).toContain(name)
-      expect(publicSource).not.toContain(`${name},`)
-      expect(publicSource).not.toMatch(new RegExp(`${name}\\n`))
+      expect(publicSource).toMatch(new RegExp(`@deprecated[\\s\\S]{0,400}export \\{ ${name} \\}`))
     }
   })
 
-  test('re-exports every other generated component', () => {
-    const missing = generatedNames.filter(name => {
-      if ((HIDDEN_WRAPPERS as readonly string[]).includes(name)) return false
-      return !publicSource.includes(name)
-    })
+  test('re-exports every generated component', () => {
+    const missing = generatedNames.filter(name => !publicSource.includes(name))
     expect(missing).toEqual([])
   })
 
