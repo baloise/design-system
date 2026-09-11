@@ -33294,7 +33294,7 @@
           "mutable": false,
           "attr": "auto-invalid-off",
           "reflectToAttr": true,
-          "docs": "If `true`, in Angular reactive forms the control will not be set invalid",
+          "docs": "If `true`, disables the automatic `invalid`/`invalidText` behavior that the `@baloise/ds-angular` integration\napplies when the bound `NgControl` is touched and invalid. Only affects the Angular integration; it is a no-op\nin other framework integrations.",
           "docsTags": [
             {
               "name": "default",
@@ -52150,10 +52150,10 @@
           "docsTags": [
             {
               "name": "default",
-              "text": "'green'"
+              "text": "'purple'"
             }
           ],
-          "default": "'green'",
+          "default": "'purple'",
           "values": [
             {
               "value": "green",
@@ -53918,51 +53918,6 @@
       },
       "props": [
         {
-          "name": "color",
-          "type": "\"inverted\" | \"primary\"",
-          "complexType": {
-            "original": "SpinnerColor",
-            "resolved": "\"inverted\" | \"primary\"",
-            "references": {
-              "SpinnerColor": {
-                "location": "import",
-                "path": "./spinner.interfaces",
-                "id": "src/components/spinner/spinner.interfaces.ts::SpinnerColor",
-                "referenceLocation": "SpinnerColor"
-              }
-            }
-          },
-          "mutable": false,
-          "attr": "color",
-          "reflectToAttr": false,
-          "docs": "**Deprecated:** Use inverted=\"true\" for white spinner instead.",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "'primary'"
-            }
-          ],
-          "default": "'primary'",
-          "values": [
-            {
-              "value": "inverted",
-              "type": "string"
-            },
-            {
-              "value": "primary",
-              "type": "string"
-            }
-          ],
-          "optional": false,
-          "required": false,
-          "getter": false,
-          "setter": false,
-          "oneOfValues": [
-            "primary",
-            "inverted"
-          ]
-        },
-        {
           "name": "deactivated",
           "type": "boolean",
           "complexType": {
@@ -54047,7 +54002,10 @@
           "optional": false,
           "required": false,
           "getter": false,
-          "setter": false
+          "setter": false,
+          "oneOfValues": [
+            "sm"
+          ]
         },
         {
           "name": "labelPosition",
@@ -54127,38 +54085,6 @@
           "required": false,
           "getter": false,
           "setter": false
-        },
-        {
-          "name": "small",
-          "type": "boolean",
-          "complexType": {
-            "original": "boolean",
-            "resolved": "boolean",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "small",
-          "reflectToAttr": false,
-          "docs": "**Deprecated:** Use size=\"sm\" instead.",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "false"
-            }
-          ],
-          "default": "false",
-          "values": [
-            {
-              "type": "boolean"
-            }
-          ],
-          "optional": false,
-          "required": false,
-          "getter": false,
-          "setter": false,
-          "oneOfValues": [
-            "sm"
-          ]
         },
         {
           "name": "variation",
@@ -69370,11 +69296,6 @@
       "declaration": "\"fluid\" | \"compact\"",
       "docstring": "",
       "path": "src/components/sheet/sheet.interfaces.ts"
-    },
-    "src/components/spinner/spinner.interfaces.ts::SpinnerColor": {
-      "declaration": "\"primary\" | \"inverted\"",
-      "docstring": "",
-      "path": "src/components/spinner/spinner.interfaces.ts"
     },
     "src/components/spinner/spinner.interfaces.ts::SpinnerSize": {
       "declaration": "\"sm\"",
