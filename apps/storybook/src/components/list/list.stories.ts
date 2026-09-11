@@ -392,7 +392,7 @@ export const OrderedList = Story({
     ({ ...args }) => `
         <ds-list ${props(args)}>
           <ds-item variant="link" href="www.helvetia.com" target="_blank">
-            <ds-badge color="green" size="lg" slot="icon">
+            <ds-badge color="success" size="lg" slot="icon">
               <ds-icon name="check"></ds-icon>
             </ds-badge>
             <div slot="content">
@@ -402,17 +402,17 @@ export const OrderedList = Story({
           </ds-item>
 
           <ds-item label="Item 2" description="This is a description for item">
-            <ds-badge color="purple" size="lg" slot="icon">2</ds-badge>
+            <ds-badge color="info" size="lg" slot="icon">2</ds-badge>
           </ds-item>
 
           <ds-item label="Item 3" description="This is a description for item">
-            <ds-badge color="purple" size="lg" slot="icon">
+            <ds-badge color="info" size="lg" slot="icon">
               <ds-icon name="document"></ds-icon>
             </ds-badge>
           </ds-item>
 
           <ds-item label="Item 4" description="This is a description for item" disabled>
-            <ds-badge color="purple" size="lg" slot="icon">4</ds-badge>
+            <ds-badge color="disabled" size="lg" slot="icon">4</ds-badge>
           </ds-item>
         </ds-list>
   `,

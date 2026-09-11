@@ -19,6 +19,7 @@ div[role='toolbar'] button {
   font-family: 'BaloiseCreateHeadline';
 }
 
+button[aria-label='Show sidebar'],
 button[aria-label='Grid visibility'],
 button[aria-label='Preview background'],
 button[aria-label='Preview background Light'],
@@ -37,6 +38,7 @@ button[aria-label='Open in editor'] {
   font-family: 'BaloiseCreateHeadline';
 }
 
+button[aria-label='Show sidebar']:hover,
 button[aria-label='Grid visibility']:hover,
 button[aria-label='Preview background']:hover,
 button[aria-label='Preview background Light']:hover,
@@ -52,6 +54,7 @@ button[aria-label='Open in editor']:hover {
   color: #0014aa;
 }
 
+button[aria-label='Show sidebar']:active,
 button[aria-label='Grid visibility']:active,
 button[aria-label='Preview background']:active,
 button[aria-label='Preview background Light']:active,
@@ -65,6 +68,12 @@ button[aria-label='Enter full screen']:active,
 button[aria-label='Open in editor']:active {
   background: #e5f1fe !important;
   color: #000739;
+}
+
+button[aria-label='Show sidebar'] + span {
+  width: 2px !important;
+  background: #f6f6f6 !important;
+  border-radius: 1px !important;
 }
 
 button[title='Versions'],

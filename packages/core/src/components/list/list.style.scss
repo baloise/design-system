@@ -100,7 +100,6 @@ ol.ds-list li .ds-item,
 ul.ds-list li.ds-item,
 ul.ds-list li .ds-item {
   min-height: var(--_list-item-min-height);
-  // grid-template-columns: var(--_list-item-grid-template-columns);
 
   display: flex;
   flex-direction: row;
@@ -116,7 +115,7 @@ ul.ds-list li .ds-item {
   text-align: left;
   font-family: var(--_list-item-title-family);
 
-  padding: var(--_list-item-py) 0;
+  padding: var(--_list-item-py) 0.25rem;
   padding-bottom: calc(var(--_list-item-py) + 2px);
 
   //
@@ -336,4 +335,8 @@ ol.ds-list li .ds-item.is-disabled {
 ds-item [slot='content'] {
   font-size: var(--ds-device-text-size-sm);
   @include typography.content(false);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }

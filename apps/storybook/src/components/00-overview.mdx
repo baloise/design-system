@@ -523,29 +523,24 @@ import {
     pageTitle="Components/List"
     description="List present content in a way that makes it easy to identify a specific item in a collection."
   >
-    <ds-card>
-      <ds-card-content>
-        <ds-list border background="color">
-          <ds-list-item clickable href="www.helvetia.com" target="_blank">
-            <ds-list-item-content>
-              <ds-list-item-title>Apples</ds-list-item-title>
-            </ds-list-item-content>
-            <ds-list-item-icon right>
-              <ds-icon name="nav-go-right" size="x-small"></ds-icon>
-            </ds-list-item-icon>
-          </ds-list-item>
-          <ds-list-item clickable href="www.helvetia.com" target="_blank">
-            <ds-list-item-content>
-              <ds-list-item-title>Mango</ds-list-item-title>
-              <ds-list-item-subtitle>Mangos are tropical stone fruits.</ds-list-item-subtitle>
-            </ds-list-item-content>
-            <ds-list-item-icon right>
-              <ds-icon name="link" size="x-small"></ds-icon>
-            </ds-list-item-icon>
-          </ds-list-item>
-        </ds-list>
-      </ds-card-content>
-    </ds-card>
+  <div class="ds-grid">
+    <ds-list class="ds-col">
+      <ds-item variant="link" label="Internal Link" href="www.helvetia.com" target="_blank"></ds-item>
+      <ds-item
+        variant="link"
+        action-icon="link-external"
+        label="External Link"
+        description="Description"
+        href="www.helvetia.com"
+        target="_blank"
+      ></ds-item>
+    </ds-list>
+    <ul class="ds-col is-one-third unordered-list has-bullet-circle is-purple">
+      <li>Apple</li>
+      <li>Mango</li>
+      <li>Banana</li>
+    </ul>
+    </div>
   </GridComponent>
   <GridComponent
     scale="1.2"

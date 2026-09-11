@@ -72,10 +72,10 @@ These improvements help our components work seamlessly across all supported fram
 | tag              | WC & CSS | ✅     | ✅   | ✅   | ✅     | ✅        | ✅     | ⬜    |
 | table            | CSS      | ❓     | ✅   | ✅   | ✅     | ❓        | ✅     | ⬜    |
 | card             | WC & CSS | ✅     | ✅   | ✅   | ✅     | ✅        | ✅     | ⬜    |
-| unordered-list   | CSS      | ✅     | ⬜   | ✅   | ✅     | ✅        | ✅     | ⬜    |
-| ordered-list     | CSS      | ✅     | ⬜   | ✅   | ✅     | ✅        | ✅     | ⬜    |
-| description-list | CSS      | ✅     | ⬜   | ✅   | ✅     | ✅        | ✅     | ⬜    |
-| list             | WC & CSS | ✅     | ⬜   | ✅   | ✅     | ✅        | ✅     | ⬜    |
+| unordered-list   | CSS      | ✅     | ✅   | ✅   | ✅     | ✅        | ✅     | ⬜    |
+| ordered-list     | CSS      | ✅     | ✅   | ✅   | ✅     | ✅        | ✅     | ⬜    |
+| description-list | CSS      | ✅     | ✅   | ✅   | ✅     | ✅        | ✅     | ⬜    |
+| list             | WC & CSS | ✅     | ✅   | ✅   | ✅     | ✅        | ✅     | ⬜    |
 | accordion        | WC       | ✅     | ⬜   | ✅   | ✅     | ✅        | ✅     | ⬜    |
 | carousel         | WC       | ✅     | ⬜   | ✅   | ✅     | ✅        | ✅     | ⬜    |
 | data             | WC       | ✅     | ⬜   | ✅   | ✅     | ✅        | ✅     | ⬜    |
