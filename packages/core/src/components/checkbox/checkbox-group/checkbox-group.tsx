@@ -23,6 +23,7 @@ import {
   areArraysEqual,
   hasValue,
   OneOf,
+  shallowReady,
   Type,
   watchInvalidTextSlot,
 } from '@utils'
@@ -75,6 +76,15 @@ export class CheckboxGroup implements DsComponentInterface, FieldInterface {
    * PUBLIC PROPERTY API
    * ─────────────────────────────────────────────────────
    */
+
+  /**
+   * If `true`, disables the automatic `invalid`/`invalidText` behavior that the `@baloise/ds-angular` integration
+   * applies when the bound `NgControl` is touched and invalid. Only affects the Angular integration; it is a no-op
+   * in other framework integrations.
+   */
+  @Prop({ reflect: true })
+  @Type('boolean')
+  readonly autoInvalidOff: boolean = false
 
   /**
    * Defines the color of the input. The default value is `primary`.
@@ -259,7 +269,14 @@ export class CheckboxGroup implements DsComponentInterface, FieldInterface {
   }
 
   componentWillLoad() {
-    this.handleValueChange()
+    // Re-derives `internalValue` from the current `value` prop (rather than re-running `handleValueChange()`
+    // against whatever `internalValue` already holds): a consumer that assigns `.value` as a JS property
+    // right after inserting the element (e.g. Angular's `ControlValueAccessor.writeValue()`, called as soon
+    // as the host connects) can land the assignment in the brief window between `connectedCallback()`'s own
+    // `valueChanged()` call above and this component's `@Watch('value')` becoming live, so that assignment's
+    // resulting checked-state sync would otherwise be silently lost. `valueChanged()` always reads `this.value`
+    // directly rather than relying on the watch having fired, so it self-heals regardless of that race.
+    this.valueChanged()
   }
 
   componentWillUpdate() {
@@ -280,6 +297,11 @@ export class CheckboxGroup implements DsComponentInterface, FieldInterface {
     const { target } = ev
     if (target && isDescendant(this.el, target) && hasTagName(target, 'ds-checkbox')) {
       stopEventBubbling(ev)
+      // Re-emit as the group's own `dsBlur`, mirroring `listenToDsChange`/`updateValues` re-emitting `dsChange`
+      // above: consumers (and the `@baloise/ds-angular` `ControlValueAccessor`, which listens for `dsBlur`
+      // directly on this host to mark the bound `NgControl` as touched) only ever interact with the group, not
+      // its individual checkboxes, and the child event was just stopped from bubbling any further than this.
+      this.dsBlur.emit(ev.detail)
     }
   }
 
@@ -344,7 +366,15 @@ export class CheckboxGroup implements DsComponentInterface, FieldInterface {
         return false
       }
 
-      this.getCheckboxes().forEach((checkbox: HTMLDsCheckboxElement) => {
+      const checkboxes = this.getCheckboxes()
+      // A consumer that assigns `.value` as a JS property right after inserting the group (e.g. Angular's
+      // `ControlValueAccessor.writeValue()`, called as soon as the host connects) can race a child
+      // `ds-checkbox`'s own initialization: setting `.checked` on one that hasn't finished loading yet is
+      // silently lost once that checkbox's own `componentWillLoad` applies its default. Awaiting each child's
+      // readiness first (a no-op once already loaded, e.g. on a later user-driven value change) closes that gap.
+      await Promise.all(checkboxes.map(checkbox => shallowReady(checkbox)))
+
+      checkboxes.forEach((checkbox: HTMLDsCheckboxElement) => {
         checkbox.checked = isChecked(checkbox)
       })
     }

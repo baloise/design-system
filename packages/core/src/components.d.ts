@@ -824,6 +824,11 @@ export namespace Components {
      */
     interface DsCheckboxGroup {
         /**
+          * If `true`, disables the automatic `invalid`/`invalidText` behavior that the `@baloise/ds-angular` integration applies when the bound `NgControl` is touched and invalid. Only affects the Angular integration; it is a no-op in other framework integrations.
+          * @default false
+         */
+        "autoInvalidOff": boolean;
+        /**
           * Defines the color of the input. The default value is `primary`.
           * @default 'primary'
          */
@@ -5979,6 +5984,11 @@ declare namespace LocalJSX {
      */
     interface DsCheckboxGroup {
         /**
+          * If `true`, disables the automatic `invalid`/`invalidText` behavior that the `@baloise/ds-angular` integration applies when the bound `NgControl` is touched and invalid. Only affects the Angular integration; it is a no-op in other framework integrations.
+          * @default false
+         */
+        "autoInvalidOff"?: boolean;
+        /**
           * Defines the color of the input. The default value is `primary`.
           * @default 'primary'
          */
@@ -9305,6 +9315,7 @@ declare namespace LocalJSX {
         "colsMobile": CheckboxGroupColumns;
     }
     interface DsCheckboxGroupAttributes {
+        "autoInvalidOff": boolean;
         "color": InputColor;
         "cols": CheckboxGroupColumns;
         "colsMobile": CheckboxGroupColumns;
