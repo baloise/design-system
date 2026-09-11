@@ -1226,23 +1226,24 @@
     {
       "fileName": "app.tsx",
       "tag": "ds-app",
-      "overview": "App is a root wrapper component that provides global configuration, focus management, and responsive behavior context for all design system components.",
+      "overview": "",
       "usage": {},
-      "docs": "App is a root wrapper component that provides global configuration, focus management, and responsive behavior context for all design system components.",
+      "docs": "",
       "docsTags": [
+        {
+          "name": "deprecated",
+          "text": "Use `ds-root` instead. `ds-app` remains as a compatibility alias and will be removed in a future major release.\n\nKeep this component's public API in sync with `ds-root`. Stencil does not support sharing one `@Component` class across two tags.\n\nApp is a root wrapper component that provides global configuration, focus management, and responsive behavior context for all design system components."
+        },
         {
           "name": "slot",
           "text": "- All content and child elements."
-        },
-        {
-          "name": "part",
-          "text": "app - The app container element."
         }
       ],
       "encapsulation": "none",
       "dependents": [],
       "dependencies": [],
       "dependencyGraph": {},
+      "deprecation": "Use `ds-root` instead. `ds-app` remains as a compatibility alias and will be removed in a future major release.\n\nKeep this component's public API in sync with `ds-root`. Stencil does not support sharing one `@Component` class across two tags.\n\nApp is a root wrapper component that provides global configuration, focus management, and responsive behavior context for all design system components.",
       "props": [
         {
           "name": "allowedLanguages",
@@ -1711,44 +1712,16 @@
           "docsTags": []
         }
       ],
-      "styles": [
-        {
-          "name": "--ds-app-height",
-          "docs": "Viewport height in pixels, kept in sync on window resize to work around mobile browser viewport unit inconsistencies."
-        }
-      ],
+      "styles": [],
       "slots": [
         {
           "name": "",
           "docs": "All content and child elements."
         }
       ],
-      "parts": [
-        {
-          "name": "app",
-          "docs": "The app container element."
-        }
-      ],
+      "parts": [],
       "customStates": [],
       "listeners": [],
-      "pageObject": {
-        "class": "DsApp",
-        "import": "@baloise/ds-playwright",
-        "locators": [],
-        "actions": [],
-        "assertions": [
-          {
-            "name": "assertToContainText",
-            "params": [
-              {
-                "name": "text",
-                "type": "string"
-              }
-            ],
-            "docs": ""
-          }
-        ]
-      },
       "type": "web-component"
     },
     {
@@ -46750,6 +46723,542 @@
       "type": "web-component"
     },
     {
+      "fileName": "root.tsx",
+      "tag": "ds-root",
+      "overview": "Root is a root wrapper component that provides global configuration, focus management, and responsive behavior context for all design system components.",
+      "usage": {},
+      "docs": "Root is a root wrapper component that provides global configuration, focus management, and responsive behavior context for all design system components.",
+      "docsTags": [
+        {
+          "name": "slot",
+          "text": "- All content and child elements."
+        }
+      ],
+      "encapsulation": "none",
+      "dependents": [],
+      "dependencies": [],
+      "dependencyGraph": {},
+      "props": [
+        {
+          "name": "allowedLanguages",
+          "type": "string | undefined",
+          "complexType": {
+            "original": "string",
+            "resolved": "string | undefined",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "allowed-languages",
+          "reflectToAttr": true,
+          "docs": "Comma separated list of languages the root allows selecting. Falls back to the global config default when unset.",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "undefined"
+            }
+          ],
+          "optional": true,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "animated",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "animated",
+          "reflectToAttr": true,
+          "docs": "Disables all animation inside the ds-root. Can be used for simplify e2e testing.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "true"
+            }
+          ],
+          "default": "true",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "brand",
+          "type": "\"baloise\" | \"helvetia\" | undefined",
+          "complexType": {
+            "original": "DsBrand",
+            "resolved": "\"baloise\" | \"helvetia\" | undefined",
+            "references": {
+              "DsBrand": {
+                "location": "import",
+                "path": "@global",
+                "id": "src/global/index.ts::DsBrand",
+                "referenceLocation": "DsBrand"
+              }
+            }
+          },
+          "mutable": false,
+          "attr": "brand",
+          "reflectToAttr": true,
+          "docs": "Sets the active brand for all design system components. Falls back to the global config default when unset.",
+          "docsTags": [],
+          "values": [
+            {
+              "value": "baloise",
+              "type": "string"
+            },
+            {
+              "value": "helvetia",
+              "type": "string"
+            },
+            {
+              "type": "undefined"
+            }
+          ],
+          "optional": true,
+          "required": false,
+          "getter": false,
+          "setter": false,
+          "oneOfValues": [
+            "baloise",
+            "helvetia"
+          ]
+        },
+        {
+          "name": "fallbackLanguage",
+          "type": "\"de\" | \"en\" | \"es\" | \"fi\" | \"fr\" | \"it\" | \"nl\" | \"pl\" | \"pt\" | \"sv\" | undefined",
+          "complexType": {
+            "original": "DsLanguage",
+            "resolved": "\"de\" | \"en\" | \"es\" | \"fi\" | \"fr\" | \"it\" | \"nl\" | \"pl\" | \"pt\" | \"sv\" | undefined",
+            "references": {
+              "DsLanguage": {
+                "location": "import",
+                "path": "@global",
+                "id": "src/global/index.ts::DsLanguage",
+                "referenceLocation": "DsLanguage"
+              }
+            }
+          },
+          "mutable": false,
+          "attr": "fallback-language",
+          "reflectToAttr": true,
+          "docs": "Language used when `language` is not part of `allowedLanguages`. Falls back to the global config default when unset.",
+          "docsTags": [],
+          "values": [
+            {
+              "value": "de",
+              "type": "string"
+            },
+            {
+              "value": "en",
+              "type": "string"
+            },
+            {
+              "value": "es",
+              "type": "string"
+            },
+            {
+              "value": "fi",
+              "type": "string"
+            },
+            {
+              "value": "fr",
+              "type": "string"
+            },
+            {
+              "value": "it",
+              "type": "string"
+            },
+            {
+              "value": "nl",
+              "type": "string"
+            },
+            {
+              "value": "pl",
+              "type": "string"
+            },
+            {
+              "value": "pt",
+              "type": "string"
+            },
+            {
+              "value": "sv",
+              "type": "string"
+            },
+            {
+              "type": "undefined"
+            }
+          ],
+          "optional": true,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "language",
+          "type": "\"de\" | \"en\" | \"es\" | \"fi\" | \"fr\" | \"it\" | \"nl\" | \"pl\" | \"pt\" | \"sv\" | undefined",
+          "complexType": {
+            "original": "DsLanguage",
+            "resolved": "\"de\" | \"en\" | \"es\" | \"fi\" | \"fr\" | \"it\" | \"nl\" | \"pl\" | \"pt\" | \"sv\" | undefined",
+            "references": {
+              "DsLanguage": {
+                "location": "import",
+                "path": "@global",
+                "id": "src/global/index.ts::DsLanguage",
+                "referenceLocation": "DsLanguage"
+              }
+            }
+          },
+          "mutable": false,
+          "attr": "language",
+          "reflectToAttr": true,
+          "docs": "Sets the active language for all design system components. Falls back to the global config default when unset.",
+          "docsTags": [],
+          "values": [
+            {
+              "value": "de",
+              "type": "string"
+            },
+            {
+              "value": "en",
+              "type": "string"
+            },
+            {
+              "value": "es",
+              "type": "string"
+            },
+            {
+              "value": "fi",
+              "type": "string"
+            },
+            {
+              "value": "fr",
+              "type": "string"
+            },
+            {
+              "value": "it",
+              "type": "string"
+            },
+            {
+              "value": "nl",
+              "type": "string"
+            },
+            {
+              "value": "pl",
+              "type": "string"
+            },
+            {
+              "value": "pt",
+              "type": "string"
+            },
+            {
+              "value": "sv",
+              "type": "string"
+            },
+            {
+              "type": "undefined"
+            }
+          ],
+          "optional": true,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "region",
+          "type": "\"AT\" | \"BE\" | \"CH\" | \"DE\" | \"ES\" | \"IT\" | \"LU\" | undefined",
+          "complexType": {
+            "original": "DsRegion",
+            "resolved": "\"AT\" | \"BE\" | \"CH\" | \"DE\" | \"ES\" | \"IT\" | \"LU\" | undefined",
+            "references": {
+              "DsRegion": {
+                "location": "import",
+                "path": "@global",
+                "id": "src/global/index.ts::DsRegion",
+                "referenceLocation": "DsRegion"
+              }
+            }
+          },
+          "mutable": false,
+          "attr": "region",
+          "reflectToAttr": true,
+          "docs": "Sets the active region for all design system components. Falls back to the global config default when unset.",
+          "docsTags": [],
+          "values": [
+            {
+              "value": "AT",
+              "type": "string"
+            },
+            {
+              "value": "BE",
+              "type": "string"
+            },
+            {
+              "value": "CH",
+              "type": "string"
+            },
+            {
+              "value": "DE",
+              "type": "string"
+            },
+            {
+              "value": "ES",
+              "type": "string"
+            },
+            {
+              "value": "IT",
+              "type": "string"
+            },
+            {
+              "value": "LU",
+              "type": "string"
+            },
+            {
+              "type": "undefined"
+            }
+          ],
+          "optional": true,
+          "required": false,
+          "getter": false,
+          "setter": false,
+          "oneOfValues": [
+            "CH",
+            "DE",
+            "BE",
+            "LU",
+            "AT",
+            "ES",
+            "IT"
+          ]
+        }
+      ],
+      "methods": [
+        {
+          "name": "setFocus",
+          "returns": {
+            "type": "Promise<void>",
+            "docs": ""
+          },
+          "complexType": {
+            "signature": "(elements: HTMLElement[]) => Promise<void>",
+            "parameters": [
+              {
+                "name": "elements",
+                "type": "HTMLElement[]",
+                "docs": ""
+              }
+            ],
+            "references": {
+              "Promise": {
+                "location": "global",
+                "id": "global::Promise"
+              },
+              "HTMLElement": {
+                "location": "global",
+                "id": "global::HTMLElement"
+              }
+            },
+            "return": "Promise<void>"
+          },
+          "signature": "setFocus(elements: HTMLElement[]) => Promise<void>",
+          "parameters": [
+            {
+              "name": "elements",
+              "type": "HTMLElement[]",
+              "docs": ""
+            }
+          ],
+          "docs": "Sets focus on the given elements using the root's focus-visible handling.",
+          "docsTags": []
+        }
+      ],
+      "events": [
+        {
+          "event": "dsAllowedLanguagesChange",
+          "detail": "DsLanguage[]",
+          "bubbles": true,
+          "complexType": {
+            "original": "DsLanguage[]",
+            "resolved": "DsLanguage[]",
+            "references": {
+              "DsLanguage": {
+                "location": "import",
+                "path": "@global",
+                "id": "src/global/index.ts::DsLanguage",
+                "referenceLocation": "DsLanguage"
+              }
+            }
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Emitted when the `allowedLanguages` value changes in the global config.",
+          "docsTags": []
+        },
+        {
+          "event": "dsAnimatedChange",
+          "detail": "boolean",
+          "bubbles": true,
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Emitted when the `animated` value changes in the global config.",
+          "docsTags": []
+        },
+        {
+          "event": "dsAppReady",
+          "detail": "void",
+          "bubbles": true,
+          "complexType": {
+            "original": "void",
+            "resolved": "void",
+            "references": {}
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Emitted when root is ready and painted.",
+          "docsTags": []
+        },
+        {
+          "event": "dsBrandChange",
+          "detail": "\"baloise\" | \"helvetia\"",
+          "bubbles": true,
+          "complexType": {
+            "original": "DsBrand",
+            "resolved": "\"baloise\" | \"helvetia\"",
+            "references": {
+              "DsBrand": {
+                "location": "import",
+                "path": "@global",
+                "id": "src/global/index.ts::DsBrand",
+                "referenceLocation": "DsBrand"
+              }
+            }
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Emitted when the `brand` value changes in the global config.",
+          "docsTags": []
+        },
+        {
+          "event": "dsFallbackLanguageChange",
+          "detail": "\"de\" | \"en\" | \"es\" | \"fi\" | \"fr\" | \"it\" | \"nl\" | \"pl\" | \"pt\" | \"sv\"",
+          "bubbles": true,
+          "complexType": {
+            "original": "DsLanguage",
+            "resolved": "\"de\" | \"en\" | \"es\" | \"fi\" | \"fr\" | \"it\" | \"nl\" | \"pl\" | \"pt\" | \"sv\"",
+            "references": {
+              "DsLanguage": {
+                "location": "import",
+                "path": "@global",
+                "id": "src/global/index.ts::DsLanguage",
+                "referenceLocation": "DsLanguage"
+              }
+            }
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Emitted when the `fallbackLanguage` value changes in the global config.",
+          "docsTags": []
+        },
+        {
+          "event": "dsLanguageChange",
+          "detail": "\"de\" | \"en\" | \"es\" | \"fi\" | \"fr\" | \"it\" | \"nl\" | \"pl\" | \"pt\" | \"sv\"",
+          "bubbles": true,
+          "complexType": {
+            "original": "DsLanguage",
+            "resolved": "\"de\" | \"en\" | \"es\" | \"fi\" | \"fr\" | \"it\" | \"nl\" | \"pl\" | \"pt\" | \"sv\"",
+            "references": {
+              "DsLanguage": {
+                "location": "import",
+                "path": "@global",
+                "id": "src/global/index.ts::DsLanguage",
+                "referenceLocation": "DsLanguage"
+              }
+            }
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Emitted when the `language` value changes in the global config.",
+          "docsTags": []
+        },
+        {
+          "event": "dsRegionChange",
+          "detail": "\"AT\" | \"BE\" | \"CH\" | \"DE\" | \"ES\" | \"IT\" | \"LU\"",
+          "bubbles": true,
+          "complexType": {
+            "original": "DsRegion",
+            "resolved": "\"AT\" | \"BE\" | \"CH\" | \"DE\" | \"ES\" | \"IT\" | \"LU\"",
+            "references": {
+              "DsRegion": {
+                "location": "import",
+                "path": "@global",
+                "id": "src/global/index.ts::DsRegion",
+                "referenceLocation": "DsRegion"
+              }
+            }
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Emitted when the `region` value changes in the global config.",
+          "docsTags": []
+        }
+      ],
+      "styles": [
+        {
+          "name": "--ds-root-height",
+          "docs": "Viewport height in pixels, kept in sync on window resize to work around mobile browser viewport unit inconsistencies."
+        },
+        {
+          "name": "--ds-app-height",
+          "docs": "Deprecated alias of `--ds-root-height`."
+        }
+      ],
+      "slots": [
+        {
+          "name": "",
+          "docs": "All content and child elements."
+        }
+      ],
+      "parts": [],
+      "customStates": [],
+      "listeners": [],
+      "pageObject": {
+        "class": "DsRoot",
+        "import": "@baloise/ds-playwright",
+        "locators": [],
+        "actions": [],
+        "assertions": [
+          {
+            "name": "assertToContainText",
+            "params": [
+              {
+                "name": "text",
+                "type": "string"
+              }
+            ],
+            "docs": ""
+          }
+        ]
+      },
+      "type": "web-component"
+    },
+    {
       "fileName": "segment.tsx",
       "tag": "ds-segment",
       "overview": "Segment renders a group of button-like controls for selecting a single option from multiple choices with toggle behavior.",
@@ -52150,10 +52659,10 @@
           "docsTags": [
             {
               "name": "default",
-              "text": "'green'"
+              "text": "'purple'"
             }
           ],
-          "default": "'green'",
+          "default": "'purple'",
           "values": [
             {
               "value": "green",
@@ -53918,51 +54427,6 @@
       },
       "props": [
         {
-          "name": "color",
-          "type": "\"inverted\" | \"primary\"",
-          "complexType": {
-            "original": "SpinnerColor",
-            "resolved": "\"inverted\" | \"primary\"",
-            "references": {
-              "SpinnerColor": {
-                "location": "import",
-                "path": "./spinner.interfaces",
-                "id": "src/components/spinner/spinner.interfaces.ts::SpinnerColor",
-                "referenceLocation": "SpinnerColor"
-              }
-            }
-          },
-          "mutable": false,
-          "attr": "color",
-          "reflectToAttr": false,
-          "docs": "**Deprecated:** Use inverted=\"true\" for white spinner instead.",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "'primary'"
-            }
-          ],
-          "default": "'primary'",
-          "values": [
-            {
-              "value": "inverted",
-              "type": "string"
-            },
-            {
-              "value": "primary",
-              "type": "string"
-            }
-          ],
-          "optional": false,
-          "required": false,
-          "getter": false,
-          "setter": false,
-          "oneOfValues": [
-            "primary",
-            "inverted"
-          ]
-        },
-        {
           "name": "deactivated",
           "type": "boolean",
           "complexType": {
@@ -54047,7 +54511,10 @@
           "optional": false,
           "required": false,
           "getter": false,
-          "setter": false
+          "setter": false,
+          "oneOfValues": [
+            "sm"
+          ]
         },
         {
           "name": "labelPosition",
@@ -54127,38 +54594,6 @@
           "required": false,
           "getter": false,
           "setter": false
-        },
-        {
-          "name": "small",
-          "type": "boolean",
-          "complexType": {
-            "original": "boolean",
-            "resolved": "boolean",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "small",
-          "reflectToAttr": false,
-          "docs": "**Deprecated:** Use size=\"sm\" instead.",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "false"
-            }
-          ],
-          "default": "false",
-          "values": [
-            {
-              "type": "boolean"
-            }
-          ],
-          "optional": false,
-          "required": false,
-          "getter": false,
-          "setter": false,
-          "oneOfValues": [
-            "sm"
-          ]
         },
         {
           "name": "variation",
@@ -69370,11 +69805,6 @@
       "declaration": "\"fluid\" | \"compact\"",
       "docstring": "",
       "path": "src/components/sheet/sheet.interfaces.ts"
-    },
-    "src/components/spinner/spinner.interfaces.ts::SpinnerColor": {
-      "declaration": "\"primary\" | \"inverted\"",
-      "docstring": "",
-      "path": "src/components/spinner/spinner.interfaces.ts"
     },
     "src/components/spinner/spinner.interfaces.ts::SpinnerSize": {
       "declaration": "\"sm\"",
