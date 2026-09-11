@@ -213,6 +213,7 @@ export namespace Components {
     }
     /**
      * @deprecated Use `ds-root` instead. `ds-app` remains as a compatibility alias and will be removed in a future major release.
+     * Keep this component's public API in sync with `ds-root`. Stencil does not support sharing one `@Component` class across two tags.
      * App is a root wrapper component that provides global configuration, focus management, and responsive behavior context for all design system components.
      */
     interface DsApp {
@@ -3994,6 +3995,7 @@ declare global {
     }
     /**
      * @deprecated Use `ds-root` instead. `ds-app` remains as a compatibility alias and will be removed in a future major release.
+     * Keep this component's public API in sync with `ds-root`. Stencil does not support sharing one `@Component` class across two tags.
      * App is a root wrapper component that provides global configuration, focus management, and responsive behavior context for all design system components.
      */
     interface HTMLDsAppElement extends Components.DsApp, HTMLStencilElement {
@@ -5374,6 +5376,7 @@ declare namespace LocalJSX {
     }
     /**
      * @deprecated Use `ds-root` instead. `ds-app` remains as a compatibility alias and will be removed in a future major release.
+     * Keep this component's public API in sync with `ds-root`. Stencil does not support sharing one `@Component` class across two tags.
      * App is a root wrapper component that provides global configuration, focus management, and responsive behavior context for all design system components.
      */
     interface DsApp {
@@ -10155,6 +10158,7 @@ declare module "@stencil/core" {
             "ds-alert-container": LocalJSX.IntrinsicElements["ds-alert-container"] & JSXBase.HTMLAttributes<HTMLDsAlertContainerElement>;
             /**
              * @deprecated Use `ds-root` instead. `ds-app` remains as a compatibility alias and will be removed in a future major release.
+             * Keep this component's public API in sync with `ds-root`. Stencil does not support sharing one `@Component` class across two tags.
              * App is a root wrapper component that provides global configuration, focus management, and responsive behavior context for all design system components.
              */
             "ds-app": LocalJSX.IntrinsicElements["ds-app"] & JSXBase.HTMLAttributes<HTMLDsAppElement>;
