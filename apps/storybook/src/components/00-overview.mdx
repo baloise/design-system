@@ -425,7 +425,7 @@ import {
   >
     <div class="py-base">
       <ds-icon name="info-circle" size="medium" style={{ position: 'absolute', top: '20%', left: '15%' }}></ds-icon>
-      <div class="bg-grey radius shadow p-base" style={{ scale: '0.5', position: 'absolute', top: '-10%' }}>
+      <div class="bg-grey-1 radius-md shadow p-base" style={{ scale: '0.5', position: 'absolute', top: '-10%' }}>
         <ds-stack layout="vertical">
           <h4 class="ds-title text-lg">Apple pie</h4>
           <span>
@@ -533,7 +533,7 @@ import {
     <ds-logo size="large"></ds-logo>
   </GridComponent>
   <GridComponent
-    scale="0.5"
+    scale="0.8"
     label="Modal"
     fullwidth
     fullheight
@@ -541,36 +541,14 @@ import {
     pageTitle="Components/Modal"
     description="Checkboxes allow users to select one or more items from a set. Checkboxes can turn one or more option(s) on or off."
   >
-    <ds-modal demo>
-      <ds-modal-header>Apple pie</ds-modal-header>
-      <ds-modal-body>
-        <span class="block">
-          Apple pie, a quintessential dessert, combines the comforting aroma of baked apples with a flaky, golden crust.
-        </span>
-        <ds-button-group position="right" reverse>
-          <ds-button color="text">No</ds-button>
-          <ds-button color="primary">Yes, please</ds-button>
-        </ds-button-group>
-      </ds-modal-body>
-    </ds-modal>
-  </GridComponent>
-  <GridComponent
-    scale="1"
-    label="Nav"
-    fullheight
-    fullwidth
-    pageTitle="Components/Nav"
-    description="Navigation component serves as a central hub for seamless user navigation within the applications."
-  >
-    <div class="bg-primary mt-sm" style={{ width: '100%', height: '24px' }}></div>
-    <div class="bg-white radius-lg mt-sm p-xs" style={{ marginLeft: '10%', width: '80%', height: '40px' }}>
-      <ds-stack>
-        <ds-logo style={{ scale: '0.5', marginLeft: '-24px' }}></ds-logo>
-        <div class="bg-grey-3 radius-lg" style={{ width: '32px', height: '8px' }}></div>
-        <div class="bg-grey-3 radius-lg" style={{ width: '32px', height: '8px' }}></div>
-        <div class="bg-grey-3 radius-lg" style={{ width: '32px', height: '8px' }}></div>
-        <div class="bg-grey-3 radius-lg" style={{ width: '32px', height: '8px' }}></div>
-      </ds-stack>
+    <div style={{ backgroundColor: 'rgba(0, 7, 57, 0.5)' ,width: '100%', height: '280px',     backdropFilter: 'blur(4px)',
+    opacity: '0.8' }}></div>
+    <div class="bg-white radius-lg stack p-base" style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: '80%', height: '140px' }}>
+      <div class="ds-stack as-row">
+        <h4 class="ds-title ds-stack-content">Apple Pie</h4>
+        <ds-close></ds-close>
+      </div>
+      <p class="text-sm mt-sm flex-1">Apple pie, a quintessential dessert, combines the comforting aroma of baked apples with a flaky, golden crust.</p>
     </div>
   </GridComponent>
   <GridComponent
@@ -602,7 +580,7 @@ import {
     <ds-pagination page-range="1" total-pages="20" value="2"></ds-pagination>
   </GridComponent>
   <GridComponent
-    scale="0.5"
+    scale="0.8"
     label="Popup"
     fullheight
     fullwidth
@@ -610,13 +588,12 @@ import {
     pageTitle="Components/Popup"
     description="Tag highlights a label for quick recognition."
   >
-    <div class="flex justify-content-center align-items-center">
-      <ds-button ds-popup="my-popup" color="secondary">
-        Apple pie
-      </ds-button>
-      <ds-popup id="my-popup" label="Apple pie" offset="16" demo>
-        Apple pie, a quintessential dessert, with a flaky, golden crust.
-      </ds-popup>
+    <div class="relative" style={{marginLeft: '-160px'}}>
+      <ds-button color="primary">Apple pie</ds-button>
+    <div class="bg-white radius-lg stack p-base" style={{ position: 'absolute', top: '50%', left: '220px', transform: 'translate(-50%, -50%)', width: '140px', height: '140px' }}>
+        <ds-close style={{ position: 'absolute', top: '8px', right: '8px' }}></ds-close>
+      <p class="text-sm">        Apple pie, a quintessential dessert, with a flaky, golden crust.</p>
+    </div>
     </div>
   </GridComponent>
   <GridComponent
@@ -884,6 +861,7 @@ import {
   <ds-toast color="success" heading="Success"> Your changes have been saved. </ds-toast>
 
     </div>
+
   </GridComponent>
   <GridComponent
     scale="1"
@@ -894,11 +872,9 @@ import {
     pageTitle="Components/Tooltip"
     description="Tag highlights a label for quick recognition."
   >
-    <ds-button color="secondary" id="basic-tooltip">
-      Apple Pie
-    </ds-button>
-    <ds-tooltip reference="basic-tooltip" demo>
-      Apple pie is a dessert
-    </ds-tooltip>
+    <div class="flex justify-content-center align-items-center p-lg" style={{ marginTop: '-48px' }}>
+      <button class="ds-button is-secondary" id="tooltip-basic" type="button">Apple Pie</button>
+      <ds-tooltip reference="tooltip-basic" placement="bottom" open="true">Apple pie is a dessert</ds-tooltip>
+    </div>
   </GridComponent>
 </GridComponents>
