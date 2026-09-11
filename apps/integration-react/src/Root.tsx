@@ -71,7 +71,7 @@ const OverlayDemos = () => {
   )
 }
 
-export const App = () => {
+export const Root = () => {
   const [clicks, setClicks] = useState(0)
   const [inputValue, setInputValue] = useState('')
   const [checked, setChecked] = useState(false)
@@ -105,4 +105,4 @@ export const App = () => {
   )
 }
 
-export default App
+export default Root
