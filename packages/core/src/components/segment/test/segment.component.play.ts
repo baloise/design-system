@@ -90,6 +90,32 @@ test.describe('disabled', () => {
   })
 })
 
+test.describe('dsBlur', () => {
+  test('should fire dsBlur once focus leaves the segment entirely', async ({ page }) => {
+    await page.mount(
+      `<ds-segment name="fruits" label="Fruits">${ITEMS}</ds-segment><button data-testid="outside">Outside</button>`,
+    )
+    const segment = new DsSegment(page.locator('ds-segment'))
+    const blurSpy = await segment.el.spyOnEvent('dsBlur')
+
+    await segment.itemInput('apple').focus()
+    await page.getByTestId('outside').focus()
+
+    expect(blurSpy).toHaveReceivedEventTimes(1)
+  })
+
+  test('should not fire dsBlur when focus moves between sibling items', async ({ page }) => {
+    await page.mount(`<ds-segment name="fruits" label="Fruits">${ITEMS}</ds-segment>`)
+    const segment = new DsSegment(page.locator('ds-segment'))
+    const blurSpy = await segment.el.spyOnEvent('dsBlur')
+
+    await segment.itemInput('apple').focus()
+    await page.keyboard.press('ArrowDown')
+
+    expect(blurSpy).toHaveReceivedEventTimes(0)
+  })
+})
+
 test.describe('form reset', () => {
   test('should reset to initial value', async ({ page }) => {
     await page.mount(`

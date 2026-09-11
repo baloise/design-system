@@ -46812,6 +46812,35 @@
           "setter": false
         },
         {
+          "name": "autoInvalidOff",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "auto-invalid-off",
+          "reflectToAttr": true,
+          "docs": "If `true`, disables the automatic `invalid`/`invalidText` behavior that the `@baloise/ds-angular` integration\napplies when the bound `NgControl` is touched and invalid. Only affects the Angular integration; it is a no-op\nin other framework integrations.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
           "name": "description",
           "type": "string",
           "complexType": {
@@ -47237,11 +47266,11 @@
         },
         {
           "event": "dsChange",
-          "detail": "boolean",
+          "detail": "any",
           "bubbles": true,
           "complexType": {
             "original": "SegmentChangeDetail",
-            "resolved": "boolean",
+            "resolved": "any",
             "references": {
               "SegmentChangeDetail": {
                 "location": "import",
@@ -47380,6 +47409,11 @@
           "event": "reset",
           "target": "document",
           "capture": true,
+          "passive": false
+        },
+        {
+          "event": "focusout",
+          "capture": false,
           "passive": false
         }
       ],
@@ -69238,7 +69272,7 @@
       "path": "src/components/segment/segment-item.interfaces.ts"
     },
     "src/components/segment/segment-item.interfaces.ts::SegmentChangeDetail": {
-      "declaration": "boolean",
+      "declaration": "any",
       "docstring": "",
       "path": "src/components/segment/segment-item.interfaces.ts"
     },
