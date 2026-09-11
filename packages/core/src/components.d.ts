@@ -2705,6 +2705,11 @@ export namespace Components {
           * @default false
          */
         "allowEmptySelection": boolean;
+        /**
+          * If `true`, disables the automatic `invalid`/`invalidText` behavior that the `@baloise/ds-angular` integration applies when the bound `NgControl` is touched and invalid. Only affects the Angular integration; it is a no-op in other framework integrations.
+          * @default false
+         */
+        "autoInvalidOff": boolean;
         "configChanged": (state: DsConfigState) => Promise<void>;
         /**
           * The description of the input, which is displayed below the input field.
@@ -8009,6 +8014,11 @@ declare namespace LocalJSX {
          */
         "allowEmptySelection"?: boolean;
         /**
+          * If `true`, disables the automatic `invalid`/`invalidText` behavior that the `@baloise/ds-angular` integration applies when the bound `NgControl` is touched and invalid. Only affects the Angular integration; it is a no-op in other framework integrations.
+          * @default false
+         */
+        "autoInvalidOff"?: boolean;
+        /**
           * The description of the input, which is displayed below the input field.
           * @default ''
          */
@@ -9665,6 +9675,7 @@ declare namespace LocalJSX {
     }
     interface DsSegmentAttributes {
         "allowEmptySelection": boolean;
+        "autoInvalidOff": boolean;
         "description": string;
         "disabled": boolean;
         "iconOnly": boolean;
