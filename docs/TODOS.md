@@ -76,13 +76,13 @@ These improvements help our components work seamlessly across all supported fram
 | ordered-list     | CSS      | ✅     | ✅   | ✅   | ✅     | ✅        | ✅     | ⬜    |
 | description-list | CSS      | ✅     | ✅   | ✅   | ✅     | ✅        | ✅     | ⬜    |
 | list             | WC & CSS | ✅     | ✅   | ✅   | ✅     | ✅        | ✅     | ⬜    |
-| accordion        | WC       | ✅     | ⬜   | ✅   | ✅     | ✅        | ✅     | ⬜    |
-| carousel         | WC       | ✅     | ⬜   | ✅   | ✅     | ✅        | ✅     | ⬜    |
-| data             | WC       | ✅     | ⬜   | ✅   | ✅     | ✅        | ✅     | ⬜    |
+| accordion        | WC       | ✅     | ✅   | ✅   | ✅     | ✅        | ✅     | ⬜    |
+| carousel         | WC       | ✅     | ✅   | ✅   | ✅     | ✅        | ✅     | ⬜    |
+| data             | WC       | ✅     | ✅   | ✅   | ✅     | ✅        | ✅     | ⬜    |
 | -- ALERTS --     | ###      | ###    | ###  | ###  | ###    | ###       | ###    | ###   |
-| notification     | WC & CSS | ✅     | ⬜   | ✅   | ✅     | ✅        | ✅     | ⬜    |
-| snackbar         | WC       | ✅     | ⬜   | ✅   | ✅     | ✅        | ✅     | ⬜    |
-| toast            | WC       | ✅     | ⬜   | ✅   | ✅     | ✅        | ✅     | ⬜    |
+| notification     | WC & CSS | ✅     | ✅   | ✅   | ✅     | ✅        | ✅     | ⬜    |
+| snackbar         | WC       | ✅     | ✅   | ✅   | ✅     | ✅        | ✅     | ⬜    |
+| toast            | WC       | ✅     | ✅   | ✅   | ✅     | ✅        | ✅     | ⬜    |
 | -- OVERLAY --    | ###      | ###    | ###  | ###  | ###    | ###       | ###    | ###   |
 | modal            | WC       | ✅     | ⬜   | ✅   | ✅     | ✅        | ✅     | ⬜    |
 | popup            | WC       | ✅     | ⬜   | ✅   | ✅     | ✅        | ✅     | ⬜    |

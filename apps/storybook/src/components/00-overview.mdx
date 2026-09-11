@@ -30,11 +30,9 @@ import {
     pageTitle="Components/Accordion"
     description="Accordions put users in control of showing or hiding content."
   >
-    <ds-accordion open>
+    <ds-accordion summary-title="true" open>
       <div slot="summary">What is Apple Pie?</div>
-      <div slot="content" class="py-base">
-        Apple pie, a quintessential dessert, combines the comforting aroma of baked apples with a flaky, golden crust.
-      </div>
+      <div slot="content" class="py-base">Apple pie, a quintessential dessert, combines the comforting aroma of baked apples with a flaky, golden crust.</div>
     </ds-accordion>
   </GridComponent>
   <GridComponent
@@ -190,50 +188,34 @@ import {
     </ds-card>
   </GridComponent>
   <GridComponent
-    scale="0.5"
+    scale="1"
     label="Carousel"
     fullwidth
     pageTitle="Components/Carousel"
     description="The carousel component combines all the slide use cases."
   >
-    <ds-card>
-      <ds-card-content>
-        <ds-carousel controls="large" interface="product" items-per-view="auto" steps="2">
-          <ds-carousel-item color="green" label="Car" src="/assets/images/brand-icons/car-green.svg"></ds-carousel-item>
-          <ds-carousel-item
-            color="yellow"
-            label="Home"
-            src="/assets/images/brand-icons/ecosystem-home-tangerine.svg"
-          ></ds-carousel-item>
-          <ds-carousel-item
-            color="purple"
-            label="Holiday"
-            src="/assets/images/brand-icons/holiday-palms-purple.svg"
-          ></ds-carousel-item>
-          <ds-carousel-item
-            color="red"
-            label="Insurances"
-            src="/assets/images/brand-icons/insurances-red.svg"
-          ></ds-carousel-item>
-          <ds-carousel-item color="green" label="Car" src="/assets/images/brand-icons/car-green.svg"></ds-carousel-item>
-          <ds-carousel-item
-            color="yellow"
-            label="Home"
-            src="/assets/images/brand-icons/ecosystem-home-tangerine.svg"
-          ></ds-carousel-item>
-          <ds-carousel-item
-            color="purple"
-            label="Holiday"
-            src="/assets/images/brand-icons/holiday-palms-purple.svg"
-          ></ds-carousel-item>
-          <ds-carousel-item
-            color="red"
-            label="Insurances"
-            src="/assets/images/brand-icons/insurances-red.svg"
-          ></ds-carousel-item>
-        </ds-carousel>
-      </ds-card-content>
-    </ds-card>
+  <div class="flex justify-content-center align-items-center">
+<ds-carousel variant="tile" controls="large" style={{ width: '90%'}}>
+  <ds-carousel-item name="auto" color="purple" navigation="">
+    <div class="px-lg h-4rem bg-purple-3 radius"></div>
+  </ds-carousel-item>
+  <ds-carousel-item name="auto" color="purple" navigation="">
+    <div class="px-lg h-4rem bg-purple-3 radius"></div>
+  </ds-carousel-item>
+    <ds-carousel-item name="auto" color="purple" navigation="">
+    <div class="px-lg h-4rem bg-purple-3 radius"></div>
+  </ds-carousel-item>
+    <ds-carousel-item name="auto" color="purple" navigation="">
+    <div class="px-lg h-4rem bg-purple-3 radius"></div>
+  </ds-carousel-item>
+    <ds-carousel-item name="auto" color="purple" navigation="">
+    <div class="px-lg h-4rem bg-purple-3 radius"></div>
+  </ds-carousel-item>
+    <ds-carousel-item name="auto" color="purple" navigation="">
+    <div class="px-lg h-4rem bg-purple-3 radius"></div>
+  </ds-carousel-item>
+</ds-carousel>
+</div>
   </GridComponent>
   <GridComponent
     scale="1"
@@ -301,14 +283,14 @@ import {
   >
     <ds-card>
       <ds-card-content>
-        <ds-data border>
-          <ds-data-item>
+        <ds-data>
+          <ds-data-item editable="true">
             <ds-data-label>Name</ds-data-label>
-            <ds-data-value>Apple pie</ds-data-value>
+            <ds-data-value>John Doe</ds-data-value>
           </ds-data-item>
-          <ds-data-item>
-            <ds-data-label>Category</ds-data-label>
-            <ds-data-value editable>Cake</ds-data-value>
+          <ds-data-item editable="true">
+            <ds-data-label>Email</ds-data-label>
+            <ds-data-value>john@mail.com</ds-data-value>
           </ds-data-item>
         </ds-data>
       </ds-card-content>
@@ -713,7 +695,7 @@ import {
     </ds-sheet>
   </GridComponent>
   <GridComponent
-    scale="0.5"
+    scale="0.8"
     label="Snackbar"
     fullwidth
     fullheight
@@ -721,7 +703,7 @@ import {
     description="Checkboxes allow users to select one or more items from a set. Checkboxes can turn one or more option(s) on or off."
   >
     <div style={{ position: 'absolute', bottom: '1rem', right: '0' }}>
-      <ds-snackbar subject="Apple Pie" action="Yes, please">
+      <ds-snackbar heading="Apple Pie"  color="info" closable>
         Want some more apple pie slices?
       </ds-snackbar>
     </div>
@@ -893,15 +875,14 @@ import {
     <ds-time-input style={{ width: '227px' }}></ds-time-input>
   </GridComponent>
   <GridComponent
-    scale="0.5"
+    scale="0.8"
     label="Toast"
     pageTitle="Components/Toast"
     description="Checkboxes allow users to select one or more items from a set. Checkboxes can turn one or more option(s) on or off."
   >
-    <div style={{ marginTop: '-180px' }}>
-      <ds-toast>
-        <strong>Alert</strong> Apple pie is ready
-      </ds-toast>
+    <div style={{ marginTop: '-100px' }}>
+  <ds-toast color="success" heading="Success"> Your changes have been saved. </ds-toast>
+
     </div>
   </GridComponent>
   <GridComponent

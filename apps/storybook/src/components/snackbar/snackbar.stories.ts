@@ -65,3 +65,62 @@ export const Colors = Story({
   ),
 })
 Colors.storyName = '🧩 Colors'
+
+export const Controller = Story({
+  ...withRender(
+    () => `
+<div class="flex gap-sm flex-direction-row" style="align-items: flex-start">
+  <ds-button color="info" id="snackbar-trigger-info">Show info</ds-button>
+  <ds-button color="success" id="snackbar-trigger-success">Show success</ds-button>
+  <ds-button color="warning" id="snackbar-trigger-warning">Show warning</ds-button>
+  <ds-button color="danger" id="snackbar-trigger-danger">Show danger</ds-button>
+</div>
+<script>
+  (() => {
+    const controller = window.DesignSystem && window.DesignSystem.snackbarController
+    if (!controller) return
+
+    const presets = {
+      'snackbar-trigger-info': {
+        color: 'info',
+        heading: 'Information',
+        message: 'Your changes have been saved.',
+        closable: true,
+      },
+      'snackbar-trigger-success': {
+        color: 'success',
+        heading: 'Success',
+        message: 'Your request was submitted successfully.',
+        action: 'Undo',
+      },
+      'snackbar-trigger-warning': {
+        color: 'warning',
+        heading: 'Warning',
+        message: 'Please double check your input before continuing.',
+        closable: true,
+      },
+      'snackbar-trigger-danger': {
+        color: 'danger',
+        heading: 'Error',
+        message: 'Something went wrong. Please try again.',
+        closable: true,
+      },
+    }
+
+    Object.keys(presets).forEach(id => {
+      const trigger = document.getElementById(id)
+      if (!trigger) return
+      trigger.addEventListener('click', () => {
+        controller.create({
+          closable: false,
+          closeHandler: toastId => controller.remove(toastId),
+          actionHandler: toastId => controller.remove(toastId),
+          ...presets[id],
+        })
+      })
+    })
+  })()
+</script>`,
+  ),
+})
+Controller.storyName = '🧩 Controller'
