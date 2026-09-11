@@ -113,7 +113,7 @@ export const appConfig: ApplicationConfig = {
 
 **app.component.ts**
 
-Layout elements like `ds-app` and `ds-app-footer` are web components, so add the schema
+Layout elements like `ds-root` and `ds-app-footer` are web components, so add the schema
 `CUSTOM_ELEMENTS_SCHEMA` to your root angular component and import the bundle that registers them.
 
 ```typescript
@@ -132,11 +132,11 @@ export class AppComponent {}
 
 **app.component.html**
 
-Add the `ds-app` to your `app.component.html` root element. Elements like the button and heading
+Add the `ds-root` to your `app.component.html` root element. Elements like the button and heading
 below are plain HTML styled with a CSS class — no import or registration needed.
 
 ```html
-<ds-app class="has-sticky-footer">
+<ds-root class="has-sticky-footer">
   <header>
     <!-- Header content -->
   </header>
@@ -148,7 +148,7 @@ below are plain HTML styled with a CSS class — no import or registration neede
   <ds-app-footer>
     <!-- Footer content -->
   </ds-app-footer>
-</ds-app>
+</ds-root>
 ```
 
 ### Module Based
@@ -183,13 +183,13 @@ export class AppModule {}
 
 **app.component.html**
 
-Add the `ds-app` to your `app.component.html` root element.
+Add the `ds-root` to your `app.component.html` root element.
 
 <Code
   language="html"
   noPreview
   code={`
-<ds-app class="has-sticky-footer">
+<ds-root class="has-sticky-footer">
   <header>
     <!-- Header content -->
   </header>
@@ -201,7 +201,7 @@ Add the `ds-app` to your `app.component.html` root element.
   <ds-app-footer>
     <!-- Footer content -->
   </ds-app-footer>
-</ds-app>
+</ds-root>
 `}
 />
 
@@ -265,18 +265,18 @@ Create an `index.html` file in your project root and add the following:
   </head>
 
   <body>
-    <ds-app>
+    <ds-root>
       <main class="ds-container mt-base">
         <h1 class="ds-heading">Hello World</h1>
         <button class="ds-button">Button</button>
       </main>
-    </ds-app>
+    </ds-root>
   </body>
 </html>
 ```
 
 Here's a complete, working page — the language/region `<meta>` tag, stylesheet, and scripts all
-live in `<head>`; `ds-app` wraps the page content in `<body>`.
+live in `<head>`; `ds-root` wraps the page content in `<body>`.
 
 <br />
 
@@ -289,12 +289,12 @@ live in `<head>`; `ds-app` wraps the page content in `<body>`.
   only one you really need. `components.css` adds the CSS-only classes (`.ds-button`,
   `.ds-heading`, ...) used below. `utilities.css` (spacing, layout, typography, color helpers) is
   entirely optional — drop it if you don't use utility classes.
-- **`<script type="module">` / `<script nomodule>`** — registers the web components (`<ds-app>`,
+- **`<script type="module">` / `<script nomodule>`** — registers the web components (`<ds-root>`,
   `<ds-stage>`, etc.) used in markup. The `nomodule` variant is a fallback for browsers without
   ES module support.
-- **`<ds-app>`** — the root layout web component; wrap your page content in it.
+- **`<ds-root>`** — the root layout web component; wrap your page content in it.
 - **`<h1 class="ds-heading">` / `<button class="ds-button">`** — plain HTML styled with a CSS
-  class. No script needed for these — only elements that need JS behavior (like `<ds-app>`) are
+  class. No script needed for these — only elements that need JS behavior (like `<ds-root>`) are
   web components.
 
 ### CDN
@@ -317,7 +317,7 @@ Prototyping or don't want to install anything? Load everything straight from
 ```
 
 Same as before, only `base.css` is really required — drop `utilities.css` if you don't use utility
-classes. The rest of the page (the `<meta name="design-system-config">` tag, `<ds-app>`, etc.) works
+classes. The rest of the page (the `<meta name="design-system-config">` tag, `<ds-root>`, etc.) works
 exactly like the "Plain HTML" example above — only where the CSS/JS come from changes.
 
 <InfoQuote>
@@ -420,16 +420,16 @@ createRoot(document.getElementById('root')!).render(
 
 ### App root
 
-Wrap the application in `DsApp` and import the components you use.
+Wrap the application in `DsRoot` and import the components you use.
 
 **App.tsx**
 
 ```tsx
-import { DsApp, DsAppFooter, DsButton, DsHeading } from '@baloise/ds-react'
+import { DsRoot, DsAppFooter, DsButton, DsHeading } from '@baloise/ds-react'
 
 function App() {
   return (
-    <DsApp className="has-sticky-footer">
+    <DsRoot className="has-sticky-footer">
       <header>
         {/* Header content */}
       </header>
@@ -445,7 +445,7 @@ function App() {
       <DsAppFooter>
         {/* Footer content */}
       </DsAppFooter>
-    </DsApp>
+    </DsRoot>
   )
 }
 

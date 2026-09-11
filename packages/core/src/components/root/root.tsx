@@ -29,23 +29,19 @@ import {
   updateDsLogger,
   updateDsRegion,
 } from '@global'
-import { startFocusVisible } from '../root/root.focus.util'
-import { ROOT_BRANDS, ROOT_REGIONS } from '../root/root.interfaces'
+import { startFocusVisible } from './root.focus.util'
+import { ROOT_BRANDS, ROOT_REGIONS } from './root.interfaces'
 
 /**
- * @deprecated Use `ds-root` instead. `ds-app` remains as a compatibility alias and will be removed in a future major release.
- *
- * Keep this component's public API in sync with `ds-root`. Stencil does not support sharing one `@Component` class across two tags.
- *
- * App is a root wrapper component that provides global configuration, focus management, and responsive behavior context for all design system components.
+ * Root is a root wrapper component that provides global configuration, focus management, and responsive behavior context for all design system components.
  *
  * @slot - All content and child elements.
  */
 @Component({
-  tag: 'ds-app',
-  styleUrl: '../root/root.scss',
+  tag: 'ds-root',
+  styleUrl: 'root.scss',
 })
-export class App implements DsComponentInterface, DsConfigObserver {
+export class Root implements DsComponentInterface, DsConfigObserver {
   private focusVisible?: any
   private debouncedNotify = debounce(() => this.notifyResize(), 100)
   private lastConfigState?: DsConfigState
@@ -54,7 +50,7 @@ export class App implements DsComponentInterface, DsConfigObserver {
 
   log!: LogInstance
 
-  @Logger('app')
+  @Logger('root')
   createLogger(log: LogInstance) {
     this.log = log
   }
@@ -65,7 +61,7 @@ export class App implements DsComponentInterface, DsConfigObserver {
    */
 
   /**
-   * Disables all animation inside the ds-app. Can be used for simplify e2e testing.
+   * Disables all animation inside the ds-root. Can be used for simplify e2e testing.
    */
   @Prop({ reflect: true })
   @Type('boolean')
@@ -93,7 +89,7 @@ export class App implements DsComponentInterface, DsConfigObserver {
   readonly language?: DsLanguage
 
   /**
-   * Comma separated list of languages the app allows selecting. Falls back to the global config default when unset.
+   * Comma separated list of languages the root allows selecting. Falls back to the global config default when unset.
    */
   @Prop({ reflect: true })
   @Type('string')
@@ -156,7 +152,7 @@ export class App implements DsComponentInterface, DsConfigObserver {
   readonly logger: string = ''
 
   /**
-   * Emitted when app is ready and painted.
+   * Emitted when root is ready and painted.
    */
   @Event() dsAppReady!: EventEmitter<void>
 
@@ -249,7 +245,7 @@ export class App implements DsComponentInterface, DsConfigObserver {
    */
 
   /**
-   * Sets focus on the given elements using the app's focus-visible handling.
+   * Sets focus on the given elements using the root's focus-visible handling.
    */
   @Method()
   async setFocus(elements: HTMLElement[]) {

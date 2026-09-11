@@ -140,9 +140,22 @@ export const getSibling = (parentTag: HTMLElement | EventTarget, child: string):
   return node.querySelector(child)
 }
 
-export const getAppRoot = (doc: Document) => {
-  return doc.querySelector('ds-app') || doc.body
+const ROOT_SELECTORS = ['ds-root', 'ds-app'] as const
+
+export const getRootElement = (doc: Document) => {
+  for (const selector of ROOT_SELECTORS) {
+    const el = doc.querySelector(selector)
+    if (el) {
+      return el
+    }
+  }
+  return doc.body
 }
+
+/**
+ * @deprecated Use `getRootElement()` instead. `ds-app` is a compatibility alias of `ds-root`.
+ */
+export const getAppRoot = (doc: Document) => getRootElement(doc)
 
 /**
  * Waits for a component to be ready for

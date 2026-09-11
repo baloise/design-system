@@ -9,7 +9,7 @@ const publicSource = readFileSync(join(root, 'wrappers.ts'), 'utf8')
 const indexSource = readFileSync(join(root, 'index.ts'), 'utf8')
 const hooksSource = readFileSync(join(root, 'hooks/index.ts'), 'utf8')
 
-const DEPRECATED_WRAPPERS = ['DsAlertContainer', 'DsModal', 'DsSnackbar', 'DsToast'] as const
+const DEPRECATED_WRAPPERS = ['DsAlertContainer', 'DsApp', 'DsModal', 'DsSnackbar', 'DsToast'] as const
 
 const generatedNames = [...generatedSource.matchAll(/^export const (Ds\w+):/gm)].map(match => match[1])
 

@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import {
-  DsApp,
+  DsRoot,
   DsButton,
   DsCheckbox,
   DsInput,
@@ -77,7 +77,7 @@ export const App = () => {
   const [checked, setChecked] = useState(false)
 
   return (
-    <DsApp>
+    <DsRoot>
       <main>
         <h1>ds-react smoke test</h1>
 
@@ -101,7 +101,7 @@ export const App = () => {
 
         <OverlayDemos />
       </main>
-    </DsApp>
+    </DsRoot>
   )
 }
 
