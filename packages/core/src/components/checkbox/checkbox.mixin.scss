@@ -13,6 +13,7 @@
   #{$wrapper} {
     // layout
     @include vars.local(checkbox-gap, 0.5rem);
+    @include vars.local(checkbox-min-height, 3rem);
     @include vars.local(checkbox-label-base-color, inherit);
     @include vars.local(checkbox-label-hover-color, var(--ds-global-color-sky-5));
     @include vars.local(checkbox-label-active-color, var(--ds-global-color-primary-6));
@@ -77,7 +78,7 @@
   line-height: var(--ds-alias-text-line-height-text);
   padding-top: 0.25rem;
   padding-bottom: 0.25rem;
-  min-height: 3rem;
+  min-height: var(--_checkbox-min-height);
 
   @include hover() {
     &:hover {

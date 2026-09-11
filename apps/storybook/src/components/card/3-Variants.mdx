@@ -1,6 +1,5 @@
-import { Markdown, Meta } from '@storybook/addon-docs/blocks'
-import { Banner, BannerTabs, CanvasTabs,
-  CanvasWithCodePen, Footer, StoryHeading } from '../../../.storybook/blocks'
+import { Meta } from '@storybook/addon-docs/blocks'
+import { Banner, BannerTabs, CanvasTabs, Footer, StoryHeading } from '../../../.storybook/blocks'
 import * as CardStories from './card.stories'
 import { CARD_DOC_CONFIG, getCardTabs } from './card.doc-config'
 
@@ -12,34 +11,79 @@ import { CARD_DOC_CONFIG, getCardTabs } from './card.doc-config'
 {/* STORIES */}
 {/* ------------------------------------------------------ */}
 
-<StoryHeading of={CardStories.CardHeader}></StoryHeading>
+<StoryHeading of={CardStories.Basic}></StoryHeading>
 
-<CanvasWithCodePen of={CardStories.CardHeader} />
+The default card with a header, content area and action buttons.
 
-{/* ------------------------------------------------------ */}
-
-<StoryHeading of={CardStories.TileCard}></StoryHeading>
-
-<CanvasWithCodePen of={CardStories.TileCard} />
+<CanvasTabs htmlOf={CardStories.BasicHtml} of={CardStories.Basic} />
 
 {/* ------------------------------------------------------ */}
 
-<StoryHeading of={CardStories.TeaserCards}></StoryHeading>
+<StoryHeading of={CardStories.Tile}></StoryHeading>
 
-<CanvasWithCodePen of={CardStories.TeaserCards} />
+Use the `tile` property to display a compact card with a brand icon, a tag and a toggle in the header — handy for
+selectable options or coverage tiles.
+
+<CanvasTabs htmlOf={CardStories.TileHtml} of={CardStories.Tile} />
 
 {/* ------------------------------------------------------ */}
 
-<StoryHeading of={CardStories.CardImages}></StoryHeading>
+<StoryHeading of={CardStories.Centered}></StoryHeading>
 
-<CanvasWithCodePen of={CardStories.CardImages} />
+Combine `align="center"` with a background `color` to center the header, content and actions inside the card.
+
+<CanvasTabs htmlOf={CardStories.CenteredHtml} of={CardStories.Centered} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={CardStories.Colors}></StoryHeading>
+
+Use the `color` property to apply a background color to the card, indicating status or visual emphasis.
+
+<CanvasTabs htmlOf={CardStories.ColorsHtml} of={CardStories.Colors} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={CardStories.Spaces}></StoryHeading>
+
+Use the `space` property to adjust the inner padding of the card — `sm`, default, or `lg`.
+
+<CanvasTabs htmlOf={CardStories.SpacesHtml} of={CardStories.Spaces} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={CardStories.CombiHeader}></StoryHeading>
+
+Combine tags, buttons and a toggle inside `ds-card-title` and `ds-card-header` to build complex header layouts, with
+or without an outline.
+
+<CanvasTabs htmlOf={CardStories.CombiHeaderHtml} of={CardStories.CombiHeader} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={CardStories.Fullheight}></StoryHeading>
+
+Use the `fullheight` property so cards in a grid stretch to match the height of the tallest card in the same row —
+ideal for teaser cards.
+
+<CanvasTabs htmlOf={CardStories.FullheightHtml} of={CardStories.Fullheight} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={CardStories.Images}></StoryHeading>
+
+Cards can display an image above the content, either as a plain `picture` or combined with `image-teaser` for a
+linked teaser card.
+
+<CanvasTabs htmlOf={CardStories.ImagesHtml} of={CardStories.Images} />
 
 {/* ------------------------------------------------------ */}
 
 <StoryHeading of={CardStories.ImageTeaser}></StoryHeading>
 
-<CanvasWithCodePen of={CardStories.ImageTeaser} />
+Use the `image-teaser` property with `wide`, `wide-center` or `wide-right` to display a large image next to or
+around the card content, full width on mobile.
 
-{/* ------------------------------------------------------ */}
+<CanvasTabs htmlOf={CardStories.ImageTeaserHtml} of={CardStories.ImageTeaser} />
 
 <Footer />

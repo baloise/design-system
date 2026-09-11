@@ -25,8 +25,8 @@
 | Angular bindings                         | Add frameworks back after migrating too shadow dom                                    | ✅     |
 | Angular forms integration                | ControlValueAccessor/reactive-forms wiring for form components (deferred by ADR-0006) | ✅     |
 | Add missing regions 2.0                  | Austria, Spain, Italy                                                                 | ✅     |
+| Figma Sync                               | Finish the github actions to sync tokens                                              | ✅     |
 | Create Migration Bal                     | Create migration plan for ex-baloise                                                  | ⬜     |
-| Figma Sync                               | Finish the github actions to sync tokens                                              | ⬜     |
 | Gap Analyses Material                    | Check Components use cases                                                            | ⬜     |
 | Gap Parttern Lib                         | Check Components use cases                                                            | ⬜     |
 | Create Migration Hel                     | Create migration plan for ex-helvetia                                                 | ⬜     |
@@ -68,10 +68,10 @@ These improvements help our components work seamlessly across all supported fram
 | close            | WC       | ✅     | ✅   | ✅   | ✅     | ✅        | ✅     | ⬜    |
 | button           | WC & CSS | ✅     | ✅   | ✅   | ✅     | ✅        | ✅     | ⬜    |
 | -- DATA --       | ###      | ###    | ###  | ###  | ###    | ###       | ###    | ###   |
-| badge            | WC       | ✅     | ⬜   | ✅   | ✅     | ✅        | ✅     | ⬜    |
-| tag              | WC & CSS | ✅     | ⬜   | ✅   | ✅     | ✅        | ✅     | ⬜    |
-| table            | CSS      | ❓     | ⬜   | ✅   | ✅     | ❓        | ✅     | ⬜    |
-| card             | WC & CSS | ✅     | ⬜   | ✅   | ✅     | ✅        | ✅     | ⬜    |
+| badge            | WC       | ✅     | ✅   | ✅   | ✅     | ✅        | ✅     | ⬜    |
+| tag              | WC & CSS | ✅     | ✅   | ✅   | ✅     | ✅        | ✅     | ⬜    |
+| table            | CSS      | ❓     | ✅   | ✅   | ✅     | ❓        | ✅     | ⬜    |
+| card             | WC & CSS | ✅     | ✅   | ✅   | ✅     | ✅        | ✅     | ⬜    |
 | unordered-list   | CSS      | ✅     | ⬜   | ✅   | ✅     | ✅        | ✅     | ⬜    |
 | ordered-list     | CSS      | ✅     | ⬜   | ✅   | ✅     | ✅        | ✅     | ⬜    |
 | description-list | CSS      | ✅     | ⬜   | ✅   | ✅     | ✅        | ✅     | ⬜    |

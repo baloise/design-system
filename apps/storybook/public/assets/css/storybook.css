@@ -272,20 +272,20 @@ div[data-testid='tooltip'] button:active {
 
 .sidebar-item[data-nodetype='document'][data-selected='true'] > a:hover {
   background-color: #000d6e !important;
-  color: #a7d1fa !important;
+  color: #ffffff !important;
 }
 
 .sidebar-item[data-nodetype='document'][data-selected='true'] > a:hover svg {
-  color: #a7d1fa !important;
+  color: #ffffff !important;
 }
 
 .sidebar-item[data-nodetype='document'][data-selected='true'] > a:active {
-  color: #56a7f5 !important;
+  color: #ffffff !important;
   background-color: #000d6e !important;
 }
 
 .sidebar-item[data-nodetype='document'][data-selected='true'] > a:active svg {
-  color: #56a7f5 !important;
+  color: #ffffff !important;
 }
 
 .sidebar-item[data-nodetype='document'] > button[data-testid='context-menu']:hover,

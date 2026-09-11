@@ -164,7 +164,9 @@ import {
   >
     <ds-stack>
       <ds-button wide>Primary</ds-button>
-      <ds-button wide color="secondary">Secondary</ds-button>
+      <ds-button wide color="secondary">
+        Secondary
+      </ds-button>
     </ds-stack>
   </GridComponent>
   <GridComponent
@@ -174,18 +176,17 @@ import {
     description="Cards contain content and actions about a single subject and can be combined with other components."
   >
     <ds-card>
+      <ds-card-header>
+        <h3 class="ds-title">Apple Pie</h3>
+      </ds-card-header>
       <ds-card-content>
-        <ds-stack layout="vertical" space="large">
-          <ds-content>
-            <ds-heading level="x-large">Apple Pie</ds-heading>
-            <ds-text>
-              Apple pie, a quintessential dessert, combines the comforting aroma of baked apples with a flaky, golden
-              crust.
-            </ds-text>
-          </ds-content>
-          <ds-button>Button</ds-button>
-        </ds-stack>
+        <p>
+          Apple pie, a quintessential dessert, combines the comforting aroma of baked apples with a flaky, golden crust.
+        </p>
       </ds-card-content>
+      <ds-card-action>
+        <ds-button>Button</ds-button>
+      </ds-card-action>
     </ds-card>
   </GridComponent>
   <GridComponent
@@ -257,7 +258,7 @@ import {
     <div class="bg-purple-2 radius p-base" style={{ marginLeft: '10%', width: '80%', height: '120px' }}>
       <div class="flex gap-sm" style={{ height: '24px' }}>
         <div class="bg-purple-1 radius-lg flex-1" style={{ width: '100%', height: '20px' }}></div>
-        <ds-close ></ds-close>
+        <ds-close></ds-close>
       </div>
       <div class="bg-purple-1 radius-lg mt-base" style={{ width: '80%', height: '10px' }}></div>
       <div class="bg-purple-1 radius-lg mt-xs" style={{ width: '90%', height: '10px' }}></div>
@@ -395,16 +396,32 @@ import {
     pageTitle="Components/Grid"
     description="Grid is a layout component that allows you to create responsive layouts with a 12-column system."
   >
-<div class="ds-grid is-multiline gap-sm">
-  <div class="ds-col is-half"><div class="bg-purple-2 p-sm"></div></div>
-  <div class="ds-col is-half"><div class="bg-purple-2 p-sm"></div></div>
-  <div class="ds-col is-half"><div class="bg-purple-2 p-sm"></div></div>
-  <div class="ds-col is-half"><div class="bg-purple-2 p-sm"></div></div>
-  <div class="ds-col is-half"><div class="bg-purple-2 p-sm"></div></div>
-  <div class="ds-col is-half"><div class="bg-purple-2 p-sm"></div></div>
-  <div class="ds-col is-half"><div class="bg-purple-2 p-sm"></div></div>
-  <div class="ds-col is-half"><div class="bg-purple-2 p-sm"></div></div>
-</div>
+    <div class="ds-grid is-multiline gap-sm">
+      <div class="ds-col is-half">
+        <div class="bg-purple-2 p-sm"></div>
+      </div>
+      <div class="ds-col is-half">
+        <div class="bg-purple-2 p-sm"></div>
+      </div>
+      <div class="ds-col is-half">
+        <div class="bg-purple-2 p-sm"></div>
+      </div>
+      <div class="ds-col is-half">
+        <div class="bg-purple-2 p-sm"></div>
+      </div>
+      <div class="ds-col is-half">
+        <div class="bg-purple-2 p-sm"></div>
+      </div>
+      <div class="ds-col is-half">
+        <div class="bg-purple-2 p-sm"></div>
+      </div>
+      <div class="ds-col is-half">
+        <div class="bg-purple-2 p-sm"></div>
+      </div>
+      <div class="ds-col is-half">
+        <div class="bg-purple-2 p-sm"></div>
+      </div>
+    </div>
   </GridComponent>
   <GridComponent
     scale="1"
@@ -753,7 +770,7 @@ import {
     </ds-steps>
   </GridComponent>
   <GridComponent
-    scale="0.6"
+    scale="0.4"
     label="Table"
     fullwidth
     pageTitle="Components/Table"
@@ -761,7 +778,7 @@ import {
   >
     <ds-card>
       <ds-card-content>
-        <table class="ds-table w-full is-striped p-none">
+        <table class="ds-table is-wide">
           <thead>
             <tr>
               <th>Selected</th>
@@ -775,43 +792,52 @@ import {
               <td>
                 <ds-checkbox id="checkbox1"></ds-checkbox>
               </td>
-              <td>Apple pie</td>
+              <td>Tony Stark</td>
               <td>
-                <ds-tag color="green">Ready</ds-tag>
+                <span class="ds-tag is-success is-sm">Ready</span>
               </td>
               <td class="has-buttons">
-                <ds-button color="secondary" size="small" icon="edit" square outlined></ds-button>
-                <ds-button color="secondary" size="small" icon="trash" square outlined></ds-button>
+                <ds-button color="tertiary" size="sm" icon="edit" square="true" outlined="true"></ds-button>
+                <ds-button color="tertiary" size="sm" icon="trash" square="true" outlined="true"></ds-button>
               </td>
             </tr>
             <tr>
               <td>
                 <ds-checkbox id="checkbox2"></ds-checkbox>
               </td>
-              <td>Mango</td>
+              <td>Steve Rogers</td>
               <td>
-                <ds-tag size="" color="red">
-                  Out of stock
-                </ds-tag>
+                <span class="ds-tag is-danger is-sm">Injured</span>
               </td>
               <td class="has-buttons">
-                <ds-button color="secondary" size="small" icon="edit" square outlined></ds-button>
-                <ds-button color="secondary" size="small" icon="trash" square outlined></ds-button>
+                <ds-button color="tertiary" size="sm" icon="edit" square="true" outlined="true"></ds-button>
+                <ds-button color="tertiary" size="sm" icon="trash" square="true" outlined="true"></ds-button>
               </td>
             </tr>
             <tr>
               <td>
                 <ds-checkbox id="checkbox3"></ds-checkbox>
               </td>
-              <td>Banana</td>
+              <td>Peter Parker</td>
               <td>
-                <ds-tag size="" color="yellow">
-                  In production
-                </ds-tag>
+                <span class="ds-tag is-info is-sm">In School</span>
               </td>
               <td class="has-buttons">
-                <ds-button color="secondary" size="small" icon="edit" square outlined></ds-button>
-                <ds-button color="secondary" size="small" icon="trash" square outlined></ds-button>
+                <ds-button color="tertiary" size="sm" icon="edit" square="true" outlined="true"></ds-button>
+                <ds-button color="tertiary" size="sm" icon="trash" square="true" outlined="true"></ds-button>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <ds-checkbox id="checkbox4"></ds-checkbox>
+              </td>
+              <td>John Doe</td>
+              <td>
+                <span class="ds-tag is-sm">Unknown</span>
+              </td>
+              <td class="has-buttons">
+                <ds-button color="tertiary" size="sm" icon="edit" square="true" outlined="true"></ds-button>
+                <ds-button color="tertiary" size="sm" icon="trash" square="true" outlined="true"></ds-button>
               </td>
             </tr>
           </tbody>
