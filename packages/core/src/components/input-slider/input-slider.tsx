@@ -17,6 +17,7 @@ import {
   inheritAttributes,
   debounceEvent,
   hasValue,
+  isValueEmpty,
   Logger,
   type LogInstance,
   OneOf,
@@ -92,6 +93,15 @@ export class InputSlider implements DsComponentInterface, FieldInterface {
 
   @Watch('value')
   protected valueChanged(newVal: number) {
+    // A slider can never be empty (see the `value` prop doc): resolve `null`/`undefined`/`NaN` — e.g. from
+    // a framework binding resetting to "no value" (Angular's `FormControl.reset()`, React's `value={null}`,
+    // Vue's `v-model` bound to `null`) — onto `min`, the same fallback `connectedCallback` applies to the
+    // initial value. Re-assigning `this.value` re-enters this watcher; the second pass is no longer empty,
+    // so it terminates there instead of looping.
+    if (isValueEmpty(newVal)) {
+      this.value = clampValue(this.min, this.min, this.max)
+      return
+    }
     this.picker?.setValue(newVal)
     this.syncFormValue(newVal)
   }
@@ -234,7 +244,9 @@ export class InputSlider implements DsComponentInterface, FieldInterface {
   readonly required: boolean = true
 
   /**
-   * If `true`, in Angular reactive forms the control will not be set invalid
+   * If `true`, disables the automatic `invalid`/`invalidText` behavior that the `@baloise/ds-angular` integration
+   * applies when the bound `NgControl` is touched and invalid. Only affects the Angular integration; it is a no-op
+   * in other framework integrations.
    */
   @Prop({ reflect: true })
   @Type('boolean')

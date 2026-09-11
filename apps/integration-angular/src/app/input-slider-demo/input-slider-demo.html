@@ -1,0 +1,33 @@
+<h2>Input slider demo</h2>
+
+<p data-testid="input-slider-value">Input slider value: {{ inputSliderValue() }}</p>
+<ds-input-slider
+  data-testid="input-slider"
+  name="smoke-test-input-slider"
+  [value]="inputSliderValue()"
+  (dsInput)="onInput($event)"
+/>
+
+<form [formGroup]="reactiveForm">
+  <ds-input-slider
+    data-testid="reactive-input-slider"
+    name="reactive-input-slider"
+    label="Amount"
+    formControlName="amount"
+  />
+</form>
+<p data-testid="reactive-input-slider-value">Reactive value: {{ reactiveForm.controls.amount.value }}</p>
+<button data-testid="toggle-reactive-input-slider-disabled" type="button" (click)="toggleReactiveFormDisabled()">
+  Toggle disabled
+</button>
+<button data-testid="set-reactive-input-slider-value" type="button" (click)="setReactiveFormValue()">Set to 75</button>
+
+<form [formGroup]="autoInvalidOffForm">
+  <ds-input-slider
+    data-testid="auto-invalid-off-input-slider"
+    name="auto-invalid-off-input-slider"
+    label="Amount"
+    autoInvalidOff
+    formControlName="amount"
+  />
+</form>
