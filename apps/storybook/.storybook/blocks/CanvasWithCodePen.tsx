@@ -36,7 +36,7 @@ export const CanvasWithCodePen = ({
     return [
       {
         title: (
-          <span style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '12px' }}>
+          <span style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="12"

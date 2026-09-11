@@ -11,25 +11,109 @@ html {
   box-shadow: rgb(232, 232, 232) 0px -2px 0px 0px inset;
 }
 
-.sidebar-item[data-selected='true'] {
-  background-color: #000d6e !important;
-  color: #ffffff !important;
-}
-
-.sidebar-item[data-selected='true'] > button,
-.sidebar-item[data-selected='true'] > div > button {
-  background-color: #000d6e !important;
-  color: #ffffff !important;
-  box-shadow: none !important;
-}
-
-.sidebar-header img {
-  max-width: 80%;
-}
-
 /***************************************
  * SEARCH FIELD
  ***************************************/
+
+div[role='toolbar'] button {
+  font-family: 'BaloiseCreateHeadline';
+}
+
+button[aria-label='Grid visibility'],
+button[aria-label='Preview background'],
+button[aria-label='Preview background Light'],
+button[aria-label='Preview background Dark'],
+button[aria-label='Preview background Green'],
+button[aria-label='Preview background Red'],
+button[aria-label='Preview background Yellow'],
+button[aria-label='Preview background Purple'],
+button[aria-label='Outline tool'],
+button[aria-label='Enter full screen'],
+button[aria-label='Open in editor'] {
+  background: #f6f6f6 !important;
+  color: #000d6e;
+  border: none;
+  box-shadow: none;
+  font-family: 'BaloiseCreateHeadline';
+}
+
+button[aria-label='Grid visibility']:hover,
+button[aria-label='Preview background']:hover,
+button[aria-label='Preview background Light']:hover,
+button[aria-label='Preview background Dark']:hover,
+button[aria-label='Preview background Green']:hover,
+button[aria-label='Preview background Red']:hover,
+button[aria-label='Preview background Yellow']:hover,
+button[aria-label='Preview background Purple']:hover,
+button[aria-label='Outline tool']:hover,
+button[aria-label='Enter full screen']:hover,
+button[aria-label='Open in editor']:hover {
+  background: #e5f1fe !important;
+  color: #0014aa;
+}
+
+button[aria-label='Grid visibility']:active,
+button[aria-label='Preview background']:active,
+button[aria-label='Preview background Light']:active,
+button[aria-label='Preview background Dark']:active,
+button[aria-label='Preview background Green']:active,
+button[aria-label='Preview background Red']:active,
+button[aria-label='Preview background Yellow']:active,
+button[aria-label='Preview background Purple']:active,
+button[aria-label='Outline tool']:active,
+button[aria-label='Enter full screen']:active,
+button[aria-label='Open in editor']:active {
+  background: #e5f1fe !important;
+  color: #000739;
+}
+
+button[title='Versions'],
+button[title='Brand theme'],
+button[title='Integration technology'] {
+  background: #f6f6f6 !important;
+  color: #000d6e;
+  border: none;
+  box-shadow: none;
+  font-family: 'BaloiseCreateHeadline';
+}
+
+button[title='Versions']:hover,
+button[title='Brand theme']:hover,
+button[title='Integration technology']:hover {
+  background: #e5f1fe !important;
+  color: #0014aa;
+}
+
+button[title='Versions']:active,
+button[title='Brand theme']:active,
+button[title='Integration technology']:active {
+  background: #e5f1fe !important;
+  color: #000739;
+}
+
+div[data-testid='tooltip'],
+div[data-testid='tooltip'] > div,
+div[data-testid='tooltip'] > div > div {
+  border-radius: 6px !important;
+}
+
+div[data-testid='tooltip'] button {
+  border-radius: 4px !important;
+}
+
+div[data-testid='tooltip'] button:hover {
+  background: #e5e7f0;
+  color: #0014aa;
+}
+
+div[data-testid='tooltip'] button:active {
+  background: #e5e7f0;
+  color: #000739;
+}
+
+.search-field {
+  border-radius: 4px !important;
+}
 
 .search-field input {
   border-radius: 4px;
@@ -56,20 +140,23 @@ html {
   font-weight: 700;
 }
 
+.search-result-item[aria-selected='true'],
+.search-result-item:focus,
+.search-result-item:active,
+.search-result-item:hover {
+  background-color: #e5e7f0 !important;
+}
+
 /***************************************
  * SIDEBAR ROOTs
  ***************************************/
 
+.sidebar-header img {
+  max-width: 80%;
+}
+
 [data-parent-id]:has(+ :not([data-parent-id])) {
   margin-bottom: 16px !important;
-}
-
-.sidebar-header img {
-  max-width: 80% !important;
-}
-
-.sidebar-subheading {
-  margin-block: 4px !important;
 }
 
 .sidebar-subheading > button {
@@ -84,12 +171,36 @@ html {
 }
 
 .sidebar-subheading > button[aria-expanded='true'] {
-  background: #e8e8e8 !important;
+  background: #f6f6f6 !important;
+}
+
+.sidebar-subheading > button[aria-expanded='true']:hover {
+  color: #0014aa !important;
+  background: #e5f1fe !important;
+}
+
+.sidebar-subheading > button[aria-expanded='true']:active {
+  color: #000739 !important;
+  background: #e5f1fe !important;
 }
 
 .sidebar-subheading > button.sidebar-subheading-action {
   display: none !important;
 }
+
+/* .sidebar-header img {
+  max-width: 80% !important;
+}
+
+.sidebar-subheading {
+  margin-block: 4px !important;
+}
+
+
+
+.sidebar-subheading > button.sidebar-subheading-action {
+  display: none !important;
+} */
 
 /***************************************
  * SIDEBAR ITEM
@@ -105,7 +216,7 @@ html {
 }
 
 .sidebar-item > a > div {
-  margin-top: 3px !important;
+  margin-top: 4px !important;
 }
 
 .sidebar-item > div[data-testid='context-menu'] {
@@ -125,12 +236,12 @@ html {
   width: 16px !important;
 }
 
-.sidebar-item[data-nodetype='component'] svg {
+.sidebar-item[data-nodetype='component'] a svg {
   color: #00b28f;
 }
 
-.sidebar-item[data-selected='false'][data-nodetype='document'] svg {
-  color: #9f52cc;
+.sidebar-item[data-selected='false'][data-nodetype='document'] a svg {
+  color: #000d6e;
 }
 
 .sidebar-item[data-selected='false'][data-nodetype='story'] svg {
@@ -148,6 +259,63 @@ html {
 .sidebar-item[data-nodetype='story'] > button > div {
   display: none;
 }
+
+.sidebar-item[data-nodetype='document'] > a:hover {
+  background-color: #e5e7f0 !important;
+  color: #000d6e !important;
+}
+
+.sidebar-item[data-nodetype='document'] > a:active {
+  color: #000739 !important;
+  background-color: #e5e7f0 !important;
+}
+
+.sidebar-item[data-nodetype='document'][data-selected='true'] > a:hover {
+  background-color: #000d6e !important;
+  color: #a7d1fa !important;
+}
+
+.sidebar-item[data-nodetype='document'][data-selected='true'] > a:hover svg {
+  color: #a7d1fa !important;
+}
+
+.sidebar-item[data-nodetype='document'][data-selected='true'] > a:active {
+  color: #56a7f5 !important;
+  background-color: #000d6e !important;
+}
+
+.sidebar-item[data-nodetype='document'][data-selected='true'] > a:active svg {
+  color: #56a7f5 !important;
+}
+
+.sidebar-item[data-nodetype='document'] > button[data-testid='context-menu']:hover,
+.sidebar-item[data-nodetype='document'] > button[data-testid='context-menu']:active,
+.sidebar-item[data-nodetype='document'] > button[data-testid='context-menu'] {
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+/*
+.sidebar-item[data-selected='true'] > button,
+.sidebar-item[data-selected='true'] > div > button {
+  background-color: #000d6e !important;
+  color: #ffffff !important;
+  box-shadow: none !important;
+}
+
+.sidebar-item[aria-selected='true'],
+.sidebar-item:focus,
+.sidebar-item:active,
+.sidebar-item:hover {
+  background-color: #e5e7f0 !important;
+}
+
+.sidebar-item[data-selected='true']:hover,
+.sidebar-item[data-selected='true']:active,
+.sidebar-item[data-selected='true']:focus,
+.sidebar-item[data-selected='true'] {
+  background-color: #000d6e !important;
+  color: #ffffff !important;
+} */
 
 svg[type='story'] {
   display: none;

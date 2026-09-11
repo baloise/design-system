@@ -12,7 +12,7 @@ export default create({
   fontCode: 'monospace',
 
   colorPrimary: '#000d6e',
-  colorSecondary: '#9f52cc',
+  colorSecondary: '#000d6e',
 
   appBg: '#ffffff',
   appContentBg: '#ffffff',
@@ -30,7 +30,7 @@ export default create({
 
   textColor: '#000d6e',
   textInverseColor: '#ffffff',
-  textMutedColor: '#1c5951',
+  textMutedColor: '#656ea8',
 
   gridCellSize: 8,
 })
