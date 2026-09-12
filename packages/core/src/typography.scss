@@ -24,6 +24,10 @@
     }
   }
 
+  .ds-subtitle {
+    font-weight: var(--ds-alias-text-weight-light);
+  }
+
   @for $i from 1 through 5 {
     h#{$i},
     [role='heading'][aria-level='#{$i}'] {

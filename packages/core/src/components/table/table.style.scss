@@ -67,10 +67,8 @@ $css-selector: ('.ds-table');
     }
   }
   td {
+    --checkbox-min-height: 0px;
     hyphens: auto;
-  }
-  td.has-buttons {
-    padding: 2px;
     .ds-button {
       margin-right: 0.25rem;
       &:last-child {
@@ -81,6 +79,10 @@ $css-selector: ('.ds-table');
       justify-content: flex-end;
       padding: 3px;
     }
+  }
+  td.has-buttons {
+    text-align: right;
+    padding: 2px;
   }
   thead {
     tr {

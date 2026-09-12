@@ -30,11 +30,9 @@ import {
     pageTitle="Components/Accordion"
     description="Accordions put users in control of showing or hiding content."
   >
-    <ds-accordion open>
+    <ds-accordion summary-title="true" open>
       <div slot="summary">What is Apple Pie?</div>
-      <div slot="content" class="py-base">
-        Apple pie, a quintessential dessert, combines the comforting aroma of baked apples with a flaky, golden crust.
-      </div>
+      <div slot="content" class="py-base">Apple pie, a quintessential dessert, combines the comforting aroma of baked apples with a flaky, golden crust.</div>
     </ds-accordion>
   </GridComponent>
   <GridComponent
@@ -164,7 +162,9 @@ import {
   >
     <ds-stack>
       <ds-button wide>Primary</ds-button>
-      <ds-button wide color="secondary">Secondary</ds-button>
+      <ds-button wide color="secondary">
+        Secondary
+      </ds-button>
     </ds-stack>
   </GridComponent>
   <GridComponent
@@ -174,65 +174,48 @@ import {
     description="Cards contain content and actions about a single subject and can be combined with other components."
   >
     <ds-card>
+      <ds-card-header>
+        <h3 class="ds-title">Apple Pie</h3>
+      </ds-card-header>
       <ds-card-content>
-        <ds-stack layout="vertical" space="large">
-          <ds-content>
-            <ds-heading level="x-large">Apple Pie</ds-heading>
-            <ds-text>
-              Apple pie, a quintessential dessert, combines the comforting aroma of baked apples with a flaky, golden
-              crust.
-            </ds-text>
-          </ds-content>
-          <ds-button>Button</ds-button>
-        </ds-stack>
+        <p>
+          Apple pie, a quintessential dessert, combines the comforting aroma of baked apples with a flaky, golden crust.
+        </p>
       </ds-card-content>
+      <ds-card-action>
+        <ds-button>Button</ds-button>
+      </ds-card-action>
     </ds-card>
   </GridComponent>
   <GridComponent
-    scale="0.5"
+    scale="1"
     label="Carousel"
     fullwidth
     pageTitle="Components/Carousel"
     description="The carousel component combines all the slide use cases."
   >
-    <ds-card>
-      <ds-card-content>
-        <ds-carousel controls="large" interface="product" items-per-view="auto" steps="2">
-          <ds-carousel-item color="green" label="Car" src="/assets/images/brand-icons/car-green.svg"></ds-carousel-item>
-          <ds-carousel-item
-            color="yellow"
-            label="Home"
-            src="/assets/images/brand-icons/ecosystem-home-tangerine.svg"
-          ></ds-carousel-item>
-          <ds-carousel-item
-            color="purple"
-            label="Holiday"
-            src="/assets/images/brand-icons/holiday-palms-purple.svg"
-          ></ds-carousel-item>
-          <ds-carousel-item
-            color="red"
-            label="Insurances"
-            src="/assets/images/brand-icons/insurances-red.svg"
-          ></ds-carousel-item>
-          <ds-carousel-item color="green" label="Car" src="/assets/images/brand-icons/car-green.svg"></ds-carousel-item>
-          <ds-carousel-item
-            color="yellow"
-            label="Home"
-            src="/assets/images/brand-icons/ecosystem-home-tangerine.svg"
-          ></ds-carousel-item>
-          <ds-carousel-item
-            color="purple"
-            label="Holiday"
-            src="/assets/images/brand-icons/holiday-palms-purple.svg"
-          ></ds-carousel-item>
-          <ds-carousel-item
-            color="red"
-            label="Insurances"
-            src="/assets/images/brand-icons/insurances-red.svg"
-          ></ds-carousel-item>
-        </ds-carousel>
-      </ds-card-content>
-    </ds-card>
+  <div class="flex justify-content-center align-items-center">
+<ds-carousel variant="tile" controls="large" style={{ width: '90%'}}>
+  <ds-carousel-item name="auto" color="purple" navigation="">
+    <div class="px-lg h-4rem bg-purple-3 radius"></div>
+  </ds-carousel-item>
+  <ds-carousel-item name="auto" color="purple" navigation="">
+    <div class="px-lg h-4rem bg-purple-3 radius"></div>
+  </ds-carousel-item>
+    <ds-carousel-item name="auto" color="purple" navigation="">
+    <div class="px-lg h-4rem bg-purple-3 radius"></div>
+  </ds-carousel-item>
+    <ds-carousel-item name="auto" color="purple" navigation="">
+    <div class="px-lg h-4rem bg-purple-3 radius"></div>
+  </ds-carousel-item>
+    <ds-carousel-item name="auto" color="purple" navigation="">
+    <div class="px-lg h-4rem bg-purple-3 radius"></div>
+  </ds-carousel-item>
+    <ds-carousel-item name="auto" color="purple" navigation="">
+    <div class="px-lg h-4rem bg-purple-3 radius"></div>
+  </ds-carousel-item>
+</ds-carousel>
+</div>
   </GridComponent>
   <GridComponent
     scale="1"
@@ -257,7 +240,7 @@ import {
     <div class="bg-purple-2 radius p-base" style={{ marginLeft: '10%', width: '80%', height: '120px' }}>
       <div class="flex gap-sm" style={{ height: '24px' }}>
         <div class="bg-purple-1 radius-lg flex-1" style={{ width: '100%', height: '20px' }}></div>
-        <ds-close ></ds-close>
+        <ds-close></ds-close>
       </div>
       <div class="bg-purple-1 radius-lg mt-base" style={{ width: '80%', height: '10px' }}></div>
       <div class="bg-purple-1 radius-lg mt-xs" style={{ width: '90%', height: '10px' }}></div>
@@ -300,14 +283,14 @@ import {
   >
     <ds-card>
       <ds-card-content>
-        <ds-data border>
-          <ds-data-item>
+        <ds-data>
+          <ds-data-item editable="true">
             <ds-data-label>Name</ds-data-label>
-            <ds-data-value>Apple pie</ds-data-value>
+            <ds-data-value>John Doe</ds-data-value>
           </ds-data-item>
-          <ds-data-item>
-            <ds-data-label>Category</ds-data-label>
-            <ds-data-value editable>Cake</ds-data-value>
+          <ds-data-item editable="true">
+            <ds-data-label>Email</ds-data-label>
+            <ds-data-value>john@mail.com</ds-data-value>
           </ds-data-item>
         </ds-data>
       </ds-card-content>
@@ -395,16 +378,32 @@ import {
     pageTitle="Components/Grid"
     description="Grid is a layout component that allows you to create responsive layouts with a 12-column system."
   >
-<div class="ds-grid is-multiline gap-sm">
-  <div class="ds-col is-half"><div class="bg-purple-2 p-sm"></div></div>
-  <div class="ds-col is-half"><div class="bg-purple-2 p-sm"></div></div>
-  <div class="ds-col is-half"><div class="bg-purple-2 p-sm"></div></div>
-  <div class="ds-col is-half"><div class="bg-purple-2 p-sm"></div></div>
-  <div class="ds-col is-half"><div class="bg-purple-2 p-sm"></div></div>
-  <div class="ds-col is-half"><div class="bg-purple-2 p-sm"></div></div>
-  <div class="ds-col is-half"><div class="bg-purple-2 p-sm"></div></div>
-  <div class="ds-col is-half"><div class="bg-purple-2 p-sm"></div></div>
-</div>
+    <div class="ds-grid is-multiline gap-sm">
+      <div class="ds-col is-half">
+        <div class="bg-purple-2 p-sm"></div>
+      </div>
+      <div class="ds-col is-half">
+        <div class="bg-purple-2 p-sm"></div>
+      </div>
+      <div class="ds-col is-half">
+        <div class="bg-purple-2 p-sm"></div>
+      </div>
+      <div class="ds-col is-half">
+        <div class="bg-purple-2 p-sm"></div>
+      </div>
+      <div class="ds-col is-half">
+        <div class="bg-purple-2 p-sm"></div>
+      </div>
+      <div class="ds-col is-half">
+        <div class="bg-purple-2 p-sm"></div>
+      </div>
+      <div class="ds-col is-half">
+        <div class="bg-purple-2 p-sm"></div>
+      </div>
+      <div class="ds-col is-half">
+        <div class="bg-purple-2 p-sm"></div>
+      </div>
+    </div>
   </GridComponent>
   <GridComponent
     scale="1"
@@ -426,7 +425,7 @@ import {
   >
     <div class="py-base">
       <ds-icon name="info-circle" size="medium" style={{ position: 'absolute', top: '20%', left: '15%' }}></ds-icon>
-      <div class="bg-grey radius shadow p-base" style={{ scale: '0.5', position: 'absolute', top: '-10%' }}>
+      <div class="bg-grey-1 radius-md shadow p-base" style={{ scale: '0.5', position: 'absolute', top: '-10%' }}>
         <ds-stack layout="vertical">
           <h4 class="ds-title text-lg">Apple pie</h4>
           <span>
@@ -506,29 +505,24 @@ import {
     pageTitle="Components/List"
     description="List present content in a way that makes it easy to identify a specific item in a collection."
   >
-    <ds-card>
-      <ds-card-content>
-        <ds-list border background="color">
-          <ds-list-item clickable href="www.helvetia.com" target="_blank">
-            <ds-list-item-content>
-              <ds-list-item-title>Apples</ds-list-item-title>
-            </ds-list-item-content>
-            <ds-list-item-icon right>
-              <ds-icon name="nav-go-right" size="x-small"></ds-icon>
-            </ds-list-item-icon>
-          </ds-list-item>
-          <ds-list-item clickable href="www.helvetia.com" target="_blank">
-            <ds-list-item-content>
-              <ds-list-item-title>Mango</ds-list-item-title>
-              <ds-list-item-subtitle>Mangos are tropical stone fruits.</ds-list-item-subtitle>
-            </ds-list-item-content>
-            <ds-list-item-icon right>
-              <ds-icon name="link" size="x-small"></ds-icon>
-            </ds-list-item-icon>
-          </ds-list-item>
-        </ds-list>
-      </ds-card-content>
-    </ds-card>
+  <div class="ds-grid">
+    <ds-list class="ds-col">
+      <ds-item variant="link" label="Internal Link" href="www.helvetia.com" target="_blank"></ds-item>
+      <ds-item
+        variant="link"
+        action-icon="link-external"
+        label="External Link"
+        description="Description"
+        href="www.helvetia.com"
+        target="_blank"
+      ></ds-item>
+    </ds-list>
+    <ul class="ds-col is-one-third unordered-list has-bullet-circle is-purple">
+      <li>Apple</li>
+      <li>Mango</li>
+      <li>Banana</li>
+    </ul>
+    </div>
   </GridComponent>
   <GridComponent
     scale="1.2"
@@ -539,7 +533,7 @@ import {
     <ds-logo size="large"></ds-logo>
   </GridComponent>
   <GridComponent
-    scale="0.5"
+    scale="0.8"
     label="Modal"
     fullwidth
     fullheight
@@ -547,36 +541,14 @@ import {
     pageTitle="Components/Modal"
     description="Checkboxes allow users to select one or more items from a set. Checkboxes can turn one or more option(s) on or off."
   >
-    <ds-modal demo>
-      <ds-modal-header>Apple pie</ds-modal-header>
-      <ds-modal-body>
-        <span class="block">
-          Apple pie, a quintessential dessert, combines the comforting aroma of baked apples with a flaky, golden crust.
-        </span>
-        <ds-button-group position="right" reverse>
-          <ds-button color="text">No</ds-button>
-          <ds-button color="primary">Yes, please</ds-button>
-        </ds-button-group>
-      </ds-modal-body>
-    </ds-modal>
-  </GridComponent>
-  <GridComponent
-    scale="1"
-    label="Nav"
-    fullheight
-    fullwidth
-    pageTitle="Components/Nav"
-    description="Navigation component serves as a central hub for seamless user navigation within the applications."
-  >
-    <div class="bg-primary mt-sm" style={{ width: '100%', height: '24px' }}></div>
-    <div class="bg-white radius-lg mt-sm p-xs" style={{ marginLeft: '10%', width: '80%', height: '40px' }}>
-      <ds-stack>
-        <ds-logo style={{ scale: '0.5', marginLeft: '-24px' }}></ds-logo>
-        <div class="bg-grey-3 radius-lg" style={{ width: '32px', height: '8px' }}></div>
-        <div class="bg-grey-3 radius-lg" style={{ width: '32px', height: '8px' }}></div>
-        <div class="bg-grey-3 radius-lg" style={{ width: '32px', height: '8px' }}></div>
-        <div class="bg-grey-3 radius-lg" style={{ width: '32px', height: '8px' }}></div>
-      </ds-stack>
+    <div style={{ backgroundColor: 'rgba(0, 7, 57, 0.5)' ,width: '100%', height: '280px',     backdropFilter: 'blur(4px)',
+    opacity: '0.8' }}></div>
+    <div class="bg-white radius-lg stack p-base" style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: '80%', height: '140px' }}>
+      <div class="ds-stack as-row">
+        <h4 class="ds-title ds-stack-content">Apple Pie</h4>
+        <ds-close></ds-close>
+      </div>
+      <p class="text-sm mt-sm flex-1">Apple pie, a quintessential dessert, combines the comforting aroma of baked apples with a flaky, golden crust.</p>
     </div>
   </GridComponent>
   <GridComponent
@@ -608,7 +580,7 @@ import {
     <ds-pagination page-range="1" total-pages="20" value="2"></ds-pagination>
   </GridComponent>
   <GridComponent
-    scale="0.5"
+    scale="0.8"
     label="Popup"
     fullheight
     fullwidth
@@ -616,13 +588,12 @@ import {
     pageTitle="Components/Popup"
     description="Tag highlights a label for quick recognition."
   >
-    <div class="flex justify-content-center align-items-center">
-      <ds-button ds-popup="my-popup" color="secondary">
-        Apple pie
-      </ds-button>
-      <ds-popup id="my-popup" label="Apple pie" offset="16" demo>
-        Apple pie, a quintessential dessert, with a flaky, golden crust.
-      </ds-popup>
+    <div class="relative" style={{marginLeft: '-160px'}}>
+      <ds-button color="primary">Apple pie</ds-button>
+    <div class="bg-white radius-lg stack p-base" style={{ position: 'absolute', top: '50%', left: '220px', transform: 'translate(-50%, -50%)', width: '140px', height: '140px' }}>
+        <ds-close style={{ position: 'absolute', top: '8px', right: '8px' }}></ds-close>
+      <p class="text-sm">        Apple pie, a quintessential dessert, with a flaky, golden crust.</p>
+    </div>
     </div>
   </GridComponent>
   <GridComponent
@@ -701,7 +672,7 @@ import {
     </ds-sheet>
   </GridComponent>
   <GridComponent
-    scale="0.5"
+    scale="0.8"
     label="Snackbar"
     fullwidth
     fullheight
@@ -709,7 +680,7 @@ import {
     description="Checkboxes allow users to select one or more items from a set. Checkboxes can turn one or more option(s) on or off."
   >
     <div style={{ position: 'absolute', bottom: '1rem', right: '0' }}>
-      <ds-snackbar subject="Apple Pie" action="Yes, please">
+      <ds-snackbar heading="Apple Pie"  color="info" closable>
         Want some more apple pie slices?
       </ds-snackbar>
     </div>
@@ -753,7 +724,7 @@ import {
     </ds-steps>
   </GridComponent>
   <GridComponent
-    scale="0.6"
+    scale="0.4"
     label="Table"
     fullwidth
     pageTitle="Components/Table"
@@ -761,7 +732,7 @@ import {
   >
     <ds-card>
       <ds-card-content>
-        <table class="ds-table w-full is-striped p-none">
+        <table class="ds-table is-wide">
           <thead>
             <tr>
               <th>Selected</th>
@@ -775,43 +746,52 @@ import {
               <td>
                 <ds-checkbox id="checkbox1"></ds-checkbox>
               </td>
-              <td>Apple pie</td>
+              <td>Tony Stark</td>
               <td>
-                <ds-tag color="green">Ready</ds-tag>
+                <span class="ds-tag is-success is-sm">Ready</span>
               </td>
               <td class="has-buttons">
-                <ds-button color="secondary" size="small" icon="edit" square outlined></ds-button>
-                <ds-button color="secondary" size="small" icon="trash" square outlined></ds-button>
+                <ds-button color="tertiary" size="sm" icon="edit" square="true" outlined="true"></ds-button>
+                <ds-button color="tertiary" size="sm" icon="trash" square="true" outlined="true"></ds-button>
               </td>
             </tr>
             <tr>
               <td>
                 <ds-checkbox id="checkbox2"></ds-checkbox>
               </td>
-              <td>Mango</td>
+              <td>Steve Rogers</td>
               <td>
-                <ds-tag size="" color="red">
-                  Out of stock
-                </ds-tag>
+                <span class="ds-tag is-danger is-sm">Injured</span>
               </td>
               <td class="has-buttons">
-                <ds-button color="secondary" size="small" icon="edit" square outlined></ds-button>
-                <ds-button color="secondary" size="small" icon="trash" square outlined></ds-button>
+                <ds-button color="tertiary" size="sm" icon="edit" square="true" outlined="true"></ds-button>
+                <ds-button color="tertiary" size="sm" icon="trash" square="true" outlined="true"></ds-button>
               </td>
             </tr>
             <tr>
               <td>
                 <ds-checkbox id="checkbox3"></ds-checkbox>
               </td>
-              <td>Banana</td>
+              <td>Peter Parker</td>
               <td>
-                <ds-tag size="" color="yellow">
-                  In production
-                </ds-tag>
+                <span class="ds-tag is-info is-sm">In School</span>
               </td>
               <td class="has-buttons">
-                <ds-button color="secondary" size="small" icon="edit" square outlined></ds-button>
-                <ds-button color="secondary" size="small" icon="trash" square outlined></ds-button>
+                <ds-button color="tertiary" size="sm" icon="edit" square="true" outlined="true"></ds-button>
+                <ds-button color="tertiary" size="sm" icon="trash" square="true" outlined="true"></ds-button>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <ds-checkbox id="checkbox4"></ds-checkbox>
+              </td>
+              <td>John Doe</td>
+              <td>
+                <span class="ds-tag is-sm">Unknown</span>
+              </td>
+              <td class="has-buttons">
+                <ds-button color="tertiary" size="sm" icon="edit" square="true" outlined="true"></ds-button>
+                <ds-button color="tertiary" size="sm" icon="trash" square="true" outlined="true"></ds-button>
               </td>
             </tr>
           </tbody>
@@ -872,16 +852,16 @@ import {
     <ds-time-input style={{ width: '227px' }}></ds-time-input>
   </GridComponent>
   <GridComponent
-    scale="0.5"
+    scale="0.8"
     label="Toast"
     pageTitle="Components/Toast"
     description="Checkboxes allow users to select one or more items from a set. Checkboxes can turn one or more option(s) on or off."
   >
-    <div style={{ marginTop: '-180px' }}>
-      <ds-toast>
-        <strong>Alert</strong> Apple pie is ready
-      </ds-toast>
+    <div style={{ marginTop: '-100px' }}>
+  <ds-toast color="success" heading="Success"> Your changes have been saved. </ds-toast>
+
     </div>
+
   </GridComponent>
   <GridComponent
     scale="1"
@@ -892,11 +872,9 @@ import {
     pageTitle="Components/Tooltip"
     description="Tag highlights a label for quick recognition."
   >
-    <ds-button color="secondary" id="basic-tooltip">
-      Apple Pie
-    </ds-button>
-    <ds-tooltip reference="basic-tooltip" demo>
-      Apple pie is a dessert
-    </ds-tooltip>
+    <div class="flex justify-content-center align-items-center p-lg" style={{ marginTop: '-48px' }}>
+      <button class="ds-button is-secondary" id="tooltip-basic" type="button">Apple Pie</button>
+      <ds-tooltip reference="tooltip-basic" placement="bottom" open="true">Apple pie is a dessert</ds-tooltip>
+    </div>
   </GridComponent>
 </GridComponents>

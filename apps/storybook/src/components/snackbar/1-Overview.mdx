@@ -18,6 +18,13 @@ import { SNACKBAR_DOC_CONFIG, getSnackbarTabs } from './snackbar.doc-config'
 
 <ComponentLead component="snackbar" />
 
+Snackbars are usually not placed in markup directly, but presented imperatively from the `snackbarController`
+(available as `window.DesignSystem.snackbarController`, or via `dsSnackbarController` when importing
+`@baloise/ds-core`). Calling `create()` mounts a `ds-snackbar` into a shared container, animates it in, and manages
+auto-dismissal — click a trigger below to see it fly in.
+
+<CanvasWithCodePen of={SnackbarStories.Controller} sourceState="closed" />
+
 <CanvasWithCodePen of={SnackbarStories.Basic} sourceState="shown" />
 
 <Controls of={SnackbarStories.Basic} />

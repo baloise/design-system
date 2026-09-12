@@ -69,6 +69,7 @@ export const Variants = Story({
   <ds-button color="primary">Primary</ds-button>
   <ds-button color="secondary">Secondary</ds-button>
   <ds-button color="tertiary">Tertiary</ds-button>
+  <ds-button color="ghost">Ghost</ds-button>
 </ds-button-group>
 <ds-button-group class="mt-base">
   <ds-button color="link">Link</ds-button>

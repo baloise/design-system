@@ -10,12 +10,16 @@ const meta: Meta<Args> = {
   title: 'Components/Data/Variants',
   args: {
     slot: `<ds-data-item>
-  <ds-data-label>Label</ds-data-label>
-  <ds-data-value>Value</ds-data-value>
+  <ds-data-label>Firstname</ds-data-label>
+  <ds-data-value>Peter</ds-data-value>
+</ds-data-item>
+<ds-data-item>
+  <ds-data-label>Lastname</ds-data-label>
+  <ds-data-value>Parker</ds-data-value>
 </ds-data-item>
 <ds-data-item>
   <ds-data-label>Email</ds-data-label>
-  <ds-data-value>user@example.com</ds-data-value>
+  <ds-data-value>peter.parger@daily-bugle.com</ds-data-value>
 </ds-data-item>`,
   },
   argTypes: {
