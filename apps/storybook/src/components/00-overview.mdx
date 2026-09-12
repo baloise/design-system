@@ -37,14 +37,14 @@ import {
   </GridComponent>
   <GridComponent
     scale="0.5"
-    label="App"
+    label="Root"
     fullwidth
     fullheight
     fullscreen
-    pageTitle="Components/App"
-    description="App is a container element for an Helvetia Design System application."
+    pageTitle="Components/Root"
+    description="Root is a container element for a Helvetia Design System application."
   >
-    <ds-app
+    <ds-root
       class="bg-white h-full radius flex flex-direction-column"
       style={{ minHeight: '336px', margin: '32px', overflow: 'hidden' }}
     >
@@ -53,7 +53,7 @@ import {
           <a href="/" slot="brand">
             <ds-logo color="inverted"></ds-logo>
           </a>
-          <h1 slot="title">App</h1>
+          <h1 slot="title">Root</h1>
         </ds-app-navbar>
       </header>
       <main class="flex-1">
@@ -63,7 +63,7 @@ import {
         </div>
       </main>
       <div class="bg-primary" style={{ height: '3rem', width: '100%' }}></div>
-    </ds-app>
+    </ds-root>
   </GridComponent>
   <GridComponent
     scale="0.5"

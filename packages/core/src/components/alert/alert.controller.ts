@@ -1,4 +1,4 @@
-import { getAppRoot } from '@utils'
+import { getRootElement } from '@utils'
 import { Alert, AlertType } from './alert-container.interfaces'
 
 export type { Alert } from './alert-container.interfaces'
@@ -40,7 +40,7 @@ class AlertControllerImpl implements AlertController {
       this.container.id = containerId
       this.container.setAttribute('type', this.type)
 
-      const root = getAppRoot(document)
+      const root = getRootElement(document)
       root.appendChild(this.container)
     }
   }

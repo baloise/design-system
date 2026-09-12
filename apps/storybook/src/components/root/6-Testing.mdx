@@ -1,0 +1,19 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  ComponentPageObject,
+  Footer,
+} from '../../../.storybook/blocks'
+import * as RootStories from './root.stories'
+import { ROOT_DOC_CONFIG, getRootTabs } from './root.doc-config'
+
+<Meta title="Components/Root/Testing" name="Testing" />
+
+<Banner label={'Testing'} section={ROOT_DOC_CONFIG.section} color={ROOT_DOC_CONFIG.color} />
+
+<BannerTabs of={RootStories} tabs={getRootTabs('testing')} />
+
+<ComponentPageObject component="root" />
+
+<Footer />

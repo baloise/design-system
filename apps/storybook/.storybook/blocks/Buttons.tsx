@@ -113,14 +113,14 @@ export const ButtonLink = ({ children, color, target, link, label }) => {
 
 export const GridComponents = ({ children }) => {
   return (
-    <ds-app>
+    <ds-root>
       <div
         className="sb-unstyled ds-grid is-multiline mt-base"
         style={{ '--ds-column-gap': '.5rem', 'userSelect': 'none' }}
       >
         {children}
       </div>
-    </ds-app>
+    </ds-root>
   )
 }
 

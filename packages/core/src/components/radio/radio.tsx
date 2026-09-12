@@ -23,7 +23,7 @@ import {
   OneOf,
   Type,
 } from '@utils'
-import { FOCUS_KEYS } from '../app/app.focus.util'
+import { FOCUS_KEYS } from '../root/root.focus.util'
 import {
   RADIO_GROUP_COLUMNS,
   RADIO_TILE_COLORS,
