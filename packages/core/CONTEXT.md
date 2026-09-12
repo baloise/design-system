@@ -9,6 +9,7 @@ This document captures domain language, architectural patterns, and key concepts
 - Web Components (standard custom elements)
 - Angular bindings (auto-generated wrapper components)
 - React bindings (auto-generated hooks/components)
+- Hydrate script (Node-compatible SSR renderer at `hydrate/`)
 - TypeScript type definitions for all frameworks
 
 ## Core Concepts
@@ -23,7 +24,7 @@ This document captures domain language, architectural patterns, and key concepts
 
 1. **Authoring** → `.tsx` + `.scss` in `packages/core/src/components/<name>/`
 2. **Compilation** → Stencil compiler transpiles to web components in `dist/`
-3. **Output targets** → Additional targets (Angular, React, Web) generate bindings
+3. **Output targets** → Additional targets (Angular, React, Web, hydrate) generate bindings and the SSR renderer
 4. **Distribution** → Built artifacts published to npm as `@baloise/ds-core`
 
 ### Component Types
@@ -706,9 +707,30 @@ dynamic imports:
 import { initialize } from '@baloise/ds-core/initialize'
 ```
 
-`exports` also declares `"."`, `"./components"`, and `"./loader"` explicitly
-(mirroring their `files`-listed directory-index resolution) plus a `"./*"`
-fallback, so adding this map doesn't drop any previously-working deep import.
+`exports` also declares `"."`, `"./components"`, `"./loader"`, and
+`"./hydrate"` explicitly (mirroring their `files`-listed directory-index
+resolution) plus a `"./*"` fallback, so adding this map doesn't drop any
+previously-working deep import.
+
+### Hydrate Script (`@baloise/ds-core/hydrate`)
+
+`stencil.config.ts` includes a `dist-hydrate-script` output target (skipped in
+dev/docs builds, same as `dist` / `dist-custom-elements`). It produces a
+Node-compatible renderer at `hydrate/` on the package root, published via the
+`files` array. `exports["./hydrate"]` maps types to `hydrate/index.d.ts` and
+the Node entries to `index.mjs`/`index.js` — the `"./*"` fallback is enough
+for untyped Node resolution, but TypeScript (and the generated React server
+wrappers that `import('@baloise/ds-core/hydrate')`) need the explicit types
+condition, the same pattern as `./components` and `./loader`.
+
+The React generator (`config/stencil.bindings.react.ts`) points
+`hydrateModule` at that path and sets `serializeShadowRoot:
+'declarative-shadow-dom'`, so a core build also emits
+`packages/react/src/generated/components.server.ts` alongside the existing
+client `components.ts`. Consumer-facing SSR (a `"node"`-condition exports map
+on `@baloise/ds-react`, and a client-only carve-out for the Modal/Toast/Snackbar
+idioms) is the next ticket — see
+[ADR-0029](../../docs/adr/0029-ssr-hydrate-build.md).
 
 ## Token Preview Listener
 

@@ -14,6 +14,7 @@ export default tseslint.config(
       '**/vitest.config.*.timestamp*',
       'loader/**',
       'components/**',
+      'hydrate/**',
       'www/**',
       'playwright-report/**',
       '**/components.d.ts',

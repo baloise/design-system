@@ -21,7 +21,16 @@
     "build": {
       "dependsOn": ["^build"],
       "inputs": ["src/**", "app/**", "tokens/**", "!**/*.spec.*", "!**/*.play.*"],
-      "outputs": ["dist/**", "www/**", "docs/**", "components/**", "loader/**", ".next/**", "!.next/cache/**"]
+      "outputs": [
+        "dist/**",
+        "www/**",
+        "docs/**",
+        "components/**",
+        "loader/**",
+        "hydrate/**",
+        ".next/**",
+        "!.next/cache/**"
+      ]
     },
     "test": {
       "dependsOn": ["^build"],
