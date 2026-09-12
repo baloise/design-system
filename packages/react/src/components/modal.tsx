@@ -13,7 +13,7 @@ export const Modal = forwardRef<ComponentRef<typeof DsModal>, ModalProps>(functi
     <DsModal
       {...props}
       ref={ref}
-      onDsDidDismiss={event => {
+      onDsDidDismiss={(event: Parameters<NonNullable<typeof onDsDidDismiss>>[0]) => {
         onOpenChange?.(false)
         onDsDidDismiss?.(event)
       }}
