@@ -1929,6 +1929,10 @@ interface TokenRowBrandInfo {
   brand: string
   token: FlatToken
   hex: string | null
+  // The brand's own token override carries whatever `resolvedValue` it last had at commit time
+  // (upsertOrRemoveBrandEntry doesn't re-resolve it) — this is the reference-chased value from
+  // brandResolvedByPath instead, the same source the color swatch's hex already uses above.
+  resolvedValue: unknown
   mode: 'value' | 'reference'
   valueText: string
   alphaText: string
@@ -1967,6 +1971,7 @@ interface TokenRowHandlers {
   onBrandColorPick: (brand: string, id: string, type: string, text: string) => void
   onBrandDimensionUnitChange: (brand: string, id: string, unit: 'px' | 'rem') => void
   onBrandShadowChange: (brand: string, id: string, rawValue: unknown) => void
+  onBrandBorderChange: (brand: string, id: string, rawValue: unknown) => void
   onBrandTypographyChange: (brand: string, id: string, rawValue: unknown) => void
   onBrandResponsiveDimensionChange: (brand: string, id: string, value: ResponsiveDimensionValue) => void
   onBrandAlphaChange: (brand: string, id: string, text: string) => void
@@ -1975,6 +1980,7 @@ interface TokenRowHandlers {
   onSetBrandMode: (id: string, mode: 'value' | 'reference') => void
   renderPopoverHeader: RenderPopoverHeader
   renderReferenceSearch: RenderReferenceSearch
+  renderBrandReferenceSearch: RenderReferenceSearch
 }
 
 interface TokenRowProps {
@@ -2281,9 +2287,6 @@ const TokenRow = memo(function TokenRow({
                   )}
               </div>
             ) : token.type === 'border' ? (
-              // Global-only — a border composite token's brand-override cell isn't implemented in
-              // this pass (docs/plans/border-token-type-plan.md decisions 8/11 scope the pilot to
-              // Global, so there's nothing at brand level to edit yet).
               <div className="group/tag flex items-center gap-1">
                 <Popover open={isPopoverOpen} onOpenChange={open => handlers.onPopoverOpenChange(id, open)}>
                   <PopoverTrigger
@@ -2803,7 +2806,7 @@ const TokenRow = memo(function TokenRow({
                                 )}
                               </div>
                             ) : (
-                              handlers.renderReferenceSearch(
+                              handlers.renderBrandReferenceSearch(
                                 brandToken.referenceTarget ?? '',
                                 value => handlers.onBrandReferenceChange(brand, id, value),
                                 `${brand} reference target for ${token.name || 'token'}`,
@@ -2866,12 +2869,97 @@ const TokenRow = memo(function TokenRow({
                                 onChange={next => handlers.onBrandShadowChange(brand, id, next)}
                               />
                             ) : (
-                              handlers.renderReferenceSearch(
+                              handlers.renderBrandReferenceSearch(
                                 brandToken.referenceTarget ?? '',
                                 value => handlers.onBrandReferenceChange(brand, id, value),
                                 `${brand} reference target for ${token.name || 'token'}`,
                                 true,
                                 ['shadow'],
+                              )
+                            )}
+                          </PopoverContent>
+                        </Popover>
+                        {brandToken.referenceTarget &&
+                          renderDetachButton(`Detach ${brand} alias for ${token.name || 'token'}`, () =>
+                            handlers.onBrandReferenceChange(brand, id, ''),
+                          )}
+                      </div>
+                    ) : brandToken.type === 'border' ? (
+                      <div className="group/tag flex items-center gap-1">
+                        <Popover
+                          open={brandInfo.isPopoverOpen}
+                          onOpenChange={open => handlers.onPopoverOpenChange(brandCellId, open)}
+                        >
+                          <PopoverTrigger
+                            render={
+                              brandToken.referenceTarget ? (
+                                <Button
+                                  type="button"
+                                  variant="outline"
+                                  aria-label={`${brand} value for ${token.name || 'token'}`}
+                                  className={CELL_TAG_CLASS}
+                                />
+                              ) : (
+                                <button
+                                  type="button"
+                                  aria-label={`${brand} value for ${token.name || 'token'}`}
+                                  className={CELL_TRIGGER_CLASS}
+                                />
+                              )
+                            }
+                          >
+                            {brandToken.referenceTarget ? (
+                              <>
+                                {renderBorderLinePreview(
+                                  getColorHex(
+                                    isBorderValue(brandInfo.resolvedValue) ? brandInfo.resolvedValue.color : undefined,
+                                  ),
+                                  cssBorderStyleFor(
+                                    isBorderValue(brandInfo.resolvedValue) ? brandInfo.resolvedValue.style : undefined,
+                                  ),
+                                )}
+                                <span className="w-fit">{toSlashPath(brandToken.referenceTarget)}</span>
+                              </>
+                            ) : (
+                              <>
+                                {renderColorSwatch(
+                                  getColorHex(
+                                    isBorderValue(brandInfo.resolvedValue) ? brandInfo.resolvedValue.color : undefined,
+                                  ),
+                                  alphaPercentFor(
+                                    isBorderValue(brandInfo.resolvedValue) ? brandInfo.resolvedValue.color : undefined,
+                                  ),
+                                )}
+                                <span className="w-fit">{borderSummaryText(brandInfo.resolvedValue)}</span>
+                              </>
+                            )}
+                          </PopoverTrigger>
+                          <PopoverContent className="w-96">
+                            {handlers.renderPopoverHeader(
+                              [
+                                { value: 'value', label: 'Border' },
+                                { value: 'reference', label: 'Reference' },
+                              ],
+                              brandMode,
+                              value => handlers.onSetBrandMode(id, value as 'value' | 'reference'),
+                              `${brand} value mode for ${token.name || 'token'}`,
+                            )}
+                            {brandMode === 'value' ? (
+                              <BorderEditor
+                                idPrefix={`border-brand-${brand}-${id}`}
+                                rawValue={brandToken.rawValue}
+                                resolvedValue={brandInfo.resolvedValue}
+                                onChange={next => handlers.onBrandBorderChange(brand, id, next)}
+                                renderPopoverHeader={handlers.renderPopoverHeader}
+                                renderReferenceSearch={handlers.renderBrandReferenceSearch}
+                              />
+                            ) : (
+                              handlers.renderBrandReferenceSearch(
+                                brandToken.referenceTarget ?? '',
+                                value => handlers.onBrandReferenceChange(brand, id, value),
+                                `${brand} reference target for ${token.name || 'token'}`,
+                                true,
+                                ['border'],
                               )
                             )}
                           </PopoverContent>
@@ -2921,10 +3009,10 @@ const TokenRow = memo(function TokenRow({
                                   isTypographyValue(brandToken.rawValue) ? brandToken.rawValue : EMPTY_TYPOGRAPHY_VALUE
                                 }
                                 onChange={next => handlers.onBrandTypographyChange(brand, id, next)}
-                                renderReferenceSearch={handlers.renderReferenceSearch}
+                                renderReferenceSearch={handlers.renderBrandReferenceSearch}
                               />
                             ) : (
-                              handlers.renderReferenceSearch(
+                              handlers.renderBrandReferenceSearch(
                                 brandToken.referenceTarget ?? '',
                                 value => handlers.onBrandReferenceChange(brand, id, value),
                                 `${brand} reference target for ${token.name || 'token'}`,
@@ -2970,7 +3058,7 @@ const TokenRow = memo(function TokenRow({
                               idPrefix={`responsive-dimension-brand-${brand}-${id}`}
                               value={brandToken.responsive}
                               onChange={next => handlers.onBrandResponsiveDimensionChange(brand, id, next)}
-                              renderReferenceSearch={handlers.renderReferenceSearch}
+                              renderReferenceSearch={handlers.renderBrandReferenceSearch}
                             />
                           </PopoverContent>
                         </Popover>
@@ -3002,7 +3090,7 @@ const TokenRow = memo(function TokenRow({
                                   null,
                                   `${brand} value mode for ${token.name || 'token'}`,
                                 )}
-                                {handlers.renderReferenceSearch(
+                                {handlers.renderBrandReferenceSearch(
                                   brandToken.referenceTarget ?? '',
                                   value => handlers.onBrandReferenceChange(brand, id, value),
                                   `${brand} reference target for ${token.name || 'token'}`,
@@ -3109,7 +3197,7 @@ const TokenRow = memo(function TokenRow({
                                   null,
                                   `${brand} value mode for ${token.name || 'token'}`,
                                 )}
-                                {handlers.renderReferenceSearch(
+                                {handlers.renderBrandReferenceSearch(
                                   brandToken.referenceTarget ?? '',
                                   value => handlers.onBrandReferenceChange(brand, id, value),
                                   `${brand} reference target for ${token.name || 'token'}`,
@@ -3248,7 +3336,10 @@ export function TokenEditor({
   const [openPopoverId, setOpenPopoverId] = useState<string | null>(null)
   // Which row's code-usage locations popover is open — independent of openPopoverId.
   const [openCodeUsageId, setOpenCodeUsageId] = useState<string | null>(null)
-  const [collapsedGroups, setCollapsedGroups] = useState<Set<string>>(new Set())
+  // Starts with every layer collapsed — a fresh table view of 1,900+ tokens
+  // is overwhelming otherwise; only the layer chevrons need seeding here
+  // since collapsing a layer hides everything nested under it.
+  const [collapsedGroups, setCollapsedGroups] = useState<Set<string>>(() => new Set(LAYERS.map(layerKey)))
   // The group currently being batch-renamed (via its header's edit icon), and the
   // text of the in-progress edit — kept separate from `group` so typing doesn't
   // affect which rows are matched as members of the group until it's committed.
@@ -3701,6 +3792,56 @@ export function TokenEditor({
     }
   }, [selectedBrand, working, brandWorking])
 
+  // Same shape as referenceSearchOptions, but for the reference picker shown
+  // inside the selected brand's column — swatches/details there must reflect
+  // what each candidate resolves to *in that brand* (brandResolvedByPath),
+  // not Base's value, or picking "Primary/5" would preview Base's blue even
+  // when the brand overrides Primary/5 to orange.
+  const brandReferenceSearchOptions = useMemo(() => {
+    if (!selectedBrand || !brandResolvedByPath) return referenceSearchOptions
+    const colorByPath = new Map<string, string>()
+    const borderPreviewByPath = new Map<string, { color: string; cssStyle: string }>()
+    const detailByPath = new Map<string, string>()
+    const dimensionPxByPath = new Map<string, number>()
+    for (const token of brandResolvedByPath.values()) {
+      if (token.name.trim() === '') continue
+      const path = token.path.join('.')
+      if (token.type === 'color') {
+        const hex = getColorHex(token.referenceTarget ? token.resolvedValue : token.rawValue)
+        if (hex) colorByPath.set(path, hex)
+      } else if (token.type === 'border') {
+        if (isBorderValue(token.resolvedValue)) {
+          const hex = getColorHex(token.resolvedValue.color)
+          if (hex) borderPreviewByPath.set(path, { color: hex, cssStyle: cssBorderStyleFor(token.resolvedValue.style) })
+        }
+      } else if (token.type !== 'shadow' && token.type !== 'typography') {
+        const resolved = token.referenceTarget ? token.resolvedValue : token.rawValue
+        detailByPath.set(path, referenceValueSummary(token.type, resolved))
+      }
+      if (token.type === 'dimension') {
+        const resolved = token.referenceTarget ? token.resolvedValue : token.rawValue
+        if (isDimensionValue(resolved)) dimensionPxByPath.set(path, convertDimensionUnit(resolved, 'px').value)
+      }
+    }
+    return referenceOptions.map(option => ({
+      value: option,
+      label: toSlashPath(option),
+      swatch: colorByPath.get(option),
+      detail: borderPreviewByPath.has(option) ? undefined : detailByPath.get(option),
+      borderPreview: borderPreviewByPath.get(option),
+      dimensionPx: dimensionPxByPath.get(option),
+      type: referenceTypeByPath.get(option),
+      layer: referenceLayerByPath.get(option),
+    }))
+  }, [
+    selectedBrand,
+    brandResolvedByPath,
+    referenceOptions,
+    referenceSearchOptions,
+    referenceTypeByPath,
+    referenceLayerByPath,
+  ])
+
   // Live Preview sidebar payload — see apps/toky/CONTEXT.md's "Live Preview" entry and ADR-0021.
   // Includes the selected brand's own diff too (not just Base's) — otherwise an in-progress brand
   // edit wouldn't show up in the preview at all until it's actually built into that brand's CSS.
@@ -3891,7 +4032,23 @@ export function TokenEditor({
   }
 
   function handleReferenceChange(id: string, text: string) {
-    updateToken(id, t => ({ ...t, referenceTarget: text.trim() === '' ? null : text.trim() }))
+    const trimmed = text.trim()
+    updateToken(id, t => {
+      if (trimmed !== '') return { ...t, referenceTarget: trimmed }
+      // Detaching a whole-`$value` alias (color/shadow/border/typography/etc.
+      // — not a border composite's own width/color/style sub-fields, which
+      // intentionally fall back to 0/blank instead, see BorderWidthField):
+      // `t.rawValue` is still the original `{reference}` string (flatten.ts
+      // stores $value verbatim), so leaving it as-is would turn the token
+      // into "literal value: the text '{some.path}'" instead of an actual
+      // static value. Seed the new literal from what it was just resolving
+      // to, so detaching preserves what the user is currently seeing.
+      return {
+        ...t,
+        referenceTarget: null,
+        rawValue: t.resolvedValue !== undefined ? t.resolvedValue : t.rawValue,
+      }
+    })
   }
 
   function modeFor(id: string, token: FlatToken): 'value' | 'reference' {
@@ -4709,6 +4866,29 @@ export function TokenEditor({
     [referenceSearchOptions],
   )
 
+  // Same as renderReferenceSearch, but reads brandReferenceSearchOptions —
+  // used wherever the reference picker is opened from the selected brand's
+  // column, so candidates preview what they resolve to in that brand.
+  const renderBrandReferenceSearch: RenderReferenceSearch = useCallback(
+    (currentValue, onSelect, ariaLabel, closeOnSelect = true, typeFilter, layerFilter) => (
+      <SearchSelect
+        options={brandReferenceSearchOptions.filter(
+          o =>
+            (!typeFilter || (o.type && typeFilter.includes(o.type))) &&
+            (!layerFilter || (o.layer && layerFilter.includes(o.layer))),
+        )}
+        currentValue={currentValue}
+        onSelect={value => {
+          onSelect(value)
+          if (closeOnSelect) setOpenPopoverId(null)
+        }}
+        ariaLabel={ariaLabel}
+        emptyMessage="No matching tokens."
+      />
+    ),
+    [brandReferenceSearchOptions],
+  )
+
   // Value/reference editor for the Edit-token dialog — one instance for Base,
   // one per brand. Mirrors the same color-picker/reference-search/detach
   // affordances the table cells and the Create dialog already use, just
@@ -5265,6 +5445,13 @@ export function TokenEditor({
     upsertOrRemoveBrandEntry(brand, id, { ...current, rawValue, referenceTarget: null })
   }
 
+  // Brand-scoped mirror of commitBorderValue — see its comment.
+  function commitBrandBorderValue(brand: string, id: string, rawValue: unknown) {
+    const current = brandTokenFor(brand, id)
+    if (!current) return
+    upsertOrRemoveBrandEntry(brand, id, { ...current, rawValue, referenceTarget: null })
+  }
+
   // Brand-scoped mirror of commitTypographyValue — see its comment. Whole-token override only
   // (docs/plans/typography-token-type-plan.md decision 9) — this always replaces the brand's
   // entire rawValue, never a single sub-field.
@@ -5320,7 +5507,21 @@ export function TokenEditor({
   function handleBrandReferenceChange(brand: string, id: string, text: string) {
     const current = brandTokenFor(brand, id)
     if (!current) return
-    upsertOrRemoveBrandEntry(brand, id, { ...current, referenceTarget: text.trim() === '' ? null : text.trim() })
+    const trimmed = text.trim()
+    if (trimmed !== '') {
+      upsertOrRemoveBrandEntry(brand, id, { ...current, referenceTarget: trimmed })
+      return
+    }
+    // Same reasoning as handleReferenceChange's detach branch — current.rawValue is still the
+    // stale `{reference}` string, so seed the new literal from what this brand currently resolves
+    // it to (brandResolvedById, not current.resolvedValue — see TokenRowBrandInfo's comment on why
+    // a brand override's own resolvedValue isn't kept fresh on every commit).
+    const resolved = brandResolvedById?.get(id)?.resolvedValue
+    upsertOrRemoveBrandEntry(brand, id, {
+      ...current,
+      referenceTarget: null,
+      rawValue: resolved !== undefined ? resolved : current.rawValue,
+    })
   }
 
   function brandModeFor(brand: string, id: string): 'value' | 'reference' {
@@ -5399,6 +5600,7 @@ export function TokenEditor({
     onBrandColorPick: commitBrandValueText,
     onBrandDimensionUnitChange: commitBrandDimensionUnit,
     onBrandShadowChange: commitBrandShadowValue,
+    onBrandBorderChange: commitBrandBorderValue,
     onBrandTypographyChange: commitBrandTypographyValue,
     onBrandResponsiveDimensionChange: commitBrandResponsiveDimensionValue,
     onBrandAlphaChange: handleBrandAlphaChange,
@@ -5407,6 +5609,7 @@ export function TokenEditor({
     onSetBrandMode: setBrandRowMode,
     renderPopoverHeader,
     renderReferenceSearch,
+    renderBrandReferenceSearch,
   } satisfies TokenRowHandlers)
   const rowHandlers = rowHandlersRef.current
 
@@ -5647,7 +5850,13 @@ export function TokenEditor({
       if (response.status === 200) {
         setSubmitState('success')
         setSubmitIsLocal(Boolean(json.local))
-        setSubmitMessage(json.local ? 'Saved to Base.tokens.json.' : json.url)
+        setSubmitMessage(
+          json.local
+            ? totalBrandDiffCount > 0
+              ? 'Saved to Base.tokens.json and the affected brand file(s).'
+              : 'Saved to Base.tokens.json.'
+            : json.url,
+        )
         setDescription('')
         setPendingBrands([])
         // The submit just created/updated the branch (and its PR) this base
@@ -5670,12 +5879,13 @@ export function TokenEditor({
     }
   }
 
-  // Local-disk saves (see localTokensMode) only write Base.tokens.json — no
-  // branch, no PR — so brand creation/overrides can't go through this button
-  // while local mode is on; the server would reject them anyway.
+  // Local-disk saves (see localTokensMode) write Base.tokens.json and any
+  // existing brand's sparse override file directly — but creating a *new*
+  // brand also needs packages/tokens/src/index.ts's `brands` array patched,
+  // which only the GitHub flow does, so that alone still blocks this button.
   const canSubmit =
     (diff.length > 0 || pendingBrands.length > 0 || totalBrandDiffCount > 0) &&
-    (!localTokensMode || (pendingBrands.length === 0 && totalBrandDiffCount === 0)) &&
+    (!localTokensMode || pendingBrands.length === 0) &&
     blockingErrors.length === 0 &&
     pullConflicts.length === 0 &&
     targetBranch.trim() !== '' &&
@@ -5884,6 +6094,16 @@ export function TokenEditor({
                       brand: selectedBrand,
                       token: brandToken,
                       hex: brandHex,
+                      // A border composite has no top-level referenceTarget of its own — its
+                      // color/width/style sub-fields are each their own `{reference}` (see
+                      // isBorderValue's docs above), so brandToken.rawValue is unresolved for it
+                      // even when the token itself isn't "a reference." Route those through
+                      // brandResolved too, same as the referenceTarget case, instead of falling
+                      // back to the raw per-field reference strings.
+                      resolvedValue:
+                        brandToken.referenceTarget || brandToken.type === 'border'
+                          ? brandResolved?.resolvedValue
+                          : brandToken.rawValue,
                       mode: brandModeFor(selectedBrand, id),
                       valueText: brandValueTextFor(selectedBrand, id),
                       alphaText: brandAlphaTextFor(selectedBrand, id),

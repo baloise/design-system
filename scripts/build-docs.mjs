@@ -106,10 +106,10 @@ async function copyResources() {
   await copyToAsset(join(packagesRoot, 'assets/src/maps/svg.json'), 'data/maps.json')
   await copyToAsset(join(packagesRoot, 'assets/src/icons/svg.json'), 'data/icons.json')
   await copyToAsset(join(packagesRoot, 'assets/src/brand-icons/svg.json'), 'data/brand-icons.json')
-  await copyToAsset(join(packagesRoot, 'css/dist/docs'), 'data/css')
+  await copyToAsset(join(packagesRoot, 'styles/dist/docs'), 'data/css')
 
-  // CSS files from packages/css build output
-  await copyToPublic(join(packagesRoot, 'css/dist/css/design-system.css'), 'assets/css/design-system.css')
+  // CSS files from packages/styles build output
+  await copyToPublic(join(packagesRoot, 'styles/dist/css/design-system.css'), 'assets/css/design-system.css')
 
   // Web components build output
   await copyToAsset(join(packagesRoot, 'core/docs/components.json'), 'data/components.json')

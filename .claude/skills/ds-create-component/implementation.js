@@ -222,7 +222,7 @@ function generateSCSS(componentName, props, variants) {
     })
     .join('\n\n')
 
-  return `@use '@baloise/ds-css/dist/scss/mixins' as *;
+  return `@use '@baloise/ds-styles/dist/scss/mixins' as *;
 @use '../../vars' as vars;
 
 /**

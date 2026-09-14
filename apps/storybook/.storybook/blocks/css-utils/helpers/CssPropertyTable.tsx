@@ -1,6 +1,6 @@
 import React from 'react'
 import { Clipboard } from '../../Clipboard'
-import json from '../../../../../../packages/css/dist/docs/design-system.json'
+import json from '../../../../../../packages/styles/dist/docs/design-system.json'
 
 type DesignSystemJson = typeof json
 type UtilityKey = keyof DesignSystemJson

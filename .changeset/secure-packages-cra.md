@@ -1,7 +1,7 @@
 ---
 '@baloise/ds-assets': patch
 '@baloise/ds-core': patch
-'@baloise/ds-css': patch
+'@baloise/ds-styles': patch
 '@baloise/ds-playwright': patch
 '@baloise/ds-tokens': patch
 ---

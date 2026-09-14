@@ -94,7 +94,7 @@ Build tasks are defined in `turbo.json` and `package.json` scripts. Each package
 
 - **`packages/core`** — Runs Stencil compiler, generates web components
 - **`packages/tokens`** — Runs Style Dictionary to compile tokens
-- **`packages/css`** — Runs Sass + PostCSS to generate CSS
+- **`packages/styles`** — Runs Sass + PostCSS to generate CSS
 - **`packages/playwright`** — Compiles TypeScript for test utilities
 
 Use `pnpm <script>` or `turbo run <task>` to invoke tasks. Turborepo caches task outputs — only changed packages rebuild.

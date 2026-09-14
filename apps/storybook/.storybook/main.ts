@@ -20,7 +20,9 @@ const config: StorybookConfig = {
   previewHead: head => `
   ${head}
 
+  <link rel="stylesheet" type="text/css" href="assets/tokens/base.tokens.css" />
   <link rel="stylesheet" type="text/css" href="assets/css/design-system.css" />
+  <link rel="stylesheet" type="text/css" href="assets/css/utilities.css" />
   <link rel="stylesheet" type="text/css" href="assets/css/fonts.css" />
   <link rel="stylesheet" type="text/css" href="assets/css/preview.css" />
   <link rel="stylesheet" type="text/css" href="assets/css/prism.css" />

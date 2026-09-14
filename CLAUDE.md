@@ -30,7 +30,7 @@ pnpm docs                  # Start Storybook documentation
 # Build
 pnpm build                 # Build all packages (respects turbo cache)
 pnpm tokens                # Build design tokens only
-pnpm css                   # Build styles only
+pnpm styles                # Build styles only
 
 # Testing
 pnpm test                  # Run all Vitest unit tests (--watch=false)
@@ -83,7 +83,7 @@ Multi-context monorepo with separate `CONTEXT.md` for each package. Each package
 
 Current packages with CONTEXT.md:
 - `packages/core/CONTEXT.md` — Web components implementation
-- `packages/css/CONTEXT.md` — CSS utilities and styling
+- `packages/styles/CONTEXT.md` — CSS utilities and styling
 - `packages/tokens/CONTEXT.md` — Design token definitions
 - `packages/playwright/CONTEXT.md` — Playwright test utilities
 - `packages/assets/CONTEXT.md` — Asset files and resources

@@ -8,7 +8,7 @@
  * @variant is-warning - Warning time input state with yellow border and warning styling.
  */
 
-@use '@baloise/ds-css/dist/scss/mixins' as *;
+@use '@baloise/ds-styles/dist/scss/mixins' as *;
 @use '../../vars' as vars;
 @use '../form/form.mixin' as form;
 @use '../input/input.mixin' as input;

@@ -12,24 +12,25 @@ import { Banner, Code, Footer, InfoQuote, Lead, LinkCard, LinkCards, Tabs } from
 
 ## Installation
 
-To use the Helvetia Design System styles in your project, first install the
-`@baloise/ds-css` package via npm or pnpm:
+To use the Helvetia Design System styles in your project, install `@baloise/ds-styles` and
+`@baloise/ds-tokens` via npm or pnpm:
 
 ```bash
-npm install @baloise/ds-css
+npm install @baloise/ds-styles @baloise/ds-tokens
 # or
-pnpm add @baloise/ds-css
+pnpm add @baloise/ds-styles @baloise/ds-tokens
 ```
 
 ## Import
 
-`@baloise/ds-css` is built from the same [Design Tokens](?path=/docs/tokens-all-tokens--documentation)
-that drive the rest of the system, and ships as three pieces you import separately — only **Base**
-is required:
+Global styles come from two packages you import separately — only **Tokens** and
+**Foundation + Components** are required. `@baloise/ds-styles` no longer ships token values itself,
+only `var(--ds-*)` references, so Tokens must be loaded before Foundation + Components for
+anything to render correctly.
 
-### Base
+### Tokens
 
-Design tokens as CSS variables, a CSS reset, and structural styles. Always required.
+Every `--ds-*` CSS custom property. Always required, load first.
 
 <Tabs
   tabs={[
@@ -39,18 +40,7 @@ Design tokens as CSS variables, a CSS reset, and structural styles. Always requi
         <Code
           language="css"
           code={`
-@import '@baloise/ds-css/css/base.css';
-`}
-        />
-      ),
-    },
-    {
-      label: 'Sass',
-      content: (
-        <Code
-          language="css"
-          code={`
-@use '@baloise/ds-css/scss/base';
+@import '@baloise/ds-tokens/css/base';
 `}
         />
       ),
@@ -58,10 +48,17 @@ Design tokens as CSS variables, a CSS reset, and structural styles. Always requi
   ]}
 />
 
-### Components
+<InfoQuote>
+Using a different brand? Import `@baloise/ds-tokens/css/erv` or `@baloise/ds-tokens/css/tcs`
+instead of `@baloise/ds-tokens/css/base` — each is a complete, standalone token set. See
+**Development/Theming**.
+</InfoQuote>
 
-CSS-only classes (`.ds-button`, `.ds-heading`, ...) for using components as plain HTML instead of
-the web components (`<ds-button>`, which load their styles automatically). Optional.
+### Foundation + Components
+
+CSS reset, structural styles, and CSS-only classes (`.ds-button`, `.ds-heading`, ...) for using
+components as plain HTML instead of the web components (which load their own styles
+automatically). Ship together as one pre-built bundle. Always required.
 
 <Tabs
   tabs={[
@@ -71,7 +68,7 @@ the web components (`<ds-button>`, which load their styles automatically). Optio
         <Code
           language="css"
           code={`
-@import '@baloise/ds-css/css/components.css';
+@import '@baloise/ds-styles/css/design-system';
 `}
         />
       ),
@@ -91,7 +88,7 @@ Helper classes for spacing, layout, typography, color, and more. Optional.
         <Code
           language="css"
           code={`
-@import '@baloise/ds-css/css/utilities.css';
+@import '@baloise/ds-styles/css/utilities';
 `}
         />
       ),
@@ -101,7 +98,7 @@ Helper classes for spacing, layout, typography, color, and more. Optional.
 
 <InfoQuote>
   Components and Utilities only ship as compiled CSS (no per-component or per-utility-category
-  files) — `@baloise/ds-css/scss/mixins` is still available separately if you just need the Sass
+  files) — `@baloise/ds-styles/scss/mixins` is still available separately if you just need the Sass
   breakpoint mixins without any styles.
 </InfoQuote>
 

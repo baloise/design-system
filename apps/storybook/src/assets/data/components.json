@@ -13851,33 +13851,6 @@
           ]
         },
         {
-          "name": "🧩 Component / Button / Size / Base / Radius",
-          "cssVarName": "--ds-button-size-base-radius",
-          "value": "{🔗 Alias.🔵 Radius.Base}",
-          "nativeValue": "{\"value\":0.25,\"unit\":\"rem\"}",
-          "inheritance": [
-            {
-              "cssVar": "--ds-dimension-radius-4",
-              "figmaName": "Global / Dimension / Radius / 4"
-            },
-            {
-              "cssVar": "--ds-radius-base",
-              "figmaName": "Alias / Radius / Base"
-            },
-            {
-              "cssVar": "--ds-button-size-base-radius",
-              "figmaName": "Component / Button / Size / Base / Radius"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "Button",
-            "Size",
-            "Base",
-            "Radius"
-          ]
-        },
-        {
           "name": "🧩 Component / Button / Size / Base / FontFamily",
           "cssVarName": "--ds-button-size-base-fontfamily",
           "value": "{🔗 Alias.🔤 Text.Family.Heading}",
@@ -14029,6 +14002,33 @@
             "Size",
             "Base",
             "PaddingX"
+          ]
+        },
+        {
+          "name": "🧩 Component / Button / Size / Base / Radius",
+          "cssVarName": "--ds-button-size-base-radius",
+          "value": "{🔗 Alias.🔵 Radius.Base}",
+          "nativeValue": "{\"value\":0.25,\"unit\":\"rem\"}",
+          "inheritance": [
+            {
+              "cssVar": "--ds-dimension-radius-4",
+              "figmaName": "Global / Dimension / Radius / 4"
+            },
+            {
+              "cssVar": "--ds-radius-base",
+              "figmaName": "Alias / Radius / Base"
+            },
+            {
+              "cssVar": "--ds-button-size-base-radius",
+              "figmaName": "Component / Button / Size / Base / Radius"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Button",
+            "Size",
+            "Base",
+            "Radius"
           ]
         },
         {

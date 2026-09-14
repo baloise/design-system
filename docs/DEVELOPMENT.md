@@ -88,7 +88,7 @@ pnpm build
 # Build specific packages
 pnpm build -- --filter=@baloise/ds-core     # Web components
 pnpm build -- --filter=@baloise/ds-tokens   # Design tokens
-pnpm build -- --filter=@baloise/ds-css      # Styles
+pnpm build -- --filter=@baloise/ds-styles      # Styles
 
 # Build docs for production
 pnpm build:docs
@@ -210,13 +210,13 @@ Tokens sync to `@baloise/ds-tokens` package and are imported by components.
 
 ### Update Global Styles
 
-Global styles live in `packages/css/dist/css`:
+Global styles live in `packages/styles/dist/css`:
 
 ```bash
-pnpm css        # Rebuild CSS
+pnpm styles     # Rebuild CSS
 ```
 
-Outputs to `@baloise/ds-css` package.
+Outputs to `@baloise/ds-styles` package.
 
 ### Create Storybook Stories
 

@@ -10,7 +10,7 @@
  *  - packages/core/src/components/**\/test/*.style.html (visual fixtures, class="..." attributes)
  *
  * Modifier classes (is-*, has-*), utility classes (bg-*, p-*, ... from the
- * packages/css UnoCSS preset), CSS custom properties, and classes that are
+ * packages/styles UnoCSS preset), CSS custom properties, and classes that are
  * already `ds-`-prefixed are left untouched.
  *
  * Run with: node scripts/rename-component-classes.mjs [--dry-run]

@@ -1,37 +1,37 @@
 import { readFileSync, writeFileSync, unlinkSync } from 'fs'
 import { Config } from 'style-dictionary'
+import { BASE_CSS_TRANSFORMS } from './config.base.js'
 
 const basePxFontSize = 16
 
 /**
- * Recursively walks both token trees and returns only the tokens whose
- * `$value` differs from the base. Keeps the full hierarchy so Style
- * Dictionary can still resolve references.
+ * Recursively merges a brand's token tree onto Base's, returning the COMPLETE tree — every
+ * token Base defines, with the brand's own node substituted wherever the brand defines a
+ * `$value` leaf (keeping that leaf's own `$description`/`$extensions` as authored in the brand
+ * file). Unlike a diff, nothing is dropped: the result is self-sufficient and needs no `include`
+ * of Base to resolve references. See docs/adr/0030-full-merge-brand-token-css.md.
  */
-export function computeTokenDiff(
-  base: Record<string, unknown>,
-  brand: Record<string, unknown>,
-): Record<string, unknown> {
-  const result: Record<string, unknown> = {}
+export function mergeTokenTree(base: Record<string, unknown>, brand: Record<string, unknown>): Record<string, unknown> {
+  const result: Record<string, unknown> = { ...base }
 
-  for (const [key, brandVal] of Object.entries(brand)) {
-    if (typeof brandVal !== 'object' || brandVal === null) continue
+  for (const key of new Set([...Object.keys(base), ...Object.keys(brand)])) {
+    const baseVal = base[key]
+    const brandVal = brand[key]
 
-    const baseVal = (base?.[key] ?? {}) as Record<string, unknown>
-
+    if (brandVal === undefined) {
+      result[key] = baseVal
+      continue
+    }
+    if (typeof brandVal !== 'object' || brandVal === null) {
+      result[key] = brandVal
+      continue
+    }
     if ('$value' in (brandVal as Record<string, unknown>)) {
-      // Token leaf — only keep it when the value actually changed
-      const brandSerialized = JSON.stringify((brandVal as Record<string, unknown>)['$value'])
-      const baseSerialized = JSON.stringify((baseVal as Record<string, unknown>)['$value'])
-      if (brandSerialized !== baseSerialized) {
-        result[key] = brandVal
-      }
+      // Token leaf — the brand's own node wins outright.
+      result[key] = brandVal
     } else {
-      // Group node — recurse and only include if something inside changed
-      const nested = computeTokenDiff(baseVal as Record<string, unknown>, brandVal as Record<string, unknown>)
-      if (Object.keys(nested).length > 0) {
-        result[key] = nested
-      }
+      // Group node — recurse so every sibling token, changed or not, ends up in the result.
+      result[key] = mergeTokenTree((baseVal ?? {}) as Record<string, unknown>, brandVal as Record<string, unknown>)
     }
   }
 
@@ -39,53 +39,49 @@ export function computeTokenDiff(
 }
 
 /**
- * Creates a Style Dictionary config for a brand override build.
+ * Creates a Style Dictionary config for a brand's token CSS build.
  *
- * Computes the diff between Base and the brand token file so that only
- * genuinely changed tokens end up in the output CSS. Works whether the brand
- * file is a minimal override or a full Figma-mode export with all tokens.
+ * Merges the brand token file onto Base (see mergeTokenTree) so the build's source is already
+ * the complete, self-sufficient token tree for that brand — no `include` of Base needed. Emits
+ * two files: `<brand>.tokens.css` (`:host, :root`, for apps that commit to one brand) and
+ * `<brand>.override.css` (`[data-theme]`/`:host([data-theme])`, for scoping a brand to one
+ * element — e.g. Storybook's theme switcher). See docs/adr/0030-full-merge-brand-token-css.md.
  *
- * Returns the config and a `cleanup` function that removes the temporary diff
- * file that was written to disk so Style Dictionary can mark it as `source`.
+ * Returns the config and a `cleanup` function that removes the temporary merged-tree file that
+ * was written to disk so Style Dictionary can read it as `source`.
  */
 export function createBrandConfig(mode: string): { config: Config; cleanup: () => void } {
-  const selector = `[data-theme="${mode.toLowerCase()}"]`
-  const tmpFile = `tokens/.${mode.toLowerCase()}-diff.tmp.json`
+  const brandLower = mode.toLowerCase()
+  const tmpFile = `tokens/.${brandLower}-full.tmp.json`
 
   const baseJson = JSON.parse(readFileSync(`tokens/Base.tokens.json`, 'utf8'))
   const brandJson = JSON.parse(readFileSync(`tokens/${mode}.tokens.json`, 'utf8'))
-  const diffTokens = computeTokenDiff(baseJson, brandJson)
+  const mergedTokens = mergeTokenTree(baseJson, brandJson)
 
-  // Write diff to a temp file — Style Dictionary only marks file-based source
-  // tokens as isSource:true, which is required for the brand formatter filter.
-  writeFileSync(tmpFile, JSON.stringify(diffTokens))
+  writeFileSync(tmpFile, JSON.stringify(mergedTokens))
 
   const config: Config = {
-    include: [`tokens/Base.tokens.json`],
     source: [tmpFile],
     platforms: {
       css: {
-        transforms: [
-          'name/kebab',
-          'ds/css/name',
-          'ds/color/rgba',
-          'ds/size/round',
-          'ds/size/rem',
-          'ds/font-weight',
-          'ds/font-family',
-          'ds/dimension',
-          'ds/shadow',
-          'ds/typography',
-        ],
+        transforms: BASE_CSS_TRANSFORMS,
         basePxFontSize,
         buildPath: 'dist/',
         prefix: 'ds',
         files: [
           {
             format: 'ds/css/variables-brand',
-            destination: `css/${mode.toLowerCase()}.tokens.css`,
+            destination: `css/${brandLower}.tokens.css`,
             options: {
-              selector,
+              selector: ':host, :root',
+              outputReferences: true,
+            },
+          },
+          {
+            format: 'ds/css/variables-brand',
+            destination: `css/${brandLower}.override.css`,
+            options: {
+              selector: `[data-theme="${brandLower}"], :host([data-theme="${brandLower}"])`,
               outputReferences: true,
             },
           },
