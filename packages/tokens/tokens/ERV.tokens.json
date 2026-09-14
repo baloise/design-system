@@ -135,6 +135,26 @@
           }
         }
       }
+    },
+    "🎬 Action": {
+      "Primary": {
+        "Surface": {
+          "Base": {
+            "$type": "color",
+            "$value": "{🌐 Global.🌈 Color.Primary.4}",
+            "$extensions": {
+              "com.figma.variableId": "VariableID:137:504"
+            }
+          },
+          "Hover": {
+            "$type": "color",
+            "$value": "{🌐 Global.🌈 Color.Primary.5}",
+            "$extensions": {
+              "com.figma.variableId": "VariableID:137:505"
+            }
+          }
+        }
+      }
     }
   }
 }
