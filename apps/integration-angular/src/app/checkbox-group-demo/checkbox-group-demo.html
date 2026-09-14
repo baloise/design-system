@@ -1,0 +1,51 @@
+<h2>Checkbox group demo</h2>
+
+<p data-testid="checkbox-group-value">Checkbox group value: {{ checkboxGroupValue() }}</p>
+<ds-checkbox-group
+  data-testid="checkbox-group"
+  control
+  name="smoke-test-fruits"
+  label="Fruits"
+  [value]="checkboxGroupValue()"
+  (dsChange)="onChange($event)"
+>
+  <ds-checkbox value="apple">Apple</ds-checkbox>
+  <ds-checkbox value="banana">Banana</ds-checkbox>
+  <ds-checkbox value="cherry">Cherry</ds-checkbox>
+</ds-checkbox-group>
+
+<form [formGroup]="reactiveForm">
+  <ds-checkbox-group
+    data-testid="reactive-checkbox-group"
+    control
+    name="reactive-fruits"
+    label="Fruits"
+    formControlName="fruits"
+  >
+    <ds-checkbox value="apple">Apple</ds-checkbox>
+    <ds-checkbox value="banana">Banana</ds-checkbox>
+    <ds-checkbox value="cherry">Cherry</ds-checkbox>
+  </ds-checkbox-group>
+</form>
+<p data-testid="reactive-checkbox-group-value">Reactive value: {{ reactiveForm.controls.fruits.value }}</p>
+<button data-testid="toggle-reactive-checkbox-group-disabled" type="button" (click)="toggleReactiveFormDisabled()">
+  Toggle disabled
+</button>
+<button data-testid="set-reactive-checkbox-group-value" type="button" (click)="setReactiveFormValue()">
+  Set to banana, cherry
+</button>
+
+<form [formGroup]="autoInvalidOffForm">
+  <ds-checkbox-group
+    data-testid="auto-invalid-off-checkbox-group"
+    control
+    name="auto-invalid-off-fruits"
+    label="Fruits"
+    autoInvalidOff
+    formControlName="fruits"
+  >
+    <ds-checkbox value="apple">Apple</ds-checkbox>
+    <ds-checkbox value="banana">Banana</ds-checkbox>
+    <ds-checkbox value="cherry">Cherry</ds-checkbox>
+  </ds-checkbox-group>
+</form>
