@@ -13,7 +13,11 @@ export const openInCodePen = (html: string): void => {
     editors: '100',
     html: html || '',
     head: `<script type="module" src="${JS_DELIVR}@baloise/ds-core@${DESIGN_SYSTEM_VERSION}/dist/design-system/design-system.esm.js"></script>`,
-    css_external: `${JS_DELIVR}@baloise/ds-styles@${DESIGN_SYSTEM_VERSION}/dist/css/design-system.css`,
+    css_external: [
+      `${JS_DELIVR}@baloise/ds-tokens@${DESIGN_SYSTEM_VERSION}/dist/css/base.tokens.css`,
+      `${JS_DELIVR}@baloise/ds-styles@${DESIGN_SYSTEM_VERSION}/dist/css/utilities.css`,
+      `${JS_DELIVR}@baloise/ds-styles@${DESIGN_SYSTEM_VERSION}/dist/css/design-system.css`,
+    ].join(';'),
     js_external: `${JS_DELIVR}@baloise/ds-core@${DESIGN_SYSTEM_VERSION}/dist/design-system/design-system.js`,
   }
 
