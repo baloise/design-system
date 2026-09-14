@@ -1,0 +1,160 @@
+{
+  "🌐 Global": {
+    "🌈 Color": {
+      "Primary": {
+        "1": {
+          "$type": "color",
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0.9882352941176471,
+              0.9176470588235294,
+              0.8666666666666667
+            ],
+            "alpha": 1,
+            "hex": "#FCEADD"
+          },
+          "$extensions": {
+            "com.figma.variableId": "VariableID:137:2760"
+          }
+        },
+        "2": {
+          "$type": "color",
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0.9686274509803922,
+              0.7529411764705882,
+              0.596078431372549
+            ],
+            "alpha": 1,
+            "hex": "#F7C098"
+          },
+          "$extensions": {
+            "com.figma.variableId": "VariableID:137:2761"
+          }
+        },
+        "3": {
+          "$type": "color",
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0.9568627450980393,
+              0.6705882352941176,
+              0.4627450980392157
+            ],
+            "alpha": 1,
+            "hex": "#F4AB76"
+          },
+          "$extensions": {
+            "com.figma.variableId": "VariableID:137:2762"
+          }
+        },
+        "4": {
+          "$type": "color",
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0.9450980392156862,
+              0.5882352941176471,
+              0.32941176470588235
+            ],
+            "alpha": 1,
+            "hex": "#F19654"
+          },
+          "$extensions": {
+            "com.figma.variableId": "VariableID:137:2763"
+          }
+        },
+        "5": {
+          "$type": "color",
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0.7568627450980392,
+              0.47058823529411764,
+              0.2627450980392157
+            ],
+            "alpha": 1,
+            "hex": "#C17843"
+          },
+          "$extensions": {
+            "com.figma.variableId": "VariableID:137:2764"
+          }
+        },
+        "6": {
+          "$type": "color",
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0.4745098039215686,
+              0.29411764705882354,
+              0.16470588235294117
+            ],
+            "alpha": 1,
+            "hex": "#794B2A"
+          },
+          "$extensions": {
+            "com.figma.variableId": "VariableID:137:2765"
+          }
+        },
+        "1B": {
+          "$type": "color",
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0.9764705882352941,
+              0.8352941176470589,
+              0.7333333333333333
+            ],
+            "alpha": 1,
+            "hex": "#F9D5BB"
+          },
+          "$extensions": {
+            "com.figma.variableId": "VariableID:137:2766"
+          }
+        }
+      }
+    }
+  },
+  "🔗 Alias": {
+    "🔤 Text": {
+      "Color": {
+        "Primary": {
+          "$type": "color",
+          "$value": "{🌐 Global.🌈 Color.Black}",
+          "$extensions": {
+            "com.figma.variableId": "VariableID:137:288"
+          }
+        },
+        "Hint": {
+          "$type": "color",
+          "$value": "{🌐 Global.🌈 Color.Grey.5}",
+          "$extensions": {
+            "com.figma.variableId": "VariableID:137:292"
+          }
+        }
+      }
+    },
+    "🎬 Action": {
+      "Primary": {
+        "Surface": {
+          "Base": {
+            "$type": "color",
+            "$value": "{🌐 Global.🌈 Color.Primary.4}",
+            "$extensions": {
+              "com.figma.variableId": "VariableID:137:504"
+            }
+          },
+          "Hover": {
+            "$type": "color",
+            "$value": "{🌐 Global.🌈 Color.Primary.5}",
+            "$extensions": {
+              "com.figma.variableId": "VariableID:137:505"
+            }
+          }
+        }
+      }
+    }
+  }
+}

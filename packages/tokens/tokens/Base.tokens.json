@@ -9239,16 +9239,6 @@
               "com.figma.variableId": "VariableID:137:1259"
             }
           },
-          "Radius": {
-            "$type": "dimension",
-            "$value": "{🔗 Alias.🔵 Radius.Base}",
-            "$extensions": {
-              "com.figma.scopes": [
-                "ALL_SCOPES"
-              ],
-              "com.figma.variableId": "VariableID:137:1260"
-            }
-          },
           "FontFamily": {
             "$type": "fontFamily",
             "$value": "{🔗 Alias.🔤 Text.Family.Heading}",
@@ -9307,6 +9297,16 @@
                 "ALL_SCOPES"
               ],
               "com.figma.variableId": "VariableID:137:1266"
+            }
+          },
+          "Radius": {
+            "$type": "dimension",
+            "$value": "{🔗 Alias.🔵 Radius.Rounded}",
+            "$extensions": {
+              "com.figma.scopes": [
+                "ALL_SCOPES"
+              ],
+              "com.figma.variableId": "VariableID:137:1260"
             }
           }
         },
@@ -23392,7 +23392,7 @@
           }
         }
       },
-      "BlackRenameGugus": {
+      "Black": {
         "$type": "color",
         "$value": {
           "colorSpace": "srgb",
