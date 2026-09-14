@@ -109,7 +109,9 @@ async function copyResources() {
   await copyToAsset(join(packagesRoot, 'styles/dist/docs'), 'data/css')
 
   // CSS files from packages/styles build output
+  await copyToPublic(join(packagesRoot, 'tokens/dist/css/base.tokens.css'), 'assets/css/base.tokens.css')
   await copyToPublic(join(packagesRoot, 'styles/dist/css/design-system.css'), 'assets/css/design-system.css')
+  await copyToPublic(join(packagesRoot, 'styles/dist/css/utilities.css'), 'assets/css/utilities.css')
 
   // Web components build output
   await copyToAsset(join(packagesRoot, 'core/docs/components.json'), 'data/components.json')
