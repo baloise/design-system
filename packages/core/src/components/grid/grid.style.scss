@@ -38,7 +38,7 @@
  */
 
 @use 'sass:math';
-@use '@baloise/ds-css/dist/scss/mixins' as *;
+@use '@baloise/ds-styles/dist/scss/mixins' as *;
 
 /**
  * Variables
@@ -714,7 +714,7 @@
  * the grid's column gap, since ds-grid implements spacing via margin/padding rather than
  * the native CSS `gap` property. See the `@variant gap-*` entries above.
  *
- * The shared `.gap-*` utility (packages/css) also sets the native `gap` property with
+ * The shared `.gap-*` utility (packages/styles) also sets the native `gap` property with
  * `!important` for flex/grid containers that rely on it (e.g. ds-stack). ds-grid does not
  * use native `gap`, so it must be reset back to 0 here — otherwise it stacks on top of the
  * padding-based gutter below and over-widens columns past 100%, breaking `is-*` sizing.

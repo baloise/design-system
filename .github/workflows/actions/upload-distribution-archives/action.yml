@@ -33,8 +33,8 @@ runs:
     - uses: ./.github/workflows/actions/archive-upload
       with:
         name: css-dist
-        output: packages/css/dist.zip
-        paths: packages/css/src packages/css/css
+        output: packages/styles/dist.zip
+        paths: packages/styles/src packages/styles/css
 
     # Tokens Package
     - uses: ./.github/workflows/actions/archive-upload

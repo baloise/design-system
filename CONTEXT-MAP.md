@@ -9,7 +9,7 @@ This file maps the multi-context layout of this monorepo. Each context has its o
 | **Repository**         | `CONTEXT.md`                     | Core principles, build system, CI/CD, release process, Turborepo configuration          |
 | **Core Components**    | `packages/core/CONTEXT.md`       | Stencil web components, component architecture, lifecycle, testing patterns             |
 | **Design Tokens**      | `packages/tokens/CONTEXT.md`     | Three-layer token architecture, Style Dictionary, Figma integration, naming conventions |
-| **CSS & Styles**       | `packages/css/CONTEXT.md`        | Global CSS, utility classes, responsive design, theming, CSS variable conventions       |
+| **CSS & Styles**       | `packages/styles/CONTEXT.md`     | Global CSS, utility classes, responsive design, theming, CSS variable conventions       |
 | **Assets**             | `packages/assets/CONTEXT.md`     | Fonts, icons, images, asset management, brand guidelines                                |
 | **Playwright**         | `packages/playwright/CONTEXT.md` | E2E testing library, page objects, accessibility testing, visual regression             |
 | **React Bindings**     | `packages/react/CONTEXT.md`      | Generated React wrappers, overlay idioms, `bootstrapDesignSystem()`                     |

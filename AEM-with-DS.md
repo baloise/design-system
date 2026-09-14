@@ -218,7 +218,7 @@ changes can be fast on dev without making prod's version anything other than fix
 `@baloise/ds-*` packages are published to the public npm registry and version-locked
 together via changesets (`.changeset/config.json`: `"fixed": [["@baloise/ds-*"]]`) — a
 single version number (e.g. `20.0.0-next.8`) always identifies a matching `ds-core` +
-`ds-css` pair.
+`ds-styles` pair.
 
 AEM's own clientlib pipeline is Maven-built: changing a bundled npm version means a
 frontend rebuild and a full AEM package deploy, on every environment that uses it. That
@@ -241,11 +241,11 @@ version-prefixed paths:
 
 ```
 https://cdn.helvetia.example/ds/core/{version}/...   ← @baloise/ds-core (Stencil lazy-loader output)
-https://cdn.helvetia.example/ds/css/{version}/...    ← @baloise/ds-css
+https://cdn.helvetia.example/ds/css/{version}/...    ← @baloise/ds-styles
 ```
 
-Only `ds-core` and `ds-css` are synced — `ds-tokens` is a build-time input already
-compiled into `ds-css`'s output and is never served to a browser directly. Paths are
+Only `ds-core` and `ds-styles` are synced — `ds-tokens` is a build-time input already
+compiled into `ds-styles`'s output and is never served to a browser directly. Paths are
 never overwritten (a new version is a new path), so responses can be cached
 `immutable, max-age=1y` with no invalidation logic. npm remains the source of truth and
 version ledger; the CDN is purely a browser-reachable mirror of what's already
@@ -256,7 +256,7 @@ infrastructure, not a third party, so the extra hash bookkeeping isn't buying mu
 
 Dev pages render a global `<script type="module">` (Stencil's lazy-loader bootstrap —
 lightweight; it code-splits per component, so loading it site-wide doesn't pull in the
-whole library) plus a `<link>` for `ds-css`, with the version segment of both URLs read
+whole library) plus a `<link>` for `ds-styles`, with the version segment of both URLs read
 from a single JCR config node (e.g. `/conf/global/settings/ds-version`) at render time:
 
 ```html
@@ -280,7 +280,7 @@ maintaining per-template conditional inclusion logic.
 
 ### Staging and prod: Maven-bundled, pinned, promoted
 
-Staging and prod both consume `@baloise/ds-core` / `@baloise/ds-css` the conventional
+Staging and prod both consume `@baloise/ds-core` / `@baloise/ds-styles` the conventional
 way — as an npm dependency of the `ui.frontend` Maven module, pinned by version in
 `package.json`, bundled into the AEM clientlib at build time. Staging is the **release
 gate**: its `package.json` pin is always the exact candidate being validated for the

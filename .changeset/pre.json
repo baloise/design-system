@@ -9,7 +9,7 @@
     "@baloise/ds-testing": "19.8.3",
     "@baloise/ds-tokens": "19.8.3",
     "@baloise/ds-assets": "20.0.0-next.1",
-    "@baloise/ds-css": "20.0.0-next.1",
+    "@baloise/ds-styles": "20.0.0-next.1",
     "@baloise/ds-react": "20.0.0-next.4",
     "@baloise/ds-angular": "20.0.0-next.6",
     "integration-angular": "0.0.0",

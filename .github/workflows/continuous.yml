@@ -217,8 +217,8 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Build @baloise/ds-core, @baloise/ds-react and @baloise/ds-css
-        run: pnpm exec turbo run build --filter=@baloise/ds-core --filter=@baloise/ds-react --filter=@baloise/ds-css
+      - name: Build @baloise/ds-core, @baloise/ds-react and @baloise/ds-styles
+        run: pnpm exec turbo run build --filter=@baloise/ds-core --filter=@baloise/ds-react --filter=@baloise/ds-styles
 
       - name: Install Playwright browsers
         working-directory: apps/integration-react
@@ -262,8 +262,8 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Build @baloise/ds-core, @baloise/ds-angular and @baloise/ds-css
-        run: pnpm exec turbo run build --filter=@baloise/ds-core --filter=@baloise/ds-angular --filter=@baloise/ds-css
+      - name: Build @baloise/ds-core, @baloise/ds-angular and @baloise/ds-styles
+        run: pnpm exec turbo run build --filter=@baloise/ds-core --filter=@baloise/ds-angular --filter=@baloise/ds-styles
 
       - name: Install Playwright browsers
         working-directory: apps/integration-angular

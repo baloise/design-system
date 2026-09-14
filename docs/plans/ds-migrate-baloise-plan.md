@@ -4,7 +4,7 @@
 
 The Helvetia Design System (this repo, `next` branch) is the successor to the Baloise Design System (`main` branch). They are **API-incompatible but not tag-incompatible**: old components are `bal-*` (Stencil namespace `baloise-design-system`, e.g. `bal-badge`), new components are `ds-*` (Stencil namespace `design-system`, e.g. `ds-badge`), so the two can render side by side in the same page without custom-element collisions.
 
-The npm packages, however, **do** collide: both old and new ship as `@baloise/ds-core`, `@baloise/ds-react`, `@baloise/ds-angular`, `@baloise/ds-css`, `@baloise/ds-assets` (old at `19.10.2`, new at `20.0.0-next.9`). A consumer app migrating incrementally — old badge everywhere, new badge in one spot, both live at once — cannot `npm install` two versions of the same package name side by side. Renaming the real published package name is a separate, larger decision that is explicitly out of scope here (see "Decisions made").
+The npm packages, however, **do** collide: both old and new ship as `@baloise/ds-core`, `@baloise/ds-react`, `@baloise/ds-angular`, `@baloise/ds-styles`, `@baloise/ds-assets` (old at `19.10.2`, new at `20.0.0-next.9`). A consumer app migrating incrementally — old badge everywhere, new badge in one spot, both live at once — cannot `npm install` two versions of the same package name side by side. Renaming the real published package name is a separate, larger decision that is explicitly out of scope here (see "Decisions made").
 
 There is currently no tooling to help consuming React/Angular/HTML applications adopt the new DS component-by-component. This plan builds the first piece of that: a Claude Code skill, `ds-migrate-baloise`, that (a) installs and wires up the new DS packages into a consumer app without displacing the old ones, and (b) rewrites `bal-badge` usages to `ds-badge`, as a template for migrating further components later.
 
@@ -55,7 +55,7 @@ package name can't do.
 
 `ds-migrate-baloise`'s Init step installs the new packages under npm
 aliases (`@helvetia/ds-react`: `npm:@baloise/ds-react@<version>`, same
-pattern for ds-core/ds-angular/ds-css/ds-assets) and generates all new
+pattern for ds-core/ds-angular/ds-styles/ds-assets) and generates all new
 imports against those alias names. This makes incremental, per-component
 migration possible today without waiting on a real rename of the
 published package name — which remains a separate, unscheduled decision.
@@ -90,11 +90,11 @@ migration tool on an unscheduled rename decision.
 `packages/ds-skills/skills/ds-migrate-baloise/init.md` (or inline in `SKILL.md` if short enough — decide during writing based on length):
 - Framework detection: inspect consumer app's `package.json` dependencies (`react`/`react-dom` → React, `@angular/core` → Angular, neither → HTML) and, for React, whether it's Vite or Next.js (relevant only for *where* the entry-file edit goes).
 - For each framework, reproduce the equivalent of `00-getting-started.mdx`'s install + wiring steps, but:
-  - `npm add`/`pnpm add` targets use the alias syntax: `pnpm add @helvetia/ds-react@npm:@baloise/ds-react@<version> @helvetia/ds-css@npm:@baloise/ds-css@<version>` (React); equivalent for Angular (`@helvetia/ds-angular`, `@helvetia/ds-css`) and HTML (`@helvetia/ds-core`, `@helvetia/ds-css`).
+  - `npm add`/`pnpm add` targets use the alias syntax: `pnpm add @helvetia/ds-react@npm:@baloise/ds-react@<version> @helvetia/ds-styles@npm:@baloise/ds-styles@<version>` (React); equivalent for Angular (`@helvetia/ds-angular`, `@helvetia/ds-styles`) and HTML (`@helvetia/ds-core`, `@helvetia/ds-styles`).
   - Resolve `<version>` dynamically at run time (`npm view @baloise/ds-react dist-tags`, take the `next` tag) rather than hardcoding — the exact next-prerelease number will drift.
-  - React: add `bootstrapDesignSystem` (from `@helvetia/ds-react`) call at module scope in the detected entry file (`src/main.tsx` for Vite, a `'use client'` entry for Next.js), and `import '@helvetia/ds-css/css'`.
-  - Angular: add `provideDesignSystem()` (from `@helvetia/ds-angular`) to `app.config.ts` (standalone) or `DesignSystemModule.forRoot()` to the root `NgModule` (module-based) — detect which pattern the app uses by checking for `app.config.ts` vs `app.module.ts`. Add `CUSTOM_ELEMENTS_SCHEMA`. Add the `@use '@helvetia/ds-css/scss/base'` (or `@import` CSS equivalent) to the global stylesheet.
-  - HTML: add `<link>`/`<script>` tags pointing at `node_modules/@helvetia/ds-css/...` and `node_modules/@helvetia/ds-core/...` to the app's `index.html` `<head>`.
+  - React: add `bootstrapDesignSystem` (from `@helvetia/ds-react`) call at module scope in the detected entry file (`src/main.tsx` for Vite, a `'use client'` entry for Next.js), and `import '@helvetia/ds-styles/css'`.
+  - Angular: add `provideDesignSystem()` (from `@helvetia/ds-angular`) to `app.config.ts` (standalone) or `DesignSystemModule.forRoot()` to the root `NgModule` (module-based) — detect which pattern the app uses by checking for `app.config.ts` vs `app.module.ts`. Add `CUSTOM_ELEMENTS_SCHEMA`. Add the `@use '@helvetia/ds-styles/scss/base'` (or `@import` CSS equivalent) to the global stylesheet.
+  - HTML: add `<link>`/`<script>` tags pointing at `node_modules/@helvetia/ds-styles/...` and `node_modules/@helvetia/ds-core/...` to the app's `index.html` `<head>`.
 - Report exactly what was installed/edited (package.json diff summary, files touched).
 
 ### 4. Implement Components → Badge

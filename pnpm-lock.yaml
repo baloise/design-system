@@ -272,9 +272,12 @@ importers:
       '@baloise/ds-angular':
         specifier: workspace:*
         version: link:../../packages/angular
-      '@baloise/ds-css':
+      '@baloise/ds-styles':
         specifier: workspace:*
-        version: link:../../packages/css
+        version: link:../../packages/styles
+      '@baloise/ds-tokens':
+        specifier: workspace:*
+        version: link:../../packages/tokens
       rxjs:
         specifier: 7.8.2
         version: 7.8.2
@@ -300,12 +303,15 @@ importers:
 
   apps/integration-react:
     dependencies:
-      '@baloise/ds-css':
-        specifier: workspace:*
-        version: link:../../packages/css
       '@baloise/ds-react':
         specifier: workspace:*
         version: link:../../packages/react
+      '@baloise/ds-styles':
+        specifier: workspace:*
+        version: link:../../packages/styles
+      '@baloise/ds-tokens':
+        specifier: workspace:*
+        version: link:../../packages/tokens
       react:
         specifier: 19.2.8
         version: 19.2.8
@@ -352,9 +358,9 @@ importers:
       '@baloise/ds-core':
         specifier: 20.0.0-next.9
         version: link:../../packages/core
-      '@baloise/ds-css':
+      '@baloise/ds-styles':
         specifier: 20.0.0-next.9
-        version: link:../../packages/css
+        version: link:../../packages/styles
       '@baloise/ds-tokens':
         specifier: 20.0.0-next.9
         version: link:../../packages/tokens
@@ -574,9 +580,9 @@ importers:
       '@baloise/ds-assets':
         specifier: 20.0.0-next.9
         version: link:../assets
-      '@baloise/ds-css':
+      '@baloise/ds-styles':
         specifier: 20.0.0-next.9
-        version: link:../css
+        version: link:../styles
       '@baloise/ds-tokens':
         specifier: 20.0.0-next.9
         version: link:../tokens
@@ -669,34 +675,6 @@ importers:
         specifier: 'catalog:'
         version: 4.1.11(@types/node@24.13.3)(@vitest/ui@4.1.11)(jsdom@30.0.1)(vite@8.2.2(@types/node@24.13.3)(esbuild@0.28.2)(jiti@2.7.0)(less@4.8.0(supports-color@8.1.1))(sass-embedded@1.100.0)(sass@1.104.0)(tsx@4.23.13)(yaml@2.9.0))
 
-  packages/css:
-    dependencies:
-      '@baloise/ds-assets':
-        specifier: 20.0.0-next.9
-        version: link:../assets
-      '@baloise/ds-tokens':
-        specifier: 20.0.0-next.9
-        version: link:../tokens
-    devDependencies:
-      autoprefixer:
-        specifier: 10.5.4
-        version: 10.5.4(postcss@8.5.28)
-      cssnano:
-        specifier: 9.0.3
-        version: 9.0.3(postcss@8.5.28)
-      postcss:
-        specifier: 8.5.28
-        version: 8.5.28
-      sass:
-        specifier: 'catalog:'
-        version: 1.104.0
-      tsx:
-        specifier: 'catalog:'
-        version: 4.23.13
-      unocss:
-        specifier: 66.9.2
-        version: 66.9.2(vite@8.2.2(@types/node@24.13.3)(esbuild@0.28.2)(jiti@2.7.0)(less@4.8.0(supports-color@8.1.1))(sass-embedded@1.100.0)(sass@1.104.0)(tsx@4.23.13)(yaml@2.9.0))
-
   packages/playwright:
     dependencies:
       '@axe-core/playwright':
@@ -749,6 +727,34 @@ importers:
       vitest:
         specifier: 'catalog:'
         version: 4.1.11(@types/node@24.13.3)(@vitest/ui@4.1.11)(jsdom@30.0.1)(vite@8.2.2(@types/node@24.13.3)(esbuild@0.28.2)(jiti@2.7.0)(less@4.8.0(supports-color@8.1.1))(sass-embedded@1.100.0)(sass@1.104.0)(tsx@4.23.13)(yaml@2.9.0))
+
+  packages/styles:
+    dependencies:
+      '@baloise/ds-assets':
+        specifier: 20.0.0-next.9
+        version: link:../assets
+    devDependencies:
+      '@baloise/ds-tokens':
+        specifier: 20.0.0-next.9
+        version: link:../tokens
+      autoprefixer:
+        specifier: 10.5.4
+        version: 10.5.4(postcss@8.5.28)
+      cssnano:
+        specifier: 9.0.3
+        version: 9.0.3(postcss@8.5.28)
+      postcss:
+        specifier: 8.5.28
+        version: 8.5.28
+      sass:
+        specifier: 'catalog:'
+        version: 1.104.0
+      tsx:
+        specifier: 'catalog:'
+        version: 4.23.13
+      unocss:
+        specifier: 66.9.2
+        version: 66.9.2(vite@8.2.2(@types/node@24.13.3)(esbuild@0.28.2)(jiti@2.7.0)(less@4.8.0(supports-color@8.1.1))(sass-embedded@1.100.0)(sass@1.104.0)(tsx@4.23.13)(yaml@2.9.0))
 
   packages/tokens:
     devDependencies:
@@ -4706,9 +4712,6 @@ packages:
 
   caniuse-api@4.0.0:
     resolution: {integrity: sha512-B0hQ1OLyJuHTQSOWXvwibWqM6DCoqJdvBA6X1S/53bd4XU7LJ1yurIPlrsouol3mw1jh9pGI4ivubSpmJeIqCA==}
-
-  caniuse-lite@1.0.30001806:
-    resolution: {integrity: sha512-72Cuvd95zbSYPKq6Fhg8eDJRlzgWDf7/mtoZv6Qe/DYNCEBdNxoA3+rZAU2ZhGCpZlns3EssFavaZomckT5Uuw==}
 
   caniuse-lite@1.0.30001810:
     resolution: {integrity: sha512-TITQPUkaz+aVk5GL6NhOdwk1aEaNTSDPsGFWrTuhKGtjTF70jL/Oht2W4c6rXUe5fu7Ie19VIahAXHIIiWWNeg==}
@@ -11747,7 +11750,7 @@ snapshots:
   autoprefixer@10.5.4(postcss@8.5.28):
     dependencies:
       browserslist: 4.28.8
-      caniuse-lite: 1.0.30001806
+      caniuse-lite: 1.0.30001810
       fraction.js: 5.3.4
       picocolors: 1.1.1
       postcss: 8.5.28
@@ -11930,8 +11933,6 @@ snapshots:
     dependencies:
       browserslist: 4.28.8
       caniuse-lite: 1.0.30001810
-
-  caniuse-lite@1.0.30001806: {}
 
   caniuse-lite@1.0.30001810: {}
 

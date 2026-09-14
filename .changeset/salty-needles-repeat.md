@@ -1,5 +1,5 @@
 ---
-'@baloise/ds-css': minor
+'@baloise/ds-styles': minor
 ---
 
 **css**: Add real CSS minification (cssnano) for all dist/css outputs and fix the exports map to match built files

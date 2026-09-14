@@ -208,7 +208,7 @@ export const BUTTON_SIZES: ButtonSize[] = ['sm', 'md', 'lg']
 The generated SCSS file includes token structure, variables, and variants:
 
 ```scss
-@use '@baloise/ds-css/dist/scss/mixins' as *;
+@use '@baloise/ds-styles/dist/scss/mixins' as *;
 @use '../../vars' as vars;
 
 /**
@@ -306,7 +306,9 @@ The generated visual HTML file for testing variants:
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <link rel="stylesheet" href="/assets/section.css" />
+    <link rel="stylesheet" href="/assets/tokens/base.tokens.css" />
     <link rel="stylesheet" href="/assets/css/design-system.local.min.css" />
+    <link rel="stylesheet" href="/assets/css/utilities.min.css" />
 
     <script type="module" src="/build/design-system.esm.js"></script>
     <script nomodule src="/build/design-system.js"></script>

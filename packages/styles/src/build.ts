@@ -36,8 +36,8 @@ console.log(`
 // `@baloise/*` symlinks live inside each consuming package's own node_modules. Include those
 // package-local dirs so `@use '@baloise/...'` keeps resolving.
 const sassLoadPaths = [
-  resolve(__dirname, '../node_modules'), // packages/css/node_modules — ds-tokens, ds-assets
-  resolve(__dirname, '../../core/node_modules'), // packages/core/node_modules — ds-css, ds-tokens, ds-assets
+  resolve(__dirname, '../node_modules'), // packages/styles/node_modules — ds-tokens, ds-assets
+  resolve(__dirname, '../../core/node_modules'), // packages/core/node_modules — ds-styles, ds-tokens, ds-assets
   resolve(__dirname, '../../../node_modules'), // repo-root node_modules (npm hoist / fallback)
   resolve(__dirname, '../../..'),
 ]
@@ -62,8 +62,8 @@ async function writeCssWithMinified(outPath: string, content: string): Promise<v
   const minPath = outPath.replace(/\.css$/, '.min.css')
   const minified = await minify(content)
   writeFileSync(minPath, minified)
-  const label = outPath.split('/packages/css/')[1] ?? outPath
-  const minLabel = minPath.split('/packages/css/')[1] ?? minPath
+  const label = outPath.split('/packages/styles/')[1] ?? outPath
+  const minLabel = minPath.split('/packages/styles/')[1] ?? minPath
   console.log(`\x1b[32m✔\x1b[0m ${label} written (${content.length} bytes) → ${minLabel} (${minified.length} bytes)`)
 }
 
@@ -200,16 +200,10 @@ const uno = await createGenerator({
 const { css } = await uno.generate(new Set(fullSafelist), { preflights: true })
 const prefixedUtilities = await autoprefix(css)
 
-// Prepend base.tokens.css so all --ds-* variables are defined in the bundle
-const tokensPath = resolve(__dirname, '../../tokens/dist/css/base.tokens.css')
-let tokensCss = ''
-try {
-  tokensCss = readFileSync(tokensPath, 'utf8')
-} catch {
-  console.warn('Warning: base.tokens.css not found — run `pnpm tokens` first.')
-}
-
-const output = tokensCss ? `${tokensCss}\n${prefixedUtilities}` : prefixedUtilities
+// ds-styles never bundles token *values* — only var(--ds-*) references (built from
+// tokensJsonPath above). Consumers install @baloise/ds-tokens separately and load a theme file
+// themselves. See docs/adr/0030-full-merge-brand-token-css.md.
+const output = prefixedUtilities
 
 const outDir = resolve(__dirname, '../dist/css')
 mkdirSync(outDir, { recursive: true })
@@ -249,14 +243,13 @@ writeFileSync(resolve(docsDir, 'design-system.json'), JSON.stringify(docsMetadat
 
 console.log(`\x1b[32m✔\x1b[0m dist/docs/design-system.json written (${Object.keys(docsMetadata).length} categories)`)
 
-// --- Compile base layer (tokens + normalize + structure) -------------------
-async function compileSass(entry: string, outPath: string, description: string): Promise<void> {
-  const result = await compileAsync(entry, {
-    loadPaths: sassLoadPaths,
-  })
-  const prefixed = await autoprefix(result.css)
-  const content = banner(description) + prefixed
-  await writeCssWithMinified(outPath, content)
+// --- Compile foundation layer (normalize + structure) -----------------------
+// No standalone dist/css/foundation.css — only folded into design-system.css /
+// design-system.local.css below. ds-styles ships exactly two CSS bundles: design-system(.local)
+// and utilities.
+async function compileScss(entry: string): Promise<string> {
+  const result = await compileAsync(entry, { loadPaths: sassLoadPaths })
+  return autoprefix(result.css)
 }
 
 const scssOutDir = resolve(__dirname, '../dist/scss')
@@ -266,27 +259,26 @@ mkdirSync(scssOutDir, { recursive: true })
 cpSync(resolve(__dirname, 'scss'), scssOutDir, { recursive: true })
 console.log('\x1b[32m✔\x1b[0m dist/scss/ source files copied')
 
-await compileSass(
-  resolve(__dirname, 'scss/base.scss'),
-  resolve(outDir, 'base.css'),
-  'Base (Tokens + Normalize + Structure)',
-)
+const foundationCss = await compileScss(resolve(__dirname, 'scss/foundation.scss'))
+console.log('\x1b[32m✔\x1b[0m Foundation compiled (bundled into design-system.css, no standalone file)')
 
 // --- Compile component layer (all *.style.scss from packages/core) ----------
+// Also no standalone dist/css/components.css — folded into design-system.css /
+// design-system.local.css below.
 const coreRoot = resolve(__dirname, '../../core/src')
 const styleFiles = await glob('**/*.style.scss', { cwd: coreRoot, absolute: false })
 styleFiles.sort()
 
-// Build barrel: paths relative to packages/css/src/scss/ (url used by compileStringAsync)
+// Build barrel: paths relative to packages/styles/src/scss/ (url used by compileStringAsync)
 // Normalize paths to forward slashes for Sass compatibility on Windows
 const barrelContent = styleFiles.map(f => `@use '../../../core/src/${f.replace(/\\/g, '/')}';`).join('\n')
 
-// FileImporter: redirect @baloise/ds-css/scss/* → packages/css/src/scss/*
+// FileImporter: redirect @baloise/ds-styles/scss/* → packages/styles/src/scss/*
 // Handles internal monorepo imports during development
 const dsStylesImporter = {
   findFileUrl(url: string) {
-    if (!url.startsWith('@baloise/ds-css/scss/')) return null
-    const rel = url.replace('@baloise/ds-css/scss/', '')
+    if (!url.startsWith('@baloise/ds-styles/scss/')) return null
+    const rel = url.replace('@baloise/ds-styles/scss/', '')
     return new URL(`file://${resolve(__dirname, `scss/${rel}`)}`)
   },
 }
@@ -296,42 +288,28 @@ const componentResult = await compileStringAsync(barrelContent, {
   loadPaths: sassLoadPaths,
   importers: [dsStylesImporter],
 })
-const prefixedComponentCss = await autoprefix(componentResult.css)
-const componentCssWithBanner = banner('Components') + prefixedComponentCss
-await writeCssWithMinified(resolve(outDir, 'components.css'), componentCssWithBanner)
-console.log(`\x1b[32m✔\x1b[0m dist/css/components.css covers ${styleFiles.length} components`)
+const componentCssContent = await autoprefix(componentResult.css)
+console.log(`\x1b[32m✔\x1b[0m Components compiled for ${styleFiles.length} components (bundled into design-system.css)`)
 
 // --- Write dist/scss/utilities.scss (pre-compiled, no SCSS source) ----------
 // UnoCSS output is plain CSS; expose via a forwarding stub for Sass consumers.
-const utilitiesScss = `// Auto-generated — utilities are compiled by UnoCSS, not Sass.\n// Use the CSS directly: @import '@baloise/ds-css/css/utilities.css';\n`
+const utilitiesScss = `// Auto-generated — utilities are compiled by UnoCSS, not Sass.\n// Use the CSS directly: @import '@baloise/ds-styles/css/utilities';\n`
 writeFileSync(resolve(scssOutDir, 'utilities.scss'), utilitiesScss)
 console.log('\x1b[32m✔\x1b[0m dist/scss/utilities.scss written')
 
-// --- Build design-system.css (base + component + utilities concatenated) --------------
-const baseCss = readFileSync(resolve(outDir, 'base.css'), 'utf8')
-const componentCssContent = readFileSync(resolve(outDir, 'components.css'), 'utf8')
-const allCss =
-  banner('Full Bundle (Base + Components + Utilities)') + baseCss + '\n' + componentCssContent + '\n' + output
+// --- Build design-system.css (foundation + components — utilities are a separate, optional
+// file, not bundled in here) --------------------------------------------------------------
+const allCss = banner('Full Bundle (Foundation + Components)') + foundationCss + '\n' + componentCssContent
 await writeCssWithMinified(resolve(outDir, 'design-system.css'), allCss)
 
-// --- Build design-system.local.css (fonts with dev path + base + component + utilities)
-await compileSass(
-  resolve(__dirname, 'scss/base.local.scss'),
-  resolve(outDir, 'base.local.css'),
-  'Base — Local Dev (Fonts + Tokens + Normalize + Structure)',
-)
-const baseLocalCss = readFileSync(resolve(outDir, 'base.local.css'), 'utf8')
+// --- Build design-system.local.css (fonts with dev path + foundation + components) --------
+const foundationLocalCss = await compileScss(resolve(__dirname, 'scss/foundation.local.scss'))
 const allLocalCss =
-  banner('Full Bundle — Local Dev (Fonts + Base + Components + Utilities)') +
-  baseLocalCss +
-  '\n' +
-  componentCssContent +
-  '\n' +
-  output
+  banner('Full Bundle — Local Dev (Fonts + Foundation + Components)') + foundationLocalCss + '\n' + componentCssContent
 await writeCssWithMinified(resolve(outDir, 'design-system.local.css'), allLocalCss)
 
-// --- Write dist/scss/design-system.scss (Sass entry that pulls base + component) ------
-const allScss = `@use './base';\n// component styles are compiled from packages/core — use components.css directly\n// utilities are UnoCSS-generated — use utilities.css directly\n`
+// --- Write dist/scss/design-system.scss (Sass entry that pulls foundation + component) ------
+const allScss = `@use './foundation';\n// component styles are only shipped pre-bundled — use\n// @baloise/ds-styles/css/design-system directly, there is no standalone Sass source for them\n`
 writeFileSync(resolve(scssOutDir, 'design-system.scss'), allScss)
 console.log('\x1b[32m✔\x1b[0m dist/scss/design-system.scss written')
 

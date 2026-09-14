@@ -6,6 +6,7 @@ import { addons, useGlobals } from 'storybook/manager-api'
 const themes: { id: string; title: string; color: string }[] = [
   { id: '', title: 'Helvetia', color: '#000d6e' },
   { id: 'tcs', title: 'TCS', color: '#ffeb02' },
+  { id: 'erv', title: 'ERV', color: '#f19654' },
 ]
 
 export const registerTheme: React.FC = () => {

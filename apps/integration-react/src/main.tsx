@@ -4,7 +4,8 @@ import { createRoot } from 'react-dom/client'
 
 import { Root } from './Root'
 
-import '@baloise/ds-css/css'
+import '@baloise/ds-tokens/css/base'
+import '@baloise/ds-styles/css/design-system'
 
 bootstrapDesignSystem({
   defaults: {

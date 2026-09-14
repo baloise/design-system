@@ -15,7 +15,7 @@ export const decorators: Decorator[] = [
         link.rel = 'stylesheet'
         document.head.appendChild(link)
       }
-      link.href = `/assets/tokens/${theme}.tokens.css`
+      link.href = `/assets/tokens/${theme}.override.css`
 
       const wrapper = document.createElement('div')
       wrapper.setAttribute('data-theme', theme)
