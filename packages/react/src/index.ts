@@ -17,8 +17,8 @@ export const bootstrapDesignSystem = (config: DsReactConfig = {}) => {
 
 export type * from './generated/components'
 export * from './wrappers'
-export { DsRootProvider } from './components/root-provider'
-export type { DsRootProviderProps } from './components/root-provider'
+export { DsRootProvider } from './components/ds-root-provider'
+export type { DsRootProviderProps } from './components/ds-root-provider'
 export { Modal } from './components/modal'
 export type { ModalProps } from './components/modal'
 export * from './hooks'

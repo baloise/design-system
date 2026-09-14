@@ -27,7 +27,7 @@ describe('public API', () => {
   })
 
   test('exports overlay components, DsRootProvider, and hooks from the public barrel', () => {
-    expect(indexSource).toContain("export { DsRootProvider } from './components/root-provider'")
+    expect(indexSource).toContain("export { DsRootProvider } from './components/ds-root-provider'")
     expect(indexSource).toContain("export { Modal } from './components/modal'")
     expect(indexSource).toContain("export * from './hooks'")
     expect(hooksSource).toContain("export { useModal } from './use-modal'")

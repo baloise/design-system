@@ -50,51 +50,49 @@ function ensureInit(config: DsConfig) {
   })
 }
 
-export const DsRootProvider = forwardRef<ComponentRef<typeof DsRoot>, DsRootProviderProps>(
-  function DsRootProvider(
-    {
-      icons,
-      legalLinks,
-      legalText,
-      socialLinks,
-      allowedLanguages,
+export const DsRootProvider = forwardRef<ComponentRef<typeof DsRoot>, DsRootProviderProps>(function DsRootProvider(
+  {
+    icons,
+    legalLinks,
+    legalText,
+    socialLinks,
+    allowedLanguages,
+    brand,
+    region,
+    language,
+    fallbackLanguage,
+    animated,
+    ...props
+  },
+  ref,
+) {
+  ensureInit(
+    omitUndefined({
       brand,
       region,
       language,
       fallbackLanguage,
       animated,
-      ...props
-    },
-    ref,
-  ) {
-    ensureInit(
-      omitUndefined({
+      allowedLanguages: parseAllowedLanguages(allowedLanguages),
+      icons,
+      legalLinks,
+      legalText,
+      socialLinks,
+    }),
+  )
+
+  return (
+    <DsRoot
+      {...props}
+      ref={ref}
+      {...omitUndefined({
         brand,
         region,
         language,
         fallbackLanguage,
         animated,
-        allowedLanguages: parseAllowedLanguages(allowedLanguages),
-        icons,
-        legalLinks,
-        legalText,
-        socialLinks,
-      }),
-    )
-
-    return (
-      <DsRoot
-        {...props}
-        ref={ref}
-        {...omitUndefined({
-          brand,
-          region,
-          language,
-          fallbackLanguage,
-          animated,
-          allowedLanguages: serializeAllowedLanguages(allowedLanguages),
-        })}
-      />
-    )
-  },
-)
+        allowedLanguages: serializeAllowedLanguages(allowedLanguages),
+      })}
+    />
+  )
+})

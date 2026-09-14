@@ -1,7 +1,7 @@
 import { type ReactNode } from 'react'
 import { afterEach, beforeEach, describe, expect, test, vi } from 'vitest'
 import { render } from '../test/render'
-import { DsRootProvider } from './root-provider'
+import { DsRootProvider } from './ds-root-provider'
 
 const initialize = vi.fn()
 const DsRoot = vi.fn(({ children }: { children?: ReactNode }) => <div data-testid="ds-root">{children}</div>)
