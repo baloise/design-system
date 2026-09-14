@@ -9301,7 +9301,7 @@
           },
           "Radius": {
             "$type": "dimension",
-            "$value": "{🔗 Alias.🔵 Radius.Rounded}",
+            "$value": "{🔗 Alias.🔵 Radius.Base}",
             "$extensions": {
               "com.figma.scopes": [
                 "ALL_SCOPES"
