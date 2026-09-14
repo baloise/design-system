@@ -69,7 +69,7 @@ import {
     scale="0.5"
     label="App Footer"
     fullwidth
-    pageTitle="Components/App Footer"
+    pageTitle="Components/AppFooter"
     description="Footer for the Helvetia Applications. The footer runs pure in blue or with a decorated track line below."
   >
     <ds-app-footer></ds-app-footer>
@@ -571,13 +571,14 @@ import {
     <ds-number-input decimal="2" suffix="CHF" value="1234.45"></ds-number-input>
   </GridComponent>
   <GridComponent
-    scale="0.8"
+    scale="0.5"
     label="Pagination"
     fullwidth
     pageTitle="Components/Pagination"
     description="Pagination allows you to divide large amounts of content into smaller chunks across multiple pages."
   >
-    <ds-pagination page-range="1" total-pages="20" value="2"></ds-pagination>
+    <ds-pagination page-range="1" total-pages="20" value="2" class="mb-lg"></ds-pagination>
+    <ds-pagination variant="dots" page-range="1" total-pages="20" value="2"></ds-pagination>
   </GridComponent>
   <GridComponent
     scale="0.8"
