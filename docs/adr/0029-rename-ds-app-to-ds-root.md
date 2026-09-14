@@ -1,8 +1,8 @@
-# 28. Rename `ds-app` to `ds-root`
+# 29. Rename `ds-app` to `ds-root`
 
 Package: `packages/core`, `apps/storybook`, `packages/playwright`
 
-Date: 2026-09-10
+Date: 2026-09-11
 
 ## Status
 
@@ -39,37 +39,48 @@ Considered alternatives for the new name:
   concrete `ds-root`, which describes the component's actual DOM position
   without needing to also imply a "shell" architecture.
 
+A hard rename with no alias (the ADR-0026 navbar/footer precedent) was
+considered and rejected: `ds-app` is the page root for every consumer, so
+removing the tag would be a breaking change for every integrating app.
+
 ## Decision
 
 Rename `ds-app` → `ds-root`, applied consistently across the tag, class
-(`App` → `Root`), folder/file names (`components/app/` →
-`components/root/`, `app.tsx` → `root.tsx`, etc.), the CSS custom property
-(`--ds-app-height` → `--ds-root-height`), the `getAppRoot()` helper (→
-`getRootElement()`), CSS classes (`.ds-app`/`.ds-app--safari`/
-`.ds-app--touch` → `.ds-root`/`.ds-root--safari`/`.ds-root--touch`),
-Storybook docs, and Playwright page objects/fixtures.
+(`App` → `Root`), the canonical folder/file names (`components/root/`,
+`root.tsx`, etc.), the CSS custom property (`--ds-app-height` →
+`--ds-root-height`), the `getAppRoot()` helper (→ `getRootElement()`), CSS
+classes (`.ds-app`/`.ds-app--safari`/`.ds-app--touch` → `.ds-root`/
+`.ds-root--safari`/`.ds-root--touch`), Storybook docs, and Playwright page
+objects.
 
-This is a hard rename — no deprecated alias for `ds-app` — consistent with
-the precedent set by ADR-0026's `ds-navbar` → `ds-app-navbar` rename, shipped
-as a major/breaking changeset.
+Keep compatibility aliases, marked `@deprecated`:
+
+- `<ds-app>` remains a Stencil component with the same public API as `ds-root`
+- `getAppRoot()` remains exported and delegates to `getRootElement()`
+- `--ds-app-height` continues to be written alongside `--ds-root-height`
+- `.ds-app` / `.ds-app--safari` / `.ds-app--touch` continue to be applied
+  on the host
+- Generated framework wrappers (`DsApp`) and the Playwright `DsApp` page
+  object stay public with a deprecation diagnostic pointing at `DsRoot`
 
 `ds-app-navbar` and `ds-app-footer` **keep** their `ds-app-*` prefix. The
-prefix is reinterpreted, not orphaned: it now denotes "application usage
-context" as a scope in its own right (as ADR-0026 already intended for the
-prefix itself), distinct from a planned future "website usage context"
-(`ds-web-navbar`/`ds-web-footer`, still unbuilt). It no longer needs to
-disclaim a relationship to a component called `ds-app`, since that component
-no longer exists — the apparent mismatch between `ds-root` and
-`ds-app-navbar` is intentional, not leftover naming debt. Designing the
-website-context scope itself is out of scope for this decision.
+prefix denotes "application usage context" as a scope in its own right (as
+ADR-0026 already intended), distinct from a planned future "website usage
+context" (`ds-web-navbar`/`ds-web-footer`, still unbuilt). The apparent
+mismatch between `ds-root` and `ds-app-navbar` is intentional, not leftover
+naming debt. Designing the website-context scope itself is out of scope for
+this decision.
 
 ## Consequences
 
-- Breaking change for existing consumers of `ds-app` and its
-  `--ds-app-height` CSS variable — no compatibility shim ships with it.
+- Existing consumers of `ds-app`, `getAppRoot()`, and `--ds-app-height`
+  keep compiling and rendering. New code should use `ds-root`,
+  `getRootElement()`, and `--ds-root-height`.
 - ADR-0026's text ("unrelated to `ds-app`, the existing root wrapper
   component") now refers to a renamed component; that ADR is left as a
   historical record and not edited, but `packages/core/CONTEXT.md` is
   updated to reflect the current name.
 - Future work introducing a website usage context can name it `ds-web-*`
   without also needing to touch or reconcile `ds-root`.
+- Numbered 0029 because [ADR-0028](0028-react-idioms-for-overlay-components.md)
+  already occupies 28.

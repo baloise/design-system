@@ -5,14 +5,14 @@ import {
   BannerTabs,
   Footer,
 } from '../../../.storybook/blocks'
-import * as AppStories from './app.stories'
-import { APP_DOC_CONFIG, getAppTabs } from './app.doc-config'
+import * as RootStories from './root.stories'
+import { ROOT_DOC_CONFIG, getRootTabs } from './root.doc-config'
 
-<Meta title="Components/App/Accessibility" name="Accessibility" />
-<Banner label={'Accessibility'} section={APP_DOC_CONFIG.section} color={APP_DOC_CONFIG.color} />
+<Meta title="Components/Root/Accessibility" name="Accessibility" />
+<Banner label={'Accessibility'} section={ROOT_DOC_CONFIG.section} color={ROOT_DOC_CONFIG.color} />
 <BannerTabs
-  of={AppStories}
-  tabs={getAppTabs('accessibility')}
+  of={RootStories}
+  tabs={getRootTabs('accessibility')}
 />
 
 ## Guidelines
@@ -78,11 +78,11 @@ import { APP_DOC_CONFIG, getAppTabs } from './app.doc-config'
 
 ## WCAG 2.2 AA Compliance
 
-The app component supports patterns that meet WCAG 2.2 Level AA standards:
+The root component supports patterns that meet WCAG 2.2 Level AA standards:
 
-- **Semantic Landmarks (1.3.1)** — Uses role attributes for app regions
+- **Semantic Landmarks (1.3.1)** — Uses role attributes for page regions
 - **Navigable Structure (2.4.1)** — Skip links and landmarks for navigation
-- **Keyboard Navigation (2.1.1)** — Tab navigates app and content
+- **Keyboard Navigation (2.1.1)** — Tab navigates chrome and content
 - **Focus Management (2.4.3)** — Focus visible and managed appropriately
 - **Page Structure (2.4.6)** — Clear visual hierarchy and organization
 

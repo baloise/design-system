@@ -1,4 +1,4 @@
-import { dsBrowser, getAppRoot } from '@utils'
+import { dsBrowser, getRootElement } from '@utils'
 import { ModalController, ModalOptions } from './modal.interfaces'
 
 export type { ModalOptions, ModalController } from './modal.interfaces'
@@ -10,7 +10,7 @@ class ModalControllerImpl implements ModalController {
     if (options.modalWidth !== undefined) element.modalWidth = options.modalWidth
     if (options.closable !== undefined) element.closable = options.closable
 
-    const root = getAppRoot(document)
+    const root = getRootElement(document)
     root.appendChild(element)
 
     await element.present()

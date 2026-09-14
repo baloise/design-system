@@ -1,4 +1,4 @@
-export interface AppCustomEvent<T> extends CustomEvent<T> {
-  detail: T
-  target: HTMLDsAppElement
-}
+/**
+ * @deprecated Use `RootCustomEvent` from `../root/root.interfaces` instead.
+ */
+export type { AppCustomEvent, RootCustomEvent } from '../root/root.interfaces'
