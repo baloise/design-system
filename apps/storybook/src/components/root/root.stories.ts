@@ -2,15 +2,15 @@ import type { JSX } from '@baloise/ds-core'
 import type { Meta } from '@storybook/html-vite'
 import { StoryFactory, withComponentControls, withRender } from '../../utils'
 
-type Args = JSX.DsApp
+type Args = JSX.DsRoot
 
 const meta: Meta<Args> = {
-  title: 'Components/App/Variants',
+  title: 'Components/Root/Variants',
   argTypes: {
-    ...withComponentControls({ tag: 'ds-app' }),
+    ...withComponentControls({ tag: 'ds-root' }),
   },
   ...withRender(
-    () => `<ds-app class="has-sticky-footer">
+    () => `<ds-root class="has-sticky-footer">
   <header><!-- Add Navigation here --></header>
   <main>
     <div class="ds-container my-lg">
@@ -21,7 +21,7 @@ const meta: Meta<Args> = {
   <ds-app-footer>
     <!-- Footer content -->
   </ds-app-footer>
-  </ds-app>`,
+  </ds-root>`,
   ),
 }
 
@@ -39,15 +39,15 @@ Basic.storyName = '🧩 Basic'
 
 export const WithConfig = Story({
   ...withRender(
-    () => `<ds-app brand="helvetia" region="IT" language="it" allowed-languages="it,en" fallback-language="en">
+    () => `<ds-root brand="helvetia" region="IT" language="it" allowed-languages="it,en" fallback-language="en">
   <main>
     <div class="ds-container my-lg">
       <h1 class="ds-title">Ciao!</h1>
-      <p class="my-md">The <code>language="it"</code> config on <code>ds-app</code> propagates to every design system component below it, including <code>ds-close</code>'s label.</p>
+      <p class="my-md">The <code>language="it"</code> config on <code>ds-root</code> propagates to every design system component below it, including <code>ds-close</code>'s label.</p>
       <ds-close button></ds-close>
     </div>
   </main>
-  </ds-app>`,
+  </ds-root>`,
   ),
 })
 WithConfig.storyName = '🧩 With Config'

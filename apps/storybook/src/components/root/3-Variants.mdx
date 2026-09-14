@@ -1,0 +1,31 @@
+import { Markdown, Meta } from '@storybook/addon-docs/blocks'
+import { Banner, BannerTabs, CanvasWithCodePen, Footer, StoryHeading } from '../../../.storybook/blocks'
+import * as RootStories from './root.stories'
+import { ROOT_DOC_CONFIG, getRootTabs } from './root.doc-config'
+
+<Meta title="Components/Root/Variants/Overview" name="Overview" />
+
+<StoryHeading of={RootStories.Basic} hidden></StoryHeading>
+
+<Banner label={'Variants'} section={ROOT_DOC_CONFIG.section} color={ROOT_DOC_CONFIG.color} />
+
+<BannerTabs of={RootStories} tabs={getRootTabs('variants')} />
+
+{/* STORIES */}
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={RootStories.Basic}></StoryHeading>
+
+The default root shell — header, main content, and footer.
+
+<CanvasWithCodePen of={RootStories.Basic} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={RootStories.WithConfig}></StoryHeading>
+
+Set `brand`, `region`, `language`, `allowed-languages`, and `fallback-language` on `ds-root` to configure every design system component nested inside it. Here `language="it"` makes the `ds-close` button render its label in Italian ("Chiudi") instead of the default.
+
+<CanvasWithCodePen of={RootStories.WithConfig} />
+
+<Footer />

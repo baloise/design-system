@@ -1,0 +1,30 @@
+@use '@baloise/ds-css/dist/scss/mixins' as *;
+
+/**
+ * @prop --ds-root-height: Viewport height in pixels, kept in sync on window resize to work around mobile browser viewport unit inconsistencies.
+ * @prop --ds-app-height: Deprecated alias of `--ds-root-height`.
+ */
+
+:root {
+  --ds-root-height: 100%;
+  --ds-app-height: var(--ds-root-height);
+}
+
+.ds-root,
+.ds-app {
+  position: relative;
+}
+
+.lcp-wait {
+  opacity: 0;
+  visibility: hidden;
+  display: none;
+}
+
+.lcp-ready {
+  .lcp-wait {
+    opacity: inherit;
+    visibility: inherit;
+    display: inherit;
+  }
+}

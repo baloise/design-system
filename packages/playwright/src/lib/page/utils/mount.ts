@@ -58,9 +58,9 @@ const template = (html: string) => `
   </head>
 
   <body>
-    <ds-app animated="false">
+    <ds-root animated="false">
       <main id="root">${html}</main>
-    </ds-app>
+    </ds-root>
   </body>
 </html>
 `

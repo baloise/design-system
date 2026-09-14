@@ -1,12 +1,12 @@
 /**
  * Public generated wrappers.
  *
- * Overlay wrappers with hand-authored replacements stay public but are marked
- * `@deprecated`. Prefer `Modal`, `useToast`, and `useSnackbar`.
+ * Overlay wrappers with hand-authored replacements, and the renamed `ds-app`
+ * root wrapper, stay public but are marked `@deprecated`. Prefer `Modal`,
+ * `useToast`, `useSnackbar`, and `DsRoot`.
  */
 export {
   DsAccordion,
-  DsApp,
   DsAppFooter,
   DsAppNavbar,
   DsBadge,
@@ -55,6 +55,7 @@ export {
   DsProgressBar,
   DsRadio,
   DsRadioGroup,
+  DsRoot,
   DsSegment,
   DsSegmentItem,
   DsSelect,
@@ -83,6 +84,11 @@ export {
  * internal overlay host those hooks already manage.
  */
 export { DsAlertContainer } from './generated/components'
+
+/**
+ * @deprecated Use `DsRoot` instead. `DsApp` is a compatibility alias of the renamed root wrapper.
+ */
+export { DsApp } from './generated/components'
 
 /**
  * @deprecated Use `Modal` instead. The generated wrapper does not keep React

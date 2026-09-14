@@ -1,0 +1,58 @@
+import { Canvas, Markdown, Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  Code,
+  Footer,
+  Lead,
+  UsageExamples,
+} from '../../../.storybook/blocks'
+import * as RootStories from './root.stories'
+import { ROOT_DOC_CONFIG, getRootTabs } from './root.doc-config'
+
+<Meta title="Components/Root/Usage" name="Usage" />
+<Banner label={'Usage'} section={ROOT_DOC_CONFIG.section} color={ROOT_DOC_CONFIG.color} />
+<BannerTabs
+  of={RootStories}
+  tabs={getRootTabs('usage')}
+/>
+
+## When to Use
+
+- Wrap entire application for consistent layout and theming
+- Set up global root-level configuration
+- Apply brand colors and design system styles globally
+- Manage top-level navigation structure
+- Provide consistent spacing and grid structure
+- Initialize application-wide state or context
+
+## Global Configuration
+
+`ds-root` sets the `brand`, `region`, `language`, `allowed-languages`, `fallback-language`, and `animated` values on the shared design system config, so every component nested inside it (`ds-close`, `ds-app-footer`, form controls, …) picks them up automatically.
+
+<Code noPreview code={'<ds-root brand="helvetia" region="CH" language="fr" allowed-languages="de,fr,it,en" fallback-language="de">\n  <!-- All nested components render in French -->\n</ds-root>'} />
+
+- `language` falls back to `fallback-language` if it isn't part of `allowed-languages`.
+- Each of these props has a matching `ds*Change` event (`dsBrandChange`, `dsRegionChange`, `dsLanguageChange`, `dsAllowedLanguagesChange`, `dsFallbackLanguageChange`, `dsAnimatedChange`) emitted whenever the value changes in the shared config — whether that change came from `ds-root`'s own props or from elsewhere in the app.
+- Changing a prop at runtime (e.g. `document.querySelector('ds-root').language = 'it'`) updates the config immediately, no reload needed.
+
+## Legacy alias
+
+`ds-app` is a deprecated compatibility alias of `ds-root`. Existing markup keeps working; new code should use `ds-root`.
+
+## When NOT to Use
+
+- For individual page sections — use content component
+- For component-level containers — not needed for single components
+- For temporary overlays or modals — use modal component
+- For reusable sub-sections — create smaller layout components
+- For styling only — simpler solutions may exist
+
+## Do's and Don'ts
+
+### Single Root Element
+
+Use root as the root wrapper. Only one per application.
+
+
+<Footer />

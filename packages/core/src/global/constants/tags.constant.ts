@@ -53,6 +53,7 @@ export const tags: string[] = [
   "ds-progress-bar",
   "ds-radio",
   "ds-radio-group",
+  "ds-root",
   "ds-segment",
   "ds-segment-item",
   "ds-select",
