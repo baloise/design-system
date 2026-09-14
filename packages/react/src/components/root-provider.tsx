@@ -6,7 +6,7 @@ import { DsRoot } from '../generated/components'
 
 type DsRootProps = ComponentProps<typeof DsRoot>
 
-export type DsContextProps = Omit<DsRootProps, 'allowedLanguages'> & {
+export type DsRootProviderProps = Omit<DsRootProps, 'allowedLanguages'> & {
   allowedLanguages?: DsLanguage[] | string
   icons?: DsConfig['icons']
   legalLinks?: DsConfig['legalLinks']
@@ -50,49 +50,51 @@ function ensureInit(config: DsConfig) {
   })
 }
 
-export const DsContext = forwardRef<ComponentRef<typeof DsRoot>, DsContextProps>(function DsContext(
-  {
-    icons,
-    legalLinks,
-    legalText,
-    socialLinks,
-    allowedLanguages,
-    brand,
-    region,
-    language,
-    fallbackLanguage,
-    animated,
-    ...props
-  },
-  ref,
-) {
-  ensureInit(
-    omitUndefined({
+export const DsRootProvider = forwardRef<ComponentRef<typeof DsRoot>, DsRootProviderProps>(
+  function DsRootProvider(
+    {
+      icons,
+      legalLinks,
+      legalText,
+      socialLinks,
+      allowedLanguages,
       brand,
       region,
       language,
       fallbackLanguage,
       animated,
-      allowedLanguages: parseAllowedLanguages(allowedLanguages),
-      icons,
-      legalLinks,
-      legalText,
-      socialLinks,
-    }),
-  )
-
-  return (
-    <DsRoot
-      {...props}
-      ref={ref}
-      {...omitUndefined({
+      ...props
+    },
+    ref,
+  ) {
+    ensureInit(
+      omitUndefined({
         brand,
         region,
         language,
         fallbackLanguage,
         animated,
-        allowedLanguages: serializeAllowedLanguages(allowedLanguages),
-      })}
-    />
-  )
-})
+        allowedLanguages: parseAllowedLanguages(allowedLanguages),
+        icons,
+        legalLinks,
+        legalText,
+        socialLinks,
+      }),
+    )
+
+    return (
+      <DsRoot
+        {...props}
+        ref={ref}
+        {...omitUndefined({
+          brand,
+          region,
+          language,
+          fallbackLanguage,
+          animated,
+          allowedLanguages: serializeAllowedLanguages(allowedLanguages),
+        })}
+      />
+    )
+  },
+)

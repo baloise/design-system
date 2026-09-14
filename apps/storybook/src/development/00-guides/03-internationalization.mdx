@@ -107,20 +107,20 @@ ${' '}allowedLanguages: ['de', 'fr', 'it', 'en'],
 
 <ReactFramework>
 
-Wrap the application in `DsContext` and pass the default values as props. `DsContext` replaces `initializeDesignSystem()` / `bootstrapDesignSystem()` in React.
+Wrap the application in `DsRootProvider` and pass the default values as props. `DsRootProvider` replaces `initializeDesignSystem()` / `bootstrapDesignSystem()` in React.
 
 <Code language="tsx" code={`
-import { DsContext } from '@baloise/ds-react'
+import { DsRootProvider } from '@baloise/ds-react'
 
 function App() {
 ${' '}return (
-${' '}${' '}<DsContext
+${' '}${' '}<DsRootProvider
 ${' '}${' '}${' '}region="BE"
 ${' '}${' '}${' '}language="fr"
 ${' '}${' '}${' '}allowedLanguages={['de', 'fr', 'it', 'en']}
 ${' '}${' '}>
 ${' '}${' '}${' '}{/* Your application */}
-${' '}${' '}</DsContext>
+${' '}${' '}</DsRootProvider>
 ${' '})
 }
 `} />
@@ -136,7 +136,7 @@ ${' '})
 ### HTML `<meta>` tag
 
 For markup-only setups (CMS templates, server-rendered pages) where calling
-`initialize` or wrapping in `DsContext` isn't practical, a subset of the config can
+`initialize` or wrapping in `DsRootProvider` isn't practical, a subset of the config can
 instead be declared on a `<meta name="design-system-config">` tag in
 `<head>`. This is read before any framework code runs, so it's also useful
 to avoid a flash of default config (wrong region/language) while the app
@@ -159,7 +159,7 @@ a boolean) are read from the tag. Everything else — icons, `httpFormSubmit`,
 
 <InfoQuote>
   Precedence, lowest to highest: default config → `<meta>` tag → the
-  config passed to `initialize` or `DsContext`, which always
+  config passed to `initialize` or `DsRootProvider`, which always
   wins.
 </InfoQuote>
 
@@ -199,24 +199,24 @@ ${' '}}
 
 <ReactFramework>
 
-To change the language or region at runtime, update the props on `DsContext` from React state. Nested design system components pick up the new values automatically.
+To change the language or region at runtime, update the props on `DsRootProvider` from React state. Nested design system components pick up the new values automatically.
 
 <Code language="tsx" code={`
 import { useState } from 'react'
-import { DsContext, DsAppFooter } from '@baloise/ds-react'
+import { DsRootProvider, DsAppFooter } from '@baloise/ds-react'
 import type { DsLanguage } from '@baloise/ds-core'
 
 function App() {
 ${' '}const [language, setLanguage] = useState<DsLanguage>('de')
 
 ${' '}return (
-${' '}${' '}<DsContext
+${' '}${' '}<DsRootProvider
 ${' '}${' '}${' '}region="CH"
 ${' '}${' '}${' '}language={language}
 ${' '}${' '}${' '}allowedLanguages={['de', 'fr', 'it', 'en']}
 ${' '}${' '}>
 ${' '}${' '}${' '}<DsAppFooter onDsLanguageChange={event => setLanguage(event.detail.language as DsLanguage)} />
-${' '}${' '}</DsContext>
+${' '}${' '}</DsRootProvider>
 ${' '})
 }
 `} />

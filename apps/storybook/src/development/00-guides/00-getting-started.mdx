@@ -398,13 +398,13 @@ instead of `@baloise/ds-tokens/css/base` — each is a complete, standalone toke
   description="Breakpoint mixins, CSS utilities, and the breakpoint service."
 />
 
-### DsContext
+### DsRootProvider
 
-Wrap the application in `DsContext`. It is the React root for Design System config: it initializes the system once and renders `DsRoot` so nested components pick up brand, region, language, and animation settings.
+Wrap the application in `DsRootProvider`. It is the React root for Design System config: it initializes the system once and renders `DsRoot` so nested components pick up brand, region, language, and animation settings.
 
 Pass live config as props. If you omit them, components still work with the default config. Region and language can also be changed at runtime — update the props from React state. See **Development/Internationalization**.
 
-Do not call `initializeDesignSystem()` / `bootstrapDesignSystem()` in the React entry. `DsContext` replaces that.
+Do not call `initializeDesignSystem()` / `bootstrapDesignSystem()` in the React entry. `DsRootProvider` replaces that.
 
 **main.tsx**
 
@@ -427,11 +427,11 @@ createRoot(document.getElementById('root')!).render(
 **App.tsx**
 
 ```tsx
-import { DsContext, DsAppFooter, DsButton, DsHeading } from '@baloise/ds-react'
+import { DsRootProvider, DsAppFooter, DsButton, DsHeading } from '@baloise/ds-react'
 
 function App() {
   return (
-    <DsContext
+    <DsRootProvider
       className="has-sticky-footer"
       region="CH"
       language="de"
@@ -452,7 +452,7 @@ function App() {
       <DsAppFooter>
         {/* Footer content */}
       </DsAppFooter>
-    </DsContext>
+    </DsRootProvider>
   )
 }
 
@@ -471,11 +471,11 @@ npm create vite@latest my-app -- --template react-ts
 
 ### Next.js
 
-`@baloise/ds-react` is client-only today. Import Design System components from files marked `'use client'`. Wrap the tree in `DsContext`.
+`@baloise/ds-react` is client-only today. Import Design System components from files marked `'use client'`. Wrap the tree in `DsRootProvider`.
 
 ### TypeScript
 
-`@baloise/ds-react` publishes TypeScript declarations (`types` in `package.json` points at `dist/index.d.ts`). After installing the package, component props, events, and the `DsContext` config are typed — no extra `@types/*` package or `tsconfig.json` changes are required.
+`@baloise/ds-react` publishes TypeScript declarations (`types` in `package.json` points at `dist/index.d.ts`). After installing the package, component props, events, and the `DsRootProvider` config are typed — no extra `@types/*` package or `tsconfig.json` changes are required.
 
 Event handlers use the `onDs*` prefix (for example `onDsClick`) and receive the custom event, not a React synthetic event.
 

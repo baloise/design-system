@@ -5,7 +5,7 @@ interface DsReactConfig {
 }
 
 /**
- * @deprecated Use `DsContext` instead. Wrap the application in `<DsContext>` and pass
+ * @deprecated Use `DsRootProvider` instead. Wrap the application in `<DsRootProvider>` and pass
  * brand, region, language, and other config as props.
  */
 export const bootstrapDesignSystem = (config: DsReactConfig = {}) => {
@@ -17,8 +17,8 @@ export const bootstrapDesignSystem = (config: DsReactConfig = {}) => {
 
 export type * from './generated/components'
 export * from './wrappers'
-export { DsContext } from './components/context'
-export type { DsContextProps } from './components/context'
+export { DsRootProvider } from './components/root-provider'
+export type { DsRootProviderProps } from './components/root-provider'
 export { Modal } from './components/modal'
 export type { ModalProps } from './components/modal'
 export * from './hooks'

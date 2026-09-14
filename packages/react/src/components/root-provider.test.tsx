@@ -1,7 +1,7 @@
 import { type ReactNode } from 'react'
 import { afterEach, beforeEach, describe, expect, test, vi } from 'vitest'
 import { render } from '../test/render'
-import { DsContext } from './context'
+import { DsRootProvider } from './root-provider'
 
 const initialize = vi.fn()
 const DsRoot = vi.fn(({ children }: { children?: ReactNode }) => <div data-testid="ds-root">{children}</div>)
@@ -17,7 +17,7 @@ vi.mock('../generated/components', () => ({
   DsRoot: (props: { children?: ReactNode }) => DsRoot(props),
 }))
 
-describe('DsContext', () => {
+describe('DsRootProvider', () => {
   beforeEach(() => {
     initialize.mockReset()
     DsRoot.mockClear()
@@ -30,9 +30,9 @@ describe('DsContext', () => {
 
   test('initializes the design system once with React form defaults', () => {
     const { rerender, unmount } = render(
-      <DsContext brand="helvetia" region="CH" language="de">
+      <DsRootProvider brand="helvetia" region="CH" language="de">
         <span data-testid="child">Hello</span>
-      </DsContext>,
+      </DsRootProvider>,
     )
 
     expect(initialize).toHaveBeenCalledTimes(1)
@@ -44,9 +44,9 @@ describe('DsContext', () => {
     })
 
     rerender(
-      <DsContext brand="helvetia" region="CH" language="fr">
+      <DsRootProvider brand="helvetia" region="CH" language="fr">
         <span data-testid="child">Hello</span>
-      </DsContext>,
+      </DsRootProvider>,
     )
 
     expect(initialize).toHaveBeenCalledTimes(1)
@@ -56,7 +56,7 @@ describe('DsContext', () => {
   test('does not initialize when the design system is already configured', () => {
     ;(window as Window & { DesignSystem?: { config?: unknown } }).DesignSystem = { config: {} }
 
-    const { unmount } = render(<DsContext region="DE" />)
+    const { unmount } = render(<DsRootProvider region="DE" />)
 
     expect(initialize).not.toHaveBeenCalled()
     unmount()
@@ -64,7 +64,7 @@ describe('DsContext', () => {
 
   test('forwards layout and live config props to DsRoot', () => {
     const { container, unmount } = render(
-      <DsContext
+      <DsRootProvider
         className="has-sticky-footer"
         animated={false}
         brand="baloise"
@@ -74,7 +74,7 @@ describe('DsContext', () => {
         allowedLanguages={['it', 'en']}
       >
         <span data-testid="child">Body</span>
-      </DsContext>,
+      </DsRootProvider>,
     )
 
     expect(container.querySelector('[data-testid="child"]')?.textContent).toBe('Body')
@@ -95,7 +95,7 @@ describe('DsContext', () => {
   test('passes one-shot config to initialize but not to DsRoot', () => {
     const legalLinks = { CH: { de: [{ href: 'https://example.com', label: 'Legal' }] } }
 
-    const { unmount } = render(<DsContext legalLinks={legalLinks} icons={{ custom: '<svg />' }} />)
+    const { unmount } = render(<DsRootProvider legalLinks={legalLinks} icons={{ custom: '<svg />' }} />)
 
     expect(initialize).toHaveBeenCalledWith({
       legalLinks,
