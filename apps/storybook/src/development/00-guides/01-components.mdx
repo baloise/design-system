@@ -107,15 +107,15 @@ Import the components that are used inside the template and that is it.
 
 ```tsx
 import React from "react";
-import { DsRoot, DsHeading } from "@baloise/ds-react";
+import { DsContext, DsHeading } from "@baloise/ds-react";
 
 function App() {
   return (
-    <DsRoot>
+    <DsContext>
       <main className="ds-container">
         <DsHeading>Hello World</DsHeading>
       </main>
-    </DsRoot>
+    </DsContext>
   );
 }
 

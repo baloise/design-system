@@ -26,12 +26,17 @@ describe('public API', () => {
     expect(missing).toEqual([])
   })
 
-  test('exports overlay components and hooks from the public barrel', () => {
+  test('exports overlay components, DsContext, and hooks from the public barrel', () => {
+    expect(indexSource).toContain("export { DsContext } from './components/context'")
     expect(indexSource).toContain("export { Modal } from './components/modal'")
     expect(indexSource).toContain("export * from './hooks'")
     expect(hooksSource).toContain("export { useModal } from './use-modal'")
     expect(hooksSource).toContain("export { useToast } from './use-toast'")
     expect(hooksSource).toContain("export { useSnackbar } from './use-snackbar'")
+  })
+
+  test('marks bootstrapDesignSystem as deprecated', () => {
+    expect(indexSource).toMatch(/@deprecated[\s\S]{0,400}export const bootstrapDesignSystem/)
   })
 
   test('does not export internal hooks', () => {
