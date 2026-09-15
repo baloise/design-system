@@ -9,6 +9,7 @@ This document captures domain language, architectural patterns, and key concepts
 - Web Components (standard custom elements)
 - Angular bindings (auto-generated wrapper components)
 - React bindings (auto-generated hooks/components)
+- Hydrate script (Node-compatible SSR renderer at `hydrate/`)
 - TypeScript type definitions for all frameworks
 
 ## Core Concepts
@@ -23,7 +24,7 @@ This document captures domain language, architectural patterns, and key concepts
 
 1. **Authoring** → `.tsx` + `.scss` in `packages/core/src/components/<name>/`
 2. **Compilation** → Stencil compiler transpiles to web components in `dist/`
-3. **Output targets** → Additional targets (Angular, React, Web) generate bindings
+3. **Output targets** → Additional targets (Angular, React, Web, hydrate) generate bindings and the SSR renderer
 4. **Distribution** → Built artifacts published to npm as `@baloise/ds-core`
 
 ### Component Types
@@ -714,13 +715,34 @@ dynamic imports:
 import { initialize } from '@baloise/ds-core/initialize'
 ```
 
-`exports` also declares `"."`, `"./components"`, and `"./loader"` explicitly
-(mirroring their `files`-listed directory-index resolution) plus a `"./*"`
-fallback, so adding this map doesn't drop any previously-working deep import.
+`exports` also declares `"."`, `"./components"`, `"./loader"`, and
+`"./hydrate"` explicitly (mirroring their `files`-listed directory-index
+resolution) plus a `"./*"` fallback, so adding this map doesn't drop any
+previously-working deep import.
+
+### Hydrate Script (`@baloise/ds-core/hydrate`)
+
+`stencil.config.ts` includes a `dist-hydrate-script` output target (skipped in
+dev/docs builds, same as `dist` / `dist-custom-elements`). It produces a
+Node-compatible renderer at `hydrate/` on the package root, published via the
+`files` array. `exports["./hydrate"]` maps types to `hydrate/index.d.ts` and
+the Node entries to `index.mjs`/`index.js` — the `"./*"` fallback is enough
+for untyped Node resolution, but TypeScript (and the generated React server
+wrappers that `import('@baloise/ds-core/hydrate')`) need the explicit types
+condition, the same pattern as `./components` and `./loader`.
+
+The React generator (`config/stencil.bindings.react.ts`) points
+`hydrateModule` at that path and sets `serializeShadowRoot:
+'declarative-shadow-dom'`, so a core build also emits
+`packages/react/src/generated/components.server.ts` alongside the existing
+client `components.ts`. Consumer-facing SSR (a `"node"`-condition exports map
+on `@baloise/ds-react`, and a client-only carve-out for the Modal/Toast/Snackbar
+idioms) is the next ticket — see
+[ADR-0031](../../docs/adr/0031-ssr-hydrate-build.md).
 
 ## Token Preview Listener
 
-`packages/core/src/global/token-preview.ts` (wired into the `globalScript`, `src/global/global.ts`, so it's bundled into every `www` page — playground.html and every `*.visual.html`) listens for `postMessage` from an embedding parent window and applies token changes live via `document.documentElement.style.setProperty`/`removeProperty`. It is a no-op unless the page is actually embedded in an iframe (`window.parent !== window`), so it never activates during normal component consumption or Playwright visual-regression runs. No origin allowlist yet — MVP is localhost-only (toky ↔ core dev-server); see [`docs/plans/toky-live-token-preview-plan.md`](../../docs/plans/toky-live-token-preview-plan.md) for the message contract and the deferred "deployed / other DS websites" phase where real origin validation is planned.
+`packages/core/src/global/token-preview.ts` (wired into the `globalScript`, `src/global/global.ts`, so it's bundled into every `www` page — playground.html and every `*.visual.html`) listens for `postMessage` from an embedding parent window and applies token changes live via `document.documentElement.style.setProperty`/`removeProperty`. It is a no-op unless the page is actually embedded in an iframe (`window.parent` is a distinct window). That also covers Node hydrate, where Stencil's `window.parent` is `null` and a `postMessage` would throw. It never activates during normal component consumption or Playwright visual-regression runs. No origin allowlist yet — MVP is localhost-only (toky ↔ core dev-server); see [`docs/plans/toky-live-token-preview-plan.md`](../../docs/plans/toky-live-token-preview-plan.md) for the message contract and the deferred "deployed / other DS websites" phase where real origin validation is planned.
 
 `stencil.config.ts`'s existing `buildStart` hook (the one that already generates `docs/tags.json`) also globs every `*.visual.html` under `src/{blocks,templates,foundation,components}` and writes `docs/visual-pages.json`, copied into `www/visual-pages.json` by the `www` output target's `copy` config. This is the manifest Toky's Live Preview page picker fetches to list selectable pages — `blocks`/`templates` don't exist as directories yet, so they currently contribute nothing, but the glob picks them up automatically once they do.
 
