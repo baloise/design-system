@@ -2,7 +2,7 @@
 '@baloise/ds-core': major
 '@baloise/ds-react': major
 '@baloise/ds-angular': major
-'@baloise/ds-css': major
+'@baloise/ds-styles': major
 '@baloise/ds-playwright': major
 '@baloise/ds-tokens': major
 ---

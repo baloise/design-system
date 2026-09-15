@@ -7,7 +7,14 @@ import type { TokenDiffEntry } from '@/src/tokens/edit'
 import { flattenTokenDocument } from '@/src/tokens/flatten'
 import { formatValue } from '@/src/tokens/format'
 import { brandFilePath, getGithubRef } from '@/src/tokens/github'
-import { isLocalTokensModeEnabled, readLocalBaseTokensDocument, writeLocalBaseTokensDocument } from '@/src/tokens/local'
+import {
+  isLocalTokensModeEnabled,
+  listLocalTokenBrandFiles,
+  readLocalBaseTokensDocument,
+  readLocalBrandTokensDocument,
+  writeLocalBaseTokensDocument,
+  writeLocalBrandTokensDocument,
+} from '@/src/tokens/local'
 import {
   addBrandToIndex,
   createBranch,
@@ -244,10 +251,33 @@ function appendPrBodyUpdate(
 // read from disk instead of a fetched blob — a stale `before` (someone else
 // edited the file since this diff was staged) is still reported as a 409
 // rather than silently overwritten.
-async function handleLocalSubmit(diff: TokenDiffEntry[]): Promise<Response> {
+async function handleLocalSubmit(
+  diff: TokenDiffEntry[],
+  brandDiffs: Record<string, TokenDiffEntry[]>,
+): Promise<Response> {
+  const brandDiffNames = Object.keys(brandDiffs)
+
   let currentDoc: Record<string, unknown>
+  let existingBrands: string[]
   try {
-    currentDoc = await readLocalBaseTokensDocument()
+    ;[currentDoc, existingBrands] = await Promise.all([readLocalBaseTokensDocument(), listLocalTokenBrandFiles()])
+  } catch (err) {
+    return NextResponse.json({ error: errorMessage(err) }, { status: 500 })
+  }
+
+  // Brand creation isn't supported here — unlike an override, it also needs
+  // packages/tokens/src/index.ts's `brands` array patched (see
+  // addBrandToIndex), which the GitHub flow does atomically alongside the
+  // brand file itself. Nothing to reconstruct that safely against disk here.
+  const unknownBrand = brandDiffNames.find(name => !existingBrands.includes(name))
+  if (unknownBrand) {
+    return NextResponse.json({ error: `Brand "${unknownBrand}" no longer exists.` }, { status: 400 })
+  }
+
+  let brandDocs: Map<string, Record<string, unknown>>
+  try {
+    const fetched = await Promise.all(brandDiffNames.map(name => readLocalBrandTokensDocument(name)))
+    brandDocs = new Map(brandDiffNames.map((name, i) => [name, fetched[i]]))
   } catch (err) {
     return NextResponse.json({ error: errorMessage(err) }, { status: 500 })
   }
@@ -270,13 +300,30 @@ async function handleLocalSubmit(diff: TokenDiffEntry[]): Promise<Response> {
     }
   }
 
+  for (const name of brandDiffNames) {
+    const brandFreshByPath = new Map(flattenTokenDocument(brandDocs.get(name)!).map(t => [t.path.join('.'), t]))
+    for (const entry of brandDiffs[name]) {
+      if (!entry.oldPath && !entry.newPath) continue
+      const path = (entry.oldPath ?? entry.newPath)!.join('.')
+      const current = brandFreshByPath.get(path)
+      const currentValue = current ? current.rawValue : undefined
+      if (JSON.stringify(currentValue) !== JSON.stringify(entry.before)) {
+        conflicts.push({ path: `${name}: ${path}`, reason: 'changed' })
+      }
+    }
+  }
+
   if (conflicts.length > 0) {
     return NextResponse.json({ error: 'conflict', conflicts }, { status: 409 })
   }
 
-  const nextDoc = applyDiffToDocument(currentDoc, diff)
   try {
-    await writeLocalBaseTokensDocument(nextDoc)
+    if (diff.length > 0) {
+      await writeLocalBaseTokensDocument(applyDiffToDocument(currentDoc, diff))
+    }
+    for (const name of brandDiffNames) {
+      await writeLocalBrandTokensDocument(name, applyDiffToDocument(brandDocs.get(name)!, brandDiffs[name]))
+    }
   } catch (err) {
     return NextResponse.json({ error: errorMessage(err) }, { status: 500 })
   }
@@ -315,21 +362,23 @@ export async function POST(request: Request): Promise<Response> {
   }
 
   // Local-dev escape hatch (see src/tokens/local.ts): writes the base diff
-  // straight to Base.tokens.json on disk instead of opening/updating a
-  // GitHub PR — no branch, no changeset, no network round-trip. Brand
-  // creation/overrides aren't supported here (they're sparse files living
-  // outside Base.tokens.json), so those still require the real GitHub flow.
+  // (and any existing brand's sparse override file) straight to disk instead
+  // of opening/updating a GitHub PR — no branch, no changeset, no network
+  // round-trip. Creating a *new* brand still requires the real GitHub flow —
+  // that also needs packages/tokens/src/index.ts's `brands` array patched
+  // (see addBrandToIndex), which handleLocalSubmit has no safe local
+  // equivalent for.
   if (isLocalTokensModeEnabled()) {
-    if (newBrands.length > 0 || brandDiffNames.length > 0) {
+    if (newBrands.length > 0) {
       return NextResponse.json(
         {
           error:
-            'Brand changes aren’t supported in local token mode — unstage them and submit brand changes separately.',
+            'Creating a brand isn’t supported in local token mode — unstage the new brand and submit it separately.',
         },
         { status: 400 },
       )
     }
-    return handleLocalSubmit(diff)
+    return handleLocalSubmit(diff, brandDiffs)
   }
 
   const brandFormatError = validateNewBrandNamesFormat(newBrands)

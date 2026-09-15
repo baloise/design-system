@@ -13,7 +13,7 @@
  * @variant desktop:is-* - Responsive desktop breakpoint sizing variants for form columns.
  */
 
-@use '@baloise/ds-css/dist/scss/mixins' as *;
+@use '@baloise/ds-styles/dist/scss/mixins' as *;
 @use './form.mixin' as form;
 
 /**

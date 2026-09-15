@@ -1,6 +1,7 @@
 {
   "$schema": "https://turbo.build/schema.json",
   "ui": "tui",
+  "globalDependencies": ["scripts/**"],
   "globalEnv": [
     "BAL_DOCUMENTATION",
     "DS_DOCUMENTATION",

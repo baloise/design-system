@@ -21,8 +21,8 @@ npm add -D @baloise/ds-assets copyfiles
 
 ## Font
 
-By default, `@baloise/ds-css/css/base.css` (and `all.css`) ship with **no** `@font-face` rules —
-text renders in the browser's fallback font until you self-host the BaloiseCreate fonts.
+By default, `@baloise/ds-styles/css/design-system` ships with **no** `@font-face` rules — text
+renders in the browser's fallback font until you self-host the BaloiseCreate fonts.
 
 <br/>
 
@@ -45,16 +45,16 @@ npm install
 
 **2. Use the self-hosted stylesheet**
 
-Swap `base.css`/`all.css` for the `.local` variant, which points its `@font-face` rules at
-`/assets/fonts/` — the folder you just copied the files into.
+Swap `css/design-system` for the `css/design-system.local` variant, which points its
+`@font-face` rules at `/assets/fonts/` — the folder you just copied the files into.
 
 ```html
-<link rel="stylesheet" href="node_modules/@baloise/ds-css/css/base.local.css" />
+<link rel="stylesheet" href="node_modules/@baloise/ds-styles/css/design-system.local" />
 ```
 
 <InfoQuote>
-  Using the base/components/utilities split instead of `all.css`? Swap in `base.local.css` for
-  `base.css` only — `components.css` and `utilities.css` stay the same either way.
+  Also using `css/utilities`? It stays the same either way — only the main bundle has a `.local`
+  variant.
 </InfoQuote>
 
 ## Favicon

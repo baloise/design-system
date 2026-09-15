@@ -4,7 +4,7 @@
  * Run with: node scripts/build-core.mjs
  */
 import { execSync } from 'node:child_process'
-import { rm } from 'node:fs/promises'
+import { cp, rm } from 'node:fs/promises'
 import { dirname, join, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
@@ -40,7 +40,7 @@ function buildStencil() {
 }
 
 // ============================================================================
-// 2. Generate Angular meta (per-component Inputs/Outputs constants)
+// 3. Generate Angular meta (per-component Inputs/Outputs constants)
 // ============================================================================
 // `generateAngularMeta()` itself skips when Stencil hasn't (re)written proxies.ts (dev/docs builds) — see
 // its own doc comment — so this doesn't need to separately re-derive that same condition from env vars.
@@ -50,7 +50,7 @@ async function generateMeta() {
 }
 
 // ============================================================================
-// 3. Clean up stray output folders
+// 4. Clean up stray output folders
 // ============================================================================
 async function cleanUp() {
   console.log('🧹 Cleaning up temporary folders...')

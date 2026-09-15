@@ -22,7 +22,7 @@ export function presetDsUtilities(
   typographyRawCSS: string = '',
 ): Preset {
   return {
-    name: '@baloise/ds-css',
+    name: '@baloise/ds-styles',
     rules: [
       ...tokenSpacingRules,
       ...spacingRules,

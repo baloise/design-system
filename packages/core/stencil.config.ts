@@ -180,6 +180,16 @@ export const config: Config = {
           warn: true,
         },
         {
+          src: join(packagesDir, 'styles', 'dist', 'css'),
+          dest: 'assets/css',
+          warn: true,
+        },
+        {
+          src: join(packagesDir, 'tokens', 'dist', 'css'),
+          dest: 'assets/tokens',
+          warn: true,
+        },
+        {
           src: join(packagesDir, 'core', 'public', 'images'),
           dest: 'assets/images',
           warn: true,

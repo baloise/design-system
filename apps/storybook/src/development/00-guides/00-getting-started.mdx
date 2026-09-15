@@ -79,21 +79,22 @@ npm install @baloise/ds-Angular
 
 ### Import Styles
 
-Add these to your global stylesheet (e.g. `styles.scss`). Only **Base** is required — add the others as you need them:
+Add these to your global stylesheet (e.g. `styles.scss`). Only **Tokens** and
+**Foundation + Components** are required — add Utilities as you need it:
 
 ```css
-// 1. Base — design tokens, CSS reset, and structural styles. Always required.
-@use '@baloise/ds-css/scss/base';
+// 1. Tokens — every --ds-* CSS custom property. Always required; load before Foundation + Components.
+@import '@baloise/ds-tokens/css/base';
 
-// 2. Components — only needed if you use the CSS-only classes (e.g. `class="ds-button"`)
-//    instead of the web components (`<ds-button>`), which load their styles automatically.
-@import '@baloise/ds-css/css/components';
+// 2. Foundation + Components — CSS reset, structural styles, and CSS-only component classes
+//    (e.g. class="ds-button"). Ship together as one pre-built bundle. Always required.
+@import '@baloise/ds-styles/css/design-system';
 
 // 3. Utilities — spacing, layout, typography, color helpers, etc. Optional.
-@import '@baloise/ds-css/css/utilities';
+@import '@baloise/ds-styles/css/utilities';
 ```
 
-For SASS mixins (breakpoints, etc.) without any styles, import `@baloise/ds-css/scss/mixins` instead.
+For SASS mixins (breakpoints, etc.) without any styles, import `@baloise/ds-styles/scss/mixins` instead.
 
 ### Standalone
 
@@ -221,9 +222,9 @@ No build tool, no framework — just an `index.html` file. This is the recommend
 static sites, server-rendered pages, or any HTML5 app you keep under version control with npm.
 
 ```bash
-npm add -E @baloise/ds-core @baloise/ds-css
+npm add -E @baloise/ds-core @baloise/ds-styles @baloise/ds-tokens
 // or
-pnpm add -E @baloise/ds-core @baloise/ds-css
+pnpm add -E @baloise/ds-core @baloise/ds-styles @baloise/ds-tokens
 ```
 
 ## Usage
@@ -248,12 +249,12 @@ Create an `index.html` file in your project root and add the following:
       data-allowed-languages="de,fr,it,en"
     />
 
-    <!-- Required: design tokens, CSS reset, and structural styles -->
-    <link rel="stylesheet" href="node_modules/@baloise/ds-css/css/base.css" />
-    <!-- Optional: only needed if you use the CSS-only classes (e.g. class="ds-button") instead of the web components (<ds-button>) -->
-    <link rel="stylesheet" href="node_modules/@baloise/ds-css/css/components.css" />
-    <!-- Optional: only needed if you use utility classes (spacing, layout, typography, color helpers, etc.) -->
-    <link rel="stylesheet" href="node_modules/@baloise/ds-css/css/utilities.css" />
+    <!-- Required: design tokens (--ds-* CSS custom properties). Load before ds-styles -->
+    <link rel="stylesheet" href="node_modules/@baloise/ds-tokens/css/base" />
+    <!-- Required: CSS reset, structural styles, and CSS-only component classes (e.g. class="ds-button") -->
+    <link rel="stylesheet" href="node_modules/@baloise/ds-styles/css/design-system" />
+    <!-- Optional: only needed if you use utility classes (spacing, layout, typography, color helpers, etc. — e.g. class="mt-base" below) -->
+    <link rel="stylesheet" href="node_modules/@baloise/ds-styles/css/utilities" />
 
     <!-- Register the web components used in markup -->
     <script
@@ -285,10 +286,13 @@ live in `<head>`; `ds-root` wraps the page content in `<body>`.
 - **`<meta name="design-system-config">`** — sets brand, region, and language before the app
   boots. Optional, but recommended so there's no flash of default config. See "Configure Language
   & Region" further below.
-- **The three stylesheets** — `base.css` (design tokens, CSS reset, structural styles) is the
-  only one you really need. `components.css` adds the CSS-only classes (`.ds-button`,
-  `.ds-heading`, ...) used below. `utilities.css` (spacing, layout, typography, color helpers) is
-  entirely optional — drop it if you don't use utility classes.
+- **The three stylesheets** — `base.tokens.css` (from `@baloise/ds-tokens`) defines every `--ds-*`
+  custom property and must load first — `ds-styles` no longer ships token values itself, only
+  `var(--ds-*)` references. `design-system.css` (from `@baloise/ds-styles`) bundles the CSS reset,
+  structural styles, and CSS-only component classes (`.ds-button`, `.ds-heading`, ...) — the only
+  one you really need alongside tokens. `utilities.css` (spacing, layout, typography, color
+  helpers, e.g. `.mt-base` used below) is entirely optional — drop it if you don't use utility
+  classes. See **Development/Theming** for the ERV/TCS brand token files.
 - **`<script type="module">` / `<script nomodule>`** — registers the web components (`<ds-root>`,
   `<ds-stage>`, etc.) used in markup. The `nomodule` variant is a fallback for browsers without
   ES module support.
@@ -303,9 +307,9 @@ Prototyping or don't want to install anything? Load everything straight from
 [jsDelivr](https://www.jsdelivr.com/), a CDN, by adding these to `<head></head>`:
 
 ```html
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@baloise/ds-css/css/base.css" />
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@baloise/ds-css/css/components.css" />
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@baloise/ds-css/css/utilities.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@baloise/ds-tokens/css/base" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@baloise/ds-styles/css/design-system" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@baloise/ds-styles/css/utilities" />
 <script
   type="module"
   src="https://cdn.jsdelivr.net/npm/@baloise/ds-core/dist/design-system/design-system.esm.js"
@@ -316,16 +320,17 @@ Prototyping or don't want to install anything? Load everything straight from
 ></script>
 ```
 
-Same as before, only `base.css` is really required — drop `utilities.css` if you don't use utility
-classes. The rest of the page (the `<meta name="design-system-config">` tag, `<ds-root>`, etc.) works
-exactly like the "Plain HTML" example above — only where the CSS/JS come from changes.
+Same as before, only `base.tokens.css` and `design-system.css` are really required — drop
+`utilities.css` if you don't use utility classes. The rest of the page (the
+`<meta name="design-system-config">` tag, `<ds-root>`, etc.) works exactly like the "Plain HTML"
+example above — only where the CSS/JS come from changes.
 
 <InfoQuote>
 **TIP**
 
 Not recommended for production — it depends on a third party to host and distribute the assets.
 Pin a specific version rather than relying on the latest one:
-`https://cdn.jsdelivr.net/npm/@baloise/ds-css@16/css/base.css`
+`https://cdn.jsdelivr.net/npm/@baloise/ds-styles@16/css`
 
 </InfoQuote>
 
@@ -352,64 +357,65 @@ If you do not have a React app yet, create one with [Vite](https://vite.dev/guid
   - `react` and `react-dom` **18** or **19** are required as peer dependencies.
 </InfoQuote>
 
-Install the React bindings and the global styles. Both packages are required.
+Install the React bindings and the global styles. All three packages are required.
 
 ```bash
-npm add -E @baloise/ds-react @baloise/ds-css
+npm add -E @baloise/ds-react @baloise/ds-styles @baloise/ds-tokens
 // or
-pnpm add -E @baloise/ds-react @baloise/ds-css
+pnpm add -E @baloise/ds-react @baloise/ds-styles @baloise/ds-tokens
 ```
 
 ## Usage
 
-Component styles are automatically loaded lazily in the browser. Global CSS (fonts, resets, utilities) needs to be imported into the application.
+Component styles are automatically loaded lazily in the browser. Global CSS (design tokens, fonts, resets, utilities) needs to be imported into the application.
 
-Import the full stylesheet once, typically in `src/main.tsx`:
-
-```typescript
-import '@baloise/ds-css/css'
-```
-
-For a smaller payload, import the layers separately. Keep this order so tokens and resets are available before component and utility styles:
+`@baloise/ds-styles` no longer ships design tokens itself — only `var(--ds-*)` references — so
+`@baloise/ds-tokens` must be imported too, before `@baloise/ds-styles`:
 
 ```typescript
-// Required: design tokens, CSS reset, and structural styles
-import '@baloise/ds-css/css/base'
-// Optional: only needed if you use the CSS-only classes (e.g. class="ds-button") instead of the web components (<ds-button>)
-import '@baloise/ds-css/css/components'
-// Optional: only needed if you use utility classes (spacing, layout, typography, color helpers, etc.)
-import '@baloise/ds-css/css/utilities'
+import '@baloise/ds-tokens/css/base'
+import '@baloise/ds-styles/css/design-system'
 ```
+
+`@baloise/ds-styles/css/design-system` bundles reset, structural styles, and CSS-only component classes
+(`.ds-button`, `.ds-heading`, ...) together. Utility classes (spacing, layout, typography, color
+helpers, ...) are a separate, optional import:
+
+```typescript
+import '@baloise/ds-tokens/css/base'
+import '@baloise/ds-styles/css/design-system'
+import '@baloise/ds-styles/css/utilities'
+```
+
+<InfoQuote>
+Using a different brand? Import `@baloise/ds-tokens/css/erv` or `@baloise/ds-tokens/css/tcs`
+instead of `@baloise/ds-tokens/css/base` — each is a complete, standalone token set. See
+**Development/Theming**.
+</InfoQuote>
 
 <LinkCard
   pageTitle="Development/Responsive"
   description="Breakpoint mixins, CSS utilities, and the breakpoint service."
 />
 
-### bootstrapDesignSystem
+### DsRootProvider
 
-`bootstrapDesignSystem` initializes the Design System for a React app. Call it **once** at **module scope** in the app entry — `src/main.tsx` (Vite) or a client entry imported from a Next.js root layout — **before** `createRoot(...).render(...)`. It is not a React hook; do not call it inside a component function.
+Wrap the application in `DsRootProvider`. It is the React root for Design System config: it initializes the system once and renders `DsRoot` so nested components pick up brand, region, language, and animation settings.
 
-It applies optional region, language, and brand defaults. If you omit the call, components still work with the default config. Region and language can also be changed at runtime. See **Development/Internationalization**.
+Pass live config as props. If you omit them, components still work with the default config. Region and language can also be changed at runtime — update the props from React state. See **Development/Internationalization**.
+
+Do not call `initializeDesignSystem()` / `bootstrapDesignSystem()` in the React entry. `DsRootProvider` replaces that.
 
 **main.tsx**
 
 ```tsx
-import { bootstrapDesignSystem } from '@baloise/ds-react'
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 
 import App from './App'
 
-import '@baloise/ds-css/css'
-
-bootstrapDesignSystem({
-  defaults: {
-    region: 'CH',
-    language: 'de',
-    allowedLanguages: ['de', 'fr', 'it', 'en'],
-  },
-})
+import '@baloise/ds-tokens/css/base'
+import '@baloise/ds-styles/css/design-system'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
@@ -418,18 +424,19 @@ createRoot(document.getElementById('root')!).render(
 )
 ```
 
-### App root
-
-Wrap the application in `DsRoot` and import the components you use.
-
 **App.tsx**
 
 ```tsx
-import { DsRoot, DsAppFooter, DsButton, DsHeading } from '@baloise/ds-react'
+import { DsRootProvider, DsAppFooter, DsButton, DsHeading } from '@baloise/ds-react'
 
 function App() {
   return (
-    <DsRoot className="has-sticky-footer">
+    <DsRootProvider
+      className="has-sticky-footer"
+      region="CH"
+      language="de"
+      allowedLanguages={['de', 'fr', 'it', 'en']}
+    >
       <header>
         {/* Header content */}
       </header>
@@ -445,7 +452,7 @@ function App() {
       <DsAppFooter>
         {/* Footer content */}
       </DsAppFooter>
-    </DsRoot>
+    </DsRootProvider>
   )
 }
 
@@ -464,11 +471,11 @@ npm create vite@latest my-app -- --template react-ts
 
 ### Next.js
 
-`@baloise/ds-react` is client-only today. Import Design System components from files marked `'use client'`. Call `bootstrapDesignSystem()` at module scope in a client entry file (imported from the root layout), not inside a component function.
+`@baloise/ds-react` is client-only today. Import Design System components from files marked `'use client'`. Wrap the tree in `DsRootProvider`.
 
 ### TypeScript
 
-`@baloise/ds-react` publishes TypeScript declarations (`types` in `package.json` points at `dist/index.d.ts`). After installing the package, component props, events, and the `bootstrapDesignSystem` config are typed — no extra `@types/*` package or `tsconfig.json` changes are required.
+`@baloise/ds-react` publishes TypeScript declarations (`types` in `package.json` points at `dist/index.d.ts`). After installing the package, component props, events, and the `DsRootProvider` config are typed — no extra `@types/*` package or `tsconfig.json` changes are required.
 
 Event handlers use the `onDs*` prefix (for example `onDsClick`) and receive the custom event, not a React synthetic event.
 
