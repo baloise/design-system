@@ -398,16 +398,17 @@ instead of `@baloise/ds-tokens/css/base` — each is a complete, standalone toke
   description="Breakpoint mixins, CSS utilities, and the breakpoint service."
 />
 
-### bootstrapDesignSystem
+### DsRootProvider
 
-`bootstrapDesignSystem` initializes the Design System for a React app. Call it **once** at **module scope** in the app entry — `src/main.tsx` (Vite) or a client entry imported from a Next.js root layout — **before** `createRoot(...).render(...)`. It is not a React hook; do not call it inside a component function.
+Wrap the application in `DsRootProvider`. It is the React root for Design System config: it initializes the system once and renders `DsRoot` so nested components pick up brand, region, language, and animation settings.
 
-It applies optional region, language, and brand defaults. If you omit the call, components still work with the default config. Region and language can also be changed at runtime. See **Development/Internationalization**.
+Pass live config as props. If you omit them, components still work with the default config. Region and language can also be changed at runtime — update the props from React state. See **Development/Internationalization**.
+
+Do not call `initializeDesignSystem()` / `bootstrapDesignSystem()` in the React entry. `DsRootProvider` replaces that.
 
 **main.tsx**
 
 ```tsx
-import { bootstrapDesignSystem } from '@baloise/ds-react'
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 
@@ -416,14 +417,6 @@ import App from './App'
 import '@baloise/ds-tokens/css/base'
 import '@baloise/ds-styles/css/design-system'
 
-bootstrapDesignSystem({
-  defaults: {
-    region: 'CH',
-    language: 'de',
-    allowedLanguages: ['de', 'fr', 'it', 'en'],
-  },
-})
-
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <App />
@@ -431,18 +424,19 @@ createRoot(document.getElementById('root')!).render(
 )
 ```
 
-### App root
-
-Wrap the application in `DsRoot` and import the components you use.
-
 **App.tsx**
 
 ```tsx
-import { DsRoot, DsAppFooter, DsButton, DsHeading } from '@baloise/ds-react'
+import { DsRootProvider, DsAppFooter, DsButton, DsHeading } from '@baloise/ds-react'
 
 function App() {
   return (
-    <DsRoot className="has-sticky-footer">
+    <DsRootProvider
+      className="has-sticky-footer"
+      region="CH"
+      language="de"
+      allowedLanguages={['de', 'fr', 'it', 'en']}
+    >
       <header>
         {/* Header content */}
       </header>
@@ -458,7 +452,7 @@ function App() {
       <DsAppFooter>
         {/* Footer content */}
       </DsAppFooter>
-    </DsRoot>
+    </DsRootProvider>
   )
 }
 
@@ -477,11 +471,11 @@ npm create vite@latest my-app -- --template react-ts
 
 ### Next.js
 
-`@baloise/ds-react` is client-only today. Import Design System components from files marked `'use client'`. Call `bootstrapDesignSystem()` at module scope in a client entry file (imported from the root layout), not inside a component function.
+`@baloise/ds-react` is client-only today. Import Design System components from files marked `'use client'`. Wrap the tree in `DsRootProvider`.
 
 ### TypeScript
 
-`@baloise/ds-react` publishes TypeScript declarations (`types` in `package.json` points at `dist/index.d.ts`). After installing the package, component props, events, and the `bootstrapDesignSystem` config are typed — no extra `@types/*` package or `tsconfig.json` changes are required.
+`@baloise/ds-react` publishes TypeScript declarations (`types` in `package.json` points at `dist/index.d.ts`). After installing the package, component props, events, and the `DsRootProvider` config are typed — no extra `@types/*` package or `tsconfig.json` changes are required.
 
 Event handlers use the `onDs*` prefix (for example `onDsClick`) and receive the custom event, not a React synthetic event.
 

@@ -92,7 +92,7 @@ migration tool on an unscheduled rename decision.
 - For each framework, reproduce the equivalent of `00-getting-started.mdx`'s install + wiring steps, but:
   - `npm add`/`pnpm add` targets use the alias syntax: `pnpm add @helvetia/ds-react@npm:@baloise/ds-react@<version> @helvetia/ds-styles@npm:@baloise/ds-styles@<version>` (React); equivalent for Angular (`@helvetia/ds-angular`, `@helvetia/ds-styles`) and HTML (`@helvetia/ds-core`, `@helvetia/ds-styles`).
   - Resolve `<version>` dynamically at run time (`npm view @baloise/ds-react dist-tags`, take the `next` tag) rather than hardcoding — the exact next-prerelease number will drift.
-  - React: add `bootstrapDesignSystem` (from `@helvetia/ds-react`) call at module scope in the detected entry file (`src/main.tsx` for Vite, a `'use client'` entry for Next.js), and `import '@helvetia/ds-styles/css'`.
+  - React: wrap the app in `DsRootProvider` (from `@helvetia/ds-react`) in the detected root component, and `import '@helvetia/ds-styles/css'`.
   - Angular: add `provideDesignSystem()` (from `@helvetia/ds-angular`) to `app.config.ts` (standalone) or `DesignSystemModule.forRoot()` to the root `NgModule` (module-based) — detect which pattern the app uses by checking for `app.config.ts` vs `app.module.ts`. Add `CUSTOM_ELEMENTS_SCHEMA`. Add the `@use '@helvetia/ds-styles/scss/base'` (or `@import` CSS equivalent) to the global stylesheet.
   - HTML: add `<link>`/`<script>` tags pointing at `node_modules/@helvetia/ds-styles/...` and `node_modules/@helvetia/ds-core/...` to the app's `index.html` `<head>`.
 - Report exactly what was installed/edited (package.json diff summary, files touched).
