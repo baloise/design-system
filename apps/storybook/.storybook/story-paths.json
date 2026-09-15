@@ -398,5 +398,6 @@
   "tokens-design-tokens-explained": "tokens/01-design-tokens-explained.mdx",
   "tokens-use-tokens-in-code": "tokens/02-use-tokens-in-code.mdx",
   "versions": "versions.mdx",
-  "welcome": "welcome.mdx"
+  "welcome": "welcome.mdx",
+  "whats-new": "whats-new.mdx"
 }

@@ -1,0 +1,122 @@
+import { Meta, Unstyled } from '@storybook/addon-docs/blocks'
+import { Banner, Footer, Lead } from '../.storybook/blocks'
+
+<Meta title="What's New" name="What's New" />
+
+<Banner label="What's New" section="Helvetia Design System" />
+
+<Lead>
+  The Helvetia Design System builds on Baloise Design System's foundation. Here's what changed along the way.
+</Lead>
+
+<Unstyled>
+  <div className="ds-grid is-multiline mt-md" style={{ '--ds-column-gap': '.5rem', '--ds-row-gap': '1rem' }}>
+    <div className="ds-col tablet:is-6 desktop:is-6">
+      <article className="ds-card h-full">
+        <header className="ds-card-header">
+          <h3 className="ds-title">
+            <span style={{ width: '32px', display: 'inline-block' }}>🎨</span> Design Tokens
+          </h3>
+        </header>
+        <div className="ds-card-content">
+          Token definitions are more detailed and stay in sync with Figma, and a new Theme Editor lets you customize
+          themes without touching code.
+        </div>
+      </article>
+    </div>
+    <div className="ds-col tablet:is-6 desktop:is-6">
+      <article className="ds-card h-full">
+        <header className="ds-card-header">
+          <h3 className="ds-title">
+            <span style={{ width: '32px', display: 'inline-block' }}>🫧</span> Shadow DOM
+          </h3>
+        </header>
+        <div className="ds-card-content">
+          Every component now renders inside Shadow DOM, isolating styles from the host page and improving how the
+          library integrates with Angular, React, and any other framework.
+        </div>
+      </article>
+    </div>
+    <div className="ds-col tablet:is-6 desktop:is-6">
+      <article className="ds-card h-full">
+        <header className="ds-card-header">
+          <h3 className="ds-title">
+            <span style={{ width: '32px', display: 'inline-block' }}>⚡</span> HTML/CSS-only Components
+          </h3>
+        </header>
+        <div className="ds-card-content">
+          A growing set of components work with just HTML and CSS — no JavaScript required — for faster rendering on
+          websites and server-side rendered applications.
+        </div>
+      </article>
+    </div>
+    <div className="ds-col tablet:is-6 desktop:is-6">
+      <article className="ds-card h-full">
+        <header className="ds-card-header">
+          <h3 className="ds-title">
+            <span style={{ width: '32px', display: 'inline-block' }}>♿</span> Accessibility
+          </h3>
+        </header>
+        <div className="ds-card-content">
+          Components have been updated to better meet WCAG 2.2 AA success criteria, keeping applications compliant
+          and inclusive by default.
+        </div>
+      </article>
+    </div>
+    <div className="ds-col tablet:is-6 desktop:is-6">
+      <article className="ds-card h-full">
+        <header className="ds-card-header">
+          <h3 className="ds-title">
+            <span style={{ width: '32px', display: 'inline-block' }}>🛡️</span> Cyber Resilience Act
+          </h3>
+        </header>
+        <div className="ds-card-content">
+          The design system now generates a Software Bill of Materials, runs automated dependency scanning via
+          Dependabot, and follows a documented security policy — aligning with the EU Cyber Resilience Act.
+        </div>
+      </article>
+    </div>
+    <div className="ds-col tablet:is-6 desktop:is-6">
+      <article className="ds-card h-full">
+        <header className="ds-card-header">
+          <h3 className="ds-title">
+            <span style={{ width: '32px', display: 'inline-block' }}>🤖</span> AI Context Foundation
+          </h3>
+        </header>
+        <div className="ds-card-content">
+          Every package now ships a CONTEXT.md documenting its purpose, structure, and conventions, laying the
+          groundwork for AI agent skills to come.
+        </div>
+      </article>
+    </div>
+    <div className="ds-col tablet:is-6 desktop:is-6">
+      <article className="ds-card h-full">
+        <header className="ds-card-header">
+          <h3 className="ds-title">
+            <span style={{ width: '32px', display: 'inline-block' }}>⚛️</span> React Integration
+          </h3>
+        </header>
+        <div className="ds-card-content">
+          New hooks — <code>useModal</code>, <code>useToast</code>, <code>useSnackbar</code> — and a{' '}
+          <code>DsRootProvider</code> replace the old <code>bootstrapDesignSystem</code> setup, giving React apps
+          simpler, centralized configuration.
+        </div>
+      </article>
+    </div>
+    <div className="ds-col tablet:is-6 desktop:is-6">
+      <article className="ds-card h-full">
+        <header className="ds-card-header">
+          <h3 className="ds-title">
+            <span style={{ width: '32px', display: 'inline-block' }}>🏷️</span> Multi-brand Support
+          </h3>
+        </header>
+        <div className="ds-card-content">
+          The system is built for multi-brand theming from the ground up, making it easier to support white-label
+          applications and partner brands alongside Helvetia.
+        </div>
+      </article>
+    </div>
+  </div>
+</Unstyled>
+
+<Footer />

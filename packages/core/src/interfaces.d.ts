@@ -2,7 +2,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 
 import './components/accordion/accordion.interfaces'
-import './components/app/app.interfaces'
 import './components/root/root.interfaces'
 import './components/badge/badge.interfaces'
 import './components/button/button.interfaces'

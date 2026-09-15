@@ -1,10 +1,16 @@
 import { DateTime, Info, Settings } from 'luxon'
-import { useDsConfig } from '@global'
 import { dateSeparator } from './date.helpers'
 
 export interface DsDateInfoOptions {
   format?: 'narrow' | 'short' | 'long'
   locale?: string
+}
+
+// Reads the live config directly off `window` instead of importing `useDsConfig` from '@global',
+// which would pull in a module cycle (see the same workaround in ../helpers.ts).
+const getDsConfig = (): { locale?: string } | undefined => {
+  const win = window as any
+  return win && win.DesignSystem && win.DesignSystem.config
 }
 
 export class DsDate {
@@ -14,7 +20,7 @@ export class DsDate {
 
   public static fromAnyFormat(value: string) {
     const separator = value.replace(/[0-9]/g, '').charAt(0)
-    const config = useDsConfig()
+    const config = getDsConfig()
     const locale = config?.locale || 'de-CH'
     const pairs = value.split(separator)
 
@@ -56,12 +62,12 @@ export class DsDate {
   }
 
   public static infoMonths({ format, locale }: DsDateInfoOptions = {}) {
-    const config = useDsConfig()
+    const config = getDsConfig()
     return Info.months(format || 'long', { locale: locale || config?.locale || 'de-CH' })
   }
 
   public static infoWeekdays({ format, locale }: DsDateInfoOptions = {}) {
-    const config = useDsConfig()
+    const config = getDsConfig()
     const weekdays = Info.weekdays(format, { locale: locale || config?.locale || 'de-CH' })
     return weekdays
   }
@@ -88,7 +94,7 @@ export class DsDate {
 
   public toFormat() {
     if (this.isValid) {
-      const config = useDsConfig()
+      const config = getDsConfig()
       const locale = config?.locale || 'de-CH'
       const separator = dateSeparator(locale)
       return this.dt.toFormat(`dd${separator}MM${separator}yyyy`)

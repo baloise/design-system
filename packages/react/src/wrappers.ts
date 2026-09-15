@@ -86,11 +86,6 @@ export {
 export { DsAlertContainer } from './generated/components'
 
 /**
- * @deprecated Use `DsRoot` instead. `DsApp` is a compatibility alias of the renamed root wrapper.
- */
-export { DsApp } from './generated/components'
-
-/**
  * @deprecated Use `Modal` instead. The generated wrapper does not keep React
  * `open` state in sync when the modal self-dismisses.
  */
