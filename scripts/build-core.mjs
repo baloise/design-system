@@ -4,7 +4,7 @@
  * Run with: node scripts/build-core.mjs
  */
 import { execSync } from 'node:child_process'
-import { rm } from 'node:fs/promises'
+import { cp, rm } from 'node:fs/promises'
 import { dirname, join, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
@@ -12,6 +12,8 @@ import { generateAngularMeta } from '../packages/core/config/generate-angular-me
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const coreRoot = resolve(__dirname, '../packages/core')
+const tokensRoot = resolve(__dirname, '../packages/tokens')
+const stylesRoot = resolve(__dirname, '../packages/styles')
 
 console.log(`
 \x1b[35m┃\x1b[0m
@@ -40,7 +42,21 @@ function buildStencil() {
 }
 
 // ============================================================================
-// 2. Generate Angular meta (per-component Inputs/Outputs constants)
+// 2. Copy generated tokens/styles CSS into www/assets
+// ============================================================================
+// Done here (inside ds-core's own build task) rather than in the ds-tokens/ds-styles build
+// scripts, so the copy lands within ds-core's own `www/**` Turbo output — copying into a sibling
+// package's directory from ds-tokens/ds-styles isn't tracked by Turbo's output caching, so a
+// cache hit on those tasks would silently skip the copy and leave www/assets empty.
+async function copyGeneratedCss() {
+  console.log('🎨 Copying tokens/styles CSS into www/assets...')
+  await cp(join(tokensRoot, 'dist', 'css'), join(coreRoot, 'www', 'assets', 'tokens'), { recursive: true })
+  await cp(join(stylesRoot, 'dist', 'css'), join(coreRoot, 'www', 'assets', 'css'), { recursive: true })
+  console.log('\x1b[32m✔\x1b[0m CSS copied')
+}
+
+// ============================================================================
+// 3. Generate Angular meta (per-component Inputs/Outputs constants)
 // ============================================================================
 // `generateAngularMeta()` itself skips when Stencil hasn't (re)written proxies.ts (dev/docs builds) — see
 // its own doc comment — so this doesn't need to separately re-derive that same condition from env vars.
@@ -50,7 +66,7 @@ async function generateMeta() {
 }
 
 // ============================================================================
-// 3. Clean up stray output folders
+// 4. Clean up stray output folders
 // ============================================================================
 async function cleanUp() {
   console.log('🧹 Cleaning up temporary folders...')
@@ -75,6 +91,9 @@ async function main() {
     console.log('🏗️ Building core...\n')
 
     buildStencil()
+    console.log()
+
+    await copyGeneratedCss()
     console.log()
 
     // Independent of each other (meta is derived from proxies.ts, cleanup just removes stray folders), so
