@@ -89,12 +89,11 @@ These improvements help our components work seamlessly across all supported fram
 | hint             | WC       | ✅     | ✅   | ✅   | ✅     | ✅        | ✅     | ⬜    |
 | tooltip          | WC       | ✅     | ✅   | ✅   | ✅     | ✅        | ✅     | ⬜    |
 | -- NAVIGATION -- | ###      | ###    | ###  | ###  | ###    | ###       | ###    | ###   |
-| pagination       | WC       | ✅     | ⬜   | ✅   | ✅     | ✅        | ✅     | ⬜    |
+| pagination       | WC       | ✅     | ✅   | ✅   | ✅     | ✅        | ✅     | ⬜    |
 | tabs             | WC       | ✅     | ⬜   | ✅   | ✅     | ✅        | ✅     | ⬜    |
 | steps            | WC       | ✅     | ⬜   | ✅   | ✅     | ✅        | ✅     | ⬜    |
 | navbar (app)     | WC       | ✅     | ⬜   | ✅   | ✅     | ✅        | ✅     | ⬜    |
 | footer (app)     | WC       | ✅     | ⬜   | ✅   | ✅     | ✅        | ✅     | ⬜    |
-| menu             | WC       | ⬜     | ⬜   | ⬜   | ⬜     | ⬜        | ⬜     | ⬜    |
 | sheet            | WC       | ✅     | ⬜   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
 | -- FORMS --      | ###      | ###    | ###  | ###  | ###    | ###       | ###    | ###   |
 | input            | WC & CSS | ✅     | ⬜   | ✅   | ✅     | ✅        | ✅     | ⬜    |
