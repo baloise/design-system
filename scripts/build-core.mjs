@@ -12,8 +12,6 @@ import { generateAngularMeta } from '../packages/core/config/generate-angular-me
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const coreRoot = resolve(__dirname, '../packages/core')
-const tokensRoot = resolve(__dirname, '../packages/tokens')
-const stylesRoot = resolve(__dirname, '../packages/styles')
 
 console.log(`
 \x1b[35m┃\x1b[0m
@@ -39,20 +37,6 @@ function buildStencil() {
     console.error('✗ Stencil build failed:', err.message)
     throw err
   }
-}
-
-// ============================================================================
-// 2. Copy generated tokens/styles CSS into www/assets
-// ============================================================================
-// Done here (inside ds-core's own build task) rather than in the ds-tokens/ds-styles build
-// scripts, so the copy lands within ds-core's own `www/**` Turbo output — copying into a sibling
-// package's directory from ds-tokens/ds-styles isn't tracked by Turbo's output caching, so a
-// cache hit on those tasks would silently skip the copy and leave www/assets empty.
-async function copyGeneratedCss() {
-  console.log('🎨 Copying tokens/styles CSS into www/assets...')
-  await cp(join(tokensRoot, 'dist', 'css'), join(coreRoot, 'www', 'assets', 'tokens'), { recursive: true })
-  await cp(join(stylesRoot, 'dist', 'css'), join(coreRoot, 'www', 'assets', 'css'), { recursive: true })
-  console.log('\x1b[32m✔\x1b[0m Tokens/Styles CSS copied')
 }
 
 // ============================================================================
@@ -91,9 +75,6 @@ async function main() {
     console.log('🏗️ Building core...\n')
 
     buildStencil()
-    console.log()
-
-    await copyGeneratedCss()
     console.log()
 
     // Independent of each other (meta is derived from proxies.ts, cleanup just removes stray folders), so
