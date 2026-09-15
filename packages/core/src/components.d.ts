@@ -212,51 +212,6 @@ export namespace Components {
         "type": AlertType;
     }
     /**
-     * @deprecated Use `ds-root` instead. `ds-app` remains as a compatibility alias and will be removed in a future major release.
-     * Keep this component's public API in sync with `ds-root`. Stencil does not support sharing one `@Component` class across two tags.
-     * App is a root wrapper component that provides global configuration, focus management, and responsive behavior context for all design system components.
-     */
-    interface DsApp {
-        /**
-          * Comma separated list of languages the app allows selecting. Falls back to the global config default when unset.
-         */
-        "allowedLanguages"?: string;
-        /**
-          * Disables all animation inside the ds-app. Can be used for simplify e2e testing.
-          * @default true
-         */
-        "animated": boolean;
-        /**
-          * Sets the active brand for all design system components. Falls back to the global config default when unset.
-         */
-        "brand"?: DsBrand;
-        "configChanged": (state: DsConfigState) => Promise<void>;
-        /**
-          * Language used when `language` is not part of `allowedLanguages`. Falls back to the global config default when unset.
-         */
-        "fallbackLanguage"?: DsLanguage;
-        /**
-          * Sets the active language for all design system components. Falls back to the global config default when unset.
-         */
-        "language"?: DsLanguage;
-        /**
-          * @default ''
-         */
-        "logger": string;
-        /**
-          * @default false
-         */
-        "ready": boolean;
-        /**
-          * Sets the active region for all design system components. Falls back to the global config default when unset.
-         */
-        "region"?: DsRegion;
-        /**
-          * Sets focus on the given elements using the app's focus-visible handling.
-         */
-        "setFocus": (elements: HTMLElement[]) => Promise<void>;
-    }
-    /**
      * AppFooter renders application level legal links, language selection, and social links.
      * Link content is slot first to keep links crawlable and SEO friendly.
      * Links and social media are shown by default unless disabled.
@@ -3803,10 +3758,6 @@ export interface DsAccordionCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLDsAccordionElement;
 }
-export interface DsAppCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLDsAppElement;
-}
 export interface DsAppFooterCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLDsAppFooterElement;
@@ -3983,34 +3934,6 @@ declare global {
     var HTMLDsAlertContainerElement: {
         prototype: HTMLDsAlertContainerElement;
         new (): HTMLDsAlertContainerElement;
-    };
-    interface HTMLDsAppElementEventMap {
-        "dsAppReady": void;
-        "dsAnimatedChange": boolean;
-        "dsBrandChange": DsBrand;
-        "dsRegionChange": DsRegion;
-        "dsLanguageChange": DsLanguage;
-        "dsAllowedLanguagesChange": DsLanguage[];
-        "dsFallbackLanguageChange": DsLanguage;
-    }
-    /**
-     * @deprecated Use `ds-root` instead. `ds-app` remains as a compatibility alias and will be removed in a future major release.
-     * Keep this component's public API in sync with `ds-root`. Stencil does not support sharing one `@Component` class across two tags.
-     * App is a root wrapper component that provides global configuration, focus management, and responsive behavior context for all design system components.
-     */
-    interface HTMLDsAppElement extends Components.DsApp, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLDsAppElementEventMap>(type: K, listener: (this: HTMLDsAppElement, ev: DsAppCustomEvent<HTMLDsAppElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLDsAppElementEventMap>(type: K, listener: (this: HTMLDsAppElement, ev: DsAppCustomEvent<HTMLDsAppElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
-    }
-    var HTMLDsAppElement: {
-        prototype: HTMLDsAppElement;
-        new (): HTMLDsAppElement;
     };
     interface HTMLDsAppFooterElementEventMap {
         "dsLanguageChange": AppFooterLanguageChangeDetail;
@@ -5187,7 +5110,6 @@ declare global {
     interface HTMLElementTagNameMap {
         "ds-accordion": HTMLDsAccordionElement;
         "ds-alert-container": HTMLDsAlertContainerElement;
-        "ds-app": HTMLDsAppElement;
         "ds-app-footer": HTMLDsAppFooterElement;
         "ds-app-navbar": HTMLDsAppNavbarElement;
         "ds-badge": HTMLDsBadgeElement;
@@ -5373,74 +5295,6 @@ declare namespace LocalJSX {
           * @default 'toast'
          */
         "type"?: AlertType;
-    }
-    /**
-     * @deprecated Use `ds-root` instead. `ds-app` remains as a compatibility alias and will be removed in a future major release.
-     * Keep this component's public API in sync with `ds-root`. Stencil does not support sharing one `@Component` class across two tags.
-     * App is a root wrapper component that provides global configuration, focus management, and responsive behavior context for all design system components.
-     */
-    interface DsApp {
-        /**
-          * Comma separated list of languages the app allows selecting. Falls back to the global config default when unset.
-         */
-        "allowedLanguages"?: string;
-        /**
-          * Disables all animation inside the ds-app. Can be used for simplify e2e testing.
-          * @default true
-         */
-        "animated"?: boolean;
-        /**
-          * Sets the active brand for all design system components. Falls back to the global config default when unset.
-         */
-        "brand"?: DsBrand;
-        /**
-          * Language used when `language` is not part of `allowedLanguages`. Falls back to the global config default when unset.
-         */
-        "fallbackLanguage"?: DsLanguage;
-        /**
-          * Sets the active language for all design system components. Falls back to the global config default when unset.
-         */
-        "language"?: DsLanguage;
-        /**
-          * @default ''
-         */
-        "logger"?: string;
-        /**
-          * Emitted when the `allowedLanguages` value changes in the global config.
-         */
-        "onDsAllowedLanguagesChange"?: (event: DsAppCustomEvent<DsLanguage[]>) => void;
-        /**
-          * Emitted when the `animated` value changes in the global config.
-         */
-        "onDsAnimatedChange"?: (event: DsAppCustomEvent<boolean>) => void;
-        /**
-          * Emitted when app is ready and painted.
-         */
-        "onDsAppReady"?: (event: DsAppCustomEvent<void>) => void;
-        /**
-          * Emitted when the `brand` value changes in the global config.
-         */
-        "onDsBrandChange"?: (event: DsAppCustomEvent<DsBrand>) => void;
-        /**
-          * Emitted when the `fallbackLanguage` value changes in the global config.
-         */
-        "onDsFallbackLanguageChange"?: (event: DsAppCustomEvent<DsLanguage>) => void;
-        /**
-          * Emitted when the `language` value changes in the global config.
-         */
-        "onDsLanguageChange"?: (event: DsAppCustomEvent<DsLanguage>) => void;
-        /**
-          * Emitted when the `region` value changes in the global config.
-         */
-        "onDsRegionChange"?: (event: DsAppCustomEvent<DsRegion>) => void;
-        /**
-          * @default false
-         */
-        "ready"?: boolean;
-        /**
-          * Sets the active region for all design system components. Falls back to the global config default when unset.
-         */
-        "region"?: DsRegion;
     }
     /**
      * AppFooter renders application level legal links, language selection, and social links.
@@ -9323,16 +9177,6 @@ declare namespace LocalJSX {
         "container": AlertContainerSize;
         "type": AlertType;
     }
-    interface DsAppAttributes {
-        "animated": boolean;
-        "brand": DsBrand;
-        "region": DsRegion;
-        "language": DsLanguage;
-        "allowedLanguages": string;
-        "fallbackLanguage": DsLanguage;
-        "ready": boolean;
-        "logger": string;
-    }
     interface DsAppFooterAttributes {
         "container": AppFooterContainer;
         "hideLanguageSelection": boolean;
@@ -10067,7 +9911,6 @@ declare namespace LocalJSX {
     interface IntrinsicElements {
         "ds-accordion": Omit<DsAccordion, keyof DsAccordionAttributes> & { [K in keyof DsAccordion & keyof DsAccordionAttributes]?: DsAccordion[K] } & { [K in keyof DsAccordion & keyof DsAccordionAttributes as `attr:${K}`]?: DsAccordionAttributes[K] } & { [K in keyof DsAccordion & keyof DsAccordionAttributes as `prop:${K}`]?: DsAccordion[K] };
         "ds-alert-container": Omit<DsAlertContainer, keyof DsAlertContainerAttributes> & { [K in keyof DsAlertContainer & keyof DsAlertContainerAttributes]?: DsAlertContainer[K] } & { [K in keyof DsAlertContainer & keyof DsAlertContainerAttributes as `attr:${K}`]?: DsAlertContainerAttributes[K] } & { [K in keyof DsAlertContainer & keyof DsAlertContainerAttributes as `prop:${K}`]?: DsAlertContainer[K] };
-        "ds-app": Omit<DsApp, keyof DsAppAttributes> & { [K in keyof DsApp & keyof DsAppAttributes]?: DsApp[K] } & { [K in keyof DsApp & keyof DsAppAttributes as `attr:${K}`]?: DsAppAttributes[K] } & { [K in keyof DsApp & keyof DsAppAttributes as `prop:${K}`]?: DsApp[K] };
         "ds-app-footer": Omit<DsAppFooter, keyof DsAppFooterAttributes> & { [K in keyof DsAppFooter & keyof DsAppFooterAttributes]?: DsAppFooter[K] } & { [K in keyof DsAppFooter & keyof DsAppFooterAttributes as `attr:${K}`]?: DsAppFooterAttributes[K] } & { [K in keyof DsAppFooter & keyof DsAppFooterAttributes as `prop:${K}`]?: DsAppFooter[K] };
         "ds-app-navbar": Omit<DsAppNavbar, keyof DsAppNavbarAttributes> & { [K in keyof DsAppNavbar & keyof DsAppNavbarAttributes]?: DsAppNavbar[K] } & { [K in keyof DsAppNavbar & keyof DsAppNavbarAttributes as `attr:${K}`]?: DsAppNavbarAttributes[K] } & { [K in keyof DsAppNavbar & keyof DsAppNavbarAttributes as `prop:${K}`]?: DsAppNavbar[K] };
         "ds-badge": Omit<DsBadge, keyof DsBadgeAttributes> & { [K in keyof DsBadge & keyof DsBadgeAttributes]?: DsBadge[K] } & { [K in keyof DsBadge & keyof DsBadgeAttributes as `attr:${K}`]?: DsBadgeAttributes[K] } & { [K in keyof DsBadge & keyof DsBadgeAttributes as `prop:${K}`]?: DsBadge[K] };
@@ -10156,12 +9999,6 @@ declare module "@stencil/core" {
              * Alert Container manages and displays a queue of toast or snackbar notifications with automatic dismissal and deduplication.
              */
             "ds-alert-container": LocalJSX.IntrinsicElements["ds-alert-container"] & JSXBase.HTMLAttributes<HTMLDsAlertContainerElement>;
-            /**
-             * @deprecated Use `ds-root` instead. `ds-app` remains as a compatibility alias and will be removed in a future major release.
-             * Keep this component's public API in sync with `ds-root`. Stencil does not support sharing one `@Component` class across two tags.
-             * App is a root wrapper component that provides global configuration, focus management, and responsive behavior context for all design system components.
-             */
-            "ds-app": LocalJSX.IntrinsicElements["ds-app"] & JSXBase.HTMLAttributes<HTMLDsAppElement>;
             /**
              * AppFooter renders application level legal links, language selection, and social links.
              * Link content is slot first to keep links crawlable and SEO friendly.

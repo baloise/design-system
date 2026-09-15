@@ -1,7 +1,7 @@
 import { EventEmitter } from '@stencil/core'
 import { HTMLStencilElement } from '@stencil/core/internal'
 import { dsBrowser } from './browser'
-import { type DsConfig } from '@global'
+import type { DsConfig } from '@global'
 
 declare const __zone_symbol__requestAnimationFrame: any
 declare const requestAnimationFrame: any

@@ -3,7 +3,6 @@
 export const tags: string[] = [
   "ds-accordion",
   "ds-alert-container",
-  "ds-app",
   "ds-app-footer",
   "ds-app-navbar",
   "ds-badge",
