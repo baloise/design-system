@@ -52,7 +52,7 @@ async function copyGeneratedCss() {
   console.log('🎨 Copying tokens/styles CSS into www/assets...')
   await cp(join(tokensRoot, 'dist', 'css'), join(coreRoot, 'www', 'assets', 'tokens'), { recursive: true })
   await cp(join(stylesRoot, 'dist', 'css'), join(coreRoot, 'www', 'assets', 'css'), { recursive: true })
-  console.log('\x1b[32m✔\x1b[0m CSS copied')
+  console.log('\x1b[32m✔\x1b[0m Tokens/Styles CSS copied')
 }
 
 // ============================================================================
