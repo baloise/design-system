@@ -3,12 +3,12 @@ import { TokenPreviewMessage } from './token-preview.types'
 /**
  * Live token preview: applies token changes posted by an embedding parent window (Toky's live
  * preview sidebar) directly to `document.documentElement.style`, so a component's rendered
- * output reflects in-progress token edits without a rebuild. No-ops outside an iframe, so it
- * never activates during normal component consumption or Playwright visual-regression runs.
+ * output reflects in-progress token edits without a rebuild. No-ops unless `window.parent` is
+ * a distinct window (a real iframe). That includes Node hydrate, where `parent` is `null`.
  * No origin allowlist yet - MVP is localhost-only (see packages/core/CONTEXT.md).
  */
 export const initializeTokenPreview = (win: Window = window): void => {
-  if (win.parent === win) {
+  if (!win.parent || win.parent === win) {
     return
   }
 

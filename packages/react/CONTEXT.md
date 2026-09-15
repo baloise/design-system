@@ -39,7 +39,7 @@ Hand-authored components and hooks have Vitest unit tests in this package (publi
 ## Key Constraints
 
 - `react` / `react-dom` are `peerDependencies` — consumers supply their own version.
-- Public entry is still client-only. The core build now emits `src/generated/components.server.ts` via `hydrateModule` (see [ADR-0029](../../docs/adr/0029-ssr-hydrate-build.md)); the `"node"`-condition exports map that would actually route SSR consumers onto that file is the next ticket.
+- Public entry is still client-only. The core build now emits `src/generated/components.server.ts` via `hydrateModule` (see [ADR-0031](../../docs/adr/0031-ssr-hydrate-build.md)); the `"node"`-condition exports map that would actually route SSR consumers onto that file is the next ticket.
 - No `excludeComponents` in the Stencil React output target — every `ds-*` component still gets a generated wrapper. Overlay wrappers stay public and are marked `@deprecated` in favor of the authored idioms.
 
 ## Related Contexts
