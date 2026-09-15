@@ -1,4 +1,4 @@
-# 29. SSR-capable hydrate build for `@baloise/ds-core`
+# 31. SSR-capable hydrate build for `@baloise/ds-core`
 
 Package: `packages/core`, `packages/react`
 
@@ -80,6 +80,10 @@ the follow-up tickets in
   so TypeScript can resolve the `@stencil/react-output-target/ssr` entry
   (the existing `/runtime` entry worked under `"node"` via a root
   `runtime.d.ts`; `/ssr` has no equivalent).
+- The Stencil `globalScript` runs inside the hydrate window. Token preview
+  must no-op when `window.parent` is `null` (Node) as well as when
+  `parent === window` (top-level browsing context); otherwise
+  `parent.postMessage` throws and `renderToString` hydrates nothing.
 - Consumers cannot yet SSR from `@baloise/ds-react` — that is the next
   ticket. This change only publishes the renderer and teaches the React
   generator to emit the server wrappers.
