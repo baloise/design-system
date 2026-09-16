@@ -1,6 +1,6 @@
 export { bootstrapDesignSystem } from './bootstrap'
-export type * from './generated/components'
-export * from './wrappers'
+export type * from './generated/components.server'
+export * from './wrappers.server'
 export { DsRootProvider } from './components/ds-root-provider'
 export type { DsRootProviderProps } from './components/ds-root-provider'
 export { Modal } from './components/modal'

@@ -1,3 +1,5 @@
+'use client'
+
 import { ComponentProps, ComponentRef, forwardRef } from 'react'
 import { DsModal } from '../generated/components'
 

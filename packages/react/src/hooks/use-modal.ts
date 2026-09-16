@@ -1,3 +1,5 @@
+'use client'
+
 import { dsModalController, type ModalOptions } from '@baloise/ds-core'
 import { useCallback, useRef, type ReactNode } from 'react'
 import { createRoot, type Root } from 'react-dom/client'
