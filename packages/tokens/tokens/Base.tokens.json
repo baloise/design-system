@@ -19540,6 +19540,10 @@
               ],
               "com.figma.variableId": "VariableID:137:2454"
             }
+          },
+          "Done": {
+            "$type": "color",
+            "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
           }
         },
         "Typo": {

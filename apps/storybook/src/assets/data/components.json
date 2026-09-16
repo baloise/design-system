@@ -55919,6 +55919,10 @@
           "docs": "Text color for step labels (selected state)."
         },
         {
+          "name": "--steps-step-color-done",
+          "docs": "Text color for step labels (done state)."
+        },
+        {
           "name": "--steps-step-color-focus",
           "docs": "Focus ring color for step buttons."
         },
@@ -56158,6 +56162,33 @@
             "Step",
             "Color",
             "Disabled"
+          ]
+        },
+        {
+          "name": "🧩 Component / Steps / Step / Color / Done",
+          "cssVarName": "--ds-steps-step-color-done",
+          "value": "{🔗 Alias.🔤 Text.Color.Primary}",
+          "nativeValue": "#000D6E",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-primary-5",
+              "figmaName": "Global / Color / Primary / 5"
+            },
+            {
+              "cssVar": "--ds-text-color-primary",
+              "figmaName": "Alias / Text / Color / Primary"
+            },
+            {
+              "cssVar": "--ds-steps-step-color-done",
+              "figmaName": "Component / Steps / Step / Color / Done"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Steps",
+            "Step",
+            "Color",
+            "Done"
           ]
         },
         {

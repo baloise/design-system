@@ -38,11 +38,14 @@ for (const brand of brands) {
 const projectRoot = process.cwd()
 const sourceDir = resolve(projectRoot, 'dist', 'css')
 const targetDir = resolve(projectRoot, '..', 'core', 'www', 'assets', 'tokens')
+const storybookTargetDir = resolve(projectRoot, '..', '..', 'apps', 'storybook', 'public', 'assets', 'css')
 
 ;(async () => {
   await ensureDir(targetDir)
+  await ensureDir(storybookTargetDir)
   if (await pathExists(sourceDir)) {
     await copy(sourceDir, targetDir, { overwrite: true })
+    await copy(sourceDir, storybookTargetDir, { overwrite: true })
   } else {
     console.warn(`Tokens CSS directory not found at: ${sourceDir}`)
   }

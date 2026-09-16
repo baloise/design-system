@@ -366,7 +366,7 @@ export class Tabs implements DsComponentInterface, DsConfigObserver {
         >
           <ds-icon name="caret-left" size="sm" />
         </button>
-        {tablistDiv}
+        <div class="tablist-track">{tablistDiv}</div>
         <button
           class="scroll-btn scroll-btn--next"
           aria-label={i18n.scrollRight}

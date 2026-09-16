@@ -80,10 +80,12 @@ libs/output-targets-react/CHANGELOG.md
 
 apps/storybook/src/contributing/contributors.md
 apps/storybook/src/development/00-guides/theming/theming.md
-apps/storybook/public/assets/css/base.tokens.css
-apps/storybook/public/assets/css/design-system.css
 apps/storybook/public/assets/css/utilities.css
-apps/storybook/public/assets/css/design-system.min.css
+apps/storybook/public/assets/css/design-system.css
+apps/storybook/public/assets/css/design-system.local.css
+apps/storybook/public/assets/css/*.min.css
+apps/storybook/public/assets/css/*.tokens.css
+apps/storybook/public/assets/css/*.override.css
 apps/storybook/public/assets/fonts/
 apps/storybook/public/assets/data/
 apps/storybook/public/assets/download/

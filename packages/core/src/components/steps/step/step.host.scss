@@ -104,6 +104,10 @@
   color: var(--_steps-step-color-selected);
 }
 
+:host(.is-done) .step-label {
+  color: var(--_steps-step-color-done);
+}
+
 :host(.is-disabled) .step-label {
   color: var(--_steps-step-color-disabled);
   opacity: 0.4;
