@@ -80,13 +80,13 @@ libs/output-targets-react/CHANGELOG.md
 
 apps/storybook/src/contributing/contributors.md
 apps/storybook/src/development/00-guides/theming/theming.md
+apps/storybook/public/assets/css/base.tokens.css
 apps/storybook/public/assets/css/design-system.css
+apps/storybook/public/assets/css/utilities.css
+apps/storybook/public/assets/css/design-system.min.css
 apps/storybook/public/assets/fonts/
 apps/storybook/public/assets/data/
 apps/storybook/public/assets/download/
-apps/storybook/public/assets/css/design-system.min.css
-apps/storybook/public/assets/css/design-system-table.css
-apps/storybook/public/assets/css/design-system.min.css
 apps/storybook/public/build/
 apps/storybook/public/assets/images/map-markers
 apps/storybook/public/assets/images/brand-icons

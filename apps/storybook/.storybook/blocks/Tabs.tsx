@@ -6,12 +6,12 @@ export const Tabs = ({ _children, tabs, index }: Props): React.ReactNode => {
   const [activeIndex, setActiveIndex] = useState(index ?? 0)
 
   return (
-    <div className="sb-unstyled" style={{ marginTop: '48px', position: 'relative' }}>
+    <div className="sb-unstyled" style={{ marginTop: '64px', position: 'relative' }}>
       {/* Tab headers */}
       <div
         role="tablist"
         className="ds-buttons"
-        style={{ display: 'flex', position: 'absolute', zIndex: 11, right: 4, top: 4, justifyContent: 'end' }}
+        style={{ display: 'flex', position: 'absolute', zIndex: 11, right: 4, top: '-36px', justifyContent: 'end' }}
       >
         {tabs.map((tab, index) => (
           <button

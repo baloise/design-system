@@ -52,7 +52,11 @@ export class DsValueAccessor<
   constructor(
     private readonly element: Element,
     private readonly injector: Injector,
-    private readonly config: { changeEvent: string; blurEvent: string; valueProp: K },
+    private readonly config: {
+      changeEvent: string
+      blurEvent: string
+      valueProp: K
+    },
   ) {}
 
   private readonly handleChange = (event: Event) => {

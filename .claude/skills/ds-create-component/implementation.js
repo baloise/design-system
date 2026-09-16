@@ -222,7 +222,7 @@ function generateSCSS(componentName, props, variants) {
     })
     .join('\n\n')
 
-  return `@use '@baloise/ds-css/dist/scss/mixins' as *;
+  return `@use '@baloise/ds-styles/dist/scss/mixins' as *;
 @use '../../vars' as vars;
 
 /**
@@ -299,7 +299,9 @@ function generateVisualHTML(componentName, props, variants) {
     />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <link rel="stylesheet" href="/assets/section.css" />
+    <link rel="stylesheet" href="/assets/tokens/base.tokens.css" />
     <link rel="stylesheet" href="/assets/css/design-system.local.min.css" />
+    <link rel="stylesheet" href="/assets/css/utilities.min.css" />
 
     <script type="module" src="/build/design-system.esm.js"></script>
     <script nomodule src="/build/design-system.js"></script>

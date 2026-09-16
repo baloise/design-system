@@ -11,6 +11,24 @@ test.describe('type', () => {
 
     await date.assertValue('13.07.2026')
   })
+
+  test('should clear value when only the year is deleted and the field is blurred', async ({ page }) => {
+    await page.mount(`<ds-date label="Date of birth" value="2026-01-15"></ds-date>`)
+    const date = new DsDate(page.locator('ds-date'))
+    const changeSpy = await date.el.spyOnEvent('dsChange')
+
+    await date.nativeInput.click()
+    await date.nativeInput.press('End')
+    await date.nativeInput.press('Backspace')
+    await date.nativeInput.press('Backspace')
+    await date.nativeInput.press('Backspace')
+    await date.nativeInput.press('Backspace')
+    await date.blur()
+    await page.waitForChanges()
+
+    await date.assertValue('__.__.____')
+    expect(changeSpy).toHaveReceivedEventDetail(null)
+  })
 })
 
 test.describe('min / max', () => {

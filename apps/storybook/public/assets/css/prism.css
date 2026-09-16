@@ -258,6 +258,18 @@ pre[class*='language-'] {
   color: var(--ds-global-color-green-3) !important;
 }
 
+.language-tsx .token.tag {
+  color: var(--ds-global-color-red-3) !important;
+}
+
+.language-tsx .token.tag.attr-name {
+  color: var(--ds-global-color-yellow-2) !important;
+}
+
+.language-tsx .token.tag.attr-value {
+  color: var(--ds-global-color-green-3) !important;
+}
+
 /* .language-scss code {
   background-color: transparent !important;
   border: none !important;

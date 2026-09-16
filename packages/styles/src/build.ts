@@ -1,0 +1,320 @@
+/**
+ * Build script — generates dist/css/*.css and dist/scss/*.scss
+ *
+ * Run with: node --import tsx/esm src/build.ts
+ */
+import autoprefixer from 'autoprefixer'
+import cssnano from 'cssnano'
+import { glob } from 'glob'
+import { cpSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs'
+import { dirname, resolve } from 'node:path'
+import { fileURLToPath } from 'node:url'
+import postcss from 'postcss'
+import { compileAsync, compileStringAsync } from 'sass'
+import { createGenerator } from 'unocss'
+import { allSafelist, presetDsUtilities } from './preset/index'
+import { buildBackgroundRules } from './preset/rules/background'
+import { buildBorderColorRules } from './preset/rules/border-color'
+import { buildElevationRules } from './preset/rules/elevation'
+import { buildBorderRules } from './preset/rules/radius'
+import { buildSpacingRules } from './preset/rules/spacing'
+import { buildTypographyRules } from './preset/rules/typography'
+
+const __dirname = dirname(fileURLToPath(import.meta.url))
+
+const pkg = JSON.parse(readFileSync(resolve(__dirname, '../package.json'), 'utf8'))
+
+console.log(`
+\x1b[35m┃\x1b[0m
+\x1b[35m┃\x1b[0m  \x1b[1;37m🧩 Helvetia Design System\x1b[0m
+\x1b[35m┃\x1b[0m  \x1b[90m📦 Building CSS Package\x1b[0m
+\x1b[35m┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\x1b[0m
+`)
+
+// Sass resolves bare package specifiers (e.g. `@baloise/ds-tokens/...`) only via loadPaths.
+// Unlike npm, pnpm does not hoist workspace deps to the repo-root node_modules — the
+// `@baloise/*` symlinks live inside each consuming package's own node_modules. Include those
+// package-local dirs so `@use '@baloise/...'` keeps resolving.
+const sassLoadPaths = [
+  resolve(__dirname, '../node_modules'), // packages/styles/node_modules — ds-tokens, ds-assets
+  resolve(__dirname, '../../core/node_modules'), // packages/core/node_modules — ds-styles, ds-tokens, ds-assets
+  resolve(__dirname, '../../../node_modules'), // repo-root node_modules (npm hoist / fallback)
+  resolve(__dirname, '../../..'),
+]
+
+const processor = postcss([autoprefixer])
+const minifier = postcss([cssnano({ preset: 'default' })])
+
+async function autoprefix(css: string): Promise<string> {
+  const result = await processor.process(css, { from: undefined })
+  return result.css
+}
+
+async function minify(css: string): Promise<string> {
+  const result = await minifier.process(css, { from: undefined })
+  return result.css
+}
+
+// Writes `<outPath>` and its minified `<outPath minus .css>.min.css` sibling.
+// `content` already carries its own `/*! ... */` banner, which cssnano preserves — no need to add another.
+async function writeCssWithMinified(outPath: string, content: string): Promise<void> {
+  writeFileSync(outPath, content)
+  const minPath = outPath.replace(/\.css$/, '.min.css')
+  const minified = await minify(content)
+  writeFileSync(minPath, minified)
+  const label = outPath.split('/packages/styles/')[1] ?? outPath
+  const minLabel = minPath.split('/packages/styles/')[1] ?? minPath
+  console.log(`\x1b[32m✔\x1b[0m ${label} written (${content.length} bytes) → ${minLabel} (${minified.length} bytes)`)
+}
+
+// --- Clean dist ---------------------------------------------------------------
+rmSync(resolve(__dirname, '../dist'), { recursive: true, force: true })
+console.log('\x1b[32m✔\x1b[0m dist/ cleaned')
+
+function banner(description: string): string {
+  const year = new Date().getFullYear()
+  return [
+    '/*!',
+    ` * Helvetia Design System — ${description}`,
+    ` * @package     ${pkg.name}`,
+    ` * @version     ${pkg.version}`,
+    ` * @license     ${pkg.license}`,
+    ` * @copyright   Copyright © ${year} Helvetia`,
+    ` * @homepage    ${pkg.homepage}`,
+    ` * @repository  ${pkg.repository.url}`,
+    ' */',
+    '',
+  ].join('\n')
+}
+
+// --- Responsive breakpoints ------------------------------------------------
+// Each layout/flex/elevation class is also emitted at every breakpoint prefix.
+const breakpointPrefixes = [
+  'mobile',
+  'tablet',
+  'tablet-only',
+  'touch',
+  'desktop',
+  'desktop-only',
+  'desktop-lg',
+  'desktop-xl',
+  'desktop-2xl',
+]
+
+// Derive the per-breakpoint class list from the safelist:
+// only classes that have a responsive counterpart in the SCSS source get prefixed
+import { flexMetadata, flexSafelist } from './preset/rules/flex'
+import { interactionMetadata, interactionSafelist } from './preset/rules/interaction'
+import { layoutMetadata, layoutSafelist } from './preset/rules/layout'
+import { sizingMetadata } from './preset/rules/sizing'
+
+const responsiveBase = [...flexSafelist, ...layoutSafelist, ...interactionSafelist]
+
+const tokensJsonPath = resolve(__dirname, '../../tokens/dist/docs/base.tokens.json')
+const spacingBuild = buildSpacingRules(tokensJsonPath)
+const spacingRules = spacingBuild.rules
+const spacingSafelist = spacingBuild.safelist
+const bgBuild = buildBackgroundRules(tokensJsonPath)
+const bgRules = bgBuild.rules
+const bgSafelist = bgBuild.safelist
+const borderBuild = buildBorderRules(tokensJsonPath)
+const borderRules = borderBuild.rules
+const borderSafelist = borderBuild.safelist
+const borderColorBuild = buildBorderColorRules(tokensJsonPath)
+const borderColorRules = borderColorBuild.rules
+const borderColorSafelist = borderColorBuild.safelist
+const elevationBuild = buildElevationRules(tokensJsonPath)
+const elevationRules = elevationBuild.rules
+const elevationSafelist = elevationBuild.safelist
+const typographyBuild = buildTypographyRules(tokensJsonPath)
+const typographyRules = typographyBuild.rules
+const typographySafelist = typographyBuild.safelist
+const typographyRawCSS = typographyBuild.rawCSS
+
+// Add elevation and spacing (margin/padding/gap) to responsive base — they're all built from
+// the responsive 📱 Device space tokens, so each class has a per-breakpoint counterpart too.
+const responsiveBaseWithElevation = [...responsiveBase, ...elevationSafelist, ...spacingSafelist]
+const fullResponsiveSafelist = breakpointPrefixes.flatMap(bp => responsiveBaseWithElevation.map(cls => `${bp}:${cls}`))
+
+// Shadow pseudo-class variants (derived from elevation safelist)
+const shadowClasses = elevationSafelist.filter(cls => cls.startsWith('shadow'))
+const pseudoSafelistExtra: string[] = ['active', 'focus', 'hover'].flatMap(p => shadowClasses.map(cls => `${p}:${cls}`))
+
+// Collect metadata for docs
+const docsMetadata: Record<string, any> = {
+  'spacing': spacingBuild.metadata,
+  'flex': flexMetadata,
+  'layout': layoutMetadata,
+  'interaction': interactionMetadata,
+  'sizing': sizingMetadata,
+  'background': bgBuild.metadata,
+  'border': borderBuild.metadata,
+  'border-color': borderColorBuild.metadata,
+  'elevation': elevationBuild.metadata,
+  'typography': typographyBuild.metadata,
+}
+
+// State variants for background (active:bg-*, focus:bg-*, hover:bg-* in priority order)
+const bgStateSafelist: string[] = ['active', 'focus', 'hover'].flatMap(p => bgSafelist.map(cls => `${p}:${cls}`))
+
+// State variants for border color (hover:border-*, active:border-*)
+const borderColorStateSafelist: string[] = ['active', 'hover'].flatMap(p =>
+  borderColorSafelist.map(cls => `${p}:${cls}`),
+)
+
+const fullSafelist = [
+  ...allSafelist(
+    spacingSafelist,
+    bgSafelist,
+    borderSafelist,
+    borderColorSafelist,
+    elevationSafelist,
+    typographySafelist,
+  ),
+  ...fullResponsiveSafelist,
+  ...pseudoSafelistExtra,
+  ...bgStateSafelist,
+  ...borderColorStateSafelist,
+]
+
+// --- Generate CSS ----------------------------------------------------------
+const uno = await createGenerator({
+  presets: [
+    presetDsUtilities(
+      spacingRules,
+      spacingSafelist,
+      bgRules,
+      bgSafelist,
+      borderRules,
+      borderSafelist,
+      borderColorRules,
+      borderColorSafelist,
+      elevationRules,
+      elevationSafelist,
+      typographyRules,
+      typographyRawCSS,
+    ),
+  ],
+})
+
+const { css } = await uno.generate(new Set(fullSafelist), { preflights: true })
+const prefixedUtilities = await autoprefix(css)
+
+// ds-styles never bundles token *values* — only var(--ds-*) references (built from
+// tokensJsonPath above). Consumers install @baloise/ds-tokens separately and load a theme file
+// themselves. See docs/adr/0030-full-merge-brand-token-css.md.
+const output = prefixedUtilities
+
+const outDir = resolve(__dirname, '../dist/css')
+mkdirSync(outDir, { recursive: true })
+await writeCssWithMinified(resolve(outDir, 'utilities.css'), banner('Utilities') + output)
+
+// --- Resolve token values into metadata ------------------------------------
+function buildTokenValueMap(obj: unknown, map: Record<string, string> = {}): Record<string, string> {
+  if (obj && typeof obj === 'object') {
+    const record = obj as Record<string, unknown>
+    if ('name' in record && '$value' in record && typeof record.name === 'string') {
+      map[record.name as string] = String(record.$value)
+    }
+    for (const val of Object.values(record)) buildTokenValueMap(val, map)
+  }
+  return map
+}
+const tokenValueMap = buildTokenValueMap(JSON.parse(readFileSync(tokensJsonPath, 'utf-8')))
+
+for (const entries of Object.values(docsMetadata)) {
+  for (const entry of entries as Array<{ token?: string; property?: string | string[]; value?: string }>) {
+    if (!entry.token || !tokenValueMap[entry.token]) continue
+    let value = tokenValueMap[entry.token]
+    // z-index tokens are incorrectly converted to rem by style-dictionary (px→rem transform on numbers).
+    // Reverse the conversion: multiply by 16 and strip the unit.
+    const props = Array.isArray(entry.property) ? entry.property : [entry.property ?? '']
+    if (props.includes('z-index') && value.endsWith('rem')) {
+      value = String(Math.round(parseFloat(value) * 16))
+    }
+    entry.value = value
+  }
+}
+
+// --- Write metadata JSON for docs ------------------------------------------
+const docsDir = resolve(__dirname, '../dist/docs')
+mkdirSync(docsDir, { recursive: true })
+writeFileSync(resolve(docsDir, 'design-system.json'), JSON.stringify(docsMetadata, null, 2))
+
+console.log(`\x1b[32m✔\x1b[0m dist/docs/design-system.json written (${Object.keys(docsMetadata).length} categories)`)
+
+// --- Compile foundation layer (normalize + structure) -----------------------
+// No standalone dist/css/foundation.css — only folded into design-system.css /
+// design-system.local.css below. ds-styles ships exactly two CSS bundles: design-system(.local)
+// and utilities.
+async function compileScss(entry: string): Promise<string> {
+  const result = await compileAsync(entry, { loadPaths: sassLoadPaths })
+  return autoprefix(result.css)
+}
+
+const scssOutDir = resolve(__dirname, '../dist/scss')
+mkdirSync(scssOutDir, { recursive: true })
+
+// Copy SCSS source files so consumers can import from dist/scss/
+cpSync(resolve(__dirname, 'scss'), scssOutDir, { recursive: true })
+console.log('\x1b[32m✔\x1b[0m dist/scss/ source files copied')
+
+const foundationCss = await compileScss(resolve(__dirname, 'scss/foundation.scss'))
+console.log('\x1b[32m✔\x1b[0m Foundation compiled (bundled into design-system.css, no standalone file)')
+
+// --- Compile component layer (all *.style.scss from packages/core) ----------
+// Also no standalone dist/css/components.css — folded into design-system.css /
+// design-system.local.css below.
+const coreRoot = resolve(__dirname, '../../core/src')
+const styleFiles = await glob('**/*.style.scss', { cwd: coreRoot, absolute: false })
+styleFiles.sort()
+
+// Build barrel: paths relative to packages/styles/src/scss/ (url used by compileStringAsync)
+// Normalize paths to forward slashes for Sass compatibility on Windows
+const barrelContent = styleFiles.map(f => `@use '../../../core/src/${f.replace(/\\/g, '/')}';`).join('\n')
+
+// FileImporter: redirect @baloise/ds-styles/scss/* → packages/styles/src/scss/*
+// Handles internal monorepo imports during development
+const dsStylesImporter = {
+  findFileUrl(url: string) {
+    if (!url.startsWith('@baloise/ds-styles/scss/')) return null
+    const rel = url.replace('@baloise/ds-styles/scss/', '')
+    return new URL(`file://${resolve(__dirname, `scss/${rel}`)}`)
+  },
+}
+
+const componentResult = await compileStringAsync(barrelContent, {
+  url: new URL(`file://${resolve(__dirname, 'scss/_components.scss')}`),
+  loadPaths: sassLoadPaths,
+  importers: [dsStylesImporter],
+})
+const componentCssContent = await autoprefix(componentResult.css)
+console.log(`\x1b[32m✔\x1b[0m Components compiled for ${styleFiles.length} components (bundled into design-system.css)`)
+
+// --- Write dist/scss/utilities.scss (pre-compiled, no SCSS source) ----------
+// UnoCSS output is plain CSS; expose via a forwarding stub for Sass consumers.
+const utilitiesScss = `// Auto-generated — utilities are compiled by UnoCSS, not Sass.\n// Use the CSS directly: @import '@baloise/ds-styles/css/utilities';\n`
+writeFileSync(resolve(scssOutDir, 'utilities.scss'), utilitiesScss)
+console.log('\x1b[32m✔\x1b[0m dist/scss/utilities.scss written')
+
+// --- Build design-system.css (foundation + components — utilities are a separate, optional
+// file, not bundled in here) --------------------------------------------------------------
+const allCss = banner('Full Bundle (Foundation + Components)') + foundationCss + '\n' + componentCssContent
+await writeCssWithMinified(resolve(outDir, 'design-system.css'), allCss)
+
+// --- Build design-system.local.css (fonts with dev path + foundation + components) --------
+const foundationLocalCss = await compileScss(resolve(__dirname, 'scss/foundation.local.scss'))
+const allLocalCss =
+  banner('Full Bundle — Local Dev (Fonts + Foundation + Components)') + foundationLocalCss + '\n' + componentCssContent
+await writeCssWithMinified(resolve(outDir, 'design-system.local.css'), allLocalCss)
+
+// --- Write dist/scss/design-system.scss (Sass entry that pulls foundation + component) ------
+const allScss = `@use './foundation';\n// component styles are only shipped pre-bundled — use\n// @baloise/ds-styles/css/design-system directly, there is no standalone Sass source for them\n`
+writeFileSync(resolve(scssOutDir, 'design-system.scss'), allScss)
+console.log('\x1b[32m✔\x1b[0m dist/scss/design-system.scss written')
+
+// --- Copy CSS files to packages/core/www/assets/css/ ------------------------
+const wwwCssDir = resolve(__dirname, '../../core/www/assets/css')
+mkdirSync(wwwCssDir, { recursive: true })
+cpSync(outDir, wwwCssDir, { recursive: true })
+console.log('\x1b[32m✔\x1b[0m dist/css/ copied to packages/core/www/assets/css/')

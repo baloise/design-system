@@ -1,4 +1,4 @@
-@use '@baloise/ds-css/dist/scss/mixins' as *;
+@use '@baloise/ds-styles/dist/scss/mixins' as *;
 
 @mixin content($margin: true) {
   font-family: var(--ds-alias-text-family-text);
@@ -22,6 +22,10 @@
     &.ds-subtitle {
       font-weight: var(--ds-alias-text-weight-light);
     }
+  }
+
+  .ds-subtitle {
+    font-weight: var(--ds-alias-text-weight-light);
   }
 
   @for $i from 1 through 5 {

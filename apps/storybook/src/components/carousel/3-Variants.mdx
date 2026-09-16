@@ -1,11 +1,5 @@
 import { Meta } from '@storybook/addon-docs/blocks'
-import {
-  Banner,
-  BannerTabs,
-  CanvasTabs,
-  Footer,
-  StoryHeading,
-} from '../../../.storybook/blocks'
+import { Banner, BannerTabs, CanvasTabs, Footer, StoryHeading } from '../../../.storybook/blocks'
 import * as CarouselStories from './carousel.stories'
 import { CAROUSEL_DOC_CONFIG, getCarouselTabs } from './carousel.doc-config'
 
@@ -22,16 +16,43 @@ import { CAROUSEL_DOC_CONFIG, getCarouselTabs } from './carousel.doc-config'
 
 <StoryHeading of={CarouselStories.Slide}></StoryHeading>
 
-One slide visible at a time with scroll-snap. Use `controls="dots"` for dot pagination with prev/next arrows, or `controls="none"` to hide all controls.
+One slide visible at a time with scroll-snap. The default `controls="dots"` shows dot pagination together with the
+prev/next arrows.
 
 <CanvasTabs htmlOf={CarouselStories.SlideHtml} of={CarouselStories.Slide} />
 
 {/* ------------------------------------------------------ */}
 
-<StoryHeading of={CarouselStories.Tile}></StoryHeading>
+<StoryHeading of={CarouselStories.SlideLargeControls}></StoryHeading>
 
-Multiple items scrollable in a horizontal strip. Set `items-per-view` to a number to divide the container width equally across that many items. Use `controls="large"` to show side-arrow scroll buttons.
+Use `controls="large"` to replace the dot pagination with large side-arrow scroll buttons.
 
-<CanvasTabs htmlOf={CarouselStories.TileHtml} of={CarouselStories.Tile} />
+<CanvasTabs htmlOf={CarouselStories.SlideLargeControlsHtml} of={CarouselStories.SlideLargeControls} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={CarouselStories.SlideNoControls}></StoryHeading>
+
+Use `controls="none"` to hide all navigation controls, leaving swipe or scroll as the only way to move between
+slides.
+
+<CanvasTabs htmlOf={CarouselStories.SlideNoControlsHtml} of={CarouselStories.SlideNoControls} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={CarouselStories.Product}></StoryHeading>
+
+The `tile` variant shows multiple items with free scrolling, each sized automatically by its own content.
+
+<CanvasTabs htmlOf={CarouselStories.ProductHtml} of={CarouselStories.Product} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={CarouselStories.ProductBrandIcons}></StoryHeading>
+
+Combine the `tile` variant with `navigation` items and a fixed `--carousel-item-width` to build a strip of linked
+product tiles with brand icons. Use `steps` to control how many items scroll per arrow click.
+
+<CanvasTabs htmlOf={CarouselStories.ProductBrandIconsHtml} of={CarouselStories.ProductBrandIcons} />
 
 <Footer />

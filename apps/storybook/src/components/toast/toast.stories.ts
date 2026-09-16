@@ -65,3 +65,62 @@ export const Colors = Story({
   ),
 })
 Colors.storyName = '🧩 Colors'
+
+export const Controller = Story({
+  ...withRender(
+    () => `
+<div class="flex gap-sm flex-direction-row" style="align-items: flex-start">
+  <ds-button color="info" id="toast-trigger-info" >Show info</ds-button>
+  <ds-button color="success" id="toast-trigger-success">Show success</ds-button>
+  <ds-button color="warning" id="toast-trigger-warning">Show warning</ds-button>
+  <ds-button color="danger" id="toast-trigger-danger">Show danger</ds-button>
+</div>
+<script>
+  (() => {
+    const controller = window.DesignSystem && window.DesignSystem.toastController
+    if (!controller) return
+
+    const presets = {
+      'toast-trigger-info': {
+        color: 'info',
+        heading: 'Information',
+        message: 'Your changes have been saved.',
+        closable: true,
+      },
+      'toast-trigger-success': {
+        color: 'success',
+        heading: 'Success',
+        message: 'Your request was submitted successfully.',
+        action: 'Undo',
+      },
+      'toast-trigger-warning': {
+        color: 'warning',
+        heading: 'Warning',
+        message: 'Please double check your input before continuing.',
+        closable: true,
+      },
+      'toast-trigger-danger': {
+        color: 'danger',
+        heading: 'Error',
+        message: 'Something went wrong. Please try again.',
+        closable: true,
+      },
+    }
+
+    Object.keys(presets).forEach(id => {
+      const trigger = document.getElementById(id)
+      if (!trigger) return
+      trigger.addEventListener('click', () => {
+        controller.create({
+          closable: false,
+          closeHandler: toastId => controller.remove(toastId),
+          actionHandler: toastId => controller.remove(toastId),
+          ...presets[id],
+        })
+      })
+    })
+  })()
+</script>`,
+  ),
+})
+Controller.storyName = '🧩 Controller'

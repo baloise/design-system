@@ -17,7 +17,7 @@ export interface SegmentCustomEvent<T> extends CustomEvent<T> {
   target: HTMLDsSegmentElement
 }
 
-export type SegmentChangeDetail = boolean
+export type SegmentChangeDetail = any
 export type SegmentChange = SegmentCustomEvent<SegmentChangeDetail>
 
 export type SegmentFocusDetail = FocusEvent

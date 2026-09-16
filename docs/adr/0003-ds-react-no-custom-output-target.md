@@ -6,7 +6,7 @@ Date: 2026-07-21
 
 ## Status
 
-Accepted
+Superseded by [ADR-0028](0028-react-idioms-for-overlay-components.md) for the public overlay API. The decision to generate bindings with the stock `@stencil/react-output-target` (no `libs/output-target-react`) still holds.
 
 ## Context
 

@@ -58,7 +58,7 @@ See [CONTEXT-MAP.md](CONTEXT-MAP.md) for package-specific contexts:
 
 - [[packages/core|packages/core/CONTEXT.md]] — Stencil components
 - [[packages/tokens|packages/tokens/CONTEXT.md]] — Design tokens
-- [[packages/css|packages/css/CONTEXT.md]] — Global styles
+- [[packages/styles|packages/styles/CONTEXT.md]] — Global styles
 - [[packages/assets|packages/assets/CONTEXT.md]] — Fonts & icons
 - [[packages/playwright|packages/playwright/CONTEXT.md]] — E2E testing
 - [[apps/storybook|apps/storybook/CONTEXT.md]] — Storybook documentation

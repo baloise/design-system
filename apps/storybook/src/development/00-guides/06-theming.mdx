@@ -71,31 +71,50 @@ Or scope it to a single instance with a class:
 
 ## Predefined Brand Themes
 
-A **theme** applies one brand's token overrides — colors, typography, and more — on top of the
-base styles, scoped under a `[data-theme="<brand>"]` selector (e.g. ERV, TCS). To activate one:
+Each brand (e.g. ERV, TCS) ships as two complete, standalone token stylesheets from
+`@baloise/ds-tokens` — not a diff against Base, the full token set either way. Pick the one that
+matches how your app switches (or doesn't switch) brands:
 
-<br />
+- **`css/<brand>`** (e.g. `css/erv`) — scoped to `:host, :root`. Use this when your whole app is
+  committed to one brand; import it instead of `css/base`, nothing else needed.
+- **`css/<brand>-override`** (e.g. `css/erv-override`) — scoped to
+  `[data-theme="<brand>"], :host([data-theme="<brand>"])`. Use this to switch brands at runtime,
+  scoped to whichever element carries the `data-theme` attribute — the rest of the page keeps
+  whatever tokens it already has.
 
-**1. Import the theme's tokens**
-
-Import the brand's compiled token stylesheet after `@baloise/ds-css/css/base.css` (see
-[Styles](?path=/docs/development-styles--documentation)) so its overrides win the cascade.
+### Whole app, one brand
 
 <br />
 
 <Code
   language="css"
   code={`
-@import '@baloise/ds-tokens/css/tcs.tokens.css';
+@import '@baloise/ds-tokens/css/erv';
+`}
+/>
+
+Load this instead of `@baloise/ds-tokens/css/base` (see
+[Styles](?path=/docs/development-styles--documentation)) — don't load both.
+
+### Scoped to an element
+
+**1. Import the brand's override stylesheet**
+
+<br />
+
+<Code
+  language="css"
+  code={`
+@import '@baloise/ds-tokens/css/tcs-override';
 `}
 />
 
 <br />
-<br />
 
-**2. Activate the theme**
+**2. Activate it on any element**
 
-Set `data-theme="<brand>"` on your root element.
+Set `data-theme="<brand>"` on the element you want scoped to that brand — a `<div>`, not just the
+root:
 
 <br />
 
@@ -103,7 +122,7 @@ Set `data-theme="<brand>"` on your root element.
   language="html"
   noPreview
   code={`
-<html data-theme="tcs">
+<div data-theme="tcs">
 `}
 />
 
@@ -123,7 +142,7 @@ Design System team can scope the token overrides.
   <LinkCards>
     <LinkCard
       pageTitle="Development/Styles"
-      description="Install and import the base, component, and utility styles the theming system builds on."
+      description="Install and import the foundation, component, and utility styles the theming system builds on."
     />
     <LinkCard
       pageTitle="Tokens/Component Variables"

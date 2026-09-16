@@ -1,0 +1,23 @@
+<h2>Date demo</h2>
+
+<p data-testid="date-value">Date value: {{ dateValue() }}</p>
+<ds-date data-testid="date" name="smoke-test-date" [value]="dateValue()" (dsInput)="onInput($event)" />
+
+<form [formGroup]="reactiveForm">
+  <ds-date data-testid="reactive-date" name="reactive-date" label="Date" formControlName="date" />
+</form>
+<p data-testid="reactive-date-value">Reactive value: {{ reactiveForm.controls.date.value }}</p>
+<button data-testid="toggle-reactive-date-disabled" type="button" (click)="toggleReactiveFormDisabled()">
+  Toggle disabled
+</button>
+<button data-testid="set-reactive-date-value" type="button" (click)="setReactiveFormValue()">Set to 2024-03-20</button>
+
+<form [formGroup]="autoInvalidOffForm">
+  <ds-date
+    data-testid="auto-invalid-off-date"
+    name="auto-invalid-off-date"
+    label="Date (auto-invalid off)"
+    formControlName="date"
+    autoInvalidOff
+  />
+</form>

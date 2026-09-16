@@ -212,49 +212,6 @@ export namespace Components {
         "type": AlertType;
     }
     /**
-     * App is a root wrapper component that provides global configuration, focus management, and responsive behavior context for all design system components.
-     */
-    interface DsApp {
-        /**
-          * Comma separated list of languages the app allows selecting. Falls back to the global config default when unset.
-         */
-        "allowedLanguages"?: string;
-        /**
-          * Disables all animation inside the ds-app. Can be used for simplify e2e testing.
-          * @default true
-         */
-        "animated": boolean;
-        /**
-          * Sets the active brand for all design system components. Falls back to the global config default when unset.
-         */
-        "brand"?: DsBrand;
-        "configChanged": (state: DsConfigState) => Promise<void>;
-        /**
-          * Language used when `language` is not part of `allowedLanguages`. Falls back to the global config default when unset.
-         */
-        "fallbackLanguage"?: DsLanguage;
-        /**
-          * Sets the active language for all design system components. Falls back to the global config default when unset.
-         */
-        "language"?: DsLanguage;
-        /**
-          * @default ''
-         */
-        "logger": string;
-        /**
-          * @default false
-         */
-        "ready": boolean;
-        /**
-          * Sets the active region for all design system components. Falls back to the global config default when unset.
-         */
-        "region"?: DsRegion;
-        /**
-          * Sets focus on the given elements using the app's focus-visible handling.
-         */
-        "setFocus": (elements: HTMLElement[]) => Promise<void>;
-    }
-    /**
      * AppFooter renders application level legal links, language selection, and social links.
      * Link content is slot first to keep links crawlable and SEO friendly.
      * Links and social media are shown by default unless disabled.
@@ -823,6 +780,11 @@ export namespace Components {
      * Checkbox Group groups multiple checkboxes so multiple options can be selected within a form field.
      */
     interface DsCheckboxGroup {
+        /**
+          * If `true`, disables the automatic `invalid`/`invalidText` behavior that the `@baloise/ds-angular` integration applies when the bound `NgControl` is touched and invalid. Only affects the Angular integration; it is a no-op in other framework integrations.
+          * @default false
+         */
+        "autoInvalidOff": boolean;
         /**
           * Defines the color of the input. The default value is `primary`.
           * @default 'primary'
@@ -1766,7 +1728,7 @@ export namespace Components {
      */
     interface DsInputSlider {
         /**
-          * If `true`, in Angular reactive forms the control will not be set invalid
+          * If `true`, disables the automatic `invalid`/`invalidText` behavior that the `@baloise/ds-angular` integration applies when the bound `NgControl` is touched and invalid. Only affects the Angular integration; it is a no-op in other framework integrations.
           * @default false
          */
         "autoInvalidOff": boolean;
@@ -2702,6 +2664,49 @@ export namespace Components {
         "vertical": boolean;
     }
     /**
+     * Root is a root wrapper component that provides global configuration, focus management, and responsive behavior context for all design system components.
+     */
+    interface DsRoot {
+        /**
+          * Comma separated list of languages the root allows selecting. Falls back to the global config default when unset.
+         */
+        "allowedLanguages"?: string;
+        /**
+          * Disables all animation inside the ds-root. Can be used for simplify e2e testing.
+          * @default true
+         */
+        "animated": boolean;
+        /**
+          * Sets the active brand for all design system components. Falls back to the global config default when unset.
+         */
+        "brand"?: DsBrand;
+        "configChanged": (state: DsConfigState) => Promise<void>;
+        /**
+          * Language used when `language` is not part of `allowedLanguages`. Falls back to the global config default when unset.
+         */
+        "fallbackLanguage"?: DsLanguage;
+        /**
+          * Sets the active language for all design system components. Falls back to the global config default when unset.
+         */
+        "language"?: DsLanguage;
+        /**
+          * @default ''
+         */
+        "logger": string;
+        /**
+          * @default false
+         */
+        "ready": boolean;
+        /**
+          * Sets the active region for all design system components. Falls back to the global config default when unset.
+         */
+        "region"?: DsRegion;
+        /**
+          * Sets focus on the given elements using the root's focus-visible handling.
+         */
+        "setFocus": (elements: HTMLElement[]) => Promise<void>;
+    }
+    /**
      * Segment renders a group of button-like controls for selecting a single option from multiple choices with toggle behavior.
      */
     interface DsSegment {
@@ -2710,6 +2715,11 @@ export namespace Components {
           * @default false
          */
         "allowEmptySelection": boolean;
+        /**
+          * If `true`, disables the automatic `invalid`/`invalidText` behavior that the `@baloise/ds-angular` integration applies when the bound `NgControl` is touched and invalid. Only affects the Angular integration; it is a no-op in other framework integrations.
+          * @default false
+         */
+        "autoInvalidOff": boolean;
         "configChanged": (state: DsConfigState) => Promise<void>;
         /**
           * The description of the input, which is displayed below the input field.
@@ -3753,10 +3763,6 @@ export interface DsAccordionCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLDsAccordionElement;
 }
-export interface DsAppCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLDsAppElement;
-}
 export interface DsAppFooterCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLDsAppFooterElement;
@@ -3845,6 +3851,10 @@ export interface DsRadioGroupCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLDsRadioGroupElement;
 }
+export interface DsRootCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLDsRootElement;
+}
 export interface DsSegmentCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLDsSegmentElement;
@@ -3929,32 +3939,6 @@ declare global {
     var HTMLDsAlertContainerElement: {
         prototype: HTMLDsAlertContainerElement;
         new (): HTMLDsAlertContainerElement;
-    };
-    interface HTMLDsAppElementEventMap {
-        "dsAppReady": void;
-        "dsAnimatedChange": boolean;
-        "dsBrandChange": DsBrand;
-        "dsRegionChange": DsRegion;
-        "dsLanguageChange": DsLanguage;
-        "dsAllowedLanguagesChange": DsLanguage[];
-        "dsFallbackLanguageChange": DsLanguage;
-    }
-    /**
-     * App is a root wrapper component that provides global configuration, focus management, and responsive behavior context for all design system components.
-     */
-    interface HTMLDsAppElement extends Components.DsApp, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLDsAppElementEventMap>(type: K, listener: (this: HTMLDsAppElement, ev: DsAppCustomEvent<HTMLDsAppElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLDsAppElementEventMap>(type: K, listener: (this: HTMLDsAppElement, ev: DsAppCustomEvent<HTMLDsAppElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
-    }
-    var HTMLDsAppElement: {
-        prototype: HTMLDsAppElement;
-        new (): HTMLDsAppElement;
     };
     interface HTMLDsAppFooterElementEventMap {
         "dsLanguageChange": AppFooterLanguageChangeDetail;
@@ -4724,6 +4708,32 @@ declare global {
         prototype: HTMLDsRadioGroupElement;
         new (): HTMLDsRadioGroupElement;
     };
+    interface HTMLDsRootElementEventMap {
+        "dsAppReady": void;
+        "dsAnimatedChange": boolean;
+        "dsBrandChange": DsBrand;
+        "dsRegionChange": DsRegion;
+        "dsLanguageChange": DsLanguage;
+        "dsAllowedLanguagesChange": DsLanguage[];
+        "dsFallbackLanguageChange": DsLanguage;
+    }
+    /**
+     * Root is a root wrapper component that provides global configuration, focus management, and responsive behavior context for all design system components.
+     */
+    interface HTMLDsRootElement extends Components.DsRoot, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLDsRootElementEventMap>(type: K, listener: (this: HTMLDsRootElement, ev: DsRootCustomEvent<HTMLDsRootElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLDsRootElementEventMap>(type: K, listener: (this: HTMLDsRootElement, ev: DsRootCustomEvent<HTMLDsRootElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLDsRootElement: {
+        prototype: HTMLDsRootElement;
+        new (): HTMLDsRootElement;
+    };
     interface HTMLDsSegmentElementEventMap {
         "dsBlur": SegmentBlurDetail;
         "dsChange": SegmentChangeDetail;
@@ -5105,7 +5115,6 @@ declare global {
     interface HTMLElementTagNameMap {
         "ds-accordion": HTMLDsAccordionElement;
         "ds-alert-container": HTMLDsAlertContainerElement;
-        "ds-app": HTMLDsAppElement;
         "ds-app-footer": HTMLDsAppFooterElement;
         "ds-app-navbar": HTMLDsAppNavbarElement;
         "ds-badge": HTMLDsBadgeElement;
@@ -5155,6 +5164,7 @@ declare global {
         "ds-progress-bar": HTMLDsProgressBarElement;
         "ds-radio": HTMLDsRadioElement;
         "ds-radio-group": HTMLDsRadioGroupElement;
+        "ds-root": HTMLDsRootElement;
         "ds-segment": HTMLDsSegmentElement;
         "ds-segment-item": HTMLDsSegmentItemElement;
         "ds-select": HTMLDsSelectElement;
@@ -5290,72 +5300,6 @@ declare namespace LocalJSX {
           * @default 'toast'
          */
         "type"?: AlertType;
-    }
-    /**
-     * App is a root wrapper component that provides global configuration, focus management, and responsive behavior context for all design system components.
-     */
-    interface DsApp {
-        /**
-          * Comma separated list of languages the app allows selecting. Falls back to the global config default when unset.
-         */
-        "allowedLanguages"?: string;
-        /**
-          * Disables all animation inside the ds-app. Can be used for simplify e2e testing.
-          * @default true
-         */
-        "animated"?: boolean;
-        /**
-          * Sets the active brand for all design system components. Falls back to the global config default when unset.
-         */
-        "brand"?: DsBrand;
-        /**
-          * Language used when `language` is not part of `allowedLanguages`. Falls back to the global config default when unset.
-         */
-        "fallbackLanguage"?: DsLanguage;
-        /**
-          * Sets the active language for all design system components. Falls back to the global config default when unset.
-         */
-        "language"?: DsLanguage;
-        /**
-          * @default ''
-         */
-        "logger"?: string;
-        /**
-          * Emitted when the `allowedLanguages` value changes in the global config.
-         */
-        "onDsAllowedLanguagesChange"?: (event: DsAppCustomEvent<DsLanguage[]>) => void;
-        /**
-          * Emitted when the `animated` value changes in the global config.
-         */
-        "onDsAnimatedChange"?: (event: DsAppCustomEvent<boolean>) => void;
-        /**
-          * Emitted when app is ready and painted.
-         */
-        "onDsAppReady"?: (event: DsAppCustomEvent<void>) => void;
-        /**
-          * Emitted when the `brand` value changes in the global config.
-         */
-        "onDsBrandChange"?: (event: DsAppCustomEvent<DsBrand>) => void;
-        /**
-          * Emitted when the `fallbackLanguage` value changes in the global config.
-         */
-        "onDsFallbackLanguageChange"?: (event: DsAppCustomEvent<DsLanguage>) => void;
-        /**
-          * Emitted when the `language` value changes in the global config.
-         */
-        "onDsLanguageChange"?: (event: DsAppCustomEvent<DsLanguage>) => void;
-        /**
-          * Emitted when the `region` value changes in the global config.
-         */
-        "onDsRegionChange"?: (event: DsAppCustomEvent<DsRegion>) => void;
-        /**
-          * @default false
-         */
-        "ready"?: boolean;
-        /**
-          * Sets the active region for all design system components. Falls back to the global config default when unset.
-         */
-        "region"?: DsRegion;
     }
     /**
      * AppFooter renders application level legal links, language selection, and social links.
@@ -5978,6 +5922,11 @@ declare namespace LocalJSX {
      * Checkbox Group groups multiple checkboxes so multiple options can be selected within a form field.
      */
     interface DsCheckboxGroup {
+        /**
+          * If `true`, disables the automatic `invalid`/`invalidText` behavior that the `@baloise/ds-angular` integration applies when the bound `NgControl` is touched and invalid. Only affects the Angular integration; it is a no-op in other framework integrations.
+          * @default false
+         */
+        "autoInvalidOff"?: boolean;
         /**
           * Defines the color of the input. The default value is `primary`.
           * @default 'primary'
@@ -6987,7 +6936,7 @@ declare namespace LocalJSX {
      */
     interface DsInputSlider {
         /**
-          * If `true`, in Angular reactive forms the control will not be set invalid
+          * If `true`, disables the automatic `invalid`/`invalidText` behavior that the `@baloise/ds-angular` integration applies when the bound `NgControl` is touched and invalid. Only affects the Angular integration; it is a no-op in other framework integrations.
           * @default false
          */
         "autoInvalidOff"?: boolean;
@@ -8010,6 +7959,72 @@ declare namespace LocalJSX {
         "vertical"?: boolean;
     }
     /**
+     * Root is a root wrapper component that provides global configuration, focus management, and responsive behavior context for all design system components.
+     */
+    interface DsRoot {
+        /**
+          * Comma separated list of languages the root allows selecting. Falls back to the global config default when unset.
+         */
+        "allowedLanguages"?: string;
+        /**
+          * Disables all animation inside the ds-root. Can be used for simplify e2e testing.
+          * @default true
+         */
+        "animated"?: boolean;
+        /**
+          * Sets the active brand for all design system components. Falls back to the global config default when unset.
+         */
+        "brand"?: DsBrand;
+        /**
+          * Language used when `language` is not part of `allowedLanguages`. Falls back to the global config default when unset.
+         */
+        "fallbackLanguage"?: DsLanguage;
+        /**
+          * Sets the active language for all design system components. Falls back to the global config default when unset.
+         */
+        "language"?: DsLanguage;
+        /**
+          * @default ''
+         */
+        "logger"?: string;
+        /**
+          * Emitted when the `allowedLanguages` value changes in the global config.
+         */
+        "onDsAllowedLanguagesChange"?: (event: DsRootCustomEvent<DsLanguage[]>) => void;
+        /**
+          * Emitted when the `animated` value changes in the global config.
+         */
+        "onDsAnimatedChange"?: (event: DsRootCustomEvent<boolean>) => void;
+        /**
+          * Emitted when root is ready and painted.
+         */
+        "onDsAppReady"?: (event: DsRootCustomEvent<void>) => void;
+        /**
+          * Emitted when the `brand` value changes in the global config.
+         */
+        "onDsBrandChange"?: (event: DsRootCustomEvent<DsBrand>) => void;
+        /**
+          * Emitted when the `fallbackLanguage` value changes in the global config.
+         */
+        "onDsFallbackLanguageChange"?: (event: DsRootCustomEvent<DsLanguage>) => void;
+        /**
+          * Emitted when the `language` value changes in the global config.
+         */
+        "onDsLanguageChange"?: (event: DsRootCustomEvent<DsLanguage>) => void;
+        /**
+          * Emitted when the `region` value changes in the global config.
+         */
+        "onDsRegionChange"?: (event: DsRootCustomEvent<DsRegion>) => void;
+        /**
+          * @default false
+         */
+        "ready"?: boolean;
+        /**
+          * Sets the active region for all design system components. Falls back to the global config default when unset.
+         */
+        "region"?: DsRegion;
+    }
+    /**
      * Segment renders a group of button-like controls for selecting a single option from multiple choices with toggle behavior.
      */
     interface DsSegment {
@@ -8018,6 +8033,11 @@ declare namespace LocalJSX {
           * @default false
          */
         "allowEmptySelection"?: boolean;
+        /**
+          * If `true`, disables the automatic `invalid`/`invalidText` behavior that the `@baloise/ds-angular` integration applies when the bound `NgControl` is touched and invalid. Only affects the Angular integration; it is a no-op in other framework integrations.
+          * @default false
+         */
+        "autoInvalidOff"?: boolean;
         /**
           * The description of the input, which is displayed below the input field.
           * @default ''
@@ -9167,16 +9187,6 @@ declare namespace LocalJSX {
         "container": AlertContainerSize;
         "type": AlertType;
     }
-    interface DsAppAttributes {
-        "animated": boolean;
-        "brand": DsBrand;
-        "region": DsRegion;
-        "language": DsLanguage;
-        "allowedLanguages": string;
-        "fallbackLanguage": DsLanguage;
-        "ready": boolean;
-        "logger": string;
-    }
     interface DsAppFooterAttributes {
         "container": AppFooterContainer;
         "hideLanguageSelection": boolean;
@@ -9305,6 +9315,7 @@ declare namespace LocalJSX {
         "colsMobile": CheckboxGroupColumns;
     }
     interface DsCheckboxGroupAttributes {
+        "autoInvalidOff": boolean;
         "color": InputColor;
         "cols": CheckboxGroupColumns;
         "colsMobile": CheckboxGroupColumns;
@@ -9674,8 +9685,19 @@ declare namespace LocalJSX {
         "value": string;
         "vertical": boolean;
     }
+    interface DsRootAttributes {
+        "animated": boolean;
+        "brand": DsBrand;
+        "region": DsRegion;
+        "language": DsLanguage;
+        "allowedLanguages": string;
+        "fallbackLanguage": DsLanguage;
+        "ready": boolean;
+        "logger": string;
+    }
     interface DsSegmentAttributes {
         "allowEmptySelection": boolean;
+        "autoInvalidOff": boolean;
         "description": string;
         "disabled": boolean;
         "iconOnly": boolean;
@@ -9900,7 +9922,6 @@ declare namespace LocalJSX {
     interface IntrinsicElements {
         "ds-accordion": Omit<DsAccordion, keyof DsAccordionAttributes> & { [K in keyof DsAccordion & keyof DsAccordionAttributes]?: DsAccordion[K] } & { [K in keyof DsAccordion & keyof DsAccordionAttributes as `attr:${K}`]?: DsAccordionAttributes[K] } & { [K in keyof DsAccordion & keyof DsAccordionAttributes as `prop:${K}`]?: DsAccordion[K] };
         "ds-alert-container": Omit<DsAlertContainer, keyof DsAlertContainerAttributes> & { [K in keyof DsAlertContainer & keyof DsAlertContainerAttributes]?: DsAlertContainer[K] } & { [K in keyof DsAlertContainer & keyof DsAlertContainerAttributes as `attr:${K}`]?: DsAlertContainerAttributes[K] } & { [K in keyof DsAlertContainer & keyof DsAlertContainerAttributes as `prop:${K}`]?: DsAlertContainer[K] };
-        "ds-app": Omit<DsApp, keyof DsAppAttributes> & { [K in keyof DsApp & keyof DsAppAttributes]?: DsApp[K] } & { [K in keyof DsApp & keyof DsAppAttributes as `attr:${K}`]?: DsAppAttributes[K] } & { [K in keyof DsApp & keyof DsAppAttributes as `prop:${K}`]?: DsApp[K] };
         "ds-app-footer": Omit<DsAppFooter, keyof DsAppFooterAttributes> & { [K in keyof DsAppFooter & keyof DsAppFooterAttributes]?: DsAppFooter[K] } & { [K in keyof DsAppFooter & keyof DsAppFooterAttributes as `attr:${K}`]?: DsAppFooterAttributes[K] } & { [K in keyof DsAppFooter & keyof DsAppFooterAttributes as `prop:${K}`]?: DsAppFooter[K] };
         "ds-app-navbar": Omit<DsAppNavbar, keyof DsAppNavbarAttributes> & { [K in keyof DsAppNavbar & keyof DsAppNavbarAttributes]?: DsAppNavbar[K] } & { [K in keyof DsAppNavbar & keyof DsAppNavbarAttributes as `attr:${K}`]?: DsAppNavbarAttributes[K] } & { [K in keyof DsAppNavbar & keyof DsAppNavbarAttributes as `prop:${K}`]?: DsAppNavbar[K] };
         "ds-badge": Omit<DsBadge, keyof DsBadgeAttributes> & { [K in keyof DsBadge & keyof DsBadgeAttributes]?: DsBadge[K] } & { [K in keyof DsBadge & keyof DsBadgeAttributes as `attr:${K}`]?: DsBadgeAttributes[K] } & { [K in keyof DsBadge & keyof DsBadgeAttributes as `prop:${K}`]?: DsBadge[K] };
@@ -9950,6 +9971,7 @@ declare namespace LocalJSX {
         "ds-progress-bar": Omit<DsProgressBar, keyof DsProgressBarAttributes> & { [K in keyof DsProgressBar & keyof DsProgressBarAttributes]?: DsProgressBar[K] } & { [K in keyof DsProgressBar & keyof DsProgressBarAttributes as `attr:${K}`]?: DsProgressBarAttributes[K] } & { [K in keyof DsProgressBar & keyof DsProgressBarAttributes as `prop:${K}`]?: DsProgressBar[K] };
         "ds-radio": Omit<DsRadio, keyof DsRadioAttributes> & { [K in keyof DsRadio & keyof DsRadioAttributes]?: DsRadio[K] } & { [K in keyof DsRadio & keyof DsRadioAttributes as `attr:${K}`]?: DsRadioAttributes[K] } & { [K in keyof DsRadio & keyof DsRadioAttributes as `prop:${K}`]?: DsRadio[K] };
         "ds-radio-group": Omit<DsRadioGroup, keyof DsRadioGroupAttributes> & { [K in keyof DsRadioGroup & keyof DsRadioGroupAttributes]?: DsRadioGroup[K] } & { [K in keyof DsRadioGroup & keyof DsRadioGroupAttributes as `attr:${K}`]?: DsRadioGroupAttributes[K] } & { [K in keyof DsRadioGroup & keyof DsRadioGroupAttributes as `prop:${K}`]?: DsRadioGroup[K] };
+        "ds-root": Omit<DsRoot, keyof DsRootAttributes> & { [K in keyof DsRoot & keyof DsRootAttributes]?: DsRoot[K] } & { [K in keyof DsRoot & keyof DsRootAttributes as `attr:${K}`]?: DsRootAttributes[K] } & { [K in keyof DsRoot & keyof DsRootAttributes as `prop:${K}`]?: DsRoot[K] };
         "ds-segment": Omit<DsSegment, keyof DsSegmentAttributes> & { [K in keyof DsSegment & keyof DsSegmentAttributes]?: DsSegment[K] } & { [K in keyof DsSegment & keyof DsSegmentAttributes as `attr:${K}`]?: DsSegmentAttributes[K] } & { [K in keyof DsSegment & keyof DsSegmentAttributes as `prop:${K}`]?: DsSegment[K] };
         "ds-segment-item": Omit<DsSegmentItem, keyof DsSegmentItemAttributes> & { [K in keyof DsSegmentItem & keyof DsSegmentItemAttributes]?: DsSegmentItem[K] } & { [K in keyof DsSegmentItem & keyof DsSegmentItemAttributes as `attr:${K}`]?: DsSegmentItemAttributes[K] } & { [K in keyof DsSegmentItem & keyof DsSegmentItemAttributes as `prop:${K}`]?: DsSegmentItem[K] };
         "ds-select": Omit<DsSelect, keyof DsSelectAttributes> & { [K in keyof DsSelect & keyof DsSelectAttributes]?: DsSelect[K] } & { [K in keyof DsSelect & keyof DsSelectAttributes as `attr:${K}`]?: DsSelectAttributes[K] } & { [K in keyof DsSelect & keyof DsSelectAttributes as `prop:${K}`]?: DsSelect[K] };
@@ -9988,10 +10010,6 @@ declare module "@stencil/core" {
              * Alert Container manages and displays a queue of toast or snackbar notifications with automatic dismissal and deduplication.
              */
             "ds-alert-container": LocalJSX.IntrinsicElements["ds-alert-container"] & JSXBase.HTMLAttributes<HTMLDsAlertContainerElement>;
-            /**
-             * App is a root wrapper component that provides global configuration, focus management, and responsive behavior context for all design system components.
-             */
-            "ds-app": LocalJSX.IntrinsicElements["ds-app"] & JSXBase.HTMLAttributes<HTMLDsAppElement>;
             /**
              * AppFooter renders application level legal links, language selection, and social links.
              * Link content is slot first to keep links crawlable and SEO friendly.
@@ -10211,6 +10229,10 @@ declare module "@stencil/core" {
              * Radio Group groups multiple radio inputs so only one option can be selected at a time within a form field.
              */
             "ds-radio-group": LocalJSX.IntrinsicElements["ds-radio-group"] & JSXBase.HTMLAttributes<HTMLDsRadioGroupElement>;
+            /**
+             * Root is a root wrapper component that provides global configuration, focus management, and responsive behavior context for all design system components.
+             */
+            "ds-root": LocalJSX.IntrinsicElements["ds-root"] & JSXBase.HTMLAttributes<HTMLDsRootElement>;
             /**
              * Segment renders a group of button-like controls for selecting a single option from multiple choices with toggle behavior.
              */

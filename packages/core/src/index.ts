@@ -43,6 +43,7 @@ export {
   componentOnReady,
   deepReady,
   getAppRoot,
+  getRootElement,
   isDescendant,
   shallowReady,
   wait,

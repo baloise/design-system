@@ -5,14 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <link rel="stylesheet" href="/assets/section.css" />
+    <link rel="stylesheet" href="/assets/tokens/base.tokens.css" />
     <link rel="stylesheet" href="/assets/css/design-system.local.min.css" />
+    <link rel="stylesheet" href="/assets/css/utilities.min.css" />
 
     <script type="module" src="/build/design-system.esm.js"></script>
     <script nomodule src="/build/design-system.js"></script>
   </head>
 
   <body>
-    <ds-app>
+    <ds-root>
       <main class="ds-container">
         <!-- Basic Style -->
         <section data-testid="basic">
@@ -266,10 +268,10 @@
                   <img src="/assets/images/placeholder.png" alt="placeholder" />
                 </picture>
                 <ds-card-header>
-                  <ds-card-title>
-                    Dense Card
+                  <h3>
+                    <span class="ds-title">Dense Card</span>
                     <span class="ds-subtitle">Subtitle</span>
-                  </ds-card-title>
+                  </h3>
                 </ds-card-header>
                 <ds-card-content>
                   Lorem ipsum dolor sit amet consectetur, adipisicing elit. Atque ipsum laudantium earum est odit,
@@ -287,10 +289,10 @@
                   <img src="/assets/images/placeholder.png" alt="placeholder" />
                 </picture>
                 <ds-card-header>
-                  <ds-card-title>
-                    Default Card
+                  <h3>
+                    <span class="ds-title">Default Card</span>
                     <span class="ds-subtitle">Subtitle</span>
-                  </ds-card-title>
+                  </h3>
                 </ds-card-header>
                 <ds-card-content>
                   Lorem ipsum dolor sit amet consectetur, adipisicing elit. Atque ipsum laudantium earum est odit,
@@ -319,10 +321,10 @@
                 <ds-tag size="sm">Tag</ds-tag>
 
                 <ds-card-header>
-                  <ds-card-title>
-                    Image Teaser Card
+                  <h3>
+                    <span class="ds-title">Image Teaser Card</span>
                     <span class="ds-subtitle">Subtitle</span>
-                  </ds-card-title>
+                  </h3>
                 </ds-card-header>
                 <ds-card-content>
                   Lorem ipsum dolor sit amet consectetur, adipisicing elit. Atque ipsum laudantium earum est odit,
@@ -354,10 +356,10 @@
             </a>
 
             <ds-card-header>
-              <ds-card-title>
-                Image Teaser Left
+              <h3>
+                <span class="ds-title">Image Teaser Default</span>
                 <span class="ds-subtitle">Full width on mobile</span>
-              </ds-card-title>
+              </h3>
             </ds-card-header>
 
             <ds-card-content>
@@ -387,10 +389,10 @@
             </a>
 
             <ds-card-header>
-              <ds-card-title>
-                Image Teaser Center
+              <h3>
+                <span class="ds-title">Image Teaser Center</span>
                 <span class="ds-subtitle">Full width on mobile</span>
-              </ds-card-title>
+              </h3>
             </ds-card-header>
 
             <ds-card-content>
@@ -420,10 +422,10 @@
             </a>
 
             <ds-card-header>
-              <ds-card-title>
-                Image Teaser Right
+              <h3>
+                <span class="ds-title">Image Teaser Right</span>
                 <span class="ds-subtitle">Full width on mobile</span>
-              </ds-card-title>
+              </h3>
             </ds-card-header>
 
             <ds-card-content>
@@ -438,6 +440,6 @@
           </ds-card>
         </section>
       </main>
-    </ds-app>
+    </ds-root>
   </body>
 </html>

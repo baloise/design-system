@@ -63,6 +63,25 @@ test.describe('min/max/step', () => {
   })
 })
 
+test.describe('empty value assigned at runtime', () => {
+  // A slider can never be empty (see the `value` prop doc): unlike the unset-at-mount case above, this
+  // covers a framework binding writing an empty value onto an already-connected instance — e.g. Angular's
+  // `FormControl.reset()`, which calls `writeValue(null)` straight through onto the `value` property.
+  for (const emptyValue of ['null', 'undefined', 'NaN']) {
+    test(`resolves ${emptyValue} to min`, async ({ page }) => {
+      await page.mount(`<ds-input-slider label="Label" min="10" max="90" value="60"></ds-input-slider>`)
+      const slider = new DsInputSlider(page.locator('ds-input-slider'))
+
+      await slider.el.evaluate((el, value) => {
+        ;(el as any).value = value === 'null' ? null : value === 'undefined' ? undefined : Number.NaN
+      }, emptyValue)
+      await page.waitForChanges()
+
+      await slider.assertValue('10')
+    })
+  }
+})
+
 test.describe('disabled', () => {
   test('slider should be disabled', async ({ page }) => {
     await page.mount(`<ds-input-slider label="Label" value="42" disabled></ds-input-slider>`)

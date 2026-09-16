@@ -5,13 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <link rel="stylesheet" href="/assets/section.css" />
+    <link rel="stylesheet" href="/assets/tokens/base.tokens.css" />
     <link rel="stylesheet" href="/assets/css/design-system.local.min.css" />
+    <link rel="stylesheet" href="/assets/css/utilities.min.css" />
 
     <script type="module" src="/build/design-system.esm.js"></script>
     <script nomodule src="/build/design-system.js"></script>
   </head>
   <body>
-    <ds-app animated="false">
+    <ds-root animated="false">
       <main class="ds-container">
         <!-- Basic Style -->
         <section data-testid="basic">
@@ -138,6 +140,6 @@
           <ds-snackbar color="danger" heading="Danger"> Your changes have been saved. </ds-snackbar>
         </section>
       </main>
-    </ds-app>
+    </ds-root>
   </body>
 </html>

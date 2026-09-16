@@ -367,7 +367,7 @@ export const registerCustomFormatters = (sd: typeof StyleDictionary) => {
 
       return (
         header +
-        ':root, :host {\n' +
+        ':host,\n:root {\n' +
         formattedVariablesByOrigin({
           format: propertyFormatNames.css,
           dictionary,
@@ -385,7 +385,7 @@ export const registerCustomFormatters = (sd: typeof StyleDictionary) => {
         '\n}\n\n' +
         '/* Device tokens: Tablet */\n' +
         `\n@media (min-width: 769px) {\n` +
-        ':root, :host {\n' +
+        ':host,\n:root {\n' +
         formattedVariablesByOrigin({
           format: propertyFormatNames.css,
           dictionary: deviceTabletDictionary,
@@ -396,7 +396,7 @@ export const registerCustomFormatters = (sd: typeof StyleDictionary) => {
         `\n}\n\n` +
         '/* Device tokens: Desktop */\n' +
         `\n@media (min-width: 1024px) {\n` +
-        ':root, :host {\n' +
+        ':host,\n:root {\n' +
         formattedVariablesByOrigin({
           format: propertyFormatNames.css,
           dictionary: deviceDesktopDictionary,
@@ -413,12 +413,20 @@ export const registerCustomFormatters = (sd: typeof StyleDictionary) => {
   /**
    * CSS Brand Formatter
    * ------------------------------------------------------
+   * Renders the FULL token set behind a caller-supplied `options.selector` — used for a brand's
+   * `<brand>.tokens.css` (`:host, :root`) and `<brand>.override.css`
+   * (`[data-theme]`/`:host([data-theme])`) files, and for Base's own `base.override.css`
+   * (see config.base.ts). Unlike its diff-based predecessor, the caller is expected to hand this
+   * a dictionary whose `allTokens` is already the complete, self-sufficient set to render — a
+   * brand's config.brand.ts merges the brand onto Base before this ever runs (mergeTokenTree), so
+   * there's no `include`/`isSource` split to filter here anymore. See
+   * docs/adr/0030-full-merge-brand-token-css.md.
    */
   sd.registerFormat({
     name: 'ds/css/variables-brand',
     format: async ({ dictionary: rawDictionary, file, options }) => {
       const { outputReferences } = options
-      const selector = (options.selector as string) ?? '[data-theme="brand"]'
+      const selector = (options.selector as string) ?? ':host, :root'
       const header = await fileHeader({ file })
       const dictionary = {
         ...rawDictionary,
@@ -431,9 +439,7 @@ export const registerCustomFormatters = (sd: typeof StyleDictionary) => {
         ),
       } as Dictionary
 
-      // Only emit tokens that come from the brand source file, not from include (base)
-      const sourceTokens = dictionary.allTokens.filter(token => token.isSource)
-      const sourceDictionary = { ...dictionary, allTokens: sourceTokens } as Dictionary
+      const sourceTokens = dictionary.allTokens
 
       const baseTokensOriginal = sourceTokens.filter(token => token.name.endsWith('-mobile'))
       const baseTokens = JSON.parse(JSON.stringify(baseTokensOriginal))
@@ -463,7 +469,7 @@ export const registerCustomFormatters = (sd: typeof StyleDictionary) => {
         `${selector} {\n` +
         formattedVariablesByOrigin({
           format: propertyFormatNames.css,
-          dictionary: sourceDictionary,
+          dictionary,
           outputReferences,
           usesDtcg: true,
         }) +

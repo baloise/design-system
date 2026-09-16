@@ -357,7 +357,8 @@ The same pattern applies to `--ds-heading-size-lg` (category `size`, sub-variant
 
 ### Building Tokens
 
-Rebuild compiled outputs whenever `Base.tokens.json` changes:
+Rebuild compiled outputs whenever `Base.tokens.json` or a brand's
+`*.tokens.json` changes:
 
 ```bash
 pnpm tokens
@@ -366,8 +367,38 @@ pnpm tokens
 This regenerates:
 
 - `dist/css/base.tokens.css`
+- `dist/css/base.override.css`
+- `dist/css/<brand>.tokens.css` / `dist/css/<brand>.override.css` per brand
+  (see "Theme File" below)
 - `dist/scss/_tokens.scss`
 - `dist/json/tokens.json`
+
+### Theme File vs Override File
+
+Each brand (and Base) compiles to CSS as two **fully self-sufficient**
+files — every token declared with its resolved value (Base's, or the
+brand's where it overrides Base), never a diff of one against the other:
+
+- **Theme file** (`<brand>.tokens.css`, e.g. `erv.tokens.css`) — scoped to
+  `:host, :root`. For an app that commits to exactly one brand at
+  import/build time and never switches at runtime; it loads only this file
+  and never Base's.
+- **Override file** (`<brand>.override.css`, e.g. `erv.override.css`) —
+  scoped to `[data-theme="<brand>"], :host([data-theme="<brand>"])` (a plain
+  attribute selector, not `:root`-scoped, so it matches any element carrying
+  the attribute — e.g. `<div data-theme="erv">` — not just the document
+  root). For scoping a brand's tokens to one element/subtree without affecting the
+  rest of the page (today: Storybook's per-story theme switcher, which
+  wraps a story in `<div data-theme="erv">`). Base gets an override file
+  too (`base.override.css`) so "Base" can be selected as a scoped option
+  the same way a brand can, even though it has no overrides of its own.
+
+Both files for a given brand carry the identical full token set — they
+differ only in selector, not content. See
+[ADR-0030](../../docs/adr/0030-full-merge-brand-token-css.md) for why this
+replaced the previous diff-only brand CSS.
+_Avoid_: "diff file", "override" to mean a partial/delta file (a brand's
+override file is a full file, not a delta)
 
 ### Token Lookup Guide
 
@@ -430,11 +461,12 @@ Decisions specific to this package (Figma Variable identity, brand modes, sync b
 - [ADR-0018](../../docs/adr/0018-non-blocking-conflict-check.md) — Conflict check comments, it doesn't block the merge
 - [ADR-0019](../../docs/adr/0019-pull-auto-deletes-figma-variables.md) — Pull deletes the Figma Variable when a token is removed
 - [ADR-0020](../../docs/adr/0020-figma-sync-action-standalone-script.md) — The Figma Sync Action's code stays standalone, not shared with apps/toky
+- [ADR-0030](../../docs/adr/0030-full-merge-brand-token-css.md) — Brand token CSS is fully merged, split into a theme file (`:host, :root`) and an override file (`[data-theme]`)
 
 ## Related Contexts
 
 See [CONTEXT-MAP.md](../../CONTEXT-MAP.md) for:
 
 - [[packages/core|packages/core/CONTEXT.md]] — Component consumption of tokens
-- [[packages/css|packages/css/CONTEXT.md]] — Utility class generation from tokens
+- [[packages/styles|packages/styles/CONTEXT.md]] — Utility class generation from tokens
 - [[root|CONTEXT.md]] — Repository-level concepts

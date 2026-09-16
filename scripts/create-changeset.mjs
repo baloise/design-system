@@ -22,7 +22,7 @@ const BUMP_LEVELS = ['patch', 'minor', 'major']
 const SCOPE_PACKAGE_MAP = {
   core: '@baloise/ds-core',
   angular: '@baloise/ds-angular',
-  css: '@baloise/ds-css',
+  styles: '@baloise/ds-styles',
   tokens: '@baloise/ds-tokens',
   react: '@baloise/ds-react',
   assets: '@baloise/ds-assets',
@@ -167,7 +167,7 @@ async function runInteractive() {
         choices: [
           { title: 'core', value: 'core' },
           { title: 'angular', value: 'angular' },
-          { title: 'css', value: 'css' },
+          { title: 'styles', value: 'styles' },
           { title: 'devkit', value: 'devkit' },
           { title: 'testing', value: 'testing' },
           { title: 'tokens', value: 'tokens' },

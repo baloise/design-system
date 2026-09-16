@@ -3,7 +3,6 @@
 export const tags: string[] = [
   "ds-accordion",
   "ds-alert-container",
-  "ds-app",
   "ds-app-footer",
   "ds-app-navbar",
   "ds-badge",
@@ -53,6 +52,7 @@ export const tags: string[] = [
   "ds-progress-bar",
   "ds-radio",
   "ds-radio-group",
+  "ds-root",
   "ds-segment",
   "ds-segment-item",
   "ds-select",
