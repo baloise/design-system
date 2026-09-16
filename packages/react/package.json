@@ -30,7 +30,7 @@
     "dist/"
   ],
   "scripts": {
-    "build": "tsc -p tsconfig.lib.json",
+    "build": "tsc -p tsconfig.lib.json && node scripts/patch-server-wrappers.mjs",
     "build:clean": "rimraf dist",
     "lint": "eslint .",
     "test": "vitest --run"

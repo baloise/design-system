@@ -1,6 +1,4 @@
-'use client'
-
-import { DsRoot } from '../generated/components'
+import { DsRoot } from '../generated/components.server'
 import { createDsRootProvider } from './ds-root-provider.shared'
 
 export type { DsRootProviderProps } from './ds-root-provider.shared'

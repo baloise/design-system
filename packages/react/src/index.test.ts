@@ -66,7 +66,7 @@ describe('client/server entry split', () => {
     expect(serverIndexSource).toContain("export { bootstrapDesignSystem } from './bootstrap'")
     expect(serverIndexSource).toContain("export type * from './generated/components.server'")
     expect(serverIndexSource).toContain("export * from './wrappers.server'")
-    expect(serverIndexSource).toContain("export { DsRootProvider } from './components/ds-root-provider'")
+    expect(serverIndexSource).toContain("export { DsRootProvider } from './components/ds-root-provider.server'")
     expect(serverIndexSource).toContain("export { Modal } from './components/modal'")
     expect(serverIndexSource).toContain("export * from './hooks'")
   })
@@ -85,6 +85,12 @@ describe('client/server entry split', () => {
     expect(readFileSync(join(root, 'hooks/use-toast.ts'), 'utf8')).toMatch(useClient)
     expect(readFileSync(join(root, 'hooks/use-snackbar.ts'), 'utf8')).toMatch(useClient)
     expect(readFileSync(join(root, 'hooks/use-modal.ts'), 'utf8')).toMatch(useClient)
+    expect(readFileSync(join(root, 'components/ds-root-provider.tsx'), 'utf8')).toMatch(useClient)
+    expect(readFileSync(join(root, 'components/ds-root-provider.server.tsx'), 'utf8')).not.toMatch(useClient)
+    expect(readFileSync(join(root, 'components/ds-root-provider.shared.tsx'), 'utf8')).not.toMatch(useClient)
+    expect(readFileSync(join(root, 'components/ds-root-provider.server.tsx'), 'utf8')).toContain(
+      "from '../generated/components.server'",
+    )
   })
 
   test('exports map routes the node condition to the server entry', () => {
@@ -106,6 +112,14 @@ describe('client/server entry split', () => {
     ).trim()
 
     expect(resolved).toBe(pathToFileURL(join(pkgRoot, 'dist/index.server.js')).href)
+  })
+
+  test('patched server wrappers use the hydration-safe SSR factory', () => {
+    const patched = readFileSync(join(pkgRoot, 'dist/generated/components.server.js'), 'utf8')
+    expect(patched).toContain("from '../ssr-create-component.js'")
+    expect(patched).not.toContain("from '@stencil/react-output-target/ssr'")
+    expect(patched).toContain('typeof window === "undefined" ? {} : await import("./components.js")')
+    expect(patched.startsWith("'use client'")).toBe(false)
   })
 
   test('default resolution still gets the client entry', () => {

@@ -14,6 +14,7 @@
     "@baloise/ds-angular": "20.0.0-next.6",
     "integration-angular": "0.0.0",
     "integration-react": "0.0.0",
+    "integration-next": "0.0.0",
     "storybook": "0.0.0",
     "toky": "0.1.0"
   },

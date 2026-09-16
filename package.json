@@ -19,6 +19,7 @@
     "toky": "pnpm --filter toky dev",
     "app:react": "turbo run build --filter=@baloise/ds-core --filter=@baloise/ds-react --filter=@baloise/ds-styles && pnpm --filter integration-react start",
     "app:angular": "turbo run build --filter=@baloise/ds-core --filter=@baloise/ds-angular --filter=@baloise/ds-styles && pnpm --filter integration-angular start",
+    "app:next": "turbo run build --filter=@baloise/ds-core --filter=@baloise/ds-react --filter=@baloise/ds-styles && pnpm --filter integration-next start",
     "_playwright": "=============================================== Playwright =================================================",
     "play": "pnpm --filter @baloise/ds-core play",
     "play:file": "pnpm --filter @baloise/ds-core play:file",
