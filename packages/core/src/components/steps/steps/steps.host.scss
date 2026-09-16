@@ -24,6 +24,7 @@
  * @prop --steps-step-line-height: Line height for step labels and circle numbers.
  * @prop --steps-step-color: Text color for step labels (default state).
  * @prop --steps-step-color-selected: Text color for step labels (selected state).
+ * @prop --steps-step-color-done: Text color for step labels (done state).
  * @prop --steps-step-color-focus: Focus ring color for step buttons.
  * @prop --steps-panel-px: Horizontal padding inside each step panel.
  * @prop --steps-panel-py: Vertical padding inside each step panel.
@@ -55,6 +56,7 @@
   @include vars.local(steps-step-font-weight, var(--ds-steps-step-typo-base-font-weight));
   @include vars.local(steps-step-line-height, var(--ds-steps-step-typo-base-line-height));
   @include vars.local(steps-step-color, var(--ds-steps-step-color-base));
+  @include vars.local(steps-step-color-done, var(--ds-steps-step-color-done));
   @include vars.local(steps-step-color-selected, var(--ds-steps-step-color-selected));
   @include vars.local(steps-step-color-disabled, var(--ds-steps-step-color-disabled));
   @include vars.local(steps-step-color-focus, var(--ds-steps-step-color-focus));

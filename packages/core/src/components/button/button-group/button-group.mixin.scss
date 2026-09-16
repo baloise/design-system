@@ -17,6 +17,10 @@
 
   width: 100%;
 
+  &.fit-content {
+    width: fit-content;
+  }
+
   //
   // Mobile everything is strechtedˆ
   // --------------------------------
@@ -29,8 +33,6 @@
     ::slotted(ds-button:not(.is-square)),
     ds-button:not(.is-square) {
       flex: 1 1 auto;
-
-      --button-width: 100%;
     }
   }
 

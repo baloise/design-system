@@ -8,6 +8,14 @@ const meta: Meta<Args> = {
   title: 'Components/AppNavbar/Variants',
   parameters: {
     layout: 'fullscreen',
+    docs: {
+      story: {
+        // Tall enough that the mobile sidebar menu (position: fixed, sized to the
+        // preview iframe's own viewport) isn't clipped when the docs preview
+        // collapses the navbar into its mobile/hamburger layout.
+        height: '650px',
+      },
+    },
   },
   args: {
     slot: '',

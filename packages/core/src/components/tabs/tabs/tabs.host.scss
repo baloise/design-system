@@ -229,15 +229,32 @@
 
 // ─── Tablist container ────────────────────────────────────────────────────────
 
-:host #tablist {
+// Non-scrolling wrapper around #tablist — the border track lives here so it stays
+// pinned to the visible width instead of scrolling away with the tablist content.
+:host .tablist-track {
   flex: 1;
   min-width: 0;
+  position: relative;
+}
+
+:host .tablist-track::after {
+  content: '';
+  position: absolute;
+  z-index: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 0;
+  border-bottom: var(--_tabs-border-base);
+}
+
+:host #tablist {
   display: flex;
   flex-direction: row;
   align-items: stretch;
   gap: var(--_tabs-gap);
   position: relative;
-  // Border track lives in this reserved strip (not a real border) so it stays inside the
+  // Reserved strip (matching the border track's height) so it stays inside the
   // padding box — content painted past the padding edge gets clipped by overflow-y: clip below.
   padding-bottom: var(--ds-alias-border-width-base);
   overflow-x: scroll;
@@ -247,17 +264,6 @@
 
   &::-webkit-scrollbar {
     display: none;
-  }
-
-  &::after {
-    content: '';
-    position: absolute;
-    z-index: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 0;
-    border-bottom: var(--_tabs-border-base);
   }
 }
 
@@ -318,10 +324,6 @@
   border-left: var(--_tabs-border-base);
   overflow: visible;
   scroll-behavior: auto;
-
-  &::after {
-    content: none;
-  }
 }
 
 :host(.is-vertical.is-col-full) {

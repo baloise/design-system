@@ -318,3 +318,9 @@ const wwwCssDir = resolve(__dirname, '../../core/www/assets/css')
 mkdirSync(wwwCssDir, { recursive: true })
 cpSync(outDir, wwwCssDir, { recursive: true })
 console.log('\x1b[32m✔\x1b[0m dist/css/ copied to packages/core/www/assets/css/')
+
+// --- Copy CSS files to apps/storybook/public/assets/css/ --------------------
+const storybookCssDir = resolve(__dirname, '../../../apps/storybook/public/assets/css')
+mkdirSync(storybookCssDir, { recursive: true })
+cpSync(outDir, storybookCssDir, { recursive: true })
+console.log('\x1b[32m✔\x1b[0m dist/css/ copied to apps/storybook/public/assets/css/')

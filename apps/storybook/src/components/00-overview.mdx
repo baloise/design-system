@@ -69,7 +69,7 @@ import {
     scale="0.5"
     label="App Footer"
     fullwidth
-    pageTitle="Components/App Footer"
+    pageTitle="Components/AppFooter"
     description="Footer for the Helvetia Applications. The footer runs pure in blue or with a decorated track line below."
   >
     <ds-app-footer></ds-app-footer>
@@ -571,13 +571,14 @@ import {
     <ds-number-input decimal="2" suffix="CHF" value="1234.45"></ds-number-input>
   </GridComponent>
   <GridComponent
-    scale="0.8"
+    scale="0.5"
     label="Pagination"
     fullwidth
     pageTitle="Components/Pagination"
     description="Pagination allows you to divide large amounts of content into smaller chunks across multiple pages."
   >
-    <ds-pagination page-range="1" total-pages="20" value="2"></ds-pagination>
+    <ds-pagination page-range="1" total-pages="20" value="2" class="mb-lg"></ds-pagination>
+    <ds-pagination variant="dots" page-range="1" total-pages="20" value="2"></ds-pagination>
   </GridComponent>
   <GridComponent
     scale="0.8"
@@ -641,35 +642,28 @@ import {
     <ds-shape color="purple" rotation="0" variation="2"></ds-shape>
   </GridComponent>
   <GridComponent
-    scale="0.8"
+    scale="0.6"
     label="Sheet"
     fullwidth
     fullheight
     pageTitle="Components/Sheet"
     description="Sheet component is used to show content over the whole page at the bottom. The element is sticky."
   >
-    <div class="ds-container">
+    <div class="mx-md">
       <div class="bg-purple-2" style={{ minHeight: '200px', width: '100%' }}></div>
-    </div>
     <ds-sheet>
-      <ds-stack layout="vertical" space="small" class="tablet:hidden">
-        <ds-button wide>Continue with 1'234 CHF</ds-button>
-        <ds-button wide color="secondary">
-          Back
-        </ds-button>
-      </ds-stack>
-      <ds-stack class="mobile:hidden">
-        <ds-heading level="p" visual-level="h4">
-          1'234 CHF
-        </ds-heading>
-        <ds-content>
-          <p class="text-sm m-none flex-1">Lorem ipsum dolor</p>
-        </ds-content>
-        <ds-button-group>
-          <ds-button>Next</ds-button>
-        </ds-button-group>
-      </ds-stack>
+    <div class="ds-stack">
+      <div class="ds-stack-content">
+        <h3 class="ds-title is-4">CHF 460.60 per year</h3>
+        <p class="text-sm">incl. statutory charges</p>
+      </div>
+      <div class="ds-buttons">
+        <button class="ds-button is-secondary is-square" aria-label="back"><ds-icon name="caret-left"></ds-icon></button>
+        <button class="ds-button flex-1">Select offer</button>
+      </div>
+    </div>
     </ds-sheet>
+        </div>
   </GridComponent>
   <GridComponent
     scale="0.8"
@@ -713,15 +707,15 @@ import {
     pageTitle="Components/Steps"
     description="Steps are used to structure the information in sub section on the same page."
   >
-    <ds-steps value="tab-c">
-      <ds-step-item value="step-a" label="Done" done>
-        Content of Step A
-      </ds-step-item>
-      <ds-step-item value="step-b" label="Failed" failed></ds-step-item>
-      <ds-step-item value="step-c" label="Active">
-        Content of Step C
-      </ds-step-item>
-    </ds-steps>
+<ds-steps value="b">
+  <ds-step name="a" label="Apple Pie" done></ds-step>
+  <ds-step name="b" label="Mango"></ds-step>
+  <ds-step name="c" label="Banana"></ds-step>
+  <ds-step-panel for="a"></ds-step-panel>
+  <ds-step-panel for="b"></ds-step-panel>
+  <ds-step-panel for="c"></ds-step-panel>
+</ds-steps>
+
   </GridComponent>
   <GridComponent
     scale="0.4"
@@ -805,11 +799,16 @@ import {
     pageTitle="Components/Tabs"
     description="Tabs are used to structure the information in sub section on the same page."
   >
-    <ds-tabs border value="tab-b">
-      <ds-tab-item value="tab-a" label="Apple Pie"></ds-tab-item>
-      <ds-tab-item value="tab-b" label="Mango"></ds-tab-item>
-      <ds-tab-item value="tab-c" label="Blueberry"></ds-tab-item>
-    </ds-tabs>
+  <div class="px-lg">
+<ds-tabs>
+  <ds-tab name="a">Apple Pie</ds-tab>
+  <ds-tab name="b">Mango</ds-tab>
+  <ds-tab name="c">Blueberry</ds-tab>
+  <ds-tab-panel for="a"></ds-tab-panel>
+  <ds-tab-panel for="b"></ds-tab-panel>
+  <ds-tab-panel for="c"></ds-tab-panel>
+</ds-tabs>
+</div>
   </GridComponent>
   <GridComponent
     scale="1.2"

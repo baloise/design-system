@@ -10,7 +10,6 @@ const meta: Meta<Args> = {
   args: {
     fullwidth: false,
     vertical: false,
-    verticalColSize: 'one-third',
     label: '',
   },
   argTypes: {
