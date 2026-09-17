@@ -220,15 +220,13 @@ import {
   <GridComponent
     scale="1"
     label="Checkbox"
-    pageTitle="Components/Checkbox"
+    pageTitle="Components/Forms/Checkbox"
     description="Checkboxes allow users to select one or more items from a set. Checkboxes can turn one or more option(s) on or off."
   >
-    <div class="text-align-center">
-      <ds-checkbox-group vertical style={{ width: '120px' }}>
-        <ds-checkbox label="Apple" />
-        <ds-checkbox label="Mango" checked />
+      <ds-checkbox-group vertical >
+        <ds-checkbox label="Apple" checked/>
+        <ds-checkbox label="Mango"   />
       </ds-checkbox-group>
-    </div>
   </GridComponent>
   <GridComponent
     scale="1"
@@ -541,7 +539,7 @@ import {
     fullheight
     fullscreen
     pageTitle="Components/Modal"
-    description="Checkboxes allow users to select one or more items from a set. Checkboxes can turn one or more option(s) on or off."
+    description="Modal displays content in a dialog overlay using the native dialog element."
   >
     <div style={{ backgroundColor: 'rgba(0, 7, 57, 0.5)' ,width: '100%', height: '280px',     backdropFilter: 'blur(4px)',
     opacity: '0.8' }}></div>
@@ -612,15 +610,13 @@ import {
   <GridComponent
     scale="1"
     label="Radio"
-    pageTitle="Components/Radio"
-    description="Checkboxes allow users to select one or more items from a set. Checkboxes can turn one or more option(s) on or off."
+    pageTitle="Components/Forms/Radio"
+    description="Radio renders a radio button form control for selecting one option from a group with optional label and help text."
   >
-    <div class="text-align-center">
-      <ds-radio-group vertical style={{ width: '120px' }} value="2">
-        <ds-radio label="Apple" value="1" />
-        <ds-radio label="Mango" value="2" />
+      <ds-radio-group vertical value="1">
+        <ds-radio name="basic"  value="1" >Apple</ds-radio>
+        <ds-radio name="basic" value="2" >Mango</ds-radio>
       </ds-radio-group>
-    </div>
   </GridComponent>
   <GridComponent
     scale="1"
@@ -673,7 +669,7 @@ import {
     fullwidth
     fullheight
     pageTitle="Components/Snackbar"
-    description="Checkboxes allow users to select one or more items from a set. Checkboxes can turn one or more option(s) on or off."
+    description="Snackbar displays brief feedback messages at the bottom of the screen with optional action buttons and dismissal control."
   >
     <div style={{ position: 'absolute', bottom: '1rem', right: '0' }}>
       <ds-snackbar heading="Apple Pie"  color="info" closable>
@@ -685,7 +681,7 @@ import {
     scale="1.5"
     label="Spinner"
     pageTitle="Components/Spinner"
-    description="Checkboxes allow users to select one or more items from a set. Checkboxes can turn one or more option(s) on or off."
+    description="Spinner displays an animated loading indicator with customizable color, size, and variation."
   >
     <ds-spinner></ds-spinner>
   </GridComponent>
@@ -862,7 +858,7 @@ import {
     scale="0.8"
     label="Toast"
     pageTitle="Components/Toast"
-    description="Checkboxes allow users to select one or more items from a set. Checkboxes can turn one or more option(s) on or off."
+    description="Toast displays temporary notification messages that appear at the top of the page and auto-dismiss with optional action buttons and close control."
   >
     <div style={{ marginTop: '-100px' }}>
   <ds-toast color="success" heading="Success"> Your changes have been saved. </ds-toast>

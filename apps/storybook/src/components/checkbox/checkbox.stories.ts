@@ -44,8 +44,10 @@ BasicHtml.storyName = '🌍 Basic'
 export const Disabled = Story({
   ...withRender(
     () => `
-<ds-checkbox name="disabled" value="1" disabled>Unchecked</ds-checkbox>
-<ds-checkbox name="disabled" value="2" disabled checked>Checked</ds-checkbox>`,
+<ds-checkbox-group control label="Label" description="Description" disabled>
+  <ds-checkbox name="disabled" value="1">Unchecked</ds-checkbox>
+  <ds-checkbox name="disabled" value="2" checked>Checked</ds-checkbox>
+</ds-checkbox-group>`,
   ),
 })
 Disabled.storyName = '🧩 Disabled'
@@ -53,14 +55,20 @@ Disabled.storyName = '🧩 Disabled'
 export const DisabledHtml = Story({
   ...withRender(
     () => `
-<label class="ds-checkbox is-disabled">
-  <input type="checkbox" disabled />
-  Unchecked
-</label>
-<label class="ds-checkbox is-disabled">
-  <input type="checkbox" checked disabled />
-  Checked
-</label>`,
+<fieldset class="ds-field is-disabled" disabled>
+  <legend class="ds-label">Label</legend>
+  <div class="ds-checkbox-group">
+    <label class="ds-checkbox is-disabled">
+      <input type="checkbox" aria-describedby="cb-disabled-help" disabled />
+      Unchecked
+    </label>
+    <label class="ds-checkbox is-disabled">
+      <input type="checkbox" aria-describedby="cb-disabled-help" checked disabled />
+      Checked
+    </label>
+  </div>
+  <p class="ds-help" id="cb-disabled-help">Description</p>
+</fieldset>`,
   ),
 })
 DisabledHtml.storyName = '🌍 Disabled'
@@ -68,8 +76,10 @@ DisabledHtml.storyName = '🌍 Disabled'
 export const Invalid = Story({
   ...withRender(
     () => `
-<ds-checkbox name="invalid" value="1" invalid>Unchecked</ds-checkbox>
-<ds-checkbox name="invalid" value="2" invalid checked>Checked</ds-checkbox>`,
+<ds-checkbox-group control label="Label" description="Description" invalid invalid-text="Invalid text">
+  <ds-checkbox name="invalid" value="1">Unchecked</ds-checkbox>
+  <ds-checkbox name="invalid" value="2" checked>Checked</ds-checkbox>
+</ds-checkbox-group>`,
   ),
 })
 Invalid.storyName = '🧩 Invalid'
@@ -77,14 +87,20 @@ Invalid.storyName = '🧩 Invalid'
 export const InvalidHtml = Story({
   ...withRender(
     () => `
-<label class="ds-checkbox is-invalid">
-  <input type="checkbox" aria-invalid="true" />
-  Unchecked
-</label>
-<label class="ds-checkbox is-invalid">
-  <input type="checkbox" checked aria-invalid="true" />
-  Checked
-</label>`,
+<fieldset class="ds-field is-danger">
+  <legend class="ds-label">Label</legend>
+  <div class="ds-checkbox-group">
+    <label class="ds-checkbox is-invalid">
+      <input type="checkbox" aria-describedby="cb-invalid-help" aria-invalid="true" />
+      Unchecked
+    </label>
+    <label class="ds-checkbox is-invalid">
+      <input type="checkbox" aria-describedby="cb-invalid-help" checked aria-invalid="true" />
+      Checked
+    </label>
+  </div>
+  <p class="ds-help" id="cb-invalid-help">Invalid text</p>
+</fieldset>`,
   ),
 })
 InvalidHtml.storyName = '🌍 Invalid'

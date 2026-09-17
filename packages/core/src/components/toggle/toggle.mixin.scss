@@ -28,20 +28,6 @@
     @include vars.local(toggle-py, 0.25rem);
     @include vars.local(toggle-min-height, 3rem);
 
-    // Tile
-    @include vars.local(toggle-tile-radius, var(--ds-toggle-tile-radius));
-    @include vars.local(toggle-tile-p, 1rem);
-    @include vars.local(toggle-tile-border-width, var(--ds-toggle-tile-border-width));
-
-    @include vars.local(toggle-tile-base-background-color, inherit);
-    @include vars.local(toggle-tile-base-border-color, var(--ds-toggle-tile-color-base-border));
-
-    @include vars.local(toggle-tile-hover-background-color, var(--ds-toggle-tile-color-hover-background));
-    @include vars.local(toggle-tile-hover-border-color, var(--ds-toggle-tile-color-hover-border));
-
-    @include vars.local(toggle-tile-active-background-color, var(--ds-toggle-tile-color-active-background));
-    @include vars.local(toggle-tile-active-border-color, var(--ds-toggle-tile-color-active-border));
-
     // unchecked base
     @include vars.local(toggle-unchecked-base-color-background, var(--ds-toggle-unchecked-color-base-background));
     @include vars.local(toggle-unchecked-base-color-tick, var(--ds-toggle-unchecked-color-base-tick));

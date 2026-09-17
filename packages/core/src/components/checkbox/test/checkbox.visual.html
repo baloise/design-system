@@ -18,7 +18,7 @@
       <!-- Basic -->
       <section data-testid="basic">
         <span>Basic</span>
-        <ds-checkbox name="basic" value="1">Unchecked</ds-checkbox>
+        <ds-checkbox name="basic" value="1" label="bubu"></ds-checkbox>
         <ds-checkbox name="basic" value="2" checked>Checked</ds-checkbox>
       </section>
 
@@ -32,22 +32,28 @@
       <!-- Disabled -->
       <section data-testid="disabled">
         <span>Disabled</span>
-        <ds-checkbox name="disabled" value="1" disabled>Unchecked</ds-checkbox>
-        <ds-checkbox name="disabled" value="2" disabled checked>Checked</ds-checkbox>
+        <ds-checkbox-group control label="Label" description="Description" disabled>
+          <ds-checkbox name="disabled" value="1">Unchecked</ds-checkbox>
+          <ds-checkbox name="disabled" value="2" checked>Checked</ds-checkbox>
+        </ds-checkbox-group>
       </section>
 
       <!-- Invalid -->
       <section data-testid="invalid">
         <span>Invalid</span>
-        <ds-checkbox name="invalid" value="1" invalid>Unchecked</ds-checkbox>
-        <ds-checkbox name="invalid" value="2" invalid checked>Checked</ds-checkbox>
+        <ds-checkbox-group control label="Label" description="Description" invalid invalid-text="Invalid text">
+          <ds-checkbox name="invalid" value="1">Unchecked</ds-checkbox>
+          <ds-checkbox name="invalid" value="2" checked>Checked</ds-checkbox>
+        </ds-checkbox-group>
       </section>
 
       <!-- Invalid disabled -->
       <section data-testid="invalid-disabled">
         <span>Invalid + Disabled</span>
-        <ds-checkbox name="invalid-disabled" value="1" invalid disabled>Unchecked</ds-checkbox>
-        <ds-checkbox name="invalid-disabled" value="2" invalid disabled checked>Checked</ds-checkbox>
+        <ds-checkbox-group control label="Label" description="Description" invalid invalid-text="Invalid text" disabled>
+          <ds-checkbox name="invalid-disabled" value="1">Unchecked</ds-checkbox>
+          <ds-checkbox name="invalid-disabled" value="2" checked>Checked</ds-checkbox>
+        </ds-checkbox-group>
       </section>
 
       <!-- Field -->
