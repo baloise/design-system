@@ -1,0 +1,35 @@
+<h2>File upload demo</h2>
+
+<p data-testid="file-upload-value">Value: {{ fileUploadValue().map(file => file.name).join(', ') }}</p>
+<ds-file-upload data-testid="file-upload" name="smoke-test-file-upload" [value]="fileUploadValue()" (dsChange)="onFileUploadChange($event)" />
+
+<form [formGroup]="reactiveForm">
+  <ds-file-upload data-testid="reactive-file-upload" name="reactive-file-upload" label="Files" formControlName="files" />
+</form>
+<p data-testid="reactive-file-upload-value">
+  Reactive value: {{ reactiveForm.controls.files.value?.map(file => file.name).join(', ') }}
+</p>
+<button data-testid="toggle-reactive-file-upload-disabled" type="button" (click)="toggleReactiveFormDisabled()">
+  Toggle disabled
+</button>
+<button data-testid="set-reactive-file-upload-value" type="button" (click)="setReactiveFormValue()">
+  Set to b.txt, c.txt
+</button>
+<button data-testid="clear-reactive-file-upload-value" type="button" (click)="clearReactiveFormValue()">Clear</button>
+
+<form [formGroup]="autoInvalidOffForm">
+  <ds-file-upload
+    data-testid="auto-invalid-off-file-upload"
+    name="auto-invalid-off-file-upload"
+    label="Files (auto-invalid off)"
+    formControlName="files"
+    autoInvalidOff
+  />
+</form>
+<button
+  data-testid="clear-auto-invalid-off-file-upload-value"
+  type="button"
+  (click)="clearAutoInvalidOffFormValue()"
+>
+  Clear
+</button>

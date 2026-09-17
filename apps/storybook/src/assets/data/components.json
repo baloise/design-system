@@ -24988,7 +24988,7 @@
           "mutable": false,
           "attr": "auto-invalid-off",
           "reflectToAttr": true,
-          "docs": "If `true`, in Angular reactive forms the control will not be set invalid.",
+          "docs": "If `true`, disables the Angular integration's automatic invalid-state behavior — the control won't have\n`invalid`/`invalidText` set from the bound `FormControl`'s touched/error state.",
           "docsTags": [
             {
               "name": "default",

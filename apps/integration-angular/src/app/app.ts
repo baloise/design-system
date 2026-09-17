@@ -3,6 +3,7 @@ import { ButtonDemo } from './button-demo/button-demo'
 import { CheckboxDemo } from './checkbox-demo/checkbox-demo'
 import { CheckboxGroupDemo } from './checkbox-group-demo/checkbox-group-demo'
 import { DateDemo } from './date-demo/date-demo'
+import { FileUploadDemo } from './file-upload-demo/file-upload-demo'
 import { InputDemo } from './input-demo/input-demo'
 import { InputSliderDemo } from './input-slider-demo/input-slider-demo'
 import { NumberInputDemo } from './number-input-demo/number-input-demo'
@@ -21,6 +22,7 @@ import { TextareaDemo } from './textarea-demo/textarea-demo'
     CheckboxGroupDemo,
     SegmentDemo,
     DateDemo,
+    FileUploadDemo,
   ],
   templateUrl: './app.html',
 })
