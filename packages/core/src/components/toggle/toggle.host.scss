@@ -88,6 +88,42 @@
   --mod-toggle-tile-base-border-color: var(--_toggle-checked-base-color-background);
 }
 
+:host(.is-tile.has-tile-green.is-checked) {
+  --mod-toggle-tile-base-background-color: var(--ds-global-color-green-1);
+  --mod-toggle-tile-hover-background-color: var(--ds-global-color-green-1);
+  --mod-toggle-tile-active-background-color: var(--ds-global-color-green-1);
+}
+
+:host(.is-tile.has-tile-red.is-checked) {
+  --mod-toggle-tile-base-background-color: var(--ds-global-color-red-1);
+  --mod-toggle-tile-hover-background-color: var(--ds-global-color-red-1);
+  --mod-toggle-tile-active-background-color: var(--ds-global-color-red-1);
+}
+
+:host(.is-tile.has-tile-yellow.is-checked) {
+  --mod-toggle-tile-base-background-color: var(--ds-global-color-yellow-1);
+  --mod-toggle-tile-hover-background-color: var(--ds-global-color-yellow-1);
+  --mod-toggle-tile-active-background-color: var(--ds-global-color-yellow-1);
+}
+
+:host(.is-tile.has-tile-purple.is-checked) {
+  --mod-toggle-tile-base-background-color: var(--ds-global-color-purple-1);
+  --mod-toggle-tile-hover-background-color: var(--ds-global-color-purple-1);
+  --mod-toggle-tile-active-background-color: var(--ds-global-color-purple-1);
+}
+
+// Inherit the tile color into a nested `ds-brand-icon` unless it defines its own `color`.
+$brand-icon-tile-colors: ('green', 'red', 'yellow', 'purple');
+
+@each $color in $brand-icon-tile-colors {
+  :host(.is-tile.has-tile-#{$color}) {
+    --mod-brand-icon-color-level-1: var(--ds-brand-icon-color-#{$color}-level1);
+    --mod-brand-icon-color-level-2: var(--ds-brand-icon-color-#{$color}-level2);
+    --mod-brand-icon-color-level-3: var(--ds-brand-icon-color-#{$color}-level3);
+    --mod-brand-icon-color-background: var(--ds-brand-icon-color-#{$color}-background);
+  }
+}
+
 :host(.is-tile.is-disabled) {
   --icon-brand-color: var(--ds-global-color-grey-5);
 }

@@ -229,7 +229,7 @@ export const TileStack = Story({
 <ds-checkbox-group control label="Label" description="Description" tile tile-color="green" value="2">
   <ds-checkbox name="tile-stack" value="1" label-position="left">
     <ds-stack direction="row">
-      <ds-icon svg='${BrandIconCarGreen}' size="xl" color="auto"></ds-icon>
+      <ds-brand-icon svg='${BrandIconCarGreen}' size="sm"></ds-brand-icon>
       <ds-content>
         <ds-label size="lg">Option 1</ds-label>
         <span>Description</span>
@@ -238,7 +238,7 @@ export const TileStack = Story({
   </ds-checkbox>
   <ds-checkbox name="tile-stack" value="2">
     <ds-stack direction="row">
-      <ds-icon svg='${BrandIconCarGreen}' size="xl" color="auto"></ds-icon>
+      <ds-brand-icon svg='${BrandIconCarGreen}' size="sm"></ds-brand-icon>
       <ds-content>
         <ds-label size="lg">Option 2</ds-label>
         <span>Description</span>
@@ -256,7 +256,7 @@ export const TileStackCentered = Story({
 <ds-checkbox-group control label-position="top" label="Label" description="Description" tile tile-color="green" value="2" cols="2">
   <ds-checkbox name="tile-stack-centered" value="1">
     <ds-stack layout="vertical" align="center">
-      <ds-icon svg='${BrandIconCarGreen}' size="2xl" color="auto"></ds-icon>
+      <ds-brand-icon svg='${BrandIconCarGreen}'></ds-brand-icon>
       <ds-content align="center">
         <ds-label size="xl">Option 1</ds-label>
       </ds-content>
@@ -264,7 +264,7 @@ export const TileStackCentered = Story({
   </ds-checkbox>
   <ds-checkbox name="tile-stack-centered" value="2">
     <ds-stack layout="vertical" align="center">
-      <ds-icon svg='${BrandIconCarGreen}' size="2xl" color="auto"></ds-icon>
+      <ds-brand-icon svg='${BrandIconCarGreen}'></ds-brand-icon>
       <ds-content align="center">
         <ds-label size="xl">Option 2</ds-label>
       </ds-content>
@@ -281,7 +281,7 @@ export const TileStackMulticolorHideTrigger = Story({
 <ds-checkbox-group control label-position="top" label="Label" description="Description" tile hide-trigger value="2" cols="4">
   <ds-checkbox name="tile-stack-multicolor-hide-trigger" value="1" tile-color="purple">
     <ds-stack layout="vertical" align="center">
-      <ds-icon svg='${BrandIconCarPurple}' size="2xl" color="auto"></ds-icon>
+      <ds-brand-icon svg='${BrandIconCarPurple}'></ds-brand-icon>
       <ds-content align="center">
         <ds-label size="xl">Purple</ds-label>
       </ds-content>
@@ -289,7 +289,7 @@ export const TileStackMulticolorHideTrigger = Story({
   </ds-checkbox>
   <ds-checkbox name="tile-stack-multicolor-hide-trigger" value="2" tile-color="green">
     <ds-stack layout="vertical" align="center">
-      <ds-icon svg='${BrandIconCarGreen}' size="2xl" color="auto"></ds-icon>
+      <ds-brand-icon svg='${BrandIconCarGreen}'></ds-brand-icon>
       <ds-content align="center">
         <ds-label size="xl">Green</ds-label>
       </ds-content>
@@ -297,7 +297,7 @@ export const TileStackMulticolorHideTrigger = Story({
   </ds-checkbox>
   <ds-checkbox name="tile-stack-multicolor-hide-trigger" value="3" tile-color="red">
     <ds-stack layout="vertical" align="center">
-      <ds-icon svg='${BrandIconCarRed}' size="2xl" color="auto"></ds-icon>
+      <ds-brand-icon svg='${BrandIconCarRed}'></ds-brand-icon>
       <ds-content align="center">
         <ds-label size="xl">Red</ds-label>
       </ds-content>
@@ -305,7 +305,7 @@ export const TileStackMulticolorHideTrigger = Story({
   </ds-checkbox>
   <ds-checkbox name="tile-stack-multicolor-hide-trigger" value="4" tile-color="yellow">
     <ds-stack layout="vertical" align="center">
-      <ds-icon svg='${BrandIconCarTangerine}' size="2xl" color="auto"></ds-icon>
+      <ds-brand-icon svg='${BrandIconCarTangerine}'></ds-brand-icon>
       <ds-content align="center">
         <ds-label size="xl">Yellow</ds-label>
       </ds-content>

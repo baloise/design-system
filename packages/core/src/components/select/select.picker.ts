@@ -150,7 +150,10 @@ export class SelectPickerController {
       },
       data,
       events: {
-        afterChange: (newVal: Option[]) => this.config.onChange(newVal),
+        afterChange: (newVal: Option[]) => {
+          this.config.onChange(newVal)
+          this.fixValueDeleteFocus()
+        },
         afterOpen: () => {
           this.highlightOnOpen()
           this.config.onOpen()
@@ -165,6 +168,7 @@ export class SelectPickerController {
     this.fixOptionFocus()
     this.fixTypeAhead()
     this.fixHoverHighlight()
+    this.fixValueDeleteFocus()
     this.highlightFirstOption()
   }
 
@@ -243,21 +247,57 @@ export class SelectPickerController {
   // but Shadow DOM retargeting returns the host element instead of .ss-main after a
   // programmatic focus() call — so Space stops working after the first selection.
   // We intercept keydown on the trigger directly to reopen the dropdown ourselves.
+  //
+  // Separately, SlimSelect's own onkeydown handler for Enter/Space *always* looks up
+  // whatever option still carries `.ss-highlighted` in the (always-present-in-DOM) popup
+  // and clicks it — even while the popup is closed, since that class isn't cleared on
+  // close (highlightOnOpen()/highlightFirstOption() set it, and it persists). That means
+  // Enter/Space on a closed trigger silently reopens and immediately (de)selects the
+  // stale highlighted option. SlimSelect assigns its handler via the `onkeydown` property
+  // during construction, and same-target listeners fire in registration order regardless
+  // of the capture flag, so we can't out-order it by listening on the trigger itself. We
+  // intercept during the capture phase on the shadow root instead — that fires while the
+  // event is still travelling *down* to the trigger, before SlimSelect's target-phase
+  // handler runs — and swallow the event ourselves so only opening (never selecting)
+  // happens while closed.
   private fixKeyboardOpen() {
     const trigger = this.trigger
     if (!trigger) return
-    trigger.addEventListener('keydown', ev => {
-      const target = ev.target as HTMLElement
-      if (
-        (ev.key === ' ' || ev.key === 'Enter') &&
-        target === trigger &&
-        !target.classList.contains('ss-value-delete') &&
-        !trigger.classList.contains('ss-open')
-      ) {
-        ev.preventDefault()
-        this.slimSelect?.open()
-      }
-    })
+    this.config.shadowRoot.addEventListener(
+      'keydown',
+      ev => {
+        const target = ev.target as HTMLElement
+        const event = ev as KeyboardEvent
+        // render.open() sets aria-expanded="true" on the trigger itself but only adds
+        // the (confusingly, identically-named) "ss-open" class to the popup content
+        // element — never to .ss-main — so aria-expanded is the only reliable signal
+        // of open/closed state on the trigger.
+        if (
+          (event.key === ' ' || event.key === 'Enter') &&
+          target === trigger &&
+          !target.classList.contains('ss-value-delete') &&
+          trigger.getAttribute('aria-expanded') !== 'true'
+        ) {
+          ev.preventDefault()
+          ev.stopImmediatePropagation()
+          this.slimSelect?.open()
+        }
+      },
+      { capture: true },
+    )
+  }
+
+  // Each multi-select chip's delete ("x") button is rendered by slim-select with
+  // tabindex="0", making it its own Tab stop with a visible focus ring — but chips are
+  // meant to be removed by mouse only, not by tabbing through every one individually
+  // (keyboard users already have Backspace/Delete via the trigger, see fixSearchListener's
+  // sibling handling in searchDiv()). Pull them out of the tab order. Chips are recreated
+  // from scratch on every selection change, so this must be re-applied after each one.
+  private fixValueDeleteFocus() {
+    if (!this.config.multiple) return
+    this.config.shadowRoot
+      .querySelectorAll<HTMLElement>('.ss-value-delete')
+      .forEach(deleteButton => deleteButton.setAttribute('tabindex', '-1'))
   }
 
   // Options are plain non-focusable divs, so a mouse click's mousedown phase makes the

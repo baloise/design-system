@@ -17626,6 +17626,15 @@
               ],
               "com.figma.variableId": "VariableID:137:2242"
             }
+          },
+          "Disabled": {
+            "$type": "color",
+            "$value": "{🔗 Alias.🔤 Text.Color.Grey}",
+            "$extensions": {
+              "com.figma.scopes": [
+                "ALL_SCOPES"
+              ]
+            }
           }
         }
       },
@@ -17792,6 +17801,17 @@
                 "com.figma.variableId": "VariableID:137:2256"
               }
             }
+          },
+          "Disabled": {
+            "Background": {
+              "$type": "color",
+              "$value": "{🔗 Alias.🎨 Surface.Grey}",
+              "$extensions": {
+                "com.figma.scopes": [
+                  "ALL_SCOPES"
+                ]
+              }
+            }
           }
         }
       },
@@ -17927,6 +17947,15 @@
                 "ALL_SCOPES"
               ],
               "com.figma.variableId": "VariableID:137:2268"
+            }
+          },
+          "Disabled": {
+            "$type": "color",
+            "$value": "{🔗 Alias.🔤 Text.Color.Grey}",
+            "$extensions": {
+              "com.figma.scopes": [
+                "ALL_SCOPES"
+              ]
             }
           }
         }
@@ -18094,6 +18123,17 @@
                 "com.figma.variableId": "VariableID:137:2282"
               }
             }
+          },
+          "Disabled": {
+            "Background": {
+              "$type": "color",
+              "$value": "{🔗 Alias.🎨 Surface.Grey}",
+              "$extensions": {
+                "com.figma.scopes": [
+                  "ALL_SCOPES"
+                ]
+              }
+            }
           }
         }
       },
@@ -18229,6 +18269,15 @@
                 "ALL_SCOPES"
               ],
               "com.figma.variableId": "VariableID:137:2294"
+            }
+          },
+          "Disabled": {
+            "$type": "color",
+            "$value": "{🔗 Alias.🔤 Text.Color.Grey}",
+            "$extensions": {
+              "com.figma.scopes": [
+                "ALL_SCOPES"
+              ]
             }
           }
         }
@@ -18406,6 +18455,26 @@
                 "com.figma.variableId": "VariableID:137:2309"
               }
             }
+          },
+          "Disabled": {
+            "Background": {
+              "$type": "color",
+              "$value": "{🔗 Alias.🎬 Action.Disabled.Surface.Base}",
+              "$extensions": {
+                "com.figma.scopes": [
+                  "ALL_SCOPES"
+                ]
+              }
+            },
+            "Tick": {
+              "$type": "color",
+              "$value": "{🔗 Alias.🎬 Action.Disabled.Text.Base}",
+              "$extensions": {
+                "com.figma.scopes": [
+                  "ALL_SCOPES"
+                ]
+              }
+            }
           }
         }
       },
@@ -18484,6 +18553,26 @@
                   "ALL_SCOPES"
                 ],
                 "com.figma.variableId": "VariableID:137:2316"
+              }
+            }
+          },
+          "Disabled": {
+            "Background": {
+              "$type": "color",
+              "$value": "{🔗 Alias.🎬 Action.Disabled.Text.Base}",
+              "$extensions": {
+                "com.figma.scopes": [
+                  "ALL_SCOPES"
+                ]
+              }
+            },
+            "Tick": {
+              "$type": "color",
+              "$value": "{🔗 Alias.🎬 Action.Disabled.Surface.Base}",
+              "$extensions": {
+                "com.figma.scopes": [
+                  "ALL_SCOPES"
+                ]
               }
             }
           }

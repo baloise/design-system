@@ -18195,6 +18195,33 @@
           ]
         },
         {
+          "name": "🧩 Component / Checkbox / Label / Color / Disabled",
+          "cssVarName": "--ds-checkbox-label-color-disabled",
+          "value": "{🔗 Alias.🔤 Text.Color.Grey}",
+          "nativeValue": "#747474",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-grey-5",
+              "figmaName": "Global / Color / Grey / 5"
+            },
+            {
+              "cssVar": "--ds-text-color-grey",
+              "figmaName": "Alias / Text / Color / Grey"
+            },
+            {
+              "cssVar": "--ds-checkbox-label-color-disabled",
+              "figmaName": "Component / Checkbox / Label / Color / Disabled"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Checkbox",
+            "Label",
+            "Color",
+            "Disabled"
+          ]
+        },
+        {
           "name": "🧩 Component / Checkbox / Border / Width",
           "cssVarName": "--ds-checkbox-border-width",
           "value": "{🔗 Alias.▭ Border.Width.Base}",
@@ -18576,6 +18603,34 @@
             "Unchecked",
             "Color",
             "Active",
+            "Background"
+          ]
+        },
+        {
+          "name": "🧩 Component / Checkbox / Unchecked / Color / Disabled / Background",
+          "cssVarName": "--ds-checkbox-unchecked-color-disabled-background",
+          "value": "{🔗 Alias.🎨 Surface.Grey}",
+          "nativeValue": "#E8E8E8",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-grey-2",
+              "figmaName": "Global / Color / Grey / 2"
+            },
+            {
+              "cssVar": "--ds-surface-grey",
+              "figmaName": "Alias / Surface / Grey"
+            },
+            {
+              "cssVar": "--ds-checkbox-unchecked-color-disabled-background",
+              "figmaName": "Component / Checkbox / Unchecked / Color / Disabled / Background"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Checkbox",
+            "Unchecked",
+            "Color",
+            "Disabled",
             "Background"
           ]
         },
@@ -44711,6 +44766,33 @@
           ]
         },
         {
+          "name": "🧩 Component / Radio / Label / Color / Disabled",
+          "cssVarName": "--ds-radio-label-color-disabled",
+          "value": "{🔗 Alias.🔤 Text.Color.Grey}",
+          "nativeValue": "#747474",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-grey-5",
+              "figmaName": "Global / Color / Grey / 5"
+            },
+            {
+              "cssVar": "--ds-text-color-grey",
+              "figmaName": "Alias / Text / Color / Grey"
+            },
+            {
+              "cssVar": "--ds-radio-label-color-disabled",
+              "figmaName": "Component / Radio / Label / Color / Disabled"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Radio",
+            "Label",
+            "Color",
+            "Disabled"
+          ]
+        },
+        {
           "name": "🧩 Component / Radio / Border / Width",
           "cssVarName": "--ds-radio-border-width",
           "value": "{🔗 Alias.▭ Border.Width.Base}",
@@ -45092,6 +45174,34 @@
             "Unchecked",
             "Color",
             "Active",
+            "Background"
+          ]
+        },
+        {
+          "name": "🧩 Component / Radio / Unchecked / Color / Disabled / Background",
+          "cssVarName": "--ds-radio-unchecked-color-disabled-background",
+          "value": "{🔗 Alias.🎨 Surface.Grey}",
+          "nativeValue": "#E8E8E8",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-grey-2",
+              "figmaName": "Global / Color / Grey / 2"
+            },
+            {
+              "cssVar": "--ds-surface-grey",
+              "figmaName": "Alias / Surface / Grey"
+            },
+            {
+              "cssVar": "--ds-radio-unchecked-color-disabled-background",
+              "figmaName": "Component / Radio / Unchecked / Color / Disabled / Background"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Radio",
+            "Unchecked",
+            "Color",
+            "Disabled",
             "Background"
           ]
         },
@@ -65193,6 +65303,33 @@
           ]
         },
         {
+          "name": "🧩 Component / Toggle / Label / Color / Disabled",
+          "cssVarName": "--ds-toggle-label-color-disabled",
+          "value": "{🔗 Alias.🔤 Text.Color.Grey}",
+          "nativeValue": "#747474",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-grey-5",
+              "figmaName": "Global / Color / Grey / 5"
+            },
+            {
+              "cssVar": "--ds-text-color-grey",
+              "figmaName": "Alias / Text / Color / Grey"
+            },
+            {
+              "cssVar": "--ds-toggle-label-color-disabled",
+              "figmaName": "Component / Toggle / Label / Color / Disabled"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Toggle",
+            "Label",
+            "Color",
+            "Disabled"
+          ]
+        },
+        {
           "name": "🧩 Component / Toggle / Border / Width",
           "cssVarName": "--ds-toggle-border-width",
           "value": "{🔗 Alias.▭ Border.Width.Base}",
@@ -65606,6 +65743,70 @@
           ]
         },
         {
+          "name": "🧩 Component / Toggle / Unchecked / Color / Disabled / Background",
+          "cssVarName": "--ds-toggle-unchecked-color-disabled-background",
+          "value": "{🔗 Alias.🎬 Action.Disabled.Surface.Base}",
+          "nativeValue": "#E8E8E8",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-grey-2",
+              "figmaName": "Global / Color / Grey / 2"
+            },
+            {
+              "cssVar": "--ds-surface-disabled",
+              "figmaName": "Alias / Surface / Disabled"
+            },
+            {
+              "cssVar": "--ds-action-disabled-surface-base",
+              "figmaName": "Alias / Action / Disabled / Surface / Base"
+            },
+            {
+              "cssVar": "--ds-toggle-unchecked-color-disabled-background",
+              "figmaName": "Component / Toggle / Unchecked / Color / Disabled / Background"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Toggle",
+            "Unchecked",
+            "Color",
+            "Disabled",
+            "Background"
+          ]
+        },
+        {
+          "name": "🧩 Component / Toggle / Unchecked / Color / Disabled / Tick",
+          "cssVarName": "--ds-toggle-unchecked-color-disabled-tick",
+          "value": "{🔗 Alias.🎬 Action.Disabled.Text.Base}",
+          "nativeValue": "#313131",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-grey-6",
+              "figmaName": "Global / Color / Grey / 6"
+            },
+            {
+              "cssVar": "--ds-text-color-disabled",
+              "figmaName": "Alias / Text / Color / Disabled"
+            },
+            {
+              "cssVar": "--ds-action-disabled-text-base",
+              "figmaName": "Alias / Action / Disabled / Text / Base"
+            },
+            {
+              "cssVar": "--ds-toggle-unchecked-color-disabled-tick",
+              "figmaName": "Component / Toggle / Unchecked / Color / Disabled / Tick"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Toggle",
+            "Unchecked",
+            "Color",
+            "Disabled",
+            "Tick"
+          ]
+        },
+        {
           "name": "🧩 Component / Toggle / Checked / Color / Base / Background",
           "cssVarName": "--ds-toggle-checked-color-base-background",
           "value": "{🔗 Alias.🎨 Surface.SuccessDark}",
@@ -65798,6 +65999,70 @@
             "Checked",
             "Color",
             "Active",
+            "Tick"
+          ]
+        },
+        {
+          "name": "🧩 Component / Toggle / Checked / Color / Disabled / Background",
+          "cssVarName": "--ds-toggle-checked-color-disabled-background",
+          "value": "{🔗 Alias.🎬 Action.Disabled.Text.Base}",
+          "nativeValue": "#313131",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-grey-6",
+              "figmaName": "Global / Color / Grey / 6"
+            },
+            {
+              "cssVar": "--ds-text-color-disabled",
+              "figmaName": "Alias / Text / Color / Disabled"
+            },
+            {
+              "cssVar": "--ds-action-disabled-text-base",
+              "figmaName": "Alias / Action / Disabled / Text / Base"
+            },
+            {
+              "cssVar": "--ds-toggle-checked-color-disabled-background",
+              "figmaName": "Component / Toggle / Checked / Color / Disabled / Background"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Toggle",
+            "Checked",
+            "Color",
+            "Disabled",
+            "Background"
+          ]
+        },
+        {
+          "name": "🧩 Component / Toggle / Checked / Color / Disabled / Tick",
+          "cssVarName": "--ds-toggle-checked-color-disabled-tick",
+          "value": "{🔗 Alias.🎬 Action.Disabled.Surface.Base}",
+          "nativeValue": "#E8E8E8",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-grey-2",
+              "figmaName": "Global / Color / Grey / 2"
+            },
+            {
+              "cssVar": "--ds-surface-disabled",
+              "figmaName": "Alias / Surface / Disabled"
+            },
+            {
+              "cssVar": "--ds-action-disabled-surface-base",
+              "figmaName": "Alias / Action / Disabled / Surface / Base"
+            },
+            {
+              "cssVar": "--ds-toggle-checked-color-disabled-tick",
+              "figmaName": "Component / Toggle / Checked / Color / Disabled / Tick"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Toggle",
+            "Checked",
+            "Color",
+            "Disabled",
             "Tick"
           ]
         },

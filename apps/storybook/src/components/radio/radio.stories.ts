@@ -272,7 +272,7 @@ export const TileStack = Story({
 <ds-radio-group name="tile-stack" label="Label" description="Description" tile tile-color="green" value="2">
   <ds-radio value="1" label-position="left">
     <ds-stack direction="row">
-      <ds-icon svg='${BrandIconCarGreen}' size="xl" color="auto"></ds-icon>
+      <ds-brand-icon svg='${BrandIconCarGreen}' size="sm"></ds-brand-icon>
       <ds-content>
         <ds-label size="lg">Option 1</ds-label>
         <span>Description</span>
@@ -281,7 +281,7 @@ export const TileStack = Story({
   </ds-radio>
   <ds-radio value="2">
     <ds-stack direction="row">
-      <ds-icon svg='${BrandIconCarGreen}' size="xl" color="auto"></ds-icon>
+      <ds-brand-icon svg='${BrandIconCarGreen}' size="sm"></ds-brand-icon>
       <ds-content>
         <ds-label size="lg">Option 2</ds-label>
         <span>Description</span>
@@ -299,7 +299,7 @@ export const TileStackCentered = Story({
 <ds-radio-group label-position="top" name="tile-stack-centered" label="Label" description="Description" tile tile-color="green" value="2" cols="2">
   <ds-radio value="1">
     <ds-stack layout="vertical" align="center">
-      <ds-icon svg='${BrandIconCarGreen}' size="2xl" color="auto"></ds-icon>
+      <ds-brand-icon svg='${BrandIconCarGreen}'></ds-brand-icon>
       <ds-content align="center">
         <ds-label size="xl">Option 1</ds-label>
       </ds-content>
@@ -307,7 +307,7 @@ export const TileStackCentered = Story({
   </ds-radio>
   <ds-radio value="2">
     <ds-stack layout="vertical" align="center">
-      <ds-icon svg='${BrandIconCarGreen}' size="2xl" color="auto"></ds-icon>
+      <ds-brand-icon svg='${BrandIconCarGreen}'></ds-brand-icon>
       <ds-content align="center">
         <ds-label size="xl">Option 2</ds-label>
       </ds-content>

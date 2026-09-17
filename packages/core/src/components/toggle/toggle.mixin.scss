@@ -16,6 +16,7 @@
     @include vars.local(toggle-label-base-color, inherit);
     @include vars.local(toggle-label-hover-color, var(--ds-toggle-label-color-hover));
     @include vars.local(toggle-label-active-color, var(--ds-toggle-label-color-active));
+    @include vars.local(toggle-label-disabled-color, var(--ds-toggle-label-color-disabled));
 
     // dimensions
     @include vars.local(toggle-height, 1.5rem);
@@ -53,6 +54,13 @@
     @include vars.local(toggle-unchecked-active-color-background, var(--ds-toggle-unchecked-color-active-background));
     @include vars.local(toggle-unchecked-active-color-tick, var(--ds-toggle-unchecked-color-active-tick));
 
+    // unchecked disabled
+    @include vars.local(
+      toggle-unchecked-disabled-color-background,
+      var(--ds-toggle-unchecked-color-disabled-background)
+    );
+    @include vars.local(toggle-unchecked-disabled-color-tick, var(--ds-toggle-unchecked-color-disabled-tick));
+
     // checked base
     @include vars.local(toggle-checked-base-color-background, var(--ds-toggle-checked-color-base-background));
     @include vars.local(toggle-checked-base-color-tick, var(--ds-toggle-checked-color-base-tick));
@@ -65,6 +73,10 @@
     // checked active/pressed
     @include vars.local(toggle-checked-active-color-background, var(--ds-toggle-checked-color-active-background));
     @include vars.local(toggle-checked-active-color-tick, var(--ds-toggle-checked-color-active-tick));
+
+    // checked disabled
+    @include vars.local(toggle-checked-disabled-color-background, var(--ds-toggle-checked-color-disabled-background));
+    @include vars.local(toggle-checked-disabled-color-tick, var(--ds-toggle-checked-color-disabled-tick));
   }
 }
 
@@ -131,6 +143,7 @@
     border: var(--_toggle-border-width) solid var(--_toggle-unchecked-base-color-border);
     border-radius: var(--_toggle-radius);
     vertical-align: top;
+    outline: none;
     cursor: pointer;
   }
 
@@ -139,9 +152,7 @@
   }
 
   #{$wrapper} input[type='checkbox']:focus-visible {
-    outline: var(--ds-alias-interaction-focus-size-outer, 2px) solid var(--ds-alias-interaction-focus-color-base);
-    outline-offset: 2px;
-    border-radius: var(--_toggle-radius);
+    @include focus-shadow();
   }
 
   // Unchecked hover
@@ -262,15 +273,15 @@
 @mixin _disabled-vars() {
   cursor: default;
   pointer-events: none;
-  --mod-toggle-label-base-color: var(--ds-global-color-grey-5);
-  --mod-toggle-label-hover-color: var(--ds-global-color-grey-5);
-  --mod-toggle-label-active-color: var(--ds-global-color-grey-5);
+  --mod-toggle-label-base-color: var(--_toggle-label-disabled-color);
+  --mod-toggle-label-hover-color: var(--_toggle-label-disabled-color);
+  --mod-toggle-label-active-color: var(--_toggle-label-disabled-color);
 
-  --mod-toggle-unchecked-base-color-background: var(--ds-global-color-grey-3);
-  --mod-toggle-unchecked-base-color-tick: var(--ds-global-color-grey-5);
+  --mod-toggle-unchecked-base-color-background: var(--_toggle-unchecked-disabled-color-background);
+  --mod-toggle-unchecked-base-color-tick: var(--_toggle-unchecked-disabled-color-tick);
 
-  --mod-toggle-checked-base-color-background: var(--ds-global-color-grey-5);
-  --mod-toggle-checked-base-color-tick: var(--ds-global-color-grey-3);
+  --mod-toggle-checked-base-color-background: var(--_toggle-checked-disabled-color-background);
+  --mod-toggle-checked-base-color-tick: var(--_toggle-checked-disabled-color-tick);
 }
 
 // Invalid declared first, disabled declared second — disabled wins when both classes are present.

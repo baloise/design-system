@@ -317,21 +317,15 @@ import {
   </GridComponent>
   <GridComponent
     scale="1"
-    label="DropDown"
-    pageTitle="Components/DropDown"
+    label="Select"
+    pageTitle="Components/Forms/Select"
     description="Select allows the user to choose one or multiple option from a list."
   >
-    <ds-dropdown value="Apple" style={{ width: '227px' }}>
-      <ds-option value="Apple" label="Apple">
-        Apple
-      </ds-option>
-      <ds-option value="Banana" label="Banana">
-        Banana
-      </ds-option>
-      <ds-option value="Mango" label="Mango">
-        Mango
-      </ds-option>
-    </ds-dropdown>
+    <ds-select id="flat" label="Fruits" multiple value="apple" description="Select your fruit" style={{ width: '227px' }}>
+      <ds-select-option value="apple">Apple</ds-select-option>
+      <ds-select-option value="banana">Banana</ds-select-option>
+      <ds-select-option value="mango">Mango</ds-select-option>
+    </ds-select>
   </GridComponent>
   <GridComponent
     scale="1"
@@ -473,18 +467,26 @@ import {
   >
     <ds-input placeholder="Placeholder" type="text"></ds-input>
   </GridComponent>
+    <GridComponent
+    scale="1"
+    label="Input Phone"
+    pageTitle="Components/Forms/Input Phone"
+    description="Input phone renders an international phone number field with a country picker (flag + calling code) and a national-number input that live-formats as the user types."
+  >
+    <ds-input-phone label="Phone number" initial-country="CH" style={{width: '220px'}}></ds-input-phone>
+  </GridComponent>
   <GridComponent
     scale="1"
     label="Input Slider"
     pageTitle="Components/Forms/Input Slider"
     description="Input Slider component lets users select from a range of values by moving the slider thumb."
   >
-    <ds-input-slider has-ticks max="100" min="0" step="20" value="20"></ds-input-slider>
+    <ds-input-slider label="Volume" description="0–100" value="60" style={{width: '200px'}}></ds-input-slider>
   </GridComponent>
   <GridComponent
     scale="1"
     label="Input Stepper"
-    pageTitle="Components/Forms/Input Stepper"
+    pageTitle="Components/Forms/InputStepper"
     description="Input Stepper can be used to ask the user an amount of limited amounts like the amount of children."
   >
     <ds-input-stepper></ds-input-stepper>
@@ -565,7 +567,7 @@ import {
   <GridComponent
     scale="1"
     label="Number Input"
-    pageTitle="Components/Number Input"
+    pageTitle="Components/Forms/Number Input"
     description="Number Input only allows to enter valid numbers."
   >
     <ds-number-input decimal="2" suffix="CHF" value="1234.45"></ds-number-input>
@@ -848,7 +850,13 @@ import {
     pageTitle="Components/Forms/Time Input"
     description="Time Input allows to enter valid numbers for their specific index. The time value will be formatted accordingly."
   >
-    <ds-time-input style={{ width: '227px' }}></ds-time-input>
+    <div class="ds-field" style={{width: '200px'}}>
+      <label class="ds-label" for="time-input-1">Select a time</label>
+      <div class="ds-control">
+        <input type="time" id="time-input-1" class="ds-time-input" aria-describedby="time-input-help" />
+      </div>
+    <p id="time-input-help" class="ds-help">Select the desired time</p>
+  </div>
   </GridComponent>
   <GridComponent
     scale="0.8"
@@ -861,6 +869,17 @@ import {
 
     </div>
 
+  </GridComponent>
+  <GridComponent
+    scale="1"
+    label="Toggle"
+    fullheight
+    fullwidth
+    center
+    pageTitle="Components/Forms/Toggle"
+    description="Toggle renders a switch-like form control for toggling between on/off states with optional label and help text."
+  >
+    <ds-toggle checked>Do you like Apples?</ds-toggle>
   </GridComponent>
   <GridComponent
     scale="1"

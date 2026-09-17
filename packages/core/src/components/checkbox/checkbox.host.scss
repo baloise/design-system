@@ -93,6 +93,10 @@
   input[type='checkbox'] {
     @include visually-hidden();
   }
+
+  label:has(input[type='checkbox']:focus-visible) {
+    @include focus-shadow();
+  }
 }
 
 /**

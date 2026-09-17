@@ -1,5 +1,5 @@
 import { AttachInternals, Component, Element, Event, EventEmitter, h, Host, Listen, Prop, State } from '@stencil/core'
-import { Logger, type LogInstance, inheritAttributes, type Attributes, OneOf, Type } from '@utils'
+import { Logger, type LogInstance, inheritAttributes, type Attributes, hasValue, OneOf, Type } from '@utils'
 import { DsComponentInterface } from '@global'
 import {
   ToggleTileColor,
@@ -248,6 +248,7 @@ export class Toggle implements DsComponentInterface {
           'is-checked': this.checked,
           'is-dense': this.dense,
           'is-tile': this.tile,
+          [`has-tile-${this.color}`]: this.tile && hasValue(this.color),
           'has-label-left': this.labelPosition === 'left',
           'has-label-top': this.labelPosition === 'top',
           [`has-cols-${this.cols}`]: this.tile && this.cols > 1,

@@ -170,4 +170,31 @@ test.describe('inline', () => {
       expect(changeSpy).toHaveReceivedEventTimes(0)
     })
   })
+
+  test.describe('disabled', () => {
+    test('should render as a regular disabled input instead of the calendar', async ({ page }) => {
+      await page.mount(`<ds-date label="Date" inline disabled value="2026-07-13"></ds-date>`)
+      const date = page.locator('ds-date')
+
+      // No always-visible calendar — the picker's DOM lives in the same (closed, unreachable)
+      // #popup markup as a regular non-inline date, since there's no trigger to open it while
+      // disabled.
+      await expect(date.locator('#inline')).toHaveCount(0)
+      await expect(date.locator('#popup')).toHaveAttribute('aria-hidden', 'true')
+      await expect(date.locator('#input')).toBeDisabled()
+      await expect(date.locator('#input')).toHaveValue('13.07.2026')
+      await expect(date.locator('#trigger')).toHaveCount(0)
+    })
+
+    test('should show the calendar again once re-enabled', async ({ page }) => {
+      await page.mount(`<ds-date label="Date" inline disabled value="2026-07-13"></ds-date>`)
+      const date = page.locator('ds-date')
+
+      await date.evaluate((el: any) => (el.disabled = false))
+      await page.waitForChanges()
+
+      await expect(date.locator('#inline')).toHaveCount(1)
+      await expect(date.locator('#input')).toHaveCount(0)
+    })
+  })
 })
