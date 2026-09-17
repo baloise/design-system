@@ -1,4 +1,4 @@
-import { Component } from '@angular/core'
+import { Component, signal } from '@angular/core'
 import { FormControl, FormGroup, ReactiveFormsModule, ValidationErrors, ValidatorFn } from '@angular/forms'
 import { DsRadio, DsRadioGroup } from '@baloise/ds-angular'
 
@@ -12,6 +12,8 @@ const requiredWithMessage = (message: string): ValidatorFn => {
   templateUrl: './radio-group-demo.html',
 })
 export class RadioGroupDemo {
+  protected readonly radioGroupValue = signal<string | null>('basic')
+
   protected readonly reactiveForm = new FormGroup({
     plan: new FormControl<string | null>('basic', {
       validators: requiredWithMessage('This field is required'),
@@ -23,6 +25,10 @@ export class RadioGroupDemo {
       validators: requiredWithMessage('This field is required'),
     }),
   })
+
+  protected onChange(event: CustomEvent<string | null>) {
+    this.radioGroupValue.set(event.detail)
+  }
 
   protected toggleReactiveFormDisabled() {
     const control = this.reactiveForm.controls.plan

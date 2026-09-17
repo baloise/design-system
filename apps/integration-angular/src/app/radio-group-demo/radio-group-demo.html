@@ -1,5 +1,17 @@
 <h2>Radio group demo</h2>
 
+<p data-testid="radio-group-value">Radio group value: {{ radioGroupValue() }}</p>
+<ds-radio-group
+  data-testid="radio-group"
+  name="smoke-test-plan"
+  label="Plan"
+  [value]="radioGroupValue()"
+  (dsChange)="onChange($event)"
+>
+  <ds-radio value="basic" label="Basic">Basic</ds-radio>
+  <ds-radio value="premium" label="Premium">Premium</ds-radio>
+</ds-radio-group>
+
 <form [formGroup]="reactiveForm">
   <ds-radio-group
     data-testid="reactive-radio-group"
@@ -8,8 +20,8 @@
     allowEmptySelection
     formControlName="plan"
   >
-    <ds-radio data-testid="reactive-radio-basic" value="basic" label="Basic" />
-    <ds-radio data-testid="reactive-radio-premium" value="premium" label="Premium" />
+    <ds-radio data-testid="reactive-radio-basic" value="basic" label="Basic">Basic</ds-radio>
+    <ds-radio data-testid="reactive-radio-premium" value="premium" label="Premium">Premium</ds-radio>
   </ds-radio-group>
 </form>
 <p data-testid="reactive-radio-value">Reactive value: {{ reactiveForm.controls.plan.value }}</p>
@@ -27,7 +39,7 @@
     autoInvalidOff
     formControlName="plan"
   >
-    <ds-radio data-testid="auto-invalid-off-radio-basic" value="basic" label="Basic" />
-    <ds-radio data-testid="auto-invalid-off-radio-premium" value="premium" label="Premium" />
+    <ds-radio data-testid="auto-invalid-off-radio-basic" value="basic" label="Basic">Basic</ds-radio>
+    <ds-radio data-testid="auto-invalid-off-radio-premium" value="premium" label="Premium">Premium</ds-radio>
   </ds-radio-group>
 </form>

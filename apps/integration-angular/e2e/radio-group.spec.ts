@@ -1,5 +1,19 @@
 import { expect, test } from '@playwright/test'
 
+test('ds-radio-group fires dsChange and updates Angular state', async ({ page }) => {
+  await page.goto('/')
+
+  const radioGroup = page.getByTestId('radio-group')
+  const basicRadio = radioGroup.locator('ds-radio[value="basic"] input')
+  const premiumRadio = radioGroup.locator('ds-radio[value="premium"] input')
+
+  await expect(basicRadio).toBeChecked()
+  await expect(page.getByTestId('radio-group-value')).toHaveText('Radio group value: basic')
+
+  await premiumRadio.click()
+  await expect(page.getByTestId('radio-group-value')).toHaveText('Radio group value: premium')
+})
+
 test('ds-radio-group reactive form: initial value, updates, disabled, and touched+invalid', async ({ page }) => {
   await page.goto('/')
 
