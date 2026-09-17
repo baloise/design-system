@@ -67,6 +67,38 @@ test.describe('boundaries', () => {
 
     await stepper.assertValue('10')
   })
+
+  test('clamps an out-of-range value assigned at runtime to max', async ({ page }) => {
+    await page.mount(`<ds-input-stepper label="Label" value="3" min="0" max="10"></ds-input-stepper>`)
+    const stepper = new DsInputStepper(page.locator('ds-input-stepper'))
+
+    await stepper.el.evaluate(el => {
+      ;(el as any).value = 9999
+    })
+    await page.waitForChanges()
+
+    await stepper.assertValue('10')
+  })
+})
+
+test.describe('empty value assigned at runtime', () => {
+  // A stepper can never be empty (see the `value` prop doc): unlike the out-of-range-at-mount case above,
+  // this covers a framework binding writing an empty value onto an already-connected instance — e.g.
+  // Angular's `FormControl.reset()`, which calls `writeValue(null)` straight through onto the `value`
+  // property.
+  for (const emptyValue of ['null', 'undefined', 'NaN']) {
+    test(`resolves ${emptyValue} to min`, async ({ page }) => {
+      await page.mount(`<ds-input-stepper label="Label" min="2" max="10" value="5"></ds-input-stepper>`)
+      const stepper = new DsInputStepper(page.locator('ds-input-stepper'))
+
+      await stepper.el.evaluate((el, value) => {
+        ;(el as any).value = value === 'null' ? null : value === 'undefined' ? undefined : Number.NaN
+      }, emptyValue)
+      await page.waitForChanges()
+
+      await stepper.assertValue('2')
+    })
+  }
 })
 
 test.describe('decimal precision', () => {
