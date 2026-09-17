@@ -46265,6 +46265,11 @@
           "passive": false
         },
         {
+          "event": "focusout",
+          "capture": false,
+          "passive": false
+        },
+        {
           "event": "reset",
           "target": "document",
           "capture": true,
