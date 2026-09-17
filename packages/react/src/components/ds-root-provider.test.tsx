@@ -2,6 +2,7 @@ import { type ReactNode } from 'react'
 import { afterEach, beforeEach, describe, expect, test, vi } from 'vitest'
 import { render } from '../test/render'
 import { DsRootProvider } from './ds-root-provider'
+import { DsRootProvider as DsRootProviderServer } from './ds-root-provider.server'
 
 const initialize = vi.fn()
 const DsRoot = vi.fn(({ children }: { children?: ReactNode }) => <div data-testid="ds-root">{children}</div>)
@@ -14,6 +15,10 @@ vi.mock('@baloise/ds-core', () => ({
 }))
 
 vi.mock('../generated/components', () => ({
+  DsRoot: (props: { children?: ReactNode }) => DsRoot(props),
+}))
+
+vi.mock('../generated/components.server', () => ({
   DsRoot: (props: { children?: ReactNode }) => DsRoot(props),
 }))
 
@@ -106,6 +111,37 @@ describe('DsRootProvider', () => {
       expect.not.objectContaining({
         legalLinks,
         icons: { custom: '<svg />' },
+      }),
+    )
+    unmount()
+  })
+})
+
+describe('DsRootProvider (server)', () => {
+  beforeEach(() => {
+    initialize.mockReset()
+    DsRoot.mockClear()
+    delete (window as Window & { DesignSystem?: unknown }).DesignSystem
+  })
+
+  test('uses the same public props and factory as the client provider', () => {
+    const { unmount } = render(
+      <DsRootProviderServer brand="helvetia" region="CH" allowedLanguages={['de', 'fr']}>
+        <span data-testid="child">Hello</span>
+      </DsRootProviderServer>,
+    )
+
+    expect(initialize).toHaveBeenCalledWith({
+      brand: 'helvetia',
+      region: 'CH',
+      allowedLanguages: ['de', 'fr'],
+      httpFormSubmit: false,
+    })
+    expect(DsRoot).toHaveBeenCalledWith(
+      expect.objectContaining({
+        brand: 'helvetia',
+        region: 'CH',
+        allowedLanguages: 'de,fr',
       }),
     )
     unmount()

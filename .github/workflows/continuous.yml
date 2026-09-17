@@ -284,3 +284,48 @@ jobs:
           name: angular-playwright-report
           path: apps/integration-angular/playwright-report
           retention-days: 7
+
+  next:
+    name: 🧪 Next.js
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    needs: [assembleInformation]
+    env:
+      HUSKY: 0
+      CI: 1
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 2
+
+      - uses: ./.github/workflows/actions/setup-environment
+        with:
+          branch: ${{ needs.assembleInformation.outputs.branch }}
+          action: ${{ needs.assembleInformation.outputs.action }}
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build @baloise/ds-core, @baloise/ds-react and @baloise/ds-styles
+        run: pnpm exec turbo run build --filter=@baloise/ds-core --filter=@baloise/ds-react --filter=@baloise/ds-styles
+
+      - name: Install Playwright browsers
+        working-directory: apps/integration-next
+        run: pnpm exec playwright install --with-deps chromium
+
+      - name: Build app
+        working-directory: apps/integration-next
+        run: pnpm run build
+
+      - name: Run Playwright tests
+        working-directory: apps/integration-next
+        run: pnpm run play:run
+
+      - name: Upload Playwright HTML report
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: next-playwright-report
+          path: apps/integration-next/playwright-report
+          retention-days: 7

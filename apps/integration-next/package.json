@@ -1,0 +1,27 @@
+{
+  "name": "integration-next",
+  "private": true,
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "next dev --port 3000",
+    "start": "next start --port 3000",
+    "build": "next build",
+    "lint": "eslint .",
+    "play:run": "pnpm exec playwright test"
+  },
+  "dependencies": {
+    "@baloise/ds-core": "workspace:*",
+    "@baloise/ds-react": "workspace:*",
+    "@baloise/ds-styles": "workspace:*",
+    "@baloise/ds-tokens": "workspace:*",
+    "next": "16.3.5",
+    "react": "19.3.0",
+    "react-dom": "19.3.0"
+  },
+  "devDependencies": {
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "eslint": "catalog:",
+    "typescript": "catalog:"
+  }
+}
