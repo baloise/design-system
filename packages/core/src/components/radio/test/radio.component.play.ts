@@ -148,6 +148,30 @@ test.describe('radio-group', () => {
     expect(changeSpy).toHaveReceivedEventDetail('tony-stark')
   })
 
+  test('should fire dsBlur once focus leaves the group entirely', async ({ page }) => {
+    await page.mount(`${GROUP}<button data-testid="outside">Outside</button>`)
+    const group = page.locator('ds-radio-group')
+    const blurSpy = await group.spyOnEvent('dsBlur')
+    const steve = new DsRadio(page.locator('ds-radio[value="steve-rogers"]'))
+
+    await steve.nativeInput.focus()
+    await page.getByTestId('outside').focus()
+
+    expect(blurSpy).toHaveReceivedEventTimes(1)
+  })
+
+  test('should not fire dsBlur when focus moves between sibling radios', async ({ page }) => {
+    await page.mount(GROUP)
+    const group = page.locator('ds-radio-group')
+    const blurSpy = await group.spyOnEvent('dsBlur')
+    const steve = new DsRadio(page.locator('ds-radio[value="steve-rogers"]'))
+
+    await steve.nativeInput.focus()
+    await page.keyboard.press('ArrowDown')
+
+    expect(blurSpy).toHaveReceivedEventTimes(0)
+  })
+
   test('should reset to initial value on form reset', async ({ page }) => {
     await page.mount(`
       <form>
