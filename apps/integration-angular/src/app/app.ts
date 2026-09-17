@@ -8,6 +8,7 @@ import { InputSliderDemo } from './input-slider-demo/input-slider-demo'
 import { NumberInputDemo } from './number-input-demo/number-input-demo'
 import { SegmentDemo } from './segment-demo/segment-demo'
 import { TextareaDemo } from './textarea-demo/textarea-demo'
+import { RadioGroupDemo } from './radio-group-demo/radio-group-demo'
 
 @Component({
   selector: 'app-root',
@@ -21,6 +22,7 @@ import { TextareaDemo } from './textarea-demo/textarea-demo'
     CheckboxGroupDemo,
     SegmentDemo,
     DateDemo,
+    RadioGroupDemo,
   ],
   templateUrl: './app.html',
 })

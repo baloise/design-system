@@ -25,7 +25,7 @@ export interface RadioGroupCustomEvent<T> extends CustomEvent<T> {
   target: HTMLDsRadioGroupElement
 }
 
-export type RadioGroupChangeDetail = boolean
+export type RadioGroupChangeDetail = any | null
 export type RadioGroupChange = RadioGroupCustomEvent<RadioGroupChangeDetail>
 
 export type RadioGroupFocusDetail = FocusEvent
