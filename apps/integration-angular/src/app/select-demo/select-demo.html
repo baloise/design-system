@@ -1,0 +1,61 @@
+<h2>Select demo</h2>
+
+<p data-testid="select-value">Select value: {{ selectValue() }}</p>
+<ds-select
+  data-testid="select"
+  name="smoke-test-country"
+  label="Country"
+  [options]="options"
+  [value]="selectValue()"
+  (dsChange)="onChange($event)"
+></ds-select>
+
+<form [formGroup]="reactiveForm">
+  <ds-select
+    data-testid="reactive-select"
+    name="reactive-country"
+    label="Country"
+    clearable
+    [options]="options"
+    formControlName="country"
+  ></ds-select>
+</form>
+<p data-testid="reactive-select-value">Reactive value: {{ reactiveForm.controls.country.value }}</p>
+<button data-testid="toggle-reactive-select-disabled" type="button" (click)="toggleReactiveFormDisabled()">
+  Toggle disabled
+</button>
+<button data-testid="set-reactive-select-value" type="button" (click)="setReactiveFormValue()">Set to Germany</button>
+
+<form [formGroup]="reactiveMultipleForm">
+  <ds-select
+    data-testid="reactive-multiple-select"
+    name="reactive-countries"
+    label="Countries"
+    multiple
+    [options]="options"
+    formControlName="countries"
+  ></ds-select>
+</form>
+<p data-testid="reactive-multiple-select-value">Reactive value: {{ reactiveMultipleForm.controls.countries.value }}</p>
+<button
+  data-testid="toggle-reactive-multiple-select-disabled"
+  type="button"
+  (click)="toggleReactiveMultipleFormDisabled()"
+>
+  Toggle disabled
+</button>
+<button data-testid="set-reactive-multiple-select-value" type="button" (click)="setReactiveMultipleFormValue()">
+  Set to Germany, Austria
+</button>
+
+<form [formGroup]="autoInvalidOffForm">
+  <ds-select
+    data-testid="auto-invalid-off-select"
+    name="auto-invalid-off-country"
+    label="Country"
+    clearable
+    autoInvalidOff
+    [options]="options"
+    formControlName="country"
+  ></ds-select>
+</form>

@@ -11,6 +11,7 @@ import { NumberInputDemo } from './number-input-demo/number-input-demo'
 import { SegmentDemo } from './segment-demo/segment-demo'
 import { TextareaDemo } from './textarea-demo/textarea-demo'
 import { RadioGroupDemo } from './radio-group-demo/radio-group-demo'
+import { SelectDemo } from './select-demo/select-demo'
 
 @Component({
   selector: 'app-root',
@@ -27,6 +28,7 @@ import { RadioGroupDemo } from './radio-group-demo/radio-group-demo'
     DateDemo,
     RadioGroupDemo,
     FileUploadDemo,
+    SelectDemo,
   ],
   templateUrl: './app.html',
 })
