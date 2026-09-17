@@ -22,7 +22,7 @@ import { RadioGroupDemo } from './radio-group-demo/radio-group-demo'
     CheckboxGroupDemo,
     SegmentDemo,
     DateDemo,
-    RadioGroupDemo
+    RadioGroupDemo,
   ],
   templateUrl: './app.html',
 })
