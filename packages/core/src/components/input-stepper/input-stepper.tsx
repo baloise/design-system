@@ -15,6 +15,7 @@ import { HTMLStencilElement } from '@stencil/core/internal'
 import {
   formatLocaleNumber,
   inheritAttributes,
+  isValueEmpty,
   debounceEvent,
   rIC,
   Logger,
@@ -82,7 +83,12 @@ export class InputStepper implements DsComponentInterface, FieldInterface {
    */
 
   /**
-   * The current numeric value of the stepper. Clamped to `[min, max]` on connect.
+   * The current numeric value of the stepper. A stepper can never be empty: every write is resolved onto
+   * `[min, max]`, with an empty value (`null`/`undefined`/`NaN`) falling back to `min`. The resolution is
+   * silent — no `dsChange` is emitted — because a programmatic write must never look like user input (a
+   * `ControlValueAccessor`'s `writeValue()` may not call back into `onChange()`). A framework binding that
+   * writes an out-of-range value therefore keeps that value on its side while the element shows the clamped
+   * one, until the next user interaction emits a real `dsChange`.
    */
   @Prop({ mutable: true, reflect: true })
   @Type('number')
@@ -90,6 +96,21 @@ export class InputStepper implements DsComponentInterface, FieldInterface {
 
   @Watch('value')
   protected valueChanged() {
+    // Resolve an empty value — e.g. from a framework binding resetting to "no value" (Angular's
+    // `FormControl.reset()`, which calls `writeValue(null)` straight through onto this property) — onto
+    // `min`, the same fallback `connectedCallback` applies to the initial value. Re-assigning `this.value`
+    // re-enters this watcher; the second pass is no longer empty, so it terminates there instead of looping.
+    if (isValueEmpty(this.value)) {
+      this.value = clampValue(this.min, this.min, this.max)
+      return
+    }
+    // `connectedCallback` and the `min`/`max` watchers already clamp; doing it here too makes every write
+    // path consistent instead of leaving runtime `value` assignments as the one that escapes the range.
+    const clamped = clampValue(this.value, this.min, this.max)
+    if (clamped !== this.value) {
+      this.value = clamped
+      return
+    }
     this.syncFormValue(this.value)
   }
 

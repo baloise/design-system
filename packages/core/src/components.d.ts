@@ -1904,7 +1904,7 @@ export namespace Components {
          */
         "step": number;
         /**
-          * The current numeric value of the stepper. Clamped to `[min, max]` on connect.
+          * The current numeric value of the stepper. A stepper can never be empty: every write is resolved onto `[min, max]`, with an empty value (`null`/`undefined`/`NaN`) falling back to `min`. The resolution is silent — no `dsChange` is emitted — because a programmatic write must never look like user input (a `ControlValueAccessor`'s `writeValue()` may not call back into `onChange()`). A framework binding that writes an out-of-range value therefore keeps that value on its side while the element shows the clamped one, until the next user interaction emits a real `dsChange`.
           * @default 0
          */
         "value": number;
@@ -7142,7 +7142,7 @@ declare namespace LocalJSX {
          */
         "step"?: number;
         /**
-          * The current numeric value of the stepper. Clamped to `[min, max]` on connect.
+          * The current numeric value of the stepper. A stepper can never be empty: every write is resolved onto `[min, max]`, with an empty value (`null`/`undefined`/`NaN`) falling back to `min`. The resolution is silent — no `dsChange` is emitted — because a programmatic write must never look like user input (a `ControlValueAccessor`'s `writeValue()` may not call back into `onChange()`). A framework binding that writes an out-of-range value therefore keeps that value on its side while the element shows the clamped one, until the next user interaction emits a real `dsChange`.
           * @default 0
          */
         "value"?: number;

@@ -34083,7 +34083,7 @@
           "mutable": true,
           "attr": "value",
           "reflectToAttr": true,
-          "docs": "The current numeric value of the stepper. Clamped to `[min, max]` on connect.",
+          "docs": "The current numeric value of the stepper. A stepper can never be empty: every write is resolved onto\n`[min, max]`, with an empty value (`null`/`undefined`/`NaN`) falling back to `min`. The resolution is\nsilent — no `dsChange` is emitted — because a programmatic write must never look like user input (a\n`ControlValueAccessor`'s `writeValue()` may not call back into `onChange()`). A framework binding that\nwrites an out-of-range value therefore keeps that value on its side while the element shows the clamped\none, until the next user interaction emits a real `dsChange`.",
           "docsTags": [
             {
               "name": "default",
@@ -46150,11 +46150,11 @@
         },
         {
           "event": "dsChange",
-          "detail": "boolean",
+          "detail": "any",
           "bubbles": true,
           "complexType": {
             "original": "RadioGroupChangeDetail",
-            "resolved": "boolean",
+            "resolved": "any",
             "references": {
               "RadioGroupChangeDetail": {
                 "location": "import",
@@ -69354,7 +69354,7 @@
       "path": "src/components/radio/radio.interfaces.ts"
     },
     "src/components/radio/radio.interfaces.ts::RadioGroupChangeDetail": {
-      "declaration": "boolean",
+      "declaration": "any",
       "docstring": "",
       "path": "src/components/radio/radio.interfaces.ts"
     },
