@@ -16,7 +16,7 @@ Explicitly **out of scope** for this phase (confirmed with user): serving from a
 
 New file `packages/core/src/global/token-preview.ts`:
 - Exports `initializeTokenPreview(win = window)`.
-- Only activates when embedded: `if (win.parent === win) return` (not in an iframe → no-op, so this is inert for normal component consumption / Playwright visual tests).
+- Only activates when embedded: `if (!win.parent || win.parent === win) return` (no distinct parent window → no-op, so this is inert for Node hydrate, normal component consumption, and Playwright visual tests).
 - Adds `window.addEventListener('message', handler)`. Validates `event.source === win.parent` (structural check; good enough for localhost-only MVP — no origin allowlist yet, call this out as a known limitation for the later "deployed" phase).
 - Message contract (document via a small exported type, e.g. `packages/core/src/global/token-preview.types.ts`):
   ```ts
