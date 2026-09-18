@@ -1,4 +1,5 @@
 @use '@baloise/ds-styles/dist/scss/mixins' as *;
+@use '../form/form.mixin' as form;
 @use './toggle.mixin.scss' as toggle;
 
 /**
@@ -21,7 +22,17 @@
  * @prop --toggle-gap: Gap between toggle and label.
  * @prop --toggle-helper-color: Text color of helper text.
  * @prop --toggle-helper-font-size: Font size of helper text.
+ * @prop --form-description-color: Text color of the invalid text below the toggle.
+ * @prop --form-description-family: Font family of the invalid text below the toggle.
+ * @prop --form-description-weight: Font weight of the invalid text below the toggle.
+ * @prop --form-description-size: Font size of the invalid text below the toggle.
+ * @prop --form-description-line-height: Line height of the invalid text below the toggle.
  */
+
+:host {
+  @include form.vars-field();
+  @include form.vars-description();
+}
 
 /**
   * Basic Component Styles
@@ -33,6 +44,53 @@
 @include toggle.layout(':host');
 @include toggle.style(':host');
 @include toggle.states(':host');
+
+/**
+ * Field Structure
+ * --------------------------------
+ * `ds-toggle` renders inside the shared `Field` wrapper (`#inner` > `#container`) purely for the
+ * `invalid`/`invalidText` description block and color-state plumbing — it does not use `Field`'s own
+ * `label` heading (see docs/adr/0031-ds-toggle-field-migration-no-label.md). `#container` stays a
+ * transparent passthrough so the toggle's own `label` element keeps driving the visible layout.
+ */
+
+:host {
+  #inner {
+    @include form.field();
+  }
+
+  #container {
+    display: contents;
+  }
+
+  @include form.description();
+}
+
+:host(.is-invalid) {
+  --mod-form-description-color: var(--ds-form-danger-description-color);
+}
+
+/**
+ * `.ds-field` Collision Guard
+ * --------------------------------
+ * `Field` stamps a `ds-field` class onto `:host` (for the shared color-state selectors above), but
+ * that class name is also the CSS-only Form component's public API (`form.style.scss`'s `.ds-field`,
+ * outside any shadow root). Since `:host` is a real light-DOM element, that global, non-shadow
+ * `.ds-field` rule matches it too — and browsers give a page-level selector targeting the host
+ * priority over this shadow tree's own `:host` rules at equal (or even higher, see
+ * `:host(.ds-field)` below) specificity. That stretches every toggle to `display: grid; width: 100%`
+ * and adds inter-toggle margins, breaking the pixel-parity layout this migration is meant to
+ * preserve (see docs/adr/0031-ds-toggle-field-migration-no-label.md). `!important` is the only
+ * reliable way to win back these properties from outside the shadow tree.
+ */
+
+:host(.ds-field) {
+  display: inline-block !important;
+  width: auto !important;
+  flex: none !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
 
 /**
  * Label Position
