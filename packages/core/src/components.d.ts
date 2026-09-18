@@ -6,7 +6,7 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { AccordionButtonColor, AccordionButtonSize, AccordionMarker, AccordionMarkerPosition, AccordionSummaryLevel, AccordionToggleDetail } from "./components/accordion/accordion.interfaces";
-import { DsBrand, DsConfigState, DsLanguage, DsRegion } from "./global/index";
+import { DsBrand, DsConfigState, DsIcons, DsLanguage, DsLegalLinks, DsLegalText, DsRegion, DsSocialLinks } from "./global/index";
 import { Alert, AlertComponent, AlertContainerSize, AlertType } from "./components/alert/alert-container.interfaces";
 import { AppFooterContainer, AppFooterLanguageChangeDetail } from "./components/app-footer/app-footer.interfaces";
 import { AppNavbarContainer } from "./components/app-navbar/app-navbar.interfaces";
@@ -54,7 +54,7 @@ import { ToastActionClickDetail, ToastCloseClickDetail, ToastColor, ToastDuratio
 import { ToggleBlurDetail, ToggleChangeDetail, ToggleFocusDetail, ToggleLabelPosition } from "./components/toggle/toggle.interfaces";
 import { TooltipDidAnimateDetail, TooltipPlacement, TooltipWillAnimateDetail } from "./components/tooltip/tooltip.interfaces";
 export { AccordionButtonColor, AccordionButtonSize, AccordionMarker, AccordionMarkerPosition, AccordionSummaryLevel, AccordionToggleDetail } from "./components/accordion/accordion.interfaces";
-export { DsBrand, DsConfigState, DsLanguage, DsRegion } from "./global/index";
+export { DsBrand, DsConfigState, DsIcons, DsLanguage, DsLegalLinks, DsLegalText, DsRegion, DsSocialLinks } from "./global/index";
 export { Alert, AlertComponent, AlertContainerSize, AlertType } from "./components/alert/alert-container.interfaces";
 export { AppFooterContainer, AppFooterLanguageChangeDetail } from "./components/app-footer/app-footer.interfaces";
 export { AppNavbarContainer } from "./components/app-navbar/app-navbar.interfaces";
@@ -2084,8 +2084,6 @@ export namespace Components {
     }
     /**
      * Modal displays content in a dialog overlay using the native dialog element.
-     * Supports both slot-based sub-components (ds-modal-header, ds-modal-body) and
-     * direct named slots (slot="header", slot="body").
      */
     interface DsModal {
         /**
@@ -2686,9 +2684,21 @@ export namespace Components {
          */
         "fallbackLanguage"?: DsLanguage;
         /**
+          * Merges custom icons into the global config, keyed by name. Not reflected as an attribute — pass a JS object.
+         */
+        "icons"?: DsIcons;
+        /**
           * Sets the active language for all design system components. Falls back to the global config default when unset.
          */
         "language"?: DsLanguage;
+        /**
+          * Merges per-region, per-language legal links into the global config. Not reflected as an attribute — pass a JS object.
+         */
+        "legalLinks"?: DsLegalLinks;
+        /**
+          * Merges per-region, per-language legal text into the global config. Not reflected as an attribute — pass a JS object.
+         */
+        "legalText"?: DsLegalText;
         /**
           * @default ''
          */
@@ -2705,6 +2715,10 @@ export namespace Components {
           * Sets focus on the given elements using the root's focus-visible handling.
          */
         "setFocus": (elements: HTMLElement[]) => Promise<void>;
+        /**
+          * Merges per-region social links into the global config. Not reflected as an attribute — pass a JS object.
+         */
+        "socialLinks"?: DsSocialLinks;
     }
     /**
      * Segment renders a group of button-like controls for selecting a single option from multiple choices with toggle behavior.
@@ -4504,8 +4518,6 @@ declare global {
     }
     /**
      * Modal displays content in a dialog overlay using the native dialog element.
-     * Supports both slot-based sub-components (ds-modal-header, ds-modal-body) and
-     * direct named slots (slot="header", slot="body").
      */
     interface HTMLDsModalElement extends Components.DsModal, HTMLStencilElement {
         addEventListener<K extends keyof HTMLDsModalElementEventMap>(type: K, listener: (this: HTMLDsModalElement, ev: DsModalCustomEvent<HTMLDsModalElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -4695,6 +4707,10 @@ declare global {
         "dsLanguageChange": DsLanguage;
         "dsAllowedLanguagesChange": DsLanguage[];
         "dsFallbackLanguageChange": DsLanguage;
+        "dsIconsChange": DsIcons;
+        "dsLegalLinksChange": DsLegalLinks;
+        "dsLegalTextChange": DsLegalText;
+        "dsSocialLinksChange": DsSocialLinks;
     }
     /**
      * Root is a root wrapper component that provides global configuration, focus management, and responsive behavior context for all design system components.
@@ -7315,8 +7331,6 @@ declare namespace LocalJSX {
     }
     /**
      * Modal displays content in a dialog overlay using the native dialog element.
-     * Supports both slot-based sub-components (ds-modal-header, ds-modal-body) and
-     * direct named slots (slot="header", slot="body").
      */
     interface DsModal {
         /**
@@ -7959,9 +7973,21 @@ declare namespace LocalJSX {
          */
         "fallbackLanguage"?: DsLanguage;
         /**
+          * Merges custom icons into the global config, keyed by name. Not reflected as an attribute — pass a JS object.
+         */
+        "icons"?: DsIcons;
+        /**
           * Sets the active language for all design system components. Falls back to the global config default when unset.
          */
         "language"?: DsLanguage;
+        /**
+          * Merges per-region, per-language legal links into the global config. Not reflected as an attribute — pass a JS object.
+         */
+        "legalLinks"?: DsLegalLinks;
+        /**
+          * Merges per-region, per-language legal text into the global config. Not reflected as an attribute — pass a JS object.
+         */
+        "legalText"?: DsLegalText;
         /**
           * @default ''
          */
@@ -7987,13 +8013,29 @@ declare namespace LocalJSX {
          */
         "onDsFallbackLanguageChange"?: (event: DsRootCustomEvent<DsLanguage>) => void;
         /**
+          * Emitted when the `icons` value changes in the global config.
+         */
+        "onDsIconsChange"?: (event: DsRootCustomEvent<DsIcons>) => void;
+        /**
           * Emitted when the `language` value changes in the global config.
          */
         "onDsLanguageChange"?: (event: DsRootCustomEvent<DsLanguage>) => void;
         /**
+          * Emitted when the `legalLinks` value changes in the global config.
+         */
+        "onDsLegalLinksChange"?: (event: DsRootCustomEvent<DsLegalLinks>) => void;
+        /**
+          * Emitted when the `legalText` value changes in the global config.
+         */
+        "onDsLegalTextChange"?: (event: DsRootCustomEvent<DsLegalText>) => void;
+        /**
           * Emitted when the `region` value changes in the global config.
          */
         "onDsRegionChange"?: (event: DsRootCustomEvent<DsRegion>) => void;
+        /**
+          * Emitted when the `socialLinks` value changes in the global config.
+         */
+        "onDsSocialLinksChange"?: (event: DsRootCustomEvent<DsSocialLinks>) => void;
         /**
           * @default false
          */
@@ -8002,6 +8044,10 @@ declare namespace LocalJSX {
           * Sets the active region for all design system components. Falls back to the global config default when unset.
          */
         "region"?: DsRegion;
+        /**
+          * Merges per-region social links into the global config. Not reflected as an attribute — pass a JS object.
+         */
+        "socialLinks"?: DsSocialLinks;
     }
     /**
      * Segment renders a group of button-like controls for selecting a single option from multiple choices with toggle behavior.
@@ -10136,8 +10182,6 @@ declare module "@stencil/core" {
             "ds-logo": LocalJSX.IntrinsicElements["ds-logo"] & JSXBase.HTMLAttributes<HTMLDsLogoElement>;
             /**
              * Modal displays content in a dialog overlay using the native dialog element.
-             * Supports both slot-based sub-components (ds-modal-header, ds-modal-body) and
-             * direct named slots (slot="header", slot="body").
              */
             "ds-modal": LocalJSX.IntrinsicElements["ds-modal"] & JSXBase.HTMLAttributes<HTMLDsModalElement>;
             /**

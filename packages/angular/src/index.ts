@@ -1,14 +1,18 @@
+import { EnvironmentProviders, makeEnvironmentProviders, provideEnvironmentInitializer } from '@angular/core'
 import { DsConfig, initializeDesignSystem } from '@baloise/ds-core'
 
-interface DsAngularConfig {
+export interface DsAngularConfig {
   defaults?: DsConfig
 }
 
-export const bootstrapDesignSystem = (config: DsAngularConfig = {}) => {
-  initializeDesignSystem({
-    ...config.defaults,
-    httpFormSubmit: false,
-  })
+export function provideDesignSystem(config: DsAngularConfig = {}): EnvironmentProviders {
+  return makeEnvironmentProviders([
+    provideEnvironmentInitializer(() => {
+      initializeDesignSystem({
+        ...config.defaults,
+      })
+    }),
+  ])
 }
 // A named export (e.g. `DsInput` below) always wins over a colliding `export *` regardless of statement
 // order, so this override doesn't depend on where it's placed relative to './generated/proxies' — it's

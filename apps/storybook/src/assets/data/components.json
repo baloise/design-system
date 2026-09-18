@@ -37622,9 +37622,9 @@
     {
       "fileName": "modal.tsx",
       "tag": "ds-modal",
-      "overview": "Modal displays content in a dialog overlay using the native dialog element.\nSupports both slot-based sub-components (ds-modal-header, ds-modal-body) and\ndirect named slots (slot=\"header\", slot=\"body\").",
+      "overview": "Modal displays content in a dialog overlay using the native dialog element.",
       "usage": {},
-      "docs": "Modal displays content in a dialog overlay using the native dialog element.\nSupports both slot-based sub-components (ds-modal-header, ds-modal-body) and\ndirect named slots (slot=\"header\", slot=\"body\").",
+      "docs": "Modal displays content in a dialog overlay using the native dialog element.",
       "docsTags": [
         {
           "name": "slot",
@@ -46579,6 +46579,38 @@
           "setter": false
         },
         {
+          "name": "icons",
+          "type": "undefined | { [key: string]: string; }",
+          "complexType": {
+            "original": "DsIcons",
+            "resolved": "undefined | { [key: string]: string; }",
+            "references": {
+              "DsIcons": {
+                "location": "import",
+                "path": "@global",
+                "id": "src/global/index.ts::DsIcons",
+                "referenceLocation": "DsIcons"
+              }
+            }
+          },
+          "mutable": false,
+          "reflectToAttr": false,
+          "docs": "Merges custom icons into the global config, keyed by name. Not reflected as an attribute — pass a JS object.",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "undefined"
+            },
+            {
+              "type": "{ [key: string]: string; }"
+            }
+          ],
+          "optional": true,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
           "name": "language",
           "type": "\"de\" | \"en\" | \"es\" | \"fi\" | \"fr\" | \"it\" | \"nl\" | \"pl\" | \"pt\" | \"sv\" | undefined",
           "complexType": {
@@ -46649,11 +46681,669 @@
           "setter": false
         },
         {
+          "name": "legalLinks",
+          "type": "undefined | { CH?: { de?: AppFooterLink[] | undefined; fr?: AppFooterLink[] | undefined; it?: AppFooterLink[] | undefined; en?: AppFooterLink[] | undefined; es?: AppFooterLink[] | undefined; pl?: AppFooterLink[] | undefined; pt?: AppFooterLink[] | undefined; sv?: AppFooterLink[] | undefined; fi?: AppFooterLink[] | undefined; nl?: AppFooterLink[] | undefined; } | undefined; DE?: { de?: AppFooterLink[] | undefined; fr?: AppFooterLink[] | undefined; it?: AppFooterLink[] | undefined; en?: AppFooterLink[] | undefined; es?: AppFooterLink[] | undefined; pl?: AppFooterLink[] | undefined; pt?: AppFooterLink[] | undefined; sv?: AppFooterLink[] | undefined; fi?: AppFooterLink[] | undefined; nl?: AppFooterLink[] | undefined; } | undefined; BE?: { de?: AppFooterLink[] | undefined; fr?: AppFooterLink[] | undefined; it?: AppFooterLink[] | undefined; en?: AppFooterLink[] | undefined; es?: AppFooterLink[] | undefined; pl?: AppFooterLink[] | undefined; pt?: AppFooterLink[] | undefined; sv?: AppFooterLink[] | undefined; fi?: AppFooterLink[] | undefined; nl?: AppFooterLink[] | undefined; } | undefined; LU?: { de?: AppFooterLink[] | undefined; fr?: AppFooterLink[] | undefined; it?: AppFooterLink[] | undefined; en?: AppFooterLink[] | undefined; es?: AppFooterLink[] | undefined; pl?: AppFooterLink[] | undefined; pt?: AppFooterLink[] | undefined; sv?: AppFooterLink[] | undefined; fi?: AppFooterLink[] | undefined; nl?: AppFooterLink[] | undefined; } | undefined; AT?: { de?: AppFooterLink[] | undefined; fr?: AppFooterLink[] | undefined; it?: AppFooterLink[] | undefined; en?: AppFooterLink[] | undefined; es?: AppFooterLink[] | undefined; pl?: AppFooterLink[] | undefined; pt?: AppFooterLink[] | undefined; sv?: AppFooterLink[] | undefined; fi?: AppFooterLink[] | undefined; nl?: AppFooterLink[] | undefined; } | undefined; ES?: { de?: AppFooterLink[] | undefined; fr?: AppFooterLink[] | undefined; it?: AppFooterLink[] | undefined; en?: AppFooterLink[] | undefined; es?: AppFooterLink[] | undefined; pl?: AppFooterLink[] | undefined; pt?: AppFooterLink[] | undefined; sv?: AppFooterLink[] | undefined; fi?: AppFooterLink[] | undefined; nl?: AppFooterLink[] | undefined; } | undefined; IT?: { de?: AppFooterLink[] | undefined; fr?: AppFooterLink[] | undefined; it?: AppFooterLink[] | undefined; en?: AppFooterLink[] | undefined; es?: AppFooterLink[] | undefined; pl?: AppFooterLink[] | undefined; pt?: AppFooterLink[] | undefined; sv?: AppFooterLink[] | undefined; fi?: AppFooterLink[] | undefined; nl?: AppFooterLink[] | undefined; } | undefined; NL?: { de?: AppFooterLink[] | undefined; fr?: AppFooterLink[] | undefined; it?: AppFooterLink[] | undefined; en?: AppFooterLink[] | undefined; es?: AppFooterLink[] | undefined; pl?: AppFooterLink[] | undefined; pt?: AppFooterLink[] | undefined; sv?: AppFooterLink[] | undefined; fi?: AppFooterLink[] | undefined; nl?: AppFooterLink[] | undefined; } | undefined; FR?: { de?: AppFooterLink[] | undefined; fr?: AppFooterLink[] | undefined; it?: AppFooterLink[] | undefined; en?: AppFooterLink[] | undefined; es?: AppFooterLink[] | undefined; pl?: AppFooterLink[] | undefined; pt?: AppFooterLink[] | undefined; sv?: AppFooterLink[] | undefined; fi?: AppFooterLink[] | undefined; nl?: AppFooterLink[] | undefined; } | undefined; }",
+          "complexType": {
+            "original": "DsLegalLinks",
+            "resolved": "undefined | { CH?: { de?: AppFooterLink[] | undefined; fr?: AppFooterLink[] | undefined; it?: AppFooterLink[] | undefined; en?: AppFooterLink[] | undefined; es?: AppFooterLink[] | undefined; pl?: AppFooterLink[] | undefined; pt?: AppFooterLink[] | undefined; sv?: AppFooterLink[] | undefined; fi?: AppFooterLink[] | undefined; nl?: AppFooterLink[] | undefined; } | undefined; DE?: { de?: AppFooterLink[] | undefined; fr?: AppFooterLink[] | undefined; it?: AppFooterLink[] | undefined; en?: AppFooterLink[] | undefined; es?: AppFooterLink[] | undefined; pl?: AppFooterLink[] | undefined; pt?: AppFooterLink[] | undefined; sv?: AppFooterLink[] | undefined; fi?: AppFooterLink[] | undefined; nl?: AppFooterLink[] | undefined; } | undefined; BE?: { de?: AppFooterLink[] | undefined; fr?: AppFooterLink[] | undefined; it?: AppFooterLink[] | undefined; en?: AppFooterLink[] | undefined; es?: AppFooterLink[] | undefined; pl?: AppFooterLink[] | undefined; pt?: AppFooterLink[] | undefined; sv?: AppFooterLink[] | undefined; fi?: AppFooterLink[] | undefined; nl?: AppFooterLink[] | undefined; } | undefined; LU?: { de?: AppFooterLink[] | undefined; fr?: AppFooterLink[] | undefined; it?: AppFooterLink[] | undefined; en?: AppFooterLink[] | undefined; es?: AppFooterLink[] | undefined; pl?: AppFooterLink[] | undefined; pt?: AppFooterLink[] | undefined; sv?: AppFooterLink[] | undefined; fi?: AppFooterLink[] | undefined; nl?: AppFooterLink[] | undefined; } | undefined; AT?: { de?: AppFooterLink[] | undefined; fr?: AppFooterLink[] | undefined; it?: AppFooterLink[] | undefined; en?: AppFooterLink[] | undefined; es?: AppFooterLink[] | undefined; pl?: AppFooterLink[] | undefined; pt?: AppFooterLink[] | undefined; sv?: AppFooterLink[] | undefined; fi?: AppFooterLink[] | undefined; nl?: AppFooterLink[] | undefined; } | undefined; ES?: { de?: AppFooterLink[] | undefined; fr?: AppFooterLink[] | undefined; it?: AppFooterLink[] | undefined; en?: AppFooterLink[] | undefined; es?: AppFooterLink[] | undefined; pl?: AppFooterLink[] | undefined; pt?: AppFooterLink[] | undefined; sv?: AppFooterLink[] | undefined; fi?: AppFooterLink[] | undefined; nl?: AppFooterLink[] | undefined; } | undefined; IT?: { de?: AppFooterLink[] | undefined; fr?: AppFooterLink[] | undefined; it?: AppFooterLink[] | undefined; en?: AppFooterLink[] | undefined; es?: AppFooterLink[] | undefined; pl?: AppFooterLink[] | undefined; pt?: AppFooterLink[] | undefined; sv?: AppFooterLink[] | undefined; fi?: AppFooterLink[] | undefined; nl?: AppFooterLink[] | undefined; } | undefined; NL?: { de?: AppFooterLink[] | undefined; fr?: AppFooterLink[] | undefined; it?: AppFooterLink[] | undefined; en?: AppFooterLink[] | undefined; es?: AppFooterLink[] | undefined; pl?: AppFooterLink[] | undefined; pt?: AppFooterLink[] | undefined; sv?: AppFooterLink[] | undefined; fi?: AppFooterLink[] | undefined; nl?: AppFooterLink[] | undefined; } | undefined; FR?: { de?: AppFooterLink[] | undefined; fr?: AppFooterLink[] | undefined; it?: AppFooterLink[] | undefined; en?: AppFooterLink[] | undefined; es?: AppFooterLink[] | undefined; pl?: AppFooterLink[] | undefined; pt?: AppFooterLink[] | undefined; sv?: AppFooterLink[] | undefined; fi?: AppFooterLink[] | undefined; nl?: AppFooterLink[] | undefined; } | undefined; }",
+            "references": {
+              "DsLegalLinks": {
+                "location": "import",
+                "path": "@global",
+                "id": "src/global/index.ts::DsLegalLinks",
+                "referenceLocation": "DsLegalLinks"
+              }
+            }
+          },
+          "mutable": false,
+          "reflectToAttr": false,
+          "docs": "Merges per-region, per-language legal links into the global config. Not reflected as an attribute — pass a JS object.",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "undefined"
+            },
+            {
+              "type": "{ CH?: { de?: AppFooterLink[]"
+            },
+            {
+              "type": "undefined; fr?: AppFooterLink[]"
+            },
+            {
+              "type": "undefined; it?: AppFooterLink[]"
+            },
+            {
+              "type": "undefined; en?: AppFooterLink[]"
+            },
+            {
+              "type": "undefined; es?: AppFooterLink[]"
+            },
+            {
+              "type": "undefined; pl?: AppFooterLink[]"
+            },
+            {
+              "type": "undefined; pt?: AppFooterLink[]"
+            },
+            {
+              "type": "undefined; sv?: AppFooterLink[]"
+            },
+            {
+              "type": "undefined; fi?: AppFooterLink[]"
+            },
+            {
+              "type": "undefined; nl?: AppFooterLink[]"
+            },
+            {
+              "type": "undefined; }"
+            },
+            {
+              "type": "undefined; DE?: { de?: AppFooterLink[]"
+            },
+            {
+              "type": "undefined; fr?: AppFooterLink[]"
+            },
+            {
+              "type": "undefined; it?: AppFooterLink[]"
+            },
+            {
+              "type": "undefined; en?: AppFooterLink[]"
+            },
+            {
+              "type": "undefined; es?: AppFooterLink[]"
+            },
+            {
+              "type": "undefined; pl?: AppFooterLink[]"
+            },
+            {
+              "type": "undefined; pt?: AppFooterLink[]"
+            },
+            {
+              "type": "undefined; sv?: AppFooterLink[]"
+            },
+            {
+              "type": "undefined; fi?: AppFooterLink[]"
+            },
+            {
+              "type": "undefined; nl?: AppFooterLink[]"
+            },
+            {
+              "type": "undefined; }"
+            },
+            {
+              "type": "undefined; BE?: { de?: AppFooterLink[]"
+            },
+            {
+              "type": "undefined; fr?: AppFooterLink[]"
+            },
+            {
+              "type": "undefined; it?: AppFooterLink[]"
+            },
+            {
+              "type": "undefined; en?: AppFooterLink[]"
+            },
+            {
+              "type": "undefined; es?: AppFooterLink[]"
+            },
+            {
+              "type": "undefined; pl?: AppFooterLink[]"
+            },
+            {
+              "type": "undefined; pt?: AppFooterLink[]"
+            },
+            {
+              "type": "undefined; sv?: AppFooterLink[]"
+            },
+            {
+              "type": "undefined; fi?: AppFooterLink[]"
+            },
+            {
+              "type": "undefined; nl?: AppFooterLink[]"
+            },
+            {
+              "type": "undefined; }"
+            },
+            {
+              "type": "undefined; LU?: { de?: AppFooterLink[]"
+            },
+            {
+              "type": "undefined; fr?: AppFooterLink[]"
+            },
+            {
+              "type": "undefined; it?: AppFooterLink[]"
+            },
+            {
+              "type": "undefined; en?: AppFooterLink[]"
+            },
+            {
+              "type": "undefined; es?: AppFooterLink[]"
+            },
+            {
+              "type": "undefined; pl?: AppFooterLink[]"
+            },
+            {
+              "type": "undefined; pt?: AppFooterLink[]"
+            },
+            {
+              "type": "undefined; sv?: AppFooterLink[]"
+            },
+            {
+              "type": "undefined; fi?: AppFooterLink[]"
+            },
+            {
+              "type": "undefined; nl?: AppFooterLink[]"
+            },
+            {
+              "type": "undefined; }"
+            },
+            {
+              "type": "undefined; AT?: { de?: AppFooterLink[]"
+            },
+            {
+              "type": "undefined; fr?: AppFooterLink[]"
+            },
+            {
+              "type": "undefined; it?: AppFooterLink[]"
+            },
+            {
+              "type": "undefined; en?: AppFooterLink[]"
+            },
+            {
+              "type": "undefined; es?: AppFooterLink[]"
+            },
+            {
+              "type": "undefined; pl?: AppFooterLink[]"
+            },
+            {
+              "type": "undefined; pt?: AppFooterLink[]"
+            },
+            {
+              "type": "undefined; sv?: AppFooterLink[]"
+            },
+            {
+              "type": "undefined; fi?: AppFooterLink[]"
+            },
+            {
+              "type": "undefined; nl?: AppFooterLink[]"
+            },
+            {
+              "type": "undefined; }"
+            },
+            {
+              "type": "undefined; ES?: { de?: AppFooterLink[]"
+            },
+            {
+              "type": "undefined; fr?: AppFooterLink[]"
+            },
+            {
+              "type": "undefined; it?: AppFooterLink[]"
+            },
+            {
+              "type": "undefined; en?: AppFooterLink[]"
+            },
+            {
+              "type": "undefined; es?: AppFooterLink[]"
+            },
+            {
+              "type": "undefined; pl?: AppFooterLink[]"
+            },
+            {
+              "type": "undefined; pt?: AppFooterLink[]"
+            },
+            {
+              "type": "undefined; sv?: AppFooterLink[]"
+            },
+            {
+              "type": "undefined; fi?: AppFooterLink[]"
+            },
+            {
+              "type": "undefined; nl?: AppFooterLink[]"
+            },
+            {
+              "type": "undefined; }"
+            },
+            {
+              "type": "undefined; IT?: { de?: AppFooterLink[]"
+            },
+            {
+              "type": "undefined; fr?: AppFooterLink[]"
+            },
+            {
+              "type": "undefined; it?: AppFooterLink[]"
+            },
+            {
+              "type": "undefined; en?: AppFooterLink[]"
+            },
+            {
+              "type": "undefined; es?: AppFooterLink[]"
+            },
+            {
+              "type": "undefined; pl?: AppFooterLink[]"
+            },
+            {
+              "type": "undefined; pt?: AppFooterLink[]"
+            },
+            {
+              "type": "undefined; sv?: AppFooterLink[]"
+            },
+            {
+              "type": "undefined; fi?: AppFooterLink[]"
+            },
+            {
+              "type": "undefined; nl?: AppFooterLink[]"
+            },
+            {
+              "type": "undefined; }"
+            },
+            {
+              "type": "undefined; NL?: { de?: AppFooterLink[]"
+            },
+            {
+              "type": "undefined; fr?: AppFooterLink[]"
+            },
+            {
+              "type": "undefined; it?: AppFooterLink[]"
+            },
+            {
+              "type": "undefined; en?: AppFooterLink[]"
+            },
+            {
+              "type": "undefined; es?: AppFooterLink[]"
+            },
+            {
+              "type": "undefined; pl?: AppFooterLink[]"
+            },
+            {
+              "type": "undefined; pt?: AppFooterLink[]"
+            },
+            {
+              "type": "undefined; sv?: AppFooterLink[]"
+            },
+            {
+              "type": "undefined; fi?: AppFooterLink[]"
+            },
+            {
+              "type": "undefined; nl?: AppFooterLink[]"
+            },
+            {
+              "type": "undefined; }"
+            },
+            {
+              "type": "undefined; FR?: { de?: AppFooterLink[]"
+            },
+            {
+              "type": "undefined; fr?: AppFooterLink[]"
+            },
+            {
+              "type": "undefined; it?: AppFooterLink[]"
+            },
+            {
+              "type": "undefined; en?: AppFooterLink[]"
+            },
+            {
+              "type": "undefined; es?: AppFooterLink[]"
+            },
+            {
+              "type": "undefined; pl?: AppFooterLink[]"
+            },
+            {
+              "type": "undefined; pt?: AppFooterLink[]"
+            },
+            {
+              "type": "undefined; sv?: AppFooterLink[]"
+            },
+            {
+              "type": "undefined; fi?: AppFooterLink[]"
+            },
+            {
+              "type": "undefined; nl?: AppFooterLink[]"
+            },
+            {
+              "type": "undefined; }"
+            },
+            {
+              "type": "undefined; }"
+            }
+          ],
+          "optional": true,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "legalText",
+          "type": "undefined | { CH?: { de?: string | undefined; fr?: string | undefined; it?: string | undefined; en?: string | undefined; es?: string | undefined; pl?: string | undefined; pt?: string | undefined; sv?: string | undefined; fi?: string | undefined; nl?: string | undefined; } | undefined; DE?: { de?: string | undefined; fr?: string | undefined; it?: string | undefined; en?: string | undefined; es?: string | undefined; pl?: string | undefined; pt?: string | undefined; sv?: string | undefined; fi?: string | undefined; nl?: string | undefined; } | undefined; BE?: { de?: string | undefined; fr?: string | undefined; it?: string | undefined; en?: string | undefined; es?: string | undefined; pl?: string | undefined; pt?: string | undefined; sv?: string | undefined; fi?: string | undefined; nl?: string | undefined; } | undefined; LU?: { de?: string | undefined; fr?: string | undefined; it?: string | undefined; en?: string | undefined; es?: string | undefined; pl?: string | undefined; pt?: string | undefined; sv?: string | undefined; fi?: string | undefined; nl?: string | undefined; } | undefined; AT?: { de?: string | undefined; fr?: string | undefined; it?: string | undefined; en?: string | undefined; es?: string | undefined; pl?: string | undefined; pt?: string | undefined; sv?: string | undefined; fi?: string | undefined; nl?: string | undefined; } | undefined; ES?: { de?: string | undefined; fr?: string | undefined; it?: string | undefined; en?: string | undefined; es?: string | undefined; pl?: string | undefined; pt?: string | undefined; sv?: string | undefined; fi?: string | undefined; nl?: string | undefined; } | undefined; IT?: { de?: string | undefined; fr?: string | undefined; it?: string | undefined; en?: string | undefined; es?: string | undefined; pl?: string | undefined; pt?: string | undefined; sv?: string | undefined; fi?: string | undefined; nl?: string | undefined; } | undefined; NL?: { de?: string | undefined; fr?: string | undefined; it?: string | undefined; en?: string | undefined; es?: string | undefined; pl?: string | undefined; pt?: string | undefined; sv?: string | undefined; fi?: string | undefined; nl?: string | undefined; } | undefined; FR?: { de?: string | undefined; fr?: string | undefined; it?: string | undefined; en?: string | undefined; es?: string | undefined; pl?: string | undefined; pt?: string | undefined; sv?: string | undefined; fi?: string | undefined; nl?: string | undefined; } | undefined; }",
+          "complexType": {
+            "original": "DsLegalText",
+            "resolved": "undefined | { CH?: { de?: string | undefined; fr?: string | undefined; it?: string | undefined; en?: string | undefined; es?: string | undefined; pl?: string | undefined; pt?: string | undefined; sv?: string | undefined; fi?: string | undefined; nl?: string | undefined; } | undefined; DE?: { de?: string | undefined; fr?: string | undefined; it?: string | undefined; en?: string | undefined; es?: string | undefined; pl?: string | undefined; pt?: string | undefined; sv?: string | undefined; fi?: string | undefined; nl?: string | undefined; } | undefined; BE?: { de?: string | undefined; fr?: string | undefined; it?: string | undefined; en?: string | undefined; es?: string | undefined; pl?: string | undefined; pt?: string | undefined; sv?: string | undefined; fi?: string | undefined; nl?: string | undefined; } | undefined; LU?: { de?: string | undefined; fr?: string | undefined; it?: string | undefined; en?: string | undefined; es?: string | undefined; pl?: string | undefined; pt?: string | undefined; sv?: string | undefined; fi?: string | undefined; nl?: string | undefined; } | undefined; AT?: { de?: string | undefined; fr?: string | undefined; it?: string | undefined; en?: string | undefined; es?: string | undefined; pl?: string | undefined; pt?: string | undefined; sv?: string | undefined; fi?: string | undefined; nl?: string | undefined; } | undefined; ES?: { de?: string | undefined; fr?: string | undefined; it?: string | undefined; en?: string | undefined; es?: string | undefined; pl?: string | undefined; pt?: string | undefined; sv?: string | undefined; fi?: string | undefined; nl?: string | undefined; } | undefined; IT?: { de?: string | undefined; fr?: string | undefined; it?: string | undefined; en?: string | undefined; es?: string | undefined; pl?: string | undefined; pt?: string | undefined; sv?: string | undefined; fi?: string | undefined; nl?: string | undefined; } | undefined; NL?: { de?: string | undefined; fr?: string | undefined; it?: string | undefined; en?: string | undefined; es?: string | undefined; pl?: string | undefined; pt?: string | undefined; sv?: string | undefined; fi?: string | undefined; nl?: string | undefined; } | undefined; FR?: { de?: string | undefined; fr?: string | undefined; it?: string | undefined; en?: string | undefined; es?: string | undefined; pl?: string | undefined; pt?: string | undefined; sv?: string | undefined; fi?: string | undefined; nl?: string | undefined; } | undefined; }",
+            "references": {
+              "DsLegalText": {
+                "location": "import",
+                "path": "@global",
+                "id": "src/global/index.ts::DsLegalText",
+                "referenceLocation": "DsLegalText"
+              }
+            }
+          },
+          "mutable": false,
+          "reflectToAttr": false,
+          "docs": "Merges per-region, per-language legal text into the global config. Not reflected as an attribute — pass a JS object.",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "undefined"
+            },
+            {
+              "type": "{ CH?: { de?: string"
+            },
+            {
+              "type": "undefined; fr?: string"
+            },
+            {
+              "type": "undefined; it?: string"
+            },
+            {
+              "type": "undefined; en?: string"
+            },
+            {
+              "type": "undefined; es?: string"
+            },
+            {
+              "type": "undefined; pl?: string"
+            },
+            {
+              "type": "undefined; pt?: string"
+            },
+            {
+              "type": "undefined; sv?: string"
+            },
+            {
+              "type": "undefined; fi?: string"
+            },
+            {
+              "type": "undefined; nl?: string"
+            },
+            {
+              "type": "undefined; }"
+            },
+            {
+              "type": "undefined; DE?: { de?: string"
+            },
+            {
+              "type": "undefined; fr?: string"
+            },
+            {
+              "type": "undefined; it?: string"
+            },
+            {
+              "type": "undefined; en?: string"
+            },
+            {
+              "type": "undefined; es?: string"
+            },
+            {
+              "type": "undefined; pl?: string"
+            },
+            {
+              "type": "undefined; pt?: string"
+            },
+            {
+              "type": "undefined; sv?: string"
+            },
+            {
+              "type": "undefined; fi?: string"
+            },
+            {
+              "type": "undefined; nl?: string"
+            },
+            {
+              "type": "undefined; }"
+            },
+            {
+              "type": "undefined; BE?: { de?: string"
+            },
+            {
+              "type": "undefined; fr?: string"
+            },
+            {
+              "type": "undefined; it?: string"
+            },
+            {
+              "type": "undefined; en?: string"
+            },
+            {
+              "type": "undefined; es?: string"
+            },
+            {
+              "type": "undefined; pl?: string"
+            },
+            {
+              "type": "undefined; pt?: string"
+            },
+            {
+              "type": "undefined; sv?: string"
+            },
+            {
+              "type": "undefined; fi?: string"
+            },
+            {
+              "type": "undefined; nl?: string"
+            },
+            {
+              "type": "undefined; }"
+            },
+            {
+              "type": "undefined; LU?: { de?: string"
+            },
+            {
+              "type": "undefined; fr?: string"
+            },
+            {
+              "type": "undefined; it?: string"
+            },
+            {
+              "type": "undefined; en?: string"
+            },
+            {
+              "type": "undefined; es?: string"
+            },
+            {
+              "type": "undefined; pl?: string"
+            },
+            {
+              "type": "undefined; pt?: string"
+            },
+            {
+              "type": "undefined; sv?: string"
+            },
+            {
+              "type": "undefined; fi?: string"
+            },
+            {
+              "type": "undefined; nl?: string"
+            },
+            {
+              "type": "undefined; }"
+            },
+            {
+              "type": "undefined; AT?: { de?: string"
+            },
+            {
+              "type": "undefined; fr?: string"
+            },
+            {
+              "type": "undefined; it?: string"
+            },
+            {
+              "type": "undefined; en?: string"
+            },
+            {
+              "type": "undefined; es?: string"
+            },
+            {
+              "type": "undefined; pl?: string"
+            },
+            {
+              "type": "undefined; pt?: string"
+            },
+            {
+              "type": "undefined; sv?: string"
+            },
+            {
+              "type": "undefined; fi?: string"
+            },
+            {
+              "type": "undefined; nl?: string"
+            },
+            {
+              "type": "undefined; }"
+            },
+            {
+              "type": "undefined; ES?: { de?: string"
+            },
+            {
+              "type": "undefined; fr?: string"
+            },
+            {
+              "type": "undefined; it?: string"
+            },
+            {
+              "type": "undefined; en?: string"
+            },
+            {
+              "type": "undefined; es?: string"
+            },
+            {
+              "type": "undefined; pl?: string"
+            },
+            {
+              "type": "undefined; pt?: string"
+            },
+            {
+              "type": "undefined; sv?: string"
+            },
+            {
+              "type": "undefined; fi?: string"
+            },
+            {
+              "type": "undefined; nl?: string"
+            },
+            {
+              "type": "undefined; }"
+            },
+            {
+              "type": "undefined; IT?: { de?: string"
+            },
+            {
+              "type": "undefined; fr?: string"
+            },
+            {
+              "type": "undefined; it?: string"
+            },
+            {
+              "type": "undefined; en?: string"
+            },
+            {
+              "type": "undefined; es?: string"
+            },
+            {
+              "type": "undefined; pl?: string"
+            },
+            {
+              "type": "undefined; pt?: string"
+            },
+            {
+              "type": "undefined; sv?: string"
+            },
+            {
+              "type": "undefined; fi?: string"
+            },
+            {
+              "type": "undefined; nl?: string"
+            },
+            {
+              "type": "undefined; }"
+            },
+            {
+              "type": "undefined; NL?: { de?: string"
+            },
+            {
+              "type": "undefined; fr?: string"
+            },
+            {
+              "type": "undefined; it?: string"
+            },
+            {
+              "type": "undefined; en?: string"
+            },
+            {
+              "type": "undefined; es?: string"
+            },
+            {
+              "type": "undefined; pl?: string"
+            },
+            {
+              "type": "undefined; pt?: string"
+            },
+            {
+              "type": "undefined; sv?: string"
+            },
+            {
+              "type": "undefined; fi?: string"
+            },
+            {
+              "type": "undefined; nl?: string"
+            },
+            {
+              "type": "undefined; }"
+            },
+            {
+              "type": "undefined; FR?: { de?: string"
+            },
+            {
+              "type": "undefined; fr?: string"
+            },
+            {
+              "type": "undefined; it?: string"
+            },
+            {
+              "type": "undefined; en?: string"
+            },
+            {
+              "type": "undefined; es?: string"
+            },
+            {
+              "type": "undefined; pl?: string"
+            },
+            {
+              "type": "undefined; pt?: string"
+            },
+            {
+              "type": "undefined; sv?: string"
+            },
+            {
+              "type": "undefined; fi?: string"
+            },
+            {
+              "type": "undefined; nl?: string"
+            },
+            {
+              "type": "undefined; }"
+            },
+            {
+              "type": "undefined; }"
+            }
+          ],
+          "optional": true,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
           "name": "region",
-          "type": "\"AT\" | \"BE\" | \"CH\" | \"DE\" | \"ES\" | \"IT\" | \"LU\" | undefined",
+          "type": "\"AT\" | \"BE\" | \"CH\" | \"DE\" | \"ES\" | \"FR\" | \"IT\" | \"LU\" | \"NL\" | undefined",
           "complexType": {
             "original": "DsRegion",
-            "resolved": "\"AT\" | \"BE\" | \"CH\" | \"DE\" | \"ES\" | \"IT\" | \"LU\" | undefined",
+            "resolved": "\"AT\" | \"BE\" | \"CH\" | \"DE\" | \"ES\" | \"FR\" | \"IT\" | \"LU\" | \"NL\" | undefined",
             "references": {
               "DsRegion": {
                 "location": "import",
@@ -46690,11 +47380,19 @@
               "type": "string"
             },
             {
+              "value": "FR",
+              "type": "string"
+            },
+            {
               "value": "IT",
               "type": "string"
             },
             {
               "value": "LU",
+              "type": "string"
+            },
+            {
+              "value": "NL",
               "type": "string"
             },
             {
@@ -46712,8 +47410,69 @@
             "LU",
             "AT",
             "ES",
-            "IT"
+            "IT",
+            "NL",
+            "FR"
           ]
+        },
+        {
+          "name": "socialLinks",
+          "type": "undefined | { CH?: AppFooterSocialLink[] | undefined; DE?: AppFooterSocialLink[] | undefined; BE?: AppFooterSocialLink[] | undefined; LU?: AppFooterSocialLink[] | undefined; AT?: AppFooterSocialLink[] | undefined; ES?: AppFooterSocialLink[] | undefined; IT?: AppFooterSocialLink[] | undefined; NL?: AppFooterSocialLink[] | undefined; FR?: AppFooterSocialLink[] | undefined; }",
+          "complexType": {
+            "original": "DsSocialLinks",
+            "resolved": "undefined | { CH?: AppFooterSocialLink[] | undefined; DE?: AppFooterSocialLink[] | undefined; BE?: AppFooterSocialLink[] | undefined; LU?: AppFooterSocialLink[] | undefined; AT?: AppFooterSocialLink[] | undefined; ES?: AppFooterSocialLink[] | undefined; IT?: AppFooterSocialLink[] | undefined; NL?: AppFooterSocialLink[] | undefined; FR?: AppFooterSocialLink[] | undefined; }",
+            "references": {
+              "DsSocialLinks": {
+                "location": "import",
+                "path": "@global",
+                "id": "src/global/index.ts::DsSocialLinks",
+                "referenceLocation": "DsSocialLinks"
+              }
+            }
+          },
+          "mutable": false,
+          "reflectToAttr": false,
+          "docs": "Merges per-region social links into the global config. Not reflected as an attribute — pass a JS object.",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "undefined"
+            },
+            {
+              "type": "{ CH?: AppFooterSocialLink[]"
+            },
+            {
+              "type": "undefined; DE?: AppFooterSocialLink[]"
+            },
+            {
+              "type": "undefined; BE?: AppFooterSocialLink[]"
+            },
+            {
+              "type": "undefined; LU?: AppFooterSocialLink[]"
+            },
+            {
+              "type": "undefined; AT?: AppFooterSocialLink[]"
+            },
+            {
+              "type": "undefined; ES?: AppFooterSocialLink[]"
+            },
+            {
+              "type": "undefined; IT?: AppFooterSocialLink[]"
+            },
+            {
+              "type": "undefined; NL?: AppFooterSocialLink[]"
+            },
+            {
+              "type": "undefined; FR?: AppFooterSocialLink[]"
+            },
+            {
+              "type": "undefined; }"
+            }
+          ],
+          "optional": true,
+          "required": false,
+          "getter": false,
+          "setter": false
         }
       ],
       "methods": [
@@ -46849,6 +47608,27 @@
           "docsTags": []
         },
         {
+          "event": "dsIconsChange",
+          "detail": "{ [key: string]: string; }",
+          "bubbles": true,
+          "complexType": {
+            "original": "DsIcons",
+            "resolved": "{ [key: string]: string; }",
+            "references": {
+              "DsIcons": {
+                "location": "import",
+                "path": "@global",
+                "id": "src/global/index.ts::DsIcons",
+                "referenceLocation": "DsIcons"
+              }
+            }
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Emitted when the `icons` value changes in the global config.",
+          "docsTags": []
+        },
+        {
           "event": "dsLanguageChange",
           "detail": "\"de\" | \"en\" | \"es\" | \"fi\" | \"fr\" | \"it\" | \"nl\" | \"pl\" | \"pt\" | \"sv\"",
           "bubbles": true,
@@ -46870,12 +47650,54 @@
           "docsTags": []
         },
         {
+          "event": "dsLegalLinksChange",
+          "detail": "{ CH?: { de?: AppFooterLink[] | undefined; fr?: AppFooterLink[] | undefined; it?: AppFooterLink[] | undefined; en?: AppFooterLink[] | undefined; es?: AppFooterLink[] | undefined; pl?: AppFooterLink[] | undefined; pt?: AppFooterLink[] | undefined; sv?: AppFooterLink[] | undefined; fi?: AppFooterLink[] | undefined; nl?: AppFooterLink[] | undefined; } | undefined; DE?: { de?: AppFooterLink[] | undefined; fr?: AppFooterLink[] | undefined; it?: AppFooterLink[] | undefined; en?: AppFooterLink[] | undefined; es?: AppFooterLink[] | undefined; pl?: AppFooterLink[] | undefined; pt?: AppFooterLink[] | undefined; sv?: AppFooterLink[] | undefined; fi?: AppFooterLink[] | undefined; nl?: AppFooterLink[] | undefined; } | undefined; BE?: { de?: AppFooterLink[] | undefined; fr?: AppFooterLink[] | undefined; it?: AppFooterLink[] | undefined; en?: AppFooterLink[] | undefined; es?: AppFooterLink[] | undefined; pl?: AppFooterLink[] | undefined; pt?: AppFooterLink[] | undefined; sv?: AppFooterLink[] | undefined; fi?: AppFooterLink[] | undefined; nl?: AppFooterLink[] | undefined; } | undefined; LU?: { de?: AppFooterLink[] | undefined; fr?: AppFooterLink[] | undefined; it?: AppFooterLink[] | undefined; en?: AppFooterLink[] | undefined; es?: AppFooterLink[] | undefined; pl?: AppFooterLink[] | undefined; pt?: AppFooterLink[] | undefined; sv?: AppFooterLink[] | undefined; fi?: AppFooterLink[] | undefined; nl?: AppFooterLink[] | undefined; } | undefined; AT?: { de?: AppFooterLink[] | undefined; fr?: AppFooterLink[] | undefined; it?: AppFooterLink[] | undefined; en?: AppFooterLink[] | undefined; es?: AppFooterLink[] | undefined; pl?: AppFooterLink[] | undefined; pt?: AppFooterLink[] | undefined; sv?: AppFooterLink[] | undefined; fi?: AppFooterLink[] | undefined; nl?: AppFooterLink[] | undefined; } | undefined; ES?: { de?: AppFooterLink[] | undefined; fr?: AppFooterLink[] | undefined; it?: AppFooterLink[] | undefined; en?: AppFooterLink[] | undefined; es?: AppFooterLink[] | undefined; pl?: AppFooterLink[] | undefined; pt?: AppFooterLink[] | undefined; sv?: AppFooterLink[] | undefined; fi?: AppFooterLink[] | undefined; nl?: AppFooterLink[] | undefined; } | undefined; IT?: { de?: AppFooterLink[] | undefined; fr?: AppFooterLink[] | undefined; it?: AppFooterLink[] | undefined; en?: AppFooterLink[] | undefined; es?: AppFooterLink[] | undefined; pl?: AppFooterLink[] | undefined; pt?: AppFooterLink[] | undefined; sv?: AppFooterLink[] | undefined; fi?: AppFooterLink[] | undefined; nl?: AppFooterLink[] | undefined; } | undefined; NL?: { de?: AppFooterLink[] | undefined; fr?: AppFooterLink[] | undefined; it?: AppFooterLink[] | undefined; en?: AppFooterLink[] | undefined; es?: AppFooterLink[] | undefined; pl?: AppFooterLink[] | undefined; pt?: AppFooterLink[] | undefined; sv?: AppFooterLink[] | undefined; fi?: AppFooterLink[] | undefined; nl?: AppFooterLink[] | undefined; } | undefined; FR?: { de?: AppFooterLink[] | undefined; fr?: AppFooterLink[] | undefined; it?: AppFooterLink[] | undefined; en?: AppFooterLink[] | undefined; es?: AppFooterLink[] | undefined; pl?: AppFooterLink[] | undefined; pt?: AppFooterLink[] | undefined; sv?: AppFooterLink[] | undefined; fi?: AppFooterLink[] | undefined; nl?: AppFooterLink[] | undefined; } | undefined; }",
+          "bubbles": true,
+          "complexType": {
+            "original": "DsLegalLinks",
+            "resolved": "{ CH?: { de?: AppFooterLink[] | undefined; fr?: AppFooterLink[] | undefined; it?: AppFooterLink[] | undefined; en?: AppFooterLink[] | undefined; es?: AppFooterLink[] | undefined; pl?: AppFooterLink[] | undefined; pt?: AppFooterLink[] | undefined; sv?: AppFooterLink[] | undefined; fi?: AppFooterLink[] | undefined; nl?: AppFooterLink[] | undefined; } | undefined; DE?: { de?: AppFooterLink[] | undefined; fr?: AppFooterLink[] | undefined; it?: AppFooterLink[] | undefined; en?: AppFooterLink[] | undefined; es?: AppFooterLink[] | undefined; pl?: AppFooterLink[] | undefined; pt?: AppFooterLink[] | undefined; sv?: AppFooterLink[] | undefined; fi?: AppFooterLink[] | undefined; nl?: AppFooterLink[] | undefined; } | undefined; BE?: { de?: AppFooterLink[] | undefined; fr?: AppFooterLink[] | undefined; it?: AppFooterLink[] | undefined; en?: AppFooterLink[] | undefined; es?: AppFooterLink[] | undefined; pl?: AppFooterLink[] | undefined; pt?: AppFooterLink[] | undefined; sv?: AppFooterLink[] | undefined; fi?: AppFooterLink[] | undefined; nl?: AppFooterLink[] | undefined; } | undefined; LU?: { de?: AppFooterLink[] | undefined; fr?: AppFooterLink[] | undefined; it?: AppFooterLink[] | undefined; en?: AppFooterLink[] | undefined; es?: AppFooterLink[] | undefined; pl?: AppFooterLink[] | undefined; pt?: AppFooterLink[] | undefined; sv?: AppFooterLink[] | undefined; fi?: AppFooterLink[] | undefined; nl?: AppFooterLink[] | undefined; } | undefined; AT?: { de?: AppFooterLink[] | undefined; fr?: AppFooterLink[] | undefined; it?: AppFooterLink[] | undefined; en?: AppFooterLink[] | undefined; es?: AppFooterLink[] | undefined; pl?: AppFooterLink[] | undefined; pt?: AppFooterLink[] | undefined; sv?: AppFooterLink[] | undefined; fi?: AppFooterLink[] | undefined; nl?: AppFooterLink[] | undefined; } | undefined; ES?: { de?: AppFooterLink[] | undefined; fr?: AppFooterLink[] | undefined; it?: AppFooterLink[] | undefined; en?: AppFooterLink[] | undefined; es?: AppFooterLink[] | undefined; pl?: AppFooterLink[] | undefined; pt?: AppFooterLink[] | undefined; sv?: AppFooterLink[] | undefined; fi?: AppFooterLink[] | undefined; nl?: AppFooterLink[] | undefined; } | undefined; IT?: { de?: AppFooterLink[] | undefined; fr?: AppFooterLink[] | undefined; it?: AppFooterLink[] | undefined; en?: AppFooterLink[] | undefined; es?: AppFooterLink[] | undefined; pl?: AppFooterLink[] | undefined; pt?: AppFooterLink[] | undefined; sv?: AppFooterLink[] | undefined; fi?: AppFooterLink[] | undefined; nl?: AppFooterLink[] | undefined; } | undefined; NL?: { de?: AppFooterLink[] | undefined; fr?: AppFooterLink[] | undefined; it?: AppFooterLink[] | undefined; en?: AppFooterLink[] | undefined; es?: AppFooterLink[] | undefined; pl?: AppFooterLink[] | undefined; pt?: AppFooterLink[] | undefined; sv?: AppFooterLink[] | undefined; fi?: AppFooterLink[] | undefined; nl?: AppFooterLink[] | undefined; } | undefined; FR?: { de?: AppFooterLink[] | undefined; fr?: AppFooterLink[] | undefined; it?: AppFooterLink[] | undefined; en?: AppFooterLink[] | undefined; es?: AppFooterLink[] | undefined; pl?: AppFooterLink[] | undefined; pt?: AppFooterLink[] | undefined; sv?: AppFooterLink[] | undefined; fi?: AppFooterLink[] | undefined; nl?: AppFooterLink[] | undefined; } | undefined; }",
+            "references": {
+              "DsLegalLinks": {
+                "location": "import",
+                "path": "@global",
+                "id": "src/global/index.ts::DsLegalLinks",
+                "referenceLocation": "DsLegalLinks"
+              }
+            }
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Emitted when the `legalLinks` value changes in the global config.",
+          "docsTags": []
+        },
+        {
+          "event": "dsLegalTextChange",
+          "detail": "{ CH?: { de?: string | undefined; fr?: string | undefined; it?: string | undefined; en?: string | undefined; es?: string | undefined; pl?: string | undefined; pt?: string | undefined; sv?: string | undefined; fi?: string | undefined; nl?: string | undefined; } | undefined; DE?: { de?: string | undefined; fr?: string | undefined; it?: string | undefined; en?: string | undefined; es?: string | undefined; pl?: string | undefined; pt?: string | undefined; sv?: string | undefined; fi?: string | undefined; nl?: string | undefined; } | undefined; BE?: { de?: string | undefined; fr?: string | undefined; it?: string | undefined; en?: string | undefined; es?: string | undefined; pl?: string | undefined; pt?: string | undefined; sv?: string | undefined; fi?: string | undefined; nl?: string | undefined; } | undefined; LU?: { de?: string | undefined; fr?: string | undefined; it?: string | undefined; en?: string | undefined; es?: string | undefined; pl?: string | undefined; pt?: string | undefined; sv?: string | undefined; fi?: string | undefined; nl?: string | undefined; } | undefined; AT?: { de?: string | undefined; fr?: string | undefined; it?: string | undefined; en?: string | undefined; es?: string | undefined; pl?: string | undefined; pt?: string | undefined; sv?: string | undefined; fi?: string | undefined; nl?: string | undefined; } | undefined; ES?: { de?: string | undefined; fr?: string | undefined; it?: string | undefined; en?: string | undefined; es?: string | undefined; pl?: string | undefined; pt?: string | undefined; sv?: string | undefined; fi?: string | undefined; nl?: string | undefined; } | undefined; IT?: { de?: string | undefined; fr?: string | undefined; it?: string | undefined; en?: string | undefined; es?: string | undefined; pl?: string | undefined; pt?: string | undefined; sv?: string | undefined; fi?: string | undefined; nl?: string | undefined; } | undefined; NL?: { de?: string | undefined; fr?: string | undefined; it?: string | undefined; en?: string | undefined; es?: string | undefined; pl?: string | undefined; pt?: string | undefined; sv?: string | undefined; fi?: string | undefined; nl?: string | undefined; } | undefined; FR?: { de?: string | undefined; fr?: string | undefined; it?: string | undefined; en?: string | undefined; es?: string | undefined; pl?: string | undefined; pt?: string | undefined; sv?: string | undefined; fi?: string | undefined; nl?: string | undefined; } | undefined; }",
+          "bubbles": true,
+          "complexType": {
+            "original": "DsLegalText",
+            "resolved": "{ CH?: { de?: string | undefined; fr?: string | undefined; it?: string | undefined; en?: string | undefined; es?: string | undefined; pl?: string | undefined; pt?: string | undefined; sv?: string | undefined; fi?: string | undefined; nl?: string | undefined; } | undefined; DE?: { de?: string | undefined; fr?: string | undefined; it?: string | undefined; en?: string | undefined; es?: string | undefined; pl?: string | undefined; pt?: string | undefined; sv?: string | undefined; fi?: string | undefined; nl?: string | undefined; } | undefined; BE?: { de?: string | undefined; fr?: string | undefined; it?: string | undefined; en?: string | undefined; es?: string | undefined; pl?: string | undefined; pt?: string | undefined; sv?: string | undefined; fi?: string | undefined; nl?: string | undefined; } | undefined; LU?: { de?: string | undefined; fr?: string | undefined; it?: string | undefined; en?: string | undefined; es?: string | undefined; pl?: string | undefined; pt?: string | undefined; sv?: string | undefined; fi?: string | undefined; nl?: string | undefined; } | undefined; AT?: { de?: string | undefined; fr?: string | undefined; it?: string | undefined; en?: string | undefined; es?: string | undefined; pl?: string | undefined; pt?: string | undefined; sv?: string | undefined; fi?: string | undefined; nl?: string | undefined; } | undefined; ES?: { de?: string | undefined; fr?: string | undefined; it?: string | undefined; en?: string | undefined; es?: string | undefined; pl?: string | undefined; pt?: string | undefined; sv?: string | undefined; fi?: string | undefined; nl?: string | undefined; } | undefined; IT?: { de?: string | undefined; fr?: string | undefined; it?: string | undefined; en?: string | undefined; es?: string | undefined; pl?: string | undefined; pt?: string | undefined; sv?: string | undefined; fi?: string | undefined; nl?: string | undefined; } | undefined; NL?: { de?: string | undefined; fr?: string | undefined; it?: string | undefined; en?: string | undefined; es?: string | undefined; pl?: string | undefined; pt?: string | undefined; sv?: string | undefined; fi?: string | undefined; nl?: string | undefined; } | undefined; FR?: { de?: string | undefined; fr?: string | undefined; it?: string | undefined; en?: string | undefined; es?: string | undefined; pl?: string | undefined; pt?: string | undefined; sv?: string | undefined; fi?: string | undefined; nl?: string | undefined; } | undefined; }",
+            "references": {
+              "DsLegalText": {
+                "location": "import",
+                "path": "@global",
+                "id": "src/global/index.ts::DsLegalText",
+                "referenceLocation": "DsLegalText"
+              }
+            }
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Emitted when the `legalText` value changes in the global config.",
+          "docsTags": []
+        },
+        {
           "event": "dsRegionChange",
-          "detail": "\"AT\" | \"BE\" | \"CH\" | \"DE\" | \"ES\" | \"IT\" | \"LU\"",
+          "detail": "\"AT\" | \"BE\" | \"CH\" | \"DE\" | \"ES\" | \"FR\" | \"IT\" | \"LU\" | \"NL\"",
           "bubbles": true,
           "complexType": {
             "original": "DsRegion",
-            "resolved": "\"AT\" | \"BE\" | \"CH\" | \"DE\" | \"ES\" | \"IT\" | \"LU\"",
+            "resolved": "\"AT\" | \"BE\" | \"CH\" | \"DE\" | \"ES\" | \"FR\" | \"IT\" | \"LU\" | \"NL\"",
             "references": {
               "DsRegion": {
                 "location": "import",
@@ -46888,6 +47710,27 @@
           "cancelable": true,
           "composed": true,
           "docs": "Emitted when the `region` value changes in the global config.",
+          "docsTags": []
+        },
+        {
+          "event": "dsSocialLinksChange",
+          "detail": "{ CH?: AppFooterSocialLink[] | undefined; DE?: AppFooterSocialLink[] | undefined; BE?: AppFooterSocialLink[] | undefined; LU?: AppFooterSocialLink[] | undefined; AT?: AppFooterSocialLink[] | undefined; ES?: AppFooterSocialLink[] | undefined; IT?: AppFooterSocialLink[] | undefined; NL?: AppFooterSocialLink[] | undefined; FR?: AppFooterSocialLink[] | undefined; }",
+          "bubbles": true,
+          "complexType": {
+            "original": "DsSocialLinks",
+            "resolved": "{ CH?: AppFooterSocialLink[] | undefined; DE?: AppFooterSocialLink[] | undefined; BE?: AppFooterSocialLink[] | undefined; LU?: AppFooterSocialLink[] | undefined; AT?: AppFooterSocialLink[] | undefined; ES?: AppFooterSocialLink[] | undefined; IT?: AppFooterSocialLink[] | undefined; NL?: AppFooterSocialLink[] | undefined; FR?: AppFooterSocialLink[] | undefined; }",
+            "references": {
+              "DsSocialLinks": {
+                "location": "import",
+                "path": "@global",
+                "id": "src/global/index.ts::DsSocialLinks",
+                "referenceLocation": "DsSocialLinks"
+              }
+            }
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Emitted when the `socialLinks` value changes in the global config.",
           "docsTags": []
         }
       ],
@@ -68783,7 +69626,7 @@
       "path": "src/components/accordion/accordion.interfaces.ts"
     },
     "src/global/index.ts::DsConfigState": {
-      "declaration": "export interface DsConfigState {\n  brand: DsBrand\n  region: DsRegion\n  language: DsLanguage\n  allowedLanguages: DsLanguage[]\n  icons: DsIcons\n  fallbackLanguage: DsLanguage\n  logger: DsLogger\n  animated: boolean\n  httpFormSubmit: boolean\n  legalLinks: {\n    [key in DsRegion]?: {\n      [key in DsLanguage]?: AppFooterLink[]\n    }\n  }\n  legalText: {\n    [key in DsRegion]?: {\n      [key in DsLanguage]?: string\n    }\n  }\n  socialLinks: {\n    [key in DsRegion]?: AppFooterSocialLink[]\n  }\n  _generateHydrateForCustomElementsOutput: boolean\n}",
+      "declaration": "export interface DsConfigState {\n  brand: DsBrand\n  region: DsRegion\n  language: DsLanguage\n  allowedLanguages: DsLanguage[]\n  icons: DsIcons\n  fallbackLanguage: DsLanguage\n  logger: DsLogger\n  animated: boolean\n  legalLinks: DsLegalLinks\n  legalText: DsLegalText\n  socialLinks: DsSocialLinks\n  _generateHydrateForCustomElementsOutput: boolean\n}",
       "docstring": "",
       "path": "src/global/index.ts"
     },
@@ -69203,12 +70046,12 @@
       "path": "src/components/file-upload/file-upload.interfaces.ts"
     },
     "src/global/index.ts::DsLanguage": {
-      "declaration": "export type DsLanguage =\n  | DsSwissLanguage\n  | DsLuxembourgLanguage\n  | DsLuxembourgInternationalLanguage\n  | DsBelgiumLanguage\n  | DsGermanLanguage\n  | DsAustriaLanguage\n  | DsSpainLanguage\n  | DsItalyLanguage",
+      "declaration": "export type DsLanguage =\n  | DsSwissLanguage\n  | DsLuxembourgLanguage\n  | DsLuxembourgInternationalLanguage\n  | DsBelgiumLanguage\n  | DsGermanLanguage\n  | DsAustriaLanguage\n  | DsSpainLanguage\n  | DsItalyLanguage\n  | DsNetherlandsLanguage\n  | DsFranceLanguage",
       "docstring": "",
       "path": "src/global/index.ts"
     },
     "src/global/index.ts::DsRegion": {
-      "declaration": "export type DsRegion = 'CH' | 'DE' | 'BE' | 'LU' | 'AT' | 'ES' | 'IT'",
+      "declaration": "export type DsRegion = 'CH' | 'DE' | 'BE' | 'LU' | 'AT' | 'ES' | 'IT' | 'NL' | 'FR'",
       "docstring": "",
       "path": "src/global/index.ts"
     },
@@ -69549,6 +70392,26 @@
     },
     "src/global/index.ts::DsBrand": {
       "declaration": "export type DsBrand = 'baloise' | 'helvetia'",
+      "docstring": "",
+      "path": "src/global/index.ts"
+    },
+    "src/global/index.ts::DsIcons": {
+      "declaration": "{ [key: string]: string }",
+      "docstring": "",
+      "path": "src/global/index.ts"
+    },
+    "src/global/index.ts::DsLegalLinks": {
+      "declaration": "{\n  [key in DsRegion]?: {\n    [key in DsLanguage]?: AppFooterLink[]\n  }\n}",
+      "docstring": "",
+      "path": "src/global/index.ts"
+    },
+    "src/global/index.ts::DsLegalText": {
+      "declaration": "{\n  [key in DsRegion]?: {\n    [key in DsLanguage]?: string\n  }\n}",
+      "docstring": "",
+      "path": "src/global/index.ts"
+    },
+    "src/global/index.ts::DsSocialLinks": {
+      "declaration": "{\n  [key in DsRegion]?: AppFooterSocialLink[]\n}",
       "docstring": "",
       "path": "src/global/index.ts"
     },

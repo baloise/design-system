@@ -9,7 +9,6 @@ import {
   Lead,
   LinkCard,
   LinkCards,
-  NotAngularFramework,
   PackageTable,
   ReactFramework,
   WarningQuote,
@@ -39,6 +38,8 @@ The following **regions** and **languages** are supported:
 | AT     | de             | \`DsAustriaLanguage\`     |
 | ES     | es             | \`DsSpainLanguage\`       |
 | IT     | it             | \`DsItalyLanguage\`       |
+| NL     | nl             | \`DsNetherlandsLanguage\` |
+| FR     | fr             | \`DsFranceLanguage\`      |
 `}
 </Markdown>
 
@@ -61,20 +62,15 @@ The initialize of the Design System config defines the default values.
 
 <AngularFramework>
 
-In the Angular framework define them with the module.
+Pass the defaults to `provideDesignSystem()` in `app.config.ts`.
 
 <Code language="typescript" code={`
-import { BrowserModule } from '@angular/platform-browser'
-import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core'
-import { DesignSystemModule } from '@baloise/ds-angular'
+import { ApplicationConfig } from '@angular/core'
+import { provideDesignSystem } from '@baloise/ds-angular'
 
-import { AppComponent } from './app.component'
-
-@NgModule({
-${' '}declarations: [AppComponent],
-${' '}imports: [
-${' '}${' '}BrowserModule,
-${' '}${' '}DesignSystemModule.forRoot({
+export const appConfig: ApplicationConfig = {
+${' '}providers: [
+${' '}${' '}provideDesignSystem({
 ${' '}${' '}${' '}defaults: {
 ${' '}${' '}${' '}${' '}region: 'DE',
 ${' '}${' '}${' '}${' '}language: 'de',
@@ -82,11 +78,7 @@ ${' '}${' '}${' '}${' '}allowedLanguages: ['de', 'fr', 'it', 'en'],
 ${' '}${' '}${' '}},
 ${' '}${' '}}),
 ${' '}],
-${' '}providers: [],
-${' '}bootstrap: [AppComponent],
-${' '}schemas: [CUSTOM_ELEMENTS_SCHEMA],
-})
-export class AppModule {}
+}
 `} />
 
 </AngularFramework>
@@ -154,8 +146,8 @@ ${' '}data-allowed-languages="de,fr,it,en"
 
 Only `brand`, `region`, `language`, `fallbackLanguage`, `allowedLanguages`
 (comma-separated), and `animated` (`"false"` or anything else, treated as
-a boolean) are read from the tag. Everything else — icons, `httpFormSubmit`,
-`legalLinks`, `legalText`, `socialLinks` — is JS-only config.
+a boolean) are read from the tag. Everything else — icons, `legalLinks`,
+`legalText`, `socialLinks` — is JS-only config.
 
 <InfoQuote>
   Precedence, lowest to highest: default config → `<meta>` tag → the
@@ -180,16 +172,15 @@ a boolean) are read from the tag. Everything else — icons, `httpFormSubmit`,
 To change the language or region during run time use the two functions `updateDsLanguage` and `updateDsRegion`.
 
 <Code language="typescript" code={`
-import { Component, OnInit } from '@angular/core'
-import { updateDsLanguage, SwissLanguage } from '@baloise/ds-core'
+import { Component } from '@angular/core'
+import { updateDsLanguage, DsSwissLanguage } from '@baloise/ds-core'
 
 @Component({
-${' '}selector: 'app-app-tab-a',
-${' '}templateUrl: './app-tab-a.component.html',
-${' '}styleUrls: ['./app-tab-a.component.scss'],
+${' '}selector: 'app-tab-a',
+${' '}templateUrl: './app-tab-a.html',
 })
-export class AppTabAComponent {
-${' '}changeLang(lang: BalSwissLanguage) {
+export class AppTabA {
+${' '}changeLang(lang: DsSwissLanguage) {
 ${' '}${' '}updateDsLanguage(lang)
 ${' '}}
 }
@@ -229,14 +220,14 @@ To change the language or region during run time use the two functions `updateDs
 
 <Code language="typescript" code={`
 import {
-  updateBalAllowedLanguages,
+  updateDsAllowedLanguages,
   updateDsLanguage,
   updateDsRegion,
 } from '@baloise/ds-core'
 
 updateDsLanguage('de')
 updateDsRegion('CH')
-updateBalAllowedLanguages(['fr', 'it'])
+updateDsAllowedLanguages(['fr', 'it'])
 `} />
 
 The config can be accessed with `useConfig`. Both variants have the same effect.
@@ -266,23 +257,22 @@ config.allowedLanguages = ['de', 'fr', 'it', 'en']
 
 <AngularFramework>
 
-To subscribe to changes of the region or language during runtime you can register your callback function using `onBalConfigChange`.
+To subscribe to changes of the region or language during runtime you can register your callback function using `onDsConfigChange`.
 
 <Code language="typescript" code={`
 import { Component, OnInit } from '@angular/core'
-import { onBalConfigChange, ConfigState } from '@baloise/ds-core'
+import { onDsConfigChange, DsConfigState } from '@baloise/ds-core'
 
 @Component({
 ${' '}selector: 'app-sample',
-${' '}templateUrl: './sample.component.html',
-${' '}styleUrls: ['./sample.component.scss'],
+${' '}templateUrl: './sample.html',
 })
-export class SampleComponent implements OnInit {
+export class Sample implements OnInit {
 ${' '}constructor(private yourLangService: YourLangService) {}
 
 ${' '}ngOnInit(): void {
-${' '}${' '}// IMPORTANT: register your config update callback in the ngOnInit instead of the constructor
-${' '}${' '}onBalConfigChange((config: DsConfigState) => {
+${' '}${' '}// IMPORTANT: register your config update callback in ngOnInit instead of the constructor
+${' '}${' '}onDsConfigChange((config: DsConfigState) => {
 ${' '}${' '}${' '}// when the language is changed, e.g. in the footer, you probably want to update it in your translations service
 ${' '}${' '}${' '}this.yourLangService.changeLanguage(config.language)
 ${' '}${' '}})
@@ -292,18 +282,47 @@ ${' '}}
 
 </AngularFramework>
 
-<NotAngularFramework>
+<ReactFramework>
 
-To subscribe to changes of the region or language during runtime you can register your callback function using `onBalConfigChange`.
+To subscribe to changes of the region or language during runtime, listen to the corresponding event on `DsRootProvider` instead of calling `onDsConfigChange` directly.
+
+<Code language="tsx" code={`
+import { useState } from 'react'
+import { DsRootProvider } from '@baloise/ds-react'
+import type { DsLanguage } from '@baloise/ds-core'
+
+function App() {
+${' '}const [language, setLanguage] = useState<DsLanguage>()
+
+${' '}return (
+${' '}${' '}<DsRootProvider
+${' '}${' '}${' '}region="CH"
+${' '}${' '}${' '}language="de"
+${' '}${' '}${' '}onDsLanguageChange={event => {
+${' '}${' '}${' '}${' '}// when the language is changed, e.g. in the footer, you probably want to update it in your translations service
+${' '}${' '}${' '}${' '}setLanguage(event.detail.language as DsLanguage)
+${' '}${' '}${' '}}}
+${' '}${' '}>
+${' '}${' '}${' '}{/* Your application */}
+${' '}${' '}</DsRootProvider>
+${' '})
+}
+`} />
+
+</ReactFramework>
+
+<HTMLFramework>
+
+To subscribe to changes of the region or language during runtime you can register your callback function using `onDsConfigChange`.
 
 <Code language="typescript" code={`
-import { onBalConfigChange, ConfigState } from '@baloise/ds-core'
+import { onDsConfigChange, DsConfigState } from '@baloise/ds-core'
 
-onBalConfigChange((config: DsConfigState) => {
+onDsConfigChange((config: DsConfigState) => {
 // do something with the updated config here
 })
 `} />
 
-</NotAngularFramework>
+</HTMLFramework>
 
 <Footer />

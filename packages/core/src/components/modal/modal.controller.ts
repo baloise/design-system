@@ -9,6 +9,9 @@ class ModalControllerImpl implements ModalController {
 
     if (options.modalWidth !== undefined) element.modalWidth = options.modalWidth
     if (options.closable !== undefined) element.closable = options.closable
+    // Slot projection requires direct light-DOM children of ds-modal, so unwrap the
+    // detached container and move its children in rather than appending it as-is.
+    if (options.component !== undefined) element.append(...Array.from(options.component.childNodes))
 
     const root = getRootElement(document)
     root.appendChild(element)

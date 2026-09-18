@@ -1,3 +1,4 @@
+import isEqual from 'lodash/isEqual'
 import { Component, Element, Event, EventEmitter, h, Host, Method, Prop, Watch } from '@stencil/core'
 import { HTMLStencilElement } from '@stencil/core/internal'
 import {
@@ -17,17 +18,25 @@ import {
   DsComponentInterface,
   DsConfigObserver,
   DsConfigState,
+  DsIcons,
   DsLanguage,
+  DsLegalLinks,
+  DsLegalText,
   DsRegion,
+  DsSocialLinks,
   ListenToConfig,
   initializeDesignSystem,
   updateDsAllowedLanguages,
   updateDsAnimated,
   updateDsBrand,
   updateDsFallbackLanguage,
+  updateDsIcons,
   updateDsLanguage,
+  updateDsLegalLinks,
+  updateDsLegalText,
   updateDsLogger,
   updateDsRegion,
+  updateDsSocialLinks,
 } from '@global'
 import { startFocusVisible } from './root.focus.util'
 import { ROOT_BRANDS, ROOT_REGIONS } from './root.interfaces'
@@ -102,6 +111,30 @@ export class Root implements DsComponentInterface, DsConfigObserver {
   @Type('string')
   readonly fallbackLanguage?: DsLanguage
 
+  /**
+   * Merges custom icons into the global config, keyed by name. Not reflected as an attribute — pass a JS object.
+   */
+  @Prop()
+  readonly icons?: DsIcons
+
+  /**
+   * Merges per-region, per-language legal links into the global config. Not reflected as an attribute — pass a JS object.
+   */
+  @Prop()
+  readonly legalLinks?: DsLegalLinks
+
+  /**
+   * Merges per-region, per-language legal text into the global config. Not reflected as an attribute — pass a JS object.
+   */
+  @Prop()
+  readonly legalText?: DsLegalText
+
+  /**
+   * Merges per-region social links into the global config. Not reflected as an attribute — pass a JS object.
+   */
+  @Prop()
+  readonly socialLinks?: DsSocialLinks
+
   @Watch('brand')
   protected brandChanged() {
     if (this.brand) {
@@ -134,6 +167,34 @@ export class Root implements DsComponentInterface, DsConfigObserver {
   protected languageChanged() {
     if (this.language) {
       updateDsLanguage(this.language)
+    }
+  }
+
+  @Watch('icons')
+  protected iconsChanged() {
+    if (this.icons) {
+      updateDsIcons(this.icons)
+    }
+  }
+
+  @Watch('legalLinks')
+  protected legalLinksChanged() {
+    if (this.legalLinks) {
+      updateDsLegalLinks(this.legalLinks)
+    }
+  }
+
+  @Watch('legalText')
+  protected legalTextChanged() {
+    if (this.legalText) {
+      updateDsLegalText(this.legalText)
+    }
+  }
+
+  @Watch('socialLinks')
+  protected socialLinksChanged() {
+    if (this.socialLinks) {
+      updateDsSocialLinks(this.socialLinks)
     }
   }
 
@@ -187,6 +248,26 @@ export class Root implements DsComponentInterface, DsConfigObserver {
   @Event() dsFallbackLanguageChange!: EventEmitter<DsLanguage>
 
   /**
+   * Emitted when the `icons` value changes in the global config.
+   */
+  @Event() dsIconsChange!: EventEmitter<DsIcons>
+
+  /**
+   * Emitted when the `legalLinks` value changes in the global config.
+   */
+  @Event() dsLegalLinksChange!: EventEmitter<DsLegalLinks>
+
+  /**
+   * Emitted when the `legalText` value changes in the global config.
+   */
+  @Event() dsLegalTextChange!: EventEmitter<DsLegalText>
+
+  /**
+   * Emitted when the `socialLinks` value changes in the global config.
+   */
+  @Event() dsSocialLinksChange!: EventEmitter<DsSocialLinks>
+
+  /**
    * LIFECYCLE
    * ─────────────────────────────────────────────────────
    */
@@ -216,6 +297,10 @@ export class Root implements DsComponentInterface, DsConfigObserver {
     this.fallbackLanguageChanged()
     this.allowedLanguagesChanged()
     this.languageChanged()
+    this.iconsChanged()
+    this.legalLinksChanged()
+    this.legalTextChanged()
+    this.socialLinksChanged()
   }
 
   componentDidLoad() {
@@ -289,6 +374,22 @@ export class Root implements DsComponentInterface, DsConfigObserver {
 
     if (previous.fallbackLanguage !== state.fallbackLanguage) {
       this.dsFallbackLanguageChange.emit(state.fallbackLanguage)
+    }
+
+    if (!isEqual(previous.icons, state.icons)) {
+      this.dsIconsChange.emit(state.icons)
+    }
+
+    if (!isEqual(previous.legalLinks, state.legalLinks)) {
+      this.dsLegalLinksChange.emit(state.legalLinks)
+    }
+
+    if (!isEqual(previous.legalText, state.legalText)) {
+      this.dsLegalTextChange.emit(state.legalText)
+    }
+
+    if (!isEqual(previous.socialLinks, state.socialLinks)) {
+      this.dsSocialLinksChange.emit(state.socialLinks)
     }
   }
 

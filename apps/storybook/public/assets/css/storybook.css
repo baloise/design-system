@@ -76,9 +76,11 @@ button[aria-label='Show sidebar'] + span {
   border-radius: 1px !important;
 }
 
-button[title='Versions'],
-button[title='Brand theme'],
-button[title='Integration technology'] {
+button[title='Chose a region for the Design System'],
+button[title='Chose a language for the Design System'],
+button[title='Select Design System version'],
+button[title='Select a brand (theme)'],
+button[title='Chose your integration technology'] {
   background: #f6f6f6 !important;
   color: #000d6e;
   border: none;
@@ -86,16 +88,20 @@ button[title='Integration technology'] {
   font-family: 'BaloiseCreateHeadline';
 }
 
-button[title='Versions']:hover,
-button[title='Brand theme']:hover,
-button[title='Integration technology']:hover {
+button[title='Chose a region for the Design System']:hover,
+button[title='Chose a language for the Design System']:hover,
+button[title='Select Design System version']:hover,
+button[title='Select a brand (theme)']:hover,
+button[title='Chose your integration technology']:hover {
   background: #e5f1fe !important;
   color: #0014aa;
 }
 
-button[title='Versions']:active,
-button[title='Brand theme']:active,
-button[title='Integration technology']:active {
+button[title='Chose a region for the Design System']:active,
+button[title='Chose a language for the Design System']:active,
+button[title='Select Design System version']:active,
+button[title='Select a brand (theme)']:active,
+button[title='Chose your integration technology']:active {
   background: #e5f1fe !important;
   color: #000739;
 }

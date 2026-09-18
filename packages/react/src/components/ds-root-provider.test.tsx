@@ -33,7 +33,7 @@ describe('DsRootProvider', () => {
     vi.clearAllMocks()
   })
 
-  test('initializes the design system once with React form defaults', () => {
+  test('initializes the design system once', () => {
     const { rerender, unmount } = render(
       <DsRootProvider brand="helvetia" region="CH" language="de">
         <span data-testid="child">Hello</span>
@@ -45,7 +45,6 @@ describe('DsRootProvider', () => {
       brand: 'helvetia',
       region: 'CH',
       language: 'de',
-      httpFormSubmit: false,
     })
 
     rerender(
@@ -97,20 +96,30 @@ describe('DsRootProvider', () => {
     unmount()
   })
 
-  test('passes one-shot config to initialize but not to DsRoot', () => {
+  test('passes icons, legalLinks, legalText, and socialLinks to initialize and to DsRoot', () => {
     const legalLinks = { CH: { de: [{ href: 'https://example.com', label: 'Legal' }] } }
+    const legalText = { CH: { de: 'Copyright' } }
+    const socialLinks = { CH: [{ href: 'https://example.com', label: 'X', icon: 'x', ariaLabel: 'X' }] }
+    const icons = { custom: '<svg />' }
 
-    const { unmount } = render(<DsRootProvider legalLinks={legalLinks} icons={{ custom: '<svg />' }} />)
+    const { unmount } = render(
+      <DsRootProvider legalLinks={legalLinks} legalText={legalText} socialLinks={socialLinks} icons={icons} />,
+    )
 
     expect(initialize).toHaveBeenCalledWith({
       legalLinks,
-      icons: { custom: '<svg />' },
-      httpFormSubmit: false,
+      legalText,
+      socialLinks,
+      icons,
     })
+    // `<ds-root>` itself owns keeping these in sync with the global config (via its own props/watchers),
+    // so the provider forwards them as live props rather than only setting them once at init.
     expect(DsRoot).toHaveBeenCalledWith(
-      expect.not.objectContaining({
+      expect.objectContaining({
         legalLinks,
-        icons: { custom: '<svg />' },
+        legalText,
+        socialLinks,
+        icons,
       }),
     )
     unmount()
@@ -135,7 +144,6 @@ describe('DsRootProvider (server)', () => {
       brand: 'helvetia',
       region: 'CH',
       allowedLanguages: ['de', 'fr'],
-      httpFormSubmit: false,
     })
     expect(DsRoot).toHaveBeenCalledWith(
       expect.objectContaining({

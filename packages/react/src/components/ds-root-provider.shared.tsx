@@ -6,10 +6,6 @@ type DsRootProps = ComponentProps<typeof DsRootClient>
 
 export type DsRootProviderProps = Omit<DsRootProps, 'allowedLanguages'> & {
   allowedLanguages?: DsLanguage[] | string
-  icons?: DsConfig['icons']
-  legalLinks?: DsConfig['legalLinks']
-  legalText?: DsConfig['legalText']
-  socialLinks?: DsConfig['socialLinks']
 }
 
 type DsRootComponent = ComponentType<DsRootProps>
@@ -46,7 +42,6 @@ function ensureInit(config: DsConfig) {
 
   initializeDesignSystem({
     ...config,
-    httpFormSubmit: false,
   })
 }
 
@@ -86,6 +81,10 @@ export function createDsRootProvider(DsRoot: DsRootComponent) {
       <DsRoot
         {...props}
         ref={ref}
+        icons={icons}
+        legalLinks={legalLinks}
+        legalText={legalText}
+        socialLinks={socialLinks}
         {...omitUndefined({
           brand,
           region,

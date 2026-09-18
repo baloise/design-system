@@ -691,10 +691,9 @@ name="design-system-config">` tag's `data-*` attributes, but **only**
 3. the `userConfig` object passed to `initializeDesignSystem`/`setupDsConfig`
    — always wins; this is how frameworks, Storybook, and tests override
 
-Icons, `httpFormSubmit`, `legalLinks`, `legalText`, and `socialLinks` are
-**not** meta-tag-configurable — they're either structured/nested data (not
-representable in a flat `data-*` attribute) or considered JS-only
-behavioral config. See
+Icons, `legalLinks`, `legalText`, and `socialLinks` are **not**
+meta-tag-configurable — they're structured/nested data not representable
+in a flat `data-*` attribute. See
 [docs/adr/0002-ds-config-meta-tag.md](../../docs/adr/0002-ds-config-meta-tag.md)
 for the full rationale.
 
