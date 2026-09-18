@@ -239,8 +239,39 @@ $select-icon-search: url("data:image/svg+xml,%3Csvg viewBox='0 0 14 14' xmlns='h
   --mod-form-label-color: var(--ds-form-disabled-label-color);
   --mod-form-description-color: var(--ds-form-disabled-description-color);
 
-  --mod-select-color: var(--ds-form-disabled-control-value-color);
-  --mod-select-placeholder: var(--ds-form-disabled-control-placeholder-color);
+  --mod-select-text-color: var(--ds-form-disabled-control-value-color);
+  --mod-select-placeholder-color: var(--ds-form-disabled-control-placeholder-color);
+
+  // slim-select's own base stylesheet paints `.ss-main.ss-disabled` with a hard-coded
+  // background-color (mapped from --ss-disabled-color, which we in turn map from a
+  // *text*-disabled token — appropriate for slim-select's other use of that variable as
+  // a disabled option's text color, but wrong here). That selector's specificity (2
+  // classes) beats the plain `.ss-main` reset above (1 class), so it wins regardless of
+  // source order — the Field container's own disabled background never shows through.
+  // Override it explicitly with matching specificity so the container's light disabled
+  // background (set via --mod-form-container-background above) is what's visible.
+  .ss-main.ss-disabled {
+    background: none;
+
+    .ss-arrow {
+      background-color: var(--ds-form-disabled-control-value-color);
+    }
+
+    // Disabled chips read as inert tags, not editable form values: flatten them to the
+    // standard disabled-tag look (dark-grey fill, white text) and drop the delete button
+    // entirely — there's nothing to remove while the control is disabled.
+    .ss-values .ss-value {
+      background-color: var(--ds-tag-disabled-color-background);
+
+      .ss-value-text {
+        color: var(--ds-tag-disabled-color-text);
+      }
+
+      .ss-value-delete {
+        display: none;
+      }
+    }
+  }
 }
 
 /**
@@ -269,6 +300,7 @@ $select-icon-search: url("data:image/svg+xml,%3Csvg viewBox='0 0 14 14' xmlns='h
     margin: 0;
     border: none;
     box-shadow: none;
+    background: none;
     font-family: var(--_select-content-family);
   }
 

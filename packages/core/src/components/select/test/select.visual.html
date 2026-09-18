@@ -25,6 +25,27 @@
         ></ds-select>
       </section>
 
+      <!-- Disabled -->
+      <section data-testid="disabled">
+        <span>Disabled</span>
+        <ds-select disabled id="disabled" label="Country" description="Select your country of residence"></ds-select>
+        <ds-select
+          disabled
+          id="disabled-value"
+          label="Country"
+          description="Select your country of residence"
+          value="it"
+        ></ds-select>
+        <ds-select
+          disabled
+          id="disabled-multi-value"
+          label="Languages"
+          description="Select all languages you speak"
+          multiple
+          value="it,ch"
+        ></ds-select>
+      </section>
+
       <!-- Invalid via slot (auto-detected, no invalid prop set) -->
       <section data-testid="invalid-slot">
         <span>Invalid via slot</span>
@@ -168,6 +189,10 @@
 
       document.getElementById('basic').options = countryOptions
       document.getElementById('basic-value').options = countryOptions
+      document.getElementById('disabled').options = countryOptions
+      document.getElementById('disabled-value').options = countryOptions
+      document.getElementById('disabled-multi-value').options = languageOptions
+      document.getElementById('disabled-multi-value').value = ['de', 'it']
       document.getElementById('searchable').options = countryOptions
       document.getElementById('searchable-value').options = countryOptions
       document.getElementById('clearable').options = countryOptions

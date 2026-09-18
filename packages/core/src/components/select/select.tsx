@@ -275,6 +275,12 @@ export class DsSelect implements DsComponentInterface, FieldInterface {
   componentDidLoad() {
     if (!this.selectEl || !this.popupEl || !this.el.shadowRoot) return
 
+    // `multiple` may not yet reflect its final attribute-derived value at connectedCallback time,
+    // so a comma-separated string value can slip through un-split. Re-normalize here, once every
+    // prop is guaranteed settled, before it's baked into the picker's initial selection.
+    const normalizedValue = this.normalizeValue(this.value)
+    if (normalizedValue !== this.value) this.value = normalizedValue
+
     this.readOptionsFromSlot()
 
     this.picker = new SelectPickerController({

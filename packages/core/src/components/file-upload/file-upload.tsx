@@ -530,6 +530,7 @@ export class FileUpload implements DsComponentInterface, FieldInterface {
                     icon="trash"
                     square
                     color="secondary"
+                    title={`${removeFileLabel} ${file.name}`}
                     a11yLabel={`${removeFileLabel} ${file.name}`}
                     disabled={isDisabled}
                     onKeyDown={(ev: KeyboardEvent) => {

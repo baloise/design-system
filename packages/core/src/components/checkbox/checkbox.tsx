@@ -60,14 +60,14 @@ export class Checkbox implements DsComponentInterface {
   readonly name: string = this.inputId
 
   /**
-   * Label of the radio item.
+   * Label of the checkbox item.
    */
   @Prop()
   @Type('string')
   readonly label: string = ''
 
   /**
-   * Defines the position of the label, either before or after the radio input. Default is after.
+   * Defines the position of the label, either before or after the checkbox input. Default is after.
    */
   @Prop()
   @Required()

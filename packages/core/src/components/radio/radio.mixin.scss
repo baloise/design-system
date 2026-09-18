@@ -16,6 +16,7 @@
     @include vars.local(radio-label-base-color, inherit);
     @include vars.local(radio-label-hover-color, var(--ds-global-color-sky-5));
     @include vars.local(radio-label-active-color, var(--ds-global-color-primary-6));
+    @include vars.local(radio-label-disabled-color, var(--ds-radio-label-color-disabled));
 
     // dimensions
     @include vars.local(radio-size, 1.5rem);
@@ -47,6 +48,9 @@
     // unchecked active/pressed
     @include vars.local(radio-unchecked-active-color-background, var(--ds-global-color-grey-2));
     @include vars.local(radio-unchecked-active-color-border, var(--ds-global-color-primary-6));
+
+    // unchecked disabled
+    @include vars.local(radio-unchecked-disabled-color-background, var(--ds-radio-unchecked-color-disabled-background));
 
     // checked base
     @include vars.local(radio-checked-base-color-background, var(--ds-global-color-primary-5));
@@ -128,6 +132,7 @@
     border-radius: var(--_radio-radius);
     vertical-align: top;
     cursor: pointer;
+    outline: none;
     transition:
       background 0.3s ease-in-out,
       border-color 0.3s ease-in-out;
@@ -138,9 +143,7 @@
   }
 
   #{$wrapper} input[type='radio']:focus-visible {
-    outline: var(--ds-alias-interaction-focus-size-outer, 2px) solid var(--ds-alias-interaction-focus-color-base);
-    outline-offset: 2px;
-    border-radius: var(--_radio-radius);
+    @include focus-shadow();
   }
 
   // Unchecked hover
@@ -229,11 +232,11 @@
 @mixin _disabled-vars() {
   cursor: default;
   pointer-events: none;
-  --mod-radio-label-base-color: var(--ds-global-color-grey-5);
-  --mod-radio-label-hover-color: var(--ds-global-color-grey-5);
-  --mod-radio-label-active-color: var(--ds-global-color-grey-5);
+  --mod-radio-label-base-color: var(--_radio-label-disabled-color);
+  --mod-radio-label-hover-color: var(--_radio-label-disabled-color);
+  --mod-radio-label-active-color: var(--_radio-label-disabled-color);
 
-  --mod-radio-unchecked-base-color-background: var(--ds-global-color-grey-2);
+  --mod-radio-unchecked-base-color-background: var(--_radio-unchecked-disabled-color-background);
   --mod-radio-unchecked-base-color-border: var(--ds-alias-border-color-disabled);
   --mod-radio-checked-base-color-background: var(--ds-alias-border-color-disabled);
   --mod-radio-checked-base-color-border: var(--ds-alias-border-color-disabled);

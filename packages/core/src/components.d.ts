@@ -51,7 +51,7 @@ import { TagCloseClickDetail, TagColor, TagPlacement, TagSize } from "./componen
 import { TextAlign, TextColor, TextSize, TextSpace } from "./components/text/text.interfaces";
 import { TextareaBlurDetail, TextareaChangeDetail, TextareaClickDetail, TextareaFocusDetail, TextareaInputDetail, TextareaInputMode, TextareaKeyPressDetail, TextareaWrap } from "./components/textarea/textarea.interfaces";
 import { ToastActionClickDetail, ToastCloseClickDetail, ToastColor, ToastDuration } from "./components/alert/toast/toast.interfaces";
-import { ToggleBlurDetail, ToggleChangeDetail, ToggleFocusDetail, ToggleGroupColumns, ToggleLabelPosition, ToggleTileColor } from "./components/toggle/toggle.interfaces";
+import { ToggleBlurDetail, ToggleChangeDetail, ToggleFocusDetail, ToggleLabelPosition } from "./components/toggle/toggle.interfaces";
 import { TooltipDidAnimateDetail, TooltipPlacement, TooltipWillAnimateDetail } from "./components/tooltip/tooltip.interfaces";
 export { AccordionButtonColor, AccordionButtonSize, AccordionMarker, AccordionMarkerPosition, AccordionSummaryLevel, AccordionToggleDetail } from "./components/accordion/accordion.interfaces";
 export { DsBrand, DsConfigState, DsLanguage, DsRegion } from "./global/index";
@@ -99,7 +99,7 @@ export { TagCloseClickDetail, TagColor, TagPlacement, TagSize } from "./componen
 export { TextAlign, TextColor, TextSize, TextSpace } from "./components/text/text.interfaces";
 export { TextareaBlurDetail, TextareaChangeDetail, TextareaClickDetail, TextareaFocusDetail, TextareaInputDetail, TextareaInputMode, TextareaKeyPressDetail, TextareaWrap } from "./components/textarea/textarea.interfaces";
 export { ToastActionClickDetail, ToastCloseClickDetail, ToastColor, ToastDuration } from "./components/alert/toast/toast.interfaces";
-export { ToggleBlurDetail, ToggleChangeDetail, ToggleFocusDetail, ToggleGroupColumns, ToggleLabelPosition, ToggleTileColor } from "./components/toggle/toggle.interfaces";
+export { ToggleBlurDetail, ToggleChangeDetail, ToggleFocusDetail, ToggleLabelPosition } from "./components/toggle/toggle.interfaces";
 export { TooltipDidAnimateDetail, TooltipPlacement, TooltipWillAnimateDetail } from "./components/tooltip/tooltip.interfaces";
 export namespace Components {
     /**
@@ -737,12 +737,12 @@ export namespace Components {
          */
         "invalid": boolean;
         /**
-          * Label of the radio item.
+          * Label of the checkbox item.
           * @default ''
          */
         "label": string;
         /**
-          * Defines the position of the label, either before or after the radio input. Default is after.
+          * Defines the position of the label, either before or after the checkbox input. Default is after.
           * @default 'right'
          */
         "labelPosition": CheckboxLabelPosition;
@@ -3650,22 +3650,6 @@ export namespace Components {
          */
         "checked": boolean;
         /**
-          * Defines the color of the tile toggle.
-         */
-        "color"?: ToggleTileColor;
-        /**
-          * @default 1
-         */
-        "cols": ToggleGroupColumns;
-        /**
-          * @default 1
-         */
-        "colsMobile": ToggleGroupColumns;
-        /**
-          * @default 1
-         */
-        "colsTablet": ToggleGroupColumns;
-        /**
           * If `true`, the toggle is dense and has less size.
           * @default false
          */
@@ -3705,11 +3689,6 @@ export namespace Components {
           * @default false
          */
         "required": boolean;
-        /**
-          * Defines the layout of the input
-          * @default false
-         */
-        "tile": boolean;
         /**
           * A DOMString representing the value of the toggle. This is not displayed on the client-side, but on the server this is the value given to the data submitted with the toggle's name.
           * @default 'on'
@@ -5867,12 +5846,12 @@ declare namespace LocalJSX {
          */
         "invalid"?: boolean;
         /**
-          * Label of the radio item.
+          * Label of the checkbox item.
           * @default ''
          */
         "label"?: string;
         /**
-          * Defines the position of the label, either before or after the radio input. Default is after.
+          * Defines the position of the label, either before or after the checkbox input. Default is after.
           * @default 'right'
          */
         "labelPosition"?: CheckboxLabelPosition;
@@ -9044,22 +9023,6 @@ declare namespace LocalJSX {
          */
         "checked"?: boolean;
         /**
-          * Defines the color of the tile toggle.
-         */
-        "color"?: ToggleTileColor;
-        /**
-          * @default 1
-         */
-        "cols"?: ToggleGroupColumns;
-        /**
-          * @default 1
-         */
-        "colsMobile"?: ToggleGroupColumns;
-        /**
-          * @default 1
-         */
-        "colsTablet"?: ToggleGroupColumns;
-        /**
           * If `true`, the toggle is dense and has less size.
           * @default false
          */
@@ -9115,11 +9078,6 @@ declare namespace LocalJSX {
           * @default false
          */
         "required"?: boolean;
-        /**
-          * Defines the layout of the input
-          * @default false
-         */
-        "tile"?: boolean;
         /**
           * A DOMString representing the value of the toggle. This is not displayed on the client-side, but on the server this is the value given to the data submitted with the toggle's name.
           * @default 'on'
@@ -9897,10 +9855,6 @@ declare namespace LocalJSX {
         "autoInvalidOff": boolean;
         "checked": boolean;
         "dense": boolean;
-        "color": ToggleTileColor;
-        "cols": ToggleGroupColumns;
-        "colsMobile": ToggleGroupColumns;
-        "colsTablet": ToggleGroupColumns;
         "disabled": boolean;
         "invalid": boolean;
         "label": string;
@@ -9908,7 +9862,6 @@ declare namespace LocalJSX {
         "name": string;
         "readonly": boolean;
         "required": boolean;
-        "tile": boolean;
         "value": string;
     }
     interface DsTooltipAttributes {

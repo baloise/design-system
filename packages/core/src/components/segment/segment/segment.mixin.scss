@@ -28,7 +28,6 @@ $_max-items: 8;
     @include vars.local(segment-item-font-weight, var(--ds-segment-item-font-weight));
     @include vars.local(segment-description-font-size, var(--ds-segment-description-font-size));
     @include vars.local(segment-description-font-weight, var(--ds-segment-description-font-weight));
-    @include vars.local(segment-focus-color, var(--ds-segment-focus-color));
 
     @include vars.local(segment-item-unselected-color-base, var(--ds-segment-item-unselected-color-base));
     @include vars.local(segment-item-unselected-color-hover, var(--ds-segment-item-unselected-color-hover));
@@ -162,11 +161,14 @@ $_max-items: 8;
         padding: 0;
         border-radius: inherit;
         cursor: pointer;
+        outline: none;
+        transition-property: box-shadow;
+        transition-duration: 0.2s;
+        transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
 
         &:focus-visible {
-          outline: var(--ds-alias-interaction-focus-size-outer, 2px) solid var(--_segment-focus-color);
-          outline-offset: 2px;
           border-radius: inherit;
+          @include focus-shadow();
         }
       }
 

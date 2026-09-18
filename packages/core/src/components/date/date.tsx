@@ -54,6 +54,12 @@ export class DsDate implements DsComponentInterface, FieldInterface, FormControl
   private triggerEl: HTMLButtonElement | undefined
   private dateMask: DateMask | undefined
   private datePicker: DatePickerController | undefined
+  // Tracks which element the current `datePicker` is actually mounted to. Inline mode swaps
+  // between rendering the always-visible calendar (`#inline`) and, while disabled, the regular
+  // input+popup markup (`#popup`) — see `render()`. Both branches assign the same `popupHostEl`
+  // ref, so `componentDidRender()` compares against this to detect the swap and remount the
+  // picker against whichever container is actually in the DOM.
+  private pickerHostEl: HTMLDivElement | undefined
 
   private updatingFromMask = false
   dateId = `ds-date-${DateIds++}`
@@ -361,36 +367,52 @@ export class DsDate implements DsComponentInterface, FieldInterface, FormControl
   componentDidLoad() {
     this.control.componentDidLoad()
     this.initMask()
-    if (this.popupHostEl && this.el.shadowRoot) {
-      this.datePicker = new DatePickerController({
-        popupHostEl: this.popupHostEl,
-        shadowRoot: this.el.shadowRoot,
-        language: this.language,
-        region: this.region,
-        min: this.min,
-        max: this.max,
-        minYear: this.minYearProp,
-        maxYear: this.maxYearProp,
-        defaultDate: this.defaultDate,
-        allowedDates: this.allowedDates,
-        initialValue: this.value,
-        onSelect: iso => {
-          this.updatingFromMask = true
-          this.value = iso
-          this.control.inputValue = iso
-          this.dateMask?.syncFromISO(iso)
-          this.displayValue = isoToDisplay(iso, getDisplayFormat(this.region))
-          this.dsChange.emit(iso)
-          if (this.inline) this.dsBlur.emit(new FocusEvent('blur'))
-          this.updatingFromMask = false
-          this.isOpen = false
-          this.triggerEl?.focus()
-        },
-        onClose: () => {
-          this.isOpen = false
-        },
-      })
-    }
+    this.mountDatePicker()
+  }
+
+  // Inline mode renders either the always-visible calendar (`#inline`) or, while disabled, the
+  // regular input+popup markup (`#popup` — see `render()`) — both assign `popupHostEl` via ref,
+  // so toggling `disabled` at runtime swaps which element is actually in the DOM. air-datepicker
+  // attaches to a specific node at construction, so the picker must be torn down and rebuilt
+  // against the new one rather than just reconfigured. Called once from `componentDidLoad()` and
+  // again from `componentDidRender()` whenever that swap is detected.
+  private mountDatePicker() {
+    if (!this.popupHostEl || !this.el.shadowRoot || this.popupHostEl === this.pickerHostEl) return
+
+    this.datePicker?.destroy()
+    this.pickerHostEl = this.popupHostEl
+    this.datePicker = new DatePickerController({
+      popupHostEl: this.popupHostEl,
+      shadowRoot: this.el.shadowRoot,
+      language: this.language,
+      region: this.region,
+      min: this.min,
+      max: this.max,
+      minYear: this.minYearProp,
+      maxYear: this.maxYearProp,
+      defaultDate: this.defaultDate,
+      allowedDates: this.allowedDates,
+      initialValue: this.value,
+      onSelect: iso => {
+        this.updatingFromMask = true
+        this.value = iso
+        this.control.inputValue = iso
+        this.dateMask?.syncFromISO(iso)
+        this.displayValue = isoToDisplay(iso, getDisplayFormat(this.region))
+        this.dsChange.emit(iso)
+        if (this.inline) this.dsBlur.emit(new FocusEvent('blur'))
+        this.updatingFromMask = false
+        this.isOpen = false
+        this.triggerEl?.focus()
+      },
+      onClose: () => {
+        this.isOpen = false
+      },
+    })
+  }
+
+  componentDidRender() {
+    this.mountDatePicker()
   }
 
   disconnectedCallback() {
@@ -606,9 +628,15 @@ export class DsDate implements DsComponentInterface, FieldInterface, FormControl
     const chooseDateLabel = i18nDsTriggerButton[this.language].chooseDate
     const isInvalid = this.invalid || this.hasInvalidTextSlotContent
 
+    // Inline mode normally renders the calendar directly with no trigger to gate it behind. While
+    // disabled there's nothing safe to keep interactive inside it (nav buttons, day cells), so
+    // instead of disabling every control piecemeal, fall back to the regular input+popup markup —
+    // same as the non-inline disabled state, just with the popup unreachable (no trigger renders).
+    const showInlineCalendar = this.inline && !this.disabled
+
     return (
       <Field
-        cssClasses={{ 'is-inline': this.inline }}
+        cssClasses={{ 'is-inline': showInlineCalendar }}
         disabled={this.disabled}
         color={this.color}
         invalid={isInvalid}
@@ -620,7 +648,7 @@ export class DsDate implements DsComponentInterface, FieldInterface, FormControl
         language={this.language}
         inputId="input"
       >
-        {this.inline && (
+        {showInlineCalendar && (
           <div
             id="inline"
             role="group"
@@ -628,7 +656,7 @@ export class DsDate implements DsComponentInterface, FieldInterface, FormControl
             ref={el => (this.popupHostEl = el as HTMLDivElement)}
           ></div>
         )}
-        {!this.inline && (
+        {!showInlineCalendar && (
           <Fragment>
             <input
               id="input"

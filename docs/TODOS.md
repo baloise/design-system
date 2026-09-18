@@ -96,19 +96,20 @@ These improvements help our components work seamlessly across all supported fram
 | footer (app)     | WC       | ✅     | ✅   | ✅   | ✅     | ✅        | ✅     | ⬜    |
 | sheet            | WC       | ✅     | ✅   | ✅   | ✅     | ✅        | ⬜     | ⬜    |
 | -- FORMS --      | ###      | ###    | ###  | ###  | ###    | ###       | ###    | ###   |
-| input            | WC & CSS | ✅     | ⬜   | ✅   | ✅     | ✅        | ✅     | ⬜    |
-| textarea         | WC & CSS | ✅     | ⬜   | ✅   | ✅     | ✅        | ✅     | ⬜    |
-| time-input       | WC & CSS | ✅     | ⬜   | ✅   | ✅     | ✅        | ✅     | ⬜    |
-| number-input     | WC       | ✅     | ⬜   | ✅   | ✅     | ✅        | ✅     | ⬜    |
-| input-slider     | WC       | ✅     | ⬜   | ✅   | ✅     | ✅        | ✅     | ⬜    |
-| input-stepper    | WC       | ✅     | ⬜   | ✅   | ✅     | ✅        | ✅     | ⬜    |
-| select           | WC & CSS | ✅     | ⬜   | ✅   | ✅     | ✅        | ✅     | ⬜    |
-| date             | WC       | ✅     | ⬜   | ✅   | ✅     | ✅        | ✅     | ⬜    |
-| radio            | WC & CSS | ✅     | ⬜   | ✅   | ✅     | ✅        | ✅     | ⬜    |
-| toggle           | WC & CSS | ✅     | ⬜   | ✅   | ✅     | ✅        | ✅     | ⬜    |
-| checkbox         | WC & CSS | ✅     | ⬜   | ✅   | ✅     | ✅        | ✅     | ⬜    |
-| segment          | WC & CSS | ✅     | ⬜   | ✅   | ✅     | ✅        | ✅     | ⬜    |
-| file-upload      | WC       | ✅     | ⬜   | ✅   | ✅     | ✅        | ✅     | ⬜    |
+| input            | WC & CSS | ✅     | ✅   | ✅   | ✅     | ✅        | ✅     | ⬜    |
+| textarea         | WC & CSS | ✅     | ✅   | ✅   | ✅     | ✅        | ✅     | ⬜    |
+| time-input       | WC & CSS | ✅     | ✅   | ✅   | ✅     | ✅        | ✅     | ⬜    |
+| number-input     | WC       | ✅     | ✅   | ✅   | ✅     | ✅        | ✅     | ⬜    |
+| input-slider     | WC       | ✅     | ✅   | ✅   | ✅     | ✅        | ✅     | ⬜    |
+| input-stepper    | WC       | ✅     | ✅   | ✅   | ✅     | ✅        | ✅     | ⬜    |
+| input-phone      | WC       | ✅     | ✅   | ✅   | ✅     | ✅        | ✅     | ⬜    |
+| select           | WC & CSS | ✅     | ✅   | ✅   | ✅     | ✅        | ✅     | ⬜    |
+| date             | WC       | ✅     | ✅   | ✅   | ✅     | ✅        | ✅     | ⬜    |
+| toggle           | WC & CSS | ✅     | ✅   | ✅   | ✅     | ✅        | ✅     | ⬜    |
+| checkbox         | WC & CSS | ✅     | ✅   | ✅   | ✅     | ✅        | ✅     | ⬜    |
+| radio            | WC & CSS | ✅     | ✅   | ✅   | ✅     | ✅        | ✅     | ⬜    |
+| segment          | WC & CSS | ✅     | ✅   | ✅   | ✅     | ✅        | ✅     | ⬜    |
+| file-upload      | WC       | ✅     | ✅   | ✅   | ✅     | ✅        | ✅     | ⬜    |
 | ag-grid          | Lib      | ✅     | ✅   | ✅   | ✅     | ✅        | ✅     | ⬜    |
 
 ## Tokens & Figma

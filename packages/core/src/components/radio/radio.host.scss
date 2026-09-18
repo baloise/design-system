@@ -92,6 +92,10 @@
   input[type='radio'] {
     @include visually-hidden();
   }
+
+  label:has(input[type='radio']:focus-visible) {
+    @include focus-shadow();
+  }
 }
 
 /**

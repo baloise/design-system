@@ -17684,7 +17684,7 @@
           "mutable": false,
           "attr": "label",
           "reflectToAttr": false,
-          "docs": "Label of the radio item.",
+          "docs": "Label of the checkbox item.",
           "docsTags": [
             {
               "name": "default",
@@ -17720,7 +17720,7 @@
           "mutable": false,
           "attr": "label-position",
           "reflectToAttr": false,
-          "docs": "Defines the position of the label, either before or after the radio input. Default is after.",
+          "docs": "Defines the position of the label, either before or after the checkbox input. Default is after.",
           "docsTags": [
             {
               "name": "default",
@@ -18195,6 +18195,33 @@
           ]
         },
         {
+          "name": "🧩 Component / Checkbox / Label / Color / Disabled",
+          "cssVarName": "--ds-checkbox-label-color-disabled",
+          "value": "{🔗 Alias.🔤 Text.Color.Grey}",
+          "nativeValue": "#747474",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-grey-5",
+              "figmaName": "Global / Color / Grey / 5"
+            },
+            {
+              "cssVar": "--ds-text-color-grey",
+              "figmaName": "Alias / Text / Color / Grey"
+            },
+            {
+              "cssVar": "--ds-checkbox-label-color-disabled",
+              "figmaName": "Component / Checkbox / Label / Color / Disabled"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Checkbox",
+            "Label",
+            "Color",
+            "Disabled"
+          ]
+        },
+        {
           "name": "🧩 Component / Checkbox / Border / Width",
           "cssVarName": "--ds-checkbox-border-width",
           "value": "{🔗 Alias.▭ Border.Width.Base}",
@@ -18576,6 +18603,34 @@
             "Unchecked",
             "Color",
             "Active",
+            "Background"
+          ]
+        },
+        {
+          "name": "🧩 Component / Checkbox / Unchecked / Color / Disabled / Background",
+          "cssVarName": "--ds-checkbox-unchecked-color-disabled-background",
+          "value": "{🔗 Alias.🎨 Surface.Grey}",
+          "nativeValue": "#E8E8E8",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-grey-2",
+              "figmaName": "Global / Color / Grey / 2"
+            },
+            {
+              "cssVar": "--ds-surface-grey",
+              "figmaName": "Alias / Surface / Grey"
+            },
+            {
+              "cssVar": "--ds-checkbox-unchecked-color-disabled-background",
+              "figmaName": "Component / Checkbox / Unchecked / Color / Disabled / Background"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Checkbox",
+            "Unchecked",
+            "Color",
+            "Disabled",
             "Background"
           ]
         },
@@ -44711,6 +44766,33 @@
           ]
         },
         {
+          "name": "🧩 Component / Radio / Label / Color / Disabled",
+          "cssVarName": "--ds-radio-label-color-disabled",
+          "value": "{🔗 Alias.🔤 Text.Color.Grey}",
+          "nativeValue": "#747474",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-grey-5",
+              "figmaName": "Global / Color / Grey / 5"
+            },
+            {
+              "cssVar": "--ds-text-color-grey",
+              "figmaName": "Alias / Text / Color / Grey"
+            },
+            {
+              "cssVar": "--ds-radio-label-color-disabled",
+              "figmaName": "Component / Radio / Label / Color / Disabled"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Radio",
+            "Label",
+            "Color",
+            "Disabled"
+          ]
+        },
+        {
           "name": "🧩 Component / Radio / Border / Width",
           "cssVarName": "--ds-radio-border-width",
           "value": "{🔗 Alias.▭ Border.Width.Base}",
@@ -45092,6 +45174,34 @@
             "Unchecked",
             "Color",
             "Active",
+            "Background"
+          ]
+        },
+        {
+          "name": "🧩 Component / Radio / Unchecked / Color / Disabled / Background",
+          "cssVarName": "--ds-radio-unchecked-color-disabled-background",
+          "value": "{🔗 Alias.🎨 Surface.Grey}",
+          "nativeValue": "#E8E8E8",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-grey-2",
+              "figmaName": "Global / Color / Grey / 2"
+            },
+            {
+              "cssVar": "--ds-surface-grey",
+              "figmaName": "Alias / Surface / Grey"
+            },
+            {
+              "cssVar": "--ds-radio-unchecked-color-disabled-background",
+              "figmaName": "Component / Radio / Unchecked / Color / Disabled / Background"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Radio",
+            "Unchecked",
+            "Color",
+            "Disabled",
             "Background"
           ]
         },
@@ -52250,7 +52360,7 @@
           },
           "mutable": false,
           "attr": "color",
-          "reflectToAttr": false,
+          "reflectToAttr": true,
           "docs": "The shape color",
           "docsTags": [
             {
@@ -52325,7 +52435,7 @@
           },
           "mutable": false,
           "attr": "rotation",
-          "reflectToAttr": false,
+          "reflectToAttr": true,
           "docs": "The shape rotation",
           "docsTags": [
             {
@@ -52380,7 +52490,7 @@
           },
           "mutable": false,
           "attr": "variation",
-          "reflectToAttr": false,
+          "reflectToAttr": true,
           "docs": "The shape variation",
           "docsTags": [
             {
@@ -64623,58 +64733,6 @@
           "setter": false
         },
         {
-          "name": "color",
-          "type": "\"green\" | \"purple\" | \"red\" | \"yellow\" | undefined",
-          "complexType": {
-            "original": "ToggleTileColor",
-            "resolved": "\"green\" | \"purple\" | \"red\" | \"yellow\" | undefined",
-            "references": {
-              "ToggleTileColor": {
-                "location": "import",
-                "path": "./toggle.interfaces",
-                "id": "src/components/toggle/toggle.interfaces.ts::ToggleTileColor",
-                "referenceLocation": "ToggleTileColor"
-              }
-            }
-          },
-          "mutable": false,
-          "attr": "color",
-          "reflectToAttr": false,
-          "docs": "Defines the color of the tile toggle.",
-          "docsTags": [],
-          "values": [
-            {
-              "value": "green",
-              "type": "string"
-            },
-            {
-              "value": "purple",
-              "type": "string"
-            },
-            {
-              "value": "red",
-              "type": "string"
-            },
-            {
-              "value": "yellow",
-              "type": "string"
-            },
-            {
-              "type": "undefined"
-            }
-          ],
-          "optional": true,
-          "required": false,
-          "getter": false,
-          "setter": false,
-          "oneOfValues": [
-            "purple",
-            "green",
-            "yellow",
-            "red"
-          ]
-        },
-        {
           "name": "dense",
           "type": "boolean",
           "complexType": {
@@ -64910,35 +64968,6 @@
           "attr": "required",
           "reflectToAttr": true,
           "docs": "If `true`, the user must fill in a value before submitting a form.",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "false"
-            }
-          ],
-          "default": "false",
-          "values": [
-            {
-              "type": "boolean"
-            }
-          ],
-          "optional": false,
-          "required": false,
-          "getter": false,
-          "setter": false
-        },
-        {
-          "name": "tile",
-          "type": "boolean",
-          "complexType": {
-            "original": "boolean",
-            "resolved": "boolean",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "tile",
-          "reflectToAttr": false,
-          "docs": "Defines the layout of the input",
           "docsTags": [
             {
               "name": "default",
@@ -65224,6 +65253,33 @@
             "Label",
             "Color",
             "Active"
+          ]
+        },
+        {
+          "name": "🧩 Component / Toggle / Label / Color / Disabled",
+          "cssVarName": "--ds-toggle-label-color-disabled",
+          "value": "{🔗 Alias.🔤 Text.Color.Grey}",
+          "nativeValue": "#747474",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-grey-5",
+              "figmaName": "Global / Color / Grey / 5"
+            },
+            {
+              "cssVar": "--ds-text-color-grey",
+              "figmaName": "Alias / Text / Color / Grey"
+            },
+            {
+              "cssVar": "--ds-toggle-label-color-disabled",
+              "figmaName": "Component / Toggle / Label / Color / Disabled"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Toggle",
+            "Label",
+            "Color",
+            "Disabled"
           ]
         },
         {
@@ -65640,6 +65696,70 @@
           ]
         },
         {
+          "name": "🧩 Component / Toggle / Unchecked / Color / Disabled / Background",
+          "cssVarName": "--ds-toggle-unchecked-color-disabled-background",
+          "value": "{🔗 Alias.🎬 Action.Disabled.Surface.Base}",
+          "nativeValue": "#E8E8E8",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-grey-2",
+              "figmaName": "Global / Color / Grey / 2"
+            },
+            {
+              "cssVar": "--ds-surface-disabled",
+              "figmaName": "Alias / Surface / Disabled"
+            },
+            {
+              "cssVar": "--ds-action-disabled-surface-base",
+              "figmaName": "Alias / Action / Disabled / Surface / Base"
+            },
+            {
+              "cssVar": "--ds-toggle-unchecked-color-disabled-background",
+              "figmaName": "Component / Toggle / Unchecked / Color / Disabled / Background"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Toggle",
+            "Unchecked",
+            "Color",
+            "Disabled",
+            "Background"
+          ]
+        },
+        {
+          "name": "🧩 Component / Toggle / Unchecked / Color / Disabled / Tick",
+          "cssVarName": "--ds-toggle-unchecked-color-disabled-tick",
+          "value": "{🔗 Alias.🎬 Action.Disabled.Text.Base}",
+          "nativeValue": "#313131",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-grey-6",
+              "figmaName": "Global / Color / Grey / 6"
+            },
+            {
+              "cssVar": "--ds-text-color-disabled",
+              "figmaName": "Alias / Text / Color / Disabled"
+            },
+            {
+              "cssVar": "--ds-action-disabled-text-base",
+              "figmaName": "Alias / Action / Disabled / Text / Base"
+            },
+            {
+              "cssVar": "--ds-toggle-unchecked-color-disabled-tick",
+              "figmaName": "Component / Toggle / Unchecked / Color / Disabled / Tick"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Toggle",
+            "Unchecked",
+            "Color",
+            "Disabled",
+            "Tick"
+          ]
+        },
+        {
           "name": "🧩 Component / Toggle / Checked / Color / Base / Background",
           "cssVarName": "--ds-toggle-checked-color-base-background",
           "value": "{🔗 Alias.🎨 Surface.SuccessDark}",
@@ -65832,6 +65952,70 @@
             "Checked",
             "Color",
             "Active",
+            "Tick"
+          ]
+        },
+        {
+          "name": "🧩 Component / Toggle / Checked / Color / Disabled / Background",
+          "cssVarName": "--ds-toggle-checked-color-disabled-background",
+          "value": "{🔗 Alias.🎬 Action.Disabled.Text.Base}",
+          "nativeValue": "#313131",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-grey-6",
+              "figmaName": "Global / Color / Grey / 6"
+            },
+            {
+              "cssVar": "--ds-text-color-disabled",
+              "figmaName": "Alias / Text / Color / Disabled"
+            },
+            {
+              "cssVar": "--ds-action-disabled-text-base",
+              "figmaName": "Alias / Action / Disabled / Text / Base"
+            },
+            {
+              "cssVar": "--ds-toggle-checked-color-disabled-background",
+              "figmaName": "Component / Toggle / Checked / Color / Disabled / Background"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Toggle",
+            "Checked",
+            "Color",
+            "Disabled",
+            "Background"
+          ]
+        },
+        {
+          "name": "🧩 Component / Toggle / Checked / Color / Disabled / Tick",
+          "cssVarName": "--ds-toggle-checked-color-disabled-tick",
+          "value": "{🔗 Alias.🎬 Action.Disabled.Surface.Base}",
+          "nativeValue": "#E8E8E8",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-grey-2",
+              "figmaName": "Global / Color / Grey / 2"
+            },
+            {
+              "cssVar": "--ds-surface-disabled",
+              "figmaName": "Alias / Surface / Disabled"
+            },
+            {
+              "cssVar": "--ds-action-disabled-surface-base",
+              "figmaName": "Alias / Action / Disabled / Surface / Base"
+            },
+            {
+              "cssVar": "--ds-toggle-checked-color-disabled-tick",
+              "figmaName": "Component / Toggle / Checked / Color / Disabled / Tick"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "Toggle",
+            "Checked",
+            "Color",
+            "Disabled",
             "Tick"
           ]
         },
@@ -69562,16 +69746,6 @@
       "declaration": "interface KeyboardEvent extends UIEvent {\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/KeyboardEvent/altKey) */\n    readonly altKey: boolean;\n    /**\n     * @deprecated\n     *\n     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/KeyboardEvent/charCode)\n     */\n    readonly charCode: number;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/KeyboardEvent/code) */\n    readonly code: string;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/KeyboardEvent/ctrlKey) */\n    readonly ctrlKey: boolean;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/KeyboardEvent/isComposing) */\n    readonly isComposing: boolean;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/KeyboardEvent/key) */\n    readonly key: string;\n    /**\n     * @deprecated\n     *\n     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/KeyboardEvent/keyCode)\n     */\n    readonly keyCode: number;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/KeyboardEvent/location) */\n    readonly location: number;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/KeyboardEvent/metaKey) */\n    readonly metaKey: boolean;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/KeyboardEvent/repeat) */\n    readonly repeat: boolean;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/KeyboardEvent/shiftKey) */\n    readonly shiftKey: boolean;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/KeyboardEvent/getModifierState) */\n    getModifierState(keyArg: string): boolean;\n    /**\n     * @deprecated\n     *\n     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/KeyboardEvent/initKeyboardEvent)\n     */\n    initKeyboardEvent(typeArg: string, bubblesArg?: boolean, cancelableArg?: boolean, viewArg?: Window | null, keyArg?: string, locationArg?: number, ctrlKey?: boolean, altKey?: boolean, shiftKey?: boolean, metaKey?: boolean): void;\n    readonly DOM_KEY_LOCATION_STANDARD: 0x00;\n    readonly DOM_KEY_LOCATION_LEFT: 0x01;\n    readonly DOM_KEY_LOCATION_RIGHT: 0x02;\n    readonly DOM_KEY_LOCATION_NUMPAD: 0x03;\n}",
       "docstring": "KeyboardEvent objects describe a user interaction with the keyboard; each event describes a single interaction between the user and a key (or combination of a key with modifier keys) on the keyboard.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/KeyboardEvent)",
       "path": "src/components/textarea/textarea.interfaces.ts"
-    },
-    "src/components/toggle/toggle.interfaces.ts::ToggleTileColor": {
-      "declaration": "\"purple\" | \"red\" | \"yellow\" | \"green\"",
-      "docstring": "",
-      "path": "src/components/toggle/toggle.interfaces.ts"
-    },
-    "src/components/toggle/toggle.interfaces.ts::ToggleGroupColumns": {
-      "declaration": "3 | 2 | 1 | 4",
-      "docstring": "",
-      "path": "src/components/toggle/toggle.interfaces.ts"
     },
     "src/components/toggle/toggle.interfaces.ts::ToggleLabelPosition": {
       "declaration": "\"left\" | \"right\" | \"top\"",

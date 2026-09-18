@@ -364,6 +364,11 @@
     height: 2rem;
     min-width: 2rem;
     color: var(--_date-calendar-nav-color);
+    // ds-icon defaults to its own primary-blue fill (--ds-icon-color-primary) unless
+    // --icon-color is set explicitly — it does not follow `color`. The hover/active states
+    // below already set both; without setting it here too, the caret icons stay blue at
+    // rest even when --_date-calendar-nav-color is overridden (e.g. for the disabled state).
+    --icon-color: var(--_date-calendar-nav-color);
     border-radius: var(--_date-calendar-nav-radius);
     box-shadow: none;
     outline: none;

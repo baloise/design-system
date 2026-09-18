@@ -65,6 +65,16 @@
 #group {
   position: relative;
   isolation: isolate;
+
+  // Labels must not form their own stacking context here, otherwise their
+  // negative z-index divider (::after) gets trapped inside it and always
+  // paints above the JS-driven #pill sibling — even mid-slide. Dropping to
+  // z-index: auto lets the divider escape into #group's isolated context,
+  // where it correctly sorts below #pill (z-index: 0) while label content
+  // (auto-tier, later in DOM than #pill) still paints on top of it.
+  label {
+    z-index: auto;
+  }
 }
 
 #pill {

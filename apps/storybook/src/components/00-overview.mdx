@@ -220,15 +220,13 @@ import {
   <GridComponent
     scale="1"
     label="Checkbox"
-    pageTitle="Components/Checkbox"
+    pageTitle="Components/Forms/Checkbox"
     description="Checkboxes allow users to select one or more items from a set. Checkboxes can turn one or more option(s) on or off."
   >
-    <div class="text-align-center">
-      <ds-checkbox-group vertical style={{ width: '120px' }}>
-        <ds-checkbox label="Apple" />
-        <ds-checkbox label="Mango" checked />
+      <ds-checkbox-group vertical >
+        <ds-checkbox label="Apple" checked/>
+        <ds-checkbox label="Mango"   />
       </ds-checkbox-group>
-    </div>
   </GridComponent>
   <GridComponent
     scale="1"
@@ -317,21 +315,15 @@ import {
   </GridComponent>
   <GridComponent
     scale="1"
-    label="DropDown"
-    pageTitle="Components/DropDown"
+    label="Select"
+    pageTitle="Components/Forms/Select"
     description="Select allows the user to choose one or multiple option from a list."
   >
-    <ds-dropdown value="Apple" style={{ width: '227px' }}>
-      <ds-option value="Apple" label="Apple">
-        Apple
-      </ds-option>
-      <ds-option value="Banana" label="Banana">
-        Banana
-      </ds-option>
-      <ds-option value="Mango" label="Mango">
-        Mango
-      </ds-option>
-    </ds-dropdown>
+    <ds-select id="flat" label="Fruits" multiple value="apple" description="Select your fruit" style={{ width: '227px' }}>
+      <ds-select-option value="apple">Apple</ds-select-option>
+      <ds-select-option value="banana">Banana</ds-select-option>
+      <ds-select-option value="mango">Mango</ds-select-option>
+    </ds-select>
   </GridComponent>
   <GridComponent
     scale="1"
@@ -348,12 +340,13 @@ import {
     </ds-field>
   </GridComponent>
   <GridComponent
-    scale="1"
+    scale="0.8"
     label="File Upload"
-    pageTitle="Components/Forms/File Upload"
+    pageTitle="Components/Forms/FileUpload"
     description="File Upload is all in one component. It supports drag&drop and the normal file upload dialog of the browser."
   >
-    <ds-file-upload label="Choose or drop a file..."></ds-file-upload>
+    <ds-file-upload label="Upload Document" description="All File Types" required></ds-file-upload>
+
   </GridComponent>
   <GridComponent
     scale="0.5"
@@ -473,18 +466,26 @@ import {
   >
     <ds-input placeholder="Placeholder" type="text"></ds-input>
   </GridComponent>
+    <GridComponent
+    scale="1"
+    label="Input Phone"
+    pageTitle="Components/Forms/Input Phone"
+    description="Input phone renders an international phone number field with a country picker (flag + calling code) and a national-number input that live-formats as the user types."
+  >
+    <ds-input-phone label="Phone number" initial-country="CH" style={{width: '220px'}}></ds-input-phone>
+  </GridComponent>
   <GridComponent
     scale="1"
     label="Input Slider"
     pageTitle="Components/Forms/Input Slider"
     description="Input Slider component lets users select from a range of values by moving the slider thumb."
   >
-    <ds-input-slider has-ticks max="100" min="0" step="20" value="20"></ds-input-slider>
+    <ds-input-slider label="Volume" description="0–100" value="60" style={{width: '200px'}}></ds-input-slider>
   </GridComponent>
   <GridComponent
     scale="1"
     label="Input Stepper"
-    pageTitle="Components/Forms/Input Stepper"
+    pageTitle="Components/Forms/InputStepper"
     description="Input Stepper can be used to ask the user an amount of limited amounts like the amount of children."
   >
     <ds-input-stepper></ds-input-stepper>
@@ -539,7 +540,7 @@ import {
     fullheight
     fullscreen
     pageTitle="Components/Modal"
-    description="Checkboxes allow users to select one or more items from a set. Checkboxes can turn one or more option(s) on or off."
+    description="Modal displays content in a dialog overlay using the native dialog element."
   >
     <div style={{ backgroundColor: 'rgba(0, 7, 57, 0.5)' ,width: '100%', height: '280px',     backdropFilter: 'blur(4px)',
     opacity: '0.8' }}></div>
@@ -565,7 +566,7 @@ import {
   <GridComponent
     scale="1"
     label="Number Input"
-    pageTitle="Components/Number Input"
+    pageTitle="Components/Forms/Number Input"
     description="Number Input only allows to enter valid numbers."
   >
     <ds-number-input decimal="2" suffix="CHF" value="1234.45"></ds-number-input>
@@ -610,20 +611,18 @@ import {
   <GridComponent
     scale="1"
     label="Radio"
-    pageTitle="Components/Radio"
-    description="Checkboxes allow users to select one or more items from a set. Checkboxes can turn one or more option(s) on or off."
+    pageTitle="Components/Forms/Radio"
+    description="Radio renders a radio button form control for selecting one option from a group with optional label and help text."
   >
-    <div class="text-align-center">
-      <ds-radio-group vertical style={{ width: '120px' }} value="2">
-        <ds-radio label="Apple" value="1" />
-        <ds-radio label="Mango" value="2" />
+      <ds-radio-group vertical value="1">
+        <ds-radio name="basic"  value="1" >Apple</ds-radio>
+        <ds-radio name="basic" value="2" >Mango</ds-radio>
       </ds-radio-group>
-    </div>
   </GridComponent>
   <GridComponent
     scale="1"
     label="Segment"
-    pageTitle="Components/Segment"
+    pageTitle="Components/Forms/Segment"
     description="Segment offers a list of options. The user can only select one option from a number of choices."
   >
     <div class="text-align-center">
@@ -671,7 +670,7 @@ import {
     fullwidth
     fullheight
     pageTitle="Components/Snackbar"
-    description="Checkboxes allow users to select one or more items from a set. Checkboxes can turn one or more option(s) on or off."
+    description="Snackbar displays brief feedback messages at the bottom of the screen with optional action buttons and dismissal control."
   >
     <div style={{ position: 'absolute', bottom: '1rem', right: '0' }}>
       <ds-snackbar heading="Apple Pie"  color="info" closable>
@@ -683,7 +682,7 @@ import {
     scale="1.5"
     label="Spinner"
     pageTitle="Components/Spinner"
-    description="Checkboxes allow users to select one or more items from a set. Checkboxes can turn one or more option(s) on or off."
+    description="Spinner displays an animated loading indicator with customizable color, size, and variation."
   >
     <ds-spinner></ds-spinner>
   </GridComponent>
@@ -848,19 +847,36 @@ import {
     pageTitle="Components/Forms/Time Input"
     description="Time Input allows to enter valid numbers for their specific index. The time value will be formatted accordingly."
   >
-    <ds-time-input style={{ width: '227px' }}></ds-time-input>
+    <div class="ds-field" style={{width: '200px'}}>
+      <label class="ds-label" for="time-input-1">Select a time</label>
+      <div class="ds-control">
+        <input type="time" id="time-input-1" class="ds-time-input" aria-describedby="time-input-help" />
+      </div>
+    <p id="time-input-help" class="ds-help">Select the desired time</p>
+  </div>
   </GridComponent>
   <GridComponent
     scale="0.8"
     label="Toast"
     pageTitle="Components/Toast"
-    description="Checkboxes allow users to select one or more items from a set. Checkboxes can turn one or more option(s) on or off."
+    description="Toast displays temporary notification messages that appear at the top of the page and auto-dismiss with optional action buttons and close control."
   >
     <div style={{ marginTop: '-100px' }}>
   <ds-toast color="success" heading="Success"> Your changes have been saved. </ds-toast>
 
     </div>
 
+  </GridComponent>
+  <GridComponent
+    scale="1"
+    label="Toggle"
+    fullheight
+    fullwidth
+    center
+    pageTitle="Components/Forms/Toggle"
+    description="Toggle renders a switch-like form control for toggling between on/off states with optional label and help text."
+  >
+    <ds-toggle checked>Do you like Apples?</ds-toggle>
   </GridComponent>
   <GridComponent
     scale="1"
