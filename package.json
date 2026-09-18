@@ -46,7 +46,7 @@
     "figma-sync:conflict-check:local": "node --env-file=.env scripts/figma-sync/conflict-check.mjs",
     "test:token-usage": "vitest run --config scripts/token-usage/vitest.config.ts",
     "_utilities": "================================================ Utilities =================================================",
-    "kill:ports": "node -e \"require('kill-port')(4000).catch(()=>{})\"",
+    "kill:ports": "node -e \"require('kill-port')(4000).catch(()=>{})\" && node -e \"require('kill-port')(6006).catch(()=>{})\"",
     "format": "pnpm exec prettier --write --log-level error --end-of-line lf .",
     "format:check": "pnpm exec prettier --check --log-level error --end-of-line lf .",
     "spell": "cspell --no-progress",

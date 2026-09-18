@@ -108,8 +108,8 @@ These improvements help our components work seamlessly across all supported fram
 | toggle           | WC & CSS | ✅     | ✅   | ✅   | ✅     | ✅        | ✅     | ⬜    |
 | checkbox         | WC & CSS | ✅     | ✅   | ✅   | ✅     | ✅        | ✅     | ⬜    |
 | radio            | WC & CSS | ✅     | ✅   | ✅   | ✅     | ✅        | ✅     | ⬜    |
-| segment          | WC & CSS | ✅     | ⬜   | ✅   | ✅     | ✅        | ✅     | ⬜    |
-| file-upload      | WC       | ✅     | ⬜   | ✅   | ✅     | ✅        | ✅     | ⬜    |
+| segment          | WC & CSS | ✅     | ✅   | ✅   | ✅     | ✅        | ✅     | ⬜    |
+| file-upload      | WC       | ✅     | ✅   | ✅   | ✅     | ✅        | ✅     | ⬜    |
 | ag-grid          | Lib      | ✅     | ✅   | ✅   | ✅     | ✅        | ✅     | ⬜    |
 
 ## Tokens & Figma

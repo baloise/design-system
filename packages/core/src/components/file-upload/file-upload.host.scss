@@ -118,6 +118,8 @@
     color: var(--_file-upload-drop-zone-disabled-text-color);
     --icon-color: var(--_file-upload-drop-zone-disabled-text-color);
     cursor: default;
+
+    --_spinner-circle-background-color: var(--ds-global-color-grey-3);
   }
 }
 
@@ -131,6 +133,7 @@
   font-family: var(--ds-alias-text-family-text);
   font-weight: var(--ds-alias-text-weight-bold);
   font-size: var(--ds-alias-text-size-base);
+  text-align: center;
 }
 
 :host #file-list {
