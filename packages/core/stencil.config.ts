@@ -89,18 +89,22 @@ export const config: Config = {
      *
      * {@link https://stenciljs.com/docs/distribution}
      */
-    !IS_DS_DEVELOPMENT &&
-      !IS_DS_DOCUMENTATION && {
-        type: 'dist',
-        esmLoaderPath: '../loader',
-        copy: [
-          {
-            src: '../node_modules/country-flag-icons/3x2',
-            dest: 'assets/flags',
-            warn: true,
-          },
-        ],
-      },
+    /**
+     * Kept enabled in documentation builds too: the Storybook preview imports config utilities
+     * (e.g. `updateDsLanguage`, `updateDsRegion`) directly from `@baloise/ds-core`'s main entry,
+     * which this target produces.
+     */
+    !IS_DS_DEVELOPMENT && {
+      type: 'dist',
+      esmLoaderPath: '../loader',
+      copy: [
+        {
+          src: '../node_modules/country-flag-icons/3x2',
+          dest: 'assets/flags',
+          warn: true,
+        },
+      ],
+    },
     /**
      * The dist-custom-elements output target creates custom elements that directly extend HTMLElement and provides
      * simple utility functions for easily defining these elements on the Custom Element Registry. This output target
