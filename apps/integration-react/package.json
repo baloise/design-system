@@ -12,6 +12,7 @@
     "play:run": "pnpm exec playwright test"
   },
   "dependencies": {
+    "@baloise/ds-core": "workspace:*",
     "@baloise/ds-styles": "workspace:*",
     "@baloise/ds-react": "workspace:*",
     "@baloise/ds-tokens": "workspace:*",

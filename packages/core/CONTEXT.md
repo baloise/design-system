@@ -607,7 +607,11 @@ vocabulary:
   national number.
   Distinct props because a form control that lets a user actively repick
   its country needs "starting state" and "current state" to not be the same
-  slot.
+  slot. Picking a country re-formats any already-typed national number for
+  it, which can change `value` immediately — before the number field ever
+  blurs. `dsChange` (the component's one "value changed" signal) fires from
+  that path too, not only from blur, whenever it actually changes `value`;
+  `dsCountryChange` fires alongside it but never carries `value` itself.
 - **`countries`** — the available-country allow-list,
   `string | string[]` (comma-separated attribute or array prop); `undefined`
   means all countries. If `country` names a country outside `countries`,
@@ -697,6 +701,47 @@ representable in a flat `data-*` attribute) or considered JS-only
 behavioral config. See
 [docs/adr/0002-ds-config-meta-tag.md](../../docs/adr/0002-ds-config-meta-tag.md)
 for the full rationale.
+
+### Asset path (`resourcesUrl`)
+
+Stencil's own `resourcesUrl` auto-detection — deriving where a component's runtime assets live from
+the currently-executing component module's own `import.meta.url` — doesn't survive every bundler's
+dependency pre-bundling step. Vite's dev `optimizeDeps` in particular collapses it to `undefined` for
+the `dist-custom-elements` build `@baloise/ds-angular`/`@baloise/ds-react` are both built on, which
+makes `getAssetPath()` (used today only by `ds-input-phone`'s `getFlagUrl()`, see "Phone Field" below)
+throw `TypeError: Invalid base URL` the moment any component actually resolves an asset path — not
+merely 404 like a missing file normally would. Confirmed to reproduce identically under both frameworks
+(same root cause, same `dist-custom-elements` build), not an Angular-specific bug.
+
+The fix is **not** a single call inside `initializeDesignSystem` — that was tried first and doesn't
+work, for a subtle reason worth recording: `dist-custom-elements` (`externalRuntime: false`, see the
+`copy`/`externalRuntime` comments on that output target in `stencil.config.ts`) inlines its own,
+separate copy of Stencil's platform runtime rather than importing the one `@baloise/ds-core`'s lazy
+`dist` build shares — so calling Stencil's `setAssetPath()` through anything resolved via the bare
+`@baloise/ds-core` specifier (which `initializeDesignSystem` itself is) sets `resourcesUrl` on a
+_different_ runtime instance than the one `ds-input-phone.js` (under `components/`) actually reads
+from. Confirmed by reproducing exactly this mismatch: the fix compiled correctly, ran, and still didn't
+stop the crash.
+
+The fix that actually works is calling Stencil's `setAssetPath()` imported specifically from
+`@baloise/ds-core/components` — the same `dist-custom-elements` entry point (and runtime instance) the
+generated component proxies both frameworks use actually import from — once per framework, right
+alongside each one's own call to `initializeDesignSystem` (Angular's `bootstrapDesignSystem`; React's
+`DsRootProvider`'s `ensureInit()` and its deprecated `bootstrapDesignSystem`). Anchored on
+`document.baseURI`, not `window.location.href`: the latter always resolves to the domain root, which
+breaks any app deployed under a subpath (e.g. `<base href="/my-app/">`) — verified: anchoring on
+`location.href` alone silently sends every asset request to the domain root instead of the app's own
+base. The throwaway `'x/'` segment (`new URL('x/', document.baseURI)`) exists so the single `../` a
+component's `getAssetPath()` call prepends (e.g. `ds-input-phone`'s `../assets/flags/<CODE>.svg`)
+cancels back to the app's own base rather than skipping past it.
+
+This still requires the consuming app to serve the design system's runtime assets at that same
+absolute path (`<base>/assets/flags/...` for flags) — `apps/integration-angular`'s `angular.json`
+demonstrates the required copy (an `assets` glob entry copying `@baloise/ds-core`'s own `assets/flags`,
+a package-root folder, not under `components/` — see `stencil.config.ts`'s `copy` config on the
+`dist`/`dist-custom-elements`/`webOutputTarget` targets — into the build output). A consumer that skips
+this fails gracefully now (a broken `<img>`, since the URL is merely wrong rather than un-constructible)
+instead of crashing the whole component.
 
 ### Dynamic-Import-Free Entry Point (`@baloise/ds-core/initialize`)
 

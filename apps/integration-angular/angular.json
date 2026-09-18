@@ -22,6 +22,11 @@
               {
                 "glob": "**/*",
                 "input": "public"
+              },
+              {
+                "glob": "**/*",
+                "input": "node_modules/@baloise/ds-core/assets/flags",
+                "output": "assets/flags"
               }
             ],
             "styles": [
