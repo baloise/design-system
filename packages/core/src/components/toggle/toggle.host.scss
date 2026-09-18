@@ -71,6 +71,28 @@
 }
 
 /**
+ * `.ds-field` Collision Guard
+ * --------------------------------
+ * `Field` stamps a `ds-field` class onto `:host` (for the shared color-state selectors above), but
+ * that class name is also the CSS-only Form component's public API (`form.style.scss`'s `.ds-field`,
+ * outside any shadow root). Since `:host` is a real light-DOM element, that global, non-shadow
+ * `.ds-field` rule matches it too — and browsers give a page-level selector targeting the host
+ * priority over this shadow tree's own `:host` rules at equal (or even higher, see
+ * `:host(.ds-field)` below) specificity. That stretches every toggle to `display: grid; width: 100%`
+ * and adds inter-toggle margins, breaking the pixel-parity layout this migration is meant to
+ * preserve (see docs/adr/0031-ds-toggle-field-migration-no-label.md). `!important` is the only
+ * reliable way to win back these properties from outside the shadow tree.
+ */
+
+:host(.ds-field) {
+  display: inline-block !important;
+  width: auto !important;
+  flex: none !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+/**
  * Label Position
  * --------------------------------
  */
