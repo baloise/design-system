@@ -1,4 +1,5 @@
 @use '@baloise/ds-styles/dist/scss/mixins' as *;
+@use '../form/form.mixin' as form;
 @use './toggle.mixin.scss' as toggle;
 
 /**
@@ -21,7 +22,17 @@
  * @prop --toggle-gap: Gap between toggle and label.
  * @prop --toggle-helper-color: Text color of helper text.
  * @prop --toggle-helper-font-size: Font size of helper text.
+ * @prop --form-description-color: Text color of the invalid text below the toggle.
+ * @prop --form-description-family: Font family of the invalid text below the toggle.
+ * @prop --form-description-weight: Font weight of the invalid text below the toggle.
+ * @prop --form-description-size: Font size of the invalid text below the toggle.
+ * @prop --form-description-line-height: Line height of the invalid text below the toggle.
  */
+
+:host {
+  @include form.vars-field();
+  @include form.vars-description();
+}
 
 /**
   * Basic Component Styles
@@ -33,6 +44,31 @@
 @include toggle.layout(':host');
 @include toggle.style(':host');
 @include toggle.states(':host');
+
+/**
+ * Field Structure
+ * --------------------------------
+ * `ds-toggle` renders inside the shared `Field` wrapper (`#inner` > `#container`) purely for the
+ * `invalid`/`invalidText` description block and color-state plumbing — it does not use `Field`'s own
+ * `label` heading (see docs/adr/0031-ds-toggle-field-migration-no-label.md). `#container` stays a
+ * transparent passthrough so the toggle's own `label` element keeps driving the visible layout.
+ */
+
+:host {
+  #inner {
+    @include form.field();
+  }
+
+  #container {
+    display: contents;
+  }
+
+  @include form.description();
+}
+
+:host(.is-invalid) {
+  --mod-form-description-color: var(--ds-form-danger-description-color);
+}
 
 /**
  * Label Position

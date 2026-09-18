@@ -8,15 +8,20 @@
  */
 export function watchInvalidTextSlot(el: HTMLElement, onChange: (hasContent: boolean) => void): () => void {
   let contentObserver: MutationObserver | undefined
+  let observedSlotted: HTMLElement | undefined
 
   const check = () => {
     const slotted = el.querySelector<HTMLElement>(':scope > [slot="invalid-text"]')
     onChange(!!slotted && (slotted.textContent ?? '').trim().length > 0)
 
-    contentObserver?.disconnect()
-    if (slotted) {
-      contentObserver = new MutationObserver(check)
-      contentObserver.observe(slotted, { childList: true, characterData: true, subtree: true })
+    if (slotted !== observedSlotted) {
+      contentObserver?.disconnect()
+      observedSlotted = slotted ?? undefined
+      contentObserver = undefined
+      if (slotted) {
+        contentObserver = new MutationObserver(check)
+        contentObserver.observe(slotted, { childList: true, characterData: true, subtree: true })
+      }
     }
   }
 

@@ -1,6 +1,7 @@
-import { AttachInternals, Component, Element, Event, EventEmitter, h, Host, Listen, Prop, State } from '@stencil/core'
-import { Logger, type LogInstance, inheritAttributes, type Attributes, OneOf, Type } from '@utils'
-import { DsComponentInterface } from '@global'
+import { AttachInternals, Component, Element, Event, EventEmitter, h, Listen, Prop, State } from '@stencil/core'
+import { Logger, type LogInstance, inheritAttributes, type Attributes, OneOf, Type, watchInvalidTextSlot } from '@utils'
+import { Field } from '../input/field.util'
+import { DsComponentInterface, defaultConfig } from '@global'
 import {
   ToggleLabelPosition,
   TOGGLE_LABEL_POSITIONS,
@@ -15,6 +16,7 @@ import { HTMLStencilElement } from '@stencil/core/internal'
  *
  * @slot - The toggle label content.
  * @slot helper - The helper or hint text below the toggle.
+ * @slot invalid-text - Overrides the `invalidText` prop with custom markup, shown instead of the description when `invalid` is `true`.
  * @part label - The label element wrapping the toggle.
  * @part input - The native HTML checkbox input element.
  * @part slot - The content slot wrapper.
@@ -30,6 +32,7 @@ export class Toggle implements DsComponentInterface {
   private inheritAttributes: Attributes = {}
   private nativeInput?: HTMLInputElement
   private initialValue = false
+  private disconnectInvalidTextSlotWatcher?: () => void
 
   log!: LogInstance
   @Logger('toggle')
@@ -41,6 +44,7 @@ export class Toggle implements DsComponentInterface {
   @AttachInternals() internals!: ElementInternals
 
   @State() focused = false
+  @State() hasInvalidTextSlotContent = false
 
   /**
    * PUBLIC PROPERTY API
@@ -48,9 +52,11 @@ export class Toggle implements DsComponentInterface {
    */
 
   /**
-   * If `true`, in Angular reactive forms the control will not be set invalid
+   * If `true`, disables the automatic `invalid`/`invalidText` behavior that the `@baloise/ds-angular` integration
+   * applies when the bound `NgControl` is touched and invalid. Only affects the Angular integration; it is a no-op
+   * in other framework integrations.
    */
-  @Prop()
+  @Prop({ reflect: true })
   @Type('boolean')
   readonly autoInvalidOff: boolean = false
 
@@ -81,6 +87,13 @@ export class Toggle implements DsComponentInterface {
   @Prop({ reflect: true })
   @Type('boolean')
   readonly invalid: boolean = false
+
+  /**
+   * The text to display when the toggle is in an invalid state.
+   */
+  @Prop()
+  @Type('string')
+  readonly invalidText: string = ''
 
   /**
    * Label of the toggle item.
@@ -149,6 +162,13 @@ export class Toggle implements DsComponentInterface {
   connectedCallback(): void {
     this.initialValue = this.checked
     this.internals.setFormValue(this.checked ? (this.value as string) : null)
+    this.disconnectInvalidTextSlotWatcher = watchInvalidTextSlot(this.el, hasContent => {
+      this.hasInvalidTextSlotContent = hasContent
+    })
+  }
+
+  disconnectedCallback(): void {
+    this.disconnectInvalidTextSlotWatcher?.()
   }
 
   componentWillLoad() {
@@ -198,14 +218,22 @@ export class Toggle implements DsComponentInterface {
    */
 
   render() {
+    const isInvalid = this.invalid || this.hasInvalidTextSlotContent
+
     return (
-      <Host
-        aria-disabled={this.disabled ? 'true' : null}
-        aria-checked={`${this.checked}`}
-        aria-invalid={this.invalid ? 'true' : null}
-        class={{
+      <Field
+        role="field"
+        disabled={this.disabled}
+        color="primary"
+        invalid={isInvalid}
+        label=""
+        description=""
+        invalidText={this.invalidText}
+        required={this.required}
+        language={defaultConfig.language}
+        cssClasses={{
           'is-disabled': this.disabled || this.readonly,
-          'is-invalid': this.invalid,
+          'is-invalid': isInvalid,
           'is-checked': this.checked,
           'is-dense': this.dense,
           'has-label-left': this.labelPosition === 'left',
@@ -222,7 +250,8 @@ export class Toggle implements DsComponentInterface {
             checked={this.checked}
             disabled={this.disabled || this.readonly}
             required={this.required}
-            aria-invalid={this.invalid ? 'true' : null}
+            aria-describedby={isInvalid ? 'description' : undefined}
+            aria-invalid={isInvalid ? 'true' : 'false'}
             onChange={ev => this.handleChange(ev)}
             onFocus={this.handleFocus}
             onBlur={this.handleBlur}
@@ -233,7 +262,7 @@ export class Toggle implements DsComponentInterface {
             <slot></slot>
           </div>
         </label>
-      </Host>
+      </Field>
     )
   }
 }

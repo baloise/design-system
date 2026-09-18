@@ -39,15 +39,32 @@
       <!-- Invalid -->
       <section data-testid="invalid">
         <span>Invalid</span>
-        <ds-toggle name="invalid" value="1" invalid>Unchecked</ds-toggle>
-        <ds-toggle name="invalid" value="2" invalid checked>Checked</ds-toggle>
+        <ds-toggle name="invalid" value="1" invalid-text="Validation Error 1" invalid>Unchecked</ds-toggle>
+        <ds-toggle name="invalid" value="2" invalid-text="Validation Error 2" invalid checked>Checked</ds-toggle>
       </section>
 
       <!-- Invalid disabled -->
       <section data-testid="invalid-disabled">
         <span>Invalid + Disabled</span>
-        <ds-toggle name="invalid-disabled" value="1" invalid disabled>Unchecked</ds-toggle>
-        <ds-toggle name="invalid-disabled" value="2" invalid disabled checked>Checked</ds-toggle>
+        <ds-toggle name="invalid-disabled" value="1" invalid-text="Validation Error 1" invalid disabled
+          >Unchecked</ds-toggle
+        >
+        <ds-toggle name="invalid-disabled" value="2" invalid-text="Validation Error 2" invalid disabled checked
+          >Checked</ds-toggle
+        >
+      </section>
+
+      <!-- Invalid via slot (auto-detected, no invalid prop set) -->
+      <section data-testid="invalid-slot">
+        <span>Invalid via slot</span>
+        <ds-toggle name="invalid-slot" value="1"
+          >Slot with content
+          <div slot="invalid-text">Slotted validation error</div>
+        </ds-toggle>
+        <ds-toggle name="invalid-slot" value="2"
+          >Empty slot stays valid
+          <div slot="invalid-text"></div>
+        </ds-toggle>
       </section>
 
       <!-- Required -->

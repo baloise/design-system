@@ -2,8 +2,27 @@ import { expectScreenshot, screenshot, test } from '@baloise/ds-playwright'
 
 const TAG = 'toggle'
 
-const STYLE_VARIANTS = ['basic', 'no-label', 'disabled', 'invalid', 'invalid-disabled', 'required', 'field', 'form']
-const HOST_VARIANTS = ['basic', 'no-label', 'disabled', 'invalid', 'invalid-disabled', 'required', 'form']
+const STYLE_VARIANTS = [
+  'basic',
+  'no-label',
+  'disabled',
+  'invalid',
+  'invalid-disabled',
+  'required',
+  'field',
+  'field-invalid',
+  'form',
+]
+const HOST_VARIANTS = [
+  'basic',
+  'no-label',
+  'disabled',
+  'invalid',
+  'invalid-disabled',
+  'invalid-slot',
+  'required',
+  'form',
+]
 
 const image = screenshot(TAG)
 
