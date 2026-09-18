@@ -4,7 +4,7 @@
  * Run with: node scripts/build-core.mjs
  */
 import { execSync } from 'node:child_process'
-import { cp, mkdir, rm } from 'node:fs/promises'
+import { mkdir, rm } from 'node:fs/promises'
 import { dirname, join, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
