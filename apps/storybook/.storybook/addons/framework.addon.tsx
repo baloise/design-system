@@ -119,7 +119,7 @@ export const registerFramework: React.FC = () => {
     >
       <IconButton key="framework-toolbar" title="Integration technology" active={active !== 'angular'}>
         <SvgIcon html={SvgIcons[active]} size={16} />
-        <span style={{ marginLeft: 6 }}>{labels[active]}</span>
+        <span style={{ marginLeft: 4 }}>{labels[active]}</span>
       </IconButton>
     </WithTooltip>
   )

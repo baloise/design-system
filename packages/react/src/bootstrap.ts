@@ -11,6 +11,5 @@ interface DsReactConfig {
 export const bootstrapDesignSystem = (config: DsReactConfig = {}) => {
   initializeDesignSystem({
     ...config.defaults,
-    httpFormSubmit: false,
   })
 }

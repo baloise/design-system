@@ -60,6 +60,17 @@ test('Modal onOpenChange stays in sync when dismissed with Escape', async ({ pag
   await expect(page.locator('ds-modal')).not.toHaveAttribute('open')
 })
 
+test('useModal presents React content into the overlay and dismisses it', async ({ page }) => {
+  await page.goto('/')
+
+  await page.getByTestId('present-imperative-modal').click()
+  await expect(page.getByTestId('imperative-modal-body')).toBeVisible()
+  await expect(page.getByTestId('imperative-modal-body')).toContainText('Presented via useModal()')
+
+  await page.getByTestId('dismiss-imperative-modal').click()
+  await expect(page.getByTestId('imperative-modal-body')).toHaveCount(0)
+})
+
 test('useToast present and dismiss control a toast', async ({ page }) => {
   await page.goto('/')
 

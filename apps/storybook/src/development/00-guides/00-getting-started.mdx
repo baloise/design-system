@@ -2,7 +2,6 @@ import { Markdown, Meta } from '@storybook/addon-docs/blocks'
 import {
   AngularFramework,
   Banner,
-  Code,
   Footer,
   HTMLFramework,
   InfoQuote,
@@ -26,56 +25,26 @@ All the Helvetia Design System packages are available on [NPM](https://www.npmjs
 
 <AngularFramework>
 
-## Prerequisite
+## Installation
 
-If you do not have an Angular app yet create one with [Angular CLI](https://angular.io/guide/setup-local).
+If you do not have an Angular app yet, create one with [Angular CLI](https://angular.io/guide/setup-local).
 
 <InfoQuote>
   **Recommendations**
 
-- Use **SCSS** as stylesheet format to be able to breakpoint mixins and more.
-- For the translations use [\{TRANSLOCO\}](https://ngneat.github.io/transloco/).
-
+  - Use **SCSS** as stylesheet format to access breakpoint mixins and more. A pre-built CSS bundle is also available.
+  - Angular **17+** with standalone components is required — the Design System ships no `NgModule`.
 </InfoQuote>
 
-## Installation
-
-<InfoQuote>
-If the projects requires translations, then install [\{TRANSLOCO\}](https://ngneat.github.io/transloco/) before the Helvetia Design System.
+Install the Angular bindings and the global styles. All three packages are required.
 
 ```bash
-npm add -E @ngneat/transloco
+npm add -E @baloise/ds-angular @baloise/ds-styles @baloise/ds-tokens
+// or
+pnpm add -E @baloise/ds-angular @baloise/ds-styles @baloise/ds-tokens
 ```
 
-Configure project:
-
-```bash
-npx ng add @ngneat/transloco
-```
-
-</InfoQuote>
-
-Lets install the schematics to configure and add the design system to an Angular project.
-
-```bash
-npm add -D -E @baloise/ds-devkit
-```
-
-Install the library using Angular CLI:
-
-```bash
-npx ng add @baloise/ds-devkit
-```
-
-## Manual Installation
-
-Continue here for the manual installation guide without schematics.
-
-Let's install the latest Angular components. This package includes the Font, Token, Icon, and CSS-Utilities packages.
-
-```bash
-npm install @baloise/ds-Angular
-```
+## Usage
 
 ### Import Styles
 
@@ -96,45 +65,66 @@ Add these to your global stylesheet (e.g. `styles.scss`). Only **Tokens** and
 
 For SASS mixins (breakpoints, etc.) without any styles, import `@baloise/ds-styles/scss/mixins` instead.
 
-### Standalone
+### provideDesignSystem
 
-Use the `provideDesignSystem` provider within the `app.config.ts` file, where Angular providers are typically defined.
+Angular apps are standalone by default. Add `provideDesignSystem()` to the providers in `app.config.ts` — it
+initializes the system once and every nested component picks up brand, region, language, and animation settings.
+
+Pass the default config via `defaults`. If you omit it, components still work with the default config. Region and
+language can also be changed at runtime with `updateDsRegion` / `updateDsLanguage`. See **Development/Configuration**.
 
 **app.config.ts**
 
 ```typescript
-import { ApplicationConfig, importProvidersFrom } from '@angular/core'
-
+import { ApplicationConfig } from '@angular/core'
 import { provideDesignSystem } from '@baloise/ds-angular'
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideDesignSystem()],
+  providers: [
+    provideDesignSystem({
+      defaults: {
+        region: 'CH',
+        language: 'de',
+        allowedLanguages: ['de', 'fr', 'it', 'en'],
+      },
+    }),
+  ],
 }
 ```
 
-**app.component.ts**
-
-Layout elements like `ds-root` and `ds-app-footer` are web components, so add the schema
-`CUSTOM_ELEMENTS_SCHEMA` to your root angular component and import the bundle that registers them.
+**main.ts**
 
 ```typescript
-import { CUSTOM_ELEMENTS_SCHEMA, Component } from '@angular/core'
-import { CommonModule } from '@angular/common'
-import { BalLayoutBundle } from '@baloise/ds-angular'
+import { bootstrapApplication } from '@angular/platform-browser'
+
+import { App } from './app/app'
+import { appConfig } from './app/app.config'
+
+bootstrapApplication(App, appConfig).catch(err => console.error(err))
+```
+
+**app.ts**
+
+Every component — including layout elements like `DsRoot` and `DsAppFooter` — ships as a real, standalone Angular
+component generated from the underlying web component. Import what you need directly; no `CUSTOM_ELEMENTS_SCHEMA` is
+required.
+
+```typescript
+import { Component } from '@angular/core'
+import { DsAppFooter, DsButton, DsRoot } from '@baloise/ds-angular'
 
 @Component({
   selector: 'app-root',
-  standalone: true,
-  schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  imports: [CommonModule, ...BalLayoutBundle],
+  imports: [DsRoot, DsAppFooter, DsButton],
+  templateUrl: './app.html',
 })
-export class AppComponent {}
+export class App {}
 ```
 
-**app.component.html**
+**app.html**
 
-Add the `ds-root` to your `app.component.html` root element. Elements like the button and heading
-below are plain HTML styled with a CSS class — no import or registration needed.
+Add `ds-root` to your root template. Elements like the heading below are plain HTML styled with a CSS class — no
+import or registration needed.
 
 ```html
 <ds-root class="has-sticky-footer">
@@ -144,67 +134,13 @@ below are plain HTML styled with a CSS class — no import or registration neede
   <main class="ds-container">
     <!-- Your application content -->
     <h1 class="ds-heading">Hello World!</h1>
-    <button class="ds-button">Button</button>
+    <ds-button>Button</ds-button>
   </main>
   <ds-app-footer>
     <!-- Footer content -->
   </ds-app-footer>
 </ds-root>
 ```
-
-### Module Based
-
-Import the `DesignSystemModule.forRoot()` into your angular root module.
-To use the custom web components add the schema `CUSTOM_ELEMENTS_SCHEMA` to your root angular module.
-For each angular sub module you need to import the `DesignSystemModule` to provide the components and the value accessors.
-
-**app.module.ts**
-
-```typescript
-import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core'
-import { BrowserModule } from '@angular/platform-browser'
-import { BalLayoutBundle, provideDesignSystem } from '@baloise/ds-angular'
-import { AppComponent } from './app.component'
-
-@NgModule({
-  declarations: [AppComponent],
-  imports: [
-    BrowserModule,
-    // Provide all components and value accessors to the app module.
-    provideDesignSystem(),
-    ...BalLayoutBundle,
-  ],
-  providers: [],
-  bootstrap: [AppComponent],
-  // To enable the usage of Web Components inside the Angular templates.
-  schemas: [CUSTOM_ELEMENTS_SCHEMA],
-})
-export class AppModule {}
-```
-
-**app.component.html**
-
-Add the `ds-root` to your `app.component.html` root element.
-
-<Code
-  language="html"
-  noPreview
-  code={`
-<ds-root class="has-sticky-footer">
-  <header>
-    <!-- Header content -->
-  </header>
-  <main class="ds-container">
-    <!-- Your application content -->
-    <h1 class="ds-heading">Hello World!</h1>
-    <button class="ds-button">Button</button>
-  </main>
-  <ds-app-footer>
-    <!-- Footer content -->
-  </ds-app-footer>
-</ds-root>
-`}
-/>
 
 </AngularFramework>
 
@@ -492,6 +428,10 @@ Event handlers use the `onDs*` prefix (for example `onDsClick`) and receive the 
     <LinkCard
       pageTitle="Development/Assets"
       description="Guides for installing the font locally, favicons and Google maps styles."
+    />
+    <LinkCard
+      pageTitle="Development/Configuration"
+      description="The global configuration object every component reads brand, region, and language from."
     />
     <LinkCard
       pageTitle="Development/Component"

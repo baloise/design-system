@@ -1,5 +1,14 @@
 import { Config } from './config'
-import { DsBrand, DsConfigState, DsIcons, DsLanguage, DsRegion } from './config.types'
+import {
+  DsBrand,
+  DsConfigState,
+  DsIcons,
+  DsLanguage,
+  DsLegalLinks,
+  DsLegalText,
+  DsRegion,
+  DsSocialLinks,
+} from './config.types'
 import { DsConfigObserver } from './observable/observer'
 
 import { dsBrowser } from '@utils'
@@ -123,5 +132,29 @@ export const updateDsLogger = (components: string[]): void => {
     config.logger.custom = true
     config.logger.event = true
     config.logger.lifecycle = true
+  }
+}
+
+export const updateDsLegalLinks = (legalLinks: DsLegalLinks): void => {
+  const config = useDsConfig()
+
+  if (config) {
+    config.legalLinks = legalLinks
+  }
+}
+
+export const updateDsLegalText = (legalText: DsLegalText): void => {
+  const config = useDsConfig()
+
+  if (config) {
+    config.legalText = legalText
+  }
+}
+
+export const updateDsSocialLinks = (socialLinks: DsSocialLinks): void => {
+  const config = useDsConfig()
+
+  if (config) {
+    config.socialLinks = socialLinks
   }
 }

@@ -76,6 +76,8 @@ button[aria-label='Show sidebar'] + span {
   border-radius: 1px !important;
 }
 
+button[title='Design system region'],
+button[title='Design system language'],
 button[title='Versions'],
 button[title='Brand theme'],
 button[title='Integration technology'] {
@@ -86,6 +88,8 @@ button[title='Integration technology'] {
   font-family: 'BaloiseCreateHeadline';
 }
 
+button[title='Design system region']:hover,
+button[title='Design system language']:hover,
 button[title='Versions']:hover,
 button[title='Brand theme']:hover,
 button[title='Integration technology']:hover {
@@ -93,6 +97,8 @@ button[title='Integration technology']:hover {
   color: #0014aa;
 }
 
+button[title='Design system region']:active,
+button[title='Design system language']:active,
 button[title='Versions']:active,
 button[title='Brand theme']:active,
 button[title='Integration technology']:active {

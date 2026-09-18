@@ -1,8 +1,18 @@
 import type { Decorator, Preview } from '@storybook/html-vite'
+import { updateDsLanguage, updateDsRegion, type DsLanguage, type DsRegion } from '@baloise/ds-core'
 
 const BRAND_LINK_ID = 'brand-theme-stylesheet'
 
 export const decorators: Decorator[] = [
+  (Story: any, context: any) => {
+    const region: DsRegion | undefined = context.globals?.region
+    const language: DsLanguage | undefined = context.globals?.language
+
+    if (region) updateDsRegion(region)
+    if (language) updateDsLanguage(language)
+
+    return Story()
+  },
   (Story: any, context: any) => {
     const theme: string = context.globals?.theme ?? ''
     const story = Story()
@@ -43,6 +53,16 @@ const preview: Preview = {
       name: 'Theme',
       description: 'Brand theme',
       defaultValue: '',
+    },
+    region: {
+      name: 'Region',
+      description: 'Design system region',
+      defaultValue: 'CH',
+    },
+    language: {
+      name: 'Language',
+      description: 'Design system language',
+      defaultValue: 'de',
     },
   },
   initialGlobals: {

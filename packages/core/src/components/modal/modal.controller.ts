@@ -9,6 +9,7 @@ class ModalControllerImpl implements ModalController {
 
     if (options.modalWidth !== undefined) element.modalWidth = options.modalWidth
     if (options.closable !== undefined) element.closable = options.closable
+    if (options.component !== undefined) element.appendChild(options.component)
 
     const root = getRootElement(document)
     root.appendChild(element)

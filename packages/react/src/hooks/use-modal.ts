@@ -5,9 +5,8 @@ import { useCallback, useRef, type ReactNode } from 'react'
 import { createRoot, type Root } from 'react-dom/client'
 
 /**
- * Imperative modal hook. `present()` injects React content via `ModalOptions.component`,
- * which lands with #2120 — until then this is a scaffold and will not mount content
- * inside the overlay.
+ * Imperative modal hook. `present()` mounts React content into a detached container
+ * and hands it to the modal controller via `ModalOptions.component`.
  */
 export function useModal() {
   const modalRef = useRef<HTMLDsModalElement | null>(null)

@@ -30,24 +30,49 @@ that the Design System is initialized correctly, it is crucial that the applicat
 
 <AngularFramework>
 
-**app.module.ts**
+**app.config.ts**
 
 ```ts
-import { DesignSystemModule } from '@baloise/ds-angular'
+import { ApplicationConfig } from '@angular/core'
+import { provideDesignSystem } from '@baloise/ds-angular'
 
-@NgModule({
-  imports: [DesignSystemModule.forRoot()],
-})
-export class AppModule {}
+export const appConfig: ApplicationConfig = {
+  providers: [provideDesignSystem()],
+}
 ```
 
-**app.component.html**
+**main.ts**
+
+```ts
+import { bootstrapApplication } from '@angular/platform-browser'
+
+import { App } from './app/app'
+import { appConfig } from './app/app.config'
+
+bootstrapApplication(App, appConfig).catch(err => console.error(err))
+```
+
+**app.ts**
+
+```ts
+import { Component } from '@angular/core'
+import { DsHeading, DsRoot } from '@baloise/ds-angular'
+
+@Component({
+  selector: 'app-root',
+  imports: [DsRoot, DsHeading],
+  templateUrl: './app.html',
+})
+export class App {}
+```
+
+**app.html**
 
 ```html
 <ds-root>
   <main class="ds-container">
     <ds-heading>Hello World</ds-heading>
-  <main>
+  </main>
 </ds-root>
 ```
 
@@ -211,19 +236,23 @@ export class AppComponent {
 ### Bind properties
 
 ```tsx
-import React from "react";
-import { Button } from "@baloise/ds-react";
+import { useState } from 'react'
+import { DsButton } from '@baloise/ds-react'
 
 function App() {
-  const [color, setColor] = useState('info');
+  const [color, setColor] = useState<'info' | 'secondary'>('info')
 
   return (
-    <BalButton color='info'>My info button</BalButton>
-    <BalButton color={color}>My info button</BalButton>
-  );
+    <>
+      <DsButton color="info">My info button</DsButton>
+      <DsButton color={color} onDsClick={() => setColor('secondary')}>
+        My secondary button
+      </DsButton>
+    </>
+  )
 }
 
-export default App;
+export default App
 ```
 
 </ReactFramework>
@@ -260,6 +289,7 @@ In Angular the events are written like that `(dsEventName)="yourComponentHandler
 
 ```ts
 import { Component } from '@angular/core'
+import type { InputInputDetail } from '@baloise/ds-core'
 
 @Component({
   selector: 'app-event',
@@ -268,7 +298,7 @@ import { Component } from '@angular/core'
 export class EventComponent {
   myName?: string
 
-  updateName(value: DS.InputInputDetail) {
+  updateName(value: InputInputDetail) {
     this.myName = value
   }
 }
@@ -311,20 +341,20 @@ they can easily listen to them with `addEventListener`.
 
 <ReactFramework>
 
-Each event in React is prefixed with `on`. `balInput` becomes `onBalInput`.
+Each event in React is prefixed with `on`. `dsInput` becomes `onDsInput`.
 `$event.detail` returns the main value of the event.
 
 ```tsx
 import { useState } from 'react'
-import { Input, Text } from '@baloise/ds-react'
+import { DsInput, DsText } from '@baloise/ds-react'
 
 function EventComponent() {
   const [myName, setMyName] = useState<string | undefined>()
 
   return (
     <div>
-      <BalInput placeholder="Tell us your name" value={myName} onBalInput={e => setMyName(e.detail)}></BalInput>
-      <BalText>My name is {myName}</BalText>
+      <DsInput placeholder="Tell us your name" value={myName} onDsInput={e => setMyName(e.detail)}></DsInput>
+      <DsText>My name is {myName}</DsText>
     </div>
   )
 }
@@ -342,14 +372,11 @@ export default EventComponent
 
 Some of the Helvetia Design System components offering methods to setFocus or returning native HTML elements.
 
-To demonstrate the usage of the methods let's to set the value of the ds-select to tennis.
+To demonstrate the usage of the methods let's set the value of the ds-select to tennis. Options are set via the
+`options` property as plain JS objects rather than `ds-select-option` markup.
 
 ```html
-<ds-select placeholder="Choose your hobby">
-  <ds-select-option label="Tennis" value="tennis"> Tennis </ds-select-option>
-  <ds-select-option label="Soccer" value="soccer"> Soccer </ds-select-option>
-  <ds-select-option label="Other" value="other"> Other </ds-select-option>
-</ds-select>
+<ds-select placeholder="Choose your hobby"></ds-select>
 ```
 
 <AngularFramework>
@@ -361,11 +388,7 @@ To access the method of the component use the reference directly.
 **app.component.html**
 
 ```html
-<ds-select #mySelect placeholder="Choose your hobby">
-  <ds-select-option label="Tennis" value="tennis">Tennis</ds-select-option>
-  <ds-select-option label="Soccer" value="soccer">Soccer</ds-select-option>
-  <ds-select-option label="Other" value="other">Other</ds-select-option>
-</ds-select>
+<ds-select #mySelect placeholder="Choose your hobby" [options]="hobbyOptions"></ds-select>
 <ds-button class="mt-base" (click)="chooseTennis()">Choose Tennis</ds-button>
 ```
 
@@ -381,7 +404,13 @@ import { ProxyComponent } from '@baloise/ds-angular'
   templateUrl: './method.component.html',
 })
 export class MethodComponent {
-  @ViewChild('mySelect') mySelect!: ProxyComponent<Components.BalSelect>
+  @ViewChild('mySelect') mySelect!: ProxyComponent<Components.DsSelect>
+
+  hobbyOptions = [
+    { label: 'Tennis', value: 'tennis' },
+    { label: 'Soccer', value: 'soccer' },
+    { label: 'Other', value: 'other' },
+  ]
 
   chooseTennis(): void {
     this.mySelect.el.select('tennis')
@@ -399,12 +428,22 @@ export class MethodComponent {
 
 <HTMLFramework>
 
-```js
-;(async () => {
-  await customElements.whenDefined('ds-select')
-  const todoListElement = document.querySelector('ds-select')
-  await todoListElement.select('tennis')
-})()
+```html
+<ds-select id="hobby-select" placeholder="Choose your hobby"></ds-select>
+
+<script>
+  const hobbySelect = document.querySelector('#hobby-select')
+  hobbySelect.options = [
+    { label: 'Tennis', value: 'tennis' },
+    { label: 'Soccer', value: 'soccer' },
+    { label: 'Other', value: 'other' },
+  ]
+
+  ;(async () => {
+    await customElements.whenDefined('ds-select')
+    await hobbySelect.select('tennis')
+  })()
+</script>
 ```
 
 </HTMLFramework>
@@ -418,11 +457,17 @@ export class MethodComponent {
 <ReactFramework>
 
 ```tsx
-import { BalSelect, SelectOption, Button } from '@baloise/ds-react'
 import { useRef } from 'react'
+import { DsSelect, DsButton } from '@baloise/ds-react'
+
+const hobbyOptions = [
+  { label: 'Tennis', value: 'tennis' },
+  { label: 'Soccer', value: 'soccer' },
+  { label: 'Other', value: 'other' },
+]
 
 function MethodComponent() {
-  const selectRef = useRef<HTMLBalSelectElement>(null)
+  const selectRef = useRef<HTMLDsSelectElement>(null)
 
   function chooseTennis() {
     selectRef.current?.select('tennis')
@@ -430,20 +475,10 @@ function MethodComponent() {
 
   return (
     <div>
-      <BalSelect ref={selectRef} placeholder="Choose your hobby">
-        <BalSelectOption label="Tennis" value="tennis">
-          Tennis
-        </BalSelectOption>
-        <BalSelectOption label="Soccer" value="soccer">
-          Soccer
-        </BalSelectOption>
-        <BalSelectOption label="Other" value="other">
-          Other
-        </BalSelectOption>
-      </BalSelect>
-      <BalButton class="mt-base" onClick={() => chooseTennis()}>
+      <DsSelect ref={selectRef} placeholder="Choose your hobby" options={hobbyOptions} />
+      <DsButton className="mt-base" onDsClick={chooseTennis}>
         Choose Tennis
-      </BalButton>
+      </DsButton>
     </div>
   )
 }
