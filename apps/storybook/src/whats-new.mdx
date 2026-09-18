@@ -1,5 +1,6 @@
-import { Meta, Unstyled } from '@storybook/addon-docs/blocks'
+import { Meta } from '@storybook/addon-docs/blocks'
 import { Banner, Footer, Lead } from '../.storybook/blocks'
+import ChartMultiBrand from './assets/images/chart-multi-brand.svg'
 
 <Meta title="What's New" name="What's New" />
 
@@ -9,114 +10,48 @@ import { Banner, Footer, Lead } from '../.storybook/blocks'
   The Helvetia Design System builds on Baloise Design System's foundation. Here's what changed along the way.
 </Lead>
 
-<Unstyled>
-  <div className="ds-grid is-multiline mt-md" style={{ '--ds-column-gap': '.5rem', '--ds-row-gap': '1rem' }}>
-    <div className="ds-col tablet:is-6 desktop:is-6">
-      <article className="ds-card h-full">
-        <header className="ds-card-header">
-          <h3 className="ds-title">
-            <span style={{ width: '32px', display: 'inline-block' }}>🎨</span> Design Tokens
-          </h3>
-        </header>
-        <div className="ds-card-content">
-          Token definitions are more detailed and stay in sync with Figma, and a new Theme Editor lets you customize
-          themes without touching code.
-        </div>
-      </article>
-    </div>
-    <div className="ds-col tablet:is-6 desktop:is-6">
-      <article className="ds-card h-full">
-        <header className="ds-card-header">
-          <h3 className="ds-title">
-            <span style={{ width: '32px', display: 'inline-block' }}>🫧</span> Shadow DOM
-          </h3>
-        </header>
-        <div className="ds-card-content">
-          Every component now renders inside Shadow DOM, isolating styles from the host page and improving how the
-          library integrates with Angular, React, and any other framework.
-        </div>
-      </article>
-    </div>
-    <div className="ds-col tablet:is-6 desktop:is-6">
-      <article className="ds-card h-full">
-        <header className="ds-card-header">
-          <h3 className="ds-title">
-            <span style={{ width: '32px', display: 'inline-block' }}>⚡</span> HTML/CSS-only Components
-          </h3>
-        </header>
-        <div className="ds-card-content">
-          A growing set of components work with just HTML and CSS — no JavaScript required — for faster rendering on
-          websites and server-side rendered applications.
-        </div>
-      </article>
-    </div>
-    <div className="ds-col tablet:is-6 desktop:is-6">
-      <article className="ds-card h-full">
-        <header className="ds-card-header">
-          <h3 className="ds-title">
-            <span style={{ width: '32px', display: 'inline-block' }}>♿</span> Accessibility
-          </h3>
-        </header>
-        <div className="ds-card-content">
-          Components have been updated to better meet WCAG 2.2 AA success criteria, keeping applications compliant
-          and inclusive by default.
-        </div>
-      </article>
-    </div>
-    <div className="ds-col tablet:is-6 desktop:is-6">
-      <article className="ds-card h-full">
-        <header className="ds-card-header">
-          <h3 className="ds-title">
-            <span style={{ width: '32px', display: 'inline-block' }}>🛡️</span> Cyber Resilience Act
-          </h3>
-        </header>
-        <div className="ds-card-content">
-          The design system now generates a Software Bill of Materials, runs automated dependency scanning via
-          Dependabot, and follows a documented security policy — aligning with the EU Cyber Resilience Act.
-        </div>
-      </article>
-    </div>
-    <div className="ds-col tablet:is-6 desktop:is-6">
-      <article className="ds-card h-full">
-        <header className="ds-card-header">
-          <h3 className="ds-title">
-            <span style={{ width: '32px', display: 'inline-block' }}>🤖</span> AI Context Foundation
-          </h3>
-        </header>
-        <div className="ds-card-content">
-          Every package now ships a CONTEXT.md documenting its purpose, structure, and conventions, laying the
-          groundwork for AI agent skills to come.
-        </div>
-      </article>
-    </div>
-    <div className="ds-col tablet:is-6 desktop:is-6">
-      <article className="ds-card h-full">
-        <header className="ds-card-header">
-          <h3 className="ds-title">
-            <span style={{ width: '32px', display: 'inline-block' }}>⚛️</span> React Integration
-          </h3>
-        </header>
-        <div className="ds-card-content">
-          New hooks — <code>useModal</code>, <code>useToast</code>, <code>useSnackbar</code> — and a{' '}
-          <code>DsRootProvider</code> replace the old <code>bootstrapDesignSystem</code> setup, giving React apps
-          simpler, centralized configuration.
-        </div>
-      </article>
-    </div>
-    <div className="ds-col tablet:is-6 desktop:is-6">
-      <article className="ds-card h-full">
-        <header className="ds-card-header">
-          <h3 className="ds-title">
-            <span style={{ width: '32px', display: 'inline-block' }}>🏷️</span> Multi-brand Support
-          </h3>
-        </header>
-        <div className="ds-card-content">
-          The system is built for multi-brand theming from the ground up, making it easier to support white-label
-          applications and partner brands alongside Helvetia.
-        </div>
-      </article>
-    </div>
-  </div>
-</Unstyled>
+## A New Architecture for Multi-Brand at Scale
+
+Under the hood, the design system moved to an architecture built to support many brands and themes without
+duplicating work:
+
+- **Tokens defined once, synced everywhere** — design tokens are now defined once and synced automatically across
+  every platform — web, iOS, Android, and Figma — so a change to a token propagates everywhere it's consumed
+  instead of being re-implemented per platform.
+- **More detailed, Figma-aligned tokens** — token definitions are more detailed and stay in sync with Figma.
+- **TOKY, our token editor** — a new Theme Editor lets you define a new brand or theme and see the result with a
+  live preview, without touching code or waiting on a build.
+- **Multi-brand by design** — the system is built for multi-brand theming from the ground up, making it easier to
+  support white-label applications and partner brands alongside Helvetia.
+
+<br />
+<div class="p-md radius-lg bg-primary-5">
+<img src={ChartMultiBrand} alt="Diagram of the multi-brand token architecture syncing tokens across platforms" />
+</div>
+
+<br />
+<br />
+
+Alongside the architecture work, a few other pieces landed:
+
+- 🚀 **Next.js SSR support** — components can now be server-rendered with Next.js, so pages hydrate faster and work
+  better with server-first frameworks.
+- ⚡ **More CSS-only components** — additional components ship as plain HTML/CSS with no web component required,
+  cutting JavaScript overhead and improving rendering performance, for faster rendering on websites and
+  server-side rendered applications.
+- 🫧 **Shadow DOM** — every component now renders inside Shadow DOM, isolating styles from the host page and
+  improving how the library integrates with Angular, React, and any other framework.
+- ♿ **Accessibility** — components have been updated to better meet WCAG 2.2 AA success criteria, keeping
+  applications compliant and inclusive by default.
+- 🛡️ **Cyber Resilience Act** — the design system now generates a Software Bill of Materials, runs automated
+  dependency scanning via Dependabot, and follows a documented security policy — aligning with the EU Cyber
+  Resilience Act.
+- 🤖 **AI Context Foundation** — every package now ships a CONTEXT.md documenting its purpose, structure, and
+  conventions, laying the groundwork for AI agent skills to come.
+- ⚛️ **React Integration** — new hooks — _**useModal**_, _**useToast**_, _**useSnackbar**_ — and a
+  _**DsRootProvider**_ replace the old _**bootstrapDesignSystem**_ setup, giving React apps simpler, centralized
+  configuration.
+- 📚 **Improved Documentation** — a theme switcher and a web component preview switcher let you compare themes
+  and components side by side, alongside usage guides and live code examples with CodePen.
 
 <Footer />
