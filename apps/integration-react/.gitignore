@@ -4,3 +4,6 @@ dist-ssr
 *.local
 playwright-report
 test-results
+
+# Copied at dev/build start by vite.config.ts's copyPhoneFlags() plugin
+public/assets/flags

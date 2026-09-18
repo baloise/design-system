@@ -5,6 +5,7 @@ import { CheckboxGroupDemo } from './checkbox-group-demo/checkbox-group-demo'
 import { DateDemo } from './date-demo/date-demo'
 import { FileUploadDemo } from './file-upload-demo/file-upload-demo'
 import { InputDemo } from './input-demo/input-demo'
+import { InputPhoneDemo } from './input-phone-demo/input-phone-demo'
 import { InputSliderDemo } from './input-slider-demo/input-slider-demo'
 import { InputStepperDemo } from './input-stepper-demo/input-stepper-demo'
 import { NumberInputDemo } from './number-input-demo/number-input-demo'
@@ -18,6 +19,7 @@ import { SelectDemo } from './select-demo/select-demo'
   imports: [
     ButtonDemo,
     InputDemo,
+    InputPhoneDemo,
     NumberInputDemo,
     InputSliderDemo,
     InputStepperDemo,

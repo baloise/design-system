@@ -16,6 +16,7 @@
     "@angular/forms": "22.1.6",
     "@angular/platform-browser": "22.1.6",
     "@baloise/ds-angular": "workspace:*",
+    "@baloise/ds-core": "workspace:*",
     "@baloise/ds-styles": "workspace:*",
     "@baloise/ds-tokens": "workspace:*",
     "rxjs": "7.8.2",

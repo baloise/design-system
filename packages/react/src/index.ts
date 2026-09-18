@@ -1,4 +1,4 @@
-export { bootstrapDesignSystem } from './bootstrap'
+export { bootstrapDesignSystem } from './bootstrap.client'
 export type * from './generated/components'
 export * from './wrappers'
 export { DsRootProvider } from './components/ds-root-provider'
