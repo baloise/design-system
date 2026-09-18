@@ -1,7 +1,19 @@
 import type { Decorator, Preview } from '@storybook/html-vite'
-import { updateDsLanguage, updateDsRegion, type DsLanguage, type DsRegion } from '@baloise/ds-core'
+import {
+  updateDsAllowedLanguages,
+  updateDsLanguage,
+  updateDsRegion,
+  type DsLanguage,
+  type DsRegion,
+} from '@baloise/ds-core'
 
 const BRAND_LINK_ID = 'brand-theme-stylesheet'
+
+// The language toolbar (see addons/language.addon.tsx) lets you preview every translation the
+// design system ships, but components reject any language outside `config.allowedLanguages`
+// (which defaults to a region-specific subset) and silently fall back instead. Widen it here so
+// switching the toolbar actually changes the rendered text.
+updateDsAllowedLanguages(['de', 'en', 'fr', 'it', 'nl', 'es', 'pl', 'pt', 'sv', 'fi'])
 
 export const decorators: Decorator[] = [
   (Story: any, context: any) => {
