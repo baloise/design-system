@@ -44,25 +44,25 @@ export const registerTheme: React.FC = () => {
               handleSelect(t.id)
               onHide()
             },
-            right: (
-              <span
-                style={{
-                  display: 'inline-block',
-                  width: 12,
-                  height: 12,
-                  borderRadius: '50%',
-                  background: t.color,
-                  border: '1px solid rgba(0,0,0,.15)',
-                }}
-              />
-            ),
+            // right: (
+            //   <span
+            //     style={{
+            //       display: 'inline-block',
+            //       width: 12,
+            //       height: 12,
+            //       borderRadius: '50%',
+            //       background: t.color,
+            //       border: '1px solid rgba(0,0,0,.15)',
+            //     }}
+            //   />
+            // ),
           }))}
         />
       )}
     >
-      <IconButton key="theme-toolbar" title="Brand theme" active={activeTheme !== ''}>
+      <IconButton key="theme-toolbar" title="Select a brand (theme)" active={activeTheme !== ''}>
         <SvgIcon html={DesignSVG} />
-        <span
+        {/* <span
           style={{
             display: 'inline-block',
             width: 12,
@@ -73,7 +73,7 @@ export const registerTheme: React.FC = () => {
             marginLeft: 4,
             marginRight: 2,
           }}
-        />
+        /> */}
         {active.title}
       </IconButton>
     </WithTooltip>

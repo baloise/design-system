@@ -56,7 +56,11 @@ export const registerLanguage: React.FC = () => {
         />
       )}
     >
-      <IconButton key="language-toolbar" title="Design system language" active={activeLanguage !== 'de'}>
+      <IconButton
+        key="language-toolbar"
+        title="Chose a language for the Design System"
+        active={activeLanguage !== 'de'}
+      >
         <SvgIcon html={WebSVG} />
         <span style={{ marginLeft: 4 }}>{active.id.toUpperCase()}</span>
       </IconButton>

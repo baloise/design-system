@@ -54,7 +54,7 @@ export const registerRegion: React.FC = () => {
         />
       )}
     >
-      <IconButton key="region-toolbar" title="Design system region" active={activeRegion !== 'CH'}>
+      <IconButton key="region-toolbar" title="Chose a region for the Design System" active={activeRegion !== 'CH'}>
         <SvgIcon html={LocationSVG} />
         <span style={{ marginLeft: 4, fontSize: '16px' }}>{active.flag}</span>
       </IconButton>
