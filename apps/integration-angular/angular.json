@@ -22,6 +22,11 @@
               {
                 "glob": "**/*",
                 "input": "public"
+              },
+              {
+                "glob": "**/*",
+                "input": "node_modules/@helvetia-design/core/assets/flags",
+                "output": "assets/flags"
               }
             ],
             "styles": [

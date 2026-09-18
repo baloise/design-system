@@ -68,6 +68,7 @@ libs/*/LICENSE
 packages/core/docs
 packages/core/icons
 packages/core/playwright
+packages/core/assets
 packages/core/components
 packages/core/components/**/readme.md
 packages/core/src/components/**/readme.md

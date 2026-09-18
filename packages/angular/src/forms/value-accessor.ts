@@ -56,11 +56,20 @@ export class DsValueAccessor<
       changeEvent: string
       blurEvent: string
       valueProp: K
+      // Defaults to the change event's own `detail` (see `handleChange()`) — true for every wrapper so far,
+      // since their change event's `detail` already *is* the new value. `ds-input-phone` overrides this:
+      // its `dsChange`'s detail is a payload object (`{ value, country, nationalNumber }`), not the bare
+      // value, so it reads `element.value` directly instead — the component always commits `value` before
+      // dispatching the event.
+      extractValue?: (event: Event, element: Element) => Element[K]
     },
   ) {}
 
   private readonly handleChange = (event: Event) => {
-    this.onChange((event as CustomEvent<Element[K]>).detail)
+    const value = this.config.extractValue
+      ? this.config.extractValue(event, this.element)
+      : (event as CustomEvent<Element[K]>).detail
+    this.onChange(value)
     // `changeEvent`/`blurEvent` are plain DOM events dispatched by the custom element and picked up via a
     // raw `addEventListener` (see `init()`) rather than an Angular-generated template listener — so in a
     // zoneless app (no `zone.js`, e.g. `provideZonelessChangeDetection()` or simply no `zone.js` polyfill)
@@ -217,6 +226,7 @@ export function withValueAccessor<Element extends EventTarget & DsFormElement, K
   changeEvent: string
   blurEvent: string
   valueProp: K
+  extractValue?: (event: Event, element: Element) => Element[K]
 }) {
   return function <TBase extends Constructor>(Base: TBase) {
     return class extends Base implements ControlValueAccessor, OnInit, OnDestroy {

@@ -39,8 +39,24 @@ describe('public API', () => {
 
   test('marks bootstrapDesignSystem as deprecated', () => {
     const bootstrapSource = readFileSync(join(root, 'bootstrap.ts'), 'utf8')
+    const bootstrapClientSource = readFileSync(join(root, 'bootstrap.client.ts'), 'utf8')
     expect(bootstrapSource).toMatch(/@deprecated[\s\S]{0,400}export const bootstrapDesignSystem/)
-    expect(indexSource).toContain("export { bootstrapDesignSystem } from './bootstrap'")
+    expect(bootstrapClientSource).toMatch(/@deprecated[\s\S]{0,400}export const bootstrapDesignSystem/)
+    expect(indexSource).toContain("export { bootstrapDesignSystem } from './bootstrap.client'")
+  })
+
+  test('only the browser entry points initialize the asset path', () => {
+    const serverIndexSource = readFileSync(join(root, 'index.server.ts'), 'utf8')
+    const sharedProviderSource = readFileSync(join(root, 'components/ds-root-provider.shared.tsx'), 'utf8')
+    const clientProviderSource = readFileSync(join(root, 'components/ds-root-provider.tsx'), 'utf8')
+
+    expect(clientProviderSource).toContain('createDsRootProvider(DsRoot, initializeAssetPath)')
+
+    // `asset-path.ts` imports the browser-only custom elements build, so nothing reachable from the
+    // Node entry may import it — not the shared provider factory, and not the plain `bootstrap.ts`.
+    expect(sharedProviderSource).not.toContain('asset-path')
+    expect(readFileSync(join(root, 'bootstrap.ts'), 'utf8')).not.toContain('asset-path')
+    expect(serverIndexSource).toContain("export { bootstrapDesignSystem } from './bootstrap'")
   })
 
   test('does not export internal hooks', () => {

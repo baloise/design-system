@@ -33,6 +33,22 @@ test('ds-input fires dsInput and updates React state', async ({ page }) => {
   await expect(page.getByTestId('input-value')).toHaveText('Input value: hello')
 })
 
+test('ds-input-phone renders and fires dsInput with an E.164 value', async ({ page }) => {
+  await page.goto('/')
+
+  const phone = page.getByTestId('phone')
+  const nativeInput = phone.locator('[part="input"]')
+
+  // Regression coverage for a bundler incompatibility in Stencil's `resourcesUrl` auto-detection that
+  // used to crash this component's render entirely under Vite (`TypeError: Invalid base URL`) — see
+  // packages/core/CONTEXT.md's "Asset path (`resourcesUrl`)" section.
+  await expect(nativeInput).toHaveValue('79 123 45 67')
+
+  await nativeInput.fill('798765432')
+
+  await expect(page.getByTestId('phone-value')).toHaveText('Phone value: +41798765432')
+})
+
 test('ds-checkbox fires dsChange and updates React state', async ({ page }) => {
   await page.goto('/')
 

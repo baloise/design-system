@@ -10,6 +10,14 @@ export type DsRootProviderProps = Omit<DsRootProps, 'allowedLanguages'> & {
 
 type DsRootComponent = ComponentType<DsRootProps>
 
+/**
+ * Side effect the client entry point needs to run before the first component renders, but that must
+ * not be statically imported here: this module is also reachable from the Node (`.server`) entry, and
+ * anything it imports from `@helvetia-design/core/components` would pull the browser-only custom elements
+ * build into the server bundle.
+ */
+type OnInit = () => void
+
 export function serializeAllowedLanguages(value: DsLanguage[] | string | undefined) {
   return Array.isArray(value) ? value.join(',') : value
 }
@@ -30,10 +38,14 @@ export function omitUndefined<T extends object>(value: T): Partial<T> {
   return Object.fromEntries(Object.entries(value).filter(([, item]) => item !== undefined)) as Partial<T>
 }
 
-export function ensureInit(config: DsConfig) {
+export function ensureInit(config: DsConfig, onInit?: OnInit) {
   if (typeof window === 'undefined') {
     return
   }
+
+  // Called unconditionally (not gated by the `DesignSystem.config` check below) since it's independent
+  // of whether the config has already been initialized.
+  onInit?.()
 
   const win = window as Window & { DesignSystem?: { config?: unknown } }
   if (win.DesignSystem?.config) {
@@ -45,7 +57,7 @@ export function ensureInit(config: DsConfig) {
   })
 }
 
-export function createDsRootProvider(DsRoot: DsRootComponent) {
+export function createDsRootProvider(DsRoot: DsRootComponent, onInit?: OnInit) {
   return forwardRef<ComponentRef<typeof DsRootClient>, DsRootProviderProps>(function DsRootProvider(
     {
       icons,
@@ -75,6 +87,7 @@ export function createDsRootProvider(DsRoot: DsRootComponent) {
         legalText,
         socialLinks,
       }),
+      onInit,
     )
 
     return (
