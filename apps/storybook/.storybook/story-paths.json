@@ -372,6 +372,7 @@
   "css-utilities-typography-typography-text-transform": "css-utilities/typography/typography-text-transform.mdx",
   "css-utilities-typography-typography-weight": "css-utilities/typography/typography-weight.mdx",
   "css-utilities-typography-typography-white-space": "css-utilities/typography/typography-white-space.mdx",
+  "design": "design.mdx",
   "development-guides-assets": "development/00-guides/05-assets.mdx",
   "development-guides-components": "development/00-guides/02-components.mdx",
   "development-guides-configuration": "development/00-guides/01-configuration.mdx",
