@@ -1,0 +1,62 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+import { Banner, GridComponent, GridComponents, Lead } from '../../../.storybook/blocks'
+
+<Meta
+  title="Components/Media/Overview"
+  parameters={{
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+<Banner label="Media" color="purple" />
+
+<Lead>Media components display icons, images, logos and other visual assets.</Lead>
+
+<GridComponents>
+  <GridComponent
+    scale="1"
+    label="BrandIcon"
+    fullwidth
+    pageTitle="Components/Media/BrandIcon"
+    description="BrandIcons are used to represent ideas, objects or actions."
+  >
+    <ds-stack align="center" direction="row">
+      <ds-brand-icon src="/assets/images/brand-icons/car-purple.svg"></ds-brand-icon>
+      <ds-brand-icon src="/assets/images/brand-icons/building-purple.svg"></ds-brand-icon>
+      <ds-brand-icon src="/assets/images/brand-icons/diamond-purple.svg"></ds-brand-icon>
+    </ds-stack>
+  </GridComponent>
+  <GridComponent
+    scale="0.8"
+    label="Icon"
+    fullwidth
+    pageTitle="Components/Media/Icon"
+    description="Icons are used to represent ideas, objects or actions."
+  >
+    <ds-stack align="center" direction="row">
+      <ds-icon name="edit" size="sm"></ds-icon>
+      <ds-icon name="edit"></ds-icon>
+      <ds-icon name="edit" size="md"></ds-icon>
+      <ds-icon name="edit" size="lg"></ds-icon>
+      <ds-icon name="edit" size="xl"></ds-icon>
+    </ds-stack>
+  </GridComponent>
+  <GridComponent
+    scale="1.2"
+    label="Logo"
+    pageTitle="Components/Media/Logo"
+    description="All the Logos of the Helvetia Group are legally protected brands and may not be altered in any way."
+  >
+    <ds-logo size="large"></ds-logo>
+  </GridComponent>
+  <GridComponent
+    scale="0.8"
+    label="Shape"
+    pageTitle="Components/Media/Shape"
+    description="Helvetia Shape with variable color, size and rotation."
+  >
+    <ds-shape color="purple" rotation="0" variation="2"></ds-shape>
+  </GridComponent>
+</GridComponents>
