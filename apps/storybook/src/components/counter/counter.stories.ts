@@ -2,12 +2,12 @@ import type { JSX } from '@baloise/ds-core'
 import type { Meta } from '@storybook/html-vite'
 import { props, StoryFactory, withComponentControls, withRender } from '../../utils'
 
-type Args = JSX.DsInputStepper
+type Args = JSX.DsCounter
 
-const tag = 'ds-input-stepper'
+const tag = 'ds-counter'
 
 const meta: Meta<Args> = {
-  title: 'Components/Forms/InputStepper/Variants',
+  title: 'Components/Forms/Counter/Variants',
   args: {
     label: 'Quantity',
     value: 5,
@@ -18,7 +18,7 @@ const meta: Meta<Args> = {
   argTypes: {
     ...withComponentControls({ tag }),
   },
-  ...withRender(({ ...args }) => `<ds-input-stepper ${props(args)}></ds-input-stepper>`),
+  ...withRender(({ ...args }) => `<ds-counter ${props(args)}></ds-counter>`),
 }
 
 export default meta
@@ -64,8 +64,8 @@ Readonly.storyName = '🧩 Readonly'
 export const DecimalStep = Story({
   ...withRender(
     () => `
-<ds-input-stepper label="Percentage" min="0" max="1" step="0.1" value="0.5" description="0.0–1.0 in steps of 0.1"></ds-input-stepper>
-<ds-input-stepper label="Price" min="0" max="100" step="0.01" value="9.99" description="Currency in cents"></ds-input-stepper>
+<ds-counter label="Percentage" min="0" max="1" step="0.1" value="0.5" description="0.0–1.0 in steps of 0.1"></ds-counter>
+<ds-counter label="Price" min="0" max="100" step="0.01" value="9.99" description="Currency in cents"></ds-counter>
 `,
   ),
 })

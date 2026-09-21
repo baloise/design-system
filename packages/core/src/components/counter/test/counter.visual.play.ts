@@ -1,6 +1,6 @@
 import { expectScreenshot, screenshot, test } from '@baloise/ds-playwright'
 
-const TAG = 'input-stepper'
+const TAG = 'counter'
 const VARIANTS = [
   'basic',
   'at-min',

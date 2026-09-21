@@ -1,4 +1,4 @@
-# 17. ds-input-stepper uses `big.js` for step arithmetic
+# 17. ds-counter uses `big.js` for step arithmetic
 
 Package: `packages/core`
 
@@ -10,17 +10,17 @@ Accepted
 
 ## Context
 
-`ds-input-stepper` performs a single arithmetic operation per user click:
+`ds-counter` performs a single arithmetic operation per user click:
 `value ± step`. Both operands are `number` and may be non-integers —
 common in the field for currency (`step = 0.01`), percentages
 (`step = 0.1`), and other unit-based inputs.
 
 IEEE-754 double-precision arithmetic produces surprising results here:
 `0.1 + 0.2 === 0.30000000000000004`. A user clicking "+1" three times on a
-stepper with `step = 0.1` starting at `0` would land on
+counter with `step = 0.1` starting at `0` would land on
 `0.30000000000000004` instead of `0.3`, which would then appear directly in
 the visible span (via `formatLocaleNumber`) and, worse, propagate through
-`internals.setFormValue()` into whatever form the stepper is bound to.
+`internals.setFormValue()` into whatever form the counter is bound to.
 
 Two families of fixes were considered:
 
@@ -46,7 +46,7 @@ control.
 
 ## Decision
 
-`ds-input-stepper` uses `big.js` for the `value + step` and `value - step`
+`ds-counter` uses `big.js` for the `value + step` and `value - step`
 operations. Result:
 
 ```ts
@@ -100,4 +100,4 @@ touch it; everything else in the component uses plain `number`.
 - **`decimal.js`.** Rejected: larger surface area, larger bundle, no
   additional benefit for the two-line arithmetic we actually need.
 - **Do nothing; accept IEEE-754 drift.** Rejected: user-visible on the
-  first three clicks of any `step = 0.1` stepper.
+  first three clicks of any `step = 0.1` counter.

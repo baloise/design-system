@@ -101,7 +101,7 @@ These improvements help our components work seamlessly across all supported fram
 | time-input       | WC & CSS | ✅     | ✅   | ✅   | ✅     | ✅        | ✅     | ⬜    |
 | number-input     | WC       | ✅     | ✅   | ✅   | ✅     | ✅        | ✅     | ⬜    |
 | input-slider     | WC       | ✅     | ✅   | ✅   | ✅     | ✅        | ✅     | ⬜    |
-| input-stepper    | WC       | ✅     | ✅   | ✅   | ✅     | ✅        | ✅     | ⬜    |
+| counter          | WC       | ✅     | ✅   | ✅   | ✅     | ✅        | ✅     | ⬜    |
 | input-phone      | WC       | ✅     | ✅   | ✅   | ✅     | ✅        | ✅     | ⬜    |
 | select           | WC & CSS | ✅     | ✅   | ✅   | ✅     | ✅        | ✅     | ⬜    |
 | date             | WC       | ✅     | ✅   | ✅   | ✅     | ✅        | ✅     | ⬜    |

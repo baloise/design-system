@@ -1,8 +1,8 @@
 import { Component, signal } from '@angular/core'
 import { FormControl, FormGroup, ReactiveFormsModule, ValidationErrors, ValidatorFn } from '@angular/forms'
-import { DsInputStepper } from '@baloise/ds-angular'
+import { DsCounter } from '@baloise/ds-angular'
 
-// `ds-input-stepper` can never be "empty" (see its own `value` prop doc), and its `required` prop only drives
+// `ds-counter` can never be "empty" (see its own `value` prop doc), and its `required` prop only drives
 // the "optional" label suffix — so a `required`-style validator can never fail from user interaction. This
 // minimum-threshold validator stands in for it instead, the same role it plays in the input-slider demo.
 const minValueWithMessage = (min: number, message: string): ValidatorFn => {
@@ -10,12 +10,12 @@ const minValueWithMessage = (min: number, message: string): ValidatorFn => {
 }
 
 @Component({
-  selector: 'app-input-stepper-demo',
-  imports: [DsInputStepper, ReactiveFormsModule],
-  templateUrl: './input-stepper-demo.html',
+  selector: 'app-counter-demo',
+  imports: [DsCounter, ReactiveFormsModule],
+  templateUrl: './counter-demo.html',
 })
-export class InputStepperDemo {
-  protected readonly inputStepperValue = signal(3)
+export class CounterDemo {
+  protected readonly counterValue = signal(3)
 
   // Starts at 3 with a threshold of 2 so one decrease stays valid and two go invalid, while never reaching
   // `min` (0) — which would disable the decrease button and strand the test.
@@ -29,7 +29,7 @@ export class InputStepperDemo {
   // A deliberately *nullable* control, with no counterpart in the input-slider demo: `reset()` on a
   // `nonNullable` control returns the initial value, never `null`, so the form above can't exercise the
   // empty-value path at all. This one calls `writeValue(null)` for real, which is what proves
-  // `ds-input-stepper`'s own `@Watch('value')` resolves it onto `min` end-to-end through the value accessor.
+  // `ds-counter`'s own `@Watch('value')` resolves it onto `min` end-to-end through the value accessor.
   protected readonly nullableForm = new FormGroup({
     quantity: new FormControl<number | null>(3),
   })
@@ -42,7 +42,7 @@ export class InputStepperDemo {
   })
 
   protected onChange(event: CustomEvent<number>) {
-    this.inputStepperValue.set(event.detail)
+    this.counterValue.set(event.detail)
   }
 
   protected toggleReactiveFormDisabled() {

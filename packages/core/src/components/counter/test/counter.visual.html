@@ -17,82 +17,82 @@
       <!-- Basic Style -->
       <section data-testid="basic">
         <span>Basic</span>
-        <ds-input-stepper label="Quantity" description="Choose between 0 and 10"></ds-input-stepper>
-        <ds-input-stepper label="With Value" value="5"></ds-input-stepper>
+        <ds-counter label="Quantity" description="Choose between 0 and 10"></ds-counter>
+        <ds-counter label="With Value" value="5"></ds-counter>
       </section>
 
       <!-- At Min Boundary -->
       <section data-testid="at-min">
         <span>At Min</span>
-        <ds-input-stepper label="At minimum" value="0" min="0" max="10"></ds-input-stepper>
+        <ds-counter label="At minimum" value="0" min="0" max="10"></ds-counter>
       </section>
 
       <!-- At Max Boundary -->
       <section data-testid="at-max">
         <span>At Max</span>
-        <ds-input-stepper label="At maximum" value="10" min="0" max="10"></ds-input-stepper>
+        <ds-counter label="At maximum" value="10" min="0" max="10"></ds-counter>
       </section>
 
       <!-- Disabled -->
       <section data-testid="disabled">
         <span>Disabled</span>
-        <ds-input-stepper label="Label" value="5" disabled></ds-input-stepper>
+        <ds-counter label="Label" value="5" disabled></ds-counter>
       </section>
 
       <!-- Readonly -->
       <section data-testid="readonly">
         <span>Readonly</span>
-        <ds-input-stepper label="Label" value="5" readonly></ds-input-stepper>
+        <ds-counter label="Label" value="5" readonly></ds-counter>
       </section>
 
       <!-- Invalid -->
       <section data-testid="invalid">
         <span>Invalid</span>
-        <ds-input-stepper label="Label" value="5" invalid-text="Out of allowed range" invalid></ds-input-stepper>
+        <ds-counter label="Label" value="5" invalid-text="Out of allowed range" invalid></ds-counter>
       </section>
 
       <!-- Valid -->
       <section data-testid="valid">
         <span>Valid</span>
-        <ds-input-stepper label="Label" value="5" color="success"></ds-input-stepper>
+        <ds-counter label="Label" value="5" color="success"></ds-counter>
       </section>
 
       <!-- Warning -->
       <section data-testid="warning">
         <span>Warning</span>
-        <ds-input-stepper label="Label" value="5" color="warning"></ds-input-stepper>
+        <ds-counter label="Label" value="5" color="warning"></ds-counter>
       </section>
 
       <!-- Custom Min/Max -->
       <section data-testid="min-max">
         <span>Min/Max</span>
-        <ds-input-stepper label="Range -5 to 5" min="-5" max="5" value="0"></ds-input-stepper>
+        <ds-counter label="Range -5 to 5" min="-5" max="5" value="0"></ds-counter>
       </section>
 
       <!-- Decimal Step -->
       <section data-testid="decimal-step">
         <span>Decimal Step</span>
-        <ds-input-stepper label="Step 0.1" min="0" max="1" step="0.1" value="0"></ds-input-stepper>
-        <ds-input-stepper label="Currency (step 0.05)" min="0" max="10" step="0.05" value="0"></ds-input-stepper>
+        <ds-counter label="Step 0.1" min="0" max="1" step="0.1" value="0"></ds-counter>
+        <ds-counter label="Currency (step 0.05)" min="0" max="10" step="0.05" value="0"></ds-counter>
       </section>
 
       <!-- Larger Range -->
       <section data-testid="large-range">
         <span>Larger Range</span>
-        <ds-input-stepper label="0–1000, step 100" min="0" max="1000" step="100" value="500"></ds-input-stepper>
+        <ds-counter label="0–1000, step 100" min="0" max="1000" step="100" value="500"></ds-counter>
       </section>
 
       <!-- Optional (required=false) -->
       <section data-testid="optional">
         <span>Optional</span>
-        <ds-input-stepper label="Optional" required="false" value="5"></ds-input-stepper>
+        <ds-counter label="Optional" required="false" value="5"></ds-counter>
       </section>
 
       <!-- Form Reset -->
       <section data-testid="form-reset">
         <span>Form Reset</span>
         <form action="https://www.w3schools.com/action_page.php" target="_blank">
-          <ds-input-stepper required name="quantity" label="Quantity" value="3"></ds-input-stepper>
+          <ds-counter required name="quantity" label="Quantity" value="3"></ds-counter>
 
           <ds-button-group>
             <ds-button element-type="submit" color="primary">Submit</ds-button>

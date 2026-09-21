@@ -2,15 +2,15 @@ import { expect, Locator } from '@playwright/test'
 import { E2ELocator } from '../page/utils'
 import { PageObject } from './page-object'
 
-export class DsInputStepper extends PageObject {
-  readonly stepper: Locator
+export class DsCounter extends PageObject {
+  readonly counter: Locator
   readonly decreaseButton: Locator
   readonly increaseButton: Locator
   readonly valueDisplay: Locator
 
   constructor(el: E2ELocator) {
     super(el)
-    this.stepper = el.locator('[part="stepper"]')
+    this.counter = el.locator('[part="counter"]')
     this.decreaseButton = el.locator('[part="decrease"]')
     this.increaseButton = el.locator('[part="increase"]')
     this.valueDisplay = el.locator('[part="value"]')

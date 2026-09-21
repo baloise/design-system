@@ -1,6 +1,6 @@
-import { clampValue, stepMinus, stepPlus } from './input-stepper.utils'
+import { clampValue, stepMinus, stepPlus } from './counter.utils'
 
-describe('ds-input-stepper', () => {
+describe('ds-counter', () => {
   describe('clampValue', () => {
     test('keeps a value already inside [min, max]', () => {
       expect(clampValue(5, 0, 10)).toBe(5)

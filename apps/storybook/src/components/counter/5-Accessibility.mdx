@@ -1,13 +1,13 @@
 import { Meta } from '@storybook/addon-docs/blocks'
 import { A11yGuidelines, Banner, BannerTabs, Footer } from '../../../.storybook/blocks'
-import * as InputStepperStories from './input-stepper.stories'
-import { INPUTSTEPPER_DOC_CONFIG, getInputStepperTabs } from './input-stepper.doc-config'
+import * as CounterStories from './counter.stories'
+import { COUNTER_DOC_CONFIG, getCounterTabs } from './counter.doc-config'
 
-<Meta title="Components/Forms/InputStepper/Accessibility" name="Accessibility" />
+<Meta title="Components/Forms/Counter/Accessibility" name="Accessibility" />
 
-<Banner label={'Accessibility'} section={INPUTSTEPPER_DOC_CONFIG.section} color={INPUTSTEPPER_DOC_CONFIG.color} />
+<Banner label={'Accessibility'} section={COUNTER_DOC_CONFIG.section} color={COUNTER_DOC_CONFIG.color} />
 
-<BannerTabs of={InputStepperStories} tabs={getInputStepperTabs('accessibility')} />
+<BannerTabs of={CounterStories} tabs={getCounterTabs('accessibility')} />
 
 ## Guidelines
 
@@ -29,7 +29,7 @@ import { INPUTSTEPPER_DOC_CONFIG, getInputStepperTabs } from './input-stepper.do
       content: (
         <p style={{ margin: '0.5rem 0 0 0' }}>
           Screen readers don't automatically announce <code>min</code>/<code>max</code> for button-based
-          steppers. Use <code>description</code> to state the acceptable range so users know when they will
+          counters. Use <code>description</code> to state the acceptable range so users know when they will
           reach a limit.
         </p>
       ),
