@@ -12,7 +12,7 @@ import { withValueAccessor } from './value-accessor'
  * without any extra opt-in step.
  *
  * `null`/`undefined` (Angular calls `writeValue()` with either for a `FormControl` reset to no value) are
- * assigned straight through, like `DsInputSlider` does for its own non-nullable value prop:
+ * assigned straight through, like `DsSlider` does for its own non-nullable value prop:
  * `ds-counter`'s own `@Watch('value')` resolves any empty value (`null`/`undefined`/`NaN`) onto its
  * current `min` and clamps an out-of-range one into `[min, max]` — see `counter.tsx`'s `value` prop
  * doc — so this wrapper doesn't need to normalize anything itself.

@@ -1,0 +1,23 @@
+<h2>Slider demo</h2>
+
+<p data-testid="slider-value">Slider value: {{ sliderValue() }}</p>
+<ds-slider data-testid="slider" name="smoke-test-slider" [value]="sliderValue()" (dsInput)="onInput($event)" />
+
+<form [formGroup]="reactiveForm">
+  <ds-slider data-testid="reactive-slider" name="reactive-slider" label="Amount" formControlName="amount" />
+</form>
+<p data-testid="reactive-slider-value">Reactive value: {{ reactiveForm.controls.amount.value }}</p>
+<button data-testid="toggle-reactive-slider-disabled" type="button" (click)="toggleReactiveFormDisabled()">
+  Toggle disabled
+</button>
+<button data-testid="set-reactive-slider-value" type="button" (click)="setReactiveFormValue()">Set to 75</button>
+
+<form [formGroup]="autoInvalidOffForm">
+  <ds-slider
+    data-testid="auto-invalid-off-slider"
+    name="auto-invalid-off-slider"
+    label="Amount"
+    autoInvalidOff
+    formControlName="amount"
+  />
+</form>

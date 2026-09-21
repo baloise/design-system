@@ -166,7 +166,7 @@
     "locations": [
       {
         "package": "core",
-        "file": "components/input-slider/input-slider.host.css"
+        "file": "components/slider/slider.host.css"
       },
       {
         "package": "css",
@@ -192,7 +192,7 @@
     "locations": [
       {
         "package": "core",
-        "file": "components/input-slider/input-slider.host.css"
+        "file": "components/slider/slider.host.css"
       },
       {
         "package": "css",
@@ -248,11 +248,11 @@
       },
       {
         "package": "core",
-        "file": "components/input-slider/input-slider.host.css"
+        "file": "components/radio/radio.host.css"
       },
       {
         "package": "core",
-        "file": "components/radio/radio.host.css"
+        "file": "components/slider/slider.host.css"
       },
       {
         "package": "css",
@@ -269,11 +269,11 @@
       },
       {
         "package": "core",
-        "file": "components/input-slider/input-slider.host.css"
+        "file": "components/radio/radio.host.css"
       },
       {
         "package": "core",
-        "file": "components/radio/radio.host.css"
+        "file": "components/slider/slider.host.css"
       },
       {
         "package": "css",
@@ -294,15 +294,15 @@
       },
       {
         "package": "core",
-        "file": "components/input-slider/input-slider.host.css"
-      },
-      {
-        "package": "core",
         "file": "components/radio/radio.host.css"
       },
       {
         "package": "core",
         "file": "components/segment/segment/segment.host.css"
+      },
+      {
+        "package": "core",
+        "file": "components/slider/slider.host.css"
       },
       {
         "package": "css",
@@ -508,11 +508,11 @@
       },
       {
         "package": "core",
-        "file": "components/input-slider/input-slider.host.css"
+        "file": "components/radio/radio.host.css"
       },
       {
         "package": "core",
-        "file": "components/radio/radio.host.css"
+        "file": "components/slider/slider.host.css"
       },
       {
         "package": "css",
@@ -529,11 +529,11 @@
       },
       {
         "package": "core",
-        "file": "components/input-slider/input-slider.host.css"
+        "file": "components/radio/radio.host.css"
       },
       {
         "package": "core",
-        "file": "components/radio/radio.host.css"
+        "file": "components/slider/slider.host.css"
       },
       {
         "package": "css",
@@ -563,7 +563,7 @@
     "locations": [
       {
         "package": "core",
-        "file": "components/input-slider/input-slider.host.css"
+        "file": "components/slider/slider.host.css"
       },
       {
         "package": "css",
@@ -589,7 +589,7 @@
     "locations": [
       {
         "package": "core",
-        "file": "components/input-slider/input-slider.host.css"
+        "file": "components/slider/slider.host.css"
       },
       {
         "package": "css",
@@ -641,7 +641,7 @@
     "locations": [
       {
         "package": "core",
-        "file": "components/input-slider/input-slider.host.css"
+        "file": "components/slider/slider.host.css"
       },
       {
         "package": "css",
@@ -667,7 +667,7 @@
     "locations": [
       {
         "package": "core",
-        "file": "components/input-slider/input-slider.host.css"
+        "file": "components/slider/slider.host.css"
       },
       {
         "package": "css",
@@ -702,7 +702,7 @@
     "locations": [
       {
         "package": "core",
-        "file": "components/input-slider/input-slider.host.css"
+        "file": "components/slider/slider.host.css"
       },
       {
         "package": "css",
@@ -746,11 +746,11 @@
       },
       {
         "package": "core",
-        "file": "components/input-slider/input-slider.host.css"
+        "file": "components/radio/radio.host.css"
       },
       {
         "package": "core",
-        "file": "components/radio/radio.host.css"
+        "file": "components/slider/slider.host.css"
       },
       {
         "package": "css",
@@ -920,15 +920,15 @@
       },
       {
         "package": "core",
-        "file": "components/input-slider/input-slider.host.css"
-      },
-      {
-        "package": "core",
         "file": "components/radio/radio.host.css"
       },
       {
         "package": "core",
         "file": "components/segment/segment/segment.host.css"
+      },
+      {
+        "package": "core",
+        "file": "components/slider/slider.host.css"
       },
       {
         "package": "core",
@@ -958,7 +958,7 @@
     "locations": [
       {
         "package": "core",
-        "file": "components/input-slider/input-slider.host.css"
+        "file": "components/slider/slider.host.css"
       },
       {
         "package": "css",
@@ -984,7 +984,7 @@
     "locations": [
       {
         "package": "core",
-        "file": "components/input-slider/input-slider.host.css"
+        "file": "components/slider/slider.host.css"
       },
       {
         "package": "css",
@@ -2581,10 +2581,6 @@
       },
       {
         "package": "core",
-        "file": "components/input-slider/input-slider.host.css"
-      },
-      {
-        "package": "core",
         "file": "components/list/item/item.host.css"
       },
       {
@@ -2602,6 +2598,10 @@
       {
         "package": "core",
         "file": "components/select/select.host.css"
+      },
+      {
+        "package": "core",
+        "file": "components/slider/slider.host.css"
       },
       {
         "package": "core",
@@ -2654,10 +2654,6 @@
       },
       {
         "package": "core",
-        "file": "components/input-slider/input-slider.host.css"
-      },
-      {
-        "package": "core",
         "file": "components/list/item/item.host.css"
       },
       {
@@ -2675,6 +2671,10 @@
       {
         "package": "core",
         "file": "components/select/select.host.css"
+      },
+      {
+        "package": "core",
+        "file": "components/slider/slider.host.css"
       },
       {
         "package": "core",
@@ -4847,7 +4847,7 @@
       },
       {
         "package": "core",
-        "file": "components/input-slider/input-slider.host.css"
+        "file": "components/slider/slider.host.css"
       },
       {
         "package": "css",
@@ -4940,7 +4940,7 @@
       },
       {
         "package": "core",
-        "file": "components/input-slider/input-slider.host.css"
+        "file": "components/slider/slider.host.css"
       },
       {
         "package": "css",
@@ -4957,7 +4957,7 @@
       },
       {
         "package": "core",
-        "file": "components/input-slider/input-slider.host.css"
+        "file": "components/slider/slider.host.css"
       },
       {
         "package": "css",
@@ -5040,11 +5040,11 @@
       },
       {
         "package": "core",
-        "file": "components/input-slider/input-slider.host.css"
+        "file": "components/radio/radio.host.css"
       },
       {
         "package": "core",
-        "file": "components/radio/radio.host.css"
+        "file": "components/slider/slider.host.css"
       },
       {
         "package": "core",
@@ -5158,7 +5158,7 @@
     "locations": [
       {
         "package": "core",
-        "file": "components/input-slider/input-slider.host.css"
+        "file": "components/slider/slider.host.css"
       }
     ]
   },
@@ -5208,11 +5208,11 @@
       },
       {
         "package": "core",
-        "file": "components/input-slider/input-slider.host.css"
+        "file": "components/pagination/pagination.host.css"
       },
       {
         "package": "core",
-        "file": "components/pagination/pagination.host.css"
+        "file": "components/slider/slider.host.css"
       },
       {
         "package": "core",
@@ -5355,11 +5355,11 @@
       },
       {
         "package": "core",
-        "file": "components/input-slider/input-slider.host.css"
+        "file": "components/radio/radio.host.css"
       },
       {
         "package": "core",
-        "file": "components/radio/radio.host.css"
+        "file": "components/slider/slider.host.css"
       },
       {
         "package": "css",
@@ -12198,10 +12198,6 @@
       },
       {
         "package": "core",
-        "file": "components/input-slider/input-slider.host.css"
-      },
-      {
-        "package": "core",
         "file": "components/input/input.host.css"
       },
       {
@@ -12215,6 +12211,10 @@
       {
         "package": "core",
         "file": "components/select/select.host.css"
+      },
+      {
+        "package": "core",
+        "file": "components/slider/slider.host.css"
       },
       {
         "package": "core",
@@ -12387,10 +12387,6 @@
       },
       {
         "package": "core",
-        "file": "components/input-slider/input-slider.host.css"
-      },
-      {
-        "package": "core",
         "file": "components/input/input.host.css"
       },
       {
@@ -12408,6 +12404,10 @@
       {
         "package": "core",
         "file": "components/select/select.host.css"
+      },
+      {
+        "package": "core",
+        "file": "components/slider/slider.host.css"
       },
       {
         "package": "core",
@@ -12444,10 +12444,6 @@
       },
       {
         "package": "core",
-        "file": "components/input-slider/input-slider.host.css"
-      },
-      {
-        "package": "core",
         "file": "components/input/input.host.css"
       },
       {
@@ -12465,6 +12461,10 @@
       {
         "package": "core",
         "file": "components/select/select.host.css"
+      },
+      {
+        "package": "core",
+        "file": "components/slider/slider.host.css"
       },
       {
         "package": "core",
@@ -12617,10 +12617,6 @@
       },
       {
         "package": "core",
-        "file": "components/input-slider/input-slider.host.css"
-      },
-      {
-        "package": "core",
         "file": "components/input/input.host.css"
       },
       {
@@ -12634,6 +12630,10 @@
       {
         "package": "core",
         "file": "components/select/select.host.css"
+      },
+      {
+        "package": "core",
+        "file": "components/slider/slider.host.css"
       },
       {
         "package": "core",
@@ -12666,10 +12666,6 @@
       },
       {
         "package": "core",
-        "file": "components/input-slider/input-slider.host.css"
-      },
-      {
-        "package": "core",
         "file": "components/input/input.host.css"
       },
       {
@@ -12683,6 +12679,10 @@
       {
         "package": "core",
         "file": "components/select/select.host.css"
+      },
+      {
+        "package": "core",
+        "file": "components/slider/slider.host.css"
       },
       {
         "package": "core",
@@ -12876,10 +12876,6 @@
       },
       {
         "package": "core",
-        "file": "components/input-slider/input-slider.host.css"
-      },
-      {
-        "package": "core",
         "file": "components/input/input.host.css"
       },
       {
@@ -12889,6 +12885,10 @@
       {
         "package": "core",
         "file": "components/select/select.host.css"
+      },
+      {
+        "package": "core",
+        "file": "components/slider/slider.host.css"
       },
       {
         "package": "core",
@@ -12974,10 +12974,6 @@
       },
       {
         "package": "core",
-        "file": "components/input-slider/input-slider.host.css"
-      },
-      {
-        "package": "core",
         "file": "components/input/input.host.css"
       },
       {
@@ -12987,6 +12983,10 @@
       {
         "package": "core",
         "file": "components/select/select.host.css"
+      },
+      {
+        "package": "core",
+        "file": "components/slider/slider.host.css"
       },
       {
         "package": "core",

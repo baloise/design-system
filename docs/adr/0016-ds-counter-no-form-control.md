@@ -32,7 +32,7 @@ discrete, committed value change. There is nothing for `FormControl.onInput`
 to read, nothing for `FormControl.onBlur` to commit that hasn't already been
 committed by the click handler, and nothing for `listenOnReset` to write to.
 
-ADR 0010 already documents that `ds-input-slider` diverges from
+ADR 0010 already documents that `ds-slider` diverges from
 `FormControl.onBlur` for a similar reason (its commit trigger is a native
 `change`, not blur). The counter takes the same reasoning one step further:
 because it has no native form element at all, none of `FormControl`'s
@@ -41,7 +41,7 @@ lifecycle helpers apply.
 ## Decision
 
 `ds-counter` does not construct a `FormControl` instance. It follows
-the `ds-input-slider` / `ds-toggle` pattern of a **web-component-only
+the `ds-slider` / `ds-toggle` pattern of a **web-component-only
 form-associated control**:
 
 1. `@AttachInternals()` provides `ElementInternals`; `internals.setFormValue()`
@@ -66,7 +66,7 @@ form-associated control**:
 - The component's form participation is visible in one place — the click
   handler — instead of being spread across `FormControl.setValue`,
   `FormControl.componentDidLoad`, and `FormControl.listenOnReset`.
-- The precedent is consistent with `ds-input-slider` (ADR 0010) and
+- The precedent is consistent with `ds-slider` (ADR 0010) and
   `ds-toggle`, both of which are also form-associated web components
   without a `nativeEl`-driven commit model.
 
@@ -75,7 +75,7 @@ form-associated control**:
 - A future contributor coming from `ds-input`, `ds-number-input`, or
   `ds-textarea` will look for `this.control = new FormControl(...)` and be
   briefly confused when it isn't there. Mitigated by this ADR and by the
-  fact that `ds-input-slider` already establishes the same shape.
+  fact that `ds-slider` already establishes the same shape.
 - If the shared `FormControl` grows behavior that is genuinely useful to
   no-native-input controls (e.g. reset bookkeeping), we would either need
   to extract that behavior into a smaller reusable helper or duplicate the

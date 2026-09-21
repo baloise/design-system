@@ -6,7 +6,7 @@ import { CounterDemo } from './counter-demo/counter-demo'
 import { DateDemo } from './date-demo/date-demo'
 import { FileUploadDemo } from './file-upload-demo/file-upload-demo'
 import { InputDemo } from './input-demo/input-demo'
-import { InputSliderDemo } from './input-slider-demo/input-slider-demo'
+import { SliderDemo } from './slider-demo/slider-demo'
 import { NumberInputDemo } from './number-input-demo/number-input-demo'
 import { SegmentDemo } from './segment-demo/segment-demo'
 import { TextareaDemo } from './textarea-demo/textarea-demo'
@@ -19,7 +19,7 @@ import { SelectDemo } from './select-demo/select-demo'
     ButtonDemo,
     InputDemo,
     NumberInputDemo,
-    InputSliderDemo,
+    SliderDemo,
     CounterDemo,
     TextareaDemo,
     CheckboxDemo,

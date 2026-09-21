@@ -1,0 +1,16 @@
+<form [formGroup]="form">
+  <ds-textarea
+    data-testid="textarea-form-control"
+    name="textarea-form-control"
+    label="Bio"
+    formControlName="bio"
+    [errorMessages]="{ required: 'Bio is required' }"
+  />
+  <span data-testid="textarea-form-value">Form value: {{ form.value.bio }}</span>
+</form>
+<p data-testid="textarea-form-disabled">Form disabled: {{ form.controls.bio.disabled }}</p>
+<button data-testid="textarea-form-set-external-value" type="button" (click)="setExternalValue()">
+  Set external value
+</button>
+<button data-testid="textarea-form-toggle-disabled" type="button" (click)="toggleDisabled()">Toggle disabled</button>
+<button data-testid="textarea-form-touch" type="button" (click)="touch()">Touch</button>

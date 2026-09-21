@@ -19,15 +19,15 @@ it does, not who consumes it (e.g. `app-navbar` lives under `navigation/`, not u
 
 ### Component → category mapping
 
-| Category   | Components                                                                                                                                              |
-| ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Actions    | button, close, link                                                                                                                                     |
-| Forms      | checkbox, counter, date, file-upload, form, input, input-phone, input-slider, label, number-input, radio, segment, select, textarea, time-input, toggle |
-| Indicators | badge, hint, progress-bar, spinner, tag                                                                                                                 |
-| Media      | brand-icon, icon, logo, picture, shape                                                                                                                  |
-| Navigation | app-navbar, pagination, steps, tabs                                                                                                                     |
-| Overlays   | alert, drawer, modal, notification, popup, sheet, tooltip                                                                                               |
-| Structure  | accordion, app-footer, card, carousel, container, content, data, divider, grid, heading, list, root, stack, table, text                                 |
+| Category   | Components                                                                                                                                        |
+| ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Actions    | button, close, link                                                                                                                               |
+| Forms      | checkbox, counter, date, file-upload, form, input, input-phone, label, number-input, radio, segment, select, slider, textarea, time-input, toggle |
+| Indicators | badge, hint, progress-bar, spinner, tag                                                                                                           |
+| Media      | brand-icon, icon, logo, picture, shape                                                                                                            |
+| Navigation | app-navbar, pagination, steps, tabs                                                                                                               |
+| Overlays   | alert, drawer, modal, notification, popup, sheet, tooltip                                                                                         |
+| Structure  | accordion, app-footer, card, carousel, container, content, data, divider, grid, heading, list, root, stack, table, text                           |
 
 This mapping is the single source of truth. It must stay identical across
 `packages/core/src/components/`, `apps/storybook/src/components/`, and both CONTEXT.md
