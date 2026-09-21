@@ -1552,6 +1552,11 @@ export namespace Components {
          */
         "hideLinks": boolean;
         /**
+          * Defines the brand of the logo. Default is 'baloise'.
+          * @default ''
+         */
+        "logoBrand": BalProps.BalLogoBrand;
+        /**
           * Image address for the logo.
           * @default ''
          */
@@ -2584,6 +2589,11 @@ export namespace Components {
           * Src to display a logo -> replaces the default Baloise Logo
          */
         "logo"?: string;
+        /**
+          * Defines the brand of the logo. Default is 'baloise'.
+          * @default ''
+         */
+        "logoBrand": BalProps.BalLogoBrand;
         /**
           * If `true` the logo is rendered as a button
           * @default false
@@ -7629,6 +7639,11 @@ declare namespace LocalJSX {
          */
         "hideLinks"?: boolean;
         /**
+          * Defines the brand of the logo. Default is 'baloise'.
+          * @default ''
+         */
+        "logoBrand"?: BalProps.BalLogoBrand;
+        /**
           * Image address for the logo.
           * @default ''
          */
@@ -8687,6 +8702,11 @@ declare namespace LocalJSX {
           * Src to display a logo -> replaces the default Baloise Logo
          */
         "logo"?: string;
+        /**
+          * Defines the brand of the logo. Default is 'baloise'.
+          * @default ''
+         */
+        "logoBrand"?: BalProps.BalLogoBrand;
         /**
           * If `true` the logo is rendered as a button
           * @default false
