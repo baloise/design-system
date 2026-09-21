@@ -4,7 +4,7 @@ This document captures domain language, architectural patterns, and key concepts
 
 ## Overview
 
-**packages/ds-skills** (`@helvetia/ds-skills`) ships Claude Code skills that consuming applications install into their own repo. It is not a design-system runtime package — there are no web components, tokens, or styles here. Consumers run `npx @helvetia/ds-skills add`, which copies a skill folder into `<cwd>/.claude/skills/`.
+**packages/ds-skills** (`@helvetia/ds-skills`) ships Claude Code skills that consuming applications install into their own repo. It is not a design-system runtime package — there are no web components, tokens, or styles here. Consumers run `npx @helvetia/ds-skills@next add`, which copies a skill folder into `<cwd>/.claude/skills/`. The `@next` tag is required: this repo publishes with `--tag next`, and `npx` without a tag resolves `latest`.
 
 The first (and currently only) skill is **ds-migrate-from-baloise**: a menu-driven helper for migrating an app from the Baloise Design System (`bal-*`, `@baloise/ds-*`) to the Helvetia Design System (`ds-*`, `@helvetia/ds-*`). The menu itself lives in the copied `SKILL.md`; this file documents package conventions, not the menu copy.
 
@@ -21,7 +21,7 @@ The compiled CLI is a delivery mechanism. The payload is the product.
 
 ### Skill payload, not a plugin
 
-Distribution is `npx @helvetia/ds-skills add`. There is no Claude Code plugin manifest and no marketplace registration.
+Distribution is `npx @helvetia/ds-skills@next add`. There is no Claude Code plugin manifest and no marketplace registration.
 
 ### One `migration.md` per component
 

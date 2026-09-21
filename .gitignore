@@ -2,6 +2,7 @@
 
 # compiled output
 dist
+*.tgz
 blob-report
 tmp
 .tmp

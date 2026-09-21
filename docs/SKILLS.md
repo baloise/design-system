@@ -189,8 +189,10 @@ Auto-generate all test files for a component.
 These skills do not live in this repo's `.claude/skills/`. They ship as a standalone npm package and are copied into a **consuming application's** `.claude/skills/` with:
 
 ```bash
-npx @helvetia/ds-skills add
+npx @helvetia/ds-skills@next add
 ```
+
+The package is published on the `next` dist-tag (same as the rest of this monorepo). `npx` without a tag resolves `latest`, which will not exist until a stable release.
 
 Package conventions (compiled CLI vs. self-contained payload, how to add the next component file) and **how to test the installer** are documented in [packages/ds-skills/CONTEXT.md](../packages/ds-skills/CONTEXT.md#testing).
 
@@ -198,7 +200,7 @@ Package conventions (compiled CLI vs. self-contained payload, how to add the nex
 
 Menu-driven migration from the Baloise Design System (`bal-*`) to the Helvetia Design System (`ds-*`).
 
-**Usage:** install with `npx @helvetia/ds-skills add`, then invoke `/ds-migrate-from-baloise` in the consumer repo.
+**Usage:** install with `npx @helvetia/ds-skills@next add`, then invoke `/ds-migrate-from-baloise` in the consumer repo.
 
 **Menu:**
 
