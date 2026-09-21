@@ -14,10 +14,10 @@ The skill guides you through an interactive questionnaire, then generates all ne
 
 ## What It Creates
 
-For a new component named `button`, the skill generates:
+For a new component named `button` in the `actions` category, the skill generates:
 
 ```
-packages/core/src/components/button/
+packages/core/src/components/actions/button/
 ├── button.tsx              # Stencil component
 ├── button.interfaces.ts    # TypeScript types
 ├── button.host.scss        # Component styles with tokens
@@ -25,10 +25,10 @@ packages/core/src/components/button/
     └── button.visual.html  # Visual test file
 ```
 
-For components with subcomponents (e.g., `tabs` with `tab`):
+For components with subcomponents (e.g., `tabs` with `tab`, in the `navigation` category):
 
 ```
-packages/core/src/components/tabs/
+packages/core/src/components/navigation/tabs/
 ├── tabs.tsx
 ├── tabs.interfaces.ts
 ├── tabs.host.scss
@@ -55,18 +55,22 @@ packages/core/src/components/tabs/
 The skill asks:
 
 1. **Component name** — e.g., `button`, `card`, `modal`
-2. **Purpose** — What does it do?
-3. **Migration?** — From old design system? (auto-extracts props/events)
-4. **Props** — Define component properties
-5. **Events** — Define custom events
-6. **Subcomponents?** — Child components? (e.g., `tab` inside `tabs`)
-7. **Variants** — Visual variants (e.g., primary, secondary, danger)
+2. **Category** — one of `actions`, `forms`, `indicators`, `media`, `navigation`, `overlays`, `structure`
+3. **Purpose** — What does it do?
+4. **Migration?** — From old design system? (auto-extracts props/events)
+5. **Props** — Define component properties
+6. **Events** — Define custom events
+7. **Subcomponents?** — Child components? (e.g., `tab` inside `tabs`)
+8. **Variants** — Visual variants (e.g., primary, secondary, danger)
 
 ## Example: Simple Component
 
 ```
 Q: Component name?
 A: badge
+
+Q: Category?
+A: indicators
 
 Q: Component purpose?
 A: Displays a small label with color variants

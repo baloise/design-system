@@ -1,0 +1,143 @@
+import { Canvas, Meta } from '@storybook/addon-docs/blocks'
+import {
+  AngularFramework,
+  Banner,
+  BannerTabs,
+  Footer,
+  HTMLFramework,
+  InfoQuote,
+  LinkCard,
+  LinkCards,
+  ReactFramework,
+  StoryHeading,
+  UsageExamples,
+} from '../../../../.storybook/blocks'
+import * as SnackbarStories from './snackbar.stories'
+import { SNACKBAR_DOC_CONFIG, getSnackbarTabs } from './snackbar.doc-config'
+
+<Meta title="Components/Overlays/Snackbar/Usage" name="Usage" />
+
+<Banner label={'Usage'} section={SNACKBAR_DOC_CONFIG.section} color={SNACKBAR_DOC_CONFIG.color} />
+
+<BannerTabs of={SnackbarStories} tabs={getSnackbarTabs('usage')} />
+
+{/* ################################################## */}
+{/* -------------------------------------------------- */}
+{/* REACT  ------------------------------------------- */}
+{/* -------------------------------------------------- */}
+{/* ################################################## */}
+
+<ReactFramework>
+
+## Present and dismiss a snackbar
+
+`useSnackbar()` returns `present` and `dismiss` functions. Use a snackbar when the message should remain available until
+it is dismissed.
+
+<InfoQuote>
+  Import `useSnackbar` from `@baloise/ds-react`. The generated `DsSnackbar` wrapper is deprecated.
+</InfoQuote>
+
+```tsx
+import { DsButton, useSnackbar } from '@baloise/ds-react'
+
+export function SnackbarExample() {
+  const [presentSnackbar, dismissSnackbar] = useSnackbar()
+
+  const showSnackbar = () =>
+    presentSnackbar({
+      heading: 'Offline',
+      message: 'You are currently offline.',
+      closable: true,
+      duration: 'infinite',
+      closeHandler: () => undefined,
+      actionHandler: () => undefined,
+    })
+
+  return (
+    <>
+      <DsButton onDsClick={showSnackbar}>Show snackbar</DsButton>
+      <DsButton onDsClick={() => dismissSnackbar()}>Dismiss snackbar</DsButton>
+    </>
+  )
+}
+```
+
+</ReactFramework>
+
+{/* ################################################## */}
+{/* -------------------------------------------------- */}
+{/* HTML  ------------------------------------------- */}
+{/* -------------------------------------------------- */}
+{/* ################################################## */}
+
+<HTMLFramework>
+
+## Present and dismiss a snackbar
+
+Use `dsSnackbarController` from `@baloise/ds-core` (also available as `window.DesignSystem.snackbarController`) to
+create and remove snackbars. `create()` returns the snackbar's ID, which `remove()` needs to dismiss it early.
+
+```html
+<ds-button id="show-snackbar">Show snackbar</ds-button>
+<ds-button id="dismiss-snackbar">Dismiss snackbar</ds-button>
+
+<script type="module">
+  import { dsSnackbarController } from '@baloise/ds-core'
+
+  let snackbarId
+
+  document.querySelector('#show-snackbar').addEventListener('click', async () => {
+    snackbarId = await dsSnackbarController.create({
+      heading: 'Offline',
+      message: 'You are currently offline.',
+      closable: true,
+      duration: 'infinite',
+      closeHandler: () => undefined,
+      actionHandler: () => undefined,
+    })
+  })
+
+  document.querySelector('#dismiss-snackbar').addEventListener('click', () => {
+    if (snackbarId) dsSnackbarController.remove(snackbarId)
+  })
+</script>
+```
+
+</HTMLFramework>
+
+{/* ################################################## */}
+{/* -------------------------------------------------- */}
+{/* ANGULAR  ------------------------------------------- */}
+{/* -------------------------------------------------- */}
+{/* ################################################## */}
+
+<AngularFramework>
+
+## Present and dismiss a snackbar
+
+WIP
+
+</AngularFramework>
+
+## When to Use
+
+- Display persistent notifications that remain visible until the user dismisses them
+- Show feedback for user actions that have completed successfully or with warnings
+- Provide important information that users should be able to review at their own pace
+- Display multiple notifications stacked on top of each other
+
+## When NOT to Use
+
+- For time-sensitive notifications that disappear automatically — use **Toast** instead
+- For critical errors that require immediate user attention — use **Alert** in a modal dialog
+- For inline validation feedback on form fields — use field-level error messages
+
+<Footer>
+  <LinkCards>
+    <LinkCard
+      pageTitle="Development/Overlays"
+      description="Learn how to present and dismiss a snackbar with JavaScript or React."
+    />
+  </LinkCards>
+</Footer>

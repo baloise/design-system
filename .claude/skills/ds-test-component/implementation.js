@@ -1,13 +1,14 @@
 const fs = require('fs')
 const path = require('path')
 const { globSync } = require('glob')
+const { resolveComponentPath } = require('../_shared/component-categories')
 
 const REPO_ROOT = path.resolve(__dirname, '../../..')
 
 async function testComponent(componentName) {
-  const componentPath = path.join(REPO_ROOT, 'packages/core/src/components', componentName)
+  const componentPath = resolveComponentPath(REPO_ROOT, componentName)
 
-  if (!fs.existsSync(componentPath)) {
+  if (!componentPath || !fs.existsSync(componentPath)) {
     throw new Error(`Component not found: ${componentName}`)
   }
 
@@ -148,7 +149,7 @@ async function promptSlots(slots) {
 }
 
 function generateTestFiles(componentName, componentInfo, visualProps, slotsToDemo) {
-  const testDir = path.join(REPO_ROOT, 'packages/core/src/components', componentName, 'test')
+  const testDir = path.join(resolveComponentPath(REPO_ROOT, componentName), 'test')
 
   const poDir = path.join(REPO_ROOT, 'packages/playwright/src/lib/components')
 

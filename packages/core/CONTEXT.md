@@ -22,7 +22,7 @@ This document captures domain language, architectural patterns, and key concepts
 
 ### Component Lifecycle
 
-1. **Authoring** → `.tsx` + `.scss` in `packages/core/src/components/<name>/`
+1. **Authoring** → `.tsx` + `.scss` in `packages/core/src/components/<category>/<name>/`
 2. **Compilation** → Stencil compiler transpiles to web components in `dist/`
 3. **Output targets** → Additional targets (Angular, React, Web, hydrate) generate bindings and the SSR renderer
 4. **Distribution** → Built artifacts published to npm as `@baloise/ds-core`
@@ -263,6 +263,35 @@ Each component directory contains:
 - `component.host.scss` — web component styles (Shadow DOM)
 - `component.style.scss` — shared styles (both modes)
 - `test/` — unit tests (spec), interaction tests (.component.play.ts), visual tests (.visual.play.ts), a11y tests (.a11y.play.ts)
+
+### Usage-Category Taxonomy
+
+Every component directory lives under a lowercase-plural **category** folder:
+`packages/core/src/components/<category>/<name>/`. The identical category folder is mirrored
+in `apps/storybook/src/components/<category>/<name>/` (see `apps/storybook/CONTEXT.md`) — this
+mapping is the single source of truth for both trees.
+
+A component's category is determined by what it **does**, not who consumes it. Scope prefixes
+(`ds-app-*` today, future `ds-web-*`) stay a naming convention only — they do not get their own
+folder tier (e.g. `app-navbar` lives under `navigation/`, not under an `app/` tree).
+
+**Category order and component order within each category are alphabetical, everywhere** —
+folder listing, Storybook sidebar, docs. There are seven categories:
+
+| Category     | Components                                                                                                                                         |
+| ------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `actions`    | button, close, link                                                                                                                                 |
+| `forms`      | checkbox, counter, datepicker, file-upload, form, input, input-phone, label, number-input, radio, segment, select, slider, textarea, time-input, toggle |
+| `indicators` | badge, hint, progress-bar, spinner, tag                                                                                                             |
+| `media`      | brand-icon, icon, logo, picture, shape                                                                                                              |
+| `navigation` | app-navbar, pagination, steps, tabs                                                                                                                 |
+| `overlays`   | alert, drawer, modal, notification, popup, sheet, tooltip                                                                                           |
+| `structure`  | accordion, app-footer, card, carousel, container, content, data, divider, grid, heading, list, root, stack, table, text                            |
+
+When creating a new component, use the `/ds-create-component` skill — it prompts for a
+category and scaffolds directly into the right `components/<category>/<name>/` folder in both
+the core and storybook trees. No public API, import path, package export, or custom-element tag
+name is affected by the category folder — it is purely an internal organizational convention.
 
 ## Navigation Pattern (ds-navbar)
 
@@ -581,7 +610,7 @@ danger`) shared with `ds-input`/`ds-number-input`. `bal-input-slider` had
 for entering an international phone number: a country picker (flag +
 calling code) paired with a national-number text field, formatted via
 `libphonenumber-js`. It is **standalone** — its own native `<input>` and
-`Field` wrapper (`packages/core/src/components/input/field.util.tsx`), a
+`Field` wrapper (`packages/core/src/components/forms/input/field.util.tsx`), a
 sibling to `ds-input`/`ds-select` rather than composing either. Shared
 vocabulary:
 
@@ -635,7 +664,7 @@ vocabulary:
 
 ## Modal Overlay Pattern (ds-modal)
 
-`ds-modal` (`packages/core/src/components/modal/`) is shadow DOM and slot-based
+`ds-modal` (`packages/core/src/components/overlays/modal/`) is shadow DOM and slot-based
 (`header`/`body`/`actions` slots, or the `ds-modal-header`/`ds-modal-body`
 sub-components). `ModalController`/`ModalOptions`
 (`modal.interfaces.ts`/`modal.controller.ts`) currently only create a bare

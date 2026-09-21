@@ -1,0 +1,333 @@
+import { BrandIconCarGreen, BrandIconCarPurple, BrandIconCarRed, BrandIconCarTangerine } from '@baloise/ds-assets'
+import type { JSX } from '@baloise/ds-core'
+import type { Meta } from '@storybook/html-vite'
+import { props, StoryFactory, withComponentControls, withRender } from '../../../utils'
+
+type Args = JSX.DsCheckbox & { slot: string }
+
+const tag = 'ds-checkbox'
+
+const meta: Meta<Args> = {
+  title: 'Components/Forms/Checkbox/Variants',
+  args: {
+    slot: 'Hello World',
+  },
+  argTypes: {
+    ...withComponentControls({ tag }),
+  },
+  ...withRender(({ slot, ...args }) => `<ds-checkbox ${props(args)}>${slot}</ds-checkbox>`),
+}
+
+export default meta
+
+/**
+ * STORIES
+ * ------------------------------------------------------
+ */
+
+const Story = StoryFactory<Args>(meta)
+
+export const Basic = Story()
+Basic.storyName = '🧩 Basic'
+
+export const BasicHtml = Story({
+  ...withRender(
+    ({ slot }) => `
+<label class="ds-checkbox">
+  <input type="checkbox" />
+  ${slot}
+</label>`,
+  ),
+})
+BasicHtml.storyName = '🌍 Basic'
+
+export const Disabled = Story({
+  ...withRender(
+    () => `
+<ds-checkbox-group control label="Label" description="Description" disabled>
+  <ds-checkbox name="disabled" value="1">Unchecked</ds-checkbox>
+  <ds-checkbox name="disabled" value="2" checked>Checked</ds-checkbox>
+</ds-checkbox-group>`,
+  ),
+})
+Disabled.storyName = '🧩 Disabled'
+
+export const DisabledHtml = Story({
+  ...withRender(
+    () => `
+<fieldset class="ds-field is-disabled" disabled>
+  <legend class="ds-label">Label</legend>
+  <div class="ds-checkbox-group">
+    <label class="ds-checkbox is-disabled">
+      <input type="checkbox" aria-describedby="cb-disabled-help" disabled />
+      Unchecked
+    </label>
+    <label class="ds-checkbox is-disabled">
+      <input type="checkbox" aria-describedby="cb-disabled-help" checked disabled />
+      Checked
+    </label>
+  </div>
+  <p class="ds-help" id="cb-disabled-help">Description</p>
+</fieldset>`,
+  ),
+})
+DisabledHtml.storyName = '🌍 Disabled'
+
+export const Invalid = Story({
+  ...withRender(
+    () => `
+<ds-checkbox-group control label="Label" description="Description" invalid invalid-text="Invalid text">
+  <ds-checkbox name="invalid" value="1">Unchecked</ds-checkbox>
+  <ds-checkbox name="invalid" value="2" checked>Checked</ds-checkbox>
+</ds-checkbox-group>`,
+  ),
+})
+Invalid.storyName = '🧩 Invalid'
+
+export const InvalidHtml = Story({
+  ...withRender(
+    () => `
+<fieldset class="ds-field is-danger">
+  <legend class="ds-label">Label</legend>
+  <div class="ds-checkbox-group">
+    <label class="ds-checkbox is-invalid">
+      <input type="checkbox" aria-describedby="cb-invalid-help" aria-invalid="true" />
+      Unchecked
+    </label>
+    <label class="ds-checkbox is-invalid">
+      <input type="checkbox" aria-describedby="cb-invalid-help" checked aria-invalid="true" />
+      Checked
+    </label>
+  </div>
+  <p class="ds-help" id="cb-invalid-help">Invalid text</p>
+</fieldset>`,
+  ),
+})
+InvalidHtml.storyName = '🌍 Invalid'
+
+export const Field = Story({
+  ...withRender(
+    () => `
+<ds-checkbox-group control label="Label" description="This username is available">
+  <ds-checkbox name="field" value="1">Checkbox 1</ds-checkbox>
+  <ds-checkbox name="field" value="2">Checkbox 2</ds-checkbox>
+</ds-checkbox-group>`,
+  ),
+})
+Field.storyName = '🧩 Field'
+
+export const FieldHtml = Story({
+  ...withRender(
+    () => `
+<fieldset class="ds-field">
+  <legend class="ds-label">Label</legend>
+  <div class="ds-checkbox-group">
+    <label class="ds-checkbox">
+      <input type="checkbox" aria-describedby="cb-help" value="1" name="field" />
+      Checkbox 1
+    </label>
+    <label class="ds-checkbox">
+      <input type="checkbox" aria-describedby="cb-help" value="2" name="field" />
+      Checkbox 2
+    </label>
+  </div>
+  <p class="ds-help" id="cb-help">This username is available</p>
+</fieldset>`,
+  ),
+})
+FieldHtml.storyName = '🌍 Field'
+
+export const FieldVertical = Story({
+  ...withRender(
+    () => `
+<ds-checkbox-group control vertical label="Label" description="Choose all that apply">
+  <ds-checkbox value="steve-rogers">Steve Rogers</ds-checkbox>
+  <ds-checkbox value="tony-stark">Tony Stark</ds-checkbox>
+  <ds-checkbox value="black-widow">Black Widow</ds-checkbox>
+</ds-checkbox-group>`,
+  ),
+})
+FieldVertical.storyName = '🧩 Field Vertical'
+
+export const FieldVerticalHtml = Story({
+  ...withRender(
+    () => `
+<fieldset class="ds-field">
+  <legend class="ds-label">Label</legend>
+  <div class="ds-checkbox-group is-vertical">
+    <label class="ds-checkbox">
+      <input type="checkbox" name="heroes" value="steve-rogers" />
+      Steve Rogers
+    </label>
+    <label class="ds-checkbox">
+      <input type="checkbox" name="heroes" value="tony-stark" />
+      Tony Stark
+    </label>
+    <label class="ds-checkbox">
+      <input type="checkbox" name="heroes" value="black-widow" />
+      Black Widow
+    </label>
+  </div>
+  <p class="ds-help">Choose all that apply</p>
+</fieldset>`,
+  ),
+})
+FieldVerticalHtml.storyName = '🌍 Field Vertical'
+
+export const Form = Story({
+  ...withRender(
+    () => `
+<form>
+  <ds-checkbox-group control name="heroes" label="Choose heroes" description="Select your favourites" value='["tony-stark"]'>
+    <ds-checkbox value="steve-rogers">Steve Rogers</ds-checkbox>
+    <ds-checkbox value="tony-stark">Tony Stark</ds-checkbox>
+    <ds-checkbox value="black-widow">Black Widow</ds-checkbox>
+  </ds-checkbox-group>
+  <br />
+  <ds-button element-type="submit" color="primary">Submit</ds-button>
+  <ds-button element-type="reset" color="link">Reset</ds-button>
+</form>`,
+  ),
+})
+Form.storyName = '🧩 Form'
+
+export const FormHtml = Story({
+  ...withRender(
+    () => `
+<form>
+  <label class="ds-checkbox">
+    <input type="checkbox" name="heroes" value="steve-rogers" />
+    Steve Rogers
+  </label>
+  <label class="ds-checkbox">
+    <input type="checkbox" name="heroes" value="tony-stark" checked />
+    Tony Stark
+  </label>
+  <label class="ds-checkbox">
+    <input type="checkbox" name="heroes" value="black-widow" />
+    Black Widow
+  </label>
+  <br /><br />
+  <button type="submit" class="ds-button is-primary">Submit</button>
+  <button type="reset" class="ds-button is-link">Reset</button>
+</form>`,
+  ),
+})
+FormHtml.storyName = '🌍 Form'
+
+export const TileBasic = Story({
+  ...withRender(
+    () => `
+<ds-checkbox-group control label="Label" description="Description" tile value="2">
+  <ds-checkbox name="tile-basic" value="1">Value 1</ds-checkbox>
+  <ds-checkbox name="tile-basic" value="2">Value 2</ds-checkbox>
+  <ds-checkbox name="tile-basic" value="3">Value 3</ds-checkbox>
+</ds-checkbox-group>`,
+  ),
+})
+TileBasic.storyName = '🧩 Tile Basic'
+
+export const TileColumns = Story({
+  ...withRender(
+    () => `
+<ds-checkbox-group control label="Label" description="Description" tile tile-color="purple" cols="3" cols-tablet="2" value="2">
+  <ds-checkbox name="tile-columns" value="1">Value 1</ds-checkbox>
+  <ds-checkbox name="tile-columns" value="2">Value 2</ds-checkbox>
+  <ds-checkbox name="tile-columns" value="3">Value 3</ds-checkbox>
+</ds-checkbox-group>`,
+  ),
+})
+TileColumns.storyName = '🧩 Tile Columns'
+
+export const TileStack = Story({
+  ...withRender(
+    () => `
+<ds-checkbox-group control label="Label" description="Description" tile tile-color="green" value="2">
+  <ds-checkbox name="tile-stack" value="1" label-position="left">
+    <ds-stack direction="row">
+      <ds-brand-icon svg='${BrandIconCarGreen}' size="sm"></ds-brand-icon>
+      <ds-content>
+        <ds-label size="lg">Option 1</ds-label>
+        <span>Description</span>
+      </ds-content>
+    </ds-stack>
+  </ds-checkbox>
+  <ds-checkbox name="tile-stack" value="2">
+    <ds-stack direction="row">
+      <ds-brand-icon svg='${BrandIconCarGreen}' size="sm"></ds-brand-icon>
+      <ds-content>
+        <ds-label size="lg">Option 2</ds-label>
+        <span>Description</span>
+      </ds-content>
+    </ds-stack>
+  </ds-checkbox>
+</ds-checkbox-group>`,
+  ),
+})
+TileStack.storyName = '🧩 Tile Stack'
+
+export const TileStackCentered = Story({
+  ...withRender(
+    () => `
+<ds-checkbox-group control label-position="top" label="Label" description="Description" tile tile-color="green" value="2" cols="2">
+  <ds-checkbox name="tile-stack-centered" value="1">
+    <ds-stack layout="vertical" align="center">
+      <ds-brand-icon svg='${BrandIconCarGreen}'></ds-brand-icon>
+      <ds-content align="center">
+        <ds-label size="xl">Option 1</ds-label>
+      </ds-content>
+    </ds-stack>
+  </ds-checkbox>
+  <ds-checkbox name="tile-stack-centered" value="2">
+    <ds-stack layout="vertical" align="center">
+      <ds-brand-icon svg='${BrandIconCarGreen}'></ds-brand-icon>
+      <ds-content align="center">
+        <ds-label size="xl">Option 2</ds-label>
+      </ds-content>
+    </ds-stack>
+  </ds-checkbox>
+</ds-checkbox-group>`,
+  ),
+})
+TileStackCentered.storyName = '🧩 Tile Stack Centered'
+
+export const TileStackMulticolorHideTrigger = Story({
+  ...withRender(
+    () => `
+<ds-checkbox-group control label-position="top" label="Label" description="Description" tile hide-trigger value="2" cols="4">
+  <ds-checkbox name="tile-stack-multicolor-hide-trigger" value="1" tile-color="purple">
+    <ds-stack layout="vertical" align="center">
+      <ds-brand-icon svg='${BrandIconCarPurple}'></ds-brand-icon>
+      <ds-content align="center">
+        <ds-label size="xl">Purple</ds-label>
+      </ds-content>
+    </ds-stack>
+  </ds-checkbox>
+  <ds-checkbox name="tile-stack-multicolor-hide-trigger" value="2" tile-color="green">
+    <ds-stack layout="vertical" align="center">
+      <ds-brand-icon svg='${BrandIconCarGreen}'></ds-brand-icon>
+      <ds-content align="center">
+        <ds-label size="xl">Green</ds-label>
+      </ds-content>
+    </ds-stack>
+  </ds-checkbox>
+  <ds-checkbox name="tile-stack-multicolor-hide-trigger" value="3" tile-color="red">
+    <ds-stack layout="vertical" align="center">
+      <ds-brand-icon svg='${BrandIconCarRed}'></ds-brand-icon>
+      <ds-content align="center">
+        <ds-label size="xl">Red</ds-label>
+      </ds-content>
+    </ds-stack>
+  </ds-checkbox>
+  <ds-checkbox name="tile-stack-multicolor-hide-trigger" value="4" tile-color="yellow">
+    <ds-stack layout="vertical" align="center">
+      <ds-brand-icon svg='${BrandIconCarTangerine}'></ds-brand-icon>
+      <ds-content align="center">
+        <ds-label size="xl">Yellow</ds-label>
+      </ds-content>
+    </ds-stack>
+  </ds-checkbox>
+</ds-checkbox-group>`,
+  ),
+})
+TileStackMulticolorHideTrigger.storyName = '🧩 Tile Stack Multicolor Hide Trigger'

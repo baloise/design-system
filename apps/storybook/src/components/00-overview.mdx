@@ -27,7 +27,7 @@ import {
   <GridComponent
     scale="0.8"
     label="Accordion"
-    pageTitle="Components/Accordion"
+    pageTitle="Components/Structure/Accordion"
     description="Accordions put users in control of showing or hiding content."
   >
     <ds-accordion summary-title="true" open>
@@ -41,7 +41,7 @@ import {
     fullwidth
     fullheight
     fullscreen
-    pageTitle="Components/Root"
+    pageTitle="Components/Structure/Root"
     description="Root is a container element for a Helvetia Design System application."
   >
     <ds-root
@@ -69,7 +69,7 @@ import {
     scale="0.5"
     label="App Footer"
     fullwidth
-    pageTitle="Components/AppFooter"
+    pageTitle="Components/Structure/AppFooter"
     description="Footer for the Helvetia Applications. The footer runs pure in blue or with a decorated track line below."
   >
     <ds-app-footer></ds-app-footer>
@@ -80,7 +80,7 @@ import {
     fullheight
     fullwidth
     fullscreen
-    pageTitle="Components/App Navbar"
+    pageTitle="Components/Navigation/AppNavbar"
     description="A responsive horizontal Navbar that can support logos, buttons, and dropdowns."
   >
     <ds-app-navbar interface="app">
@@ -133,7 +133,7 @@ import {
   <GridComponent
     scale="2"
     label="Badge"
-    pageTitle="Components/Badge"
+    pageTitle="Components/Indicators/Badge"
     description="Badge indicates a not visited or read action. It can only be used in combination with other components like DsButton, DsCard or DsTabs."
   >
     <ds-stack>
@@ -145,7 +145,7 @@ import {
     scale="1"
     label="BrandIcon"
     fullwidth
-    pageTitle="Components/BrandIcon"
+    pageTitle="Components/Media/BrandIcon"
     description="BrandIcons are used to represent ideas, objects or actions."
   >
     <ds-stack align="center" direction="row">
@@ -157,7 +157,7 @@ import {
   <GridComponent
     scale="1"
     label="Button"
-    pageTitle="Components/Button"
+    pageTitle="Components/Actions/Button"
     description="Buttons provide a clickable element, which can be used in forms, or anywhere that needs simple, standard button functionality."
   >
     <ds-stack>
@@ -170,7 +170,7 @@ import {
   <GridComponent
     scale="0.6"
     label="Card"
-    pageTitle="Components/Card"
+    pageTitle="Components/Structure/Card"
     description="Cards contain content and actions about a single subject and can be combined with other components."
   >
     <ds-card>
@@ -191,7 +191,7 @@ import {
     scale="1"
     label="Carousel"
     fullwidth
-    pageTitle="Components/Carousel"
+    pageTitle="Components/Structure/Carousel"
     description="The carousel component combines all the slide use cases."
   >
   <div class="flex justify-content-center align-items-center">
@@ -232,7 +232,7 @@ import {
     scale="1"
     label="Close"
     fullwidth
-    pageTitle="Components/Close"
+    pageTitle="Components/Actions/Close"
     description="Close is used as a close button for modals, toast and other components."
   >
     <div class="bg-purple-2 radius p-base" style={{ marginLeft: '10%', width: '80%', height: '120px' }}>
@@ -249,7 +249,7 @@ import {
     scale="1"
     label="Container"
     fullwidth
-    pageTitle="Components/Container"
+    pageTitle="Components/Structure/Container"
     description="Container is a wrapper element that can be used to center content and set maximum widths at each responsive breakpoint."
   >
     <div class="bg-purple-2 radius" style={{ marginLeft: '10%', width: '80%', height: '120px' }}>
@@ -264,7 +264,7 @@ import {
     scale="1"
     label="Content"
     fullwidth
-    pageTitle="Components/Content"
+    pageTitle="Components/Structure/Content"
     description="Content helps to align text nodes inside a section."
   >
     <ds-content>
@@ -276,7 +276,7 @@ import {
     scale="0.8"
     label="Data"
     fullwidth
-    pageTitle="Components/Data"
+    pageTitle="Components/Structure/Data"
     description="Data component display readonly form data."
   >
     <ds-card>
@@ -297,7 +297,7 @@ import {
   <GridComponent
     scale="1"
     label="Date"
-    pageTitle="Components/Forms/Date"
+    pageTitle="Components/Forms/Datepicker"
     description="Date Component is a datepicker designed to simplify the process of date selection."
   >
     <div class="text-align-center">
@@ -308,7 +308,7 @@ import {
     scale="4"
     label="Divider"
     fullwidth
-    pageTitle="Components/Divider"
+    pageTitle="Components/Structure/Divider"
     description="A divider is a slender line that serves to group content within stacks and layouts."
   >
     <ds-divider color="primary"></ds-divider>
@@ -368,7 +368,7 @@ import {
     fullwidth
     center
     label="Grid"
-    pageTitle="Components/Grid"
+    pageTitle="Components/Structure/Grid"
     description="Grid is a layout component that allows you to create responsive layouts with a 12-column system."
   >
     <div class="ds-grid is-multiline gap-sm">
@@ -401,7 +401,7 @@ import {
   <GridComponent
     scale="1"
     label="Heading"
-    pageTitle="Components/Heading"
+    pageTitle="Components/Structure/Heading"
     description="Heading provides some additional helpers."
   >
     <ds-heading level="h1" space="bottom">
@@ -413,7 +413,7 @@ import {
     label="Hint"
     fullwidth
     fullheight
-    pageTitle="Components/Hint"
+    pageTitle="Components/Indicators/Hint"
     description="Hint hides content with some additional description and shows it by clicking the icon. It can easily combined with the ds-data or ds-field component."
   >
     <div class="py-base">
@@ -434,7 +434,7 @@ import {
     scale="0.8"
     label="Icon"
     fullwidth
-    pageTitle="Components/Icon"
+    pageTitle="Components/Media/Icon"
     description="Icons are used to represent ideas, objects or actions."
   >
     <ds-stack align="center" direction="row">
@@ -449,7 +449,7 @@ import {
     scale="2"
     label="Link"
     fullwidth
-    pageTitle="Components/Link"
+    pageTitle="Components/Actions/Link"
     description="Link is used to navigate to another page or to a specific section of the current page."
   >
     <ds-stack align="center" direction="row">
@@ -469,7 +469,7 @@ import {
     <GridComponent
     scale="1"
     label="Input Phone"
-    pageTitle="Components/Forms/Input Phone"
+    pageTitle="Components/Forms/InputPhone"
     description="Input phone renders an international phone number field with a country picker (flag + calling code) and a national-number input that live-formats as the user types."
   >
     <ds-input-phone label="Phone number" initial-country="CH" style={{width: '220px'}}></ds-input-phone>
@@ -503,7 +503,7 @@ import {
     scale="0.8"
     label="List"
     fullwidth
-    pageTitle="Components/List"
+    pageTitle="Components/Structure/List"
     description="List present content in a way that makes it easy to identify a specific item in a collection."
   >
   <div class="ds-grid">
@@ -528,7 +528,7 @@ import {
   <GridComponent
     scale="1.2"
     label="Logo"
-    pageTitle="Components/Logo"
+    pageTitle="Components/Media/Logo"
     description="All the Logos of the Helvetia Group are legally protected brands and may not be altered in any way."
   >
     <ds-logo size="large"></ds-logo>
@@ -539,7 +539,7 @@ import {
     fullwidth
     fullheight
     fullscreen
-    pageTitle="Components/Modal"
+    pageTitle="Components/Overlays/Modal"
     description="Modal displays content in a dialog overlay using the native dialog element."
   >
     <div style={{ backgroundColor: 'rgba(0, 7, 57, 0.5)' ,width: '100%', height: '280px',     backdropFilter: 'blur(4px)',
@@ -555,7 +555,7 @@ import {
   <GridComponent
     scale="0.8"
     label="Notification"
-    pageTitle="Components/Notification"
+    pageTitle="Components/Overlays/Notification"
     description="Notification is used for alerts or to highlight certain content for the user."
   >
     <ds-notification color="danger">
@@ -566,7 +566,7 @@ import {
   <GridComponent
     scale="1"
     label="Number Input"
-    pageTitle="Components/Forms/Number Input"
+    pageTitle="Components/Forms/Number-input"
     description="Number Input only allows to enter valid numbers."
   >
     <ds-number-input decimal="2" suffix="CHF" value="1234.45"></ds-number-input>
@@ -575,7 +575,7 @@ import {
     scale="0.5"
     label="Pagination"
     fullwidth
-    pageTitle="Components/Pagination"
+    pageTitle="Components/Navigation/Pagination"
     description="Pagination allows you to divide large amounts of content into smaller chunks across multiple pages."
   >
     <ds-pagination page-range="1" total-pages="20" value="2" class="mb-lg"></ds-pagination>
@@ -587,7 +587,7 @@ import {
     fullheight
     fullwidth
     center
-    pageTitle="Components/Popup"
+    pageTitle="Components/Overlays/Popup"
     description="Tag highlights a label for quick recognition."
   >
     <div class="relative" style={{marginLeft: '-160px'}}>
@@ -603,7 +603,7 @@ import {
     fullwidth
     fullscreen
     label="Progressbar"
-    pageTitle="Components/Progressbar"
+    pageTitle="Components/Indicators/Progress-bar"
     description="Progress bar is used to visualize the progress of a process or action."
   >
     <ds-progress-bar color="purple" value="50"></ds-progress-bar>
@@ -635,7 +635,7 @@ import {
   <GridComponent
     scale="0.8"
     label="Shape"
-    pageTitle="Components/Shape"
+    pageTitle="Components/Media/Shape"
     description="Helvetia Shape with variable color, size and rotation."
   >
     <ds-shape color="purple" rotation="0" variation="2"></ds-shape>
@@ -645,7 +645,7 @@ import {
     label="Sheet"
     fullwidth
     fullheight
-    pageTitle="Components/Sheet"
+    pageTitle="Components/Overlays/Sheet"
     description="Sheet component is used to show content over the whole page at the bottom. The element is sticky."
   >
     <div class="mx-md">
@@ -669,7 +669,7 @@ import {
     label="Snackbar"
     fullwidth
     fullheight
-    pageTitle="Components/Snackbar"
+    pageTitle="Components/Overlays/Snackbar"
     description="Snackbar displays brief feedback messages at the bottom of the screen with optional action buttons and dismissal control."
   >
     <div style={{ position: 'absolute', bottom: '1rem', right: '0' }}>
@@ -681,7 +681,7 @@ import {
   <GridComponent
     scale="1.5"
     label="Spinner"
-    pageTitle="Components/Spinner"
+    pageTitle="Components/Indicators/Spinner"
     description="Spinner displays an animated loading indicator with customizable color, size, and variation."
   >
     <ds-spinner></ds-spinner>
@@ -690,7 +690,7 @@ import {
     scale="0.8"
     label="Stack"
     fullwidth
-    pageTitle="Components/Stack"
+    pageTitle="Components/Structure/Stack"
     description="The Stack element is responsible for arranging its direct descendants in a vertical or horizontal direction, while also allowing for the inclusion of optional spacing between each child."
   >
     <ds-stack>
@@ -703,7 +703,7 @@ import {
     scale="0.8"
     label="Steps"
     fullwidth
-    pageTitle="Components/Steps"
+    pageTitle="Components/Navigation/Steps"
     description="Steps are used to structure the information in sub section on the same page."
   >
 <ds-steps value="b">
@@ -720,7 +720,7 @@ import {
     scale="0.4"
     label="Table"
     fullwidth
-    pageTitle="Components/Table"
+    pageTitle="Components/Structure/Table"
     description="A table is used to organize and present data, in a structured and accessible format for easy reference."
   >
     <ds-card>
@@ -795,7 +795,7 @@ import {
   <GridComponent
     scale="1"
     label="Tabs"
-    pageTitle="Components/Tabs"
+    pageTitle="Components/Navigation/Tabs"
     description="Tabs are used to structure the information in sub section on the same page."
   >
   <div class="px-lg">
@@ -812,7 +812,7 @@ import {
   <GridComponent
     scale="1.2"
     label="Tag"
-    pageTitle="Components/Tag"
+    pageTitle="Components/Indicators/Tag"
     description="Tag highlights a label for quick recognition."
   >
     <ds-stack>
@@ -825,7 +825,7 @@ import {
   <GridComponent
     scale="1"
     label="Text"
-    pageTitle="Components/Text"
+    pageTitle="Components/Structure/Text"
     description="Text provides some additional helpers."
   >
     <ds-text>
@@ -836,7 +836,7 @@ import {
   <GridComponent
     scale="1"
     label="Textarea"
-    pageTitle="Components/Textarea"
+    pageTitle="Components/Forms/Textarea"
     description="Textarea allows a user to write and edit large texts."
   >
     <ds-textarea placeholder="Enter a comment" style={{ width: '227px' }}></ds-textarea>
@@ -858,7 +858,7 @@ import {
   <GridComponent
     scale="0.8"
     label="Toast"
-    pageTitle="Components/Toast"
+    pageTitle="Components/Overlays/Toast"
     description="Toast displays temporary notification messages that appear at the top of the page and auto-dismiss with optional action buttons and close control."
   >
     <div style={{ marginTop: '-100px' }}>
@@ -884,7 +884,7 @@ import {
     fullheight
     fullwidth
     center
-    pageTitle="Components/Tooltip"
+    pageTitle="Components/Overlays/Tooltip"
     description="Tag highlights a label for quick recognition."
   >
     <div class="flex justify-content-center align-items-center p-lg" style={{ marginTop: '-48px' }}>

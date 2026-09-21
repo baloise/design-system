@@ -1,0 +1,77 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  CanvasWithCodePen,
+  Footer,
+  StoryHeading,
+} from '../../../../.storybook/blocks'
+import * as DatepickerStories from './datepicker.stories'
+import { DATEPICKER_DOC_CONFIG, getDatepickerTabs } from './datepicker.doc-config'
+
+<Meta title="Components/Forms/Datepicker/Variants/Overview" name="Overview" />
+
+<StoryHeading of={DatepickerStories.Basic} hidden></StoryHeading>
+
+<Banner label={'Variants'} section={DATEPICKER_DOC_CONFIG.section} color={DATEPICKER_DOC_CONFIG.color} />
+
+<BannerTabs of={DatepickerStories} tabs={getDatepickerTabs('variants')} />
+
+{/* STORIES */}
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={DatepickerStories.Basic}></StoryHeading>
+
+A masked date input with a calendar popup trigger. The field formats input automatically and validates the date on completion.
+
+<CanvasWithCodePen of={DatepickerStories.Basic} sourceState="shown" overflowVisible={true} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={DatepickerStories.MinMax}></StoryHeading>
+
+Use `min` and `max` to constrain the selectable date range. Dates outside the range are disabled in the calendar and rejected when typed.
+
+<CanvasWithCodePen of={DatepickerStories.MinMax} sourceState="shown" overflowVisible={true} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={DatepickerStories.FreeSolo}></StoryHeading>
+
+Setting `free-solo` hides the calendar trigger and popup. The component becomes a plain masked text input — useful when the picker is not needed or causes layout conflicts.
+
+<CanvasWithCodePen of={DatepickerStories.FreeSolo} sourceState="shown" overflowVisible={true} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={DatepickerStories.DefaultDate}></StoryHeading>
+
+`default-date` sets the month the calendar opens to when no value is selected. The date is not pre-selected — only the initial view is affected.
+
+<CanvasWithCodePen of={DatepickerStories.DefaultDate} sourceState="shown" overflowVisible={true} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={DatepickerStories.AllowedDates}></StoryHeading>
+
+The `allowedDates` property accepts a callback `(dateString: string) => boolean`. Return `false` to disable a date in the calendar and reject it from typed input. The callback receives ISO strings (`YYYY-MM-DD`). This example allows only even-numbered days.
+
+<CanvasWithCodePen of={DatepickerStories.AllowedDates} sourceState="shown" overflowVisible={true} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={DatepickerStories.Disabled}></StoryHeading>
+
+A disabled date field is not interactive and is excluded from form submission. Use `readonly` instead when the value should still be submitted.
+
+<CanvasWithCodePen of={DatepickerStories.Disabled} sourceState="shown" overflowVisible={true} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={DatepickerStories.Inline}></StoryHeading>
+
+Setting `inline` hides the input field and renders the calendar permanently visible. Use this when you want to embed a date picker directly in the layout without a trigger button or popup. Events behave the same as the standard variant — `dsChange` fires on selection and `dsBlur` follows immediately after.
+
+<CanvasWithCodePen of={DatepickerStories.Inline} sourceState="shown" />
+
+<Footer />

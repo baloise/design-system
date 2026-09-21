@@ -1,0 +1,19 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  ComponentPageObject,
+  Footer,
+} from '../../../../.storybook/blocks'
+import * as DatepickerStories from './datepicker.stories'
+import { DATEPICKER_DOC_CONFIG, getDatepickerTabs } from './datepicker.doc-config'
+
+<Meta title="Components/Forms/Datepicker/Testing" name="Testing" />
+
+<Banner label={'Testing'} section={DATEPICKER_DOC_CONFIG.section} color={DATEPICKER_DOC_CONFIG.color} />
+
+<BannerTabs of={DatepickerStories} tabs={getDatepickerTabs('testing')} />
+
+<ComponentPageObject component="datepicker" />
+
+<Footer />

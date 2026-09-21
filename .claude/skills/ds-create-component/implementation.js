@@ -7,6 +7,7 @@
 
 const path = require('path')
 const fs = require('fs')
+const { CATEGORIES } = require('../_shared/component-categories')
 
 /**
  * Main questionnaire flow
@@ -14,6 +15,7 @@ const fs = require('fs')
 async function createComponent(userResponses) {
   const {
     componentName,
+    category,
     purpose,
     isMigration,
     oldComponentName,
@@ -29,7 +31,12 @@ async function createComponent(userResponses) {
     throw new Error('Invalid component name. Use kebab-case (e.g., "my-button")')
   }
 
-  const componentPath = path.join(process.cwd(), 'packages/core/src/components', componentName)
+  // Validate category
+  if (!category || !CATEGORIES.includes(category)) {
+    throw new Error(`Invalid category "${category}". Must be one of: ${CATEGORIES.join(', ')}`)
+  }
+
+  const componentPath = path.join(process.cwd(), 'packages/core/src/components', category, componentName)
 
   // Check if component already exists
   if (fs.existsSync(componentPath)) {
@@ -70,6 +77,7 @@ async function createComponent(userResponses) {
   return {
     status: 'ready',
     componentName,
+    category,
     files,
     tokenWarnings,
     migrationNotes,

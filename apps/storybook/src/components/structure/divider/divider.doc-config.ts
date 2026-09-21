@@ -1,0 +1,37 @@
+/**
+ * Shared configuration for Divider component documentation pages.
+ * Import and reuse this across all divider documentation MDX files to reduce duplication.
+ */
+
+export const DIVIDER_DOC_CONFIG = {
+  section: 'Components / Divider',
+  color: 'yellow' as const,
+  tabs: [
+    { label: 'Overview', storyId: 'components-structure-divider-divider--divider' },
+    { label: 'Usage', storyId: 'components-structure-divider-usage--usage' },
+    { label: 'Variants', storyId: 'components-structure-divider-variants-overview--overview' },
+    { label: 'Styling', storyId: 'components-structure-divider-styling--styling' },
+    { label: 'Accessibility', storyId: 'components-structure-divider-accessibility--accessibility' },
+    { label: 'Testing', storyId: 'components-structure-divider-testing--testing' },
+  ],
+}
+
+export const DIVIDER_TAB_TITLES = {
+  overview: 'Overview',
+  usage: 'Usage',
+  variants: 'Variants',
+  styling: 'Styling',
+  accessibility: 'Accessibility',
+  testing: 'Testing',
+}
+
+/**
+ * Helper to get tabs with active state set.
+ * Usage: getDividerTabs('usage')
+ */
+export const getDividerTabs = (activeLabel: keyof typeof DIVIDER_TAB_TITLES) => {
+  return DIVIDER_DOC_CONFIG.tabs.map(tab => ({
+    ...tab,
+    active: tab.label === DIVIDER_TAB_TITLES[activeLabel],
+  }))
+}

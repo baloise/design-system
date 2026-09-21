@@ -42,10 +42,12 @@ gh pr view --json number,url,headRefName,state
 For each component passed in, confirm it exists as a kebab-case slug:
 
 ```bash
-ls packages/core/src/components/ | grep -x "<name>"
+find packages/core/src/components -mindepth 2 -maxdepth 2 -type d -name "<name>"
 ```
 
-(Foundation-level names like `colors` are also valid — check `packages/core/src/foundation/` if not found under `components/`.)
+(Components live under a category folder, e.g. `packages/core/src/components/actions/button/` — the
+component name is the last path segment, not the category. Foundation-level names like `colors`
+are also valid — check `packages/core/src/foundation/` if not found under `components/`.)
 
 If a name doesn't match anything, flag it to the user rather than posting a comment with a typo'd component name.
 
@@ -73,5 +75,5 @@ Print the resulting comment URL (`gh pr comment` prints it on success) so the us
 ## Notes
 
 - The bot command requires the commenter to have `OWNER`, `COLLABORATOR`, or `MEMBER` association on the repo — if the workflow doesn't trigger, that's the likely cause, not a malformed comment.
-- Component names are kebab-case folder names under `packages/core/src/components/`, not PascalCase — e.g. `input-slider`, not `InputSlider`.
+- Component names are kebab-case folder names under `packages/core/src/components/<category>/`, not PascalCase — e.g. `slider`, not `Slider`.
 - See `ARCHITECTURE.md` ("Bot Commands" table) and `CONTRIBUTING.md` for the full list of supported PR bot commands (`/update-screenshots`, `/snapshot`, `/cib`).

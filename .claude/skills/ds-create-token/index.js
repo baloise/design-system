@@ -2,6 +2,7 @@
 
 const fs = require('fs')
 const path = require('path')
+const { resolveComponentPath } = require('../_shared/component-categories')
 
 // Find the design system root
 function findDSRoot() {
@@ -90,11 +91,11 @@ async function main() {
     }
 
     const dsRoot = findDSRoot()
-    const componentDir = path.join(dsRoot, 'packages/core/src/components', componentName)
-    const scssFile = path.join(componentDir, `${componentName}.host.scss`)
+    const componentDir = resolveComponentPath(dsRoot, componentName)
+    const scssFile = componentDir ? path.join(componentDir, `${componentName}.host.scss`) : null
 
-    if (!fs.existsSync(scssFile)) {
-      console.error(`Component file not found: ${scssFile}`)
+    if (!scssFile || !fs.existsSync(scssFile)) {
+      console.error(`Component file not found: ${componentName}`)
       process.exit(1)
     }
 
