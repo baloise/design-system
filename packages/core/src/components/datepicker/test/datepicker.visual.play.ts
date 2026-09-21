@@ -1,6 +1,6 @@
 import { DsDatepicker, E2ELocator, expectScreenshot, screenshot, test } from '@baloise/ds-playwright'
 
-const TAG = 'date'
+const TAG = 'datepicker'
 const VARIANTS = [
   'basic',
   'form',
