@@ -10,6 +10,8 @@
   "twitter",
   "trash",
   "tiktok",
+  "tag",
+  "table-cell-merge",
   "star-shape",
   "star-half",
   "star-full",
@@ -85,5 +87,6 @@
   "answer",
   "alert",
   "alert-triangle",
+  "add-user",
   "account"
 ]
