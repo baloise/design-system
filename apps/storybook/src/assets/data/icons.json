@@ -10,6 +10,8 @@
   "triangle",
   "trash",
   "tiktok",
+  "tag",
+  "table-cell-merge",
   "star-shape",
   "star-half",
   "star-full",
@@ -24,7 +26,6 @@
   "pinterest",
   "picture",
   "pdf",
-  "nav-back",
   "mobile",
   "minus",
   "message",
@@ -80,5 +81,6 @@
   "answer",
   "alert",
   "alert-triangle",
+  "add-user",
   "account"
 ]

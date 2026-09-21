@@ -2,6 +2,17 @@
   padding: 0 3rem 0 3rem;
 }
 
+::-moz-selection {
+  /* Code for Firefox */
+  color: #000d6e;
+  background: #cccfe2;
+}
+
+::selection {
+  color: #000d6e;
+  background: #cccfe2;
+}
+
 /***************************************
  * TYPOGRAPHY
  ***************************************/

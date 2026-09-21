@@ -155,11 +155,30 @@ div[data-testid='tooltip'] button:active {
   font-weight: 700;
 }
 
+.search-result-item--label mark {
+  background: #ffecbc;
+}
+
 .search-result-item[aria-selected='true'],
 .search-result-item:focus,
 .search-result-item:active,
 .search-result-item:hover {
   background-color: #e5e7f0 !important;
+}
+
+#storybook-explorer-searchfield mark {
+  color: #000d6e;
+}
+
+::-moz-selection {
+  /* Code for Firefox */
+  color: #000d6e;
+  background: #cccfe2;
+}
+
+::selection {
+  color: #000d6e;
+  background: #cccfe2;
 }
 
 /***************************************

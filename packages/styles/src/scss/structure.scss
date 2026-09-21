@@ -65,6 +65,16 @@ button {
   color: inherit;
 }
 
+::-moz-selection {
+  color: var(--ds-body-selection-color);
+  background: var(--ds-body-selection-surface);
+}
+
+::selection {
+  color: var(--ds-body-selection-color);
+  background: var(--ds-body-selection-surface);
+}
+
 p:not(.ds-text, .ds-title, .ds-subtitle, .ds-heading) {
   hyphens: auto;
   margin: 0;
