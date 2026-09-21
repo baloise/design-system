@@ -212,7 +212,7 @@ importers:
         specifier: 6.1.3
         version: 6.1.3
       sass:
-        specifier: 1.104.1
+        specifier: 'catalog:'
         version: 1.104.1
       serve-index:
         specifier: 'catalog:'
