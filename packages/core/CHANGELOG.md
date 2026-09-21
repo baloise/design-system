@@ -1,5 +1,11 @@
 # Changelog
 
+## 19.11.0
+
+### Minor Changes
+
+- **icon**: add new icons tag, table-cell-merger and add-user ( [#2305](https://github.com/baloise/design-system/pull/2305))
+
 ## 19.10.2
 
 ### Patch Changes
