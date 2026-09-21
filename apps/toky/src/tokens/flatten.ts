@@ -4,12 +4,14 @@ import type { FigmaId, FlatToken, ResponsiveDimensionValue, TokenLayer } from '.
 const LAYER_KEYS: Record<string, TokenLayer> = {
   '🌐 Global': 'Global',
   '🔗 Alias': 'Alias',
+  '📱 Device': 'Device',
   '🧩 Component': 'Component',
 }
 
 export const KEY_BY_LAYER: Record<TokenLayer, string> = {
   Global: '🌐 Global',
   Alias: '🔗 Alias',
+  Device: '📱 Device',
   Component: '🧩 Component',
 }
 
@@ -66,6 +68,7 @@ function walk(node: Record<string, unknown>, path: string[], layer: TokenLayer, 
       name: path.slice(1).join('.'),
       layer,
       type: typeof node.$type === 'string' ? node.$type : '',
+      description: typeof node.$description === 'string' ? node.$description : undefined,
       rawValue,
       referenceTarget: referenceMatch ? referenceMatch[1] : null,
       resolvedValue: undefined,

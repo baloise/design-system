@@ -6,7 +6,7 @@ export const TokensColors = ({ _overview }): React.ReactElement => {
   const list = tokens['🌐 Global']['🌈 Color']
 
   return (
-    <table className="sb-unstyled my-x-large table tokens" style={{ width: '100%' }}>
+    <table className="sb-unstyled my-xl ds-table tokens" style={{ width: '100%' }}>
       <thead>
         <tr>
           <th style={{ width: '100%' }}>Token & Description</th>
@@ -27,7 +27,7 @@ export const TokensColors = ({ _overview }): React.ReactElement => {
                   <Clipboard label={item.name} value={`var(--${item.name})`} />
                 </td>
                 <td style={{ verticalAlign: 'top' }} className="border-none">
-                  <p className={`mt-none mb-x-small text-small font-weight-bold py-xx-small`}>{item.$value}</p>
+                  <p className={`mt-none mb-xs text-sm font-weight-bold py-2xs`}>{item.$value}</p>
                 </td>
                 <td style={{ verticalAlign: 'top' }} className="border-none">
                   <div
@@ -38,49 +38,49 @@ export const TokensColors = ({ _overview }): React.ReactElement => {
               </tr>
               <tr>
                 <td colSpan={3} className={item.$value ? 'border-bottom-grey' : 'border-none'}>
-                  <p className="m-none text-small mb-small">{item.comment}</p>
+                  <p className="m-none text-sm mb-sm">{item.comment}</p>
                 </td>
               </tr>
               {!item.$value ? (
                 <tr>
                   <td colSpan={3} className="border-bottom-grey">
                     <p className="font-weight-bold mb-none">Shades</p>
-                    <p className="inline-block mt-none text-small py-xx-small px-x-small bg-grey-1 radius font-weight-bold">
+                    <p className="inline-block mt-none text-sm py-2xs px-xs bg-grey-1 radius font-weight-bold">
                       {item.name}-x
                     </p>
-                    <div className="flex gap-normal">
+                    <div className="flex gap-base">
                       <div
-                        className="radius p-small font-weight-bold"
+                        className="radius p-sm font-weight-bold"
                         style={{ flex: '1', height: '48px', background: `var(--${item.name}-1)` }}
                       >
                         1
                       </div>
                       <div
-                        className="radius p-small font-weight-bold"
+                        className="radius p-sm font-weight-bold"
                         style={{ flex: '1', height: '48px', background: `var(--${item.name}-2)` }}
                       >
                         2
                       </div>
                       <div
-                        className="radius p-small font-weight-bold"
+                        className="radius p-sm font-weight-bold"
                         style={{ flex: '1', height: '48px', background: `var(--${item.name}-3)` }}
                       >
                         3
                       </div>
                       <div
-                        className="radius p-small font-weight-bold text-white"
+                        className="radius p-sm font-weight-bold text-white"
                         style={{ flex: '1', height: '48px', background: `var(--${item.name}-4)` }}
                       >
                         4
                       </div>
                       <div
-                        className="radius p-small font-weight-bold text-white"
+                        className="radius p-sm font-weight-bold text-white"
                         style={{ flex: '1', height: '48px', background: `var(--${item.name}-5)` }}
                       >
                         5
                       </div>
                       <div
-                        className="radius p-small font-weight-bold text-white"
+                        className="radius p-sm font-weight-bold text-white"
                         style={{ flex: '1', height: '48px', background: `var(--${item.name}-6)` }}
                       >
                         6

@@ -6,12 +6,12 @@ export const TABLE_DOC_CONFIG = {
   section: 'Components / Table',
   color: 'purple' as const,
   tabs: [
-    { label: 'Overview', storyId: 'components-table--table' },
-    { label: 'Usage', storyId: 'components-table--usage' },
-    { label: 'Variants', storyId: 'components-table--variants-overview' },
-    { label: 'Styling', storyId: 'components-table--styling' },
-    { label: 'Accessibility', storyId: 'components-table--accessibility' },
-    { label: 'Testing', storyId: 'components-table--testing' },
+    { label: 'Overview', storyId: 'components-table-table--table' },
+    { label: 'Usage', storyId: 'components-table-usage--usage' },
+    { label: 'Variants', storyId: 'components-table-variants-overview--overview' },
+    { label: 'Styling', storyId: 'components-table-styling--styling' },
+    { label: 'Accessibility', storyId: 'components-table-accessibility--accessibility' },
+    { label: 'Testing', storyId: 'components-table-testing--testing' },
   ],
 }
 

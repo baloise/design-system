@@ -7,12 +7,12 @@ export const BUTTON_DOC_CONFIG = {
   section: 'Components / Button',
   color: 'purple' as const,
   tabs: [
-    { label: 'Overview', storyId: 'components-button--button' },
-    { label: 'Usage', storyId: 'components-button--usage' },
-    { label: 'Variants', storyId: 'components-button--variants-overview' },
-    { label: 'Styling', storyId: 'components-button--styling' },
-    { label: 'Accessibility', storyId: 'components-button--accessibility' },
-    { label: 'Testing', storyId: 'components-button--testing' },
+    { label: 'Overview', storyId: 'components-button-button--button' },
+    { label: 'Usage', storyId: 'components-button-usage--usage' },
+    { label: 'Variants', storyId: 'components-button-variants-overview--overview' },
+    { label: 'Styling', storyId: 'components-button-styling--styling' },
+    { label: 'Accessibility', storyId: 'components-button-accessibility--accessibility' },
+    { label: 'Testing', storyId: 'components-button-testing--testing' },
   ],
 }
 

@@ -5,12 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <link rel="stylesheet" href="/assets/section.css" />
+    <link rel="stylesheet" href="/assets/tokens/base.tokens.css" />
     <link rel="stylesheet" href="/assets/css/design-system.local.min.css" />
+    <link rel="stylesheet" href="/assets/css/utilities.min.css" />
     <script type="module" src="/build/design-system.esm.js"></script>
     <script nomodule src="/build/design-system.js"></script>
   </head>
   <body>
-    <main class="container">
+    <main class="ds-container">
       <!-- Single select -->
       <section data-testid="basic">
         <span>Basic</span>
@@ -20,6 +22,27 @@
           label="Country"
           description="Select your country of residence"
           value="it"
+        ></ds-select>
+      </section>
+
+      <!-- Disabled -->
+      <section data-testid="disabled">
+        <span>Disabled</span>
+        <ds-select disabled id="disabled" label="Country" description="Select your country of residence"></ds-select>
+        <ds-select
+          disabled
+          id="disabled-value"
+          label="Country"
+          description="Select your country of residence"
+          value="it"
+        ></ds-select>
+        <ds-select
+          disabled
+          id="disabled-multi-value"
+          label="Languages"
+          description="Select all languages you speak"
+          multiple
+          value="it,ch"
         ></ds-select>
       </section>
 
@@ -105,7 +128,7 @@
         <span>Autocomplete</span>
         <form action="https://www.w3schools.com/action_page.php" target="_blank">
           <ds-input label="Name" autocomplete="name"></ds-input>
-          <ds-date label="Birthdate" description="Description 1" autocomplete="bday"></ds-date>
+          <ds-datepicker label="Birthdate" description="Description 1" autocomplete="bday"></ds-datepicker>
           <ds-select
             id="autocomplete-select"
             label="Location"
@@ -166,6 +189,10 @@
 
       document.getElementById('basic').options = countryOptions
       document.getElementById('basic-value').options = countryOptions
+      document.getElementById('disabled').options = countryOptions
+      document.getElementById('disabled-value').options = countryOptions
+      document.getElementById('disabled-multi-value').options = languageOptions
+      document.getElementById('disabled-multi-value').value = ['de', 'it']
       document.getElementById('searchable').options = countryOptions
       document.getElementById('searchable-value').options = countryOptions
       document.getElementById('clearable').options = countryOptions

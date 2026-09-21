@@ -48,16 +48,16 @@ Basic.storyName = '🧩 Basic'
 export const BasicHtml = Story({
   ...withRender(
     () => `
-<div class="radio-group">
-  <label class="radio">
+<div class="ds-radio-group">
+  <label class="ds-radio">
     <input type="radio" name="basic" value="1" />
     Option 1
   </label>
-  <label class="radio">
+  <label class="ds-radio">
     <input type="radio" name="basic" value="2" checked />
     Option 2
   </label>
-  <label class="radio">
+  <label class="ds-radio">
     <input type="radio" name="basic" value="3" />
     Option 3
   </label>
@@ -81,20 +81,24 @@ Disabled.storyName = '🧩 Disabled'
 export const DisabledHtml = Story({
   ...withRender(
     () => `
-<div class="radio-group">
-  <label class="radio is-disabled">
-    <input type="radio" name="disabled" value="1" disabled />
-    Option 1
-  </label>
-  <label class="radio is-disabled">
-    <input type="radio" name="disabled" value="2" checked disabled />
-    Option 2
-  </label>
-  <label class="radio is-disabled">
-    <input type="radio" name="disabled" value="3" disabled />
-    Option 3
-  </label>
-</div>`,
+<fieldset class="ds-field is-disabled" disabled>
+  <legend class="ds-label">Disabled</legend>
+  <div class="ds-radio-group">
+    <label class="ds-radio is-disabled">
+      <input type="radio" name="disabled" value="1" aria-describedby="rb-disabled-help" disabled />
+      Option 1
+    </label>
+    <label class="ds-radio is-disabled">
+      <input type="radio" name="disabled" value="2" aria-describedby="rb-disabled-help" checked disabled />
+      Option 2
+    </label>
+    <label class="ds-radio is-disabled">
+      <input type="radio" name="disabled" value="3" aria-describedby="rb-disabled-help" disabled />
+      Option 3
+    </label>
+  </div>
+  <p class="ds-help" id="rb-disabled-help">description</p>
+</fieldset>`,
   ),
 })
 DisabledHtml.storyName = '🌍 Disabled'
@@ -102,7 +106,7 @@ DisabledHtml.storyName = '🌍 Disabled'
 export const Invalid = Story({
   ...withRender(
     () => `
-<ds-radio-group name="invalid" invalid>
+<ds-radio-group name="invalid" invalid label="Label" invalid-text="Invalid text">
   <ds-radio value="1">Option 1</ds-radio>
   <ds-radio value="2">Option 2</ds-radio>
   <ds-radio value="3">Option 3</ds-radio>
@@ -114,20 +118,24 @@ Invalid.storyName = '🧩 Invalid'
 export const InvalidHtml = Story({
   ...withRender(
     () => `
-<div class="radio-group">
-  <label class="radio is-invalid">
-    <input type="radio" name="invalid" value="1" aria-invalid="true" />
-    Option 1
-  </label>
-  <label class="radio is-invalid">
-    <input type="radio" name="invalid" value="2" checked aria-invalid="true" />
-    Option 2
-  </label>
-  <label class="radio is-invalid">
-    <input type="radio" name="invalid" value="3" aria-invalid="true" />
-    Option 3
-  </label>
-</div>`,
+<fieldset class="ds-field is-danger">
+  <legend class="ds-label">Label</legend>
+  <div class="ds-radio-group">
+    <label class="ds-radio is-invalid">
+      <input type="radio" name="invalid" value="1" aria-describedby="rb-invalid-help" aria-invalid="true" />
+      Option 1
+    </label>
+    <label class="ds-radio is-invalid">
+      <input type="radio" name="invalid" value="2" aria-describedby="rb-invalid-help" checked aria-invalid="true" />
+      Option 2
+    </label>
+    <label class="ds-radio is-invalid">
+      <input type="radio" name="invalid" value="3" aria-describedby="rb-invalid-help" aria-invalid="true" />
+      Option 3
+    </label>
+  </div>
+  <p class="ds-help" id="rb-invalid-help">Invalid text</p>
+</fieldset>`,
   ),
 })
 InvalidHtml.storyName = '🌍 Invalid'
@@ -146,19 +154,19 @@ Field.storyName = '🧩 Field'
 export const FieldHtml = Story({
   ...withRender(
     () => `
-<fieldset class="field">
-  <legend class="label">Label</legend>
-  <div class="radio-group">
-    <label class="radio">
+<fieldset class="ds-field">
+  <legend class="ds-label">Label</legend>
+  <div class="ds-radio-group">
+    <label class="ds-radio">
       <input type="radio" name="field" value="1" aria-describedby="rb-help" />
       Option 1
     </label>
-    <label class="radio">
+    <label class="ds-radio">
       <input type="radio" name="field" value="2" aria-describedby="rb-help" />
       Option 2
     </label>
   </div>
-  <p class="help" id="rb-help">This username is available</p>
+  <p class="ds-help" id="rb-help">This username is available</p>
 </fieldset>`,
   ),
 })
@@ -179,23 +187,23 @@ FieldVertical.storyName = '🧩 Field Vertical'
 export const FieldVerticalHtml = Story({
   ...withRender(
     () => `
-<fieldset class="field">
-  <legend class="label">Label</legend>
-  <div class="radio-group is-vertical">
-    <label class="radio">
+<fieldset class="ds-field">
+  <legend class="ds-label">Label</legend>
+  <div class="ds-radio-group is-vertical">
+    <label class="ds-radio">
       <input type="radio" name="heroes" value="steve-rogers" />
       Steve Rogers
     </label>
-    <label class="radio">
+    <label class="ds-radio">
       <input type="radio" name="heroes" value="tony-stark" />
       Tony Stark
     </label>
-    <label class="radio">
+    <label class="ds-radio">
       <input type="radio" name="heroes" value="black-widow" />
       Black Widow
     </label>
   </div>
-  <p class="help">Choose one</p>
+  <p class="ds-help">Choose one</p>
 </fieldset>`,
   ),
 })
@@ -222,21 +230,21 @@ export const FormHtml = Story({
   ...withRender(
     () => `
 <form>
-  <label class="radio">
+  <label class="ds-radio">
     <input type="radio" name="heroes" value="steve-rogers" />
     Steve Rogers
   </label>
-  <label class="radio">
+  <label class="ds-radio">
     <input type="radio" name="heroes" value="tony-stark" checked />
     Tony Stark
   </label>
-  <label class="radio">
+  <label class="ds-radio">
     <input type="radio" name="heroes" value="black-widow" />
     Black Widow
   </label>
   <br /><br />
-  <button type="submit" class="button is-primary">Submit</button>
-  <button type="reset" class="button is-link">Reset</button>
+  <button type="submit" class="ds-button is-primary">Submit</button>
+  <button type="reset" class="ds-button is-link">Reset</button>
 </form>`,
   ),
 })
@@ -272,7 +280,7 @@ export const TileStack = Story({
 <ds-radio-group name="tile-stack" label="Label" description="Description" tile tile-color="green" value="2">
   <ds-radio value="1" label-position="left">
     <ds-stack direction="row">
-      <ds-icon svg='${BrandIconCarGreen}' size="xl" color="auto"></ds-icon>
+      <ds-brand-icon svg='${BrandIconCarGreen}' size="sm"></ds-brand-icon>
       <ds-content>
         <ds-label size="lg">Option 1</ds-label>
         <span>Description</span>
@@ -281,7 +289,7 @@ export const TileStack = Story({
   </ds-radio>
   <ds-radio value="2">
     <ds-stack direction="row">
-      <ds-icon svg='${BrandIconCarGreen}' size="xl" color="auto"></ds-icon>
+      <ds-brand-icon svg='${BrandIconCarGreen}' size="sm"></ds-brand-icon>
       <ds-content>
         <ds-label size="lg">Option 2</ds-label>
         <span>Description</span>
@@ -299,7 +307,7 @@ export const TileStackCentered = Story({
 <ds-radio-group label-position="top" name="tile-stack-centered" label="Label" description="Description" tile tile-color="green" value="2" cols="2">
   <ds-radio value="1">
     <ds-stack layout="vertical" align="center">
-      <ds-icon svg='${BrandIconCarGreen}' size="2xl" color="auto"></ds-icon>
+      <ds-brand-icon svg='${BrandIconCarGreen}'></ds-brand-icon>
       <ds-content align="center">
         <ds-label size="xl">Option 1</ds-label>
       </ds-content>
@@ -307,7 +315,7 @@ export const TileStackCentered = Story({
   </ds-radio>
   <ds-radio value="2">
     <ds-stack layout="vertical" align="center">
-      <ds-icon svg='${BrandIconCarGreen}' size="2xl" color="auto"></ds-icon>
+      <ds-brand-icon svg='${BrandIconCarGreen}'></ds-brand-icon>
       <ds-content align="center">
         <ds-label size="xl">Option 2</ds-label>
       </ds-content>

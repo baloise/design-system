@@ -42,6 +42,9 @@ export interface TokenDiffEntry {
   // extension" apart from "nothing to write" the same way it already can
   // for figmaId.
   responsive?: ResponsiveDimensionValue | null
+  // The token's DTCG $description, set on create/update entries when
+  // non-empty, unset (never written) on delete.
+  description?: string
 }
 
 function isPlainObject(value: unknown): value is Record<string, unknown> {
@@ -105,7 +108,8 @@ export function describeChangeStatus(originalToken: FlatToken | undefined, token
     // dimension token's tablet/desktop breakpoints live in $extensions, so
     // an edit to just those (mobile unchanged) wouldn't otherwise change
     // effectiveValue at all and would go undetected.
-    JSON.stringify(token.responsive ?? null) !== JSON.stringify(originalToken.responsive ?? null)
+    JSON.stringify(token.responsive ?? null) !== JSON.stringify(originalToken.responsive ?? null) ||
+    (token.description ?? '') !== (originalToken.description ?? '')
   ) {
     return 'value'
   }
@@ -134,6 +138,7 @@ export function computeDiff(original: FlatToken[], working: WorkingToken[]): Tok
         before: undefined,
         figmaId: token.figmaId ?? undefined,
         responsive: token.responsive,
+        description: token.description || undefined,
       })
       continue
     }
@@ -148,7 +153,10 @@ export function computeDiff(original: FlatToken[], working: WorkingToken[]): Tok
       (token.figmaId ?? null) !== (originalToken.figmaId ?? null) ||
       // Same reasoning as describeChangeStatus above — a tablet/desktop-only
       // edit doesn't touch effectiveValue.
-      JSON.stringify(token.responsive ?? null) !== JSON.stringify(originalToken.responsive ?? null)
+      JSON.stringify(token.responsive ?? null) !== JSON.stringify(originalToken.responsive ?? null) ||
+      // A description-only edit must also produce an update entry — otherwise
+      // it's silently dropped since it doesn't touch effectiveValue either.
+      (token.description ?? '') !== (originalToken.description ?? '')
 
     if (changed) {
       entries.push({
@@ -162,6 +170,7 @@ export function computeDiff(original: FlatToken[], working: WorkingToken[]): Tok
         before: originalToken.rawValue,
         figmaId: token.figmaId ?? undefined,
         responsive: token.responsive,
+        description: token.description || undefined,
       })
     }
   }
@@ -255,6 +264,7 @@ export function applyDiffToDocument(doc: Record<string, unknown>, diff: TokenDif
         $type: entry.type,
         $value: entry.value,
       }
+      if (entry.description) newNode.$description = entry.description
 
       // Preserve whatever $extensions the original leaf already carried
       // (e.g. figmaScopes) across an update, then layer this entry's own

@@ -4,12 +4,15 @@
  * Run with: node scripts/build-core.mjs
  */
 import { execSync } from 'node:child_process'
-import { rm } from 'node:fs/promises'
+import { mkdir, rm } from 'node:fs/promises'
 import { dirname, join, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
+import { generateAngularMeta } from '../packages/core/config/generate-angular-meta.mjs'
+
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const coreRoot = resolve(__dirname, '../packages/core')
+const IS_DS_DOCUMENTATION = process.env.DS_DOCUMENTATION === 'true'
 
 console.log(`
 \x1b[35m┃\x1b[0m
@@ -21,6 +24,19 @@ console.log(`
 // ============================================================================
 // 1. Run Stencil build
 // ============================================================================
+// Documentation builds only run the `dist` output target (see stencil.config.ts) so Storybook's
+// preview can import `@baloise/ds-core` directly, but Stencil still validates that every path in
+// package.json's "files" array exists once any dist-collection target is active — including
+// "components/" and "hydrate/", which come from output targets that stay skipped in docs mode.
+// Pre-create them as empty placeholders so that validation passes.
+async function ensurePackageFilesExist() {
+  if (!IS_DS_DOCUMENTATION) return
+  await Promise.all([
+    mkdir(join(coreRoot, 'components'), { recursive: true }),
+    mkdir(join(coreRoot, 'hydrate'), { recursive: true }),
+  ])
+}
+
 function buildStencil() {
   console.log('🏗️ Running Stencil build...')
   try {
@@ -38,7 +54,17 @@ function buildStencil() {
 }
 
 // ============================================================================
-// 2. Clean up stray output folders
+// 3. Generate Angular meta (per-component Inputs/Outputs constants)
+// ============================================================================
+// `generateAngularMeta()` itself skips when Stencil hasn't (re)written proxies.ts (dev/docs builds) — see
+// its own doc comment — so this doesn't need to separately re-derive that same condition from env vars.
+async function generateMeta() {
+  console.log('🅰️ Generating Angular meta...')
+  await generateAngularMeta()
+}
+
+// ============================================================================
+// 4. Clean up stray output folders
 // ============================================================================
 async function cleanUp() {
   console.log('🧹 Cleaning up temporary folders...')
@@ -62,10 +88,13 @@ async function main() {
   try {
     console.log('🏗️ Building core...\n')
 
+    await ensurePackageFilesExist()
     buildStencil()
     console.log()
 
-    await cleanUp()
+    // Independent of each other (meta is derived from proxies.ts, cleanup just removes stray folders), so
+    // run them concurrently instead of paying the sum of both durations.
+    await Promise.all([generateMeta(), cleanUp()])
 
     console.log('\n✨ Core build complete!')
   } catch (err) {

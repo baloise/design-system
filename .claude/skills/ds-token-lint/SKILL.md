@@ -81,7 +81,7 @@ node .claude/skills/ds-token-lint/index.js button --apply
 This:
 
 1. Renames the token(s) in place in `Base.tokens.json`, preserving `$extensions.com.figma.variableId` (renaming is not delete+add — see ADR-0011, Figma Variable identity is `variableId`, not name).
-2. Rewrites every `var(--ds-old-name)` reference across `packages/core/src/**/*.scss` and `packages/css/src/**/*.scss`.
+2. Rewrites every `var(--ds-old-name)` reference across `packages/core/src/**/*.scss` and `packages/styles/src/**/*.scss`.
 3. Runs `pnpm tokens` to recompile `dist/css/base.tokens.css`, `dist/scss/_tokens.scss`, `dist/json/tokens.json`.
 
 **After applying, invoke the `ds-changeset` skill** (bump: `major`, scope: `tokens` + the component name) — every rename here is a breaking change and must be recorded, per project convention.

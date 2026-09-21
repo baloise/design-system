@@ -1,0 +1,120 @@
+@use './mixins/_all' as *;
+
+html {
+  min-width: 300px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+// Shared with :host so these resolve when this stylesheet is adopted into a shadow root
+html,
+:host {
+  background-color: var(--ds-body-surface);
+  font-family: var(--ds-body-font-font-family);
+  font-size: var(--ds-body-font-font-size);
+  font-weight: var(--ds-body-font-font-weight);
+  line-height: var(--ds-body-font-line-height);
+
+  text-rendering: optimizeLegibility;
+  text-size-adjust: 100%;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-overflow-scrolling: auto;
+}
+
+*:focus {
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+}
+
+article,
+aside,
+figure,
+footer,
+header,
+hgroup,
+section {
+  display: block;
+}
+
+body,
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: var(--ds-body-font-font-family);
+  font-size: var(--ds-body-font-font-size);
+  font-weight: var(--ds-body-font-font-weight);
+  line-height: var(--ds-body-font-line-height);
+}
+
+body {
+  color: var(--ds-body-color);
+  font-family: var(--ds-body-font-font-family);
+  font-size: var(--ds-body-font-font-size);
+  font-weight: var(--ds-body-font-font-weight);
+  line-height: var(--ds-body-font-line-height);
+  -webkit-overflow-scrolling: auto;
+}
+
+button {
+  color: inherit;
+}
+
+p:not(.ds-text, .ds-title, .ds-subtitle, .ds-heading) {
+  hyphens: auto;
+  margin: 0;
+  overflow-wrap: break-word;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  strong {
+    color: currentColor;
+  }
+}
+
+small {
+  font-size: var(--ds-device-text-size-sm);
+}
+
+span {
+  font-style: inherit;
+  font-weight: inherit;
+}
+
+b,
+strong {
+  color: inherit;
+  font-weight: var(--ds-alias-text-weight-bold);
+}
+
+img {
+  height: auto;
+  max-width: 100%;
+}
+
+input[type='checkbox'],
+input[type='radio'] {
+  vertical-align: baseline;
+}
+
+// fieldset {
+//   border: none;
+// }
+
+.has-sticky-footer {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  main {
+    padding-bottom: 2.5rem;
+  }
+
+  ds-app-footer,
+  footer.footer {
+    margin-top: auto;
+  }
+}

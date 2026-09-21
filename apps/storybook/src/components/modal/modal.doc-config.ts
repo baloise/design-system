@@ -6,12 +6,12 @@ export const MODAL_DOC_CONFIG = {
   section: 'Components / Modal',
   color: 'purple' as const,
   tabs: [
-    { label: 'Overview', storyId: 'components-modal--modal' },
-    { label: 'Usage', storyId: 'components-modal--usage' },
-    { label: 'Variants', storyId: 'components-modal--variants-overview' },
-    { label: 'Styling', storyId: 'components-modal--styling' },
-    { label: 'Accessibility', storyId: 'components-modal--accessibility' },
-    { label: 'Testing', storyId: 'components-modal--testing' },
+    { label: 'Overview', storyId: 'components-modal-modal--modal' },
+    { label: 'Usage', storyId: 'components-modal-usage--usage' },
+    { label: 'Variants', storyId: 'components-modal-variants-overview--overview' },
+    { label: 'Styling', storyId: 'components-modal-styling--styling' },
+    { label: 'Accessibility', storyId: 'components-modal-accessibility--accessibility' },
+    { label: 'Testing', storyId: 'components-modal-testing--testing' },
   ],
 }
 

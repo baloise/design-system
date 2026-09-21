@@ -5,13 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <link rel="stylesheet" href="/assets/section.css" />
+    <link rel="stylesheet" href="/assets/tokens/base.tokens.css" />
     <link rel="stylesheet" href="/assets/css/design-system.local.min.css" />
+    <link rel="stylesheet" href="/assets/css/utilities.min.css" />
 
     <script type="module" src="/build/design-system.esm.js"></script>
     <script nomodule src="/build/design-system.js"></script>
   </head>
   <body>
-    <main class="container">
+    <main class="ds-container">
       <!-- Basic Style -->
       <section data-testid="basic">
         <span>Basic</span>
@@ -23,7 +25,7 @@
         <span>Variants</span>
         <ds-tag color="purple-light">
           Title
-          <span class="text is-regular is-primary-light">Subtitle</span>
+          <span class="ds-text is-regular is-primary-light">Subtitle</span>
         </ds-tag>
         <ds-tag color="purple-light">
           <ds-icon name="info-circle"></ds-icon>
@@ -33,7 +35,7 @@
         <br />
         <ds-tag small color="purple-light">
           Title
-          <span class="text is-regular is-primary-light">Subtitle</span>
+          <span class="ds-text is-regular is-primary-light">Subtitle</span>
         </ds-tag>
         <ds-tag small color="purple-light">
           <ds-icon name="info-circle"></ds-icon>

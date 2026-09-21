@@ -145,11 +145,11 @@ reach you.
     ].map(({ name, description, icon }) => (
       <div
         key={name}
-        className="card is-outlined flex flex-direction-column align-items-center gap-x-small text-align-center flex-1"
+        className="ds-card flex flex-direction-column align-items-center gap-xs text-align-center flex-1"
         style={{ minWidth: '160px' }}
       >
         <div className="ds-tech-icon">{icon}</div>
-        <span className="title text-sm mt-xs">{name}</span>
+        <span className="ds-title text-sm mt-xs">{name}</span>
         <span className="text-xs text-primary-light">{description}</span>
         <span className="text-xs">Maintained · bug fixes prioritized</span>
       </div>
@@ -187,11 +187,11 @@ We support the **last 2 versions** of all major browsers.
     ].map(({ name, icon }) => (
       <div
         key={name}
-        className="card is-outlined flex flex-direction-column align-items-center gap-x-small text-align-center flex-1"
+        className="ds-card flex flex-direction-column align-items-center gap-xs text-align-center flex-1"
         style={{ minWidth: '80px' }}
       >
         <img src={icon} alt={name} width="48" height="48" />
-        <span className="title text-sm mt-xs">{name}</span>
+        <span className="ds-title text-sm mt-xs">{name}</span>
         <span className="text-xs text-primary-light">Last 2 versions</span>
       </div>
     ))}
@@ -208,7 +208,7 @@ Maintainers are members of the community who are committed to the success of ind
 - Close and merge GitHub pull requests
 
 <Unstyled>
-  <div className="flex gap-normal">
+  <div className="flex gap-base">
     <ButtonCard color="green" label="Gery Hirschfeld" description="Technical lead" link="https://github.com/hirsch88">
       <img src="https://avatars.githubusercontent.com/u/6384499?v=4" alt="hirsch88" width="88" />
     </ButtonCard>
@@ -229,7 +229,7 @@ Maintainers are members of the community who are committed to the success of ind
 Please have a look at:
 
 <Unstyled>
-  <div className="flex flex-wrap flex-direction-column gap-normal mt-lg">
+  <div className="flex flex-wrap flex-direction-column gap-base mt-lg">
     <ButtonCard
       wide
       color="purple"

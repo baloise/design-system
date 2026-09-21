@@ -532,7 +532,7 @@ function applyFixes(componentName, selectedViolations) {
   const { globSync } = require('glob')
   const scssFiles = [
     ...globSync(`${dsRoot}/packages/core/src/**/*.scss`),
-    ...globSync(`${dsRoot}/packages/css/src/**/*.scss`),
+    ...globSync(`${dsRoot}/packages/styles/src/**/*.scss`),
   ]
 
   // For color-variant-order fixes, some components build the variant segment

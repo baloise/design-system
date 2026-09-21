@@ -6,12 +6,12 @@ export const BRAND_ICON_DOC_CONFIG = {
   section: 'Components / BrandIcon',
   color: 'purple' as const,
   tabs: [
-    { label: 'Overview', storyId: 'components-brandicon--brandicon' },
-    { label: 'Usage', storyId: 'components-brandicon--usage' },
-    { label: 'Variants', storyId: 'components-brandicon--variants-overview' },
-    { label: 'Styling', storyId: 'components-brandicon--styling' },
-    { label: 'Accessibility', storyId: 'components-brandicon--accessibility' },
-    { label: 'Testing', storyId: 'components-brandicon--testing' },
+    { label: 'Overview', storyId: 'components-brandicon-brandicon--brandicon' },
+    { label: 'Usage', storyId: 'components-brandicon-usage--usage' },
+    { label: 'Variants', storyId: 'components-brandicon-variants-overview--overview' },
+    { label: 'Styling', storyId: 'components-brandicon-styling--styling' },
+    { label: 'Accessibility', storyId: 'components-brandicon-accessibility--accessibility' },
+    { label: 'Testing', storyId: 'components-brandicon-testing--testing' },
   ],
 }
 

@@ -66,22 +66,6 @@ export function invalidSegments(name: string): string[] {
   return parseTokenPath(name).filter(segment => !isValidSegmentName(segment))
 }
 
-// Segment values disallowed regardless of casing — "Default" reads as a
-// fallback/mode keyword rather than a real category or token name, and
-// inviting it into a path invites confusion with that meaning later.
-export const RESERVED_SEGMENT_WORDS: readonly string[] = ['default']
-
-export function isReservedSegmentName(segment: string): boolean {
-  return RESERVED_SEGMENT_WORDS.includes(segment.toLowerCase())
-}
-
-// Every segment of a dot-joined token name that matches a reserved word,
-// compared case-insensitively — same "point at the offending segment(s)"
-// shape as invalidSegments.
-export function reservedSegments(name: string): string[] {
-  return parseTokenPath(name).filter(isReservedSegmentName)
-}
-
 // Strips a segment's leading icon prefix (e.g. "🌈 " off "🌈 Color") — the
 // icon is decorative (Figma folder styling), not part of the group's
 // identity, so "Color" typed without it should still be recognized as the

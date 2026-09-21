@@ -32,9 +32,9 @@
     "@baloise/ds-tokens": "20.0.0-next.9"
   },
   "devDependencies": {
-    "ag-grid-community": "36.1.0",
+    "ag-grid-community": "36.2.0",
     "eslint": "catalog:",
-    "jsdom": "29.1.1",
+    "jsdom": "30.1.0",
     "typescript": "catalog:",
     "vitest": "catalog:"
   }

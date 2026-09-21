@@ -3,12 +3,12 @@ import { TokenPreviewMessage } from './token-preview.types'
 /**
  * Live token preview: applies token changes posted by an embedding parent window (Toky's live
  * preview sidebar) directly to `document.documentElement.style`, so a component's rendered
- * output reflects in-progress token edits without a rebuild. No-ops outside an iframe, so it
- * never activates during normal component consumption or Playwright visual-regression runs.
+ * output reflects in-progress token edits without a rebuild. No-ops unless `window.parent` is
+ * a distinct window (a real iframe). That includes Node hydrate, where `parent` is `null`.
  * No origin allowlist yet - MVP is localhost-only (see packages/core/CONTEXT.md).
  */
 export const initializeTokenPreview = (win: Window = window): void => {
-  if (win.parent === win) {
+  if (!win.parent || win.parent === win) {
     return
   }
 
@@ -33,7 +33,7 @@ export const initializeTokenPreview = (win: Window = window): void => {
       return
     }
 
-    const href = `/assets/tokens/${brand.toLowerCase()}.tokens.css`
+    const href = `/assets/tokens/${brand.toLowerCase()}.override.css`
     if (!injectedBrandStylesheets.has(href)) {
       const link = win.document.createElement('link')
       link.rel = 'stylesheet'
@@ -42,9 +42,10 @@ export const initializeTokenPreview = (win: Window = window): void => {
       injectedBrandStylesheets.add(href)
     }
 
-    // packages/tokens emits the brand stylesheet's selector lowercased (config.brand.ts:
-    // `[data-theme="${mode.toLowerCase()}"]`) - matching that here is what makes the injected
-    // stylesheet above actually apply.
+    // packages/tokens emits the *.override.css file scoped to `[data-theme="<brand>"]`
+    // (config.brand.ts: `[data-theme="${mode.toLowerCase()}"]`) - matching that here is what
+    // makes the injected stylesheet above actually apply. `<brand>.tokens.css` is the other
+    // (unconditional `:host, :root`) output and is NOT scoped to data-theme.
     win.document.documentElement.dataset['theme'] = brand.toLowerCase()
   }
 

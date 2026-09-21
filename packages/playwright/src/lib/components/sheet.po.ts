@@ -3,7 +3,7 @@ import { PageObject } from './page-object'
 import { E2ELocator } from '../page/utils'
 
 export class DsSheet extends PageObject {
-  readonly container = this.el.locator('.container')
+  readonly container = this.el.locator('.ds-container')
 
   constructor(el: E2ELocator) {
     super(el)

@@ -11,11 +11,11 @@ export default meta
 const Story = StoryFactory(meta)
 
 export const Basic = Story({
-  ...withRender(() => `<div class="bg-red p-normal">Green background</div>`),
+  ...withRender(() => `<div class="bg-red p-base">Green background</div>`),
 })
 export const InvertedColors = Story({
   ...withRender(
-    () => `<div class="bg-primary p-normal text-on-primary">
+    () => `<div class="bg-primary p-base text-on-primary">
   Hello World
 </div>`,
   ),
@@ -23,7 +23,7 @@ export const InvertedColors = Story({
 export const PseudoStates = Story({
   ...withRender(
     () => `<div class="bg-red-3 hover:bg-red-4 active:bg-red-3 cursor-pointer">
-  <p class="text-white p-normal">Hover and click me!</p>
+  <p class="text-white p-base">Hover and click me!</p>
 </div>`,
   ),
 })

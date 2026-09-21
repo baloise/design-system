@@ -12,9 +12,9 @@ const Story = StoryFactory(meta)
 
 export const Examples = Story({
   ...withRender(
-    () => `<div class="border-primary radius-none p-small mb-small">None</div>
-<div class="border-primary radius p-small mb-small">Normal</div>
-<div class="border-primary radius-lg p-small mb-small">Large</div>
-<div class="border-primary radius-rounded p-small mb-small">Rounded</div>`,
+    () => `<div class="border-primary radius-none p-sm mb-sm">None</div>
+<div class="border-primary radius p-sm mb-sm">Normal</div>
+<div class="border-primary radius-lg p-sm mb-sm">Large</div>
+<div class="border-primary radius-rounded p-sm mb-sm">Rounded</div>`,
   ),
 })

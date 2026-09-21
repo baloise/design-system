@@ -88,14 +88,23 @@ Documentation is organized by type:
 ```
 apps/storybook/
   src/
-    components/          # Component stories + MDX docs
+    components/           # Component stories + MDX docs
       <component>/
         <component>.stories.ts      # Story definitions
-        <component>.mdx             # MDX documentation
-    patterns/            # Usage patterns and best practices
-    guides/              # Written guides and tutorials
-    tokens/              # Design token gallery
+        <component>.mdx             # MDX documentation (Overview, Usage, Variants, Styling, Accessibility, Testing)
+    css-utilities/         # Utility class reference (spacing, typography, background, flexbox, ...)
+    foundation/            # Brand foundations: color, typography, spacing, grid, elevation, iconography
+    tokens/                # Design token explainer pages (All Tokens, Design Tokens Explained, Use Tokens in Code, Component Variables)
+    development/00-guides/ # Getting started, components, forms, i18n, theming, testing guides
+    templates/             # Full-page reference templates (e.g. error pages)
+    welcome.mdx             # Landing page
+    contributing.mdx        # How to contribute to the design system
 ```
+
+Every page in this app is written for **consumers of the design system** — people building
+apps with these components, not people maintaining the design system itself. Keep pages short,
+practical, and example-driven; link out to a deeper page rather than embedding internal
+implementation detail (SCSS mixins, build pipeline internals, token compiler internals) inline.
 
 ## Notable Patterns
 

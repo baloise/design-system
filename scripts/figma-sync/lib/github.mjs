@@ -30,13 +30,26 @@ export async function getRefSha(branch, token) {
   return json.object.sha
 }
 
-/** @returns {Promise<{ sha: string, content: string } | null>} null if the file doesn't exist at `ref` */
+/**
+ * @returns {Promise<{ sha: string, content: string } | null>} null if the file doesn't exist at `ref`
+ *
+ * The Contents API only inlines `content` for files under 1MB — above that it silently returns
+ * `content: ""` (still a 200, no error) instead of the real body. `.figma-sync-state.json` grows
+ * one entry per token and crossed that line after a large backfill, which used to surface here as a
+ * baffling "Unexpected end of JSON input" from `JSON.parse('')` downstream. The Git Blobs API has no
+ * such limit (up to 100MB), so fall back to it via the sha the Contents API still returns correctly.
+ */
 export async function getFileContent(path, ref, token) {
   const response = await fetch(`${API_ROOT}/contents/${path}?ref=${ref}`, { headers: authHeaders(token) })
   if (response.status === 404) return null
   await assertOk(response, `fetch ${path} at ${ref}`)
   const json = await response.json()
-  return { sha: json.sha, content: Buffer.from(json.content, 'base64').toString('utf-8') }
+  if (json.content) return { sha: json.sha, content: Buffer.from(json.content, 'base64').toString('utf-8') }
+
+  const blobResponse = await fetch(`${API_ROOT}/git/blobs/${json.sha}`, { headers: authHeaders(token) })
+  await assertOk(blobResponse, `fetch blob for ${path} at ${ref}`)
+  const blob = await blobResponse.json()
+  return { sha: json.sha, content: Buffer.from(blob.content, 'base64').toString('utf-8') }
 }
 
 /**

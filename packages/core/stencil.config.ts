@@ -89,11 +89,22 @@ export const config: Config = {
      *
      * {@link https://stenciljs.com/docs/distribution}
      */
-    !IS_DS_DEVELOPMENT &&
-      !IS_DS_DOCUMENTATION && {
-        type: 'dist',
-        esmLoaderPath: '../loader',
-      },
+    /**
+     * Kept enabled in documentation builds too: the Storybook preview imports config utilities
+     * (e.g. `updateDsLanguage`, `updateDsRegion`) directly from `@baloise/ds-core`'s main entry,
+     * which this target produces.
+     */
+    !IS_DS_DEVELOPMENT && {
+      type: 'dist',
+      esmLoaderPath: '../loader',
+      copy: [
+        {
+          src: '../node_modules/country-flag-icons/3x2',
+          dest: 'assets/flags',
+          warn: true,
+        },
+      ],
+    },
     /**
      * The dist-custom-elements output target creates custom elements that directly extend HTMLElement and provides
      * simple utility functions for easily defining these elements on the Custom Element Registry. This output target
@@ -127,8 +138,20 @@ export const config: Config = {
         dir: 'components',
       }),
     /**
+     * Node-compatible SSR renderer used by the React output target's hydrateModule.
+     * Produces `hydrate/` at the package root, published as `@baloise/ds-core/hydrate`.
+     *
+     * {@link https://stenciljs.com/docs/hydrate-app}
+     */
+    !IS_DS_DEVELOPMENT &&
+      !IS_DS_DOCUMENTATION && {
+        type: 'dist-hydrate-script',
+        dir: './hydrate',
+      },
+    /**
      * Generates React component wrappers for each Stencil component in ../react/src/generated,
      * consumed by the @baloise/ds-react package. Requires the dist-custom-elements output target above.
+     * With hydrateModule set, also emits `components.server.ts` for Node SSR.
      *
      * {@link https://www.npmjs.com/package/@stencil/react-output-target}
      */
@@ -173,8 +196,23 @@ export const config: Config = {
           warn: true,
         },
         {
+          src: join(packagesDir, 'styles', 'dist', 'css'),
+          dest: 'assets/css',
+          warn: true,
+        },
+        {
+          src: join(packagesDir, 'tokens', 'dist', 'css'),
+          dest: 'assets/tokens',
+          warn: true,
+        },
+        {
           src: join(packagesDir, 'core', 'public', 'images'),
           dest: 'assets/images',
+          warn: true,
+        },
+        {
+          src: join(__dirname, 'node_modules/country-flag-icons/3x2'),
+          dest: 'assets/flags',
           warn: true,
         },
         {

@@ -7,14 +7,14 @@ export const Pixel = ({ children }): React.ReactElement => (
 )
 
 export const Block = ({ label = '' }) => (
-  <div className={`p-small radius-base bg-${label ? 'green' : 'grey'}-2`}>
+  <div className={`p-sm radius bg-${label ? 'green' : 'grey'}-2`}>
     <span className="font-weight-bold">{label || '-'}</span>
   </div>
 )
 
 export const Breakpoints = ({ _children }) => {
   return (
-    <table className="sb-unstyled table w-full is-bordered my-large">
+    <table className="sb-unstyled ds-table w-full is-bordered my-lg">
       <thead>
         <tr>
           <th style={{ width: '16.6%' }}>

@@ -40,7 +40,7 @@ Each `CONTEXT.md` should document:
 - File structure patterns
 - Code organization rules
 
-**Example from packages/css/CONTEXT.md:**
+**Example from packages/styles/CONTEXT.md:**
 
 > "CSS utility classes follow a `.<property>-<value>` pattern (e.g., `.bg-primary`, `.text-lg`). All utilities are generated from design tokens and follow a consistent responsive design breakpoint system."
 

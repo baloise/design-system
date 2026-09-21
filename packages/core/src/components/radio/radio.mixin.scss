@@ -1,4 +1,4 @@
-@use '@baloise/ds-css/dist/scss/mixins' as *;
+@use '@baloise/ds-styles/dist/scss/mixins' as *;
 @use '../../vars' as vars;
 
 /**
@@ -6,7 +6,7 @@
  * --------------------------------
  * $wrapper — the element that contains input[type="radio"] + label.
  *   Web component: ':host'
- *   CSS-only:      '.radio'
+ *   CSS-only:      '.ds-radio'
  */
 
 @mixin vars($wrapper: ':host') {
@@ -16,6 +16,7 @@
     @include vars.local(radio-label-base-color, inherit);
     @include vars.local(radio-label-hover-color, var(--ds-global-color-sky-5));
     @include vars.local(radio-label-active-color, var(--ds-global-color-primary-6));
+    @include vars.local(radio-label-disabled-color, var(--ds-radio-label-color-disabled));
 
     // dimensions
     @include vars.local(radio-size, 1.5rem);
@@ -24,7 +25,7 @@
 
     // Tile
     @include vars.local(radio-tile-radius, var(--ds-alias-radius-base));
-    @include vars.local(radio-tile-padding, 1rem);
+    @include vars.local(radio-tile-p, 1rem);
     @include vars.local(radio-tile-border-width, var(--ds-alias-border-width-base));
 
     @include vars.local(radio-tile-base-background-color, inherit);
@@ -47,6 +48,9 @@
     // unchecked active/pressed
     @include vars.local(radio-unchecked-active-color-background, var(--ds-global-color-grey-2));
     @include vars.local(radio-unchecked-active-color-border, var(--ds-global-color-primary-6));
+
+    // unchecked disabled
+    @include vars.local(radio-unchecked-disabled-color-background, var(--ds-radio-unchecked-color-disabled-background));
 
     // checked base
     @include vars.local(radio-checked-base-color-background, var(--ds-global-color-primary-5));
@@ -73,8 +77,8 @@
   cursor: pointer;
   user-select: none;
   color: var(--_radio-label-base-color);
-  font-family: var(--ds-global-font-family-text);
-  line-height: var(--ds-typography-line-height-base);
+  font-family: var(--ds-alias-text-family-text);
+  line-height: var(--ds-alias-text-line-height-text);
   padding-top: 0.25rem;
   padding-bottom: 0.25rem;
   min-height: 3rem;
@@ -91,7 +95,7 @@
 }
 
 // Web component: :host is a thin shell, the inner label is the flex/style container.
-// CSS-only:      label.radio is the flex/style container directly — no inner label.
+// CSS-only:      label.ds-radio is the flex/style container directly — no inner label.
 @mixin layout($wrapper: ':host') {
   @if $wrapper == ':host' {
     :host {
@@ -128,6 +132,7 @@
     border-radius: var(--_radio-radius);
     vertical-align: top;
     cursor: pointer;
+    outline: none;
     transition:
       background 0.3s ease-in-out,
       border-color 0.3s ease-in-out;
@@ -138,9 +143,7 @@
   }
 
   #{$wrapper} input[type='radio']:focus-visible {
-    outline: var(--ds-alias-interaction-focus-width, 2px) solid var(--ds-alias-interaction-focus-color-base);
-    outline-offset: 2px;
-    border-radius: var(--_radio-radius);
+    @include focus-shadow();
   }
 
   // Unchecked hover
@@ -229,11 +232,11 @@
 @mixin _disabled-vars() {
   cursor: default;
   pointer-events: none;
-  --mod-radio-label-base-color: var(--ds-global-color-grey-5);
-  --mod-radio-label-hover-color: var(--ds-global-color-grey-5);
-  --mod-radio-label-active-color: var(--ds-global-color-grey-5);
+  --mod-radio-label-base-color: var(--_radio-label-disabled-color);
+  --mod-radio-label-hover-color: var(--_radio-label-disabled-color);
+  --mod-radio-label-active-color: var(--_radio-label-disabled-color);
 
-  --mod-radio-unchecked-base-color-background: var(--ds-global-color-grey-2);
+  --mod-radio-unchecked-base-color-background: var(--_radio-unchecked-disabled-color-background);
   --mod-radio-unchecked-base-color-border: var(--ds-alias-border-color-disabled);
   --mod-radio-checked-base-color-background: var(--ds-alias-border-color-disabled);
   --mod-radio-checked-base-color-border: var(--ds-alias-border-color-disabled);

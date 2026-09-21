@@ -30,7 +30,7 @@ export const Colors = Story({
 export const PseudoStates = Story({
   ...withRender(
     () => `<div class="bg-red-2 text-grey hover:text-primary active:text-danger cursor-pointer">
-  <p class="p-normal">Hover and click me!</p>
+  <p class="p-base">Hover and click me!</p>
 </div>`,
   ),
 })

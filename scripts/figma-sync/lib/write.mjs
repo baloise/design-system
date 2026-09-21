@@ -14,10 +14,12 @@ import {
   figmaBorderSubValuesFor,
   figmaResponsiveDimensionDeviceVariableName,
   figmaResponsiveDimensionSubEntriesFor,
+  figmaLineHeightPercentFor,
   figmaShadowSubValuesFor,
   figmaTypographySubValuesFor,
   figmaValueFor,
   isDeviceEligibleResponsiveDimensionToken,
+  isLineHeightNumberToken,
   isPushableToken,
   isSyncableBorderToken,
   isSyncableResponsiveDimensionToken,
@@ -201,6 +203,31 @@ function isTempId(id) {
 }
 
 /**
+ * Every already-committed variableId a run is about to write against — used to catch, before any
+ * POST goes out, a token tree that was round-tripped against a *different* Figma file than
+ * `figmaFileKey` currently points at (e.g. testing against a sandbox file with the production
+ * tokens directory instead of TOKENS_DIR_OVERRIDE, see pull.mjs's file header). Pass 1 alone can't
+ * catch this — a stale id is only ever referenced (never re-created) — so a mismatch otherwise
+ * surfaces as a confusing 400 from Figma partway through pass 2, after pass 1 has already written.
+ *
+ * @param {import('./tokens.mjs').Token[]} baseTokens
+ * @returns {string[]} every real (non-empty) variableId baseTokens already carries, including each
+ *   sub-property id of a composite (shadow/border/typography/responsive dimension) token
+ */
+export function committedVariableIds(baseTokens) {
+  const ids = []
+  for (const token of baseTokens) {
+    if (!isPushableToken(token) || !token.variableId) continue
+    if (isCompositeVariableIdSet(token.variableId)) {
+      ids.push(...Object.values(token.variableId).filter(Boolean))
+    } else {
+      ids.push(token.variableId)
+    }
+  }
+  return ids
+}
+
+/**
  * @param {object} params
  * @param {import('./tokens.mjs').Token[]} params.baseTokens
  * @param {Record<string, import('./tokens.mjs').Token[]>} params.brandTokensByName e.g. { Base: [...], Tcs: [...] }
@@ -239,6 +266,7 @@ export function buildCreatePassPayload({
           variableCollectionId: collectionId,
           resolvedType: SHADOW_SUB_PROPERTY_RESOLVED_TYPE[sub],
           scopes: token.figmaScopes ?? ['ALL_SCOPES'],
+          description: token.description ?? '',
         })
       }
       continue
@@ -256,6 +284,7 @@ export function buildCreatePassPayload({
           variableCollectionId: collectionId,
           resolvedType: BORDER_SUB_PROPERTY_RESOLVED_TYPE[sub],
           scopes: token.figmaScopes ?? ['ALL_SCOPES'],
+          description: token.description ?? '',
         })
       }
       continue
@@ -273,6 +302,7 @@ export function buildCreatePassPayload({
           variableCollectionId: collectionId,
           resolvedType: TYPOGRAPHY_SUB_PROPERTY_RESOLVED_TYPE[sub],
           scopes: token.figmaScopes ?? ['ALL_SCOPES'],
+          description: token.description ?? '',
         })
       }
       continue
@@ -290,6 +320,7 @@ export function buildCreatePassPayload({
           variableCollectionId: collectionId,
           resolvedType: RESPONSIVE_DIMENSION_SUB_PROPERTY_RESOLVED_TYPE[sub],
           scopes: token.figmaScopes ?? ['ALL_SCOPES'],
+          description: token.description ?? '',
         })
       }
       // The Device variable (MVP scope, isDeviceEligibleResponsiveDimensionToken) — lives in
@@ -307,6 +338,7 @@ export function buildCreatePassPayload({
           variableCollectionId: responsiveCollectionId,
           resolvedType: 'FLOAT',
           scopes: token.figmaScopes ?? ['ALL_SCOPES'],
+          description: token.description ?? '',
         })
       }
       continue
@@ -326,6 +358,7 @@ export function buildCreatePassPayload({
       variableCollectionId: collectionId,
       resolvedType: resolvedTypeFor(token.type),
       scopes: token.figmaScopes ?? ['ALL_SCOPES'],
+      description: token.description ?? '',
     })
   }
 
@@ -388,10 +421,15 @@ export function buildCreatePassPayload({
         continue
       }
 
+      // A standalone LineHeight `number` token (Global.Font.LineHeight.*, Alias.Text.LineHeight.*,
+      // Component.*.LineHeight) is scaled ×100 for Figma's percentage convention, same as
+      // typography's own lineHeight sub-value above — see figmaLineHeightPercentFor.
       variableModeValues.push({
         variableId: idByPath.get(pathKey(token.path)),
         modeId,
-        value: figmaValueFor(token.type, token.value.value),
+        value: isLineHeightNumberToken(token)
+          ? figmaLineHeightPercentFor(token.value.value)
+          : figmaValueFor(token.type, token.value.value),
       })
     }
   }
@@ -540,8 +578,8 @@ export function buildAliasPassPayload({
       // A responsive dimension token is handled above as `token` — it never reaches here as one
       // (this generic branch only sees `token.value.kind === 'reference'`, never true for a
       // responsive dimension token's own $value, decision 4). It *can* reach here as `target`,
-      // though — e.g. a Component token (Component.Badge.Size.Base.Height) referencing an Alias
-      // responsive dimension token (Alias.Text.Size.2XL) by whole value — which idByPath resolves
+      // though — e.g. a Component token (Component.Badge.Size.Base.Height) referencing a Device
+      // responsive dimension token (Device.Text.Size.2XL) by whole value — which idByPath resolves
       // to a {mobile, tablet, desktop[, device]} object, not a single id on its own. If the target
       // is Device-eligible, its 'device' id IS the single collapsed variable to alias to; otherwise
       // there's no single Figma variable this could point at (which breakpoint would it mean?), so
@@ -559,6 +597,134 @@ export function buildAliasPassPayload({
   }
 
   return { variableModeValues }
+}
+
+/**
+ * Pass 3: description-only UPDATEs for already-synced variables (decision 9
+ * — push always writes JSON's $description into Figma, including for
+ * variables that already existed before this run and so never go through
+ * buildCreatePassPayload's CREATE branch). Call after `resolveTempIds`, so
+ * every variable this run touches — freshly created or pre-existing — has a
+ * real id in `idByPath`. Base tokens only: description isn't per-brand.
+ *
+ * @param {object} params
+ * @param {import('./tokens.mjs').Token[]} params.baseTokens
+ * @param {Map<string, string | Record<string, string>>} params.idByPath
+ * @param {Record<string, { description?: string }>} params.remoteVariablesById Figma's current
+ *   local-variables meta.variables, keyed by id — this run's own CREATEs won't appear here yet
+ *   (they didn't exist when this was fetched), so their description is always "different from
+ *   remote" and gets folded into this pass redundantly with buildCreatePassPayload's CREATE —
+ *   harmless, since Figma's UPDATE with the same description is a no-op.
+ */
+export function buildDescriptionUpdatePayload({ baseTokens, idByPath, remoteVariablesById }) {
+  const variables = []
+  const seenVariableIds = new Set()
+
+  function pushIfChanged(id, description) {
+    if (!id || isTempId(id) || seenVariableIds.has(id)) return
+    seenVariableIds.add(id)
+    const remoteDescription = remoteVariablesById[id]?.description ?? ''
+    if (remoteDescription === description) return
+    variables.push({ action: 'UPDATE', id, description })
+  }
+
+  for (const token of baseTokens) {
+    if (!isPushableToken(token)) continue
+    const key = pathKey(token.path)
+    const variableId = idByPath.get(key)
+    const description = token.description ?? ''
+
+    if (
+      isSyncableShadowToken(token) ||
+      isSyncableBorderToken(token) ||
+      isSyncableTypographyToken(token) ||
+      isSyncableResponsiveDimensionToken(token)
+    ) {
+      const subProperties = subPropertiesForVariableIdShape(variableId)
+      for (const sub of subProperties) {
+        pushIfChanged(variableId[sub], description)
+      }
+      continue
+    }
+
+    pushIfChanged(variableId, description)
+  }
+
+  return { variables }
+}
+
+/**
+ * Pass 4: name-only UPDATEs for already-synced variables whose token path has been renamed in
+ * JSON since it was last pushed — mirrors buildDescriptionUpdatePayload's shape exactly (same
+ * "call after resolveTempIds", same per-sub-property loop for composite types), but for `name`
+ * instead of `description`. Without this, a token whose path changes (e.g. Global.Color.Black ->
+ * Global.Color.BlackRename) keeps its existing variableId (identity is the id, not the path — see
+ * docs/adr/0001-figma-variable-identity-key.md) and so never goes through buildCreatePassPayload's
+ * CREATE branch, which is the only other place a Figma variable's `name` is ever written — leaving
+ * the stale pre-rename name in Figma forever, silently, since every other check (mode-values,
+ * description) still matches.
+ *
+ * @param {object} params
+ * @param {import('./tokens.mjs').Token[]} params.baseTokens
+ * @param {Map<string, string | Record<string, string>>} params.idByPath
+ * @param {Record<string, { name?: string }>} params.remoteVariablesById Figma's current
+ *   local-variables meta.variables, keyed by id — this run's own CREATEs won't appear here yet, but
+ *   they already got their correct (post-rename) name from buildCreatePassPayload, so skipping an id
+ *   with no remote entry (rather than treating `undefined !== expectedName` as a diff) is correct,
+ *   not just harmless.
+ */
+export function buildNameUpdatePayload({ baseTokens, idByPath, remoteVariablesById }) {
+  const variables = []
+  const seenVariableIds = new Set()
+
+  function pushIfChanged(id, expectedName) {
+    if (!id || isTempId(id) || seenVariableIds.has(id)) return
+    seenVariableIds.add(id)
+    const remoteName = remoteVariablesById[id]?.name
+    if (remoteName === undefined || remoteName === expectedName) return
+    variables.push({ action: 'UPDATE', id, name: expectedName })
+  }
+
+  for (const token of baseTokens) {
+    if (!isPushableToken(token)) continue
+    const key = pathKey(token.path)
+    const variableId = idByPath.get(key)
+
+    if (isSyncableShadowToken(token)) {
+      for (const sub of SHADOW_SUB_PROPERTIES) {
+        pushIfChanged(variableId[sub], figmaShadowSubVariableName(token.path, sub))
+      }
+      continue
+    }
+
+    if (isSyncableBorderToken(token)) {
+      for (const sub of BORDER_SUB_PROPERTIES) {
+        pushIfChanged(variableId[sub], figmaBorderSubVariableName(token.path, sub))
+      }
+      continue
+    }
+
+    if (isSyncableTypographyToken(token)) {
+      for (const sub of TYPOGRAPHY_SUB_PROPERTIES) {
+        pushIfChanged(variableId[sub], figmaTypographySubVariableName(token.path, sub))
+      }
+      continue
+    }
+
+    if (isSyncableResponsiveDimensionToken(token)) {
+      for (const sub of RESPONSIVE_DIMENSION_SUB_PROPERTIES) {
+        pushIfChanged(variableId[sub], figmaResponsiveDimensionSubVariableName(token.path, sub))
+      }
+      if (variableId.device) {
+        pushIfChanged(variableId.device, figmaResponsiveDimensionDeviceVariableName(token.path))
+      }
+      continue
+    }
+
+    pushIfChanged(variableId, figmaVariableName(token.path))
+  }
+
+  return { variables }
 }
 
 /**

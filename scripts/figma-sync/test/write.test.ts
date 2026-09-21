@@ -3,17 +3,21 @@ import { buildTokenIndex } from '../lib/alias.mjs'
 import { buildNameIndex, findCollectionAndModes, findResponsiveCollectionAndModes } from '../lib/figma.mjs'
 import {
   figmaBorderSubValuesFor,
+  figmaLineHeightPercentFor,
   figmaResponsiveDimensionSubEntriesFor,
   figmaShadowSubValuesFor,
   figmaTypographySubValuesFor,
   figmaValueFor,
   flattenVariableId,
+  isLineHeightNumberToken,
   resolvedTypeFor,
 } from '../lib/figma-value.mjs'
 import {
   assignVariableIds,
   buildAliasPassPayload,
   buildCreatePassPayload,
+  buildDescriptionUpdatePayload,
+  buildNameUpdatePayload,
   collectNewlyCreatedIds,
   figmaBorderSubVariableName,
   figmaResponsiveDimensionSubVariableName,
@@ -98,6 +102,36 @@ describe('figma-value', () => {
 
   it('maps fontFamily to STRING too — Figma has no font-stack/array type', () => {
     expect(resolvedTypeFor('fontFamily')).toBe('STRING')
+  })
+})
+
+describe('isLineHeightNumberToken / figmaLineHeightPercentFor', () => {
+  it('recognizes a number token as LineHeight whenever "LineHeight" appears anywhere in its path', () => {
+    expect(isLineHeightNumberToken({ type: 'number', path: ['🌐 Global', '🔤 Font', 'LineHeight', '2'] })).toBe(true)
+    expect(isLineHeightNumberToken({ type: 'number', path: ['🔗 Alias', '🔤 Text', 'LineHeight', 'Single'] })).toBe(
+      true,
+    )
+    expect(isLineHeightNumberToken({ type: 'number', path: ['🧩 Component', 'Badge', 'Typo', 'LineHeight'] })).toBe(
+      true,
+    )
+  })
+
+  it('does not flag a same-type number token with no "LineHeight" in its path, e.g. Opacity', () => {
+    expect(isLineHeightNumberToken({ type: 'number', path: ['🔗 Alias', '🌫️ Opacity', 'Half'] })).toBe(false)
+  })
+
+  it('does not flag a non-number token even if "LineHeight" is in its path', () => {
+    expect(isLineHeightNumberToken({ type: 'string', path: ['🌐 Global', 'LineHeight'] })).toBe(false)
+  })
+
+  it("scales a raw CSS-style multiplier ×100 into Figma's percentage convention", () => {
+    expect(figmaLineHeightPercentFor(1)).toBe(100)
+    expect(figmaLineHeightPercentFor(1.3)).toBe(130)
+    expect(figmaLineHeightPercentFor(2)).toBe(200)
+  })
+
+  it('throws on a non-number value', () => {
+    expect(() => figmaLineHeightPercentFor('1.3')).toThrow(/Unsupported LineHeight value/)
   })
 })
 
@@ -264,7 +298,7 @@ describe('figmaTypographySubValuesFor', () => {
       fontFamily: 'BaloiseCreateHeadline',
       fontSize: 16,
       fontWeight: 'Bold',
-      lineHeight: 1.3,
+      lineHeight: 130,
     })
   })
 
@@ -307,6 +341,34 @@ describe('figmaResponsiveDimensionSubEntriesFor', () => {
   it('returns null for a non-object value', () => {
     expect(figmaResponsiveDimensionSubEntriesFor(null)).toBeNull()
     expect(figmaResponsiveDimensionSubEntriesFor('nope')).toBeNull()
+  })
+})
+
+describe('LineHeight number token push (two-pass write payload)', () => {
+  const lineHeightToken = {
+    path: ['🌐 Global', '🔤 Font', 'LineHeight', '2'],
+    type: 'number',
+    value: { kind: 'literal', value: 1.3 },
+  }
+  const opacityToken = {
+    path: ['🔗 Alias', '🌫️ Opacity', 'Half'],
+    type: 'number',
+    value: { kind: 'literal', value: 0.5 },
+  }
+  const tokens = [lineHeightToken, opacityToken]
+
+  it("writes a LineHeight number token's mode-value scaled ×100, but leaves a same-type Opacity token unscaled", () => {
+    const idByPath = assignVariableIds(tokens)
+    const { variableModeValues } = buildCreatePassPayload({
+      baseTokens: tokens,
+      brandTokensByName: { Base: tokens },
+      idByPath,
+      collectionId: 'coll-1',
+      modeIdByBrand: { Base: 'm-base' },
+    })
+    const byId = Object.fromEntries(variableModeValues.map(v => [v.variableId, v.value]))
+    expect(byId[idByPath.get('🌐 Global.🔤 Font.LineHeight.2')]).toBe(130)
+    expect(byId[idByPath.get('🔗 Alias.🌫️ Opacity.Half')]).toBe(0.5)
   })
 })
 
@@ -705,7 +767,7 @@ describe('typography push (two-pass write payload)', () => {
     expect(byId['temp-Global.Font.Typography.Test-fontFamily']).toBe('BaloiseCreateHeadline')
     expect(byId['temp-Global.Font.Typography.Test-fontSize']).toBe(16)
     expect(byId['temp-Global.Font.Typography.Test-fontWeight']).toBe('Bold')
-    expect(byId['temp-Global.Font.Typography.Test-lineHeight']).toBe(1.3)
+    expect(byId['temp-Global.Font.Typography.Test-lineHeight']).toBe(130)
   })
 
   it('pass 2 writes 4 alias mode-values for a typography reference, each pointing at the matching sub-property of the target', () => {
@@ -885,7 +947,7 @@ describe('responsive dimension push (two-pass write payload)', () => {
 
 describe('Device variable (responsive collection) push — MVP scope', () => {
   // Real emoji path segments, matching DEVICE_ELIGIBLE_PATH_PREFIXES in figma-value.mjs
-  // (['🔗 Alias', '↔️ Space'] etc.) — unlike the plain-ASCII fixtures above (which deliberately stay
+  // (['📱 Device', '↔️ Space'] etc.) — unlike the plain-ASCII fixtures above (which deliberately stay
   // out of MVP scope and double as the "not eligible" regression check), these need the real
   // prefixes to exercise isDeviceEligibleResponsiveDimensionToken at all.
   const space16Primitive = {
@@ -899,7 +961,7 @@ describe('Device variable (responsive collection) push — MVP scope', () => {
     value: { kind: 'literal', value: { value: 40, unit: 'px' } },
   }
   const deviceEligibleToken = {
-    path: ['🔗 Alias', '↔️ Space', 'Lg'],
+    path: ['📱 Device', '↔️ Space', 'Lg'],
     type: 'dimension',
     value: { kind: 'literal', value: { value: 16, unit: 'px' } },
     responsive: {
@@ -914,17 +976,17 @@ describe('Device variable (responsive collection) push — MVP scope', () => {
   const componentRefToken = {
     path: ['🧩 Component', 'Badge', 'Size', 'Base', 'Height'],
     type: 'dimension',
-    value: { kind: 'reference', path: ['🔗 Alias', '↔️ Space', 'Lg'] },
+    value: { kind: 'reference', path: ['📱 Device', '↔️ Space', 'Lg'] },
   }
   const deviceBaseTokens = [space16Primitive, space40Primitive, deviceEligibleToken, componentRefToken]
 
   it('assignVariableIds assigns a 4th temp "device" id, alongside the 3 breakpoint sub-ids, for an in-scope token', () => {
     const idByPath = assignVariableIds(deviceBaseTokens)
-    expect(idByPath.get('🔗 Alias.↔️ Space.Lg')).toEqual({
-      mobile: 'temp-🔗 Alias.↔️ Space.Lg-mobile',
-      tablet: 'temp-🔗 Alias.↔️ Space.Lg-tablet',
-      desktop: 'temp-🔗 Alias.↔️ Space.Lg-desktop',
-      device: 'temp-🔗 Alias.↔️ Space.Lg-device',
+    expect(idByPath.get('📱 Device.↔️ Space.Lg')).toEqual({
+      mobile: 'temp-📱 Device.↔️ Space.Lg-mobile',
+      tablet: 'temp-📱 Device.↔️ Space.Lg-tablet',
+      desktop: 'temp-📱 Device.↔️ Space.Lg-desktop',
+      device: 'temp-📱 Device.↔️ Space.Lg-device',
     })
   })
 
@@ -939,7 +1001,7 @@ describe('Device variable (responsive collection) push — MVP scope', () => {
       responsiveCollectionId: 'coll-responsive',
     })
 
-    const deviceVariable = variables.find(v => v.name === '🔗 Alias/↔️ Space/Lg/Device')
+    const deviceVariable = variables.find(v => v.name === '📱 Device/↔️ Space/Lg/Device')
     expect(deviceVariable).toMatchObject({ variableCollectionId: 'coll-responsive', resolvedType: 'FLOAT' })
   })
 
@@ -954,7 +1016,7 @@ describe('Device variable (responsive collection) push — MVP scope', () => {
       responsiveCollectionId: 'coll-responsive',
     })
 
-    const deviceId = idByPath.get('🔗 Alias.↔️ Space.Lg').device
+    const deviceId = idByPath.get('📱 Device.↔️ Space.Lg').device
     expect(variableModeValues.find(v => v.variableId === deviceId)).toBeUndefined()
   })
 
@@ -963,10 +1025,10 @@ describe('Device variable (responsive collection) push — MVP scope', () => {
     resolveTempIds(idByPath, {
       'temp-🌐 Global.📏 Dimension.Space.16': 'real-g16',
       'temp-🌐 Global.📏 Dimension.Space.40': 'real-g40',
-      'temp-🔗 Alias.↔️ Space.Lg-mobile': 'real-mobile',
-      'temp-🔗 Alias.↔️ Space.Lg-tablet': 'real-tablet',
-      'temp-🔗 Alias.↔️ Space.Lg-desktop': 'real-desktop',
-      'temp-🔗 Alias.↔️ Space.Lg-device': 'real-device',
+      'temp-📱 Device.↔️ Space.Lg-mobile': 'real-mobile',
+      'temp-📱 Device.↔️ Space.Lg-tablet': 'real-tablet',
+      'temp-📱 Device.↔️ Space.Lg-desktop': 'real-desktop',
+      'temp-📱 Device.↔️ Space.Lg-device': 'real-device',
       'temp-🧩 Component.Badge.Size.Base.Height': 'real-height',
     })
     return idByPath
@@ -1232,6 +1294,245 @@ describe('two-pass write payload', () => {
       { path: ['Global', 'Spacing', 'Lg'], variableId: 'VariableID:9:1' },
       { path: ['Alias', 'Background'], variableId: 'VariableID:9:2' },
     ])
+  })
+})
+
+describe('description push', () => {
+  it('folds description into a CREATE variable payload', () => {
+    const baseTokens = [
+      {
+        path: ['Global', 'Spacing', 'Lg'],
+        type: 'number',
+        value: { kind: 'literal', value: 24 },
+        description: 'The large spacing step.',
+      },
+    ]
+    const idByPath = assignVariableIds(baseTokens)
+    const { variables } = buildCreatePassPayload({
+      baseTokens,
+      brandTokensByName: { Base: baseTokens },
+      idByPath,
+      collectionId: 'coll-1',
+      modeIdByBrand: { Base: 'm-base' },
+    })
+
+    expect(variables).toHaveLength(1)
+    expect(variables[0].description).toBe('The large spacing step.')
+  })
+
+  it('writes an empty description on CREATE for a token with none', () => {
+    const baseTokens = [{ path: ['Global', 'Spacing', 'Lg'], type: 'number', value: { kind: 'literal', value: 24 } }]
+    const idByPath = assignVariableIds(baseTokens)
+    const { variables } = buildCreatePassPayload({
+      baseTokens,
+      brandTokensByName: { Base: baseTokens },
+      idByPath,
+      collectionId: 'coll-1',
+      modeIdByBrand: { Base: 'm-base' },
+    })
+
+    expect(variables[0].description).toBe('')
+  })
+
+  it('proposes an UPDATE for an already-synced variable whose description changed', () => {
+    const baseTokens = [
+      {
+        path: ['Global', 'White'],
+        type: 'color',
+        value: { kind: 'literal', value: { components: [1, 1, 1], alpha: 1 } },
+        variableId: 'VariableID:1:1',
+        description: 'Pure white.',
+      },
+    ]
+    const idByPath = assignVariableIds(baseTokens)
+    const { variables } = buildDescriptionUpdatePayload({
+      baseTokens,
+      idByPath,
+      remoteVariablesById: { 'VariableID:1:1': { description: 'An outdated description.' } },
+    })
+
+    expect(variables).toEqual([{ action: 'UPDATE', id: 'VariableID:1:1', description: 'Pure white.' }])
+  })
+
+  it('skips an already-synced variable whose description already matches Figma', () => {
+    const baseTokens = [
+      {
+        path: ['Global', 'White'],
+        type: 'color',
+        value: { kind: 'literal', value: { components: [1, 1, 1], alpha: 1 } },
+        variableId: 'VariableID:1:1',
+        description: 'Pure white.',
+      },
+    ]
+    const idByPath = assignVariableIds(baseTokens)
+    const { variables } = buildDescriptionUpdatePayload({
+      baseTokens,
+      idByPath,
+      remoteVariablesById: { 'VariableID:1:1': { description: 'Pure white.' } },
+    })
+
+    expect(variables).toHaveLength(0)
+  })
+
+  it('never emits an UPDATE for a still-temp (not-yet-created) id', () => {
+    const baseTokens = [
+      { path: ['Global', 'Spacing', 'Lg'], type: 'number', value: { kind: 'literal', value: 24 }, description: 'x' },
+    ]
+    const idByPath = assignVariableIds(baseTokens)
+    const { variables } = buildDescriptionUpdatePayload({ baseTokens, idByPath, remoteVariablesById: {} })
+
+    expect(variables).toHaveLength(0)
+  })
+
+  it('writes the same description onto every sub-variable of a composite (shadow) token', () => {
+    const baseTokens = [
+      {
+        path: ['Global', 'Shadow', 'Sm'],
+        type: 'shadow',
+        value: {
+          kind: 'literal',
+          value: {
+            offsetX: { value: 0, unit: 'px' },
+            offsetY: { value: 1, unit: 'px' },
+            blur: { value: 2, unit: 'px' },
+            spread: { value: 0, unit: 'px' },
+            color: { colorSpace: 'srgb', components: [0, 0, 0], alpha: 0.1 },
+          },
+        },
+        variableId: {
+          offsetX: 'VariableID:s:1',
+          offsetY: 'VariableID:s:2',
+          blur: 'VariableID:s:3',
+          spread: 'VariableID:s:4',
+          color: 'VariableID:s:5',
+        },
+        description: 'A small drop shadow.',
+      },
+    ]
+    const idByPath = assignVariableIds(baseTokens)
+    const { variables } = buildDescriptionUpdatePayload({
+      baseTokens,
+      idByPath,
+      remoteVariablesById: Object.fromEntries(
+        Object.values(baseTokens[0].variableId).map(id => [id, { description: '' }]),
+      ),
+    })
+
+    expect(variables).toHaveLength(5)
+    expect(variables.every(v => v.description === 'A small drop shadow.')).toBe(true)
+    expect(new Set(variables.map(v => v.id))).toEqual(new Set(Object.values(baseTokens[0].variableId)))
+  })
+})
+
+describe('buildNameUpdatePayload', () => {
+  it('proposes an UPDATE for an already-synced variable whose token path was renamed', () => {
+    const baseTokens = [
+      {
+        path: ['🌐 Global', '🌈 Color', 'BlackRename'],
+        type: 'color',
+        value: { kind: 'literal', value: { components: [0, 0, 0], alpha: 1 } },
+        variableId: 'VariableID:137:2689',
+      },
+    ]
+    const idByPath = assignVariableIds(baseTokens)
+    const { variables } = buildNameUpdatePayload({
+      baseTokens,
+      idByPath,
+      remoteVariablesById: { 'VariableID:137:2689': { name: '🌐 Global/🌈 Color/Black' } },
+    })
+
+    expect(variables).toEqual([{ action: 'UPDATE', id: 'VariableID:137:2689', name: '🌐 Global/🌈 Color/BlackRename' }])
+  })
+
+  it('skips an already-synced variable whose name already matches its current path', () => {
+    const baseTokens = [
+      {
+        path: ['Global', 'White'],
+        type: 'color',
+        value: { kind: 'literal', value: { components: [1, 1, 1], alpha: 1 } },
+        variableId: 'VariableID:1:1',
+      },
+    ]
+    const idByPath = assignVariableIds(baseTokens)
+    const { variables } = buildNameUpdatePayload({
+      baseTokens,
+      idByPath,
+      remoteVariablesById: { 'VariableID:1:1': { name: 'Global/White' } },
+    })
+
+    expect(variables).toHaveLength(0)
+  })
+
+  it('never emits an UPDATE for a still-temp (not-yet-created) id', () => {
+    const baseTokens = [{ path: ['Global', 'Spacing', 'Lg'], type: 'number', value: { kind: 'literal', value: 24 } }]
+    const idByPath = assignVariableIds(baseTokens)
+    const { variables } = buildNameUpdatePayload({ baseTokens, idByPath, remoteVariablesById: {} })
+
+    expect(variables).toHaveLength(0)
+  })
+
+  it("skips a real id absent from remoteVariablesById (this run's own fresh CREATE, already named correctly)", () => {
+    const baseTokens = [
+      {
+        path: ['Global', 'White'],
+        type: 'color',
+        value: { kind: 'literal', value: { components: [1, 1, 1], alpha: 1 } },
+        variableId: 'VariableID:1:1',
+      },
+    ]
+    const idByPath = assignVariableIds(baseTokens)
+    const { variables } = buildNameUpdatePayload({ baseTokens, idByPath, remoteVariablesById: {} })
+
+    expect(variables).toHaveLength(0)
+  })
+
+  it('renames the same-shaped path onto every sub-variable of a composite (shadow) token', () => {
+    const baseTokens = [
+      {
+        path: ['Global', 'Shadow', 'SmRename'],
+        type: 'shadow',
+        value: {
+          kind: 'literal',
+          value: {
+            offsetX: { value: 0, unit: 'px' },
+            offsetY: { value: 1, unit: 'px' },
+            blur: { value: 2, unit: 'px' },
+            spread: { value: 0, unit: 'px' },
+            color: { colorSpace: 'srgb', components: [0, 0, 0], alpha: 0.1 },
+          },
+        },
+        variableId: {
+          offsetX: 'VariableID:s:1',
+          offsetY: 'VariableID:s:2',
+          blur: 'VariableID:s:3',
+          spread: 'VariableID:s:4',
+          color: 'VariableID:s:5',
+        },
+      },
+    ]
+    const idByPath = assignVariableIds(baseTokens)
+    const { variables } = buildNameUpdatePayload({
+      baseTokens,
+      idByPath,
+      remoteVariablesById: {
+        'VariableID:s:1': { name: 'Global/Shadow/Sm/OffsetX' },
+        'VariableID:s:2': { name: 'Global/Shadow/Sm/OffsetY' },
+        'VariableID:s:3': { name: 'Global/Shadow/Sm/Blur' },
+        'VariableID:s:4': { name: 'Global/Shadow/Sm/Spread' },
+        'VariableID:s:5': { name: 'Global/Shadow/Sm/Color' },
+      },
+    })
+
+    expect(variables).toHaveLength(5)
+    expect(new Set(variables.map(v => v.name))).toEqual(
+      new Set([
+        'Global/Shadow/SmRename/OffsetX',
+        'Global/Shadow/SmRename/OffsetY',
+        'Global/Shadow/SmRename/Blur',
+        'Global/Shadow/SmRename/Spread',
+        'Global/Shadow/SmRename/Color',
+      ]),
+    )
   })
 })
 

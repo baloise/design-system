@@ -9,6 +9,7 @@ This document captures domain language, architectural patterns, and key concepts
 - Web Components (standard custom elements)
 - Angular bindings (auto-generated wrapper components)
 - React bindings (auto-generated hooks/components)
+- Hydrate script (Node-compatible SSR renderer at `hydrate/`)
 - TypeScript type definitions for all frameworks
 
 ## Core Concepts
@@ -23,7 +24,7 @@ This document captures domain language, architectural patterns, and key concepts
 
 1. **Authoring** → `.tsx` + `.scss` in `packages/core/src/components/<name>/`
 2. **Compilation** → Stencil compiler transpiles to web components in `dist/`
-3. **Output targets** → Additional targets (Angular, React, Web) generate bindings
+3. **Output targets** → Additional targets (Angular, React, Web, hydrate) generate bindings and the SSR renderer
 4. **Distribution** → Built artifacts published to npm as `@baloise/ds-core`
 
 ### Component Types
@@ -44,7 +45,7 @@ The system supports **three component architectures**:
 - **Has**: `.style.scss` file (global CSS classes)
 - **No**: `.host.scss` file
 - **Usage**: Plain HTML elements with CSS classes, no JavaScript
-- **Example**: `<button class="button is-primary">Click me</button>`
+- **Example**: `<button class="ds-button is-primary">Click me</button>`
 - **Skills**: No stories, limited tests (visual + a11y only)
 - **Identification**: Check for `.style.scss` only (not `.host.scss`)
 
@@ -52,7 +53,7 @@ The system supports **three component architectures**:
 
 - **Has**: Both `.host.scss` (Shadow DOM) and `.style.scss` (global CSS)
 - **Usage**: Supports both web component mode and CSS-only mode
-- **Example**: Works as both `<ds-button>` and `<button class="button">`
+- **Example**: Works as both `<ds-button>` and `<button class="ds-button">`
 - **Skills**: Minimal stories (no prop controls), limited tests
 - **Identification**: Check for both `.host.scss` AND `.style.scss`
 
@@ -88,6 +89,7 @@ This is enforced automatically, not just by convention: `libs/output-target-web/
 ### Naming Conventions
 
 - **Custom element prefix**: `ds-` (e.g., `<ds-button>`, `<ds-card>`)
+- **Usage-context prefix**: `ds-app-*` for components built for application (product) usage, as opposed to marketing/website usage (e.g. `ds-app-navbar`, `ds-app-footer`). Each usage context gets its own component rather than a variant prop on a shared one — a future website-context navbar would be `ds-web-navbar`, not a prop on `ds-app-navbar`. Unrelated to `ds-root`, the root wrapper component (renamed from `ds-app` in ADR-0029). `ds-app` remains as a deprecated compatibility alias. See ADR-0026, ADR-0029.
 - **Event naming**: `ds<Name>` (e.g., `dsChange`, `dsCloseClick`)
 - **Handler naming**: `listenTo<Event>` (@Listen), `<Prop>Changed` (@Watch), `handle<Event>` (DOM handlers)
 - **CSS classes**: `.is-<state>` for states (e.g., `.is-disabled`, `.is-primary`), `.mod-<variant>` for modifiers
@@ -160,9 +162,20 @@ Most components expose these variable groups:
 
 **Spacing Variables:**
 
-- `--{component}-px` — horizontal padding
-- `--{component}-py` — vertical padding
-- `--{component}-m` — margin (sometimes)
+Margin and padding both use the same seven-suffix shorthand — all sides, then the two axis
+shorthands, then the four individual sides:
+
+| Suffix | Side         | Margin example     | Padding example    |
+| ------ | ------------ | ------------------ | ------------------ |
+| `-m`   | all sides    | `--{component}-m`  | `--{component}-p`  |
+| `-mx`  | left + right | `--{component}-mx` | `--{component}-px` |
+| `-my`  | top + bottom | `--{component}-my` | `--{component}-py` |
+| `-ml`  | left         | `--{component}-ml` | `--{component}-pl` |
+| `-mr`  | right        | `--{component}-mr` | `--{component}-pr` |
+| `-mt`  | top          | `--{component}-mt` | `--{component}-pt` |
+| `-mb`  | bottom       | `--{component}-mb` | `--{component}-pb` |
+
+Margin's suffix set is generated for free by `vars.margin($name)` (see `packages/core/src/vars.scss`'s `margin-vars` mixin), which every component using `vars.base($name)` picks up automatically. Padding has no shared mixin yet, so it's authored by hand per component — existing examples spell out the full word rather than using the `-p`/`-px`/`-py` shorthand (`--_container-padding-x`/`--_container-padding-y`, `--_notification-padding`). Follow whichever style the component already uses for its other spacing vars; the shorthand table above is the target scheme once/if padding gets a shared mixin like margin's.
 
 **Typography Variables:**
 
@@ -402,15 +415,15 @@ The navbar uses a right-side drawer menu on mobile/tablet viewports. The drawer 
 ### Future Enhancements (Out of Scope)
 
 - [ ] Color themes and styling variants
-- [ ] Multiple interface types (app, website, etc.)
+- [ ] Website-context navbar as a separate `ds-web-navbar` component (resolved as a naming strategy in ADR-0026; not yet built) — this component is `ds-app-navbar`, scoped to application usage
 - [ ] Container width options (fluid, compact, etc.)
 - [ ] Custom hamburger icon or styling
 - [ ] Sub-components if composition needs evolve
 - [ ] Animated hamburger icon transitions (current: SVG path swap)
 
-## Date Field (ds-date)
+## Datepicker (ds-datepicker)
 
-`ds-date` is a form control that mirrors `ds-input`'s field structure and look,
+`ds-datepicker` is a form control that mirrors `ds-input`'s field structure and look,
 adding a calendar-icon trigger that opens a date-picker popup. Shared vocabulary:
 
 - **Model value** — the canonical `value` (ISO `YYYY-MM-DD` string). Locale-
@@ -418,20 +431,24 @@ adding a calendar-icon trigger that opens a date-picker popup. Shared vocabulary
   attribute reflection exposes.
 - **Display value** — the localized string the user sees and types in the masked
   field (e.g. `13.07.2026` for CH). Derived from DS locale config; never the
-  model value. **luxon** bridges display ⇄ model.
+  model value. Display ⇄ model conversion is native `Date` only (no Luxon) —
+  Switzerland used Local Mean Time until June 1894, and the native `Date`
+  engine and Luxon's `Intl`-based engine can disagree on the pre-1894 offset,
+  shifting the calendar day by one if a `Date` crosses between them. See the
+  comment on `nativeDateToISO` in `datepicker.mask.ts`.
 - **Trigger** — the calendar-icon `<button>` at the end of the field. It is the
   **only** gesture that opens/toggles the popup; focusing the text input just
   places the typing cursor. `disabled` turns both off; `readonly` is display-only.
 - **Popup** — the calendar dialog, rendered **inside the shadow root** with
   air-datepicker's stylesheet adopted via `adoptedStyleSheets`. Open/close and
-  outside-click are owned by `ds-date` (not air-datepicker's document listener).
+  outside-click are owned by `ds-datepicker` (not air-datepicker's document listener).
 
 Library choices (air-datepicker, imask) and the shadow-root integration are
-recorded in [docs/adr/0001-ds-date-external-datepicker-libraries.md](../../docs/adr/0001-ds-date-external-datepicker-libraries.md).
+recorded in [docs/adr/0001-ds-datepicker-external-datepicker-libraries.md](../../docs/adr/0001-ds-datepicker-external-datepicker-libraries.md).
 
-## Input Slider (ds-input-slider)
+## Slider (ds-slider)
 
-`ds-input-slider` is the web-component-only migration of the old
+`ds-slider` is the web-component-only migration of the old
 `bal-input-slider`: a form control backed by the **noUiSlider** library
 (rendered on a plain `<div part="slider">`, no native `<input>` anywhere in
 the shadow root), using the same `Field` wrapper/`AttachInternals()` pattern
@@ -444,24 +461,24 @@ as `ds-input`/`ds-number-input`. Shared vocabulary:
 - **Slider** — the noUiSlider-owned `<div id="slider" part="slider">`. It is
   the single source of interaction (pointer drag, keyboard) and carries
   noUiSlider's own built-in ARIA (`role="slider"`, `aria-valuemin/max/now`,
-  `tabindex`) on its handle. `ds-input-slider` wires `aria-labelledby`/
+  `tabindex`) on its handle. `ds-slider` wires `aria-labelledby`/
   `aria-describedby` onto the handle to connect it to the `Field`'s label/
   description, the same way `ds-select`'s `SelectPickerController` wires its
   trigger — see `connectLabelToTrigger()` in `select.picker.ts` for the
   precedent.
-- **Picker controller** — `InputSliderPickerController`
-  (`input-slider.picker.ts`) wraps the noUiSlider instance, mirroring
+- **Picker controller** — `SliderPickerController`
+  (`slider.picker.ts`) wraps the noUiSlider instance, mirroring
   `SelectPickerController`'s shape (init in `componentDidLoad`, `destroy()`
   in `disconnectedCallback`, `setValue()`/`setDisabled()`/`focus()`/
-  `blur()`/`updateRange()` as its public API). `input-slider.utils.ts`
+  `blur()`/`updateRange()` as its public API). `slider.utils.ts`
   stays pure functions only (`clampValue`, `resolveInitialValue`,
   step/decimals helpers).
 - **No `FormControl`** — unlike `ds-input`/`ds-number-input`, this component
   does not use the shared `FormControl` helper (`form-control.ts`), because
   `FormControl` assumes a real `nativeEl: HTMLInputElement |
-HTMLTextAreaElement` to focus/blur/read from. `ds-input-slider` manages
+HTMLTextAreaElement` to focus/blur/read from. `ds-slider` manages
   `internals.setFormValue()`, `initialValue`/reset, and click-passthrough
-  directly in `input-slider.tsx`, the same way `ds-select` does.
+  directly in `slider.tsx`, the same way `ds-select` does.
 - **Event mapping** — noUiSlider's own event set replaces native
   `input`/`change`: `update` (fires continuously, incl. every drag/keyboard
   step) maps to `dsInput`; `set` (fires once per discrete interaction —
@@ -469,13 +486,13 @@ HTMLTextAreaElement` to focus/blur/read from. `ds-input-slider` manages
   call) maps to `dsChange`. `set` was chosen over noUiSlider's `change`
   event because `change` only fires for real user interaction — a
   programmatic `.set()` call (used by `picker.setValue()` and by
-  `DsInputSlider`'s `fill()` test helper) never fires it, only `update` +
+  `DsSlider`'s `fill()` test helper) never fires it, only `update` +
   `set`. This preserves
-  [ADR-0010](../../docs/adr/0010-ds-input-slider-change-commit.md)'s
+  [ADR-0010](../../docs/adr/0010-ds-slider-change-commit.md)'s
   commit-on-discrete-interaction semantics with a different event source;
-  see [ADR-0007](../../docs/adr/0007-ds-input-slider-nouislider.md) for why
+  see [ADR-0007](../../docs/adr/0007-ds-slider-nouislider.md) for why
   the event source changed at all.
-- **Programmatic sets don't re-emit events** — `InputSliderPickerController`
+- **Programmatic sets don't re-emit events** — `SliderPickerController`
   guards `setValue()` with a `suppressEvents` flag so an external `value`
   prop change (e.g. an Angular `ControlValueAccessor.writeValue()`) does not
   cascade back into firing `dsInput`/`dsChange`, mirroring how the old
@@ -504,7 +521,7 @@ HTMLTextAreaElement` to focus/blur/read from. `ds-input-slider` manages
   already continuous) — not a special `0` sentinel (the old component's
   `step = 0` convention is dropped).
 - **`readonly` behaves as `disabled`** — noUiSlider has no native concept of
-  read-only either. `ds-input-slider` follows the existing `ds-checkbox`
+  read-only either. `ds-slider` follows the existing `ds-checkbox`
   convention (`disabled={this.disabled || this.readonly}`) and treats the
   two as equivalent for this control. Disabling is done via noUiSlider's own
   attribute-based mechanism (`setAttribute('disabled', '')` /
@@ -512,13 +529,13 @@ HTMLTextAreaElement` to focus/blur/read from. `ds-input-slider` manages
   `.disable()`/`.enable()` JS call).
 - **Commit-on-`change`, not blur** — diverges from the shared `FormControl`
   blur-commit convention; see
-  [ADR-0010](../../docs/adr/0010-ds-input-slider-change-commit.md).
+  [ADR-0010](../../docs/adr/0010-ds-slider-change-commit.md).
 - **`color` vs. `brand-color`** — general naming convention for bal→ds
   migrations: if an old `bal-*` component had a `color` prop meaning brand/
   theme color, it is renamed to `brand-color` on the `ds-*` version, freeing
   up `color` for the `Field`-state semantics (`primary | success | warning |
 danger`) shared with `ds-input`/`ds-number-input`. `bal-input-slider` had
-  no brand `color` prop, but `ds-input-slider` gained its own `brand-color`
+  no brand `color` prop, but `ds-slider` gained its own `brand-color`
   (`yellow | purple | red | green | ''`) — unlike the bal-era meaning, it only
   recolors the `.noUi-connect` fill (via a `linear-gradient` from the `-4`
   shade on the left to the `-2` shade on the right), leaving track, thumb,
@@ -531,15 +548,15 @@ danger`) shared with `ds-input`/`ds-number-input`. `bal-input-slider` had
 - **Dual-thumb (min+max range) is out of scope** — this component is
   single-thumb only, matching `bal-input-slider`'s original scope exactly,
   even though noUiSlider itself supports multi-handle ranges.
-- **Visual design** — `input-slider.host.scss` overrides noUiSlider's stock
+- **Visual design** — `slider.host.scss` overrides noUiSlider's stock
   cosmetic defaults (grey/bordered track, white bordered handle, teal
   connect) via `.noUi-target`/`.noUi-connect`/`.noUi-handle` selectors, using
-  lightweight `--input-slider-*` SCSS component variables that point
+  lightweight `--slider-*` SCSS component variables that point
   directly at **global color tokens** — the same pattern `ds-checkbox`/
   `ds-radio`/`ds-toggle` use (`--ds-global-color-primary-5` for the
   checked/active fill, `--ds-global-color-grey-3` for the unchecked/inactive
   fill), not a dedicated `packages/tokens` entry. `connect: 'lower'` (set in
-  `input-slider.picker.ts`) renders the active/filled track segment via
+  `slider.picker.ts`) renders the active/filled track segment via
   noUiSlider's own `.noUi-connect` element; the remainder shows the plain
   track background — this is the "progress bar" look, not a second DS
   concept. The shared `form.container()` mixin (`form.mixin.scss`) gained a
@@ -549,29 +566,45 @@ danger`) shared with `ds-input`/`ds-number-input`. `bal-input-slider` had
   position plumbing pointer-dragging depends on; only its cosmetic layer is
   overridden.
 
+## Checkbox Group (ds-checkbox-group)
+
+`ds-checkbox-group` is the "controlled group" pattern also used by `ds-radio-group`: when its `control` prop is `true`, the group is the single source of truth for which child `ds-checkbox` elements are checked — it derives each child's `checked` from its own `value: any[]` (an array of the checked children's `value`s) rather than letting children manage their own checked state independently. `internalValue` (a private `@State()`) holds the currently-applied array; `value` (the public `@Prop()`) is compared against it via `areArraysEqual` on every `@Watch('value')` firing, `componentWillLoad`, and `connectedCallback`, and any difference re-derives each child's `checked` in `handleValueChange()`.
+
+**Checked-state sync races a child's own initialization.** A consumer that assigns `.value` as a plain JS property immediately after inserting the group into the DOM — rather than via a static HTML attribute present before parsing, e.g. `@baloise/ds-angular`'s `ControlValueAccessor.writeValue()`, called as soon as the host connects — can land that assignment before a child `ds-checkbox` has finished its own `componentWillLoad`. Setting `.checked` on such a not-yet-ready child is silently lost once the child's own initialization runs afterwards and applies its default. `handleValueChange()` closes this by awaiting `shallowReady()` (from `@utils/helpers`) on every child before touching `.checked` — a no-op once children are already loaded (e.g. a later user- or form-driven value change), so it only adds a delay on this specific early-write race. `ds-radio-group` has the same "controlled group" shape and would need the same fix if it ever grows a reactive-forms `ControlValueAccessor` of its own.
+
+`componentWillLoad` re-derives `internalValue` by calling `valueChanged()` (the `@Watch('value')` handler itself, not a separate re-check) rather than assuming `connectedCallback`'s own `valueChanged()` call already caught the current `value` — the same "written as a property right after connecting" ordering can put a very first write in the gap between `connectedCallback` returning and `componentWillLoad` running, before the watch is reliably wired up. Calling `valueChanged()` again here reads `this.value` fresh regardless of whether the watch fired for that particular assignment.
+
 ## Phone Field (ds-input-phone)
 
-`ds-input-phone` is a planned form control (see
+`ds-input-phone` is a form control (see
 [docs/plans/ds-input-phone-plan.md](../../docs/plans/ds-input-phone-plan.md))
 for entering an international phone number: a country picker (flag +
 calling code) paired with a national-number text field, formatted via
-`libphonenumber-js`. It is **standalone** — its own native `<input>` and its
-own `Field` wrapper, a sibling to `ds-input`/`ds-select` rather than
-composing either. Shared vocabulary:
+`libphonenumber-js`. It is **standalone** — its own native `<input>` and
+`Field` wrapper (`packages/core/src/components/input/field.util.tsx`), a
+sibling to `ds-input`/`ds-select` rather than composing either. Shared
+vocabulary:
 
 - **Model value** — the canonical `value`, an **E.164 string**
   (e.g. `+41791234567`). Self-contained (encodes the country), unambiguous,
   what a form submits. Never the thing the user directly edits.
 - **National number** — the digits displayed and typed into the number
   field (e.g. `79 123 45 67`), always relative to the currently selected
-  country. Reformatted live via `AsYouType` while typing, and again on blur
-  for a stable final form. Carried alongside `value`/`country` in
+  country. Its display is the international grouping without the calling
+  code already shown by the country picker. A national trunk prefix (such
+  as Swiss `0`) may remain while typing but is removed on blur; a
+  significant leading zero (such as an Italian landline's `0`) remains.
+  Reformatted live via `AsYouType` while typing, and again on blur for a
+  stable final form. Carried alongside `value`/`country` in
   `dsChange`/`dsInput` event payloads as `nationalNumber` so consumers don't
   need to re-derive it from the E.164 string.
 - **`initialCountry`** — uncontrolled seed for the starting country,
   read once. **`country`** — the live/controlled current selection,
   readable and settable after first render, updated by user interaction or
   externally, and re-validated against `countries` whenever either changes.
+  Entering an international `+` or `00` calling code in the number field
+  also updates `country` and removes that calling code from the visible
+  national number.
   Distinct props because a form control that lets a user actively repick
   its country needs "starting state" and "current state" to not be the same
   slot.
@@ -658,10 +691,9 @@ name="design-system-config">` tag's `data-*` attributes, but **only**
 3. the `userConfig` object passed to `initializeDesignSystem`/`setupDsConfig`
    — always wins; this is how frameworks, Storybook, and tests override
 
-Icons, `httpFormSubmit`, `legalLinks`, `legalText`, and `socialLinks` are
-**not** meta-tag-configurable — they're either structured/nested data (not
-representable in a flat `data-*` attribute) or considered JS-only
-behavioral config. See
+Icons, `legalLinks`, `legalText`, and `socialLinks` are **not**
+meta-tag-configurable — they're structured/nested data not representable
+in a flat `data-*` attribute. See
 [docs/adr/0002-ds-config-meta-tag.md](../../docs/adr/0002-ds-config-meta-tag.md)
 for the full rationale.
 
@@ -682,13 +714,34 @@ dynamic imports:
 import { initialize } from '@baloise/ds-core/initialize'
 ```
 
-`exports` also declares `"."`, `"./components"`, and `"./loader"` explicitly
-(mirroring their `files`-listed directory-index resolution) plus a `"./*"`
-fallback, so adding this map doesn't drop any previously-working deep import.
+`exports` also declares `"."`, `"./components"`, `"./loader"`, and
+`"./hydrate"` explicitly (mirroring their `files`-listed directory-index
+resolution) plus a `"./*"` fallback, so adding this map doesn't drop any
+previously-working deep import.
+
+### Hydrate Script (`@baloise/ds-core/hydrate`)
+
+`stencil.config.ts` includes a `dist-hydrate-script` output target (skipped in
+dev/docs builds, same as `dist` / `dist-custom-elements`). It produces a
+Node-compatible renderer at `hydrate/` on the package root, published via the
+`files` array. `exports["./hydrate"]` maps types to `hydrate/index.d.ts` and
+the Node entries to `index.mjs`/`index.js` — the `"./*"` fallback is enough
+for untyped Node resolution, but TypeScript (and the generated React server
+wrappers that `import('@baloise/ds-core/hydrate')`) need the explicit types
+condition, the same pattern as `./components` and `./loader`.
+
+The React generator (`config/stencil.bindings.react.ts`) points
+`hydrateModule` at that path and sets `serializeShadowRoot:
+'declarative-shadow-dom'`, so a core build also emits
+`packages/react/src/generated/components.server.ts` alongside the existing
+client `components.ts`. Consumer-facing SSR (a `"node"`-condition exports map
+on `@baloise/ds-react`, and a client-only carve-out for the Modal/Toast/Snackbar
+idioms) is the next ticket — see
+[ADR-0031](../../docs/adr/0031-ssr-hydrate-build.md).
 
 ## Token Preview Listener
 
-`packages/core/src/global/token-preview.ts` (wired into the `globalScript`, `src/global/global.ts`, so it's bundled into every `www` page — playground.html and every `*.visual.html`) listens for `postMessage` from an embedding parent window and applies token changes live via `document.documentElement.style.setProperty`/`removeProperty`. It is a no-op unless the page is actually embedded in an iframe (`window.parent !== window`), so it never activates during normal component consumption or Playwright visual-regression runs. No origin allowlist yet — MVP is localhost-only (toky ↔ core dev-server); see [`docs/plans/toky-live-token-preview-plan.md`](../../docs/plans/toky-live-token-preview-plan.md) for the message contract and the deferred "deployed / other DS websites" phase where real origin validation is planned.
+`packages/core/src/global/token-preview.ts` (wired into the `globalScript`, `src/global/global.ts`, so it's bundled into every `www` page — playground.html and every `*.visual.html`) listens for `postMessage` from an embedding parent window and applies token changes live via `document.documentElement.style.setProperty`/`removeProperty`. It is a no-op unless the page is actually embedded in an iframe (`window.parent` is a distinct window). That also covers Node hydrate, where Stencil's `window.parent` is `null` and a `postMessage` would throw. It never activates during normal component consumption or Playwright visual-regression runs. No origin allowlist yet — MVP is localhost-only (toky ↔ core dev-server); see [`docs/plans/toky-live-token-preview-plan.md`](../../docs/plans/toky-live-token-preview-plan.md) for the message contract and the deferred "deployed / other DS websites" phase where real origin validation is planned.
 
 `stencil.config.ts`'s existing `buildStart` hook (the one that already generates `docs/tags.json`) also globs every `*.visual.html` under `src/{blocks,templates,foundation,components}` and writes `docs/visual-pages.json`, copied into `www/visual-pages.json` by the `www` output target's `copy` config. This is the manifest Toky's Live Preview page picker fetches to list selectable pages — `blocks`/`templates` don't exist as directories yet, so they currently contribute nothing, but the glob picks them up automatically once they do.
 
@@ -718,6 +771,6 @@ See [CONTEXT-MAP.md](../../CONTEXT-MAP.md) for:
 
 - [[packages/tokens|packages/tokens/CONTEXT.md]] — Design tokens reference
 - [[packages/playwright|packages/playwright/CONTEXT.md]] — Testing library
-- [[packages/css|packages/css/CONTEXT.md]] — Global styles
+- [[packages/styles|packages/styles/CONTEXT.md]] — Global styles
 - [[apps/storybook|apps/storybook/CONTEXT.md]] — Storybook documentation
 - [[root|CONTEXT.md]] — Repository-level concepts

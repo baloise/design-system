@@ -1,0 +1,16 @@
+<form [formGroup]="form">
+  <ds-input
+    data-testid="input-form-control"
+    name="input-form-control"
+    label="Email"
+    formControlName="email"
+    [errorMessages]="{ required: 'Email is required' }"
+  />
+  <span data-testid="input-form-value">Form value: {{ form.value.email }}</span>
+</form>
+<p data-testid="input-form-disabled">Form disabled: {{ form.controls.email.disabled }}</p>
+<button data-testid="input-form-set-external-value" type="button" (click)="setExternalValue()">
+  Set external value
+</button>
+<button data-testid="input-form-toggle-disabled" type="button" (click)="toggleDisabled()">Toggle disabled</button>
+<button data-testid="input-form-touch" type="button" (click)="touch()">Touch</button>

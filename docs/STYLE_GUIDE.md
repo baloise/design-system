@@ -226,7 +226,7 @@ Always include ARIA attributes for interactive components:
 </button>
 
 // ✅ Good: Hidden decorative content
-<span aria-hidden="true" class="icon">→</span>
+<span aria-hidden="true">→</span>
 ```
 
 #### Semantic HTML

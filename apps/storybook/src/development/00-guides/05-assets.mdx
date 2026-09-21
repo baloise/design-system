@@ -1,0 +1,146 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+import { Banner, Footer, InfoQuote, Lead, LinkCard, LinkCards } from '../../../.storybook/blocks'
+
+<Meta title="Development/Assets" name="Assets" />
+
+<Banner label="Assets" section="Development" />
+
+<Lead>Fonts, favicons, and Google Maps styling are all shipped from a single package: `@baloise/ds-assets`.</Lead>
+
+Install it once, then copy over whichever assets your application needs.
+
+```bash
+npm add -D @baloise/ds-assets copyfiles
+```
+
+<InfoQuote>
+  **copyfiles** copies the files you need into your own `src/assets` folder at install time, so
+  they're under version control with the rest of your app rather than reached into inside
+  `node_modules` at runtime.
+</InfoQuote>
+
+## Font
+
+By default, `@baloise/ds-styles/css/design-system` ships with **no** `@font-face` rules — text
+renders in the browser's fallback font until you self-host the BaloiseCreate fonts.
+
+<br/>
+
+**1. Copy the font files**
+
+Add a copy script to your `package.json`. `postinstall` keeps it running automatically whenever
+`@baloise/ds-assets` is installed or updated.
+
+```json
+"scripts": {
+  "postinstall": "npm run copy:assets",
+  "copy:assets": "npm run copy:fonts",
+  "copy:fonts": "copyfiles --flat node_modules/@baloise/ds-assets/src/fonts/*.woff2 node_modules/@baloise/ds-assets/src/fonts/*.woff src/assets/fonts"
+}
+```
+
+```bash
+npm install
+```
+
+**2. Use the self-hosted stylesheet**
+
+Swap `css/design-system` for the `css/design-system.local` variant, which points its
+`@font-face` rules at `/assets/fonts/` — the folder you just copied the files into.
+
+```html
+<link rel="stylesheet" href="node_modules/@baloise/ds-styles/css/design-system.local" />
+```
+
+<InfoQuote>
+  Also using `css/utilities`? It stays the same either way — only the main bundle has a `.local`
+  variant.
+</InfoQuote>
+
+## Favicon
+
+**1. Copy the favicon files**
+
+Favicons ship in six colors (`primary`, `green`, `purple`, `red`, `white`, `yellow`) — swap the
+folder name in the path below to pick one.
+
+```json
+"scripts": {
+  "postinstall": "npm run copy:assets",
+  "copy:assets": "npm run copy:favicons",
+  "copy:favicons": "copyfiles --flat node_modules/@baloise/ds-assets/src/favicons/primary/* src/assets/favicons"
+}
+```
+
+```bash
+npm install
+```
+
+**2. Reference them in `index.html`**
+
+```html
+<link rel="apple-touch-icon" sizes="180x180" href="./assets/favicons/apple-touch-icon.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="./assets/favicons/favicon-32x32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="./assets/favicons/favicon-16x16.png" />
+<link rel="manifest" href="./assets/favicons/site.webmanifest" />
+<link rel="shortcut icon" type="image/x-icon" href="./assets/favicons/favicon.ico" />
+<meta name="msapplication-config" content="./assets/favicons/browserconfig.xml" />
+<meta name="msapplication-TileColor" content="#ffffff" />
+<meta name="theme-color" content="#ffffff" />
+```
+
+## Google Maps
+
+Map styles and markers are exported directly from `@baloise/ds-assets` — no separate package or
+copy step needed.
+
+```bash
+npm install @baloise/ds-assets
+npm install @types/google.maps --save-dev
+```
+
+Check out the [Google Maps JavaScript API Loader](https://github.com/googlemaps/js-api-loader) for
+loading the Maps API itself.
+
+### Styles
+
+Import `MapTypeStyles` into your Google Maps config object.
+
+```ts
+import { MapTypeStyles } from '@baloise/ds-assets'
+
+const myMap = new google.maps.Map(myMapElement, {
+  ...
+  styles: MapTypeStyles,
+})
+```
+
+### Markers
+
+Import a marker constant (e.g. `balMapMarkerDefault`) and pass it as the icon URL.
+
+```ts
+import { balMapMarkerDefault } from '@baloise/ds-assets'
+
+new google.maps.Marker({
+  position: { lat: 36.6163, lng: -100.61 },
+  map,
+  icon: {
+    url: balMapMarkerDefault,
+  },
+  title: 'My Marker',
+})
+```
+
+<Footer>
+  <LinkCards>
+    <LinkCard
+      pageTitle="Development/Getting Started"
+      description="How to install and integrate the Design System into your application."
+    />
+    <LinkCard
+      pageTitle="Foundation/Brand Assets"
+      description="Logo, favicon, and shape usage guidelines."
+    />
+  </LinkCards>
+</Footer>

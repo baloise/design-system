@@ -12,7 +12,7 @@ const Story = StoryFactory(meta)
 
 export const Start = Story({
   ...withRender(
-    () => `<div class="flex align-content-start flex-wrap gap-normal" style="min-height: 200px">
+    () => `<div class="flex align-content-start flex-wrap gap-base" style="min-height: 200px">
     <div class="bg-red radius flex justify-content-center align-items-center" style="height: 4rem; width: 4rem">1</div>
     <div class="bg-red radius flex justify-content-center align-items-center" style="height: 4rem; width: 4rem">2</div>
     <div class="bg-red radius flex justify-content-center align-items-center" style="height: 4rem; width: 4rem">3</div>
@@ -21,7 +21,7 @@ export const Start = Story({
 })
 export const Center = Story({
   ...withRender(
-    () => `<div class="flex align-content-center flex-wrap gap-normal" style="min-height: 200px">
+    () => `<div class="flex align-content-center flex-wrap gap-base" style="min-height: 200px">
     <div class="bg-red radius flex justify-content-center align-items-center" style="height: 4rem; width: 4rem">1</div>
     <div class="bg-red radius flex justify-content-center align-items-center" style="height: 4rem; width: 4rem">2</div>
     <div class="bg-red radius flex justify-content-center align-items-center" style="height: 4rem; width: 4rem">3</div>
@@ -30,7 +30,7 @@ export const Center = Story({
 })
 export const End = Story({
   ...withRender(
-    () => `<div class="flex align-content-end flex-wrap gap-normal" style="min-height: 200px">
+    () => `<div class="flex align-content-end flex-wrap gap-base" style="min-height: 200px">
     <div class="bg-red radius flex justify-content-center align-items-center" style="height: 4rem; width: 4rem">1</div>
     <div class="bg-red radius flex justify-content-center align-items-center" style="height: 4rem; width: 4rem">2</div>
     <div class="bg-red radius flex justify-content-center align-items-center" style="height: 4rem; width: 4rem">3</div>
@@ -39,7 +39,7 @@ export const End = Story({
 })
 export const SpaceBetween = Story({
   ...withRender(
-    () => `<div class="flex align-content-space-between flex-wrap gap-normal" style="min-height: 200px">
+    () => `<div class="flex align-content-space-between flex-wrap gap-base" style="min-height: 200px">
     <div class="bg-red radius flex justify-content-center align-items-center" style="height: 4rem; width: 200px" style="height: 4rem">1</div>
     <div class="bg-red radius flex justify-content-center align-items-center" style="height: 4rem; width: 200px">2</div>
     <div class="bg-red radius flex justify-content-center align-items-center" style="height: 4rem; width: 200px">3</div>
@@ -50,7 +50,7 @@ export const SpaceBetween = Story({
 })
 export const SpaceAround = Story({
   ...withRender(
-    () => `<div class="flex align-content-space-around flex-wrap gap-normal" style="min-height: 200px">
+    () => `<div class="flex align-content-space-around flex-wrap gap-base" style="min-height: 200px">
     <div class="bg-red radius flex justify-content-center align-items-center" style="height: 4rem; width: 200px" style="height: 4rem">1</div>
     <div class="bg-red radius flex justify-content-center align-items-center" style="height: 4rem; width: 200px">2</div>
     <div class="bg-red radius flex justify-content-center align-items-center" style="height: 4rem; width: 200px">3</div>
@@ -61,7 +61,7 @@ export const SpaceAround = Story({
 })
 export const SpaceEvenly = Story({
   ...withRender(
-    () => `<div class="flex align-content-space-evenly flex-wrap gap-normal" style="min-height: 200px">
+    () => `<div class="flex align-content-space-evenly flex-wrap gap-base" style="min-height: 200px">
     <div class="bg-red radius flex justify-content-center align-items-center" style="height: 4rem; width: 200px" style="height: 4rem">1</div>
     <div class="bg-red radius flex justify-content-center align-items-center" style="height: 4rem; width: 200px">2</div>
     <div class="bg-red radius flex justify-content-center align-items-center" style="height: 4rem; width: 200px">3</div>

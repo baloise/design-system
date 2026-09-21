@@ -94,7 +94,7 @@ Build tasks are defined in `turbo.json` and `package.json` scripts. Each package
 
 - **`packages/core`** — Runs Stencil compiler, generates web components
 - **`packages/tokens`** — Runs Style Dictionary to compile tokens
-- **`packages/css`** — Runs Sass + PostCSS to generate CSS
+- **`packages/styles`** — Runs Sass + PostCSS to generate CSS
 - **`packages/playwright`** — Compiles TypeScript for test utilities
 
 Use `pnpm <script>` or `turbo run <task>` to invoke tasks. Turborepo caches task outputs — only changed packages rebuild.
@@ -581,11 +581,11 @@ All workflows live in `.github/workflows/`. Here is what runs automatically:
 
 These commands can be posted as a PR comment to trigger workflows:
 
-| Command               | Effect                                                                                                                       |
-| --------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
-| `/update-screenshots` | Runs visual regression tests and commits updated snapshots to the PR branch. Use after intentional visual changes.           |
-| `/snapshot`           | Publishes a snapshot npm version (e.g. `1.2.3-pr123.0`) so you can install and test the PR in a real project before merging. |
-| `/cib`                | Posted on an **issue** — auto-creates a correctly named branch for that issue and posts the branch link as a comment.        |
+| Command               | Effect                                                                                                                                                                                    |
+| --------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `/update-screenshots` | Runs visual regression tests and commits updated snapshots to the PR branch. Use after intentional visual changes.                                                                        |
+| `/snapshot`           | Publishes a snapshot npm version (e.g. `1.2.3-pr123.0`) so you can install and test the PR in a real project before merging.                                                              |
+| `/cib`                | Posted on an **issue** — auto-creates a correctly named branch if the issue has a type label (`✨ feature`, `🐛 bug`, `🔧 chore`, …). Other labels such as `ready-for-agent` are skipped. |
 
 ## Deployment
 

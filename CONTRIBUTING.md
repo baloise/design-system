@@ -29,13 +29,15 @@ Please read and follow our [Code of Conduct](CODE_OF_CONDUCT.md). We are committ
 ### Prerequisites
 
 - **Node.js**: >=24 <25
-- **npm**: >=11.0.0
+- **pnpm**: 11.x
 
 ### Setup
 
 ```bash
 git clone https://github.com/baloise/design-system.git
 cd design-system
+nvm use
+corepack enable
 pnpm install --frozen-lockfile
 ```
 
@@ -91,7 +93,9 @@ Post these as a PR comment to trigger automation:
 | --------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `/update-screenshots` | Regenerates visual regression snapshots and commits them to your branch. Use after intentional visual changes.                                                                                           |
 | `/snapshot`           | Publishes a snapshot npm version from your branch so you can test it in a real project before merging. See [Snapshot Versions](docs/ARCHITECTURE.md#snapshot-versions-testing-before-merge) for details. |
-| `/cib`                | Post on an **issue** to auto-create a correctly named branch for it.                                                                                                                                     |
+| `/cib`                | Post on an **issue** to auto-create a correctly named branch. The issue must have a type label (`✨ feature`, `🐛 bug`, `🔧 chore`, …); other labels such as `ready-for-agent` are skipped.              |
+
+`/cib` is an issue comment, not a PR comment. The type label chooses the branch prefix: `✨ feature` → `feat/…`, `🐛 bug` → `fix/…`, `🔧 chore` → `chore/…` (also `♻️ refactor`, `🧪 test`, `💥 breaking change`, `⚡️ perf`, `🚀 release`, `🛡️ lts`). Without one of those labels the workflow runs but creates nothing.
 
 ## Reporting Issues
 
@@ -103,13 +107,13 @@ Start any contribution (bug fix or feature) by creating a GitHub issue:
 4. Provide a clear title and description
 5. Add labels and assign to a milestone if applicable
 
-Once the issue is created, use the `/cib` command in a comment on that issue to auto-generate a branch:
+Once the issue is created, add a type label (`✨ feature`, `🐛 bug`, `🔧 chore`, `♻️ refactor`, `🧪 test`, `💥 breaking change`, `⚡️ perf`, `🚀 release`, or `🛡️ lts`) and comment `/cib` on that issue to auto-generate a branch:
 
 ```
 /cib
 ```
 
-This creates a properly named branch (e.g., `feat/button-hover-state`) and opens a PR automatically.
+This creates a properly named branch (e.g., `feat/button-hover-state`) and opens a PR automatically. Without a type label the workflow runs but skips the issue.
 
 ## Fixing a Bug
 

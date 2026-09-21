@@ -71,7 +71,7 @@ export class RadioGroup implements DsComponentInterface, FieldInterface {
 
   /**
    * PUBLIC PROPERTY API
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   /**
@@ -80,6 +80,15 @@ export class RadioGroup implements DsComponentInterface, FieldInterface {
   @Prop()
   @Type('boolean')
   readonly allowEmptySelection: boolean = false
+
+  /**
+   * If `true`, disables the automatic `invalid`/`invalidText` behavior that the `@baloise/ds-angular` integration
+   * applies when the bound `NgControl` is touched and invalid. Only affects the Angular integration; it is a no-op
+   * in other framework integrations.
+   */
+  @Prop({ reflect: true })
+  @Type('boolean')
+  readonly autoInvalidOff: boolean = false
 
   /**
    * Defines the color of the input. The default value is `primary`.
@@ -198,7 +207,7 @@ export class RadioGroup implements DsComponentInterface, FieldInterface {
    */
   @Prop()
   @OneOf(RADIO_TILE_COLORS)
-  readonly tileColor: RadioTileColor = ''
+  readonly tileColor?: RadioTileColor
 
   /**
    * The value of the radio group.
@@ -233,7 +242,7 @@ export class RadioGroup implements DsComponentInterface, FieldInterface {
 
   /**
    * LIFECYCLE
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   connectedCallback() {
@@ -263,7 +272,7 @@ export class RadioGroup implements DsComponentInterface, FieldInterface {
 
   /**
    * PUBLIC LISTENERS
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   @Listen('dsChange', { capture: true, target: 'document' })
@@ -286,6 +295,22 @@ export class RadioGroup implements DsComponentInterface, FieldInterface {
     const { target } = ev
     if (target && isDescendant(this.el, target) && hasTagName(target, 'ds-radio')) {
       stopEventBubbling(ev)
+    }
+  }
+
+  /**
+   * The individual `ds-radio`s' own `dsBlur` never bubbles out of the group (see `listenToDsBlur` above), so
+   * the group emits its own `dsBlur` here instead — but only once focus actually leaves the group entirely,
+   * not when it moves between sibling radios (e.g. arrow-key navigation). `focusout` is composed, so this
+   * listener (attached to the host by default) still receives it across each radio's shadow boundary, and
+   * the platform retargets `relatedTarget` the same way it retargets `target` — so a related target that's
+   * still a descendant radio resolves to that `ds-radio` element, not its internal `<input>`.
+   */
+  @Listen('focusout')
+  listenToFocusOut(ev: FocusEvent) {
+    const relatedTarget = ev.relatedTarget as HTMLElement | null
+    if (!relatedTarget || !isDescendant(this.el, relatedTarget)) {
+      this.dsBlur.emit(ev)
     }
   }
 
@@ -350,7 +375,7 @@ export class RadioGroup implements DsComponentInterface, FieldInterface {
 
   /**
    * PUBLIC METHODS
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   /** @internal */
@@ -371,7 +396,7 @@ export class RadioGroup implements DsComponentInterface, FieldInterface {
 
   /**
    * EVENT HANDLERS
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   private handleValueChange = async () => {
@@ -408,7 +433,7 @@ export class RadioGroup implements DsComponentInterface, FieldInterface {
 
   /**
    * PRIVATE METHODS
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   private passDownAttributes() {
@@ -466,7 +491,7 @@ export class RadioGroup implements DsComponentInterface, FieldInterface {
 
   /**
    * RENDER
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   render() {

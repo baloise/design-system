@@ -10,7 +10,7 @@
  * Two independent collections get bootstrapped this way: the brand
  * collection (`buildBootstrapPayload`, modes = Base + each brand) and the
  * responsive collection (`buildResponsiveBootstrapPayload`, modes = Mobile/
- * Tablet/Desktop) that holds the Device variables (docs — MVP scope: Alias
+ * Tablet/Desktop) that holds the Device variables (docs — MVP scope: Device-layer
  * Text.Size/Space/Container.Space only, see lib/figma-value.mjs's
  * DEVICE_ELIGIBLE_PATH_PREFIXES). They're bootstrapped separately because a
  * file may already have one collection but not the other (e.g. the brand

@@ -3,23 +3,26 @@
  * (no fs/child_process) so it can be unit tested against in-memory fixtures.
  */
 
-const LAYERS = ['🌐 Global', '🔗 Alias', '🧩 Component']
+const LAYERS = ['🌐 Global', '🔗 Alias', '📱 Device', '🧩 Component']
 
 // Responsive tokens (Mobile/Tablet/Desktop siblings under the same group) get
 // a custom style-dictionary format (packages/tokens/src/formatter.ts,
 // `ds/css/variables-responsive`) that never emits a Tablet or Desktop token's
-// own suffixed name — it collapses all three siblings into one shared
-// `-device` custom property, overridden per breakpoint via media queries.
-// Only the Mobile sibling's own suffixed name is ever emitted verbatim.
-// So code that consumes the *responsive* value always reads `-device`, and
-// that one reference means all three siblings are in use — not just one.
+// own suffixed name — it collapses all three siblings into one shared,
+// bare (unsuffixed) custom property, overridden per breakpoint via media
+// queries (see docs/plans/device-token-layer-plan.md decision 5 — this used
+// to be a `-device`-suffixed var; the layer itself being named "device" made
+// that suffix redundant). Only the Mobile sibling's own suffixed name is ever
+// emitted verbatim. So code that consumes the *responsive* value always reads
+// the bare name, and that one reference means all three siblings are in use
+// — not just one.
 const RESPONSIVE_SUFFIX = /-(mobile|tablet|desktop)$/
 
 /**
  * Walks style-dictionary's docs-format JSON (packages/tokens/dist/docs/base.tokens.json)
  * and collects every leaf token's original `path` (matches Toky's FlatToken.path)
  * alongside every CSS var name that a reference to it could compile down to,
- * restricted to the three Base-token layers.
+ * restricted to the four Base-token layers.
  */
 export function collectBaseTokens(docsJson) {
   const results = []
@@ -29,7 +32,7 @@ export function collectBaseTokens(docsJson) {
     if (typeof node.name === 'string' && Array.isArray(node.path)) {
       const names = [node.name]
       if (RESPONSIVE_SUFFIX.test(node.name)) {
-        names.push(node.name.replace(RESPONSIVE_SUFFIX, '-device'))
+        names.push(node.name.replace(RESPONSIVE_SUFFIX, ''))
       }
       results.push({ path: node.path, names })
       return

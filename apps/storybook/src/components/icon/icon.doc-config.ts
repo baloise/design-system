@@ -7,12 +7,12 @@ export const ICON_DOC_CONFIG = {
   section: 'Components / Icon',
   color: 'green' as const,
   tabs: [
-    { label: 'Overview', storyId: 'components-icon--icon' },
-    { label: 'Usage', storyId: 'components-icon--usage' },
-    { label: 'Variants', storyId: 'components-icon--variants-overview' },
-    { label: 'Styling', storyId: 'components-icon--styling' },
-    { label: 'Accessibility', storyId: 'components-icon--accessibility' },
-    { label: 'Testing', storyId: 'components-icon--testing' },
+    { label: 'Overview', storyId: 'components-icon-icon--icon' },
+    { label: 'Usage', storyId: 'components-icon-usage--usage' },
+    { label: 'Variants', storyId: 'components-icon-variants-overview--overview' },
+    { label: 'Styling', storyId: 'components-icon-styling--styling' },
+    { label: 'Accessibility', storyId: 'components-icon-accessibility--accessibility' },
+    { label: 'Testing', storyId: 'components-icon-testing--testing' },
   ],
 }
 

@@ -6,12 +6,12 @@ export const HINT_DOC_CONFIG = {
   section: 'Components / Hint',
   color: 'purple' as const,
   tabs: [
-    { label: 'Overview', storyId: 'components-hint--hint' },
-    { label: 'Usage', storyId: 'components-hint--usage' },
-    { label: 'Variants', storyId: 'components-hint--variants-overview' },
-    { label: 'Styling', storyId: 'components-hint--styling' },
-    { label: 'Accessibility', storyId: 'components-hint--accessibility' },
-    { label: 'Testing', storyId: 'components-hint--testing' },
+    { label: 'Overview', storyId: 'components-hint-hint--hint' },
+    { label: 'Usage', storyId: 'components-hint-usage--usage' },
+    { label: 'Variants', storyId: 'components-hint-variants-overview--overview' },
+    { label: 'Styling', storyId: 'components-hint-styling--styling' },
+    { label: 'Accessibility', storyId: 'components-hint-accessibility--accessibility' },
+    { label: 'Testing', storyId: 'components-hint-testing--testing' },
   ],
 }
 

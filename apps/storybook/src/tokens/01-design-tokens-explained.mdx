@@ -1,7 +1,6 @@
 import { Meta, Markdown } from '@storybook/addon-docs/blocks'
-import { Banner, BannerTabs, Footer, Lead } from '../../.storybook/blocks'
+import { Banner, BannerTabs, Footer, Lead, TokenLayersDiagram } from '../../.storybook/blocks'
 import { getTokensTabs } from './tokens.doc-config'
-import tokenLayers from '../assets/images/tokens/token-layers.svg'
 import tokenNamingAnatomy from '../assets/images/tokens/token-naming-anatomy.svg'
 
 <Meta
@@ -35,11 +34,11 @@ This approach provides:
 
 ---
 
-## The Three-Layer Architecture
+## The Four-Layer Architecture
 
-Tokens are organized into three layers, each building on the one below:
+Tokens are organized into four layers, each building on the one below:
 
-<img src={tokenLayers} alt="Three-layer token architecture: Global, Alias, Component" style={{ width: '100%', margin: '2rem 0' }} />
+<TokenLayersDiagram />
 
 ### 🌐 **Global Tokens** — Raw Values
 
@@ -53,9 +52,16 @@ Assign purpose to raw values. This is where design decisions live.
 
 **Used by designers** when creating themes. Changing an alias token cascades to all components that reference it.
 
+### 📱 **Device Tokens** — Responsive Values
+
+Alias values that change per breakpoint (typography sizes, spacing) — the bare token
+auto-switches between mobile, tablet, and desktop as the viewport changes.
+
+**Used by developers** for any value that should respond to screen size.
+
 ### 🧩 **Component Tokens** — UI-Specific Values
 
-Map alias tokens to specific component states and variants.
+Map alias and device tokens to specific component states and variants.
 
 **Used by developers** when building components.
 
@@ -77,6 +83,16 @@ Map alias tokens to specific component states and variants.
 | \`--ds-alias-text-color-white\`     | \`--ds-global-color-white\`     | Text on dark backgrounds |
 | \`--ds-alias-border-color-primary\` | \`--ds-global-color-primary-5\` | Primary borders          |
 
+### Device Tokens — Responsive Values
+
+| Token                          | References                | Behavior                     |
+| ------------------------------- | -------------------------- | ----------------------------- |
+| \`--ds-device-text-size-xl\`     | Alias font-size scale       | Auto-switches at breakpoints |
+| \`--ds-device-space-16\`         | Alias space scale           | Auto-switches at breakpoints |
+| \`--ds-device-text-size-xl-mobile\`  | \`--ds-device-text-size-xl\`  | Always mobile value          |
+| \`--ds-device-text-size-xl-tablet\`  | \`--ds-device-text-size-xl\`  | Always tablet value          |
+| \`--ds-device-text-size-xl-desktop\` | \`--ds-device-text-size-xl\`  | Always desktop value         |
+
 ### Component Tokens — UI-Specific Values
 
 | Token                                 | References                    | Purpose                   |
@@ -84,15 +100,6 @@ Map alias tokens to specific component states and variants.
 | \`--ds-button-primary-color-bg-base\`   | \`--ds-alias-bg-color-primary\`       | Button primary background |
 | \`--ds-button-primary-color-bg-hover\`  | \`--ds-alias-bg-color-primary-hover\` | Button primary on hover   |
 | \`--ds-button-primary-color-text-base\` | \`--ds-alias-text-color-white\`       | Button primary text       |
-
-### Responsive Token Forms
-
-| Form        | Example                     | Behavior                     |
-| ----------- | --------------------------- | ---------------------------- |
-| **Mobile**  | \`--ds-alias-font-size-xl-mobile\`  | Always mobile value          |
-| **Tablet**  | \`--ds-alias-font-size-xl-tablet\`  | Always tablet value          |
-| **Desktop** | \`--ds-alias-font-size-xl-desktop\` | Always desktop value         |
-| **Device**  | \`--ds-alias-font-size-xl-device\`  | Auto-switches at breakpoints |
   `}
 </Markdown>
 
@@ -137,56 +144,35 @@ Token names are composed of ordered segments that narrow scope:
 
 ---
 
-## Responsive Tokens
+## How Device Tokens Auto-Switch
 
-Typography and spacing tokens come in **three responsive variants** plus one auto-responsive form:
-
-**Always prefer `-device`** in component code. The fixed variants exist only for special cases.
-
-### How `-device` Works
+**Always prefer the bare `--ds-device-*` name** in component code — it auto-switches at
+breakpoints. The `-mobile`/`-tablet`/`-desktop` variants exist only for special cases where you
+need to force a specific breakpoint's value.
 
 ```css
 :root {
-  --ds-font-size-xl-device: var(--ds-font-size-28);  /* mobile: 1.75rem */
+  --ds-device-text-size-xl: var(--ds-font-size-28);  /* mobile: 1.75rem */
 }
 
 @media (min-width: 769px) {
   :root {
-    --ds-font-size-xl-device: var(--ds-font-size-40); /* tablet: 2.5rem */
+    --ds-device-text-size-xl: var(--ds-font-size-40); /* tablet: 2.5rem */
   }
 }
 
 @media (min-width: 1024px) {
   :root {
-    --ds-font-size-xl-device: var(--ds-font-size-40); /* desktop: 2.5rem */
+    --ds-device-text-size-xl: var(--ds-font-size-40); /* desktop: 2.5rem */
   }
 }
 ```
 
 ---
 
-## Using Tokens in Components
+## Using Tokens
 
-### In Shadow DOM
-
-Web components use a four-layer CSS cascade for each token:
-
-```scss
-@include vars.local(button-color, var(--ds-button-primary-color-text-base));
-
-// Generates:
-// --_button-color: var(--button-color, var(--mod-button-color, var(--ds-button-primary-color-text-base)))
-```
-
-This allows:
-1. **Private** (`--_button-color`) — computed locally
-2. **Public** (`--button-color`) — consumers can override
-3. **Modifier** (`--mod-button-color`) — variant classes set this
-4. **Design token** (`--ds-button-...`) — system default
-
-### In Global CSS
-
-Outside Shadow DOM, use tokens directly:
+In your own CSS, reference tokens directly as CSS variables:
 
 ```css
 .my-card {
@@ -195,5 +181,11 @@ Outside Shadow DOM, use tokens directly:
   border-radius: var(--ds-radius-base);
 }
 ```
+
+For more examples, see [Use Tokens in Code](?path=/docs/tokens-use-tokens-in-code--documentation).
+
+Every component also exposes its own tokens as public CSS variables, so you can override
+individual instances without touching the component's internals — see
+[Component Variables](?path=/docs/tokens-component-variables--documentation).
 
 <Footer />

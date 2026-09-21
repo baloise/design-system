@@ -1,18 +1,16 @@
 @use 'sass:string';
-@use '@baloise/ds-css/dist/scss/mixins' as *;
+@use '@baloise/ds-styles/dist/scss/mixins' as *;
 @use '../../hybrid' as hybrid;
 @use '../../vars' as vars;
 
 $use-host: false !default;
 $name: heading;
-$css-selector: ('.heading', '.title', '.subtitle');
 $host-selector: ('#heading');
 
-// Only the root `.heading` element declares the css variables, so nested
-// `.title`/`.subtitle` spans inherit the computed values from their parent
-// heading instead of resetting them back to the defaults on themselves.
-$vars-selector: ('.heading', '.title', '.subtitle');
-$nested-vars-selector: ('.title', '.subtitle');
+$css-selector: ('.ds-heading', '.ds-title');
+$css-selector-all: ('.ds-heading', '.ds-title', '.ds-subtitle');
+
+$vars-selector: ('.ds-heading', '.ds-title');
 
 /**
  * Variables
@@ -28,7 +26,19 @@ $nested-vars-selector: ('.title', '.subtitle');
   @include vars.local(heading-size, var(--ds-heading-level-1-font-size));
 
   @include vars.local(heading-color, var(--ds-heading-color-primary));
-  @include vars.local(heading-space, var(--ds-alias-space-xs-device));
+  @include vars.local(heading-margin, var(--ds-device-space-xs));
+  @include vars.local(heading-shadow, none);
+  @include vars.local(heading-text-align, inherit);
+}
+
+@include vars.hybrid($name, '.ds-subtitle', $use-host) {
+  @include vars.local(heading-family, var(--ds-heading-level-light1-font-family));
+  @include vars.local(heading-weight, var(--ds-heading-level-light1-font-weight));
+  @include vars.local(heading-line-height, var(--ds-heading-level-light1-line-height));
+  @include vars.local(heading-size, var(--ds-heading-level-light1-font-size));
+
+  @include vars.local(heading-color, var(--ds-heading-color-primary));
+  @include vars.local(heading-margin, var(--ds-device-space-xs));
   @include vars.local(heading-shadow, none);
   @include vars.local(heading-text-align, inherit);
 }
@@ -39,7 +49,7 @@ $nested-vars-selector: ('.title', '.subtitle');
   * Define here the component styles using the mixin to support host and non-host mode for hybrid components.
   */
 
-@include hybrid.component($host-selector, $css-selector, $use-host) {
+@include hybrid.component($host-selector, $css-selector-all, $use-host) {
   @include font-smoothing();
 
   display: block;
@@ -57,8 +67,8 @@ $nested-vars-selector: ('.title', '.subtitle');
   text-align: var(--_heading-text-align);
   text-shadow: var(--_heading-shadow);
 
-  em:not(.text),
-  span:not(.text) {
+  em:not(.ds-text),
+  span:not(.ds-text) {
     font-weight: inherit;
   }
 
@@ -97,7 +107,7 @@ $nested-vars-selector: ('.title', '.subtitle');
   white-space: nowrap;
 }
 
-@include hybrid.styles($css-selector, $use-host) {
+@include hybrid.styles($css-selector-all, $use-host) {
   &.has-no-wrap {
     @include noWrap();
   }
@@ -124,7 +134,7 @@ $nested-vars-selector: ('.title', '.subtitle');
   --mod-heading-shadow: var(--ds-heading-shadow);
 }
 
-@include hybrid.styles($css-selector, $use-host) {
+@include hybrid.styles($css-selector-all, $use-host) {
   &.has-shadow {
     @include shadow();
   }
@@ -146,7 +156,7 @@ $colors: ('primary', 'inverted');
 }
 
 @each $color in $colors {
-  @include hybrid.styles($css-selector, $use-host) {
+  @include hybrid.styles($css-selector-all, $use-host) {
     &.is-#{$color} {
       @include color($color);
     }
@@ -204,16 +214,26 @@ $size-aliases: (
   }
 }
 
+@include hybrid.styles('.ds-subtitle', $use-host) {
+  @each $class-group, $token in $size-aliases {
+    @each $class in $class-group {
+      &.#{$class} {
+        @include size(light-level($token));
+      }
+    }
+  }
+}
+
 @include hybrid.styles-only($use-host) {
   @for $i from 1 through 5 {
-    h#{$i}.title,
-    h#{$i} .title,
-    h#{$i}.heading,
-    h#{$i} .heading,
-    [role='heading'][aria-level='#{$i}'].title,
-    [role='heading'][aria-level='#{$i}'] .title,
-    [role='heading'][aria-level='#{$i}'].heading,
-    [role='heading'][aria-level='#{$i}'] .heading {
+    h#{$i}.ds-title,
+    h#{$i} .ds-title,
+    h#{$i}.ds-heading,
+    h#{$i} .ds-heading,
+    [role='heading'][aria-level='#{$i}'].ds-title,
+    [role='heading'][aria-level='#{$i}'] .ds-title,
+    [role='heading'][aria-level='#{$i}'].ds-heading,
+    [role='heading'][aria-level='#{$i}'] .ds-heading {
       &:not(.is-subtitle) {
         @include size($i);
       }
@@ -224,10 +244,10 @@ $size-aliases: (
   }
 
   @for $i from 1 through 5 {
-    h#{$i}.subtitle,
-    h#{$i} .subtitle,
-    [role='heading'][aria-level='#{$i}'].subtitle,
-    [role='heading'][aria-level='#{$i}'] .subtitle {
+    h#{$i}.ds-subtitle,
+    h#{$i} .ds-subtitle,
+    [role='heading'][aria-level='#{$i}'].ds-subtitle,
+    [role='heading'][aria-level='#{$i}'] .ds-subtitle {
       @include size('light' + $i);
     }
   }
@@ -258,19 +278,19 @@ $size-host-aliases: (
 // Spaces
 // --------------------------------
 
-@include hybrid.styles($css-selector, $use-host) {
+@include hybrid.styles($css-selector-all, $use-host) {
   &.has-space-all {
-    --mod-heading-mt: var(--_heading-space);
-    --mod-heading-mb: var(--_heading-space);
+    --mod-heading-mt: var(--_heading-margin);
+    --mod-heading-mb: var(--_heading-margin);
   }
 
   &.has-space-top {
-    --mod-heading-mt: var(--_heading-space);
+    --mod-heading-mt: var(--_heading-margin);
     --mod-heading-mb: 0;
   }
 
   &.has-space-bottom {
-    --mod-heading-mb: var(--_heading-space);
+    --mod-heading-mb: var(--_heading-margin);
   }
 
   &.has-space-none {
@@ -281,18 +301,18 @@ $size-host-aliases: (
 
 @include hybrid.host($use-host) {
   :host(.has-space-all) {
-    --heading-mt: var(--_heading-space);
-    --heading-mb: var(--_heading-space);
+    --heading-mt: var(--_heading-margin);
+    --heading-mb: var(--_heading-margin);
   }
 
   :host(.has-space-top) {
-    --heading-mt: var(--_heading-space);
+    --heading-mt: var(--_heading-margin);
     --heading-mb: 0;
   }
 
   :host(.has-space-bottom) {
     --heading-mt: 0;
-    --heading-mb: var(--_heading-space);
+    --heading-mb: var(--_heading-margin);
   }
 
   :host(.has-space-none) {

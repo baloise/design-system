@@ -32,17 +32,34 @@ A **token** is a named design value that represents a single, reusable design de
 - `text-size-base` → `1rem` (typography token)
 - `shadow-box-default` → `0 2px 8px rgba(0,0,0,0.1)` (shadow token)
 
-### Three-Layer Architecture
+### Four-Layer Architecture
 
-Tokens are organized into three layers:
+Tokens are organized into four layers, always in this order:
 
-| Layer         | JSON Key       | Purpose                               | Consumer Access                            |
-| ------------- | -------------- | ------------------------------------- | ------------------------------------------ |
-| **Global**    | `🌐 Global`    | Raw values (color scales, base sizes) | ❌ Rarely; only when no Alias fits         |
-| **Alias**     | `🔗 Alias`     | Meaningful abstractions for consumers | ✅ **Primary layer** for component/app use |
-| **Component** | `🧩 Component` | Per-component token overrides         | ✅ When styling a specific DS component    |
+```
+Global → Alias → Device → Component
+```
 
-**Flow:** Components reference Alias tokens → resolved to Global values → values come from Figma
+Each layer only ever references the layer(s) to its left — a Device token resolves to Alias or
+Global, a Component token resolves to Alias, Device, or Global, and Global never references
+anything (it's raw values sourced from Figma). Never skip backwards (e.g. Alias referencing
+Component) and never reference a layer to your right.
+
+| Layer         | JSON Key       | Purpose                                                                                         | Consumer Access                                     |
+| ------------- | -------------- | ----------------------------------------------------------------------------------------------- | --------------------------------------------------- |
+| **Global**    | `🌐 Global`    | Raw values (color scales, base sizes)                                                           | ❌ Rarely; only when no Alias/Device fits           |
+| **Alias**     | `🔗 Alias`     | Meaningful, non-responsive abstractions                                                         | ✅ **Primary layer** for component/app use          |
+| **Device**    | `📱 Device`    | **The responsive layer** — space, text size, and any other value that must switch by breakpoint | ✅ For any value that should respond to breakpoints |
+| **Component** | `🧩 Component` | Per-component token overrides                                                                   | ✅ When styling a specific DS component             |
+
+**Flow:** Components reference Alias/Device tokens → resolved to Global values → values come from Figma
+
+Device is where responsiveness lives: **every token carrying the `$extensions.com.helvetia.responsive`
+breakpoint map (see "Responsive Tokens" below) must be placed in Device, never in Alias.** Today
+that's `Space`, `Text.Size`, and `Container.Space` — but the rule is about the extension, not
+that fixed list: if a new token needs to respond to breakpoints, it belongs in Device, full stop.
+Everything non-responsive stays in Alias. See `docs/plans/device-token-layer-plan.md` for the
+migration that originally split these out of Alias.
 
 ### Naming Convention
 
@@ -64,15 +81,23 @@ Raw color scales with numbered intensity levels (1–5+):
 
 #### Alias Layer
 
-Semantic abstractions for consumers (colors, spacing, typography, etc.):
+Semantic abstractions for consumers (colors, typography properties other than size, etc.) —
+responsive spacing/text-size abstractions live in the Device layer instead, see below:
 
 - Pattern: `--ds-alias-[category]-[subcategory]-[name]`
 - Examples:
   - `--ds-alias-background-color-sky` (references `--ds-global-color-sky-2`)
   - `--ds-alias-background-color-info` (references `--ds-global-color-info-3`)
-  - `--ds-alias-space-lg` → `1.5rem`
-  - `--ds-alias-text-size-base` → `1rem`
   - `--ds-alias-radius-base` → `0.25rem`
+
+#### Device Layer
+
+Responsive semantic abstractions — same naming shape as Alias, `alias` swapped for `device`:
+
+- Pattern: `--ds-device-[category]-[name]`
+- Examples:
+  - `--ds-device-space-lg` → `1.5rem` (mobile) / `2rem` (desktop), auto-switching
+  - `--ds-device-text-size-base` → `1rem` (mobile) / `1.125rem` (desktop), auto-switching
 
 #### Component Layer
 
@@ -84,9 +109,50 @@ Per-component token overrides for specific use cases:
   - `--ds-button-label-font-family` (button label typography)
   - `--ds-modal-header-border-color` (modal header styling)
 
+#### Spacing Naming
+
+`Space` is a fine name for the raw Global/Alias/Device **scale** (`↔️ Space.2XS`–`4XL`) — at
+that level the value is genuinely property-agnostic, reused for margin, padding, and gap alike.
+But a Component-layer token names a specific use, so `Space`/`SpaceX`/`SpaceY` is not a valid
+name there — it hides which CSS property the token drives. Name it after that property instead:
+
+- **Padding** — `--ds-button-size-base-padding-x`, `--ds-card-padding-base`
+- **Gap** — `--ds-tag-size-base-gap`, `--ds-card-gap-base`
+- **Margin** — `--ds-text-margin-bottom`
+
+If one token value genuinely drives two different properties (e.g. a badge's gap and its
+padding share the same number), split it into two tokens referencing the same value rather than
+naming either one `Space` — see `Component.Badge.Size.*.{Gap,Padding}` for the pattern.
+
+This token-naming rule is distinct from the **component CSS variable** suffix convention for
+per-side margin/padding (`-m`/`-mx`/`-my`/`-mt`/`-mb`/`-ml`/`-mr` for margin, the same suffixes
+with `p` for padding) — that's a `packages/core` concern, see
+[[packages/core|packages/core/CONTEXT.md]]'s "Common Component Variables" section.
+
+#### Variant Naming
+
+`Base` has two legitimate meanings in this system, and neither of them is "the default
+variant":
+
+- The middle step of a size scale — `SM` / `Base` / `MD` / `LG` / `XL`.
+- The idle/resting state within an interaction-state group — `Base` / `Hover` / `Active` /
+  `Disabled` (e.g. `Component.Button.Color.Primary.{Base,Hover,Active}`).
+
+When naming the neutral option among a set of **variants** (as opposed to a size step or an
+interaction state), don't use `Base` — use:
+
+- **Default** — the neutral/no-special-styling variant, e.g. `Component.Card.Color.Default`
+  (sibling to `Primary`, `Success`, `Danger`, …).
+- **Primary** — when the variant set expresses an emphasis hierarchy (`Primary`/`Secondary`/
+  `Tertiary`), e.g. `Component.Button.Color.Primary`.
+
+`Component.Select.Label.Color.Base` and `Component.FileUpload.Description.Text.Color.Base` are
+existing examples of the anti-pattern — both sit alongside semantic variants (`Success`,
+`Warning`, `Danger`) and should read `Default`, not `Base`.
+
 ### Figma Integration
 
-Each token in `Base.tokens.json` carries a `$extensions.com.figma.variableId` (and, once synced at least once, `$extensions.com.figma.scopes`). **`Base.tokens.json` (and each brand's `*.tokens.json`) in GitHub is the sole source of truth.** Figma Variables are a generated projection of these files. A designer changing a variable in Figma has made a _proposal_, not a fact — it only becomes real once it lands in GitHub via a reviewed pull request. Figma itself never holds a value GitHub doesn't know about once sync has run. When referencing a token by name in Figma, the same name is used in CSS.
+Each token in `Base.tokens.json` carries a `$extensions.com.figma.variableId` (and, once synced at least once, `$extensions.com.figma.scopes`). A token's `$description` round-trips with Figma's native variable `description` field — Push always writes JSON's `$description` into Figma; Pull only fills it in JSON when JSON's is empty, never overwriting an existing one. **`Base.tokens.json` (and each brand's `*.tokens.json`) in GitHub is the sole source of truth.** Figma Variables are a generated projection of these files. A designer changing a variable in Figma has made a _proposal_, not a fact — it only becomes real once it lands in GitHub via a reviewed pull request. Figma itself never holds a value GitHub doesn't know about once sync has run. When referencing a token by name in Figma, the same name is used in CSS.
 
 Two independent implementations keep this projection in sync, sharing the same vocabulary, `variableId` identity rule, and `.figma-sync-state.json` baseline below — see [ADR-0016](../../docs/adr/0016-github-action-supersedes-plugin-pull.md) for why the direction split this way:
 
@@ -123,44 +189,49 @@ _Avoid_: theme, variant (component variants are a distinct concept in this syste
 
 ### Responsive Tokens
 
-Typography and spacing tokens come in **three responsive variants** plus one auto-responsive form:
+A Device-layer token comes in **three fixed breakpoint variants** plus one auto-responsive,
+bare-named form — the bare name _is_ the auto-switching variant:
 
-| Form        | Example                           | Behavior                     |
-| ----------- | --------------------------------- | ---------------------------- |
-| **Mobile**  | `--ds-alias-font-size-xl-mobile`  | Always mobile value          |
-| **Tablet**  | `--ds-alias-font-size-xl-tablet`  | Always tablet value          |
-| **Desktop** | `--ds-alias-font-size-xl-desktop` | Always desktop value         |
-| **Device**  | `--ds-alias-font-size-xl-device`  | Auto-switches at breakpoints |
+| Form        | Example                            | Behavior                     |
+| ----------- | ---------------------------------- | ---------------------------- |
+| **Mobile**  | `--ds-device-text-size-xl-mobile`  | Always mobile value          |
+| **Tablet**  | `--ds-device-text-size-xl-tablet`  | Always tablet value          |
+| **Desktop** | `--ds-device-text-size-xl-desktop` | Always desktop value         |
+| **Auto**    | `--ds-device-text-size-xl`         | Auto-switches at breakpoints |
 
-**Always prefer `-device`** in component code. The fixed variants exist only for special cases where you need to force a specific breakpoint value.
+**Always prefer the bare `--ds-device-*` name** in component code. The `-mobile`/`-tablet`/
+`-desktop` variants exist only for special cases where you need to force a specific breakpoint
+value.
 
-#### How `-device` Works
-
-The `-device` variant automatically switches values at media breakpoints:
+#### How the bare Device var auto-switches
 
 ```css
 :root {
-  --ds-font-size-xl-device: var(--ds-font-size-28); /* mobile: 1.75rem */
+  --ds-device-text-size-xl: var(--ds-font-size-28); /* mobile: 1.75rem */
 }
 
 @media (min-width: 769px) {
   :root {
-    --ds-font-size-xl-device: var(--ds-font-size-40); /* tablet: 2.5rem */
+    --ds-device-text-size-xl: var(--ds-font-size-40); /* tablet: 2.5rem */
   }
 }
 
 @media (min-width: 1024px) {
   :root {
-    --ds-font-size-xl-device: var(--ds-font-size-40); /* desktop: 2.5rem */
+    --ds-device-text-size-xl: var(--ds-font-size-40); /* desktop: 2.5rem */
   }
 }
 ```
+
+This applies to _every_ token carrying the responsive extension, not just the three that live in
+the Device layer — a Component-level responsive token (e.g. `Component.Logo.Size`) gets the same
+bare-name-is-auto-switching treatment from the same build-time formatter step.
 
 ### Token Categories
 
 Common categories in the Alias layer:
 
-- **Space** (2XS–4XL, plus responsive variants)
+- **Space** (2XS–4XL, plus responsive variants) — the raw scale only; Component-layer tokens built from it are named `Padding`/`Gap`/`Margin`, see [Spacing Naming](#spacing-naming)
 - **Color** (backgrounds, borders, text, with light/dark variants)
 - **Border** (width, color, radius, plus a pilot set of `$type: "border"` composite tokens under `▭ Border.Composite.*` — `{color, width, style}`, each sub-value a reference to the existing `Color`/`Width`/new `Style` primitives; see `docs/plans/border-token-type-plan.md`)
 - **Text** (size, color, family, weight, line-height, shadow, plus a `$type: "typography"` composite type — `{fontFamily, fontSize, fontWeight, lineHeight}` — fully supported in Toky/Style Dictionary/Figma sync, but no actual `Typography.*` tokens exist yet; the responsive-`fontSize` question a real pilot needs is still open. See `docs/plans/typography-token-type-plan.md`.)
@@ -183,6 +254,7 @@ Component tokens are nested under `"🧩 Component" > "<ComponentName>"`:
             "Text": {
               "$type": "color",
               "$value": "{🔗 Alias.Color.Text.White}",
+              "$description": "Text color for the primary button's default state.",
               "$extensions": { "com.figma.variableId": "..." }
             }
           }
@@ -194,6 +266,8 @@ Component tokens are nested under `"🧩 Component" > "<ComponentName>"`:
 ```
 
 This maps to CSS variable: `--ds-button-color-primary-base-text`
+
+`$description` (W3C Design Tokens Format Module, [2025.10 draft](https://www.designtokens.org/tr/drafts/format/)) is optional, free text, and shared across brands — a brand's `*.tokens.json` override never sets its own. Editable via Toky's create/edit dialogs and shown (truncated) in its token table; round-trips with Figma's native variable `description` (JSON is the source of truth — see Figma Integration below).
 
 ## Token Naming Anatomy
 
@@ -283,7 +357,8 @@ The same pattern applies to `--ds-heading-size-lg` (category `size`, sub-variant
 
 ### Building Tokens
 
-Rebuild compiled outputs whenever `Base.tokens.json` changes:
+Rebuild compiled outputs whenever `Base.tokens.json` or a brand's
+`*.tokens.json` changes:
 
 ```bash
 pnpm tokens
@@ -292,8 +367,38 @@ pnpm tokens
 This regenerates:
 
 - `dist/css/base.tokens.css`
+- `dist/css/base.override.css`
+- `dist/css/<brand>.tokens.css` / `dist/css/<brand>.override.css` per brand
+  (see "Theme File" below)
 - `dist/scss/_tokens.scss`
 - `dist/json/tokens.json`
+
+### Theme File vs Override File
+
+Each brand (and Base) compiles to CSS as two **fully self-sufficient**
+files — every token declared with its resolved value (Base's, or the
+brand's where it overrides Base), never a diff of one against the other:
+
+- **Theme file** (`<brand>.tokens.css`, e.g. `erv.tokens.css`) — scoped to
+  `:host, :root`. For an app that commits to exactly one brand at
+  import/build time and never switches at runtime; it loads only this file
+  and never Base's.
+- **Override file** (`<brand>.override.css`, e.g. `erv.override.css`) —
+  scoped to `[data-theme="<brand>"], :host([data-theme="<brand>"])` (a plain
+  attribute selector, not `:root`-scoped, so it matches any element carrying
+  the attribute — e.g. `<div data-theme="erv">` — not just the document
+  root). For scoping a brand's tokens to one element/subtree without affecting the
+  rest of the page (today: Storybook's per-story theme switcher, which
+  wraps a story in `<div data-theme="erv">`). Base gets an override file
+  too (`base.override.css`) so "Base" can be selected as a scoped option
+  the same way a brand can, even though it has no overrides of its own.
+
+Both files for a given brand carry the identical full token set — they
+differ only in selector, not content. See
+[ADR-0030](../../docs/adr/0030-full-merge-brand-token-css.md) for why this
+replaced the previous diff-only brand CSS.
+_Avoid_: "diff file", "override" to mean a partial/delta file (a brand's
+override file is a full file, not a delta)
 
 ### Token Lookup Guide
 
@@ -356,11 +461,12 @@ Decisions specific to this package (Figma Variable identity, brand modes, sync b
 - [ADR-0018](../../docs/adr/0018-non-blocking-conflict-check.md) — Conflict check comments, it doesn't block the merge
 - [ADR-0019](../../docs/adr/0019-pull-auto-deletes-figma-variables.md) — Pull deletes the Figma Variable when a token is removed
 - [ADR-0020](../../docs/adr/0020-figma-sync-action-standalone-script.md) — The Figma Sync Action's code stays standalone, not shared with apps/toky
+- [ADR-0030](../../docs/adr/0030-full-merge-brand-token-css.md) — Brand token CSS is fully merged, split into a theme file (`:host, :root`) and an override file (`[data-theme]`)
 
 ## Related Contexts
 
 See [CONTEXT-MAP.md](../../CONTEXT-MAP.md) for:
 
 - [[packages/core|packages/core/CONTEXT.md]] — Component consumption of tokens
-- [[packages/css|packages/css/CONTEXT.md]] — Utility class generation from tokens
+- [[packages/styles|packages/styles/CONTEXT.md]] — Utility class generation from tokens
 - [[root|CONTEXT.md]] — Repository-level concepts

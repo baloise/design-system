@@ -40,6 +40,31 @@ const RESOLVED_TYPE_BY_DTCG_TYPE = {
 // packages/tokens/src/config.base.ts's basePxFontSize).
 const PX_PER_REM = 16
 
+// Figma's Variables UI (and its native "line height" text property, when a variable is bound to
+// it) expects a percentage, not the raw CSS-style multiplier this codebase stores in JSON (1.3,
+// not 130) — see the Global/Font/LineHeight/* screenshot that prompted this. Applies to both a
+// standalone `number`-typed LineHeight token (isLineHeightNumberToken below) and a `typography`
+// composite token's `lineHeight` sub-value (figmaTypographySubValuesFor) — every LineHeight-shaped
+// Figma variable in the file, so none of them disagree on units. Inverse:
+// apps/toky/src/tokens/figma-map.ts's LINE_HEIGHT_PERCENT_MULTIPLIER (reimplemented there, not
+// imported — Node-only module, outside apps/toky's module boundary).
+export const LINE_HEIGHT_PERCENT_MULTIPLIER = 100
+
+// A standalone `number` token is this codebase's LineHeight primitive/alias/component-override
+// group (Global.Font.LineHeight.*, Alias.Text.LineHeight.*, Component.*.LineHeight) whenever
+// "LineHeight" appears anywhere in its path — `$type: "number"` alone can't tell it apart from
+// Opacity/ZIndex/Radius tokens, which share the same type but must stay a raw unitless number.
+export function isLineHeightNumberToken(token) {
+  return token.type === 'number' && token.path.includes('LineHeight')
+}
+
+export function figmaLineHeightPercentFor(literalValue) {
+  if (typeof literalValue !== 'number') {
+    throw new Error(`Unsupported LineHeight value "${JSON.stringify(literalValue)}" — expected a number.`)
+  }
+  return literalValue * LINE_HEIGHT_PERCENT_MULTIPLIER
+}
+
 // Figma doesn't understand a numeric font weight — its "Font Weight"
 // variable binding expects the font's named style (e.g. "Bold"), not "700".
 // Generic DTCG first-listed keyword per weight
@@ -252,7 +277,9 @@ export function isSyncableBorderToken(token) {
  * fontFamily/fontWeight are always `{reference}` strings (decision 4), same as border's
  * color/width/style — resolved to a literal via `resolveLiteral` first. fontSize/lineHeight are
  * free literal-or-reference, so `resolveLiteral` is a no-op passthrough for either shape (it only
- * follows a `{reference}` string, returning anything else unchanged).
+ * follows a `{reference}` string, returning anything else unchanged). lineHeight's resolved literal
+ * is additionally scaled ×100 (see figmaLineHeightPercentFor/LINE_HEIGHT_PERCENT_MULTIPLIER) —
+ * Figma expects a percentage, not this codebase's raw CSS-style multiplier.
  *
  * @param {unknown} literalValue already-resolved (non-reference) `$value` of a typography token —
  *   its `fontFamily`/`fontSize`/`fontWeight`/`lineHeight` fields may themselves still be
@@ -272,7 +299,7 @@ export function figmaTypographySubValuesFor(literalValue, tokenIndex) {
     fontFamily: figmaValueFor('fontFamily', fontFamilyLiteral),
     fontSize: figmaValueFor('dimension', fontSizeLiteral),
     fontWeight: figmaValueFor('fontWeight', fontWeightLiteral),
-    lineHeight: lineHeightLiteral,
+    lineHeight: figmaLineHeightPercentFor(lineHeightLiteral),
   }
 }
 
@@ -338,7 +365,7 @@ export function figmaResponsiveDimensionSubEntriesFor(literalValue) {
 }
 
 // Sub-property suffixes appended to a responsive dimension token's path to name its 3 decomposed
-// Figma variables, e.g. '🔗 Alias/↔️ Space/Lg/Mobile'. Order matches
+// Figma variables, e.g. '📱 Device/↔️ Space/Lg/Mobile'. Order matches
 // figmaResponsiveDimensionSubValuesFor's return shape.
 export const RESPONSIVE_DIMENSION_SUB_PROPERTIES = ['mobile', 'tablet', 'desktop']
 export const RESPONSIVE_DIMENSION_SUB_PROPERTY_SUFFIX = {
@@ -370,11 +397,16 @@ export function isSyncableResponsiveDimensionToken(token) {
 // a new `$extensions` marker — deliberately provisional, expected to grow (e.g. to Component-level
 // responsive tokens like `Component.Text.Space`/`Component.Logo.Size.*`, which already carry the
 // responsive extension today but aren't in this list) by editing this array, not by touching token
-// JSON schema.
+// JSON schema. These 3 groups moved from `🔗 Alias` to their own `📱 Device` top-level layer (see
+// docs/plans/device-token-layer-plan.md) — this array tracks that move, but the Figma-side
+// mechanism itself (3 sibling variables in "Design Tokens" + this collection's derived 4th Device
+// variable) is deliberately unchanged; consolidating the siblings themselves into this collection
+// was considered and rejected (would drop per-brand override support for these tokens, since a
+// Figma collection has exactly one mode axis and this one's is already spent on breakpoint).
 const DEVICE_ELIGIBLE_PATH_PREFIXES = [
-  ['🔗 Alias', '🔤 Text', 'Size'],
-  ['🔗 Alias', '↔️ Space'],
-  ['🔗 Alias', '🗃️ Container', 'Space'],
+  ['📱 Device', '🔤 Text', 'Size'],
+  ['📱 Device', '↔️ Space'],
+  ['📱 Device', '🗃️ Container', 'Space'],
 ]
 
 function pathStartsWith(path, prefix) {
@@ -393,7 +425,7 @@ export function isDeviceEligibleResponsiveDimensionToken(token) {
 
 // The Device variable's name mirrors the existing CSS `-mobile/-tablet/-desktop` -> `-device`
 // convention (packages/tokens/src/formatter.ts) — same path as the sibling variables, `Device`
-// appended, e.g. '🔗 Alias/↔️ Space/Lg/Device'. Lives in the "Design Responsive Tokens" collection,
+// appended, e.g. '📱 Device/↔️ Space/Lg/Device'. Lives in the "Design Responsive Tokens" collection,
 // not alongside its siblings, so the shared name isn't a collision (different collection = different
 // id namespace).
 export function figmaResponsiveDimensionDeviceVariableName(path) {

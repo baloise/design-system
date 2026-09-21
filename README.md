@@ -42,7 +42,7 @@ npm install @baloise/ds-core
 Then import the CSS and component loader in your application:
 
 ```html
-<link rel="stylesheet" href="node_modules/@baloise/ds-css/dist/css/design-system.css" />
+<link rel="stylesheet" href="node_modules/@baloise/ds-styles/dist/css/design-system.css" />
 <script type="module" src="node_modules/@baloise/ds-core/dist/design-system/design-system.esm.js"></script>
 ```
 

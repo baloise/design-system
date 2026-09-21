@@ -173,7 +173,7 @@ export const TokenOverview = ({ component }: TokenOverviewProps): React.ReactEle
             <label style={labelStyle} htmlFor="token-category-filter">
               Category
             </label>
-            <div className="select">
+            <div className="ds-select">
               <select
                 id="token-category-filter"
                 value={categoryFilter}
@@ -191,7 +191,7 @@ export const TokenOverview = ({ component }: TokenOverviewProps): React.ReactEle
             <label style={labelStyle} htmlFor="token-type-filter">
               Type
             </label>
-            <div className="select">
+            <div className="ds-select">
               <select id="token-type-filter" value={typeFilter} onChange={event => setTypeFilter(event.target.value)}>
                 <option value="all">All types</option>
                 {typeOptions.map(type => (
@@ -210,7 +210,7 @@ export const TokenOverview = ({ component }: TokenOverviewProps): React.ReactEle
             <input
               id="token-search"
               type="search"
-              className="input"
+              className="ds-input"
               style={{ display: 'block', width: '100%' }}
               placeholder="Name, variable, value…"
               value={searchQuery}

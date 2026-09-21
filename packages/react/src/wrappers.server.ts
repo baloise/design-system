@@ -1,0 +1,102 @@
+/**
+ * Public generated wrappers.
+ *
+ * Overlay wrappers with hand-authored replacements, and the renamed `ds-app`
+ * root wrapper, stay public but are marked `@deprecated`. Prefer `Modal`,
+ * `useToast`, `useSnackbar`, and `DsRoot`.
+ */
+export {
+  DsAccordion,
+  DsAppFooter,
+  DsAppNavbar,
+  DsBadge,
+  DsBrandIcon,
+  DsButton,
+  DsButtonGroup,
+  DsCard,
+  DsCardActions,
+  DsCardContent,
+  DsCardHeader,
+  DsCardSubtitle,
+  DsCardTitle,
+  DsCarousel,
+  DsCarouselItem,
+  DsCheckbox,
+  DsCheckboxGroup,
+  DsClose,
+  DsContent,
+  DsCounter,
+  DsData,
+  DsDataItem,
+  DsDataLabel,
+  DsDataValue,
+  DsDatepicker,
+  DsDivider,
+  DsDrawer,
+  DsFileUpload,
+  DsHeading,
+  DsHint,
+  DsHintText,
+  DsHintTitle,
+  DsIcon,
+  DsInput,
+  DsInputPhone,
+  DsItem,
+  DsLabel,
+  DsList,
+  DsLogo,
+  DsModalBody,
+  DsModalHeader,
+  DsNotification,
+  DsNumberInput,
+  DsPagination,
+  DsPopup,
+  DsProgressBar,
+  DsRadio,
+  DsRadioGroup,
+  DsRoot,
+  DsSegment,
+  DsSegmentItem,
+  DsSelect,
+  DsSelectOptgroup,
+  DsSelectOption,
+  DsShape,
+  DsSheet,
+  DsSlider,
+  DsSpinner,
+  DsStack,
+  DsStep,
+  DsStepPanel,
+  DsSteps,
+  DsTab,
+  DsTabPanel,
+  DsTabs,
+  DsTag,
+  DsTagGroup,
+  DsText,
+  DsTextarea,
+  DsToggle,
+  DsTooltip,
+} from './generated/components.server'
+
+/**
+ * @deprecated Use `useToast` or `useSnackbar` instead. `DsAlertContainer` is the
+ * internal overlay host those hooks already manage.
+ */
+export { DsAlertContainer } from './generated/components.server'
+
+/**
+ * @deprecated Use `Modal` instead. The generated wrapper does not keep React
+ * `open` state in sync when the modal self-dismisses.
+ */
+export { DsModal } from './generated/components.server'
+
+/**
+ * @deprecated Use `useSnackbar` instead.
+ */
+export { DsSnackbar } from './generated/components.server'
+
+/**
+ * @deprecated Use `useToast` instead.
+ */
+export { DsToast } from './generated/components.server'

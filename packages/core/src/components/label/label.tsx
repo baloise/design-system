@@ -1,6 +1,6 @@
 import { Component, Element, h, Host, Method, Prop, State } from '@stencil/core'
 import { HTMLStencilElement } from '@stencil/core/internal'
-import { normalizeDeprecatedTShirtSize, Logger, type LogInstance, OneOf, Type, hasValue } from '@utils'
+import { Logger, type LogInstance, OneOf, Type, hasValue } from '@utils'
 import {
   DsConfigObserver,
   DsConfigState,
@@ -129,8 +129,6 @@ export class Label implements DsComponentInterface, DsConfigObserver {
     const id = this.htmlId
     const htmlFor = this.htmlFor
 
-    const size = normalizeDeprecatedTShirtSize(this.size) || ''
-
     return (
       <Host
         class={{
@@ -138,7 +136,7 @@ export class Label implements DsComponentInterface, DsConfigObserver {
           'is-valid': this.valid,
           'is-invalid': this.invalid,
           'has-no-wrap': this.noWrap,
-          [`is-${size}`]: hasValue(this.size),
+          [`is-${this.size}`]: hasValue(this.size),
         }}
       >
         <label id={id} part="label" htmlFor={htmlFor}>

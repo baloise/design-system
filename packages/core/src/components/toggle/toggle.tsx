@@ -2,12 +2,8 @@ import { AttachInternals, Component, Element, Event, EventEmitter, h, Host, List
 import { Logger, type LogInstance, inheritAttributes, type Attributes, OneOf, Type } from '@utils'
 import { DsComponentInterface } from '@global'
 import {
-  ToggleTileColor,
   ToggleLabelPosition,
-  ToggleGroupColumns,
-  TOGGLE_TILE_COLORS,
   TOGGLE_LABEL_POSITIONS,
-  TOGGLE_GROUP_COLUMNS,
   ToggleFocusDetail,
   ToggleBlurDetail,
   ToggleChangeDetail,
@@ -48,7 +44,7 @@ export class Toggle implements DsComponentInterface {
 
   /**
    * PUBLIC PROPERTY API
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   /**
@@ -71,34 +67,6 @@ export class Toggle implements DsComponentInterface {
   @Prop()
   @Type('boolean')
   readonly dense: boolean = false
-
-  /**
-   * Defines the color of the tile toggle.
-   */
-  @Prop()
-  @OneOf(TOGGLE_TILE_COLORS)
-  readonly color: ToggleTileColor = ''
-
-  /**
-   * @internal
-   */
-  @Prop()
-  @OneOf(TOGGLE_GROUP_COLUMNS)
-  readonly cols: ToggleGroupColumns = 1
-
-  /**
-   * @internal
-   */
-  @Prop()
-  @OneOf(TOGGLE_GROUP_COLUMNS)
-  readonly colsMobile: ToggleGroupColumns = 1
-
-  /**
-   * @internal
-   */
-  @Prop()
-  @OneOf(TOGGLE_GROUP_COLUMNS)
-  readonly colsTablet: ToggleGroupColumns = 1
 
   /**
    * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
@@ -150,18 +118,13 @@ export class Toggle implements DsComponentInterface {
   readonly required: boolean = false
 
   /**
-   * Defines the layout of the input
-   */
-  @Prop()
-  @Type('boolean')
-  readonly tile: boolean = false
-
-  /**
    * A DOMString representing the value of the toggle. This is not displayed on the
    * client-side, but on the server this is the value given to the data
    * submitted with the toggle's name.
    */
-  @Prop() readonly value: string | number = 'on'
+  @Prop()
+  @Type('string')
+  readonly value: string | number = 'on'
 
   /**
    * Emitted when the toggle loses focus.
@@ -180,7 +143,7 @@ export class Toggle implements DsComponentInterface {
 
   /**
    * LIFECYCLE
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   connectedCallback(): void {
@@ -195,7 +158,7 @@ export class Toggle implements DsComponentInterface {
 
   /**
    * PUBLIC LISTENERS
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   @Listen('reset', { capture: true, target: 'document' })
@@ -208,7 +171,7 @@ export class Toggle implements DsComponentInterface {
 
   /**
    * EVENT HANDLERS
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   private handleBlur = (ev: FocusEvent) => {
@@ -231,7 +194,7 @@ export class Toggle implements DsComponentInterface {
 
   /**
    * RENDER
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   render() {
@@ -245,12 +208,8 @@ export class Toggle implements DsComponentInterface {
           'is-invalid': this.invalid,
           'is-checked': this.checked,
           'is-dense': this.dense,
-          'is-tile': this.tile,
           'has-label-left': this.labelPosition === 'left',
           'has-label-top': this.labelPosition === 'top',
-          [`has-cols-${this.cols}`]: this.tile && this.cols > 1,
-          [`has-cols-${this.colsTablet}-tablet`]: this.tile && this.colsTablet > 1,
-          [`has-cols-${this.colsMobile}-mobile`]: this.tile && this.colsMobile > 1,
         }}
       >
         <label id="label" part="label">

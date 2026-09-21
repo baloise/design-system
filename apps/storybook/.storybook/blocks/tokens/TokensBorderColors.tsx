@@ -5,7 +5,7 @@ import { Clipboard } from '../Clipboard'
 export const TokensBorderColors = ({ _overview }): React.ReactElement => {
   const list = tokens['🔗 Alias']['▭ Border'].Composite
   return (
-    <table className="sb-unstyled my-x-large table tokens" style={{ width: '100%' }}>
+    <table className="sb-unstyled my-xl ds-table tokens" style={{ width: '100%' }}>
       <thead>
         <tr>
           <th style={{ width: '100%' }}>Token & Description</th>
@@ -23,7 +23,7 @@ export const TokensBorderColors = ({ _overview }): React.ReactElement => {
                 <Clipboard label={item.name} value={`var(--${item.name})`} />
               </td>
               <td style={{ verticalAlign: 'middle' }}>
-                <p className={`text-small font-weight-bold`}>{item.$value}</p>
+                <p className={`text-sm font-weight-bold`}>{item.$value}</p>
               </td>
               <td
                 style={{ verticalAlign: 'middle' }}

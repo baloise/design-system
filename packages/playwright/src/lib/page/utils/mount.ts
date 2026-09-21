@@ -51,16 +51,18 @@ const template = (html: string) => `
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
     <link rel="stylesheet" href="/assets/section.css" />
+    <link rel="stylesheet" href="/assets/tokens/base.tokens.css" />
     <link rel="stylesheet" href="/assets/css/design-system.local.min.css" />
+    <link rel="stylesheet" href="/assets/css/utilities.min.css" />
 
     <script type="module" src="/build/design-system.esm.js"></script>
     <script nomodule src="/build/design-system.js"></script>
   </head>
 
   <body>
-    <ds-app animated="false">
+    <ds-root animated="false">
       <main id="root">${html}</main>
-    </ds-app>
+    </ds-root>
   </body>
 </html>
 `

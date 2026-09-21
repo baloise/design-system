@@ -9,7 +9,7 @@ import {
 import * as ToggleStories from './toggle.stories'
 import { TOGGLE_DOC_CONFIG, getToggleTabs } from './toggle.doc-config'
 
-<Meta title="Components/Forms/Toggle/Variants/Overview" />
+<Meta title="Components/Forms/Toggle/Variants/Overview" name="Overview" />
 
 <StoryHeading of={ToggleStories.Basic} hidden></StoryHeading>
 
@@ -18,6 +18,11 @@ import { TOGGLE_DOC_CONFIG, getToggleTabs } from './toggle.doc-config'
 <BannerTabs of={ToggleStories} tabs={getToggleTabs('variants')} />
 
 {/* STORIES */}
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={ToggleStories.Basic}></StoryHeading>
+
+<CanvasTabs of={ToggleStories.Basic} htmlOf={ToggleStories.BasicHtml} sourceState="shown" />
 {/* ------------------------------------------------------ */}
 
 <StoryHeading of={ToggleStories.Disabled}></StoryHeading>

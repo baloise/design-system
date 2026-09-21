@@ -37,7 +37,11 @@ test.describe('component', () => {
       const component = new DsFileUpload(page.locator('ds-file-upload'))
       const spy = await component.el.spyOnEvent('dsInputClick')
 
-      await component.click()
+      // Disabled fields set pointer-events: none on the host (form.style.scss `.ds-field.is-disabled`),
+      // so a real click can never land on the drop-zone — force it through to assert the event still
+      // doesn't fire, same pattern as the disabled date-cell click test.
+      // eslint-disable-next-line playwright/no-force-option
+      await component.click({ force: true })
       await page.waitForChanges()
 
       await component.assertToBeDisabled()

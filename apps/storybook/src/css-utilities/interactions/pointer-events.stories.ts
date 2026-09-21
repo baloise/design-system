@@ -13,8 +13,8 @@ const Story = StoryFactory(meta)
 export const Classes = Story({
   ...withRender(
     () => `<div class="flex flex-wrap align-items-center justify-content-center">
-  <button class="button m-small pointer-events-auto">Auto</button>
-  <button class="button m-small pointer-events-none">None</button>
+  <button class="ds-button m-sm pointer-events-auto">Auto</button>
+  <button class="ds-button m-sm pointer-events-none">None</button>
 </div>`,
   ),
 })

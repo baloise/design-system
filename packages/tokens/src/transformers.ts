@@ -183,7 +183,7 @@ export const registerCustomTransformers = (sd: typeof StyleDictionary) => {
     transitive: true,
     name: `ds/shadow`,
     filter: token => token.$type === 'shadow',
-    transform: token => shadowValueToCss(token.$value ?? token.value),
+    transform: token => shadowValueToCss(token.$value ?? token.value, token.path),
   })
 
   /**

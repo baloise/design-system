@@ -1,13 +1,99 @@
 import { Meta } from '@storybook/addon-docs/blocks'
-import { Banner, BannerTabs, Footer, UsageExamples } from '../../../.storybook/blocks'
+import {
+  AngularFramework,
+  Banner,
+  BannerTabs,
+  Footer,
+  HTMLFramework,
+  ReactFramework,
+  UsageExamples,
+} from '../../../.storybook/blocks'
 import * as SelectStories from './select.stories'
 import { SELECT_DOC_CONFIG, getSelectTabs } from './select.doc-config'
 
-<Meta title="Components/Select/Usage" />
+<Meta title="Components/Forms/Select/Usage" name="Usage" />
 
 <Banner label={'Select'} section={SELECT_DOC_CONFIG.section} color={SELECT_DOC_CONFIG.color} />
 
 <BannerTabs of={SelectStories} tabs={getSelectTabs('usage')} />
+
+## Declaring Options
+
+Options can be declared as HTML markup with slotted `ds-select-option` (and `ds-select-optgroup`) elements, or set
+programmatically via the `options` / `optionGroups` prop.
+
+- Use **slots** when options come from server-rendered markup (backend-only apps, CMS templates), when migrating
+  existing `<select>`/`<ds-select-option>` markup, or when the list is static and known at author time.
+- Use the **`options` / `optionGroups` prop** when options come from application state or an API response — it
+  keeps the list data-driven and is the natural fit for React, Angular, and other component-based frameworks.
+
+<HTMLFramework>
+
+```html
+<ds-select id="select-country" label="Country" description="Select your country of residence"></ds-select>
+
+<script>
+  document.querySelector('#select-country').options = [
+    { label: 'Switzerland', value: 'ch' },
+    { label: 'Germany', value: 'de' },
+    { label: 'Italy', value: 'it' },
+  ]
+</script>
+```
+
+</HTMLFramework>
+
+<ReactFramework>
+
+```tsx
+import { DsSelect } from '@baloise/ds-react'
+
+const countryOptions = [
+  { label: 'Switzerland', value: 'ch' },
+  { label: 'Germany', value: 'de' },
+  { label: 'Italy', value: 'it' },
+]
+
+export function CountrySelect() {
+  return <DsSelect
+    label="Country"
+    description="Select your country of residence"
+    options={countryOptions} />
+}
+```
+
+</ReactFramework>
+
+<AngularFramework>
+
+```html
+<!-- app.component.html -->
+<ds-select
+  label="Country"
+  description="Select your country of residence"
+  [options]="countryOptions"></ds-select>
+```
+
+```ts
+// app.component.ts
+import { Component } from '@angular/core'
+import { DsSelect } from '@baloise/ds-angular'
+
+@Component({
+  selector: 'app-country-select',
+  imports: [DsSelect],
+  templateUrl: './app.component.html',
+})
+export class AppComponent {
+  countryOptions = [
+    { label: 'Switzerland', value: 'ch' },
+    { label: 'Germany', value: 'de' },
+    { label: 'Italy', value: 'it' },
+  ]
+}
+```
+
+</AngularFramework>
 
 ## When to Use
 

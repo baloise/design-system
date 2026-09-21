@@ -73,7 +73,7 @@ export class DsSelect implements DsComponentInterface, FieldInterface {
 
   /**
    * PUBLIC PROPERTY API
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   /**
@@ -225,7 +225,9 @@ export class DsSelect implements DsComponentInterface, FieldInterface {
   }
 
   /**
-   * If `true`, in Angular reactive forms the control will not be set invalid automatically.
+   * If `true`, disables the automatic `invalid`/`invalidText` behavior that the `@baloise/ds-angular` integration
+   * applies when the bound `NgControl` is touched and invalid. Only affects the Angular integration; it is a no-op
+   * in other framework integrations.
    */
   @Prop({ reflect: true })
   @Type('boolean')
@@ -254,7 +256,7 @@ export class DsSelect implements DsComponentInterface, FieldInterface {
 
   /**
    * LIFECYCLE
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   connectedCallback() {
@@ -272,6 +274,12 @@ export class DsSelect implements DsComponentInterface, FieldInterface {
 
   componentDidLoad() {
     if (!this.selectEl || !this.popupEl || !this.el.shadowRoot) return
+
+    // `multiple` may not yet reflect its final attribute-derived value at connectedCallback time,
+    // so a comma-separated string value can slip through un-split. Re-normalize here, once every
+    // prop is guaranteed settled, before it's baked into the picker's initial selection.
+    const normalizedValue = this.normalizeValue(this.value)
+    if (normalizedValue !== this.value) this.value = normalizedValue
 
     this.readOptionsFromSlot()
 
@@ -311,7 +319,7 @@ export class DsSelect implements DsComponentInterface, FieldInterface {
 
   /**
    * PUBLIC LISTENERS
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   @Listen('click', { capture: true, target: 'document' })
@@ -331,7 +339,7 @@ export class DsSelect implements DsComponentInterface, FieldInterface {
 
   /**
    * PUBLIC METHODS
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   /**
@@ -380,8 +388,35 @@ export class DsSelect implements DsComponentInterface, FieldInterface {
   }
 
   /**
+   * EVENT HANDLERS
+   * ─────────────────────────────────────────────────────
+   */
+
+  private handleSlotChange = () => {
+    this.readOptionsFromSlot()
+    this.refreshSlimData()
+  }
+
+  private handleAfterChange(newVal: Option[]) {
+    const selected = newVal.filter(o => !o.placeholder)
+
+    if (this.multiple) {
+      const values = selected.map(o => o.value)
+      this.syncFormValue(values)
+      this.value = values
+      this.dsChange.emit(values)
+    } else {
+      const value = selected[0]?.value ?? null
+      this.syncFormValue(value)
+      this.value = value
+      this.dsChange.emit(value)
+      raf(() => this.picker?.close())
+    }
+  }
+
+  /**
    * PRIVATE METHODS
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   // Attributes are always strings, so `value="it,ch"` arrives as a single string in
@@ -404,11 +439,6 @@ export class DsSelect implements DsComponentInterface, FieldInterface {
     const options = this.options.length > 0 ? this.options : this.slottedOptions
     const optionGroups = this.optionGroups.length > 0 ? this.optionGroups : this.slottedOptionGroups
     return buildSlimData(options, optionGroups, this.placeholder, this.value)
-  }
-
-  private handleSlotChange = () => {
-    this.readOptionsFromSlot()
-    this.refreshSlimData()
   }
 
   // Reads ds-select-option / ds-select-optgroup light-DOM children (the HTML-only alternative
@@ -444,23 +474,6 @@ export class DsSelect implements DsComponentInterface, FieldInterface {
     })
   }
 
-  private handleAfterChange(newVal: Option[]) {
-    const selected = newVal.filter(o => !o.placeholder)
-
-    if (this.multiple) {
-      const values = selected.map(o => o.value)
-      this.syncFormValue(values)
-      this.value = values
-      this.dsChange.emit(values)
-    } else {
-      const value = selected[0]?.value ?? null
-      this.syncFormValue(value)
-      this.value = value
-      this.dsChange.emit(value)
-      raf(() => this.picker?.close())
-    }
-  }
-
   private syncFormValue(val: string | string[] | null) {
     if (Array.isArray(val)) {
       const formData = new FormData()
@@ -477,7 +490,7 @@ export class DsSelect implements DsComponentInterface, FieldInterface {
 
   /**
    * RENDER
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   render() {

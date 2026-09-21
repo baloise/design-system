@@ -46,7 +46,7 @@ export const LoadingCard = Story({
   ...withRender(
     () => `<ds-card>
     <ds-card-content class="flex align-items-center flex-direction-column justify-content-center">
-        <ds-spinner class="my-medium"></ds-spinner>
+        <ds-spinner class="my-md"></ds-spinner>
         <ds-heading level="h5" space="all">Please wait...</ds-heading>
     </ds-card-content>
 </ds-card>`,

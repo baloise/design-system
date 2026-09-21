@@ -1,5 +1,5 @@
 export const CHECKBOX_GROUP_COLUMNS = [1, 2, 3, 4] as const
-export const CHECKBOX_TILE_COLORS = ['', 'purple', 'green', 'yellow', 'red'] as const
+export const CHECKBOX_TILE_COLORS = ['purple', 'green', 'yellow', 'red'] as const
 export const CHECKBOX_LABEL_POSITIONS = ['left', 'top', 'right'] as const
 
 export type CheckboxGroupColumns = (typeof CHECKBOX_GROUP_COLUMNS)[number]

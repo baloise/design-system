@@ -7,7 +7,7 @@ type Args = JSX.DsFileUpload & { slot: string }
 const tag = 'ds-file-upload'
 
 const meta: Meta<Args> = {
-  title: 'Components/FileUpload/Variants',
+  title: 'Components/Forms/FileUpload/Variants',
   args: {
     label: 'Choose or drop a file...',
     description: 'All File Types',

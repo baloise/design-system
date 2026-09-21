@@ -54,7 +54,7 @@ export class Segment implements DsComponentInterface, Omit<FieldInterface, 'colo
 
   /**
    * PUBLIC PROPERTY API
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   /**
@@ -63,6 +63,15 @@ export class Segment implements DsComponentInterface, Omit<FieldInterface, 'colo
   @Prop()
   @Type('boolean')
   readonly allowEmptySelection: boolean = false
+
+  /**
+   * If `true`, disables the automatic `invalid`/`invalidText` behavior that the `@baloise/ds-angular` integration
+   * applies when the bound `NgControl` is touched and invalid. Only affects the Angular integration; it is a no-op
+   * in other framework integrations.
+   */
+  @Prop({ reflect: true })
+  @Type('boolean')
+  readonly autoInvalidOff: boolean = false
 
   /**
    * The description of the input, which is displayed below the input field.
@@ -177,7 +186,7 @@ export class Segment implements DsComponentInterface, Omit<FieldInterface, 'colo
 
   /**
    * LIFECYCLE
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   connectedCallback() {
@@ -208,7 +217,7 @@ export class Segment implements DsComponentInterface, Omit<FieldInterface, 'colo
 
   /**
    * PUBLIC LISTENERS
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   @Listen('dsWillUpdate', { capture: true, target: 'document' })
@@ -228,8 +237,24 @@ export class Segment implements DsComponentInterface, Omit<FieldInterface, 'colo
   }
 
   /**
+   * The individual segment items' native `<input>`s live inside this component's own shadow root, so a
+   * `focusout` fired when focus moves between them never leaves the host — only once focus leaves the group
+   * entirely does `relatedTarget` fall outside `this.el`, and that's the only time `dsBlur` should fire.
+   * `focusout` is composed, so this listener (attached to the host by default) still receives it, and the
+   * platform retargets `relatedTarget` the same way it retargets `target` — so a related target that's still
+   * a descendant resolves to that descendant element, not something inside its own shadow tree.
+   */
+  @Listen('focusout')
+  listenToFocusOut(ev: FocusEvent) {
+    const relatedTarget = ev.relatedTarget as HTMLElement | null
+    if (!relatedTarget || !isDescendant(this.el, relatedTarget)) {
+      this.dsBlur.emit(ev)
+    }
+  }
+
+  /**
    * PUBLIC METHODS
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   /** @internal */
@@ -259,7 +284,7 @@ export class Segment implements DsComponentInterface, Omit<FieldInterface, 'colo
 
   /**
    * EVENT HANDLERS
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   private handleInputChange = (itemValue: any) => {
@@ -287,7 +312,7 @@ export class Segment implements DsComponentInterface, Omit<FieldInterface, 'colo
 
   /**
    * PRIVATE METHODS
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   private readItemsFromSlot() {
@@ -358,7 +383,7 @@ export class Segment implements DsComponentInterface, Omit<FieldInterface, 'colo
 
   /**
    * RENDER
-   * ------------------------------------------------------
+   * ─────────────────────────────────────────────────────
    */
 
   render() {
@@ -416,7 +441,7 @@ export class Segment implements DsComponentInterface, Omit<FieldInterface, 'colo
               {item.svg && <ds-icon svg={item.svg}></ds-icon>}
               {!this.iconOnly && (
                 <span id="content">
-                  <span class="label">{item.label}</span>
+                  <span class="ds-label">{item.label}</span>
                   {item.description && <span class="description">{item.description}</span>}
                 </span>
               )}

@@ -1,0 +1,39 @@
+<h2>Segment demo</h2>
+
+<p data-testid="segment-value">Segment value: {{ segmentValue() }}</p>
+<ds-segment data-testid="segment" name="smoke-test-segment" [value]="segmentValue()" (dsChange)="onChange($event)">
+  <ds-segment-item value="basic" label="Basic" />
+  <ds-segment-item value="premium" label="Premium" />
+</ds-segment>
+
+<form [formGroup]="reactiveForm">
+  <ds-segment
+    data-testid="reactive-segment"
+    name="reactive-segment"
+    label="Plan"
+    allowEmptySelection
+    formControlName="plan"
+  >
+    <ds-segment-item data-testid="reactive-segment-basic" value="basic" label="Basic" />
+    <ds-segment-item data-testid="reactive-segment-premium" value="premium" label="Premium" />
+  </ds-segment>
+</form>
+<p data-testid="reactive-segment-value">Reactive value: {{ reactiveForm.controls.plan.value }}</p>
+<button data-testid="toggle-reactive-segment-disabled" type="button" (click)="toggleReactiveFormDisabled()">
+  Toggle disabled
+</button>
+<button data-testid="set-reactive-segment-value" type="button" (click)="setReactiveFormValue()">Set to premium</button>
+
+<form [formGroup]="autoInvalidOffForm">
+  <ds-segment
+    data-testid="auto-invalid-off-segment"
+    name="auto-invalid-off-segment"
+    label="Plan"
+    allowEmptySelection
+    autoInvalidOff
+    formControlName="plan"
+  >
+    <ds-segment-item data-testid="auto-invalid-off-segment-basic" value="basic" label="Basic" />
+    <ds-segment-item data-testid="auto-invalid-off-segment-premium" value="premium" label="Premium" />
+  </ds-segment>
+</form>

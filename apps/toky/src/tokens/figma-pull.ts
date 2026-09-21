@@ -23,10 +23,12 @@ import {
   fontWeightNumberFromKeyword,
   isBorderFigmaId,
   isFigmaAlias,
+  isLineHeightPath,
   isLiteralValueEqual,
   isResponsiveDimensionFigmaId,
   isShadowFigmaId,
   isTypographyFigmaId,
+  LINE_HEIGHT_PERCENT_MULTIPLIER,
   pathFromFigmaVariableName,
   RESPONSIVE_DIMENSION_SUB_PROPERTIES,
   SHADOW_SUB_PROPERTIES,
@@ -60,6 +62,19 @@ export interface PulledEntry {
   // above still carries the mobile-mirrored $value (decision 4); this carries the full
   // $extensions.com.helvetia.responsive object alongside it.
   responsive?: ResponsiveDimensionValue
+  // Fill-if-empty only (decision 9's pull rule) — set only when the local token's own
+  // $description is empty/absent and Figma's native description has something to offer;
+  // undefined otherwise, meaning "leave whatever's already in JSON alone."
+  description?: string
+  // Set only on a `kind: 'update'` entry that represents a pure rename in Figma — the variable's
+  // name no longer matches the local token's path (see buildBasePullPlan's `pathChanged` check),
+  // so `path` above is the *new* location and this is the *old* one. `undefined` for every other
+  // entry, meaning "path is unchanged, apply in place." Only plain (single-variableId) tokens
+  // support this today — a shadow/border/typography/responsive-dimension token's Figma identity
+  // spans several separately-nameable sub-variables, which could disagree on a renamed prefix in a
+  // way a single path can't represent; detecting that consistently is out of scope for now, so a
+  // composite token's rename in Figma still goes undetected, same as before this field existed.
+  movedFrom?: string[]
 }
 
 export interface PullConflict {
@@ -106,9 +121,21 @@ export function findCollectionAndModes(
   meta: FigmaVariablesMeta,
   brandNames: string[],
 ): { collectionId: string; modeIdByBrand: Record<string, string> } {
-  const collections = Object.values(meta.variableCollections)
+  // A linked library (e.g. a shared "Space"/"Typography" collection) shows up here too, marked
+  // `remote: true` — it isn't owned by this file and must be ignored, or enabling any library
+  // makes this throw on a perfectly normal file (see apps/toky/src/tokens/figma.ts's
+  // FigmaVariableCollection.remote). The responsive/breakpoint collection ("Design Responsive
+  // Tokens" — Mobile/Tablet/Desktop modes, see scripts/figma-sync/lib/bootstrap.mjs) is local too,
+  // so filtering on `remote` alone still leaves 2: the brand collection this function actually
+  // wants is the one distinguished by carrying a "Base" mode, which the responsive collection
+  // never has.
+  const collections = Object.values(meta.variableCollections).filter(
+    c => !c.remote && c.modes.some(m => m.name === 'Base'),
+  )
   if (collections.length !== 1) {
-    throw new Error(`Expected exactly one Figma variable collection, found ${collections.length}.`)
+    throw new Error(
+      `Expected exactly one local Figma variable collection with a "Base" mode, found ${collections.length}.`,
+    )
   }
   const collection = collections[0]
 
@@ -187,6 +214,22 @@ function deriveValue(
     dtcgType = expectedType
   }
 
+  // A handful of tokens (e.g. Component.Sheet.Shadow) predate their current $type and were never
+  // migrated onto Figma's real VARIABLE_ALIAS mechanism (used by every other alias — including,
+  // for shadow/border/typography, aliasing each of their sub-variables individually) — instead
+  // their one Figma variable is a plain STRING holding the literal "{...}" reference text our own
+  // local reference syntax uses (see flatten.ts's REFERENCE_PATTERN). Recognized here by the
+  // mismatch it produces (local $type disagrees with what this Figma STRING would otherwise
+  // resolve to) plus the literal syntax itself, so it resolves to the same reference the local
+  // token's own value already parses to, instead of permanently disagreeing with the still-STRING
+  // Figma variable on every pull.
+  if (expectedType && expectedType !== dtcgType && typeof modeValue === 'string') {
+    const literalAliasMatch = /^\{(.+)\}$/.exec(modeValue)
+    if (literalAliasMatch) {
+      return { kind: 'alias', type: expectedType, referenceTarget: literalAliasMatch[1] }
+    }
+  }
+
   if (isFigmaAlias(modeValue)) {
     const target = baseIndex.get(modeValue.id)
     if (!target) {
@@ -240,6 +283,21 @@ function deriveValue(
     return { kind: 'literal', type: dtcgType, rawValue: { value: unit === 'rem' ? num / PX_PER_REM : num, unit } }
   }
 
+  // A standalone LineHeight `number` token (Global.Font.LineHeight.*, Alias.Text.LineHeight.*,
+  // Component.*.LineHeight) round-trips Figma's percentage back to this codebase's raw multiplier
+  // — see LINE_HEIGHT_PERCENT_MULTIPLIER. `referenceToken`'s path covers a matched variable;
+  // `pathFromFigmaVariableName` covers a brand-new/unmatched one, mirroring how every other
+  // ambiguous-by-resolvedType case above resolves via `referenceToken` where possible.
+  if (dtcgType === 'number') {
+    const path = referenceToken?.path ?? pathFromFigmaVariableName(variable.name)
+    if (isLineHeightPath(path)) {
+      if (typeof modeValue !== 'number') {
+        return { kind: 'unsupported', reason: `LineHeight value "${String(modeValue)}" is not a number — skipped.` }
+      }
+      return { kind: 'literal', type: dtcgType, rawValue: modeValue / LINE_HEIGHT_PERCENT_MULTIPLIER }
+    }
+  }
+
   return { kind: 'literal', type: dtcgType, rawValue: modeValue }
 }
 
@@ -255,6 +313,8 @@ function entryFrom(
   path: string[],
   figmaId: FigmaId,
   snapshot: DtcgSnapshot,
+  description?: string,
+  movedFrom?: string[],
 ): PulledEntry {
   return {
     kind,
@@ -264,7 +324,18 @@ function entryFrom(
     type: snapshot.type,
     rawValue: snapshot.referenceTarget ? null : snapshot.rawValue,
     referenceTarget: snapshot.referenceTarget,
+    description,
+    movedFrom,
   }
+}
+
+// Fill-if-empty (decision 9's pull rule): Figma's description is only ever proposed when the
+// local token doesn't already have one of its own — never an overwrite.
+function fillDescription(
+  localDescription: string | undefined,
+  remoteDescription: string | undefined,
+): string | undefined {
+  return localDescription ? undefined : remoteDescription || undefined
 }
 
 // A shadow token's reconstructed value, from its 5 co-located Figma
@@ -375,6 +446,21 @@ function deriveShadowPullEntries(params: {
     const idSet = token.figmaId
     const path = token.path.join('.')
 
+    // A shadow token's 5 Figma sub-variables can only ever encode one flat layer — a multi-layer
+    // shadow (array of >1 layers) or "none" (empty array) has no single-layer Figma counterpart to
+    // diff against, so deriveShadowValue would always reconstruct a single-layer object that can
+    // never equal the local array, flagging a false "changed" diff on every pull. Per
+    // docs/plans/shadow-token-type-plan.md (decisions 5/29/120/143), these aren't eligible for
+    // Figma sync — skip them the same way a brand-new/unmatched variable is skipped.
+    if (Array.isArray(token.rawValue)) {
+      skipped.push({
+        variableId: idSet.color,
+        name: `${token.path.join('/')} (shadow)`,
+        reason: 'Multi-layer or "none" shadow tokens have no single-layer Figma counterpart — skipped.',
+      })
+      continue
+    }
+
     // Any one of the 5 sub-variables missing from Figma entirely — treat
     // the whole shadow as deleted (unless working already dropped it).
     const missing = SHADOW_SUB_PROPERTIES.some(sub => !figmaMeta.variables[idSet[sub]])
@@ -418,7 +504,17 @@ function deriveShadowPullEntries(params: {
       continue
     }
 
-    updates.push(entryFrom('update', token.layer, token.path, idSet, figmaSnapshot))
+    const remoteDescription = figmaMeta.variables[idSet[SHADOW_SUB_PROPERTIES[0]]]?.description
+    updates.push(
+      entryFrom(
+        'update',
+        token.layer,
+        token.path,
+        idSet,
+        figmaSnapshot,
+        fillDescription(token.description, remoteDescription),
+      ),
+    )
   }
 
   return { creates, updates, deletes, skipped }
@@ -547,7 +643,17 @@ function deriveBorderPullEntries(params: {
         continue
       }
 
-      updates.push(entryFrom('update', token.layer, token.path, idSet, figmaSnapshot))
+      const remoteDescription = figmaMeta.variables[idSet[BORDER_SUB_PROPERTIES[0]]]?.description
+      updates.push(
+        entryFrom(
+          'update',
+          token.layer,
+          token.path,
+          idSet,
+          figmaSnapshot,
+          fillDescription(token.description, remoteDescription),
+        ),
+      )
       continue
     }
 
@@ -635,7 +741,17 @@ function deriveBorderPullEntries(params: {
       continue
     }
 
-    updates.push(entryFrom('update', token.layer, token.path, idSet, figmaSnapshot))
+    const remoteDescription = figmaMeta.variables[idSet[BORDER_SUB_PROPERTIES[0]]]?.description
+    updates.push(
+      entryFrom(
+        'update',
+        token.layer,
+        token.path,
+        idSet,
+        figmaSnapshot,
+        fillDescription(token.description, remoteDescription),
+      ),
+    )
   }
 
   return { creates, updates, deletes, skipped }
@@ -754,10 +870,13 @@ function deriveTypographyValue(
   }
   const unit = localUnit()
   const figmaFontSizeLiteral = { value: unit === 'rem' ? rawFontSize / PX_PER_REM : rawFontSize, unit }
-  const figmaLineHeight = modeValues.lineHeight
-  if (typeof figmaLineHeight !== 'number') {
+  const figmaLineHeightPercent = modeValues.lineHeight
+  if (typeof figmaLineHeightPercent !== 'number') {
     return { kind: 'unsupported', reason: 'Typography lineHeight sub-value could not be read — skipped.' }
   }
+  // Figma holds lineHeight as a percentage (130), not this codebase's raw multiplier (1.3) — see
+  // LINE_HEIGHT_PERCENT_MULTIPLIER.
+  const figmaLineHeight = figmaLineHeightPercent / LINE_HEIGHT_PERCENT_MULTIPLIER
 
   const fontSizeMatches = isLiteralValueEqual('dimension', figmaFontSizeLiteral, resolved.fontSize)
   const lineHeightMatches = figmaLineHeight === resolved.lineHeight
@@ -901,7 +1020,17 @@ function deriveTypographyPullEntries(params: {
       continue
     }
 
-    updates.push(entryFrom('update', token.layer, token.path, idSet, figmaSnapshot))
+    const remoteDescription = figmaMeta.variables[idSet[TYPOGRAPHY_SUB_PROPERTIES[0]]]?.description
+    updates.push(
+      entryFrom(
+        'update',
+        token.layer,
+        token.path,
+        idSet,
+        figmaSnapshot,
+        fillDescription(token.description, remoteDescription),
+      ),
+    )
   }
 
   return { creates, updates, deletes, skipped }
@@ -1013,6 +1142,7 @@ function responsiveEntryFrom(
   path: string[],
   figmaId: FigmaId,
   responsive: Record<ResponsiveDimensionSubProperty, unknown>,
+  description?: string,
 ): PulledEntry {
   return {
     kind,
@@ -1024,6 +1154,7 @@ function responsiveEntryFrom(
     rawValue: responsive.mobile,
     referenceTarget: null,
     responsive: responsive as ResponsiveDimensionValue,
+    description,
   }
 }
 
@@ -1104,7 +1235,17 @@ function deriveResponsiveDimensionPullEntries(params: {
       continue
     }
 
-    updates.push(responsiveEntryFrom('update', token.layer, token.path, idSet, derived.responsive))
+    const remoteDescription = figmaMeta.variables[idSet[RESPONSIVE_DIMENSION_SUB_PROPERTIES[0]]]?.description
+    updates.push(
+      responsiveEntryFrom(
+        'update',
+        token.layer,
+        token.path,
+        idSet,
+        derived.responsive,
+        fillDescription(token.description, remoteDescription),
+      ),
+    )
   }
 
   return { creates, updates, deletes, skipped }
@@ -1239,11 +1380,24 @@ export function buildBasePullPlan(params: {
   // object of 5 sub-ids, not the single string this generic per-variable
   // loop (and deriveValue's alias-target lookup) is keyed by. They're
   // matched separately by deriveShadowPullEntries below.
-  const baseIndex = new Map(
+  const baseIndex: Map<string, FlatToken> = new Map(
     original
       .filter((t): t is FlatToken & { figmaId: string } => typeof t.figmaId === 'string')
       .map(t => [t.figmaId, t]),
   )
+  // A responsive-dimension token's alias target in Figma is its own extra "device" sub-variable
+  // (real Figma data alongside the 3 documented mobile/tablet/desktop breakpoints — see
+  // docs/plans/responsive-dimension-token-plan.md — since nothing can alias to "a set of 3"). A
+  // Component token that aliases one of these (e.g. Component.AppFooter.Gap -> 📱 Device.↔️
+  // Space.Base) resolves via deriveValue's alias branch, which only ever consults `baseIndex` — a
+  // responsive-dimension token's object figmaId is otherwise invisible to it, so the alias always
+  // reports "no known token" and gets skipped. Folding every sub-id (device included) into
+  // `baseIndex`, pointing back at the owning token, fixes that lookup — deriveValue's alias branch
+  // only ever needs `target.path.join('.')`, the same for any of a token's sub-ids.
+  for (const t of original) {
+    if (!isResponsiveDimensionFigmaId(t.figmaId)) continue
+    for (const id of Object.values(t.figmaId)) baseIndex.set(id, t)
+  }
   const originalByPath = new Map(original.map(t => [t.path.join('.'), t]))
   const workingByPath = new Map(working.map(w => [w.token.path.join('.'), w]))
   // Anything already linked to a Figma variable in `working` but not yet in
@@ -1311,7 +1465,14 @@ export function buildBasePullPlan(params: {
         const stagedSnapshot = snapshotOf(stagedOnly.token)
         if (snapshotEqual(figmaSnapshot, stagedSnapshot)) continue // nothing new since it was staged
         plan.updates.push(
-          entryFrom('update', stagedOnly.token.layer, stagedOnly.token.path, variable.id, figmaSnapshot),
+          entryFrom(
+            'update',
+            stagedOnly.token.layer,
+            stagedOnly.token.path,
+            variable.id,
+            figmaSnapshot,
+            fillDescription(stagedOnly.token.description, variable.description),
+          ),
         )
         continue
       }
@@ -1339,41 +1500,78 @@ export function buildBasePullPlan(params: {
       // would keep proposing the same "create" again.
       const unlinked = originalByPath.get(path.join('.'))
       if (unlinked && !unlinked.figmaId) {
-        plan.updates.push(entryFrom('update', unlinked.layer, unlinked.path, variable.id, figmaSnapshot))
+        plan.updates.push(
+          entryFrom(
+            'update',
+            unlinked.layer,
+            unlinked.path,
+            variable.id,
+            figmaSnapshot,
+            fillDescription(unlinked.description, variable.description),
+          ),
+        )
         continue
       }
 
-      plan.creates.push(entryFrom('create', layer, path, variable.id, figmaSnapshot))
+      plan.creates.push(entryFrom('create', layer, path, variable.id, figmaSnapshot, variable.description || undefined))
       continue
     }
 
     const originalSnapshot = snapshotOf(matched)
-    if (snapshotEqual(figmaSnapshot, originalSnapshot)) continue // Figma unchanged since we last knew
-
     const path = matched.path.join('.')
     const workingEntry = workingByPath.get(path)
     const workingSnapshot = workingEntry ? snapshotOf(workingEntry.token) : originalSnapshot
     const workingHasManualEdit = !snapshotEqual(workingSnapshot, originalSnapshot)
+    // Whatever's currently effective locally — a pending unsubmitted edit's description if one
+    // exists, else the last-known one — same "compare against working, not just original" pattern
+    // the value side already uses via workingSnapshot.
+    const localDescription = workingEntry ? workingEntry.token.description : matched.description
+    const descriptionFill = fillDescription(localDescription, variable.description)
+
+    // A pure rename in Figma — the variable's name no longer round-trips to the local token's own
+    // path via pathFromFigmaVariableName (figmaVariableName's inverse, scripts/figma-sync/lib/
+    // write.mjs:39-41). Only recognized when the renamed-to path still starts with a known layer
+    // segment, same "not eligible, skip rather than guess" policy the `!matched` create branch
+    // above already applies to `pathFromFigmaVariableName(variable.name)`. `movedFrom` carries the
+    // old path so applyBasePlan (token-editor.tsx) can move the token instead of leaving a stale
+    // duplicate behind at its old location.
+    const renamedPath = pathFromFigmaVariableName(variable.name)
+    const pathChanged = renamedPath.join('.') !== path && LAYER_BY_KEY[renamedPath[0]] !== undefined
+    const movedFrom = pathChanged ? matched.path : undefined
+    const targetPath = pathChanged ? renamedPath : matched.path
+
+    if (snapshotEqual(figmaSnapshot, originalSnapshot) && !descriptionFill && !pathChanged) continue // Figma unchanged since we last knew
 
     if (workingHasManualEdit) {
-      if (snapshotEqual(workingSnapshot, figmaSnapshot)) continue // already converged
-      plan.conflicts.push({
-        tokenId: workingEntry!.id,
-        path: matched.path,
-        layer: matched.layer,
-        figmaId: variable.id,
-        workingValue: snapshotToEffectiveValue(workingSnapshot),
-        figmaValue: snapshotToEffectiveValue(figmaSnapshot),
-        figma: {
-          type: figmaSnapshot.type,
-          rawValue: figmaSnapshot.rawValue,
-          referenceTarget: figmaSnapshot.referenceTarget,
-        },
-      })
+      if (snapshotEqual(workingSnapshot, figmaSnapshot) && !descriptionFill) continue // already converged
+      if (!snapshotEqual(figmaSnapshot, originalSnapshot)) {
+        plan.conflicts.push({
+          tokenId: workingEntry!.id,
+          path: matched.path,
+          layer: matched.layer,
+          figmaId: variable.id,
+          workingValue: snapshotToEffectiveValue(workingSnapshot),
+          figmaValue: snapshotToEffectiveValue(figmaSnapshot),
+          figma: {
+            type: figmaSnapshot.type,
+            rawValue: figmaSnapshot.rawValue,
+            referenceTarget: figmaSnapshot.referenceTarget,
+          },
+        })
+        continue
+      }
+      // The value itself hasn't diverged from Figma — only a description to fill, which is safe
+      // to propose regardless of an unrelated pending value edit sitting in working. Built from
+      // workingSnapshot, not originalSnapshot: applyBasePlan replaces the whole token from this
+      // entry (flatTokenFromPulledEntry), so using originalSnapshot here would silently revert
+      // the user's still-unsubmitted value edit back to the pre-edit value.
+      plan.updates.push(entryFrom('update', matched.layer, matched.path, variable.id, workingSnapshot, descriptionFill))
       continue
     }
 
-    plan.updates.push(entryFrom('update', matched.layer, matched.path, variable.id, figmaSnapshot))
+    plan.updates.push(
+      entryFrom('update', matched.layer, targetPath, variable.id, figmaSnapshot, descriptionFill, movedFrom),
+    )
   }
 
   for (const token of original) {
@@ -1556,11 +1754,17 @@ export function buildBrandPullPlan(params: {
   // Shadow tokens excluded — see buildBasePullPlan's baseIndex comment.
   // Shadow sync is Base-only anyway (docs/plans/shadow-token-type-plan.md),
   // so brand-mode values for a shadow's sub-variables are never read here.
-  const baseIndex = new Map(
+  const baseIndex: Map<string, FlatToken> = new Map(
     baseOriginal
       .filter((t): t is FlatToken & { figmaId: string } => typeof t.figmaId === 'string')
       .map(t => [t.figmaId, t]),
   )
+  // Same "device" sub-id fold as buildBasePullPlan's baseIndex above — a Component token can alias
+  // a responsive-dimension primitive at brand level too.
+  for (const t of baseOriginal) {
+    if (!isResponsiveDimensionFigmaId(t.figmaId)) continue
+    for (const id of Object.values(t.figmaId)) baseIndex.set(id, t)
+  }
   const baseByPath = new Map(baseOriginal.map(t => [t.path.join('.'), t]))
   const brandOriginalByPath = new Map(brandOriginal.map(t => [t.path.join('.'), t]))
   const brandWorkingByPath = new Map(brandWorking.map(w => [w.token.path.join('.'), w]))

@@ -1,16 +1,16 @@
 @use './toggle.mixin.scss' as toggle;
 
 /**
- * CSS-only toggle / switch toggle: apply .toggle
+ * CSS-only toggle / switch toggle: apply .ds-toggle
  *   Checkbox:
- *   <label class="toggle">
+ *   <label class="ds-toggle">
  *     <input type="checkbox">
  *     Label text
  *   </label>
  *
  */
 
-@include toggle.vars('.toggle');
-@include toggle.layout('.toggle');
-@include toggle.style('.toggle');
-@include toggle.states('.toggle');
+@include toggle.vars('.ds-toggle');
+@include toggle.layout('.ds-toggle');
+@include toggle.style('.ds-toggle');
+@include toggle.states('.ds-toggle');

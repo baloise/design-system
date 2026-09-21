@@ -7,12 +7,29 @@ type Args = JSX.DsSheet & { slot: string }
 const meta: Meta<Args> = {
   title: 'Components/Sheet/Variants',
   args: {
-    slot: `<ds-heading level="h4" space="bottom">BaloiseCombi</ds-heading>
-<p class="text-normal mb-normal">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-<ds-button-group direction="auto" align="right" space="top">
-  <ds-button>Main Action</ds-button>
-  <ds-button color="secondary">Secondary Action</ds-button>
-</ds-button-group>`,
+    slot: `
+    <!-- Mobile Variant -->
+    <div class="ds-stack tablet:hidden">
+      <div class="ds-stack-content">
+        <h3 class="ds-title is-4">CHF 460.60 per year</h3>
+        <p class="text-sm">incl. statutory charges</p>
+      </div>
+      <div class="ds-buttons">
+        <button class="ds-button is-secondary is-square" aria-label="back"><ds-icon name="caret-left"></ds-icon></button>
+        <button class="ds-button">Select offer</button>
+      </div>
+    </div>
+    <!-- Desktop Variant -->
+    <div class="ds-stack as-row mobile:hidden">
+      <div class="ds-stack-content">
+        <h3 class="ds-title">CHF 460.60 per year</h3>
+        <p class="text-sm">incl. statutory charges</p>
+      </div>
+      <div class="ds-buttons fit-content">
+        <button class="ds-button is-secondary">back</button>
+        <button class="ds-button">Select offer</button>
+      </div>
+    </div>`,
   },
   argTypes: {
     ...withComponentControls({ tag: 'ds-sheet' }),
@@ -30,10 +47,6 @@ export default meta
 const Story = StoryFactory<Args>(meta)
 
 export const Basic = Story({
-  ...withRender(
-    ({ slot, ...args }) => `<div style="display:flex;align-items:center;justify-content:center;margin:15px 0 0;">
-  <ds-sheet style="position:relative" ${props(args)}>${slot}</ds-sheet>
-</div>`,
-  ),
+  ...withRender(({ slot, ...args }) => `<ds-sheet style="position:relative" ${props(args)}>${slot}</ds-sheet>`),
 })
 Basic.storyName = '🧩 Basic'

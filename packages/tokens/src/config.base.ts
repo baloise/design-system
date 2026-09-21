@@ -3,6 +3,33 @@ import { Config } from 'style-dictionary'
 const basePxFontSize = 16
 const mode = 'Base'
 
+// Shared with config.brand.ts — a brand's css platform must transform every token type the same
+// way Base's own build does, since a brand's output is now a full merged set (see
+// docs/adr/0030-full-merge-brand-token-css.md), not a small diff. Keeping one list instead of two
+// prevents them silently drifting apart the way they had (config.brand.ts was missing 'ds/border'
+// and used 'ds/font-family' where this list uses the stock 'fontFamily/css').
+export const BASE_CSS_TRANSFORMS = [
+  'attribute/cti',
+  'name/kebab',
+  'time/seconds',
+  'html/icon',
+  'size/rem',
+  'color/css',
+  'asset/url',
+  'fontFamily/css',
+  'cubicBezier/css',
+  'strokeStyle/css/shorthand',
+  'transition/css/shorthand',
+  'ds/css/name',
+  'ds/color/rgba',
+  'ds/size/round',
+  'ds/size/rem',
+  'ds/font-weight',
+  'ds/shadow',
+  'ds/border',
+  'ds/typography',
+]
+
 const config: Config = {
   source: [`tokens/${mode}.tokens.json`],
   platforms: {
@@ -22,27 +49,7 @@ const config: Config = {
       // (docs/plans/typography-token-type-plan.md decision 5) — verified directly, same as
       // shadow/border's own built-ins (the shorthand only became visible once a real
       // $type: "typography" token existed to trigger its filter).
-      transforms: [
-        'attribute/cti',
-        'name/kebab',
-        'time/seconds',
-        'html/icon',
-        'size/rem',
-        'color/css',
-        'asset/url',
-        'fontFamily/css',
-        'cubicBezier/css',
-        'strokeStyle/css/shorthand',
-        'transition/css/shorthand',
-        'ds/css/name',
-        'ds/color/rgba',
-        'ds/size/round',
-        'ds/size/rem',
-        'ds/font-weight',
-        'ds/shadow',
-        'ds/border',
-        'ds/typography',
-      ],
+      transforms: BASE_CSS_TRANSFORMS,
       basePxFontSize,
       buildPath: 'dist/',
       prefix: 'ds',
@@ -50,6 +57,14 @@ const config: Config = {
         {
           format: 'ds/css/variables-responsive',
           destination: `css/${mode.toLowerCase()}.tokens.css`,
+        },
+        {
+          format: 'ds/css/variables-brand',
+          destination: `css/${mode.toLowerCase()}.override.css`,
+          options: {
+            selector: `[data-theme="${mode.toLowerCase()}"], :host([data-theme="${mode.toLowerCase()}"])`,
+            outputReferences: true,
+          },
         },
       ],
       options: {
@@ -59,7 +74,7 @@ const config: Config = {
     sass: {
       // CSS custom properties can't appear inside an `@media` condition (`@media (min-width:
       // var(--x))` is invalid per spec, not just unsupported) — so
-      // packages/css/src/scss/mixins/breakpoint.mixin.scss needs real Sass variables, resolved at
+      // packages/styles/src/scss/mixins/breakpoint.mixin.scss needs real Sass variables, resolved at
       // compile time, for its `@media` conditions and `- 1px` arithmetic. This platform exists
       // solely to feed that: filtered to breakpoint tokens only (Global.Dimension.Breakpoint.* and
       // Alias.Breakpoint.*, the latter referencing the former — both must ship together for the

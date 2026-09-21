@@ -1,10 +1,8 @@
 import { describe, expect, it } from 'vitest'
 import {
   invalidSegments,
-  isReservedSegmentName,
   isValidSegmentName,
   parseTokenPath,
-  reservedSegments,
   resolveGroupSegments,
   sanitizePathInput,
   sanitizeSegmentInput,
@@ -116,32 +114,6 @@ describe('invalidSegments', () => {
 
   it('returns an empty array for a fully valid name', () => {
     expect(invalidSegments('Color.Danger.700')).toEqual([])
-  })
-})
-
-describe('isReservedSegmentName', () => {
-  it('flags "default" case-insensitively', () => {
-    expect(isReservedSegmentName('default')).toBe(true)
-    expect(isReservedSegmentName('Default')).toBe(true)
-    expect(isReservedSegmentName('DEFAULT')).toBe(true)
-  })
-
-  it('does not flag a segment that merely contains the word', () => {
-    expect(isReservedSegmentName('DefaultColor')).toBe(false)
-  })
-
-  it('does not flag an unrelated segment', () => {
-    expect(isReservedSegmentName('Color')).toBe(false)
-  })
-})
-
-describe('reservedSegments', () => {
-  it('returns only the reserved segments of a dot-joined name', () => {
-    expect(reservedSegments('Color.Default.700')).toEqual(['Default'])
-  })
-
-  it('returns an empty array when no segment is reserved', () => {
-    expect(reservedSegments('Color.Danger.700')).toEqual([])
   })
 })
 

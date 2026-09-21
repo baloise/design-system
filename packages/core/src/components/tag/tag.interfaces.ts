@@ -19,7 +19,7 @@ export const TAG_COLORS = [
   'green-light',
 ] as const
 
-export const TAG_SIZES = ['sm', 'md', 'lg', 'small', 'medium', 'large'] as const
+export const TAG_SIZES = ['sm', 'md', 'lg'] as const
 export const TAG_FONT_WEIGHTS = ['regular', 'bold'] as const
 export const TAG_PLACEMENTS = ['left', 'center', 'right'] as const
 

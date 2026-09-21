@@ -1,0 +1,51 @@
+name: 🤖 Dependabot Lockfile Fix
+
+## Dependabot doesn't fully support pnpm catalogs yet (see
+## https://github.com/dependabot/dependabot-core/issues/14339): when it bumps a
+## catalog-managed dependency, it can write a literal resolved version into a
+## lockfile importer's "specifier" field instead of leaving it as "catalog:",
+## which then fails `pnpm install --frozen-lockfile` in the main CI workflow.
+## Re-running a plain `pnpm install` regenerates the lockfile correctly, so
+## this workflow does that and pushes the fix straight back onto the PR branch.
+## It also runs on demand (workflow_dispatch) against any branch, in case a
+## lockfile needs repairing outside of a dependabot PR.
+
+on:
+  pull_request:
+    branches:
+      - next
+  workflow_dispatch:
+    inputs:
+      branch:
+        description: 'Branch to repair (defaults to the branch the workflow is run from)'
+        required: false
+        type: string
+
+permissions:
+  contents: write
+
+jobs:
+  fix-lockfile:
+    if: github.event_name == 'workflow_dispatch' || github.actor == 'dependabot[bot]'
+    name: 🔧 Repair pnpm-lock.yaml
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    env:
+      HUSKY: 0
+    steps:
+      - name: Check out branch
+        uses: actions/checkout@v7
+        with:
+          ref: ${{ github.event_name == 'workflow_dispatch' && (inputs.branch || github.ref) || github.event.pull_request.head.ref }}
+          persist-credentials: true
+
+      - uses: ./.github/workflows/actions/setup-environment
+
+      - name: Regenerate lockfile
+        run: pnpm install --no-frozen-lockfile
+
+      - name: Commit lockfile if changed
+        uses: stefanzweifel/git-auto-commit-action@v7
+        with:
+          commit_message: 'chore: repair pnpm-lock.yaml catalog specifiers'
+          file_pattern: pnpm-lock.yaml

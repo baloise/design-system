@@ -6,5 +6,5 @@
   * Define here the component styles using the mixin to support host and non-host mode for hybrid components.
   */
 
-@include group.style('.checkbox-group');
-@include group.vertical('.checkbox-group');
+@include group.style('.ds-checkbox-group');
+@include group.vertical('.ds-checkbox-group');

@@ -2,7 +2,7 @@
  * Create changeset — interactive prompt to generate changeset entries
  *
  * Interactive:     node scripts/create-changeset.mjs
- * Non-interactive: node scripts/create-changeset.mjs --bump=minor --scope=core,input-slider --summary="..."
+ * Non-interactive: node scripts/create-changeset.mjs --bump=minor --scope=core,slider --summary="..."
  */
 import prompts from 'prompts'
 import { readFile, rm, writeFile } from 'node:fs/promises'
@@ -16,13 +16,13 @@ const BUMP_LEVELS = ['patch', 'minor', 'major']
 
 /**
  * Maps a scope choice to the package it should bump. Scopes without an entry here
- * (component tags like `input-slider`, or cross-cutting scopes like `a11y`/`deps`/`table`/`devkit`)
+ * (component tags like `slider`, or cross-cutting scopes like `a11y`/`deps`/`table`/`devkit`)
  * fall back to `@baloise/ds-core`, since that's where components/utilities actually live.
  */
 const SCOPE_PACKAGE_MAP = {
   core: '@baloise/ds-core',
   angular: '@baloise/ds-angular',
-  css: '@baloise/ds-css',
+  styles: '@baloise/ds-styles',
   tokens: '@baloise/ds-tokens',
   react: '@baloise/ds-react',
   assets: '@baloise/ds-assets',
@@ -167,7 +167,7 @@ async function runInteractive() {
         choices: [
           { title: 'core', value: 'core' },
           { title: 'angular', value: 'angular' },
-          { title: 'css', value: 'css' },
+          { title: 'styles', value: 'styles' },
           { title: 'devkit', value: 'devkit' },
           { title: 'testing', value: 'testing' },
           { title: 'tokens', value: 'tokens' },

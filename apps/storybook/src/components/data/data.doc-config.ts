@@ -6,12 +6,12 @@ export const DATA_DOC_CONFIG = {
   section: 'Components / Data',
   color: 'purple' as const,
   tabs: [
-    { label: 'Overview', storyId: 'components-data--data' },
-    { label: 'Usage', storyId: 'components-data--usage' },
-    { label: 'Variants', storyId: 'components-data--variants-overview' },
-    { label: 'Styling', storyId: 'components-data--styling' },
-    { label: 'Accessibility', storyId: 'components-data--accessibility' },
-    { label: 'Testing', storyId: 'components-data--testing' },
+    { label: 'Overview', storyId: 'components-data-data--data' },
+    { label: 'Usage', storyId: 'components-data-usage--usage' },
+    { label: 'Variants', storyId: 'components-data-variants-overview--overview' },
+    { label: 'Styling', storyId: 'components-data-styling--styling' },
+    { label: 'Accessibility', storyId: 'components-data-accessibility--accessibility' },
+    { label: 'Testing', storyId: 'components-data-testing--testing' },
   ],
 }
 

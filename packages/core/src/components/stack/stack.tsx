@@ -143,7 +143,7 @@ export class Stack implements DsComponentInterface {
     return (
       <Host
         class={{
-          'stack': true,
+          'ds-stack': true,
           'as-row': this.direction === 'row',
           'as-col': this.direction === 'column',
           'has-wrap': this.useWrap === true,

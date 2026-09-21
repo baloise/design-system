@@ -5,7 +5,7 @@
  * @variant is-invalid - Invalid select state with red chevron icon indicator.
  */
 
-@use '@baloise/ds-css/dist/scss/mixins' as *;
+@use '@baloise/ds-styles/dist/scss/mixins' as *;
 @use '../../vars' as vars;
 @use '../form/form.mixin' as form;
 @use '../input/input.mixin' as input;
@@ -24,7 +24,7 @@
  * @prop --select-placeholder - Text color of the select placeholder text.
  */
 
-.select {
+.ds-select {
   @include input.vars('select');
 }
 
@@ -33,10 +33,10 @@
  * --------------------------------
  */
 
-.field {
-  @include input.style('select', '.select');
+.ds-field {
+  @include input.style('select', '.ds-select');
 
-  .control {
+  .ds-control {
     select {
       flex: 1;
       min-width: 0;

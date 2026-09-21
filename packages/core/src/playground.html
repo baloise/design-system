@@ -5,22 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <link rel="stylesheet" href="/assets/section.css" />
+    <link rel="stylesheet" href="/assets/tokens/base.tokens.css" />
     <link rel="stylesheet" href="/assets/css/design-system.local.min.css" />
+    <link rel="stylesheet" href="/assets/css/utilities.min.css" />
 
     <script type="module" src="/build/design-system.esm.js"></script>
     <script nomodule src="/build/design-system.js"></script>
   </head>
   <body>
-    <ds-navbar>
-      <a href="/" slot="brand"><ds-logo color="white"></ds-logo></a>
+    <ds-app-navbar>
+      <a href="/" slot="brand"><ds-logo color="inverted"></ds-logo></a>
       <h1 slot="title">Kitchensink</h1>
       <a href="/" slot="menu-start" aria-current="page">Home</a>
       <a href="/about" slot="menu-start">About</a>
       <a href="/contact" slot="menu-start">Contact</a>
       <ds-button slot="actions" color="secondary">Sign In</ds-button>
-    </ds-navbar>
+    </ds-app-navbar>
 
-    <main class="container my-lg">
+    <main class="ds-container my-lg">
       <ds-card>
         <ds-card-header>
           <ds-card-title>User Information</ds-card-title>
@@ -28,8 +30,8 @@
         </ds-card-header>
         <ds-card-content>
           <form>
-            <div class="form">
-              <div class="form-col">
+            <div class="ds-form">
+              <div class="ds-form-col">
                 <ds-select name="gender" label="Gender" description="Select your gender" required>
                   <ds-select-option value="f">Female</ds-select-option>
                   <ds-select-option value="m">Male</ds-select-option>
@@ -37,24 +39,24 @@
                 </ds-select>
               </div>
 
-              <div class="form-col tablet:is-6">
+              <div class="ds-form-col tablet:is-6">
                 <ds-input name="firstName" label="First Name" required></ds-input>
               </div>
-              <div class="form-col tablet:is-6">
+              <div class="ds-form-col tablet:is-6">
                 <ds-input name="lastName" label="Last Name" required></ds-input>
               </div>
 
-              <div class="form-col tablet:is-6">
-                <ds-date name="birthday" label="Date of Birth" description="DD.MM.YYYY" required></ds-date>
+              <div class="ds-form-col tablet:is-6">
+                <ds-datepicker name="birthday" label="Date of Birth" description="DD.MM.YYYY" required></ds-datepicker>
               </div>
 
-              <div class="form-col tablet:is-9">
+              <div class="ds-form-col tablet:is-9">
                 <ds-input name="street" label="Street" required></ds-input>
               </div>
-              <div class="form-col tablet:is-3">
+              <div class="ds-form-col tablet:is-3">
                 <ds-input name="zip" label="ZIP" required></ds-input>
               </div>
-              <div class="form-col">
+              <div class="ds-form-col">
                 <ds-input name="city" label="City" required></ds-input>
               </div>
             </div>
@@ -67,6 +69,6 @@
       </ds-card>
     </main>
 
-    <ds-footer legal-text="© 2026 Helvetia Versicherungen"></ds-footer>
+    <ds-app-footer legal-text="© 2026 Helvetia Versicherungen"></ds-app-footer>
   </body>
 </html>

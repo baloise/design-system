@@ -1,4 +1,4 @@
-@use '@baloise/ds-css/dist/scss/mixins' as *;
+@use '@baloise/ds-styles/dist/scss/mixins' as *;
 
 // ─── Host layout ─────────────────────────────────────────────────────────────
 // Default: circle top, label below (column). Flex: 1 so all steps share equal width.
@@ -36,6 +36,7 @@
   font-family: var(--_steps-step-font-family);
   font-size: var(--_steps-step-font-size);
   font-weight: var(--_steps-step-font-weight);
+  line-height: 1;
   transition:
     background-color 180ms ease,
     color 180ms ease;
@@ -46,6 +47,7 @@
   cursor: not-allowed;
 }
 
+// line-height: 1 (not the typo token) keeps the invalid icon glyph centered in the circle.
 .step-invalid {
   color: var(--_steps-circle-color-text-invalid);
   font-family: var(--_steps-step-font-family);
@@ -94,6 +96,7 @@
   font-family: var(--_steps-step-font-family);
   font-size: var(--_steps-step-font-size);
   font-weight: var(--_steps-step-font-weight);
+  line-height: var(--_steps-step-line-height);
   transition: color 180ms ease;
 }
 
@@ -101,7 +104,12 @@
   color: var(--_steps-step-color-selected);
 }
 
+:host(.is-done) .step-label {
+  color: var(--_steps-step-color-done);
+}
+
 :host(.is-disabled) .step-label {
+  color: var(--_steps-step-color-disabled);
   opacity: 0.4;
 }
 
@@ -208,6 +216,7 @@
   font-family: var(--_steps-step-font-family);
   font-size: var(--_steps-step-font-size);
   font-weight: var(--_steps-step-font-weight);
+  line-height: var(--_steps-step-line-height);
   transition: color 180ms ease;
   outline: none;
 }
@@ -215,6 +224,11 @@
 :host(.is-navigation.is-selected) ::slotted(a),
 :host(.is-navigation) ::slotted([aria-current]) {
   color: var(--_steps-step-color-selected);
+}
+
+:host(.is-navigation.is-disabled) ::slotted(a) {
+  color: var(--_steps-step-color-disabled);
+  opacity: 0.4;
 }
 
 :host(.is-navigation) ::slotted(a:focus-visible) {

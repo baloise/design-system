@@ -1,4 +1,3 @@
-import { BrandIconCarCrashWithAnimalGreen } from '@baloise/ds-assets'
 import type { JSX } from '@baloise/ds-core'
 import type { Meta } from '@storybook/html-vite'
 import { props, StoryFactory, withComponentControls, withRender } from '../../utils'
@@ -42,7 +41,7 @@ export const UiIcons = Story({
   },
   ...withRender(
     () =>
-      `<div class="flex gap-medium flex-wrap">
+      `<div class="flex gap-md flex-wrap">
       ${[
         'youtube',
         'xing',
@@ -133,7 +132,7 @@ export const UiIcons = Story({
       ]
         .sort()
         .map(
-          item => `<div class="flex gap-small flex-wrap align-items-center" style="min-width: 220px">
+          item => `<div class="flex gap-sm flex-wrap align-items-center" style="min-width: 220px">
       <ds-icon name="${item}" size="md"></ds-icon>
       <span>${item}</span>
     </div>`,
@@ -147,10 +146,10 @@ UiIcons.storyName = '🧩 UI Icons'
 export const Sizes = Story({
   ...withRender(
     () =>
-      `<div class="stack">
+      `<div class="ds-stack">
       ${['sm', 'base', 'md', 'lg', 'xl']
         .map(
-          item => `<div class="stack as-row">
+          item => `<div class="ds-stack as-row">
       <ds-icon name="info-circle" size="${item}"></ds-icon>
       <span>${item}</span>
     </div>`,
@@ -160,3 +159,20 @@ export const Sizes = Story({
   ),
 })
 Sizes.storyName = '🧩 Sizes'
+
+export const Colors = Story({
+  ...withRender(
+    () =>
+      `<div class="ds-stack">
+      ${['primary', 'info', 'grey', 'success', 'danger', 'warning']
+        .map(
+          item => `<div class="ds-stack as-row">
+      <ds-icon name="info-circle" size="lg" color="${item}"></ds-icon>
+      <span>${item}</span>
+    </div>`,
+        )
+        .join(' ')}
+</div>`,
+  ),
+})
+Colors.storyName = '🧩 Colors'

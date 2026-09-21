@@ -19,7 +19,7 @@ protocol, to simulate a real npm-installed consumer (see ADR-0004).
 
 That protection came at a real cost: a separate lockfile and
 `node_modules` per app, an explicit `link.sh` step to wire up
-`@baloise/ds-core`/`ds-css`/`ds-assets`/`ds-tokens` by hand, and a
+`@baloise/ds-core`/`ds-styles`/`ds-assets`/`ds-tokens` by hand, and a
 scaffold-then-link-then-start dance (`build.sh` + `start.sh`) neither
 `pnpm install` nor `turbo` know about. Since only the latest version of
 each framework is ever supported (no version matrix to test against),

@@ -23,8 +23,8 @@ This guide covers local development setup and common workflows for the Helvetia 
 
 ### Prerequisites
 
-- **Node.js**: >=24 <25 (check with `node --version`)
-- **pnpm**: 10.x (pinned via `packageManager`; check with `pnpm --version`)
+- **Node.js**: >=24 <25 (check with `node --version`; this repo ships an `.nvmrc`)
+- **pnpm**: 11.x — pinned as `pnpm@11.15.1` via `packageManager` in `package.json` (check with `pnpm --version`)
 - **Git**: for cloning and version control
 
 ### Initial Setup
@@ -34,12 +34,18 @@ This guide covers local development setup and common workflows for the Helvetia 
 git clone https://github.com/baloise/design-system.git
 cd design-system
 
+# Switch to the Node.js version from .nvmrc
+nvm use
+
+# Enable Corepack so the pinned pnpm version is used
+corepack enable
+
 # Install dependencies (use ci for reproducible builds)
 pnpm install --frozen-lockfile
 
 # Start development
 pnpm start                # Core components dev server (http://localhost:3333)
-pnpm docs             # Storybook documentation (http://localhost:6006)
+pnpm run docs             # Storybook documentation (http://localhost:6006)
 ```
 
 The dev servers support hot reloading — changes to components and styles are reflected immediately.
@@ -82,7 +88,7 @@ pnpm build
 # Build specific packages
 pnpm build -- --filter=@baloise/ds-core     # Web components
 pnpm build -- --filter=@baloise/ds-tokens   # Design tokens
-pnpm build -- --filter=@baloise/ds-css      # Styles
+pnpm build -- --filter=@baloise/ds-styles      # Styles
 
 # Build docs for production
 pnpm build:docs
@@ -204,13 +210,13 @@ Tokens sync to `@baloise/ds-tokens` package and are imported by components.
 
 ### Update Global Styles
 
-Global styles live in `packages/css/dist/css`:
+Global styles live in `packages/styles/dist/css`:
 
 ```bash
-pnpm css        # Rebuild CSS
+pnpm styles     # Rebuild CSS
 ```
 
-Outputs to `@baloise/ds-css` package.
+Outputs to `@baloise/ds-styles` package.
 
 ### Create Storybook Stories
 
@@ -223,6 +229,16 @@ pnpm docs       # Start Storybook to preview stories
 See existing stories for patterns and helpers.
 
 ## Troubleshooting
+
+### `npm install` fails with `EUNSUPPORTEDPROTOCOL` / `catalog:`
+
+Use pnpm, not npm. This workspace declares shared versions as `"catalog:"` in `package.json` files (resolved from `pnpm-workspace.yaml`). npm does not understand that protocol.
+
+```bash
+nvm use
+corepack enable
+pnpm install --frozen-lockfile
+```
 
 ### Dependencies won't install
 

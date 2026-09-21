@@ -66,6 +66,15 @@ export const debounce = (func: (...args: any[]) => void, wait = 0) => {
   }
 }
 
+const executeInlineScripts = (root: HTMLElement) => {
+  root.querySelectorAll('script').forEach(oldScript => {
+    const newScript = document.createElement('script')
+    Array.from(oldScript.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.textContent = oldScript.textContent
+    oldScript.replaceWith(newScript)
+  })
+}
+
 export const withRender = (callback: (context: any) => string) => ({
   render: render(callback),
 })
@@ -93,6 +102,7 @@ export const renderer = ({ args, template }) => {
   })
 
   section.innerHTML = template
+  executeInlineScripts(section)
   return section
 }
 
@@ -123,5 +133,6 @@ export const rendererWithTrigger = ({ args, template }) => {
   })
 
   section.innerHTML = template
+  executeInlineScripts(section)
   return section
 }

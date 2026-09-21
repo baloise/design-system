@@ -9,29 +9,59 @@ const meta: Meta<Args> = {
   argTypes: {},
   ...withRender(
     () => `
-<table class="table is-wide">
+<table class="ds-table is-wide">
   <thead>
     <tr>
+      <th>Selected</th>
       <th>Name</th>
-      <th>Role</th>
       <th>Status</th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td>Alice</td>
-      <td>Admin</td>
-      <td>Active</td>
+      <td>
+        <ds-checkbox id="checkbox1"></ds-checkbox>
+      </td>
+      <td>Tony Stark</td>
+      <td><span class="ds-tag is-success is-sm">Ready</span></td>
+      <td class="has-buttons">
+        <ds-button color="tertiary" size="sm" icon="edit" square="true" outlined="true"></ds-button>
+        <ds-button color="tertiary" size="sm" icon="trash" square="true" outlined="true"></ds-button>
+      </td>
     </tr>
-    <tr>
-      <td>Bob</td>
-      <td>Editor</td>
-      <td>Inactive</td>
+        <tr>
+      <td>
+        <ds-checkbox id="checkbox2"></ds-checkbox>
+      </td>
+      <td>Steve Rogers</td>
+      <td><span class="ds-tag is-danger is-sm">Injured</span></td>
+      <td class="has-buttons">
+        <ds-button color="tertiary" size="sm" icon="edit" square="true" outlined="true"></ds-button>
+        <ds-button color="tertiary" size="sm" icon="trash" square="true" outlined="true"></ds-button>
+      </td>
     </tr>
-    <tr>
-      <td>Carol</td>
-      <td>Viewer</td>
-      <td>Active</td>
+        <tr>
+      <td>
+        <ds-checkbox id="checkbox3"></ds-checkbox>
+      </td>
+      <td>Peter Parker</td>
+      <td><span class="ds-tag is-info is-sm">In School</span></td>
+      <td class="has-buttons">
+        <ds-button color="tertiary" size="sm" icon="edit" square="true" outlined="true"></ds-button>
+        <ds-button color="tertiary" size="sm" icon="trash" square="true" outlined="true"></ds-button>
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <ds-checkbox id="checkbox4"></ds-checkbox>
+      </td>
+      <td>John Doe</td>
+      <td><span class="ds-tag is-sm">Unknown</span></td>
+      <td class="has-buttons">
+        <ds-button color="tertiary" size="sm" icon="edit" square="true" outlined="true"></ds-button>
+        <ds-button color="tertiary" size="sm" icon="trash" square="true" outlined="true"></ds-button>
+      </td>
     </tr>
   </tbody>
 </table>
@@ -54,7 +84,7 @@ Basic.storyName = '🧩 Basic'
 export const Striped = Story({
   ...withRender(
     () => `
-<table class="table is-wide is-striped is-hoverable">
+<table class="ds-table is-wide is-striped is-hoverable">
   <thead>
     <tr>
       <th>Name</th>
@@ -93,7 +123,7 @@ Striped.storyName = '🧩 Striped'
 export const Narrow = Story({
   ...withRender(
     () => `
-<table class="table is-narrow">
+<table class="ds-table is-narrow">
   <thead>
     <tr>
       <th>Name</th>

@@ -1,0 +1,25 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  ComponentCssVariables,
+  ComponentCssVariants,
+  ComponentDesignTokens,
+  Footer,
+} from '../../../.storybook/blocks'
+import * as GridStories from './grid.stories'
+import { GRID_DOC_CONFIG, getGridTabs } from './grid.doc-config'
+
+<Meta title="Components/Grid/Styling" name="Styling" />
+
+<Banner label={'Styling'} section={GRID_DOC_CONFIG.section} color={GRID_DOC_CONFIG.color} />
+
+<BannerTabs of={GridStories} tabs={getGridTabs('styling')} />
+
+<ComponentCssVariables component="grid" />
+
+<ComponentCssVariants component="grid" />
+
+<ComponentDesignTokens component="grid" />
+
+<Footer />

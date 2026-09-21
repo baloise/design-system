@@ -54,26 +54,6 @@ describe('validateWorkingTokens', () => {
     expect(validateWorkingTokens(items)).toEqual([])
   })
 
-  it('flags a reserved word used as a segment', () => {
-    const items = [working('a', { name: 'Color.Default' })]
-    const errors = validateWorkingTokens(items)
-    expect(errors).toContainEqual({
-      tokenKey: 'a',
-      message: '"Default" is a reserved word and cannot be used in a token path.',
-      severity: 'error',
-    })
-  })
-
-  it('flags a reserved word case-insensitively', () => {
-    const items = [working('a', { name: 'DEFAULT' })]
-    const errors = validateWorkingTokens(items)
-    expect(errors).toContainEqual({
-      tokenKey: 'a',
-      message: '"DEFAULT" is a reserved word and cannot be used in a token path.',
-      severity: 'error',
-    })
-  })
-
   it('flags two tokens resolving to the same layer+name as duplicates', () => {
     const items = [
       working('a', { name: 'Color.White', layer: 'Global' }),
@@ -176,6 +156,19 @@ describe('validateWorkingTokens', () => {
     const items = [
       working('a', { name: 'Background.White', layer: 'Alias' }),
       working('b', { name: 'Foo', layer: 'Component', referenceTarget: '🔗 Alias.Background.White' }),
+    ]
+    expect(validateWorkingTokens(items)).toEqual([])
+  })
+
+  it('does not warn when a Component token references Global Dimension/Size directly', () => {
+    const items = [
+      working('a', { name: '📏 Dimension.Size.48', layer: 'Global', type: 'dimension' }),
+      working('b', {
+        name: 'Foo',
+        layer: 'Component',
+        type: 'dimension',
+        referenceTarget: '🌐 Global.📏 Dimension.Size.48',
+      }),
     ]
     expect(validateWorkingTokens(items)).toEqual([])
   })

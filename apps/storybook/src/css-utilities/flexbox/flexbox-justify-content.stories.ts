@@ -12,55 +12,55 @@ const Story = StoryFactory(meta)
 
 export const Start = Story({
   ...withRender(
-    () => `<div class="flex justify-content-start flex-flex-wrap gap-normal">
-    <div class="bg-red radius p-normal">1</div>
-    <div class="bg-red radius p-normal">2</div>
-    <div class="bg-red radius p-normal">3</div>
+    () => `<div class="flex justify-content-start flex-flex-wrap gap-base">
+    <div class="bg-red radius p-base">1</div>
+    <div class="bg-red radius p-base">2</div>
+    <div class="bg-red radius p-base">3</div>
 </div>`,
   ),
 })
 export const Center = Story({
   ...withRender(
-    () => `<div class="flex justify-content-center flex-flex-wrap gap-normal">
-    <div class="bg-red radius p-normal">1</div>
-    <div class="bg-red radius p-normal">2</div>
-    <div class="bg-red radius p-normal">3</div>
+    () => `<div class="flex justify-content-center flex-flex-wrap gap-base">
+    <div class="bg-red radius p-base">1</div>
+    <div class="bg-red radius p-base">2</div>
+    <div class="bg-red radius p-base">3</div>
 </div>`,
   ),
 })
 export const End = Story({
   ...withRender(
-    () => `<div class="flex justify-content-end flex-flex-wrap gap-normal">
-    <div class="bg-red radius p-normal">1</div>
-    <div class="bg-red radius p-normal">2</div>
-    <div class="bg-red radius p-normal">3</div>
+    () => `<div class="flex justify-content-end flex-flex-wrap gap-base">
+    <div class="bg-red radius p-base">1</div>
+    <div class="bg-red radius p-base">2</div>
+    <div class="bg-red radius p-base">3</div>
 </div>`,
   ),
 })
 export const SpaceBetween = Story({
   ...withRender(
-    () => `<div class="flex justify-content-space-between flex-flex-wrap gap-normal">
-    <div class="bg-red radius p-normal">1</div>
-    <div class="bg-red radius p-normal">2</div>
-    <div class="bg-red radius p-normal">3</div>
+    () => `<div class="flex justify-content-space-between flex-flex-wrap gap-base">
+    <div class="bg-red radius p-base">1</div>
+    <div class="bg-red radius p-base">2</div>
+    <div class="bg-red radius p-base">3</div>
 </div>`,
   ),
 })
 export const SpaceAround = Story({
   ...withRender(
-    () => `<div class="flex justify-content-space-around flex-flex-wrap gap-normal">
-    <div class="bg-red radius p-normal">1</div>
-    <div class="bg-red radius p-normal">2</div>
-    <div class="bg-red radius p-normal">3</div>
+    () => `<div class="flex justify-content-space-around flex-flex-wrap gap-base">
+    <div class="bg-red radius p-base">1</div>
+    <div class="bg-red radius p-base">2</div>
+    <div class="bg-red radius p-base">3</div>
 </div>`,
   ),
 })
 export const SpaceEvenly = Story({
   ...withRender(
-    () => `<div class="flex justify-content-space-evenly flex-flex-wrap gap-normal">
-    <div class="bg-red radius p-normal">1</div>
-    <div class="bg-red radius p-normal">2</div>
-    <div class="bg-red radius p-normal">3</div>
+    () => `<div class="flex justify-content-space-evenly flex-flex-wrap gap-base">
+    <div class="bg-red radius p-base">1</div>
+    <div class="bg-red radius p-base">2</div>
+    <div class="bg-red radius p-base">3</div>
 </div>`,
   ),
 })

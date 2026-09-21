@@ -41,12 +41,18 @@
       "import": "./loader/index.js",
       "require": "./loader/index.cjs.js"
     },
+    "./hydrate": {
+      "types": "./hydrate/index.d.ts",
+      "import": "./hydrate/index.mjs",
+      "require": "./hydrate/index.js"
+    },
     "./*": "./*"
   },
   "files": [
     "components/",
     "dist/",
     "docs/",
+    "hydrate/",
     "loader/"
   ],
   "scripts": {
@@ -66,26 +72,28 @@
   },
   "dependencies": {
     "@baloise/ds-assets": "20.0.0-next.10",
-    "@baloise/ds-css": "20.0.0-next.10",
+    "@baloise/ds-styles": "20.0.0-next.10",
     "@baloise/ds-tokens": "20.0.0-next.10",
     "@floating-ui/dom": "1.8.0",
     "@stencil/core": "catalog:",
     "air-datepicker": "3.6.0",
     "big.js": "^7.0.1",
-    "dompurify": "3.4.14",
+    "country-flag-icons": "^1.6.20",
+    "dompurify": "3.4.15",
     "focus-trap": "8.2.2",
     "imask": "7.6.1",
+    "libphonenumber-js": "^1.13.13",
     "lodash": "catalog:",
     "lottie-colorify": "0.8.0",
     "lottie-web": "5.8.1",
     "luxon": "3.7.2",
     "nouislider": "15.8.1",
-    "slim-select": "4.2.0",
+    "slim-select": "4.2.4",
     "tslib": "catalog:"
   },
   "devDependencies": {
     "@baloise/ds-playwright": "20.0.0-next.10",
-    "@stencil/angular-output-target": "1.4.1",
+    "@stencil/angular-output-target": "1.5.0",
     "@stencil/react-output-target": "1.6.2",
     "@types/big.js": "^7.0.0",
     "@types/lodash": "4.17.25",

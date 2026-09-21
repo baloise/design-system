@@ -20,7 +20,7 @@ export const A11yGuidelines = ({ items }: A11yGuidelinesProps): React.ReactEleme
         return (
           <div
             key={index}
-            className="stack as-row"
+            className="ds-stack as-row"
             style={{
               padding: '1rem',
               backgroundColor: '#fafafa',
@@ -33,8 +33,8 @@ export const A11yGuidelines = ({ items }: A11yGuidelinesProps): React.ReactEleme
               size="md"
               style={{ '--icon-color': borderColor } as React.CSSProperties}
             ></ds-icon>
-            <div className="content">
-              <strong className="title is-lg">{item.title}</strong>
+            <div className="ds-content">
+              <strong className="ds-title is-lg">{item.title}</strong>
               <div style={{ margin: '0.5rem 0 0 0' }}>{item.content}</div>
             </div>
           </div>

@@ -62,7 +62,7 @@ export const StackAccordion = Story({
 <ds-card>
   <ds-card-content>
     <ds-accordion ${props(args)}>
-      <div slot="summary" class="stack as-row">
+      <div slot="summary" class="ds-stack as-row">
         <ds-icon
           svg='&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" focusable="false" aria-hidden="true"&gt;&lt;path fill="none" d="M0 0h40v40H0z"/&gt;&lt;g&gt;&lt;path d="M27 28h5v3a1 1 0 0 1-1 1h-3a1 1 0 0 1-1-1zM8 28h5v3a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1z" fill="#000d6e"/&gt;&lt;rect x="31" y="14" width="3" height="2" rx="0.5" fill="#1b5951"/&gt;&lt;rect x="6" y="14" width="3" height="2" rx="0.5" fill="#1b5951"/&gt;&lt;path d="m31.69 20-1-3H9.33l-1 3A3.9 3.9 0 0 0 8 21.54V27h24v-5.46a3.9 3.9 0 0 0-.31-1.54M11.5 24a1.5 1.5 0 1 1 1.5-1.5 1.5 1.5 0 0 1-1.5 1.5m17 0a1.5 1.5 0 1 1 1.5-1.5 1.5 1.5 0 0 1-1.5 1.5" fill="#1b5951"/&gt;&lt;path d="M27.77 9.85A3 3 0 0 0 25 8H15a3 3 0 0 0-2.77 1.85L9.67 16h20.66Z" fill="#94e3d4"/&gt;&lt;/g&gt;&lt;/svg&gt;'
           tile
@@ -71,9 +71,9 @@ export const StackAccordion = Story({
           size="lg"
           class="align-self-start"
         ></ds-icon>
-        <div class="stack-content">
-          <h5 class="title">Label Heading</h5>
-          <span class="text is-sm">${slotSummary}</span>
+        <div class="ds-stack-content">
+          <h5 class="ds-title">Label Heading</h5>
+          <span class="ds-text is-sm">${slotSummary}</span>
         </div>
         <ds-toggle></ds-toggle>
       </div>
@@ -96,12 +96,12 @@ export const AccordionGroup = Story({
   <div slot="summary">${slotSummary} 1</div>
   <div slot="content" class="py-base bg-purple-2">${slotContent}</div>
 </ds-accordion>
-<hr class="divider" />
+<hr class="ds-divider" />
 <ds-accordion group="accordion-group">
   <div slot="summary">${slotSummary} 2</div>
   <div slot="content" class="py-base bg-yellow-2">${slotContent}</div>
 </ds-accordion>
-<hr class="divider" />
+<hr class="ds-divider" />
 <ds-accordion group="accordion-group" open>
   <div slot="summary">${slotSummary} 3</div>
   <div slot="content" class="py-base bg-red-2">${slotContent}</div>

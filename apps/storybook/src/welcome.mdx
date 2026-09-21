@@ -21,7 +21,7 @@ import StyleDictionaryLogo from './assets/images/style-dictionary-logo.png'
   <div className="flex gap-lg mt-3xl">
     <div className="flex flex-1 justify-content-center align-items-center flex-direction-column">
       <ds-logo animated={true} size="lg"></ds-logo>
-      <h2 className="subtitle text-5xl mt-sm">design system</h2>
+      <h2 className="ds-subtitle text-5xl mt-sm">design system</h2>
     </div>
   </div>
   <p className="text-xl text-primary-light mt-base text-align-center" bold>
@@ -34,20 +34,20 @@ import StyleDictionaryLogo from './assets/images/style-dictionary-logo.png'
     <div className="flex-1 flex flex-direction-column gap-base">
       <button
         onClick={() => navigate({ title: 'Tokens/All Tokens' })}
-        className="button is-brand-green flex gap-base justify-content-center align-items-center p-base w-full"
+        className="ds-button is-brand-green flex gap-base justify-content-center align-items-center p-base w-full"
       >
         <div className="text-align-right">
-          <h2 className="title text-xl mb-xs">Tokens</h2>
-          <span className="text mobile:hidden">Named values that store every visual design decision in one place.</span>
+          <h2 className="ds-title text-xl mb-xs">Tokens</h2>
+          <span className="ds-text mobile:hidden">Named values that store every visual design decision in one place.</span>
         </div>
       </button>
       <button
         onClick={() => navigate({ title: 'CSS Utilities' })}
-        className="button is-brand-red flex gap-base justify-content-center align-items-center p-base w-full"
+        className="ds-button is-brand-red flex gap-base justify-content-center align-items-center p-base w-full"
       >
         <div className="text-align-right">
-          <h2 className="title text-xl mb-xs">CSS Utilities</h2>
-          <span className="text mobile:hidden">Pre-built classes to style elements without writing custom CSS.</span>
+          <h2 className="ds-title text-xl mb-xs">CSS Utilities</h2>
+          <span className="ds-text mobile:hidden">Pre-built classes to style elements without writing custom CSS.</span>
         </div>
       </button>
     </div>
@@ -60,20 +60,20 @@ import StyleDictionaryLogo from './assets/images/style-dictionary-logo.png'
     <div className="flex-1 flex flex-direction-column gap-base">
       <button
         onClick={() => navigate({ title: 'Foundation' })}
-        className="button is-brand-yellow flex gap-base justify-content-center align-items-center p-base w-full"
+        className="ds-button is-brand-yellow flex gap-base justify-content-center align-items-center p-base w-full"
       >
         <div className="text-align-left">
-          <h2 className="title text-xl mb-xs">Foundations</h2>
-          <span className="text mobile:hidden">Core visual principles that shape layouts and user experiences.</span>
+          <h2 className="ds-title text-xl mb-xs">Foundations</h2>
+          <span className="ds-text mobile:hidden">Core visual principles that shape layouts and user experiences.</span>
         </div>
       </button>
       <button
         onClick={() => navigate({ title: 'Components' })}
-        className="button is-brand-purple flex gap-base justify-content-center align-items-center p-base w-full"
+        className="ds-button is-brand-purple flex gap-base justify-content-center align-items-center p-base w-full"
       >
         <div className="text-align-left">
-          <h2 className="title text-xl mb-xs">Components</h2>
-          <span className="text mobile:hidden">Over 50 accessible, framework-agnostic UI building blocks.</span>
+          <h2 className="ds-title text-xl mb-xs">Components</h2>
+          <span className="ds-text mobile:hidden">Over 50 accessible, framework-agnostic UI building blocks.</span>
         </div>
       </button>
     </div>
@@ -90,13 +90,13 @@ import StyleDictionaryLogo from './assets/images/style-dictionary-logo.png'
 <Unstyled>
   <div className="flex gap-base flex-wrap mt-xl align-items-center justify-content-center mb-4xl">
     <a
-      className="button is-primary"
+      className="ds-button is-primary"
       style={{ width: 'auto' }}
       onClick={() => navigate({ title: 'Development/Getting Started' })}
     >
       Getting Started
     </a>
-    <a className="button is-secondary" href="https://github.com/baloise/design-system" target="_blank">
+    <a className="ds-button is-secondary" href="https://github.com/baloise/design-system" target="_blank">
       <svg
         width="24px"
         height="24px"
@@ -110,7 +110,7 @@ import StyleDictionaryLogo from './assets/images/style-dictionary-logo.png'
       </svg>
       <span>Follow on GitHub</span>
     </a>
-    <a className="button is-secondary" style={{ width: 'auto' }} onClick={() => navigate({ title: 'Support' })}>
+    <a className="ds-button is-secondary" style={{ width: 'auto' }} onClick={() => navigate({ title: 'Support' })}>
       Report an Issue
     </a>
   </div>
@@ -130,56 +130,56 @@ import StyleDictionaryLogo from './assets/images/style-dictionary-logo.png'
     }}
   >
     <div style={{ maxWidth: '1000px', margin: '0 auto' }}>
-      <h2 className="title is-2xl mb-md">Advantages</h2>
+      <h2 className="ds-title is-2xl mb-md">Advantages</h2>
       <p>In this section key advantages of the library are listed which are part of the Helvetia Design System.</p>
-      <div className="grid is-multiline mt-medium" style={{ '--ds-column-gap': '.5rem' }}>
-        <div className="col is-6">
-          <article className="card is-outlined h-full ">
-            <header class="card-header">
-              <h3 class="title">
+      <div className="ds-grid is-multiline mt-md" style={{ '--ds-column-gap': '.5rem' }}>
+        <div className="ds-col is-6">
+          <article className="ds-card h-full ">
+            <header class="ds-card-header">
+              <h3 class="ds-title">
                 <span style={{ width: '32px', display: 'inline-block' }}>📦</span> Angular or React
               </h3>
             </header>
-            <div className="card-content">
+            <div className="ds-card-content">
               Built on Web Components, the Design System works with Angular, React, or any other framework — even plain
               HTML without a framework at all.
             </div>
           </article>
         </div>
-        <div className="col is-6">
-          <article className="card is-outlined h-full">
-            <header class="card-header">
-              <h3 class="title">
+        <div className="ds-col is-6">
+          <article className="ds-card h-full">
+            <header class="ds-card-header">
+              <h3 class="ds-title">
                 <span style={{ width: '32px', display: 'inline-block' }}>🎨</span> Theming
               </h3>
             </header>
-            <div className="card-content">
+            <div className="ds-card-content">
               Built on CSS Variables, the Design System supports multiple brands out of the box. Switching themes or
               creating a new one requires no code changes.
             </div>
           </article>
         </div>
-        <div className="col is-6">
-          <article className="card is-outlined h-full">
-            <header class="card-header">
-              <h3 class="title">
+        <div className="ds-col is-6">
+          <article className="ds-card h-full">
+            <header class="ds-card-header">
+              <h3 class="ds-title">
                 <span style={{ width: '32px', display: 'inline-block' }}>🔮</span> Future Proof
               </h3>
             </header>
-            <div className="card-content">
+            <div className="ds-card-content">
               All components meet WCAG 2.2 accessibility standards and align with the EU Accessibility Act, keeping your
               applications compliant and inclusive by default.
             </div>
           </article>
         </div>
-        <div className="col is-6">
-          <article className="card is-outlined h-full">
-            <header class="card-header">
-              <h3 class="title">
+        <div className="ds-col is-6">
+          <article className="ds-card h-full">
+            <header class="ds-card-header">
+              <h3 class="ds-title">
                 <span style={{ width: '32px', display: 'inline-block' }}>🛠️</span> Rich Features
               </h3>
             </header>
-            <div className="card-content">
+            <div className="ds-card-content">
               From CSS utilities and ready-to-use templates to testing helpers and Sass mixins — everything you need to
               build and ship faster.
             </div>
@@ -329,11 +329,11 @@ reach you.
     ].map(({ name, description, icon }) => (
       <div
         key={name}
-        className="card is-outlined flex flex-direction-column align-items-center gap-x-small text-align-center flex-1"
+        className="ds-card flex flex-direction-column align-items-center gap-xs text-align-center flex-1"
         style={{ minWidth: '160px' }}
       >
         <div className="ds-tech-icon">{icon}</div>
-        <span className="title text-sm mt-xs">{name}</span>
+        <span className="ds-title text-sm mt-xs">{name}</span>
         <span className="text-xs text-primary-light">{description}</span>
         <span className="text-xs">Maintained · bug fixes prioritized</span>
       </div>
@@ -371,11 +371,11 @@ We support the **last 2 versions** of all major browsers.
     ].map(({ name, icon }) => (
       <div
         key={name}
-        className="card is-outlined flex flex-direction-column align-items-center gap-x-small text-align-center flex-1"
+        className="ds-card flex flex-direction-column align-items-center gap-xs text-align-center flex-1"
         style={{ minWidth: '80px' }}
       >
         <img src={icon} alt={name} width="48" height="48" />
-        <span className="title text-sm mt-xs">{name}</span>
+        <span className="ds-title text-sm mt-xs">{name}</span>
         <span className="text-xs text-primary-light">Last 2 versions</span>
       </div>
     ))}
@@ -388,13 +388,13 @@ We support the **last 2 versions** of all major browsers.
 Built with modern web standards and frameworks, the Helvetia Design System leverages industry-leading tools for component development, testing, and styling.
 
 <Unstyled>
-  <div className="grid is-multiline mt-lg" style={{ '--ds-column-gap': '.5rem', '--ds-row-gap': '1rem' }}>
-    <div className="col tablet:is-6 desktop:is-3">
+  <div className="ds-grid is-multiline mt-lg" style={{ '--ds-column-gap': '.5rem', '--ds-row-gap': '1rem' }}>
+    <div className="ds-col tablet:is-6 desktop:is-3">
       <a
         href="https://stenciljs.io/"
         target="_blank"
         rel="noopener noreferrer"
-        className="button is-secondary flex gap-base flex-direction-column w-full justify-content-center align-items-center p-base h-full "
+        className="ds-button is-secondary flex gap-base flex-direction-column w-full justify-content-center align-items-center p-base h-full "
         title="Stencil.js"
       >
         <div className="ds-tech-icon">
@@ -403,12 +403,12 @@ Built with modern web standards and frameworks, the Helvetia Design System lever
         <div className="ds-tech-name">Stencil.js</div>
       </a>
     </div>
-    <div className="col tablet:is-6 desktop:is-3">
+    <div className="ds-col tablet:is-6 desktop:is-3">
       <a
         href="https://angular.io/"
         target="_blank"
         rel="noopener noreferrer"
-        className="button is-secondary flex gap-base flex-direction-column w-full justify-content-center align-items-center p-base h-full "
+        className="ds-button is-secondary flex gap-base flex-direction-column w-full justify-content-center align-items-center p-base h-full "
         title="Angular"
       >
         <div className="ds-tech-icon">
@@ -445,12 +445,12 @@ Built with modern web standards and frameworks, the Helvetia Design System lever
         <div className="ds-tech-name">Angular</div>
       </a>
     </div>
-    <div className="col tablet:is-6 desktop:is-3">
+    <div className="ds-col tablet:is-6 desktop:is-3">
       <a
         href="https://react.dev/"
         target="_blank"
         rel="noopener noreferrer"
-        className="button is-secondary flex gap-base flex-direction-column w-full justify-content-center align-items-center p-base h-full "
+        className="ds-button is-secondary flex gap-base flex-direction-column w-full justify-content-center align-items-center p-base h-full "
         title="React"
       >
         <div className="ds-tech-icon">
@@ -466,10 +466,10 @@ Built with modern web standards and frameworks, the Helvetia Design System lever
         <div className="ds-tech-name">React</div>
       </a>
     </div>
-    <div className="col tablet:is-6 desktop:is-3">
+    <div className="ds-col tablet:is-6 desktop:is-3">
       <a
         onClick={() => navigate({ title: 'CSS Utilities' })}
-        className="button is-secondary flex gap-base flex-direction-column w-full justify-content-center align-items-center p-base h-full "
+        className="ds-button is-secondary flex gap-base flex-direction-column w-full justify-content-center align-items-center p-base h-full "
         title="UnoCSS"
       >
         <div className="ds-tech-icon">
@@ -491,12 +491,12 @@ Built with modern web standards and frameworks, the Helvetia Design System lever
         <div className="ds-tech-name">UnoCSS</div>
       </a>
     </div>
-    <div className="col tablet:is-6 desktop:is-3">
+    <div className="ds-col tablet:is-6 desktop:is-3">
       <a
         href="https://playwright.dev/"
         target="_blank"
         rel="noopener noreferrer"
-        className="button is-secondary flex gap-base flex-direction-column w-full justify-content-center align-items-center p-base h-full "
+        className="ds-button is-secondary flex gap-base flex-direction-column w-full justify-content-center align-items-center p-base h-full "
         title="Playwright"
       >
         <div className="ds-tech-icon">
@@ -505,12 +505,12 @@ Built with modern web standards and frameworks, the Helvetia Design System lever
         <div className="ds-tech-name">Playwright</div>
       </a>
     </div>
-    <div className="col tablet:is-6 desktop:is-3">
+    <div className="ds-col tablet:is-6 desktop:is-3">
       <a
         href="https://sass-lang.com/"
         target="_blank"
         rel="noopener noreferrer"
-        className="button is-secondary flex gap-base flex-direction-column w-full justify-content-center align-items-center p-base h-full "
+        className="ds-button is-secondary flex gap-base flex-direction-column w-full justify-content-center align-items-center p-base h-full "
         title="Sass"
       >
         <div className="ds-tech-icon">
@@ -524,12 +524,12 @@ Built with modern web standards and frameworks, the Helvetia Design System lever
         <div className="ds-tech-name">Sass</div>
       </a>
     </div>
-    <div className="col tablet:is-6 desktop:is-3">
+    <div className="ds-col tablet:is-6 desktop:is-3">
       <a
         href="https://www.typescriptlang.org/"
         target="_blank"
         rel="noopener noreferrer"
-        className="button is-secondary flex gap-base flex-direction-column w-full justify-content-center align-items-center p-base h-full "
+        className="ds-button is-secondary flex gap-base flex-direction-column w-full justify-content-center align-items-center p-base h-full "
         title="TypeScript"
       >
         <div className="ds-tech-icon">
@@ -538,12 +538,12 @@ Built with modern web standards and frameworks, the Helvetia Design System lever
         <div className="ds-tech-name">TypeScript</div>
       </a>
     </div>
-    <div className="col tablet:is-6 desktop:is-3">
+    <div className="ds-col tablet:is-6 desktop:is-3">
       <a
         href="https://turbo.build/"
         target="_blank"
         rel="noopener noreferrer"
-        className="button is-secondary flex gap-base flex-direction-column w-full justify-content-center align-items-center p-base h-full "
+        className="ds-button is-secondary flex gap-base flex-direction-column w-full justify-content-center align-items-center p-base h-full "
         title="Turborepo"
       >
         <div className="ds-tech-icon">
@@ -555,12 +555,12 @@ Built with modern web standards and frameworks, the Helvetia Design System lever
         <div className="ds-tech-name">Turborepo</div>
       </a>
     </div>
-    <div className="col tablet:is-6 desktop:is-3">
+    <div className="ds-col tablet:is-6 desktop:is-3">
       <a
         href="https://github.com/changesets/changesets"
         target="_blank"
         rel="noopener noreferrer"
-        className="button is-secondary flex gap-base flex-direction-column w-full justify-content-center align-items-center p-base h-full "
+        className="ds-button is-secondary flex gap-base flex-direction-column w-full justify-content-center align-items-center p-base h-full "
         title="Changesets"
       >
         <div className="ds-tech-icon">
@@ -609,12 +609,12 @@ Built with modern web standards and frameworks, the Helvetia Design System lever
         <div className="ds-tech-name">Changesets</div>
       </a>
     </div>
-    <div className="col tablet:is-6 desktop:is-3">
+    <div className="ds-col tablet:is-6 desktop:is-3">
       <a
         href="https://amzn.github.io/style-dictionary/"
         target="_blank"
         rel="noopener noreferrer"
-        className="button is-secondary flex gap-base flex-direction-column w-full justify-content-center align-items-center p-base h-full "
+        className="ds-button is-secondary flex gap-base flex-direction-column w-full justify-content-center align-items-center p-base h-full "
         title="Style Dictionary"
       >
         <div className="ds-tech-icon">
@@ -623,12 +623,12 @@ Built with modern web standards and frameworks, the Helvetia Design System lever
         <div className="ds-tech-name">Style Dictionary</div>
       </a>
     </div>
-    <div className="col tablet:is-6 desktop:is-3">
+    <div className="ds-col tablet:is-6 desktop:is-3">
       <a
         href="https://storybook.js.org/"
         target="_blank"
         rel="noopener noreferrer"
-        className="button is-secondary flex gap-base flex-direction-column w-full justify-content-center align-items-center p-base h-full "
+        className="ds-button is-secondary flex gap-base flex-direction-column w-full justify-content-center align-items-center p-base h-full "
         title="Storybook"
       >
         <div className="ds-tech-icon">
@@ -678,12 +678,12 @@ Built with modern web standards and frameworks, the Helvetia Design System lever
         <div className="ds-tech-name">Storybook</div>
       </a>
     </div>
-    <div className="col tablet:is-6 desktop:is-3">
+    <div className="ds-col tablet:is-6 desktop:is-3">
       <a
         href="https://www.figma.com/"
         target="_blank"
         rel="noopener noreferrer"
-        className="button is-secondary flex gap-base flex-direction-column w-full justify-content-center align-items-center p-base h-full "
+        className="ds-button is-secondary flex gap-base flex-direction-column w-full justify-content-center align-items-center p-base h-full "
         title="Figma"
       >
         <div className="ds-tech-icon">

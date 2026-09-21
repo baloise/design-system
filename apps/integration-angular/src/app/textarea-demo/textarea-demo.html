@@ -1,0 +1,23 @@
+<h2>Textarea demo</h2>
+
+<p data-testid="textarea-value">Textarea value: {{ textareaValue() }}</p>
+<ds-textarea data-testid="textarea" name="smoke-test-textarea" [value]="textareaValue()" (dsInput)="onInput($event)" />
+
+<form [formGroup]="reactiveForm">
+  <ds-textarea data-testid="reactive-textarea" name="reactive-textarea" label="Name" formControlName="name" />
+</form>
+<p data-testid="reactive-textarea-value">Reactive value: {{ reactiveForm.controls.name.value }}</p>
+<button data-testid="toggle-reactive-textarea-disabled" type="button" (click)="toggleReactiveFormDisabled()">
+  Toggle disabled
+</button>
+<button data-testid="set-reactive-textarea-value" type="button" (click)="setReactiveFormValue()">Set to Carol</button>
+
+<form [formGroup]="autoInvalidOffForm">
+  <ds-textarea
+    data-testid="auto-invalid-off-textarea"
+    name="auto-invalid-off-textarea"
+    label="Name"
+    autoInvalidOff
+    formControlName="name"
+  />
+</form>

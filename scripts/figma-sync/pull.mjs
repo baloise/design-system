@@ -15,7 +15,8 @@
  * production file) would otherwise get rejected by an empty/different
  * target file. Never set in figma-sync.yml.
  */
-import { appendFileSync } from 'node:fs'
+import { appendFileSync, writeFileSync } from 'node:fs'
+import { tmpdir } from 'node:os'
 import { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { loadSyncStateFile } from './lib/baseline.mjs'
@@ -38,7 +39,10 @@ import {
   assignVariableIds,
   buildAliasPassPayload,
   buildCreatePassPayload,
+  buildDescriptionUpdatePayload,
+  buildNameUpdatePayload,
   collectNewlyCreatedIds,
+  committedVariableIds,
   resolveTempIds,
 } from './lib/write.mjs'
 
@@ -132,7 +136,7 @@ async function resolveBrandCollection(localVariables, brandNames, figmaFileKey, 
 
 /**
  * Resolves the responsive collection ("Design Responsive Tokens" — MVP scope, Device variables for
- * Alias Text.Size/Space/Container.Space only, see lib/figma-value.mjs's DEVICE_ELIGIBLE_PATH_PREFIXES),
+ * Device-layer Text.Size/Space/Container.Space only, see lib/figma-value.mjs's DEVICE_ELIGIBLE_PATH_PREFIXES),
  * bootstrapping it if this file has never had one under that name.
  */
 async function resolveResponsiveCollection(localVariables, figmaFileKey, figmaToken) {
@@ -169,6 +173,21 @@ async function resolveResponsiveCollection(localVariables, figmaFileKey, figmaTo
 async function writePull({ baseTokens, brandNames, brandTokensByName }, figmaToken, figmaFileKey) {
   const localVariables = await getLocalVariables(figmaFileKey, figmaToken)
 
+  // Fail fast, before any POST, if the tokens tree already carries variableIds this file has never
+  // seen — almost always TOKENS_DIR_OVERRIDE was meant to be set (testing against a sandbox file
+  // with the production tokens directory). Left undetected, this surfaces later as a cryptic 400
+  // from Figma's alias pass, after the create pass has already written.
+  const unknownIds = committedVariableIds(baseTokens).filter(id => !localVariables.variables[id])
+  if (unknownIds.length > 0) {
+    throw new Error(
+      `${unknownIds.length} committed variableId(s) don't exist in file ${figmaFileKey} (e.g. ${unknownIds
+        .slice(0, 5)
+        .join(', ')}). This usually means the tokens directory was round-tripped against a ` +
+        `different Figma file — set TOKENS_DIR_OVERRIDE to a scratch tokens directory for sandbox-` +
+        `file testing, or point FIGMA_FILE_KEY at the file these variableIds actually belong to.`,
+    )
+  }
+
   const { collectionId, modeIdByBrand } = await resolveBrandCollection(
     localVariables,
     brandNames,
@@ -200,10 +219,25 @@ async function writePull({ baseTokens, brandNames, brandTokensByName }, figmaTok
   // (it's the plugin's Push flow's job to pick that up, not this Action's
   // to delete). Merged into pass 1: deletions don't depend on temp-id
   // resolution, so there's no ordering reason to keep them in a separate call.
+  // Baseline-relative (findRemovedVariableIds only ever compares against the
+  // last-synced state, never Figma's live state), so a stale baseline entry
+  // whose variable Figma no longer has (deleted out of band, or the
+  // collection it lived in got recreated/renamed) is still "removed" here —
+  // it still needs to drop out of the baseline below — but must not be
+  // queued as a DELETE: Figma's POST /variables is atomic, and a DELETE
+  // against a nonexistent id 400s the *entire* batch, taking this run's
+  // creates and mode-values down with it.
   const existingState = loadSyncStateFile(SYNC_STATE_FILE)
   const removedIds = findRemovedVariableIds(existingState, baseTokens)
-  if (removedIds.length > 0) {
-    console.log(`Deleting ${removedIds.length} Figma variable(s) whose token was removed from GitHub…`)
+  const deletableIds = removedIds.filter(id => localVariables.variables[id])
+  const staleBaselineIds = removedIds.filter(id => !localVariables.variables[id])
+  if (deletableIds.length > 0) {
+    console.log(`Deleting ${deletableIds.length} Figma variable(s) whose token was removed from GitHub…`)
+  }
+  if (staleBaselineIds.length > 0) {
+    console.log(
+      `Dropping ${staleBaselineIds.length} stale baseline entr${staleBaselineIds.length === 1 ? 'y' : 'ies'} whose variable no longer exists in Figma (e.g. ${staleBaselineIds.slice(0, 5).join(', ')}).`,
+    )
   }
 
   const createPass = buildCreatePassPayload({
@@ -214,7 +248,7 @@ async function writePull({ baseTokens, brandNames, brandTokensByName }, figmaTok
     modeIdByBrand,
     responsiveCollectionId,
   })
-  const deletePass = buildDeleteVariablesPayload(removedIds)
+  const deletePass = buildDeleteVariablesPayload(deletableIds)
   createPass.variables.push(...deletePass.variables)
 
   console.log(
@@ -233,6 +267,27 @@ async function writePull({ baseTokens, brandNames, brandTokensByName }, figmaTok
   console.log(`Pass 2: writing ${aliasPass.variableModeValues.length} alias mode-value(s)…`)
   if (aliasPass.variableModeValues.length > 0) {
     await postVariables(figmaFileKey, figmaToken, aliasPass)
+  }
+
+  const descriptionPass = buildDescriptionUpdatePayload({
+    baseTokens,
+    idByPath,
+    remoteVariablesById: localVariables.variables,
+  })
+  // Merged with the description pass: a rename UPDATE and a description UPDATE never conflict
+  // (different fields on the same variable), so there's no ordering reason to keep them in
+  // separate POSTs — same "merge when there's no dependency" reasoning pass 1 uses for deletions.
+  const namePass = buildNameUpdatePayload({
+    baseTokens,
+    idByPath,
+    remoteVariablesById: localVariables.variables,
+  })
+  const metadataPass = { variables: [...descriptionPass.variables, ...namePass.variables] }
+  console.log(
+    `Pass 3: updating ${descriptionPass.variables.length} variable description(s), renaming ${namePass.variables.length} variable(s)…`,
+  )
+  if (metadataPass.variables.length > 0) {
+    await postVariables(figmaFileKey, figmaToken, metadataPass)
   }
 
   const newIds = collectNewlyCreatedIds(baseTokens, idByPath)
@@ -257,12 +312,23 @@ async function main() {
 
   const { newIds, removedIds } = await writePull(resolved, figmaToken, figmaFileKey)
   if (process.env.GITHUB_OUTPUT) {
-    // docs/adr/0017-direct-commit-variableid-backfill.md's write-back step
-    // reads these. `::set-output::` is deprecated/removed — GITHUB_OUTPUT
-    // is the current mechanism. Paths/ids never contain newlines, so a
-    // single-line JSON string is safe without the multiline delimiter syntax.
-    if (newIds.length > 0) appendFileSync(process.env.GITHUB_OUTPUT, `new_ids=${JSON.stringify(newIds)}\n`)
-    if (removedIds.length > 0) appendFileSync(process.env.GITHUB_OUTPUT, `removed_ids=${JSON.stringify(removedIds)}\n`)
+    // docs/adr/0017-direct-commit-variableid-backfill.md's write-back step reads these. The JSON
+    // payload itself goes to a file, not the output directly — a full-tree first sync can produce
+    // thousands of entries, and passing that much JSON through as a step output turns into an
+    // environment variable for the next step; GitHub Actions/the OS both cap how much an env var
+    // (and total env) can hold, and this blows past it ("Argument list too long" spawning the next
+    // step's shell). A file path is always short enough to pass safely.
+    const outDir = process.env.RUNNER_TEMP ?? tmpdir()
+    if (newIds.length > 0) {
+      const newIdsFile = resolve(outDir, 'figma-sync-new-ids.json')
+      writeFileSync(newIdsFile, JSON.stringify(newIds))
+      appendFileSync(process.env.GITHUB_OUTPUT, `new_ids_file=${newIdsFile}\n`)
+    }
+    if (removedIds.length > 0) {
+      const removedIdsFile = resolve(outDir, 'figma-sync-removed-ids.json')
+      writeFileSync(removedIdsFile, JSON.stringify(removedIds))
+      appendFileSync(process.env.GITHUB_OUTPUT, `removed_ids_file=${removedIdsFile}\n`)
+    }
   }
 }
 

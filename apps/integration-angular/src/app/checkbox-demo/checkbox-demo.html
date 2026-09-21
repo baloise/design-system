@@ -1,0 +1,3 @@
+<h2>Checkbox demo</h2>
+<p data-testid="checked">Checked: {{ checked() }}</p>
+<ds-checkbox data-testid="checkbox" [checked]="checked()" (dsChange)="onChange($event)">Accept</ds-checkbox>

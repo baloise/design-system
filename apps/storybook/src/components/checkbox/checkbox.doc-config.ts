@@ -7,12 +7,12 @@ export const CHECKBOX_DOC_CONFIG = {
   section: 'Components / Forms / Checkbox',
   color: 'purple' as const,
   tabs: [
-    { label: 'Overview', storyId: 'components-forms-checkbox--checkbox' },
-    { label: 'Usage', storyId: 'components-forms-checkbox--usage' },
-    { label: 'Variants', storyId: 'components-forms-checkbox--variants-overview' },
-    { label: 'Styling', storyId: 'components-forms-checkbox--styling' },
-    { label: 'Accessibility', storyId: 'components-forms-checkbox--accessibility' },
-    { label: 'Testing', storyId: 'components-forms-checkbox--testing' },
+    { label: 'Overview', storyId: 'components-forms-checkbox-checkbox--checkbox' },
+    { label: 'Usage', storyId: 'components-forms-checkbox-usage--usage' },
+    { label: 'Variants', storyId: 'components-forms-checkbox-variants-overview--overview' },
+    { label: 'Styling', storyId: 'components-forms-checkbox-styling--styling' },
+    { label: 'Accessibility', storyId: 'components-forms-checkbox-accessibility--accessibility' },
+    { label: 'Testing', storyId: 'components-forms-checkbox-testing--testing' },
   ],
 }
 

@@ -6,8 +6,6 @@ import { ModalPresentDetail, ModalDismissDetail } from './modal.interfaces'
 
 /**
  * Modal displays content in a dialog overlay using the native dialog element.
- * Supports both slot-based sub-components (ds-modal-header, ds-modal-body) and
- * direct named slots (slot="header", slot="body").
  *
  * @slot header - The modal title content. Used automatically by ds-modal-header.
  * @slot body - The modal body content. Used automatically by ds-modal-body.

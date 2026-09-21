@@ -194,7 +194,8 @@ export class FileUpload implements DsComponentInterface, FieldInterface {
   readonly hasFileList: boolean = true
 
   /**
-   * If `true`, in Angular reactive forms the control will not be set invalid.
+   * If `true`, disables the Angular integration's automatic invalid-state behavior — the control won't have
+   * `invalid`/`invalidText` set from the bound `FormControl`'s touched/error state.
    */
   @Prop({ reflect: true })
   @Type('boolean')
@@ -529,6 +530,7 @@ export class FileUpload implements DsComponentInterface, FieldInterface {
                     icon="trash"
                     square
                     color="secondary"
+                    title={`${removeFileLabel} ${file.name}`}
                     a11yLabel={`${removeFileLabel} ${file.name}`}
                     disabled={isDisabled}
                     onKeyDown={(ev: KeyboardEvent) => {

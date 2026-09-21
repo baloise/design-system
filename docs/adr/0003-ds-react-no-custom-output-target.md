@@ -6,13 +6,13 @@ Date: 2026-07-21
 
 ## Status
 
-Accepted
+Superseded by [ADR-0028](0028-react-idioms-for-overlay-components.md) for the public overlay API. The decision to generate bindings with the stock `@stencil/react-output-target` (no `libs/output-target-react`) still holds.
 
 ## Context
 
 `libs/output-target-angular` exists as a custom package because Angular
 bindings need non-trivial extra logic: `ValueAccessorConfig`s that wire
-form components (`ds-select`, `ds-checkbox`, `ds-date`, …) into Angular's
+form components (`ds-select`, `ds-checkbox`, `ds-datepicker`, …) into Angular's
 `ControlValueAccessor`/reactive-forms machinery, which the stock
 `@angular/*` output-targets ecosystem doesn't provide out of the box.
 That custom layer is why `libs/output-target-angular` is its own package

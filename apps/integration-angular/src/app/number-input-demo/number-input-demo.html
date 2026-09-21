@@ -1,0 +1,33 @@
+<h2>Number input demo</h2>
+
+<p data-testid="number-input-value">Number input value: {{ numberInputValue() }}</p>
+<ds-number-input
+  data-testid="number-input"
+  name="smoke-test-number-input"
+  [value]="numberInputValue()"
+  (dsInput)="onInput($event)"
+/>
+
+<form [formGroup]="reactiveForm">
+  <ds-number-input
+    data-testid="reactive-number-input"
+    name="reactive-number-input"
+    label="Amount"
+    formControlName="amount"
+  />
+</form>
+<p data-testid="reactive-number-value">Reactive value: {{ reactiveForm.controls.amount.value }}</p>
+<button data-testid="toggle-reactive-number-disabled" type="button" (click)="toggleReactiveFormDisabled()">
+  Toggle disabled
+</button>
+<button data-testid="set-reactive-number-value" type="button" (click)="setReactiveFormValue()">Set to 3</button>
+
+<form [formGroup]="autoInvalidOffForm">
+  <ds-number-input
+    data-testid="auto-invalid-off-number-input"
+    name="auto-invalid-off-number-input"
+    label="Amount"
+    autoInvalidOff
+    formControlName="amount"
+  />
+</form>

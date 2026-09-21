@@ -1,98 +1,145 @@
-@use 'sass:math';
-@use '@baloise/ds-css/dist/scss/mixins' as *;
+/**
+ * Grid provides a flexible, mobile-first 12-column layout system for arranging content in rows and columns.
+ * Columns default to equal width and wrap in a flex row; add sizing, offset, and behaviour modifiers to
+ * control column widths, gaps, alignment, and responsiveness per breakpoint.
+ *
+ * @variant is-multiline - Allows columns to wrap onto multiple lines instead of a single row.
+ * @variant is-gapless - Removes the gap between columns.
+ * @variant is-centered - Centers columns horizontally within the grid.
+ * @variant is-vcentered - Vertically centers columns within the grid.
+ * @variant is-mobile - Forces the grid to behave as flex from the smallest breakpoint up, instead of only from tablet.
+ * @variant is-desktop - Only switches to flex layout from the desktop breakpoint up, instead of tablet.
+ * @variant is-narrow - Column shrinks to fit its content instead of stretching to fill available space.
+ * @variant is-full - Column takes the full width (100%) of the grid.
+ * @variant is-half - Column takes 50% of the grid width (6 out of 12 columns).
+ * @variant is-one-third - Column takes 33.33% of the grid width (4 out of 12 columns).
+ * @variant is-two-thirds - Column takes 66.66% of the grid width (8 out of 12 columns).
+ * @variant is-one-quarter - Column takes 25% of the grid width (3 out of 12 columns).
+ * @variant is-three-quarters - Column takes 75% of the grid width (9 out of 12 columns).
+ * @variant is-one-fifth - Column takes 20% of the grid width.
+ * @variant is-two-fifths - Column takes 40% of the grid width.
+ * @variant is-three-fifths - Column takes 60% of the grid width.
+ * @variant is-four-fifths - Column takes 80% of the grid width.
+ * @variant is-offset-half - Offsets the column by 50% of the grid width.
+ * @variant is-offset-one-third - Offsets the column by 33.33% of the grid width.
+ * @variant is-offset-one-quarter - Offsets the column by 25% of the grid width.
+ * @variant gap-none - Sets the column gap to the none spacing token.
+ * @variant gap-3xs - Sets the column gap to the 3xs spacing token.
+ * @variant gap-2xs - Sets the column gap to the 2xs spacing token.
+ * @variant gap-xs - Sets the column gap to the xs spacing token.
+ * @variant gap-sm - Sets the column gap to the sm spacing token.
+ * @variant gap-base - Sets the column gap to the base spacing token.
+ * @variant gap-md - Sets the column gap to the md spacing token.
+ * @variant gap-lg - Sets the column gap to the lg spacing token.
+ * @variant gap-xl - Sets the column gap to the xl spacing token.
+ * @variant gap-2xl - Sets the column gap to the 2xl spacing token.
+ * @variant gap-3xl - Sets the column gap to the 3xl spacing token.
+ * @variant gap-4xl - Sets the column gap to the 4xl spacing token.
+ */
 
-.grid {
+@use 'sass:math';
+@use '@baloise/ds-styles/dist/scss/mixins' as *;
+
+/**
+ * Variables
+ * --------------------------------
+ * Define here the css variables for the component to be able to use it in host or non-host mode
+ * These variables can be used in the component styles below and later on be overridden in themes.
+ *
+ * @prop --ds-column-gap - Gap between grid columns, applied as padding on columns and negative margin on the grid.
+ */
+.ds-grid {
   --ds-column-gap: 1rem;
 }
 
-.grid {
+.ds-grid {
   flex-basis: 0;
   flex-grow: 1;
   flex-shrink: 1;
 }
-.col {
+.ds-col {
   display: block;
   flex-basis: 0;
   flex-grow: 1;
   flex-shrink: 1;
   padding: var(--ds-column-gap);
-  .grid.is-mobile > &.is-narrow {
+  .ds-grid.is-mobile > &.is-narrow {
     flex: none;
     width: unset;
   }
-  .grid.is-mobile > &.is-full {
+  .ds-grid.is-mobile > &.is-full {
     flex: none;
     width: 100%;
   }
-  .grid.is-mobile > &.is-three-quarters {
+  .ds-grid.is-mobile > &.is-three-quarters {
     flex: none;
     width: 75%;
   }
-  .grid.is-mobile > &.is-two-thirds {
+  .ds-grid.is-mobile > &.is-two-thirds {
     flex: none;
     width: 66.6666%;
   }
-  .grid.is-mobile > &.is-half {
+  .ds-grid.is-mobile > &.is-half {
     flex: none;
     width: 50%;
   }
-  .grid.is-mobile > &.is-one-third {
+  .ds-grid.is-mobile > &.is-one-third {
     flex: none;
     width: 33.3333%;
   }
-  .grid.is-mobile > &.is-one-quarter {
+  .ds-grid.is-mobile > &.is-one-quarter {
     flex: none;
     width: 25%;
   }
-  .grid.is-mobile > &.is-one-fifth {
+  .ds-grid.is-mobile > &.is-one-fifth {
     flex: none;
     width: 20%;
   }
-  .grid.is-mobile > &.is-two-fifths {
+  .ds-grid.is-mobile > &.is-two-fifths {
     flex: none;
     width: 40%;
   }
-  .grid.is-mobile > &.is-three-fifths {
+  .ds-grid.is-mobile > &.is-three-fifths {
     flex: none;
     width: 60%;
   }
-  .grid.is-mobile > &.is-four-fifths {
+  .ds-grid.is-mobile > &.is-four-fifths {
     flex: none;
     width: 80%;
   }
-  .grid.is-mobile > &.is-offset-three-quarters {
+  .ds-grid.is-mobile > &.is-offset-three-quarters {
     @include ltr-property('margin', 75%, false);
   }
-  .grid.is-mobile > &.is-offset-two-thirds {
+  .ds-grid.is-mobile > &.is-offset-two-thirds {
     @include ltr-property('margin', 66.6666%, false);
   }
-  .grid.is-mobile > &.is-offset-half {
+  .ds-grid.is-mobile > &.is-offset-half {
     @include ltr-property('margin', 50%, false);
   }
-  .grid.is-mobile > &.is-offset-one-third {
+  .ds-grid.is-mobile > &.is-offset-one-third {
     @include ltr-property('margin', 33.3333%, false);
   }
-  .grid.is-mobile > &.is-offset-one-quarter {
+  .ds-grid.is-mobile > &.is-offset-one-quarter {
     @include ltr-property('margin', 25%, false);
   }
-  .grid.is-mobile > &.is-offset-one-fifth {
+  .ds-grid.is-mobile > &.is-offset-one-fifth {
     @include ltr-property('margin', 20%, false);
   }
-  .grid.is-mobile > &.is-offset-two-fifths {
+  .ds-grid.is-mobile > &.is-offset-two-fifths {
     @include ltr-property('margin', 40%, false);
   }
-  .grid.is-mobile > &.is-offset-three-fifths {
+  .ds-grid.is-mobile > &.is-offset-three-fifths {
     @include ltr-property('margin', 60%, false);
   }
-  .grid.is-mobile > &.is-offset-four-fifths {
+  .ds-grid.is-mobile > &.is-offset-four-fifths {
     @include ltr-property('margin', 80%, false);
   }
   @for $i from 0 through 12 {
-    .grid.is-mobile > &.is-#{$i} {
+    .ds-grid.is-mobile > &.is-#{$i} {
       flex: none;
       width: math.percentage(math.div($i, 12));
     }
-    .grid.is-mobile > &.is-offset-#{$i} {
+    .ds-grid.is-mobile > &.is-offset-#{$i} {
       @include ltr-property('margin', math.percentage(math.div($i, 12)), false);
     }
   }
@@ -611,7 +658,7 @@
     }
   }
 }
-.grid {
+.ds-grid {
   @include ltr-property('margin', (calc(var(--ds-column-gap) * -1)), false);
   @include ltr-property('margin', (calc(var(--ds-column-gap) * -1)));
   margin-top: (calc(var(--ds-column-gap) * -1));
@@ -628,7 +675,7 @@
     @include ltr-property('margin', 0, false);
     @include ltr-property('margin', 0);
     margin-top: 0;
-    & > .col {
+    & > .ds-col {
       margin: 0;
       padding: 0 !important;
     }
@@ -657,5 +704,70 @@
     &.is-desktop {
       display: flex;
     }
+  }
+}
+
+/**
+ * Gap size utilities
+ * --------------------------------
+ * Override --ds-column-gap so the shared `.gap-*` spacing utility classes also control
+ * the grid's column gap, since ds-grid implements spacing via margin/padding rather than
+ * the native CSS `gap` property. See the `@variant gap-*` entries above.
+ *
+ * The shared `.gap-*` utility (packages/styles) also sets the native `gap` property with
+ * `!important` for flex/grid containers that rely on it (e.g. ds-stack). ds-grid does not
+ * use native `gap`, so it must be reset back to 0 here — otherwise it stacks on top of the
+ * padding-based gutter below and over-widens columns past 100%, breaking `is-*` sizing.
+ * `.ds-grid.gap-*` outranks the utility's `.gap-*` on specificity, so this wins even though
+ * both declarations are `!important`.
+ */
+.ds-grid {
+  &.gap-none {
+    --ds-column-gap: calc(var(--ds-device-space-none) / 2);
+    gap: 0 !important;
+  }
+  &.gap-3xs {
+    --ds-column-gap: calc(var(--ds-device-space-3xs) / 2);
+    gap: 0 !important;
+  }
+  &.gap-2xs {
+    --ds-column-gap: calc(var(--ds-device-space-2xs) / 2);
+    gap: 0 !important;
+  }
+  &.gap-xs {
+    --ds-column-gap: calc(var(--ds-device-space-xs) / 2);
+    gap: 0 !important;
+  }
+  &.gap-sm {
+    --ds-column-gap: calc(var(--ds-device-space-sm) / 2);
+    gap: 0 !important;
+  }
+  &.gap-base {
+    --ds-column-gap: calc(var(--ds-device-space-base) / 2);
+    gap: 0 !important;
+  }
+  &.gap-md {
+    --ds-column-gap: calc(var(--ds-device-space-md) / 2);
+    gap: 0 !important;
+  }
+  &.gap-lg {
+    --ds-column-gap: calc(var(--ds-device-space-lg) / 2);
+    gap: 0 !important;
+  }
+  &.gap-xl {
+    --ds-column-gap: calc(var(--ds-device-space-xl) / 2);
+    gap: 0 !important;
+  }
+  &.gap-2xl {
+    --ds-column-gap: calc(var(--ds-device-space-2xl) / 2);
+    gap: 0 !important;
+  }
+  &.gap-3xl {
+    --ds-column-gap: calc(var(--ds-device-space-3xl) / 2);
+    gap: 0 !important;
+  }
+  &.gap-4xl {
+    --ds-column-gap: calc(var(--ds-device-space-4xl) / 2);
+    gap: 0 !important;
   }
 }

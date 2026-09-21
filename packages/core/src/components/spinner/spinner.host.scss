@@ -1,4 +1,4 @@
-@use '@baloise/ds-css/dist/scss/mixins' as *;
+@use '@baloise/ds-styles/dist/scss/mixins' as *;
 @use '../../vars' as vars;
 
 /**
@@ -103,8 +103,8 @@
 }
 
 ::part(label) {
-  font-family: var(--ds-global-font-family-text);
-  line-height: var(--ds-typography-line-height-base);
+  font-family: var(--ds-alias-text-family-text);
+  line-height: var(--ds-alias-text-line-height-text);
 }
 
 /**

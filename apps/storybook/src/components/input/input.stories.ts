@@ -34,12 +34,12 @@ Basic.storyName = `🧩 Basic`
 export const BasicHtml = Story({
   ...withRender(
     () => `
-<div class="field">
-  <label class="label" for="input-basic">Label</label>
-  <div class="control">
-    <input id="input-basic" class="input" placeholder="Placeholder" aria-describedby="help-basic" />
+<div class="ds-field">
+  <label class="ds-label" for="input-basic">Label</label>
+  <div class="ds-control">
+    <input id="input-basic" class="ds-input" placeholder="Placeholder" aria-describedby="help-basic" />
   </div>
-  <p id="help-basic" class="help">Description</p>
+  <p id="help-basic" class="ds-help">Description</p>
 </div>
 `,
   ),
@@ -59,20 +59,20 @@ Disabled.storyName = '🧩 Disabled'
 export const DisabledHtml = Story({
   ...withRender(
     () => `
-<div class="field is-disabled">
-  <label class="label" for="input-disabled-1">Name</label>
-  <div class="control">
-    <input id="input-disabled-1" class="input" placeholder="Placeholder" disabled aria-describedby="help-disabled-1" />
+<div class="ds-field is-disabled">
+  <label class="ds-label" for="input-disabled-1">Name</label>
+  <div class="ds-control">
+    <input id="input-disabled-1" class="ds-input" placeholder="Placeholder" disabled aria-describedby="help-disabled-1" />
   </div>
-  <p id="help-disabled-1" class="help">This username is available</p>
+  <p id="help-disabled-1" class="ds-help">This username is available</p>
 </div>
 
-<div class="field is-disabled">
-  <label class="label" for="input-disabled-2">Name</label>
-  <div class="control">
-    <input id="input-disabled-2" class="input" value="Value" disabled aria-describedby="help-disabled-2" />
+<div class="ds-field is-disabled">
+  <label class="ds-label" for="input-disabled-2">Name</label>
+  <div class="ds-control">
+    <input id="input-disabled-2" class="ds-input" value="Value" disabled aria-describedby="help-disabled-2" />
   </div>
-  <p id="help-disabled-2" class="help">This username is available</p>
+  <p id="help-disabled-2" class="ds-help">This username is available</p>
 </div>
 `,
   ),
@@ -91,12 +91,12 @@ Invalid.storyName = '🧩 Invalid'
 export const InvalidHtml = Story({
   ...withRender(
     () => `
-<div class="field is-danger">
-  <label class="label" for="input-invalid">Name</label>
-  <div class="control">
-    <input id="input-invalid" class="input" value="Value" aria-invalid="true" aria-describedby="help-invalid" />
+<div class="ds-field is-danger">
+  <label class="ds-label" for="input-invalid">Name</label>
+  <div class="ds-control">
+    <input id="input-invalid" class="ds-input" value="Value" aria-invalid="true" aria-describedby="help-invalid" />
   </div>
-  <p id="help-invalid" class="help">This username is available</p>
+  <p id="help-invalid" class="ds-help">This username is available</p>
 </div>
 `,
   ),
@@ -115,12 +115,12 @@ Valid.storyName = '🧩 Valid'
 export const ValidHtml = Story({
   ...withRender(
     () => `
-<div class="field is-success">
-  <label class="label" for="input-valid">Name</label>
-  <div class="control">
-    <input id="input-valid" class="input" value="Value" aria-describedby="help-valid" />
+<div class="ds-field is-success">
+  <label class="ds-label" for="input-valid">Name</label>
+  <div class="ds-control">
+    <input id="input-valid" class="ds-input" value="Value" aria-describedby="help-valid" />
   </div>
-  <p id="help-valid" class="help">This username is available</p>
+  <p id="help-valid" class="ds-help">This username is available</p>
 </div>
 `,
   ),
@@ -139,13 +139,13 @@ Loading.storyName = '🧩 Loading'
 export const LoadingHtml = Story({
   ...withRender(
     () => `
-<div class="field">
-  <label class="label" for="input-loading-1">Name</label>
-  <div class="control">
-    <input id="input-loading-1" class="input" aria-describedby="help-loading-1" />
+<div class="ds-field">
+  <label class="ds-label" for="input-loading-1">Name</label>
+  <div class="ds-control">
+    <input id="input-loading-1" class="ds-input" aria-describedby="help-loading-1" />
     <ds-spinner size="sm" variation="circle"></ds-spinner>
   </div>
-  <p id="help-loading-1" class="help"></p>
+  <p id="help-loading-1" class="ds-help"></p>
 </div>
 `,
   ),
@@ -157,7 +157,7 @@ export const Suffix = Story({
     () => `
 <ds-input label="Label" suffix="CHF" value="100"></ds-input>
 <ds-input label="Label" value="100">
-  <span slot="start" class="tag is-sm is-square">CHF</span>
+  <span slot="start" class="ds-tag is-sm is-square">CHF</span>
 </ds-input>
 <ds-input label="Label" value="100">
   <ds-button slot="end" size="sm">Click</ds-button>
@@ -170,12 +170,12 @@ Suffix.storyName = '🧩 Suffix'
 export const SuffixHtml = Story({
   ...withRender(
     () => `
-<div class="field">
-  <label class="label">Label</label>
-  <div class="control">
-    <span class="tag is-sm">Start</span>
-    <input class="input" value="100" />
-    <span class="tag is-sm">End</span>
+<div class="ds-field">
+  <label class="ds-label">Label</label>
+  <div class="ds-control">
+    <span class="ds-tag is-sm">Start</span>
+    <input class="ds-input" value="100" />
+    <span class="ds-tag is-sm">End</span>
   </div>
 </div>
 `,
@@ -195,10 +195,10 @@ NumberType.storyName = '🧩 Number Type'
 export const NumberTypeHtml = Story({
   ...withRender(
     () => `
-<div class="field">
-  <label class="label">Age</label>
-  <div class="control">
-    <input type="number" class="input" value="30" />
+<div class="ds-field">
+  <label class="ds-label">Age</label>
+  <div class="ds-control">
+    <input type="number" class="ds-input" value="30" />
   </div>
 </div>
 `,
@@ -211,8 +211,8 @@ export const Slots = Story({
     () => `
 <ds-input value="Value">
   <span slot="label">Slot Label</span>
-  <span slot="start" class="tag is-sm is-square">START</span>
-  <span slot="end" class="tag is-sm is-square">END</span>
+  <span slot="start" class="ds-tag is-sm is-square">START</span>
+  <span slot="end" class="ds-tag is-sm is-square">END</span>
   <span slot="description">Slot description</span>
 </ds-input>
 `,
@@ -240,16 +240,16 @@ export const FormResetHtml = Story({
   ...withRender(
     () => `
 <form action="https://www.w3schools.com/action_page.php" target="_blank">
-  <div class="field">
-    <label class="label">Hero</label>
-    <div class="control">
-      <input required name="hero" class="input" value="Steve Rogers" />
+  <div class="ds-field">
+    <label class="ds-label">Hero</label>
+    <div class="ds-control">
+      <input required name="hero" class="ds-input" value="Steve Rogers" />
     </div>
   </div>
 
-  <div class="buttons">
-    <button type="submit" class="button">Submit</button>
-    <button type="reset" class="button is-link" data-testid="button-reset">Reset</button>
+  <div class="ds-buttons">
+    <button type="submit" class="ds-button">Submit</button>
+    <button type="reset" class="ds-button is-link" data-testid="button-reset">Reset</button>
   </div>
 </form>
 `,

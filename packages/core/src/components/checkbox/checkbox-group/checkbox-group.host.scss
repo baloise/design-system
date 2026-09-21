@@ -57,7 +57,7 @@
 // Invalid or Color Danger
 // --------------------------------
 :host(.is-danger) {
-  --mod-checkbox-group-description-color: var(--ds-form-description-color-danger);
+  --mod-checkbox-group-description-color: var(--ds-form-danger-description-color);
 }
 
 //
@@ -72,8 +72,8 @@
     cursor: default;
   }
 
-  --mod-checkbox-group-label-color: var(--ds-form-label-color-disabled);
-  --mod-checkbox-group-description-color: var(--ds-form-description-color-disabled);
+  --mod-checkbox-group-label-color: var(--ds-form-disabled-label-color);
+  --mod-checkbox-group-description-color: var(--ds-form-disabled-description-color);
 }
 
 //

@@ -27,6 +27,7 @@
   "peerDependencies": {
     "@angular/common": ">=22.0.0",
     "@angular/core": ">=22.0.0",
+    "@angular/forms": ">=22.0.0",
     "rxjs": ">=7.8.0"
   },
   "dependencies": {
@@ -34,9 +35,10 @@
     "tslib": "catalog:"
   },
   "devDependencies": {
-    "@angular/common": "22.1.4",
-    "@angular/compiler-cli": "22.1.4",
-    "@angular/core": "22.1.4",
+    "@angular/common": "22.1.7",
+    "@angular/compiler-cli": "22.1.7",
+    "@angular/core": "22.1.7",
+    "@angular/forms": "22.1.7",
     "eslint": "catalog:",
     "ng-packagr": "22.1.1",
     "rxjs": "7.8.2",

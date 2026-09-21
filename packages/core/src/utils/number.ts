@@ -1,12 +1,20 @@
-import { defaultLocale, useDsConfig } from '@global'
+// de-CH mirrors the default locale in global/config/config.default.ts.
+// Reads the live config directly off `window` instead of importing `useDsConfig` from '@global',
+// which would pull in a module cycle (see the same workaround in ./helpers.ts).
+const DEFAULT_LOCALE = 'de-CH'
+
+const getDsConfig = (): { locale?: string } | undefined => {
+  const win = window as any
+  return win && win.DesignSystem && win.DesignSystem.config
+}
 
 const getLocale = (): string => {
-  const config = useDsConfig()
+  const config = getDsConfig()
   // workaround for swiss french locale which uses non standard number formatting
   if (config && config.locale && config.locale === 'fr-CH') {
-    return 'de-CH'
+    return DEFAULT_LOCALE
   }
-  return (config && config.locale) || defaultLocale
+  return (config && config.locale) || DEFAULT_LOCALE
 }
 
 export function getDecimalSeparator(): string {

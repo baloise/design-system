@@ -1,7 +1,18 @@
+import isEqual from 'lodash/isEqual'
 import { DsLogger } from '@utils'
 import { DS_ANIMATION_KEY } from './config.const'
 import { defaultConfig } from './config.default'
-import { DsBrand, DsConfig, DsConfigState, DsIcons, DsLanguage, DsRegion } from './config.types'
+import {
+  DsBrand,
+  DsConfig,
+  DsConfigState,
+  DsIcons,
+  DsLanguage,
+  DsLegalLinks,
+  DsLegalText,
+  DsRegion,
+  DsSocialLinks,
+} from './config.types'
 import { DsConfigObserver } from './observable/observer'
 
 export class Config {
@@ -68,16 +79,30 @@ export class Config {
     }
   }
 
+  get fallbackLanguage(): DsLanguage {
+    return this._config.fallbackLanguage
+  }
+
+  set fallbackLanguage(fallbackLanguage: DsLanguage) {
+    if (fallbackLanguage !== this._config.fallbackLanguage) {
+      this._config.fallbackLanguage = fallbackLanguage
+      this._notify()
+    }
+  }
+
   get icons(): DsIcons {
     return this._config.icons
   }
 
   set icons(icons: DsIcons) {
-    this._config.icons = {
+    const merged = {
       ...this._config.icons,
       ...icons,
     }
-    this._notify()
+    if (!isEqual(merged, this._config.icons)) {
+      this._config.icons = merged
+      this._notify()
+    }
   }
 
   get logger(): DsLogger {
@@ -98,13 +123,49 @@ export class Config {
     this._notify()
   }
 
-  get httpFormSubmit(): boolean {
-    return this._config.httpFormSubmit
+  get legalLinks(): DsLegalLinks {
+    return this._config.legalLinks
   }
 
-  set httpFormSubmit(httpFormSubmit: boolean) {
-    this._config.httpFormSubmit = httpFormSubmit
-    this._notify()
+  set legalLinks(legalLinks: DsLegalLinks) {
+    const merged = {
+      ...this._config.legalLinks,
+      ...legalLinks,
+    }
+    if (!isEqual(merged, this._config.legalLinks)) {
+      this._config.legalLinks = merged
+      this._notify()
+    }
+  }
+
+  get legalText(): DsLegalText {
+    return this._config.legalText
+  }
+
+  set legalText(legalText: DsLegalText) {
+    const merged = {
+      ...this._config.legalText,
+      ...legalText,
+    }
+    if (!isEqual(merged, this._config.legalText)) {
+      this._config.legalText = merged
+      this._notify()
+    }
+  }
+
+  get socialLinks(): DsSocialLinks {
+    return this._config.socialLinks
+  }
+
+  set socialLinks(socialLinks: DsSocialLinks) {
+    const merged = {
+      ...this._config.socialLinks,
+      ...socialLinks,
+    }
+    if (!isEqual(merged, this._config.socialLinks)) {
+      this._config.socialLinks = merged
+      this._notify()
+    }
   }
 
   attach(observer: DsConfigObserver): void {

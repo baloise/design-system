@@ -137,6 +137,22 @@ test.describe('keyboard navigation after mouse click', () => {
   })
 })
 
+test.describe('multiple chips', () => {
+  test('should exclude the chip delete buttons from the tab order', async ({ page }) => {
+    await page.mount(`<ds-select label="Languages" multiple></ds-select>`)
+    const select = new DsSelect(page.locator('ds-select'))
+    await setOptions(page, select.el, LANGUAGE_OPTIONS)
+
+    await select.selectMultiple(['German', 'Italian'])
+
+    const deleteButtons = select.el.locator('.ss-value-delete')
+    await expect(deleteButtons).toHaveCount(2)
+    for (const button of await deleteButtons.all()) {
+      await expect(button).toHaveAttribute('tabindex', '-1')
+    }
+  })
+})
+
 test.describe('grouped options', () => {
   test('should select an option nested in a group by its label', async ({ page }) => {
     await page.mount(`<ds-select label="Location"></ds-select>`)

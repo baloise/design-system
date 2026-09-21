@@ -13,9 +13,9 @@ const Story = StoryFactory(meta)
 export const Static = Story({
   ...withRender(
     () => `<div class="relative">
-  <div class="static bg-red-2 p-normal radius" style="min-width: 300px; min-height: 120px;">
+  <div class="static bg-red-2 p-base radius" style="min-width: 300px; min-height: 120px;">
     <p>Static</p>
-    <div class="absolute bottom-none left-0 bg-red radius p-normal" style="min-width: 100px; min-height: 56px">
+    <div class="absolute bottom-none left-0 bg-red radius p-base" style="min-width: 100px; min-height: 56px">
       Absolute
     </div>
   </div>
@@ -26,10 +26,10 @@ export const Fixed = Story({
   ...withRender(
     () => `<div class="overflow-hidden" style="height: 250px">
   <div class="relative radius border-primary" style="height: 200px">
-    <div class="absolute top-0 left-0 px-normal py-small w-full bg-primary">
+    <div class="absolute top-0 left-0 px-base py-sm w-full bg-primary">
       Fixed
     </div>
-    <div class="absolute overflow-auto mt-x-large p-normal" style="height: 150px">
+    <div class="absolute overflow-auto mt-xl p-base" style="height: 150px">
       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
       Vitae sapien pellentesque habitant morbi tristique senectus et netus. Vitae proin sagittis nisl rhoncus mattis.
       Maecenas pharetra convallis posuere morbi leo urna molestie. At in tellus integer feugiat scelerisque.
@@ -54,8 +54,8 @@ export const Fixed = Story({
 export const Relative = Story({
   ...withRender(
     () => `<div class="relative">
-  <div class="relative bg-red-2 p-normal radius" style="min-width: 300px; min-height: 140px;">Relative
-    <div class="absolute bottom-none left-0 bg-red p-normal radius" style="min-width: 100px; min-height: 56px">
+  <div class="relative bg-red-2 p-base radius" style="min-width: 300px; min-height: 140px;">Relative
+    <div class="absolute bottom-none left-0 bg-red p-base radius" style="min-width: 100px; min-height: 56px">
       Absolute
     </div>
   </div>
@@ -65,24 +65,24 @@ export const Relative = Story({
 })
 export const Absolute = Story({
   ...withRender(
-    () => `<div class="mb-normal">
-  <div class="relative bg-red-2 radius p-normal">
+    () => `<div class="mb-base">
+  <div class="relative bg-red-2 radius p-base">
     <p class="mt-none">Relative</p>
-    <div class="static bg-red-3 radius p-normal" style="min-width: 300px; min-height: 150px;">
+    <div class="static bg-red-3 radius p-base" style="min-width: 300px; min-height: 150px;">
       <p class="mt-none">Static</p>
-      <div class="static bottom-none left-0 bg-red-4 radius p-normal" style="min-width: 120px; min-height: 56px">
+      <div class="static bottom-none left-0 bg-red-4 radius p-base" style="min-width: 120px; min-height: 56px">
         Static
       </div>
     </div>
   </div>
 </div>
 
-<div class="relative bg-red-2 radius p-normal">
+<div class="relative bg-red-2 radius p-base">
   <p class="mt-0">Relative</p>
-  <div class="static bg-red-3 radius p-normal" style="min-width: 300px; min-height: 150px;">
+  <div class="static bg-red-3 radius p-base" style="min-width: 300px; min-height: 150px;">
     <p class="mt-0">Static</p>
     <div
-      class="absolute bottom-none left-0 bg-red-4 radius p-normal"
+      class="absolute bottom-none left-0 bg-red-4 radius p-base"
       style="min-width: 120px; min-height: 56px"
     >
       Dynamic
@@ -96,10 +96,10 @@ export const Sticky = Story({
     () => `<div class="overflow-hidden">
   <div class="overflow-auto radius border-primary" style="height: 280px">
     <div>
-      <div class="sticky top-0 bg-red p-normal">
+      <div class="sticky top-0 bg-red p-base">
         Sticky Title 1
       </div>
-      <p class="p-normal m-none">
+      <p class="p-base m-none">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
         Vitae sapien pellentesque habitant morbi tristique senectus et netus. Vitae proin sagittis nisl rhoncus mattis.
         Maecenas pharetra convallis posuere morbi leo urna molestie. At in tellus integer feugiat scelerisque.
@@ -111,10 +111,10 @@ export const Sticky = Story({
       </p>
     </div>
     <div>
-      <div class="sticky top-0 bg-red p-normal">
+      <div class="sticky top-0 bg-red p-base">
         Sticky Title 2
       </div>
-      <p class="p-normal m-none">
+      <p class="p-base m-none">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
         Vitae sapien pellentesque habitant morbi tristique senectus et netus. Vitae proin sagittis nisl rhoncus mattis.
         Maecenas pharetra convallis posuere morbi leo urna molestie. At in tellus integer feugiat scelerisque.
@@ -126,10 +126,10 @@ export const Sticky = Story({
       </p>
     </div>
     <div>
-      <div class="sticky top-0 bg-red p-normal">
+      <div class="sticky top-0 bg-red p-base">
         Sticky Title 3
       </div>
-      <p class="p-normal m-none">
+      <p class="p-base m-none">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
         Vitae sapien pellentesque habitant morbi tristique senectus et netus. Vitae proin sagittis nisl rhoncus mattis.
         Maecenas pharetra convallis posuere morbi leo urna molestie. At in tellus integer feugiat scelerisque.
@@ -141,10 +141,10 @@ export const Sticky = Story({
       </p>
     </div>
     <div>
-      <div class="sticky top-0 bg-red p-normal">
+      <div class="sticky top-0 bg-red p-base">
         Sticky Title 4
       </div>
-      <p class="p-normal m-none">
+      <p class="p-base m-none">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
         Vitae sapien pellentesque habitant morbi tristique senectus et netus. Vitae proin sagittis nisl rhoncus mattis.
         Maecenas pharetra convallis posuere morbi leo urna molestie. At in tellus integer feugiat scelerisque.
@@ -156,10 +156,10 @@ export const Sticky = Story({
       </p>
     </div>
     <div>
-      <div class="sticky top-0 bg-red p-normal">
+      <div class="sticky top-0 bg-red p-base">
         Sticky Title 5
       </div>
-      <p class="p-normal m-none">
+      <p class="p-base m-none">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
         Vitae sapien pellentesque habitant morbi tristique senectus et netus. Vitae proin sagittis nisl rhoncus mattis.
         Maecenas pharetra convallis posuere morbi leo urna molestie. At in tellus integer feugiat scelerisque.

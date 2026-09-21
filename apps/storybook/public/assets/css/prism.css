@@ -152,7 +152,7 @@ pre[class*='language-'] {
 }
 
 .token.function {
-  color: var(--ds-global-color-light-blue-3) !important;
+  color: var(--ds-global-color-sky-3) !important;
 }
 
 .token.keyword.module {
@@ -176,7 +176,7 @@ pre[class*='language-'] {
 }
 
 .token.builtin {
-  color: var(--ds-global-color-light-blue-2) !important;
+  color: var(--ds-global-color-sky-2) !important;
 }
 
 .token.console.class-name,
@@ -217,7 +217,7 @@ pre[class*='language-'] {
 
 .language-scss .token.property,
 .language-css .token.property {
-  color: var(--ds-global-color-light-blue-2) !important;
+  color: var(--ds-global-color-sky-2) !important;
 }
 
 .language-diff {
@@ -255,6 +255,18 @@ pre[class*='language-'] {
 }
 
 .language-scss .token.string {
+  color: var(--ds-global-color-green-3) !important;
+}
+
+.language-tsx .token.tag {
+  color: var(--ds-global-color-red-3) !important;
+}
+
+.language-tsx .token.tag.attr-name {
+  color: var(--ds-global-color-yellow-2) !important;
+}
+
+.language-tsx .token.tag.attr-value {
   color: var(--ds-global-color-green-3) !important;
 }
 

@@ -8,7 +8,7 @@ type InfoQuoteProps = PropsWithChildren
 
 export const InfoQuote = ({ children }: InfoQuoteProps): React.ReactElement => {
   return (
-    <div className="sb-unstyled flex gap-normal bg-grey-1 border-left-primary text-small text-primary my-medium p-normal radius-right-normal">
+    <div className="sb-unstyled flex gap-base bg-grey-1 border-left-primary text-sm text-primary my-md p-base radius-right">
       <ds-icon color="primary" name="information" style={{ marginTop: '2px' }}></ds-icon>
       <span>{children}</span>
     </div>
@@ -17,7 +17,7 @@ export const InfoQuote = ({ children }: InfoQuoteProps): React.ReactElement => {
 
 export const WarningQuote = ({ children }: InfoQuoteProps): React.ReactElement => {
   return (
-    <div className="sb-unstyled flex gap-normal bg-warning-1 border-left-warning text-small text-primary my-medium p-normal radius-right-normal">
+    <div className="sb-unstyled flex gap-base bg-warning-1 border-left-warning text-sm text-primary my-md p-base radius-right">
       <ds-icon color="warning-dark" name="alert-triangle" style={{ marginTop: '2px' }}></ds-icon>
       <span>{children}</span>
     </div>
@@ -30,13 +30,13 @@ type StylesQuoteProps = {
 
 export const StylesQuote = ({ _tag }: StylesQuoteProps): React.ReactElement => {
   return (
-    <div className="sb-unstyled flex gap-normal bg-grey-1 border-left-primary text-small text-primary my-medium p-normal radius-right-normal">
+    <div className="sb-unstyled flex gap-base bg-grey-1 border-left-primary text-sm text-primary my-md p-base radius-right">
       <ds-icon color="primary" size="medium" name="design" style={{ marginTop: '2px' }}></ds-icon>
       <div>
-        <h3 className="title">Styles import</h3>
+        <h3 className="ds-title">Styles import</h3>
         <span>
           Make sure the <b>@baloise/ds-styles</b> package is already present in your project or follow the{' '}
-          <a className="link" onClick={() => navigate({ title: 'Development/Styles' })}>
+          <a className="ds-link" onClick={() => navigate({ title: 'Development/Styles' })}>
             installation guidelines
           </a>
           .
@@ -47,7 +47,7 @@ export const StylesQuote = ({ _tag }: StylesQuoteProps): React.ReactElement => {
               label: 'CSS',
               content: (
                 <>
-                  <span className="block pt-large">To import all Design System styles:</span>
+                  <span className="block pt-lg">To import all Design System styles:</span>
                   <Code
                     language="css"
                     code={`
@@ -61,7 +61,7 @@ export const StylesQuote = ({ _tag }: StylesQuoteProps): React.ReactElement => {
               label: 'Sass',
               content: (
                 <>
-                  <span className="block pt-large">To import all Design System styles:</span>
+                  <span className="block pt-lg">To import all Design System styles:</span>
                   <Code
                     language="css"
                     code={`
@@ -87,14 +87,14 @@ export const WebComponentQuote = ({ tag }: StylesQuoteProps): React.ReactElement
   }
 
   return (
-    <div className="sb-unstyled flex gap-normal bg-grey-1 border-left-primary text-small text-primary my-medium p-normal radius-right-normal">
+    <div className="sb-unstyled flex gap-base bg-grey-1 border-left-primary text-sm text-primary my-md p-base radius-right">
       <ds-icon color="primary" size="medium" name="info" style={{ marginTop: '2px' }}></ds-icon>
       <div>
-        <h3 className="title">Installation</h3>
+        <h3 className="ds-title">Installation</h3>
         <span>
           Make sure the <b>@baloise/ds-core</b>, <b>@baloise/ds-angular</b> or <b>@baloise/ds-react</b> packages is
           already present in your project or follow the{' '}
-          <a className="link" onClick={() => navigate({ title: 'Development/Getting Started' })}>
+          <a className="ds-link" onClick={() => navigate({ title: 'Development/Getting Started' })}>
             installation guidelines
           </a>
           .

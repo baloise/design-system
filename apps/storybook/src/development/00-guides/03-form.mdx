@@ -1,0 +1,168 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+import { AngularFramework, Banner, Code, Footer, InfoQuote, WarningQuote, Lead, LinkCard, LinkCards } from '../../../.storybook/blocks'
+
+<Meta title="Development/Form" name="Form" />
+
+<Banner label="Form" section="Development" />
+
+<Lead>
+  The indispensable form controls, designed for maximum clarity. Form elements are used in combination with the CSS grid
+  system.
+</Lead>
+
+## Form Fields
+
+Every form control — `ds-input`, `ds-select`, `ds-textarea`, `ds-checkbox`, `ds-radio-group`,
+`ds-toggle`, and more — renders its own label, control, and validation message internally, driven
+by `label`, `description`, `invalid`, and `invalid-text` props. There's no separate wrapper
+component to assemble anymore.
+
+<Code
+  language="html"
+  code={`
+<ds-input label="Firstname" placeholder="Enter your firstname"></ds-input>
+<ds-input label="Firstname" invalid invalid-text="Required Field"></ds-input>
+`}
+/>
+
+### CSS-only
+
+Using a form control as plain HTML instead of the web component? Assemble the same structure
+yourself with the `.ds-field`, `.ds-label`, `.ds-control`, and `.ds-help` classes, wiring the
+`for`/`id`/`aria-describedby` relationships by hand:
+
+<Code
+  language="html"
+  code={`
+<div class="ds-field">
+  <label class="ds-label" for="firstname">Firstname</label>
+  <div class="ds-control">
+    <input id="firstname" class="ds-input" placeholder="Enter your firstname" aria-describedby="firstname-help" />
+  </div>
+  <p id="firstname-help" class="ds-help">Description</p>
+</div>
+`}
+/>
+
+Add `is-danger` to `.ds-field` (and `aria-invalid="true"` to the control) for a validation state.
+
+The individual form controls are hybrid components: use the web component, or apply the same
+class directly to a native element for a CSS-only version:
+
+<LinkCards>
+  <LinkCard pageTitle="Components/Forms/Input/Input" description="ds-input — apply to a native input element." />
+  <LinkCard pageTitle="Components/Forms/Textarea/Textarea" description="ds-textarea — apply to a native textarea element." />
+  <LinkCard pageTitle="Components/Forms/Select/Select" description="ds-select — apply to a native select element." />
+  <LinkCard pageTitle="Components/Forms/Checkbox/Checkbox" description="ds-checkbox — apply to the wrapper label around a native checkbox input." />
+  <LinkCard pageTitle="Components/Forms/Radio/Radio" description="ds-radio — apply to the wrapper label around a native radio input." />
+  <LinkCard pageTitle="Components/Forms/Toggle/Toggle" description="ds-toggle — apply to the wrapper label around a native checkbox input." />
+  <LinkCard pageTitle="Foundation/Grid" description="ds-grid / ds-col — the grid used to lay out form fields into rows and columns." />
+  <LinkCard pageTitle="Components/Stack/Stack" description="ds-stack — apply to a wrapper element to space its children evenly." />
+</LinkCards>
+
+<WarningQuote>
+  <b>Accessibility</b> — the web components handle labelling, descriptions, and validation state internally,
+  WCAG 2.2 AA on their own. In CSS-only mode that responsibility moves to the consumer — you must
+  wire up `for`/`id`, `aria-describedby`, `aria-invalid`, and keyboard/focus behavior by hand. See
+  MDN's guides on [forms](https://developer.mozilla.org/en-US/docs/Learn_web_development/Extensions/Forms)
+  and [web form accessibility](https://developer.mozilla.org/en-US/docs/Learn_web_development/Extensions/Forms/Accessibility)
+  for the underlying requirements.
+</WarningQuote>
+
+## Form Grid
+
+To combine form fields into a bigger form, use the [Grid](?path=/docs/foundation-grid--documentation)
+— the same `.ds-grid`/`.ds-col` CSS classes used everywhere else in the Design System.
+
+<Code
+  language="html"
+  code={`
+<div class="ds-grid is-multiline">
+  <div class="ds-col is-full">
+    <ds-radio-group name="gender">
+      <ds-radio value="male">Male</ds-radio>
+      <ds-radio value="female">Female</ds-radio>
+    </ds-radio-group>
+  </div>
+  <div class="ds-col is-half">
+    <ds-input label="Firstname" placeholder="Enter your firstname"></ds-input>
+  </div>
+  <div class="ds-col is-half">
+    <ds-input label="Lastname" placeholder="Enter your lastname"></ds-input>
+  </div>
+</div>
+`}
+/>
+
+{/* ################################################## */}
+{/* -------------------------------------------------- */}
+{/* Angular  ----------------------------------------- */}
+{/* -------------------------------------------------- */}
+{/* ################################################## */}
+
+<AngularFramework>
+
+## Reactive Forms
+
+The form elements support [Angular Reactive Forms](https://angular.io/guide/reactive-forms) out of
+the box — bind `formControlName` and the component handles the rest. `invalid`/`invalid-text` are
+derived automatically from the control's own `touched`/`invalid`/`errors` state, so there's no
+`ds-ng-error` or other error-display component to wire up.
+
+<Code
+  language="html"
+  noPreview
+  code={`
+<form [formGroup]="form" (ngSubmit)="onSubmit()" class="ds-grid is-multiline mt-none">
+  <div class="ds-col is-full">
+    <ds-input name="email" label="Email" placeholder="Enter your email" formControlName="email" autofocus></ds-input>
+  </div>
+  <div class="ds-col is-half">...</div>
+</form>
+`}
+/>
+
+In the component class, define validators for the control. A validator that returns a **string**
+error message (instead of `true`) is shown as-is; otherwise the error key itself is shown as a
+fallback.
+
+<Code
+  language="ts"
+  code={`
+import { Component } from '@angular/core'
+import { AbstractControl, FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms'
+
+function required(control: AbstractControl): ValidationErrors | null {
+${' '}${' '}return Validators.required(control) ? { required: 'This field is required' } : null
+}
+
+@Component({
+${' '}${' '}selector: 'app-form-page',
+${' '}${' '}templateUrl: './form-page.component.html',
+})
+export class FormPageComponent {
+${' '}${' '}form = new FormGroup({
+${' '}${' '}${' '}${' '}email: new FormControl(null, [required]),
+${' '}${' '}})
+
+${' '}${' '}onSubmit() {
+${' '}${' '}${' '}${' '}alert('Form is submitted!')
+${' '}${' '}}
+}
+`}
+/>
+
+</AngularFramework>
+
+<Footer>
+  <LinkCards>
+    <LinkCard
+      pageTitle="Foundation/Grid"
+      description="The grid system used to lay out form fields into rows and columns."
+    />
+    <LinkCard
+      pageTitle="Development/Component"
+      description="How web components, CSS-only classes, and hybrid components work across frameworks."
+    />
+  </LinkCards>
+</Footer>

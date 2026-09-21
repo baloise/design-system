@@ -40,7 +40,7 @@ WithIcon.storyName = '🧩 With Icon'
 
 export const Colors = Story({
   ...withRender(
-    () => `<div class="stack">
+    () => `<div class="ds-stack">
     <ds-badge color="danger">D</ds-badge>
     <ds-badge color="warning">W</ds-badge>
     <ds-badge color="success">S</ds-badge>
@@ -53,7 +53,7 @@ Colors.storyName = '🧩 Colors'
 
 export const Sizes = Story({
   ...withRender(
-    () => `<div class="stack">
+    () => `<div class="ds-stack">
   <ds-badge size="sm">S</ds-badge>
   <ds-badge size="md">M</ds-badge>
   <ds-badge size="lg">L</ds-badge>
@@ -69,12 +69,12 @@ export const CardBadge = Story({
   },
   ...withRender(
     () => `
-<article class="card" aria-labelledby="card-title-1">
+<article class="ds-card" aria-labelledby="card-title-1">
   <ds-badge color="success" icon="check"></ds-badge>
-  <header class="card-header">
-    <h3 class="title" id="card-title-1">Header</h3>
+  <header class="ds-card-header">
+    <h3 class="ds-title" id="card-title-1">Header</h3>
   </header>
-  <div class="card-content">
+  <div class="ds-card-content">
     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
     dolore magna aliqua.
   </div>
@@ -90,7 +90,7 @@ export const ButtonBadge = Story({
   },
   ...withRender(
     () => `
-<button class="button">
+<button class="ds-button">
   <ds-badge pulse>99+</ds-badge>
   Button
 </button>`,

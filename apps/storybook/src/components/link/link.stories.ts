@@ -10,7 +10,7 @@ const meta: Meta<Args> = {
   },
   ...withRender(
     ({ slot }) => `
-<a class="link">${slot}</a>
+<a class="ds-link">${slot}</a>
 `,
   ),
 }
@@ -33,7 +33,7 @@ export const Inverted = Story({
   },
   ...withRender(
     ({ slot }) => `
-<a class="link is-inverted">${slot}</a>
+<a class="ds-link is-inverted">${slot}</a>
 `,
   ),
 })

@@ -60,12 +60,12 @@ export class CardSubtitle implements DsComponentInterface {
     return (
       <Host
         class={{
-          'card-header': true,
+          'ds-card-header': true,
         }}
       >
         <span
           class={{
-            'text': true,
+            'ds-text': true,
             'is-bold': this.bold,
             [`is-${this.color}`]: hasValue(this.color) && !this.inverted,
             'is-inverted': this.inverted,

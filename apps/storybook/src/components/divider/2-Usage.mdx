@@ -10,7 +10,7 @@ import {
 import * as DividerStories from './divider.stories'
 import { DIVIDER_DOC_CONFIG, getDividerTabs } from './divider.doc-config'
 
-<Meta title="Components/Divider/Usage" />
+<Meta title="Components/Divider/Usage" name="Usage" />
 <Banner label={'Usage'} section={DIVIDER_DOC_CONFIG.section} color={DIVIDER_DOC_CONFIG.color} />
 <BannerTabs
   of={DividerStories}
@@ -47,8 +47,8 @@ Use dividers strategically to enhance content organization without cluttering th
       content: (
         <>
           <ds-text>Section 1 content here</ds-text>
-          <ds-divider class="my-normal"></ds-divider>
-          <ds-text class="mt-normal">Section 2 content here</ds-text>
+          <ds-divider class="my-base"></ds-divider>
+          <ds-text class="mt-base">Section 2 content here</ds-text>
         </>
       ),
       description: 'Divider with spacing clearly separates related content',
@@ -59,11 +59,11 @@ Use dividers strategically to enhance content organization without cluttering th
       content: (
         <>
           <ds-text>Item 1</ds-text>
-          <ds-divider class="my-small"></ds-divider>
+          <ds-divider class="my-sm"></ds-divider>
           <ds-text>Item 2</ds-text>
-          <ds-divider class="my-small"></ds-divider>
+          <ds-divider class="my-sm"></ds-divider>
           <ds-text>Item 3</ds-text>
-          <ds-divider class="my-small"></ds-divider>
+          <ds-divider class="my-sm"></ds-divider>
         </>
       ),
       description: 'Too many dividers create visual noise and reduce effectiveness',
@@ -82,7 +82,7 @@ Use divider colors to reinforce meaning or hierarchy. Default grey works for mos
       title: 'Correct: Semantic color',
       content: (
         <>
-          <Code noPreview code={'<ds-divider color="grey"></ds-divider><!-- default section break -->\n<ds-divider color="warning" class="mt-normal"></ds-divider><!-- alert or warning section -->'} />
+          <Code noPreview code={'<ds-divider color="grey"></ds-divider><!-- default section break -->\n<ds-divider color="warning" class="mt-base"></ds-divider><!-- alert or warning section -->'} />
         </>
       ),
       description: 'Color choice reinforces the semantic meaning',

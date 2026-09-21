@@ -7,10 +7,10 @@ export const TOKENS_DOC_CONFIG = {
   section: 'Tokens',
   color: 'green' as const,
   tabs: [
-    { label: 'All Design Tokens', storyId: 'tokens-all-tokens' },
-    { label: 'Design Tokens Explained', storyId: 'tokens-design-tokens-explained' },
-    { label: 'Use Tokens in Code', storyId: 'tokens-use-tokens-in-code' },
-    { label: 'Component Variables', storyId: 'tokens-component-variables' },
+    { label: 'All Design Tokens', storyId: 'tokens-all-tokens--documentation' },
+    { label: 'Design Tokens Explained', storyId: 'tokens-design-tokens-explained--documentation' },
+    { label: 'Use Tokens in Code', storyId: 'tokens-use-tokens-in-code--documentation' },
+    { label: 'Component Variables', storyId: 'tokens-component-variables--documentation' },
   ],
 }
 

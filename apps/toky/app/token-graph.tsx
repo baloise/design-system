@@ -17,6 +17,7 @@ const NODE_HEIGHT = 78
 const LAYER_BORDER_COLOR: Record<TokenLayer, string> = {
   Global: '#f59e0b', // amber
   Alias: '#38bdf8', // sky
+  Device: '#2dd4bf', // teal
   Component: '#34d399', // emerald
 }
 

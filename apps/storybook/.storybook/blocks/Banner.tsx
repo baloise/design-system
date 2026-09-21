@@ -51,8 +51,8 @@ export const Banner = ({ of, children, color, label, section, _puzzle, _tabs }):
       >
         <div className="flex gap-base" style={{ maxWidth: '1000px', margin: 'auto', position: 'relative' }}>
           <div className="flex-1">
-            <span className="text text-lg mb-none">{subtitle}</span>
-            <h1 className={`title text-4xl ${text} flex align-items-center gap-small`}>
+            <span className="ds-text text-lg mb-none">{subtitle}</span>
+            <h1 className={`ds-title text-4xl ${text} flex align-items-center gap-sm`}>
               {isDeprecated ? <ds-icon color="warning-dark" name="alert-triangle" inline size="large"></ds-icon> : ''}{' '}
               {title}
             </h1>
@@ -138,7 +138,7 @@ export const BannerTabs = ({ of, _children, color, tabs }): React.ReactElement =
             >
               {tabs.map((tab, index) => (
                 <a
-                  className="title hover:text-primary-hover active:text-primary-active text-align-center"
+                  className="ds-title hover:text-primary-hover active:text-primary-active text-align-center"
                   key={index}
                   href={tab.href}
                   style={{

@@ -5,19 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <link rel="stylesheet" href="/assets/section.css" />
+    <link rel="stylesheet" href="/assets/tokens/base.tokens.css" />
     <link rel="stylesheet" href="/assets/css/design-system.local.min.css" />
+    <link rel="stylesheet" href="/assets/css/utilities.min.css" />
   </head>
 
   <body>
-    <main class="container">
+    <main class="ds-container">
       <!-- Basic -->
       <section data-testid="basic">
         <span>Basic</span>
-        <label class="toggle">
+        <label class="ds-toggle">
           <input type="checkbox" />
           Unchecked
         </label>
-        <label class="toggle">
+        <label class="ds-toggle">
           <input type="checkbox" checked />
           Checked
         </label>
@@ -26,10 +28,10 @@
       <!-- No label -->
       <section data-testid="no-label">
         <span>No Label</span>
-        <label class="toggle">
+        <label class="ds-toggle">
           <input type="checkbox" />
         </label>
-        <label class="toggle">
+        <label class="ds-toggle">
           <input type="checkbox" checked />
         </label>
       </section>
@@ -37,11 +39,11 @@
       <!-- Disabled -->
       <section data-testid="disabled">
         <span>Disabled</span>
-        <label class="toggle is-disabled">
+        <label class="ds-toggle is-disabled">
           <input type="checkbox" disabled />
           Unchecked
         </label>
-        <label class="toggle is-disabled">
+        <label class="ds-toggle is-disabled">
           <input type="checkbox" checked disabled />
           Checked
         </label>
@@ -50,11 +52,11 @@
       <!-- Invalid -->
       <section data-testid="invalid">
         <span>Invalid</span>
-        <label class="toggle is-invalid">
+        <label class="ds-toggle is-invalid">
           <input type="checkbox" />
           Unchecked
         </label>
-        <label class="toggle is-invalid">
+        <label class="ds-toggle is-invalid">
           <input type="checkbox" checked />
           Checked
         </label>
@@ -63,11 +65,11 @@
       <!-- Invalid + Disabled -->
       <section data-testid="invalid-disabled">
         <span>Invalid + Disabled</span>
-        <label class="toggle is-invalid is-disabled">
+        <label class="ds-toggle is-invalid is-disabled">
           <input type="checkbox" disabled />
           Unchecked
         </label>
-        <label class="toggle is-invalid is-disabled">
+        <label class="ds-toggle is-invalid is-disabled">
           <input type="checkbox" checked disabled />
           Checked
         </label>
@@ -76,7 +78,7 @@
       <!-- Required -->
       <section data-testid="required">
         <span>Required</span>
-        <label class="toggle">
+        <label class="ds-toggle">
           <input type="checkbox" required />
           Required checkbox
         </label>
@@ -85,13 +87,13 @@
       <!-- Field -->
       <section data-testid="field">
         <span>Field</span>
-        <fieldset class="field">
-          <legend class="label">Label</legend>
-          <label class="toggle">
+        <fieldset class="ds-field">
+          <legend class="ds-label">Label</legend>
+          <label class="ds-toggle">
             <input type="checkbox" aria-describedby="help" />
             Checkbox
           </label>
-          <p class="help" id="help">This username is available</p>
+          <p class="ds-help" id="help">This username is available</p>
         </fieldset>
       </section>
 
@@ -99,7 +101,7 @@
       <section data-testid="form">
         <span>Form</span>
         <form action="https://www.w3schools.com/action_page.php" target="_blank">
-          <label class="toggle">
+          <label class="ds-toggle">
             <input type="checkbox" name="terms" value="accepted" />
             Accept terms and conditions
           </label>

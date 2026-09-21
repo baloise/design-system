@@ -173,6 +173,21 @@ describe('computeDiff', () => {
       figmaId: 'VariableID:9:9',
     })
   })
+
+  it('detects a description-only edit as an update, not silently dropped', () => {
+    const original = flattenTokenDocument(fixtureDoc)
+    const working = toWorking(original).map(w =>
+      w.token.name === '🌈 Color.Black' ? { ...w, token: { ...w.token, description: 'The darkest color.' } } : w,
+    )
+
+    const diff = computeDiff(original, working)
+    expect(diff).toHaveLength(1)
+    expect(diff[0]).toMatchObject({
+      kind: 'update',
+      oldPath: ['🌐 Global', '🌈 Color', 'Black'],
+      description: 'The darkest color.',
+    })
+  })
 })
 
 describe('describeChangeStatus', () => {
@@ -207,6 +222,12 @@ describe('describeChangeStatus', () => {
     expect(describeChangeStatus(aliasWhite, { ...aliasWhite, referenceTarget: '🌐 Global.🌈 Color.Black' })).toBe(
       'value',
     )
+  })
+
+  it('returns "value" when the description changed', () => {
+    const original = flattenTokenDocument(fixtureDoc)
+    const black = original.find(t => t.name === '🌈 Color.Black')!
+    expect(describeChangeStatus(black, { ...black, description: 'The darkest color.' })).toBe('value')
   })
 
   it('returns null when nothing changed', () => {
@@ -251,6 +272,69 @@ describe('applyDiffToDocument', () => {
 
     const white = node(result, '🌐 Global', '🌈 Color', 'White')
     expect(white.$extensions).toEqual({ 'com.figma.variableId': 'VariableID:1:1' })
+  })
+
+  it('writes $description as a sibling of $type/$value when the entry carries one', () => {
+    const result = applyDiffToDocument(fixtureDoc, [
+      {
+        kind: 'update',
+        layer: 'Global',
+        oldPath: ['🌐 Global', '🌈 Color', 'Black'],
+        newPath: ['🌐 Global', '🌈 Color', 'Black'],
+        type: 'color',
+        value: fixtureDoc['🌐 Global']['🌈 Color'].Black.$value,
+        before: fixtureDoc['🌐 Global']['🌈 Color'].Black.$value,
+        description: 'The darkest color.',
+      },
+    ])
+
+    const black = node(result, '🌐 Global', '🌈 Color', 'Black')
+    expect(black.$description).toBe('The darkest color.')
+  })
+
+  it('omits $description entirely when the entry carries none', () => {
+    const result = applyDiffToDocument(fixtureDoc, [
+      {
+        kind: 'update',
+        layer: 'Global',
+        oldPath: ['🌐 Global', '🌈 Color', 'Black'],
+        newPath: ['🌐 Global', '🌈 Color', 'Black'],
+        type: 'color',
+        value: fixtureDoc['🌐 Global']['🌈 Color'].Black.$value,
+        before: fixtureDoc['🌐 Global']['🌈 Color'].Black.$value,
+      },
+    ])
+
+    const black = node(result, '🌐 Global', '🌈 Color', 'Black')
+    expect(black).not.toHaveProperty('$description')
+  })
+
+  it('removes $description when a token is cleared back to empty', () => {
+    const docWithDescription = {
+      ...fixtureDoc,
+      '🌐 Global': {
+        ...fixtureDoc['🌐 Global'],
+        '🌈 Color': {
+          ...fixtureDoc['🌐 Global']['🌈 Color'],
+          Black: { ...fixtureDoc['🌐 Global']['🌈 Color'].Black, $description: 'The darkest color.' },
+        },
+      },
+    }
+
+    const result = applyDiffToDocument(docWithDescription, [
+      {
+        kind: 'update',
+        layer: 'Global',
+        oldPath: ['🌐 Global', '🌈 Color', 'Black'],
+        newPath: ['🌐 Global', '🌈 Color', 'Black'],
+        type: 'color',
+        value: docWithDescription['🌐 Global']['🌈 Color'].Black.$value,
+        before: docWithDescription['🌐 Global']['🌈 Color'].Black.$value,
+      },
+    ])
+
+    const black = node(result, '🌐 Global', '🌈 Color', 'Black')
+    expect(black).not.toHaveProperty('$description')
   })
 
   it('moves a node on rename (removes old path, creates new path)', () => {

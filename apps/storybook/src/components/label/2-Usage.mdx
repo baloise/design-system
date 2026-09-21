@@ -10,7 +10,7 @@ import {
 import * as LabelStories from './label.stories'
 import { LABEL_DOC_CONFIG, getLabelTabs } from './label.doc-config'
 
-<Meta title="Components/Forms/Label/Usage" />
+<Meta title="Components/Forms/Label/Usage" name="Usage" />
 <Banner label={'Usage'} section={LABEL_DOC_CONFIG.section} color={LABEL_DOC_CONFIG.color} />
 <BannerTabs
   of={LabelStories}
@@ -47,7 +47,7 @@ Use the `required` prop to automatically display required/optional indicators. S
       content: (
         <>
           <ds-label htmlFor="required-input" required="true">Email address</ds-label>
-          <ds-label htmlFor="optional-input" required="false" class="mt-normal">Company</ds-label>
+          <ds-label htmlFor="optional-input" required="false" class="mt-base">Company</ds-label>
         </>
       ),
       description: 'Users understand which fields are required before interaction',

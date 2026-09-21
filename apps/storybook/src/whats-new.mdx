@@ -1,0 +1,90 @@
+import { Meta, Unstyled } from '@storybook/addon-docs/blocks'
+import { Banner, ButtonCard, Footer, Lead } from '../.storybook/blocks'
+import ChartMultiBrand from './assets/images/chart-multi-brand.svg'
+
+<Meta title="What's New" name="What's New" />
+
+<Banner label="What's New" section="Helvetia Design System" />
+
+<Lead>
+  The Helvetia Design System builds on Baloise Design System's foundation. Here's what changed along the way.
+</Lead>
+
+## A New Architecture for Multi-Brand at Scale
+
+Under the hood, the design system moved to an architecture built to support many brands and themes without
+duplicating work:
+
+- **Tokens defined once, synced everywhere** — design tokens are now defined once and synced automatically across
+  every platform — web, iOS, Android, and Figma — so a change to a token propagates everywhere it's consumed
+  instead of being re-implemented per platform.
+- **More detailed, Figma-aligned tokens** — token definitions are more detailed and stay in sync with Figma.
+- **TOKY, our token editor** — a new Theme Editor lets you define a new brand or theme and see the result with a
+  live preview, without touching code or waiting on a build.
+- **Multi-brand by design** — the system is built for multi-brand theming from the ground up, making it easier to
+  support white-label applications and partner brands alongside Helvetia.
+
+<br />
+<div class="p-md radius-lg bg-primary-5">
+<img src={ChartMultiBrand} alt="Diagram of the multi-brand token architecture syncing tokens across platforms" />
+</div>
+
+<br />
+<br />
+
+Alongside the architecture work, a few other pieces landed:
+
+- 🚀 **Next.js SSR support** — components can now be server-rendered with Next.js, so pages hydrate faster and work
+  better with server-first frameworks.
+- ⚡ **More CSS-only components** — additional components ship as plain HTML/CSS with no web component required,
+  cutting JavaScript overhead and improving rendering performance, for faster rendering on websites and
+  server-side rendered applications.
+- 🫧 **Shadow DOM** — every component now renders inside Shadow DOM, isolating styles from the host page and
+  improving how the library integrates with Angular, React, and any other framework.
+- ♿ **Accessibility** — components have been updated to better meet WCAG 2.2 AA success criteria, keeping
+  applications compliant and inclusive by default.
+- 🛡️ **Cyber Resilience Act** — the design system now generates a Software Bill of Materials, runs automated
+  dependency scanning via Dependabot, and follows a documented security policy — aligning with the EU Cyber
+  Resilience Act.
+- 🤖 **AI Context Foundation** — every package now ships a CONTEXT.md documenting its purpose, structure, and
+  conventions, laying the groundwork for AI agent skills to come.
+- ⚛️ **React Integration** — new hooks — _**useModal**_, _**useToast**_, _**useSnackbar**_ — and a
+  _**DsRootProvider**_ replace the old _**bootstrapDesignSystem**_ setup, giving React apps simpler, centralized
+  configuration.
+- 📚 **Improved Documentation** — a theme switcher and a web component preview switcher let you compare themes
+  and components side by side, alongside usage guides and live code examples with CodePen.
+
+## What's Next (Roadmap)
+
+Here's what we're working on next:
+
+- 🚚 **Prepage migration from Baloise to Helvetia** — moving remaining Baloise-branded pages and apps onto the
+  Helvetia Design System.
+- 🧩 **Missing components from Helvetia apps** — filling the gaps by adding components that Helvetia apps still
+  rely on outside the design system.
+- 🎨 **Better Figma support** — creating components in Figma that are built directly from our design tokens.
+- 🧱 **Blocks and page templates** — pre-assembled sections and full page templates on top of our components.
+- ✨ **And more** — the roadmap keeps growing as we learn from you.
+
+Missing something on the roadmap? Create an issue on GitHub or send us an email.
+
+<Unstyled>
+  <div className="flex flex-wrap gap-base mt-lg">
+    <ButtonCard
+      color="yellow"
+      icon="✨"
+      label="Request a feature"
+      description="Suggest an idea for this project"
+      link="https://github.com/baloise/design-system/issues/new?assignees=&labels=✨+feature&template=feature_report.yml&title=%3Asparkles%3A+feat%28component%29%3A+title"
+    ></ButtonCard>
+    <ButtonCard
+      color="yellow"
+      icon="✉️"
+      label="Send us an email"
+      description="design-system@helvetia.ch"
+      link="mailto:design-system@helvetia.ch"
+    ></ButtonCard>
+  </div>
+</Unstyled>
+
+<Footer />

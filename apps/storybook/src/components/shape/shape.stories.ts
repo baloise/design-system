@@ -27,7 +27,7 @@ const Story = StoryFactory<Args>(meta)
 export const Basic = Story({
   args: {
     slot: '',
-    color: 'green',
+    color: 'purple',
     rotation: '0',
     variation: '1',
   },

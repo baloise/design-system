@@ -5,7 +5,7 @@ import { props, StoryFactory, withComponentControls, withRender } from '../../ut
 type Args = JSX.DsSelect
 
 const meta: Meta<Args> = {
-  title: 'Components/Select/Variants',
+  title: 'Components/Forms/Select/Variants',
   args: {
     label: 'Country',
     description: 'Select your country of residence',
@@ -15,16 +15,13 @@ const meta: Meta<Args> = {
   },
   ...withRender(
     ({ ...args }) => `
-      <ds-select id="select-basic" ${props(args)}></ds-select>
-      <script>
-        document.querySelector('#select-basic').options = [
-          { label: 'Switzerland', value: 'ch' },
-          { label: 'Germany', value: 'de' },
-          { label: 'Austria', value: 'at' },
-          { label: 'France', value: 'fr' },
-          { label: 'Italy', value: 'it' },
-        ]
-      </script>
+      <ds-select id="select-basic" ${props(args)}>
+        <ds-select-option value="ch">Switzerland</ds-select-option>
+        <ds-select-option value="de">Germany</ds-select-option>
+        <ds-select-option value="at">Austria</ds-select-option>
+        <ds-select-option value="fr">France</ds-select-option>
+        <ds-select-option value="it">Italy</ds-select-option>
+      </ds-select>
     `,
   ),
 }
@@ -44,17 +41,17 @@ Basic.storyName = '🧩 Basic'
 export const BasicHtml = Story({
   ...withRender(
     ({ ...args }) => `
-      <div class="field">
-        <label class="label" for="select-basic-html">${args.label}</label>
-        <div class="control">
-          <select class="select" id="select-basic-html" aria-describedby="select-basic-html-help">
+      <div class="ds-field">
+        <label class="ds-label" for="select-basic-html">${args.label}</label>
+        <div class="ds-control">
+          <select class="ds-select" id="select-basic-html" aria-describedby="select-basic-html-help">
             <option value="">-- Choose an option --</option>
             <option value="opt1">Option 1</option>
             <option value="opt2">Option 2</option>
             <option value="opt3">Option 3</option>
           </select>
         </div>
-        <span class="help" id="select-basic-html-help">${args.description}</span>
+        <span class="ds-help" id="select-basic-html-help">${args.description}</span>
       </div>
     `,
   ),
@@ -69,16 +66,13 @@ export const Searchable = Story({
   },
   ...withRender(
     ({ ...args }) => `
-      <ds-select id="select-searchable" ${props(args)}></ds-select>
-      <script>
-        document.querySelector('#select-searchable').options = [
-          { label: 'Switzerland', value: 'ch' },
-          { label: 'Germany', value: 'de' },
-          { label: 'Austria', value: 'at' },
-          { label: 'France', value: 'fr' },
-          { label: 'Italy', value: 'it' },
-        ]
-      </script>
+      <ds-select id="select-searchable" ${props(args)}>
+        <ds-select-option value="ch">Switzerland</ds-select-option>
+        <ds-select-option value="de">Germany</ds-select-option>
+        <ds-select-option value="at">Austria</ds-select-option>
+        <ds-select-option value="fr">France</ds-select-option>
+        <ds-select-option value="it">Italy</ds-select-option>
+      </ds-select>
     `,
   ),
 })
@@ -93,16 +87,13 @@ export const Clearable = Story({
   },
   ...withRender(
     ({ ...args }) => `
-      <ds-select id="select-clearable" ${props(args)}></ds-select>
-      <script>
-        document.querySelector('#select-clearable').options = [
-          { label: 'Switzerland', value: 'ch' },
-          { label: 'Germany', value: 'de' },
-          { label: 'Austria', value: 'at' },
-          { label: 'France', value: 'fr' },
-          { label: 'Italy', value: 'it' },
-        ]
-      </script>
+      <ds-select id="select-clearable" ${props(args)}>
+        <ds-select-option value="ch">Switzerland</ds-select-option>
+        <ds-select-option value="de">Germany</ds-select-option>
+        <ds-select-option value="at">Austria</ds-select-option>
+        <ds-select-option value="fr">France</ds-select-option>
+        <ds-select-option value="it">Italy</ds-select-option>
+      </ds-select>
     `,
   ),
 })
@@ -117,16 +108,13 @@ export const Multiple = Story({
   },
   ...withRender(
     ({ ...args }) => `
-      <ds-select id="select-multiple" ${props(args)}></ds-select>
-      <script>
-        document.querySelector('#select-multiple').options = [
-          { label: 'German', value: 'de' },
-          { label: 'French', value: 'fr' },
-          { label: 'Italian', value: 'it' },
-          { label: 'English', value: 'en' },
-          { label: 'Romansh', value: 'rm' },
-        ]
-      </script>
+      <ds-select id="select-multiple" ${props(args)}>
+        <ds-select-option value="de">German</ds-select-option>
+        <ds-select-option value="fr">French</ds-select-option>
+        <ds-select-option value="it">Italian</ds-select-option>
+        <ds-select-option value="en">English</ds-select-option>
+        <ds-select-option value="rm">Romansh</ds-select-option>
+      </ds-select>
     `,
   ),
 })
@@ -139,27 +127,18 @@ export const Grouped = Story({
   },
   ...withRender(
     ({ ...args }) => `
-      <ds-select id="select-grouped" ${props(args)}></ds-select>
-      <script>
-        document.querySelector('#select-grouped').optionGroups = [
-          {
-            label: 'Switzerland',
-            options: [
-              { label: 'Zurich', value: 'ch-zh' },
-              { label: 'Basel', value: 'ch-bs' },
-              { label: 'Bern', value: 'ch-be' },
-            ],
-          },
-          {
-            label: 'Germany',
-            options: [
-              { label: 'Berlin', value: 'de-be' },
-              { label: 'Munich', value: 'de-mu' },
-              { label: 'Hamburg', value: 'de-ha' },
-            ],
-          },
-        ]
-      </script>
+      <ds-select id="select-grouped" ${props(args)}>
+        <ds-select-optgroup label="Switzerland">
+          <ds-select-option value="ch-zh">Zurich</ds-select-option>
+          <ds-select-option value="ch-bs">Basel</ds-select-option>
+          <ds-select-option value="ch-be">Bern</ds-select-option>
+        </ds-select-optgroup>
+        <ds-select-optgroup label="Germany">
+          <ds-select-option value="de-be">Berlin</ds-select-option>
+          <ds-select-option value="de-mu">Munich</ds-select-option>
+          <ds-select-option value="de-ha">Hamburg</ds-select-option>
+        </ds-select-optgroup>
+      </ds-select>
     `,
   ),
 })

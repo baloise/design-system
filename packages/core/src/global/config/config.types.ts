@@ -1,19 +1,49 @@
 import { DsLogger } from '@utils'
-import { FooterLink, FooterSocialLink } from '../../components/footer/footer.interfaces'
+import { AppFooterLink, AppFooterSocialLink } from '../../components/app-footer/app-footer.interfaces'
 
-export type DsRegion = 'CH' | 'DE' | 'BE' | 'LU'
+export type DsRegion = 'CH' | 'DE' | 'BE' | 'LU' | 'AT' | 'ES' | 'IT' | 'NL' | 'FR'
 
 export type DsSwissLanguage = 'de' | 'fr' | 'it' | 'en'
 export type DsLuxembourgLanguage = 'fr' | 'de' | 'en'
 export type DsLuxembourgInternationalLanguage = DsLuxembourgLanguage | 'es' | 'pl' | 'pt' | 'sv' | 'fi'
 export type DsBelgiumLanguage = 'fr' | 'nl'
 export type DsGermanLanguage = 'de'
+export type DsAustriaLanguage = 'de'
+export type DsSpainLanguage = 'es'
+export type DsItalyLanguage = 'it'
+export type DsNetherlandsLanguage = 'nl'
+export type DsFranceLanguage = 'fr'
 export type DsBrand = 'baloise' | 'helvetia'
 
 export type DsLanguage =
-  DsSwissLanguage | DsLuxembourgLanguage | DsLuxembourgInternationalLanguage | DsBelgiumLanguage | DsGermanLanguage
+  | DsSwissLanguage
+  | DsLuxembourgLanguage
+  | DsLuxembourgInternationalLanguage
+  | DsBelgiumLanguage
+  | DsGermanLanguage
+  | DsAustriaLanguage
+  | DsSpainLanguage
+  | DsItalyLanguage
+  | DsNetherlandsLanguage
+  | DsFranceLanguage
 
 export type DsIcons = { [key: string]: string }
+
+export type DsLegalLinks = {
+  [key in DsRegion]?: {
+    [key in DsLanguage]?: AppFooterLink[]
+  }
+}
+
+export type DsLegalText = {
+  [key in DsRegion]?: {
+    [key in DsLanguage]?: string
+  }
+}
+
+export type DsSocialLinks = {
+  [key in DsRegion]?: AppFooterSocialLink[]
+}
 
 export interface DsConfig {
   brand?: DsBrand
@@ -24,20 +54,9 @@ export interface DsConfig {
   fallbackLanguage?: DsLanguage
   logger?: DsLogger
   animated?: boolean
-  httpFormSubmit?: boolean
-  legalLinks?: {
-    [key in DsRegion]?: {
-      [key in DsLanguage]?: FooterLink[]
-    }
-  }
-  legalText?: {
-    [key in DsRegion]?: {
-      [key in DsLanguage]?: string
-    }
-  }
-  socialLinks?: {
-    [key in DsRegion]?: FooterSocialLink[]
-  }
+  legalLinks?: DsLegalLinks
+  legalText?: DsLegalText
+  socialLinks?: DsSocialLinks
   _generateHydrateForCustomElementsOutput?: boolean
   _jmp?: (c: any) => any
   _raf?: (c: any) => number
@@ -55,20 +74,9 @@ export interface DsConfigState {
   fallbackLanguage: DsLanguage
   logger: DsLogger
   animated: boolean
-  httpFormSubmit: boolean
-  legalLinks: {
-    [key in DsRegion]?: {
-      [key in DsLanguage]?: FooterLink[]
-    }
-  }
-  legalText: {
-    [key in DsRegion]?: {
-      [key in DsLanguage]?: string
-    }
-  }
-  socialLinks: {
-    [key in DsRegion]?: FooterSocialLink[]
-  }
+  legalLinks: DsLegalLinks
+  legalText: DsLegalText
+  socialLinks: DsSocialLinks
   _generateHydrateForCustomElementsOutput: boolean
 }
 

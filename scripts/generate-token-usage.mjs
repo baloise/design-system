@@ -1,7 +1,7 @@
 /**
  * Generates apps/toky/src/tokens/code-usage.generated.json — for every Base
- * token (Global/Alias/Component layers), how many compiled CSS files in
- * packages/core and packages/css reference it as a CSS custom property.
+ * token (Global/Alias/Device/Component layers), how many compiled CSS files in
+ * packages/core and packages/styles reference it as a CSS custom property.
  * Used by Toky's token editor to flag dead tokens (see
  * docs/plans/toky-code-usage-plan.md).
  *
@@ -28,27 +28,27 @@ const SCAN_ROOTS = [
   // One compiled .css per source component (mirrors packages/core/src's structure),
   // with every @each/@for loop already expanded.
   { package: 'core', dir: resolve(workspaceRoot, 'packages/core/dist/collection'), patterns: ['**/*.css'] },
-  // packages/css only ships pre-bundled CSS. design-system(.local)(.min).css are
+  // packages/styles only ships pre-bundled CSS. design-system(.local)(.min).css are
   // just base+components+utilities concatenated — scanning them too would only
   // duplicate locations, not add information, so they're excluded.
   {
     package: 'css',
-    dir: resolve(workspaceRoot, 'packages/css/dist/css'),
+    dir: resolve(workspaceRoot, 'packages/styles/dist/css'),
     patterns: ['base.css', 'components.css', 'utilities.css'],
   },
 ]
 
-console.log('🔨 Rebuilding packages/tokens, packages/core, and packages/css...')
+console.log('🔨 Rebuilding packages/tokens, packages/core, and packages/styles...')
 execSync('pnpm tokens', { cwd: workspaceRoot, stdio: 'inherit' })
 execSync('pnpm core', { cwd: workspaceRoot, stdio: 'inherit' })
-execSync('pnpm css', { cwd: workspaceRoot, stdio: 'inherit' })
+execSync('pnpm styles', { cwd: workspaceRoot, stdio: 'inherit' })
 
 console.log('📖 Reading packages/tokens/dist/docs/base.tokens.json...')
 const docsJson = JSON.parse(readFileSync(docsTokensPath, 'utf-8'))
 const tokens = collectBaseTokens(docsJson)
 console.log(`   ${tokens.length} Base tokens found.`)
 
-console.log('🔍 Scanning compiled CSS in packages/core and packages/css for var(--ds-...) usage...')
+console.log('🔍 Scanning compiled CSS in packages/core and packages/styles for var(--ds-...) usage...')
 const glob = (await import('fast-glob')).default
 const files = []
 for (const { package: pkg, dir, patterns } of SCAN_ROOTS) {

@@ -10,19 +10,21 @@
     "play:run": "pnpm exec playwright test"
   },
   "dependencies": {
-    "@angular/common": "22.1.4",
-    "@angular/compiler": "22.1.4",
-    "@angular/core": "22.1.4",
-    "@angular/platform-browser": "22.1.4",
+    "@angular/common": "22.1.7",
+    "@angular/compiler": "22.1.7",
+    "@angular/core": "22.1.7",
+    "@angular/forms": "22.1.7",
+    "@angular/platform-browser": "22.1.7",
     "@baloise/ds-angular": "workspace:*",
-    "@baloise/ds-css": "workspace:*",
+    "@baloise/ds-styles": "workspace:*",
+    "@baloise/ds-tokens": "workspace:*",
     "rxjs": "7.8.2",
     "tslib": "catalog:"
   },
   "devDependencies": {
-    "@angular/build": "22.1.6",
-    "@angular/cli": "22.1.6",
-    "@angular/compiler-cli": "22.1.4",
+    "@angular/build": "22.1.8",
+    "@angular/cli": "22.1.8",
+    "@angular/compiler-cli": "22.1.7",
     "eslint": "catalog:",
     "typescript": "6.0.3"
   }

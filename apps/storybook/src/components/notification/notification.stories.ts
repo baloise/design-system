@@ -25,7 +25,7 @@ const meta: Meta<Args> = {
         noIcon: 'has-no-icon',
       },
       args,
-      'notification',
+      'ds-notification',
     )}>
   <h2>${heading}</h2>
   ${slot}
@@ -62,7 +62,7 @@ export const Alerts = Story({
   },
   ...withRender(
     ({ slot, ...args }) => `
-<div class="stack">
+<div class="ds-stack">
   <ds-notification ${props(args)} heading="Alert">
     ${slot}
   </ds-notification>
@@ -89,8 +89,8 @@ export const Outlines = Story({
   },
   ...withRender(
     ({ slot, ...args }) => `
-<div class="stack">
-  <ds-notification ${props(args)} color="outline-base" heading="Alert">
+<div class="ds-stack">
+  <ds-notification ${props(args)} color="outline-default" heading="Alert">
     ${slot}
   </ds-notification>
   <ds-notification ${props(args)} color="outline-purple" heading="Information">
