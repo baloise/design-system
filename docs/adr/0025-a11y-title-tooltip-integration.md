@@ -75,7 +75,7 @@ rather than being refactored to compose `ds-button`:
 
 ## Consequences
 
-- `data-item`, `file-upload`, and `input-stepper` already pass
+- `data-item`, `file-upload`, and `counter` already pass
   `a11yLabel`/`a11yTitle` through to internally-composed `ds-button`
   instances (edit / remove-file / increment-decrement icon-only buttons), so
   they inherit the tooltip automatically with no code changes — but their

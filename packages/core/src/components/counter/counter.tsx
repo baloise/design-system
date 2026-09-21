@@ -27,43 +27,43 @@ import { defaultConfig, DsComponentInterface, DsConfigState, DsLanguage, DsRegio
 import { Field, FieldInterface } from '../input/field.util'
 import { INPUT_COLORS, InputColor } from '../input/input.interfaces'
 import {
-  InputStepperBlurDetail,
-  InputStepperChangeDetail,
-  InputStepperDecreaseDetail,
-  InputStepperFocusDetail,
-  InputStepperIncreaseDetail,
-  InputStepperInputDetail,
-} from './input-stepper.interfaces'
-import { i18nDsInputStepper } from './input-stepper.i18n'
-import { clampValue, stepMinus, stepPlus } from './input-stepper.utils'
+  CounterBlurDetail,
+  CounterChangeDetail,
+  CounterDecreaseDetail,
+  CounterFocusDetail,
+  CounterIncreaseDetail,
+  CounterInputDetail,
+} from './counter.interfaces'
+import { i18nDsCounter } from './counter.i18n'
+import { clampValue, stepMinus, stepPlus } from './counter.utils'
 
 const STEP_FALLBACK = 1
 
 /**
- * Input stepper renders a numeric value flanked by decrease and increase buttons.
+ * Counter renders a numeric value flanked by decrease and increase buttons.
  *
- * @part stepper - The container element holding the buttons and value.
+ * @part counter - The container element holding the buttons and value.
  * @part value - The span rendering the current value.
  * @part decrease - The decrease (`-`) button.
  * @part increase - The increase (`+`) button.
  */
 @Component({
-  tag: 'ds-input-stepper',
-  styleUrl: 'input-stepper.host.scss',
+  tag: 'ds-counter',
+  styleUrl: 'counter.host.scss',
   shadow: true,
   formAssociated: true,
 })
-export class InputStepper implements DsComponentInterface, FieldInterface {
+export class Counter implements DsComponentInterface, FieldInterface {
   private inheritedAttributes: { [k: string]: any } = {}
   private initialValue: number = 0
   private stepWarned = false
   private decreaseButtonEl?: HTMLDsButtonElement
   private increaseButtonEl?: HTMLDsButtonElement
 
-  inputStepperId = `ds-input-stepper-${InputStepperIds++}`
+  counterId = `ds-counter-${CounterIds++}`
 
   log!: LogInstance
-  @Logger('input-stepper')
+  @Logger('counter')
   createLogger(log: LogInstance) {
     this.log = log
   }
@@ -83,7 +83,7 @@ export class InputStepper implements DsComponentInterface, FieldInterface {
    */
 
   /**
-   * The current numeric value of the stepper. A stepper can never be empty: every write is resolved onto
+   * The current numeric value of the counter. A counter can never be empty: every write is resolved onto
    * `[min, max]`, with an empty value (`null`/`undefined`/`NaN`) falling back to `min`. The resolution is
    * silent — no `dsChange` is emitted — because a programmatic write must never look like user input (a
    * `ControlValueAccessor`'s `writeValue()` may not call back into `onChange()`). A framework binding that
@@ -119,24 +119,24 @@ export class InputStepper implements DsComponentInterface, FieldInterface {
    */
   @Prop({ reflect: true })
   @Type('string')
-  readonly name: string = this.inputStepperId
+  readonly name: string = this.counterId
 
   /**
-   * The label of the stepper, which is displayed above the control.
+   * The label of the counter, which is displayed above the control.
    */
   @Prop()
   @Type('string')
   readonly label: string = ''
 
   /**
-   * The description of the stepper, which is displayed below the control.
+   * The description of the counter, which is displayed below the control.
    */
   @Prop()
   @Type('string')
   readonly description: string = ''
 
   /**
-   * Defines the color of the stepper. The default value is `primary`.
+   * Defines the color of the counter. The default value is `primary`.
    */
   @Prop()
   @OneOf(INPUT_COLORS)
@@ -150,21 +150,21 @@ export class InputStepper implements DsComponentInterface, FieldInterface {
   readonly invalid: boolean = false
 
   /**
-   * The text to display when the stepper is in an invalid state.
+   * The text to display when the counter is in an invalid state.
    */
   @Prop()
   @Type('string')
   readonly invalidText: string = ''
 
   /**
-   * The minimum value the stepper can take.
+   * The minimum value the counter can take.
    */
   @Prop()
   @Type('number')
   readonly min: number = 0
 
   /**
-   * The maximum value the stepper can take.
+   * The maximum value the counter can take.
    */
   @Prop()
   @Type('number')
@@ -218,7 +218,7 @@ export class InputStepper implements DsComponentInterface, FieldInterface {
 
   /**
    * If `true`, the user must have a value before submitting a form. Because
-   * the stepper always has a numeric value, this only affects the "optional"
+   * the counter always has a numeric value, this only affects the "optional"
    * suffix on the label.
    */
   @Prop()
@@ -235,33 +235,33 @@ export class InputStepper implements DsComponentInterface, FieldInterface {
   /**
    * Emitted whenever the value changes via a step. Fires alongside `dsChange`.
    */
-  @Event() dsInput!: EventEmitter<InputStepperInputDetail>
+  @Event() dsInput!: EventEmitter<CounterInputDetail>
 
   /**
    * Emitted once per successful step. Debounceable via the `debounce` prop.
    */
-  @Event() dsChange!: EventEmitter<InputStepperChangeDetail>
+  @Event() dsChange!: EventEmitter<CounterChangeDetail>
 
   /**
    * Emitted after a successful increase step, in addition to `dsChange`/`dsInput`.
    */
-  @Event() dsIncrease!: EventEmitter<InputStepperIncreaseDetail>
+  @Event() dsIncrease!: EventEmitter<CounterIncreaseDetail>
 
   /**
    * Emitted after a successful decrease step, in addition to `dsChange`/`dsInput`.
    */
-  @Event() dsDecrease!: EventEmitter<InputStepperDecreaseDetail>
+  @Event() dsDecrease!: EventEmitter<CounterDecreaseDetail>
 
   /**
    * Emitted when focus enters the widget (either button).
    */
-  @Event() dsFocus!: EventEmitter<InputStepperFocusDetail>
+  @Event() dsFocus!: EventEmitter<CounterFocusDetail>
 
   /**
    * Emitted when focus leaves the widget entirely. Tabbing between the two
    * buttons does not emit — see `handleFocusout`.
    */
-  @Event() dsBlur!: EventEmitter<InputStepperBlurDetail>
+  @Event() dsBlur!: EventEmitter<CounterBlurDetail>
 
   /**
    * LIFECYCLE
@@ -316,7 +316,7 @@ export class InputStepper implements DsComponentInterface, FieldInterface {
    */
 
   /**
-   * Sets focus on the stepper. Prefers the increase button; falls back to
+   * Sets focus on the counter. Prefers the increase button; falls back to
    * decrease if the increase is disabled (value at max).
    */
   @Method()
@@ -425,7 +425,7 @@ export class InputStepper implements DsComponentInterface, FieldInterface {
     if (!Number.isFinite(this.step) || this.step <= 0) {
       if (!this.stepWarned) {
         console.warn(
-          `[ds-input-stepper] \`step\` must be a positive number, got ${this.step}. Falling back to ${STEP_FALLBACK}.`,
+          `[ds-counter] \`step\` must be a positive number, got ${this.step}. Falling back to ${STEP_FALLBACK}.`,
         )
         this.stepWarned = true
       }
@@ -446,8 +446,8 @@ export class InputStepper implements DsComponentInterface, FieldInterface {
    */
 
   render() {
-    const decreaseLabel = i18nDsInputStepper[this.language].decrease
-    const increaseLabel = i18nDsInputStepper[this.language].increase
+    const decreaseLabel = i18nDsCounter[this.language].decrease
+    const increaseLabel = i18nDsCounter[this.language].increase
     const decreaseDisabled = this.disabled || this.readonly || this.value <= this.min
     const increaseDisabled = this.disabled || this.readonly || this.value >= this.max
 
@@ -462,11 +462,11 @@ export class InputStepper implements DsComponentInterface, FieldInterface {
         required={this.required}
         language={this.language}
       >
-        <div id="stepper" part="stepper" onKeyDown={this.handleKeyDown} {...this.inheritedAttributes}>
+        <div id="counter" part="counter" onKeyDown={this.handleKeyDown} {...this.inheritedAttributes}>
           <ds-button
             ref={el => (this.decreaseButtonEl = el as HTMLDsButtonElement)}
             part="decrease"
-            data-testid="ds-input-stepper-decrease"
+            data-testid="ds-counter-decrease"
             color={
               this.invalid
                 ? 'danger'
@@ -484,13 +484,13 @@ export class InputStepper implements DsComponentInterface, FieldInterface {
             onDsFocus={this.handleFocusDecrease}
             onDsBlur={this.handleBlurDecrease}
           ></ds-button>
-          <span part="value" data-testid="ds-input-stepper-value">
+          <span part="value" data-testid="ds-counter-value">
             {formatLocaleNumber(this.value)}
           </span>
           <ds-button
             ref={el => (this.increaseButtonEl = el as HTMLDsButtonElement)}
             part="increase"
-            data-testid="ds-input-stepper-increase"
+            data-testid="ds-counter-increase"
             color={
               this.invalid
                 ? 'danger'
@@ -514,4 +514,4 @@ export class InputStepper implements DsComponentInterface, FieldInterface {
   }
 }
 
-let InputStepperIds = 0
+let CounterIds = 0

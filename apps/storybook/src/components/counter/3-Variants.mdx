@@ -1,0 +1,68 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+import { Banner, BannerTabs, CanvasWithCodePen, Footer, StoryHeading } from '../../../.storybook/blocks'
+import * as CounterStories from './counter.stories'
+import { COUNTER_DOC_CONFIG, getCounterTabs } from './counter.doc-config'
+
+<Meta title="Components/Forms/Counter/Variants/Overview" name="Overview" />
+
+<StoryHeading of={CounterStories.Basic} hidden></StoryHeading>
+
+<Banner label={'Variants'} section={COUNTER_DOC_CONFIG.section} color={COUNTER_DOC_CONFIG.color} />
+
+<BannerTabs of={CounterStories} tabs={getCounterTabs('variants')} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={CounterStories.Basic}></StoryHeading>
+
+<CanvasWithCodePen of={CounterStories.Basic} sourceState="shown" overflowVisible={true} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={CounterStories.Invalid}></StoryHeading>
+
+An invalid counter shows validation styling and displays `invalidText` below the control.
+
+<CanvasWithCodePen of={CounterStories.Invalid} sourceState="shown" overflowVisible={true} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={CounterStories.Disabled}></StoryHeading>
+
+A disabled counter cannot be focused or interacted with. Both buttons are inert and the value is not submitted.
+
+<CanvasWithCodePen of={CounterStories.Disabled} sourceState="shown" overflowVisible={true} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={CounterStories.Readonly}></StoryHeading>
+
+A readonly counter displays the current value but prevents changes. Unlike `disabled`, the value is still submitted with the form.
+
+<CanvasWithCodePen of={CounterStories.Readonly} sourceState="shown" overflowVisible={true} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={CounterStories.DecimalStep}></StoryHeading>
+
+`step` accepts decimal values. The component uses precise decimal arithmetic internally to prevent floating-point drift across repeated clicks (e.g. `0 + 0.1 + 0.1 + 0.1 = 0.3`, not `0.30000000000000004`).
+
+<CanvasWithCodePen of={CounterStories.DecimalStep} sourceState="shown" overflowVisible={true} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={CounterStories.MinMax}></StoryHeading>
+
+`min` and `max` clamp the value on connect and disable the corresponding button at the boundary. Ranges do not need to start at zero.
+
+<CanvasWithCodePen of={CounterStories.MinMax} sourceState="shown" overflowVisible={true} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={CounterStories.WithDescription}></StoryHeading>
+
+Use `description` to communicate the acceptable range or any constraint the user should know before interacting.
+
+<CanvasWithCodePen of={CounterStories.WithDescription} sourceState="shown" overflowVisible={true} />
+
+<Footer />

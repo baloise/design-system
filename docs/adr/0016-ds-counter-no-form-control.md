@@ -1,4 +1,4 @@
-# 16. ds-input-stepper does not use the `FormControl` utility
+# 16. ds-counter does not use the `FormControl` utility
 
 Package: `packages/core`
 
@@ -25,7 +25,7 @@ interaction model:
 Every one of those pathways assumes there is a `nativeEl` — a
 `<input>` or `<textarea>` — living inside the shadow root.
 
-`ds-input-stepper` is a two-button widget with a plain `<span>` for the
+`ds-counter` is a two-button widget with a plain `<span>` for the
 displayed value; there is no native input element, no free-text editing,
 and no "type then commit" sequence. Every button click is already a
 discrete, committed value change. There is nothing for `FormControl.onInput`
@@ -34,13 +34,13 @@ committed by the click handler, and nothing for `listenOnReset` to write to.
 
 ADR 0010 already documents that `ds-input-slider` diverges from
 `FormControl.onBlur` for a similar reason (its commit trigger is a native
-`change`, not blur). The stepper takes the same reasoning one step further:
+`change`, not blur). The counter takes the same reasoning one step further:
 because it has no native form element at all, none of `FormControl`'s
 lifecycle helpers apply.
 
 ## Decision
 
-`ds-input-stepper` does not construct a `FormControl` instance. It follows
+`ds-counter` does not construct a `FormControl` instance. It follows
 the `ds-input-slider` / `ds-toggle` pattern of a **web-component-only
 form-associated control**:
 
@@ -79,7 +79,7 @@ form-associated control**:
 - If the shared `FormControl` grows behavior that is genuinely useful to
   no-native-input controls (e.g. reset bookkeeping), we would either need
   to extract that behavior into a smaller reusable helper or duplicate the
-  small amount of code (~15 lines) that stepper needs.
+  small amount of code (~15 lines) that counter needs.
 
 ## Alternatives considered
 
@@ -89,5 +89,5 @@ form-associated control**:
   write. Correct behavior only by luck.
 - **Extract the reusable parts of `FormControl` into a smaller
   `FormAssociatedControl` mixin.** Deferred: only two components currently
-  need it (slider, stepper), and both already have local implementations.
+  need it (slider, counter), and both already have local implementations.
   If a third arrives, the extraction becomes worthwhile.

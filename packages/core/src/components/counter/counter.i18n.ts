@@ -1,11 +1,11 @@
 import { I18n } from '../../interfaces'
 
-export interface I18nDsInputStepper {
+export interface I18nDsCounter {
   increase: string
   decrease: string
 }
 
-export const i18nDsInputStepper: I18n<I18nDsInputStepper> = {
+export const i18nDsCounter: I18n<I18nDsCounter> = {
   de: {
     increase: 'erhöhen',
     decrease: 'verringern',
