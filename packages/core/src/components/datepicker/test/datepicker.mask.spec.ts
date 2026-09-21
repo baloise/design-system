@@ -1,5 +1,5 @@
 import { describe, test, expect, afterEach } from 'vitest'
-import { createDateMask, DateMask, isoToDisplay } from '../date.mask'
+import { createDatepickerMask, DatepickerMask, isoToDisplay } from '../datepicker.mask'
 
 describe('dsDate', () => {
   describe('isoToDisplay', () => {
@@ -12,9 +12,9 @@ describe('dsDate', () => {
     })
   })
 
-  describe('DateMask', () => {
+  describe('DatepickerMask', () => {
     let inputEl: HTMLInputElement
-    let mask: DateMask
+    let mask: DatepickerMask
 
     afterEach(() => {
       mask?.destroy()
@@ -24,7 +24,7 @@ describe('dsDate', () => {
     function setup() {
       inputEl = document.createElement('input')
       document.body.appendChild(inputEl)
-      mask = createDateMask({
+      mask = createDatepickerMask({
         inputEl,
         format: 'dd.MM.yyyy',
         initialValue: null,
@@ -60,7 +60,7 @@ describe('dsDate', () => {
       const completed: string[] = []
       inputEl = document.createElement('input')
       document.body.appendChild(inputEl)
-      mask = createDateMask({
+      mask = createDatepickerMask({
         inputEl,
         format: 'dd.MM.yyyy',
         initialValue: null,
@@ -76,7 +76,7 @@ describe('dsDate', () => {
 
   describe('short year shorthand', () => {
     let inputEl: HTMLInputElement
-    let mask: DateMask
+    let mask: DatepickerMask
 
     afterEach(() => {
       mask?.destroy()
@@ -86,7 +86,7 @@ describe('dsDate', () => {
     function setup() {
       inputEl = document.createElement('input')
       document.body.appendChild(inputEl)
-      mask = createDateMask({
+      mask = createDatepickerMask({
         inputEl,
         format: 'dd.MM.yyyy',
         initialValue: null,

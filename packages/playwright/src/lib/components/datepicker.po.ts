@@ -2,7 +2,7 @@ import { expect, Locator } from '@playwright/test'
 import { E2ELocator } from '../page/utils'
 import { PageObject } from './page-object'
 
-export class DsDate extends PageObject {
+export class DsDatepicker extends PageObject {
   readonly nativeInput: Locator
   readonly triggerButton: Locator
   readonly clearButton: Locator

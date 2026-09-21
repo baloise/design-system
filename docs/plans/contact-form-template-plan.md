@@ -53,7 +53,7 @@ Shadow DOM web component only where no CSS-only equivalent exists.
 | Privacy checkbox | yes (`checkbox.style.scss`) | `<input class="checkbox">` |
 | Send button | yes (`button.style.scss`) | `<button class="button">` |
 | Heading | yes (`heading.style.scss`) | classed heading element |
-| **Birthdate** | **no** — `date` is Shadow-DOM-only (`date.tsx`, no `.style.scss`) | `<ds-date>` web component (exception) |
+| **Birthdate** | **no** — `datepicker` is Shadow-DOM-only (`datepicker.tsx`, no `.style.scss`) | `<ds-datepicker>` web component (exception) |
 | **File upload** | **no** — `file-upload` is Shadow-DOM-only (`file-upload.tsx`, no `.style.scss`) | `<ds-file-upload>` web component (exception) |
 
 Layout: the existing CSS-only `form` component (`form.style.scss` — 12-column

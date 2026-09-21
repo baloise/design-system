@@ -1,5 +1,5 @@
 import { describe, test, expect, afterEach } from 'vitest'
-import { checkIsWithinRange, DatePickerController } from '../date.picker'
+import { checkIsWithinRange, DatepickerController } from '../datepicker.picker'
 
 describe('dsDate', () => {
   describe('checkIsWithinRange', () => {
@@ -8,9 +8,9 @@ describe('dsDate', () => {
     })
   })
 
-  describe('DatePickerController', () => {
+  describe('DatepickerController', () => {
     let host: HTMLDivElement
-    let controller: DatePickerController
+    let controller: DatepickerController
 
     afterEach(() => {
       controller?.destroy()
@@ -25,7 +25,7 @@ describe('dsDate', () => {
       shadowRoot.appendChild(popupHostEl)
 
       let selected: string | null | undefined
-      controller = new DatePickerController({
+      controller = new DatepickerController({
         popupHostEl,
         shadowRoot,
         language: 'de',

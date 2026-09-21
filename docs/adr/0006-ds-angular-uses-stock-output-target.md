@@ -13,7 +13,7 @@ Accepted
 `libs/output-target-angular` is a hand-rolled reimplementation of Angular
 proxy/directive generation, not a wrapper around any official Stencil
 package. It was built to support `ValueAccessorConfig`s wiring form
-components (`ds-select`, `ds-checkbox`, `ds-date`, …) into Angular's
+components (`ds-select`, `ds-checkbox`, `ds-datepicker`, …) into Angular's
 `ControlValueAccessor`/reactive-forms machinery — logic the stock
 `@stencil/angular-output-target` ecosystem doesn't provide out of the box.
 It is currently dormant: `packages/core/config/stencil.bindings.angular.ts`
@@ -54,7 +54,7 @@ dropped.
 - Parity with React's binding strategy: both frameworks now use their
   respective off-the-shelf Stencil output targets, with no custom
   generator code to own or test.
-- Angular consumers using `ds-select`, `ds-checkbox`, `ds-date`, etc.
+- Angular consumers using `ds-select`, `ds-checkbox`, `ds-datepicker`, etc.
   inside Angular reactive/template-driven forms get raw component
   inputs/outputs/events, not `formControlName`/`ngModel` integration, until
   the deferred forms-integration follow-up ships. This is a real

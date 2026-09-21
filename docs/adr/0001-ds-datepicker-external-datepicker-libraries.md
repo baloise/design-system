@@ -1,4 +1,4 @@
-# 1. ds-date uses external libraries (air-datepicker + imask) inside the shadow root
+# 1. ds-datepicker uses external libraries (air-datepicker + imask) inside the shadow root
 
 Package: `packages/core`
 
@@ -10,7 +10,7 @@ Accepted
 
 ## Context
 
-`ds-date` is a new form control: a masked, typeable text field that mirrors
+`ds-datepicker` is a new form control: a masked, typeable text field that mirrors
 `ds-input`'s look and field structure, with a calendar-icon trigger that opens a
 date-picker popup.
 
@@ -19,14 +19,14 @@ size minimal"** as a constraint. In practice this constraint is already soft:
 `packages/core` ships `focus-trap`, `@floating-ui/dom`, `luxon`, `dompurify`,
 `lottie-web`, `big.js`, and others as runtime dependencies.
 
-For `ds-date` the brief mandates two specific libraries:
+For `ds-datepicker` the brief mandates two specific libraries:
 
 - **air-datepicker** — the calendar popup.
 - **imask** — the input mask for the typeable field.
 
 Neither is currently a dependency. Two facts make the integration non-trivial:
 
-1. `ds-date` is a Shadow-DOM web component (`shadow: true`), but air-datepicker
+1. `ds-datepicker` is a Shadow-DOM web component (`shadow: true`), but air-datepicker
    renders its own DOM and ships a global stylesheet. Global CSS does not cross
    the shadow boundary.
 2. air-datepicker attaches a **document-level click listener** to close on
@@ -65,10 +65,10 @@ so imask is a second, parallel masking mechanism in the codebase.
 - Bundle size grows (two new dependencies); formally an exception to the
   "no external dependencies" guideline — hence this ADR.
 - Two masking systems now coexist in the codebase (`ds-input`'s custom masks and
-  imask in `ds-date`).
+  imask in `ds-datepicker`).
 - air-datepicker's stock theme is off-brand until a token-based override layer is
   added later (deliberately deferred).
-- air-datepicker's a11y is thin (no grid/dialog semantics); `ds-date` layers its
+- air-datepicker's a11y is thin (no grid/dialog semantics); `ds-datepicker` layers its
   own WCAG 2.2 AA contract on top (role=dialog, focus-trap, arrow-key nav,
   Esc-to-close with focus restoration).
 - Adopting a third-party stylesheet into the shadow root and driving open/close

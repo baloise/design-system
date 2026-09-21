@@ -18,22 +18,22 @@ import { AttachInternals, HTMLStencilElement } from '@stencil/core/internal'
 import { Field, FieldInterface } from '../input/field.util'
 import { INPUT_AUTOCOMPLETES, InputAutocomplete } from '../input/input.interfaces'
 import {
-  DATE_COLORS,
-  DateBlurDetail,
-  DateChangeDetail,
-  DateClickDetail,
-  DateColor,
-  DateFocusDetail,
-  DateInputDetail,
-  DateKeyPressDetail,
-} from './date.interfaces'
-import { createDateMask, DateMask, getDisplayFormat, isoToDisplay } from './date.mask'
-import { checkIsWithinRange, DatePickerController } from './date.picker'
+  DATEPICKER_COLORS,
+  DatepickerBlurDetail,
+  DatepickerChangeDetail,
+  DatepickerClickDetail,
+  DatepickerColor,
+  DatepickerFocusDetail,
+  DatepickerInputDetail,
+  DatepickerKeyPressDetail,
+} from './datepicker.interfaces'
+import { createDatepickerMask, DatepickerMask, getDisplayFormat, isoToDisplay } from './datepicker.mask'
+import { checkIsWithinRange, DatepickerController } from './datepicker.picker'
 import { i18nDsTriggerButton } from '../input/trigger-button.i18n'
 import { ClearButton } from '../input/clear-button.util'
 
 /**
- * Date renders a masked date input field with an interactive calendar popup for date selection.
+ * Datepicker renders a masked date input field with an interactive calendar popup for date selection.
  *
  * @slot invalid-text - Overrides the `invalidText` prop with custom markup, shown instead of the description when `invalid` is `true`.
  * @part input - The native HTML input element.
@@ -41,19 +41,19 @@ import { ClearButton } from '../input/clear-button.util'
  * @part trigger - The calendar icon button that opens the date picker popup.
  */
 @Component({
-  tag: 'ds-date',
-  styleUrl: 'date.host.scss',
+  tag: 'ds-datepicker',
+  styleUrl: 'datepicker.host.scss',
   shadow: true,
   formAssociated: true,
 })
-export class DsDate implements DsComponentInterface, FieldInterface, FormControlInterface<string | null> {
+export class DsDatepicker implements DsComponentInterface, FieldInterface, FormControlInterface<string | null> {
   private inheritedAttributes: { [k: string]: any } = {}
   private control = new FormControl(this)
   private focusHandler = new FocusHandler()
   private popupHostEl: HTMLDivElement | undefined
   private triggerEl: HTMLButtonElement | undefined
-  private dateMask: DateMask | undefined
-  private datePicker: DatePickerController | undefined
+  private dateMask: DatepickerMask | undefined
+  private datePicker: DatepickerController | undefined
   // Tracks which element the current `datePicker` is actually mounted to. Inline mode swaps
   // between rendering the always-visible calendar (`#inline`) and, while disabled, the regular
   // input+popup markup (`#popup`) — see `render()`. Both branches assign the same `popupHostEl`
@@ -62,10 +62,10 @@ export class DsDate implements DsComponentInterface, FieldInterface, FormControl
   private pickerHostEl: HTMLDivElement | undefined
 
   private updatingFromMask = false
-  dateId = `ds-date-${DateIds++}`
+  dateId = `ds-datepicker-${DateIds++}`
 
   log!: LogInstance
-  @Logger('date')
+  @Logger('datepicker')
   createLogger(log: LogInstance) {
     this.log = log
   }
@@ -156,8 +156,8 @@ export class DsDate implements DsComponentInterface, FieldInterface, FormControl
    * Defines the color of the date input. The default value is `primary`.
    */
   @Prop()
-  @OneOf(DATE_COLORS)
-  readonly color: DateColor = 'primary'
+  @OneOf(DATEPICKER_COLORS)
+  readonly color: DatepickerColor = 'primary'
 
   /**
    * If `true` the component gets an invalid style.
@@ -319,32 +319,32 @@ export class DsDate implements DsComponentInterface, FieldInterface, FormControl
   /**
    * Emitted when the input loses focus.
    */
-  @Event() dsBlur!: EventEmitter<DateBlurDetail>
+  @Event() dsBlur!: EventEmitter<DatepickerBlurDetail>
 
   /**
    * Emitted when a keyboard key has been pressed.
    */
-  @Event() dsKeyPress!: EventEmitter<DateKeyPressDetail>
+  @Event() dsKeyPress!: EventEmitter<DatepickerKeyPressDetail>
 
   /**
    * Emitted when the input receives focus.
    */
-  @Event() dsFocus!: EventEmitter<DateFocusDetail>
+  @Event() dsFocus!: EventEmitter<DatepickerFocusDetail>
 
   /**
    * Emitted when the input is clicked.
    */
-  @Event() dsClick!: EventEmitter<DateClickDetail>
+  @Event() dsClick!: EventEmitter<DatepickerClickDetail>
 
   /**
    * Emitted when a keyboard input occurred (ISO value or null if incomplete).
    */
-  @Event() dsInput!: EventEmitter<DateInputDetail>
+  @Event() dsInput!: EventEmitter<DatepickerInputDetail>
 
   /**
    * Emitted when the date value has changed (ISO value or null).
    */
-  @Event() dsChange!: EventEmitter<DateChangeDetail>
+  @Event() dsChange!: EventEmitter<DatepickerChangeDetail>
 
   /**
    * LIFECYCLE
@@ -381,7 +381,7 @@ export class DsDate implements DsComponentInterface, FieldInterface, FormControl
 
     this.datePicker?.destroy()
     this.pickerHostEl = this.popupHostEl
-    this.datePicker = new DatePickerController({
+    this.datePicker = new DatepickerController({
       popupHostEl: this.popupHostEl,
       shadowRoot: this.el.shadowRoot,
       language: this.language,
@@ -490,7 +490,7 @@ export class DsDate implements DsComponentInterface, FieldInterface, FormControl
   }
 
   /**
-   * Sets focus on the native `input` in `ds-date`.
+   * Sets focus on the native `input` in `ds-datepicker`.
    */
   @Method()
   async setFocus() {
@@ -498,7 +498,7 @@ export class DsDate implements DsComponentInterface, FieldInterface, FormControl
   }
 
   /**
-   * Sets blur on the native `input` in `ds-date`.
+   * Sets blur on the native `input` in `ds-datepicker`.
    * @internal
    */
   @Method()
@@ -571,7 +571,7 @@ export class DsDate implements DsComponentInterface, FieldInterface, FormControl
     const inputEl = this.control.nativeEl as HTMLInputElement | undefined
     if (!inputEl) return
 
-    this.dateMask = createDateMask({
+    this.dateMask = createDatepickerMask({
       inputEl,
       format: getDisplayFormat(this.region),
       initialValue: this.value,

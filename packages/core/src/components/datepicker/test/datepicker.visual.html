@@ -17,40 +17,49 @@
       <!-- Basic -->
       <section data-testid="basic">
         <span>Basic</span>
-        <ds-date label="Date of birth" description="Enter your date of birth" required="false"></ds-date>
+        <ds-datepicker label="Date of birth" description="Enter your date of birth" required="false"></ds-datepicker>
       </section>
 
       <!-- Form -->
       <section data-testid="form">
         <span>Form</span>
-        <ds-date label="Label 1" description="Description 1" required="false"></ds-date>
-        <ds-date label="Label 2" description="Description 2" placeholder="dd.MM.yyyy"></ds-date>
-        <ds-date label="Label 3" description="Description 3" value="2026-07-13"></ds-date>
+        <ds-datepicker label="Label 1" description="Description 1" required="false"></ds-datepicker>
+        <ds-datepicker label="Label 2" description="Description 2" placeholder="dd.MM.yyyy"></ds-datepicker>
+        <ds-datepicker label="Label 3" description="Description 3" value="2026-07-13"></ds-datepicker>
       </section>
 
       <!-- Min & Max -->
       <section data-testid="min-max">
         <span>Min & Max</span>
-        <ds-date label="Label 2024" description="2024-01-04 - 2024-12-24" min="2024-01-04" max="2024-12-24"></ds-date>
-        <ds-date label="Label" description="2027 - 2028" min-year="2027" max-year="2028"></ds-date>
+        <ds-datepicker
+          label="Label 2024"
+          description="2024-01-04 - 2024-12-24"
+          min="2024-01-04"
+          max="2024-12-24"
+        ></ds-datepicker>
+        <ds-datepicker label="Label" description="2027 - 2028" min-year="2027" max-year="2028"></ds-datepicker>
       </section>
 
       <!-- Free Solo -->
       <section data-testid="free-solo">
         <span>Free Solo</span>
-        <ds-date label="Label" description="Without Picker" free-solo></ds-date>
+        <ds-datepicker label="Label" description="Without Picker" free-solo></ds-datepicker>
       </section>
 
       <!-- defaultDate -->
       <section data-testid="default-date">
         <span>Default Date</span>
-        <ds-date label="Label" description="Where to start" default-date="2024-02-20"></ds-date>
+        <ds-datepicker label="Label" description="Where to start" default-date="2024-02-20"></ds-datepicker>
       </section>
 
       <!-- allowedDates -->
       <section data-testid="allowed-dates">
         <span>Allowed Dates</span>
-        <ds-date id="allowed-dates-input" label="Label" description="Only allow round number days"></ds-date>
+        <ds-datepicker
+          id="allowed-dates-input"
+          label="Label"
+          description="Only allow round number days"
+        ></ds-datepicker>
         <script>
           const date = document.querySelector('#allowed-dates-input')
           date.allowedDates = dateString => {
@@ -64,92 +73,107 @@
       <!-- Disabled -->
       <section data-testid="disabled">
         <span>Disabled</span>
-        <ds-date label="Label 1" description="Description 1" disabled></ds-date>
-        <ds-date label="Label 2" description="Description 2" placeholder="dd.MM.yyyy" disabled></ds-date>
-        <ds-date label="Label 3" description="Description 3" value="2026-07-13" disabled></ds-date>
+        <ds-datepicker label="Label 1" description="Description 1" disabled></ds-datepicker>
+        <ds-datepicker label="Label 2" description="Description 2" placeholder="dd.MM.yyyy" disabled></ds-datepicker>
+        <ds-datepicker label="Label 3" description="Description 3" value="2026-07-13" disabled></ds-datepicker>
       </section>
 
       <!-- Invalid -->
       <section data-testid="invalid">
         <span>Invalid</span>
-        <ds-date label="Label 1" description="Description 1" invalid-text="Validation Error 1" invalid></ds-date>
-        <ds-date
+        <ds-datepicker
+          label="Label 1"
+          description="Description 1"
+          invalid-text="Validation Error 1"
+          invalid
+        ></ds-datepicker>
+        <ds-datepicker
           label="Label 2"
           description="Description 2"
           placeholder="dd.MM.yyyy"
           invalid-text="Validation Error 2"
           invalid
-        ></ds-date>
-        <ds-date
+        ></ds-datepicker>
+        <ds-datepicker
           label="Label 3"
           description="Description 3"
           value="2026-07-13"
           invalid-text="Validation Error 3"
           invalid
-        ></ds-date>
+        ></ds-datepicker>
       </section>
 
       <!-- Invalid via slot (auto-detected, no invalid prop set) -->
       <section data-testid="invalid-slot">
         <span>Invalid via slot</span>
-        <ds-date label="Slot with content" description="Description">
+        <ds-datepicker label="Slot with content" description="Description">
           <div slot="invalid-text">Slotted validation error</div>
-        </ds-date>
-        <ds-date label="Empty slot stays valid" description="Description">
+        </ds-datepicker>
+        <ds-datepicker label="Empty slot stays valid" description="Description">
           <div slot="invalid-text"></div>
-        </ds-date>
+        </ds-datepicker>
       </section>
 
       <!-- Valid -->
       <section data-testid="valid">
         <span>Valid</span>
-        <ds-date label="Label 1" description="Description 1" color="success"></ds-date>
-        <ds-date label="Label 2" description="Description 2" placeholder="dd.MM.yyyy" color="success"></ds-date>
-        <ds-date label="Label 3" description="Description 3" value="2026-07-13" color="success"></ds-date>
+        <ds-datepicker label="Label 1" description="Description 1" color="success"></ds-datepicker>
+        <ds-datepicker
+          label="Label 2"
+          description="Description 2"
+          placeholder="dd.MM.yyyy"
+          color="success"
+        ></ds-datepicker>
+        <ds-datepicker label="Label 3" description="Description 3" value="2026-07-13" color="success"></ds-datepicker>
       </section>
 
       <!-- Warning -->
       <section data-testid="warning">
         <span>Warning</span>
-        <ds-date label="Label 1" description="Description 1" color="warning"></ds-date>
-        <ds-date label="Label 2" description="Description 2" placeholder="dd.MM.yyyy" color="warning"></ds-date>
-        <ds-date label="Label 3" description="Description 3" value="2026-07-13" color="warning"></ds-date>
+        <ds-datepicker label="Label 1" description="Description 1" color="warning"></ds-datepicker>
+        <ds-datepicker
+          label="Label 2"
+          description="Description 2"
+          placeholder="dd.MM.yyyy"
+          color="warning"
+        ></ds-datepicker>
+        <ds-datepicker label="Label 3" description="Description 3" value="2026-07-13" color="warning"></ds-datepicker>
       </section>
 
       <!-- Loading -->
       <section data-testid="loading">
         <span>Loading</span>
-        <ds-date label="Label 1" loading></ds-date>
-        <ds-date label="Label 2" loading disabled></ds-date>
-        <ds-date label="Label 3" loading invalid></ds-date>
-        <ds-date label="Label 4" loading color="success"></ds-date>
-        <ds-date label="Label 5" loading color="warning"></ds-date>
+        <ds-datepicker label="Label 1" loading></ds-datepicker>
+        <ds-datepicker label="Label 2" loading disabled></ds-datepicker>
+        <ds-datepicker label="Label 3" loading invalid></ds-datepicker>
+        <ds-datepicker label="Label 4" loading color="success"></ds-datepicker>
+        <ds-datepicker label="Label 5" loading color="warning"></ds-datepicker>
       </section>
 
       <!-- Long Content -->
       <section data-testid="long-content">
         <span>Long Content</span>
-        <ds-date
+        <ds-datepicker
           label="Label Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua."
           description="Description Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat."
           value="2026-07-13"
-        ></ds-date>
+        ></ds-datepicker>
       </section>
 
       <!-- Slots -->
       <section data-testid="slots">
         <span>Slots</span>
-        <ds-date value="2026-07-13">
+        <ds-datepicker value="2026-07-13">
           <span slot="label">Slot Label</span>
           <span slot="description">Slot description</span>
-        </ds-date>
+        </ds-datepicker>
       </section>
 
       <!-- Form Reset -->
       <section data-testid="form-reset">
         <span>Form Reset</span>
         <form action="https://www.w3schools.com/action_page.php" target="_blank">
-          <ds-date required name="birthday" label="Birthday" value="1988-07-13"></ds-date>
+          <ds-datepicker required name="birthday" label="Birthday" value="1988-07-13"></ds-datepicker>
 
           <ds-button-group>
             <ds-button element-type="submit" color="primary">Submit</ds-button>
@@ -163,7 +187,7 @@
         <span>Autocomplete</span>
         <form action="https://www.w3schools.com/action_page.php" target="_blank">
           <ds-input autocomplete="name"></ds-input>
-          <ds-date label="Label 1" description="Description 1" autocomplete="bday"></ds-date>
+          <ds-datepicker label="Label 1" description="Description 1" autocomplete="bday"></ds-datepicker>
 
           <ds-button-group>
             <ds-button element-type="submit" color="primary">Submit</ds-button>
@@ -175,8 +199,8 @@
       <!-- Inline -->
       <section data-testid="inline">
         <span>Inline</span>
-        <ds-date label="Label 1" description="Description 1" inline></ds-date>
-        <ds-date disabled label="Label 1" description="Description 1" inline value="2026-09-13"></ds-date>
+        <ds-datepicker label="Label 1" description="Description 1" inline></ds-datepicker>
+        <ds-datepicker disabled label="Label 1" description="Description 1" inline value="2026-09-13"></ds-datepicker>
       </section>
     </main>
   </body>

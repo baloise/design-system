@@ -1,6 +1,6 @@
 import { I18n } from '../../interfaces'
 
-interface I18nDsDate {
+interface I18nDsDatepicker {
   selectDate: string
   switchToYearView: string
   previousMonth: string
@@ -11,7 +11,7 @@ interface I18nDsDate {
   nextDecade: string
 }
 
-export const i18nDsDate: I18n<I18nDsDate> = {
+export const i18nDsDatepicker: I18n<I18nDsDatepicker> = {
   de: {
     selectDate: 'Datum auswählen',
     switchToYearView: 'Zur Jahresansicht wechseln',

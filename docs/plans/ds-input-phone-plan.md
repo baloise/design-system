@@ -134,7 +134,7 @@ not re-opening grilled decisions):
 - **Typing**: on each `input` event, feed the raw input value through the
   current `AsYouType` instance's `.input(...)`, and set the field's
   displayed value to the formatted result. Track and restore cursor
-  position across the reformat (the trickiest part — `ds-date`'s
+  position across the reformat (the trickiest part — `ds-datepicker`'s
   `imask`-based cursor handling in `input.mask.ts` is a reference point for
   the general problem shape, though the library differs).
 - **Blur**: re-run formatting once more for a stable final form (guards

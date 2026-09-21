@@ -29,7 +29,7 @@ export {
   DsDataItem,
   DsDataLabel,
   DsDataValue,
-  DsDate,
+  DsDatepicker,
   DsDivider,
   DsDrawer,
   DsFileUpload,

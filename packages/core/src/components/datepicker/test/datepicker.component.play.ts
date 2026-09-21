@@ -1,9 +1,9 @@
-import { DsDate, expect, test } from '@baloise/ds-playwright'
+import { DsDatepicker, expect, test } from '@baloise/ds-playwright'
 
 test.describe('type', () => {
   test('should set value when typing a date', async ({ page }) => {
-    await page.mount(`<ds-date label="Date of birth"></ds-date>`)
-    const date = new DsDate(page.locator('ds-date'))
+    await page.mount(`<ds-datepicker label="Date of birth"></ds-datepicker>`)
+    const date = new DsDatepicker(page.locator('ds-datepicker'))
 
     await date.type('13.07.2026')
     await date.blur()
@@ -13,8 +13,8 @@ test.describe('type', () => {
   })
 
   test('should clear value when only the year is deleted and the field is blurred', async ({ page }) => {
-    await page.mount(`<ds-date label="Date of birth" value="2026-01-15"></ds-date>`)
-    const date = new DsDate(page.locator('ds-date'))
+    await page.mount(`<ds-datepicker label="Date of birth" value="2026-01-15"></ds-datepicker>`)
+    const date = new DsDatepicker(page.locator('ds-datepicker'))
     const changeSpy = await date.el.spyOnEvent('dsChange')
 
     await date.nativeInput.click()
@@ -33,8 +33,8 @@ test.describe('type', () => {
 
 test.describe('min / max', () => {
   test('should accept a date within range when typed', async ({ page }) => {
-    await page.mount(`<ds-date label="Label" min="2026-07-10" max="2026-07-20"></ds-date>`)
-    const date = new DsDate(page.locator('ds-date'))
+    await page.mount(`<ds-datepicker label="Label" min="2026-07-10" max="2026-07-20"></ds-datepicker>`)
+    const date = new DsDatepicker(page.locator('ds-datepicker'))
     const changeSpy = await date.el.spyOnEvent('dsChange')
 
     await date.type('15.07.2026')
@@ -47,8 +47,8 @@ test.describe('min / max', () => {
   })
 
   test('should reject a date below min when typed', async ({ page }) => {
-    await page.mount(`<ds-date label="Label" min="2026-07-10"></ds-date>`)
-    const date = new DsDate(page.locator('ds-date'))
+    await page.mount(`<ds-datepicker label="Label" min="2026-07-10"></ds-datepicker>`)
+    const date = new DsDatepicker(page.locator('ds-datepicker'))
     const changeSpy = await date.el.spyOnEvent('dsChange')
 
     await date.type('05.07.2026')
@@ -60,8 +60,8 @@ test.describe('min / max', () => {
   })
 
   test('should reject a date above max when typed', async ({ page }) => {
-    await page.mount(`<ds-date label="Label" max="2026-07-20"></ds-date>`)
-    const date = new DsDate(page.locator('ds-date'))
+    await page.mount(`<ds-datepicker label="Label" max="2026-07-20"></ds-datepicker>`)
+    const date = new DsDatepicker(page.locator('ds-datepicker'))
     const changeSpy = await date.el.spyOnEvent('dsChange')
 
     await date.type('25.07.2026')
@@ -73,8 +73,8 @@ test.describe('min / max', () => {
   })
 
   test('should accept a date within range when picked', async ({ page }) => {
-    await page.mount(`<ds-date label="Label" min="2026-07-01" max="2026-07-31"></ds-date>`)
-    const date = new DsDate(page.locator('ds-date'))
+    await page.mount(`<ds-datepicker label="Label" min="2026-07-01" max="2026-07-31"></ds-datepicker>`)
+    const date = new DsDatepicker(page.locator('ds-datepicker'))
     const changeSpy = await date.el.spyOnEvent('dsChange')
 
     await date.pick('2026-07-15')
@@ -88,8 +88,8 @@ test.describe('min / max', () => {
 
 test.describe('pick', () => {
   test('should select date via picker and emit dsChange', async ({ page }) => {
-    await page.mount(`<ds-date label="Date of birth"></ds-date>`)
-    const date = new DsDate(page.locator('ds-date'))
+    await page.mount(`<ds-datepicker label="Date of birth"></ds-datepicker>`)
+    const date = new DsDatepicker(page.locator('ds-datepicker'))
     const changeSpy = await date.el.spyOnEvent('dsChange')
 
     await date.pick('2026-07-13')
@@ -103,8 +103,8 @@ test.describe('pick', () => {
 
 test.describe('inline', () => {
   test('should emit dsChange when picking a date', async ({ page }) => {
-    await page.mount(`<ds-date label="Date" inline></ds-date>`)
-    const date = new DsDate(page.locator('ds-date'), { inline: true })
+    await page.mount(`<ds-datepicker label="Date" inline></ds-datepicker>`)
+    const date = new DsDatepicker(page.locator('ds-datepicker'), { inline: true })
     const changeSpy = await date.el.spyOnEvent('dsChange')
 
     await date.pick('2026-07-13')
@@ -116,8 +116,8 @@ test.describe('inline', () => {
   })
 
   test('should emit dsBlur after dsChange when picking a date', async ({ page }) => {
-    await page.mount(`<ds-date label="Date" inline></ds-date>`)
-    const date = new DsDate(page.locator('ds-date'), { inline: true })
+    await page.mount(`<ds-datepicker label="Date" inline></ds-datepicker>`)
+    const date = new DsDatepicker(page.locator('ds-datepicker'), { inline: true })
     const changeSpy = await date.el.spyOnEvent('dsChange')
     const blurSpy = await date.el.spyOnEvent('dsBlur')
 
@@ -129,8 +129,8 @@ test.describe('inline', () => {
   })
 
   test('should not emit dsInput when picking a date', async ({ page }) => {
-    await page.mount(`<ds-date label="Date" inline></ds-date>`)
-    const date = new DsDate(page.locator('ds-date'), { inline: true })
+    await page.mount(`<ds-datepicker label="Date" inline></ds-datepicker>`)
+    const date = new DsDatepicker(page.locator('ds-datepicker'), { inline: true })
     const inputSpy = await date.el.spyOnEvent('dsInput')
 
     await date.pick('2026-07-13')
@@ -141,8 +141,8 @@ test.describe('inline', () => {
 
   test.describe('min / max', () => {
     test('should emit dsChange when picking a date within range', async ({ page }) => {
-      await page.mount(`<ds-date label="Date" inline min="2026-07-01" max="2026-07-31"></ds-date>`)
-      const date = new DsDate(page.locator('ds-date'), { inline: true })
+      await page.mount(`<ds-datepicker label="Date" inline min="2026-07-01" max="2026-07-31"></ds-datepicker>`)
+      const date = new DsDatepicker(page.locator('ds-datepicker'), { inline: true })
       const changeSpy = await date.el.spyOnEvent('dsChange')
 
       await date.pick('2026-07-15')
@@ -155,9 +155,9 @@ test.describe('inline', () => {
 
     test('should not emit dsChange when clicking an out-of-range date', async ({ page }) => {
       await page.mount(
-        `<ds-date label="Date" inline min="2026-07-15" max="2026-07-31" default-date="2026-07-15"></ds-date>`,
+        `<ds-datepicker label="Date" inline min="2026-07-15" max="2026-07-31" default-date="2026-07-15"></ds-datepicker>`,
       )
-      const date = new DsDate(page.locator('ds-date'), { inline: true })
+      const date = new DsDatepicker(page.locator('ds-datepicker'), { inline: true })
       const changeSpy = await date.el.spyOnEvent('dsChange')
 
       const disabledCell = date.el.locator(
@@ -173,8 +173,8 @@ test.describe('inline', () => {
 
   test.describe('disabled', () => {
     test('should render as a regular disabled input instead of the calendar', async ({ page }) => {
-      await page.mount(`<ds-date label="Date" inline disabled value="2026-07-13"></ds-date>`)
-      const date = page.locator('ds-date')
+      await page.mount(`<ds-datepicker label="Date" inline disabled value="2026-07-13"></ds-datepicker>`)
+      const date = page.locator('ds-datepicker')
 
       // No always-visible calendar — the picker's DOM lives in the same (closed, unreachable)
       // #popup markup as a regular non-inline date, since there's no trigger to open it while
@@ -187,8 +187,8 @@ test.describe('inline', () => {
     })
 
     test('should show the calendar again once re-enabled', async ({ page }) => {
-      await page.mount(`<ds-date label="Date" inline disabled value="2026-07-13"></ds-date>`)
-      const date = page.locator('ds-date')
+      await page.mount(`<ds-datepicker label="Date" inline disabled value="2026-07-13"></ds-datepicker>`)
+      const date = page.locator('ds-datepicker')
 
       await date.evaluate((el: any) => (el.disabled = false))
       await page.waitForChanges()

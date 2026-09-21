@@ -1,17 +1,17 @@
 import { Component, signal } from '@angular/core'
 import { FormControl, FormGroup, ReactiveFormsModule, ValidationErrors, ValidatorFn } from '@angular/forms'
-import { DsDate } from '@baloise/ds-angular'
+import { DsDatepicker } from '@baloise/ds-angular'
 
 const requiredWithMessage = (message: string): ValidatorFn => {
   return (control): ValidationErrors | null => (control.value ? null : { required: message })
 }
 
 @Component({
-  selector: 'app-date-demo',
-  imports: [DsDate, ReactiveFormsModule],
-  templateUrl: './date-demo.html',
+  selector: 'app-datepicker-demo',
+  imports: [DsDatepicker, ReactiveFormsModule],
+  templateUrl: './datepicker-demo.html',
 })
-export class DateDemo {
+export class DatepickerDemo {
   protected readonly dateValue = signal('')
 
   protected readonly reactiveForm = new FormGroup({

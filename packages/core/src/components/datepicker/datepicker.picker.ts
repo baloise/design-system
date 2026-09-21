@@ -10,11 +10,11 @@ import localePl from 'air-datepicker/locale/pl'
 import localePt from 'air-datepicker/locale/pt'
 import localeSv from 'air-datepicker/locale/sv'
 import type { DsLanguage, DsRegion } from '@global'
-import { i18nDsDate } from './date.i18n'
-import { getDisplayFormat, isoToNativeDate, nativeDateToISO } from './date.mask'
+import { i18nDsDatepicker } from './datepicker.i18n'
+import { getDisplayFormat, isoToNativeDate, nativeDateToISO } from './datepicker.mask'
 import { raf } from '@utils'
 
-export interface DatePickerConfig {
+export interface DatepickerConfig {
   popupHostEl: HTMLDivElement
   shadowRoot: ShadowRoot
   language: DsLanguage
@@ -53,7 +53,7 @@ export function checkIsWithinRange(
   return true
 }
 
-export class DatePickerController {
+export class DatepickerController {
   private airDatepicker: AirDatepicker<HTMLDivElement> | undefined
   private currentViewMonth!: number
   private currentViewYear!: number
@@ -63,9 +63,9 @@ export class DatePickerController {
   private skipFocusOnNextRender = false
   private gridObserver: MutationObserver | undefined
   private navObserver: MutationObserver | undefined
-  private config: DatePickerConfig
+  private config: DatepickerConfig
 
-  constructor(config: DatePickerConfig) {
+  constructor(config: DatepickerConfig) {
     this.config = config
     this.init()
   }
@@ -151,8 +151,8 @@ export class DatePickerController {
 
     this.airDatepicker = new AirDatepicker<HTMLDivElement>(popupHostEl, {
       navTitles: {
-        days: `<button id="switch" aria-label="${i18nDsDate[language].switchToYearView}"><strong>MMMM yyyy</strong><ds-icon name="caret-down"></ds-icon></button>`,
-        months: `<button id="switch" aria-label="${i18nDsDate[language].switchToYearView}"><strong>yyyy</strong><ds-icon name="caret-down"></ds-icon></button>`,
+        days: `<button id="switch" aria-label="${i18nDsDatepicker[language].switchToYearView}"><strong>MMMM yyyy</strong><ds-icon name="caret-down"></ds-icon></button>`,
+        months: `<button id="switch" aria-label="${i18nDsDatepicker[language].switchToYearView}"><strong>yyyy</strong><ds-icon name="caret-down"></ds-icon></button>`,
       },
       prevHtml:
         '<button id="previous"><ds-icon name="caret-left"></ds-icon></button><div id="previous-disabled"><ds-icon name="caret-left"></ds-icon></div>',
@@ -236,7 +236,7 @@ export class DatePickerController {
     if (!body) return
 
     body.setAttribute('role', 'listbox')
-    body.setAttribute('aria-label', i18nDsDate[this.config.language].selectDate)
+    body.setAttribute('aria-label', i18nDsDatepicker[this.config.language].selectDate)
 
     this.getCells().forEach(c => {
       c.setAttribute('role', 'option')
@@ -255,7 +255,7 @@ export class DatePickerController {
   }
 
   private updateNavigationButtonLabels() {
-    const t = i18nDsDate[this.config.language]
+    const t = i18nDsDatepicker[this.config.language]
     if (this.currentViewType === 'months') {
       this.prevBtn?.setAttribute('aria-label', t.previousYear)
       this.nextBtn?.setAttribute('aria-label', t.nextYear)

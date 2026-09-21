@@ -10481,7 +10481,7 @@
         }
       }
     },
-    "Date": {
+    "Datepicker": {
       "Calendar": {
         "Weight": {
           "$type": "fontWeight",
