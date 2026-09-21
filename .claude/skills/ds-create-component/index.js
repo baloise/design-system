@@ -55,7 +55,9 @@ async function main() {
 
     // Success
     console.log(`\n✅ Component created: packages/core/src/components/${result.category}/${result.componentName}/`)
-    console.log(`   Storybook folder scaffolded: apps/storybook/src/components/${result.category}/${result.componentName}/`)
+    console.log(
+      `   Storybook folder scaffolded: apps/storybook/src/components/${result.category}/${result.componentName}/`,
+    )
     console.log('   Add stories/MDX with /ds-document-component.')
     console.log('\nNext steps:')
     console.log('  1. Review the generated component files')

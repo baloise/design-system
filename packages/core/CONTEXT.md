@@ -278,15 +278,15 @@ folder tier (e.g. `app-navbar` lives under `navigation/`, not under an `app/` tr
 **Category order and component order within each category are alphabetical, everywhere** —
 folder listing, Storybook sidebar, docs. There are seven categories:
 
-| Category     | Components                                                                                                                                         |
-| ------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `actions`    | button, close, link                                                                                                                                 |
+| Category     | Components                                                                                                                                              |
+| ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `actions`    | button, close, link                                                                                                                                     |
 | `forms`      | checkbox, counter, datepicker, file-upload, form, input, input-phone, label, number-input, radio, segment, select, slider, textarea, time-input, toggle |
-| `indicators` | badge, hint, progress-bar, spinner, tag                                                                                                             |
-| `media`      | brand-icon, icon, logo, picture, shape                                                                                                              |
-| `navigation` | app-navbar, pagination, steps, tabs                                                                                                                 |
-| `overlays`   | alert, drawer, modal, notification, popup, sheet, tooltip                                                                                           |
-| `structure`  | accordion, app-footer, card, carousel, container, content, data, divider, grid, heading, list, root, stack, table, text                            |
+| `indicators` | badge, hint, progress-bar, spinner, tag                                                                                                                 |
+| `media`      | brand-icon, icon, logo, picture, shape                                                                                                                  |
+| `navigation` | app-navbar, pagination, steps, tabs                                                                                                                     |
+| `overlays`   | alert, drawer, modal, notification, popup, sheet, tooltip                                                                                               |
+| `structure`  | accordion, app-footer, card, carousel, container, content, data, divider, grid, heading, list, root, stack, table, text                                 |
 
 When creating a new component, use the `/ds-create-component` skill — it prompts for a
 category and scaffolds directly into the right `components/<category>/<name>/` folder in both

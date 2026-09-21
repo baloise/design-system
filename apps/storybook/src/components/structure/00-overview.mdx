@@ -18,8 +18,8 @@ import { Banner, GridComponent, GridComponents, Lead } from '../../../.storybook
   <GridComponent
     scale="0.8"
     label="Accordion"
+    component="accordion"
     pageTitle="Components/Structure/Accordion"
-    description="Accordions put users in control of showing or hiding content."
   >
     <ds-accordion summary-title="true" open>
       <div slot="summary">What is Apple Pie?</div>
@@ -32,17 +32,17 @@ import { Banner, GridComponent, GridComponents, Lead } from '../../../.storybook
   <GridComponent
     scale="0.5"
     label="App Footer"
+    component="app-footer"
     fullwidth
     pageTitle="Components/Structure/AppFooter"
-    description="Footer for the Helvetia Applications. The footer runs pure in blue or with a decorated track line below."
   >
     <ds-app-footer></ds-app-footer>
   </GridComponent>
   <GridComponent
     scale="0.6"
     label="Card"
+    component="card"
     pageTitle="Components/Structure/Card"
-    description="Cards contain content and actions about a single subject and can be combined with other components."
   >
     <ds-card>
       <ds-card-header>
@@ -62,9 +62,9 @@ import { Banner, GridComponent, GridComponents, Lead } from '../../../.storybook
   <GridComponent
     scale="1"
     label="Carousel"
+    component="carousel"
     fullwidth
     pageTitle="Components/Structure/Carousel"
-    description="The carousel component combines all the slide use cases."
   >
     <div class="flex justify-content-center align-items-center">
       <ds-carousel variant="tile" controls="large" style={{ width: '90%' }}>
@@ -107,9 +107,9 @@ import { Banner, GridComponent, GridComponents, Lead } from '../../../.storybook
   <GridComponent
     scale="1"
     label="Content"
+    component="content"
     fullwidth
     pageTitle="Components/Structure/Content"
-    description="Content helps to align text nodes inside a section."
   >
     <ds-content>
       <ds-label>The Content Component</ds-label>
@@ -119,9 +119,9 @@ import { Banner, GridComponent, GridComponents, Lead } from '../../../.storybook
   <GridComponent
     scale="0.8"
     label="Data"
+    component="data"
     fullwidth
     pageTitle="Components/Structure/Data"
-    description="Data component display readonly form data."
   >
     <ds-card>
       <ds-card-content>
@@ -141,9 +141,9 @@ import { Banner, GridComponent, GridComponents, Lead } from '../../../.storybook
   <GridComponent
     scale="4"
     label="Divider"
+    component="divider"
     fullwidth
     pageTitle="Components/Structure/Divider"
-    description="A divider is a slender line that serves to group content within stacks and layouts."
   >
     <ds-divider color="primary"></ds-divider>
   </GridComponent>
@@ -186,8 +186,8 @@ import { Banner, GridComponent, GridComponents, Lead } from '../../../.storybook
   <GridComponent
     scale="1"
     label="Heading"
+    component="heading"
     pageTitle="Components/Structure/Heading"
-    description="Heading provides some additional helpers."
   >
     <ds-heading level="h1" space="bottom">
       Heading
@@ -196,9 +196,9 @@ import { Banner, GridComponent, GridComponents, Lead } from '../../../.storybook
   <GridComponent
     scale="0.8"
     label="List"
+    component="list"
     fullwidth
     pageTitle="Components/Structure/List"
-    description="List present content in a way that makes it easy to identify a specific item in a collection."
   >
     <div class="ds-grid">
       <ds-list class="ds-col">
@@ -222,11 +222,11 @@ import { Banner, GridComponent, GridComponents, Lead } from '../../../.storybook
   <GridComponent
     scale="0.5"
     label="Root"
+    component="root"
     fullwidth
     fullheight
     fullscreen
     pageTitle="Components/Structure/Root"
-    description="Root is a container element for a Helvetia Design System application."
   >
     <ds-root
       class="bg-white h-full radius flex flex-direction-column"
@@ -252,9 +252,9 @@ import { Banner, GridComponent, GridComponents, Lead } from '../../../.storybook
   <GridComponent
     scale="0.8"
     label="Stack"
+    component="stack"
     fullwidth
     pageTitle="Components/Structure/Stack"
-    description="The Stack element is responsible for arranging its direct descendants in a vertical or horizontal direction, while also allowing for the inclusion of optional spacing between each child."
   >
     <ds-stack>
       <div class="bg-purple-2" style={{ height: '4rem', width: '100%' }}></div>
@@ -341,8 +341,8 @@ import { Banner, GridComponent, GridComponents, Lead } from '../../../.storybook
   <GridComponent
     scale="1"
     label="Text"
+    component="text"
     pageTitle="Components/Structure/Text"
-    description="Text provides some additional helpers."
   >
     <ds-text>
       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore

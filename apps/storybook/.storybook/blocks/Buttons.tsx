@@ -1,5 +1,13 @@
 import React from 'react'
 import { navigate } from '@storybook/addon-links'
+import componentsData from '../../src/assets/data/components.json'
+
+const getComponentDescription = (component?: string): string | undefined => {
+  if (!component) return undefined
+  const tag = component.startsWith('ds-') ? component : `ds-${component}`
+  const componentInfo = (componentsData.components as Array<any>).find(comp => comp.tag === tag)
+  return componentInfo?.overview || componentInfo?.docs
+}
 
 export const ButtonCard = ({ children, target, color, icon, link, label, description, pageTitle, wide }) => {
   let linkObj = {}
@@ -68,7 +76,7 @@ export const LinkCard = ({ _children, _color, _icon, label, description, pageTit
         <span className="block ds-text text-align-left is-sm">{description}</span>
       </div>
       <span className="flex justify-content-center align-items-center text-2xl text-align-center">
-        <ds-icon name="nav-go-right"></ds-icon>
+        <ds-icon name="caret-right"></ds-icon>
       </span>
     </>
   )
@@ -115,8 +123,8 @@ export const GridComponents = ({ children }) => {
   return (
     <ds-root>
       <div
-        className="sb-unstyled ds-grid is-multiline mt-base"
-        style={{ '--ds-column-gap': '.5rem', 'userSelect': 'none' }}
+        className="sb-unstyled ds-grid is-multiline mt-base mb-xl"
+        style={{ '--ds-column-gap': '1rem', 'userSelect': 'none' }}
       >
         {children}
       </div>
@@ -131,12 +139,14 @@ export const GridComponent = ({
   pageTitle,
   label,
   description,
+  component,
   scale = '1',
   position = 'center',
   fullwidth,
   fullheight,
   fullscreen,
 }) => {
+  const resolvedDescription = description || getComponentDescription(component)
   const flexPosition =
     position === 'top'
       ? 'justify-content-center align-items-start'
@@ -149,7 +159,7 @@ export const GridComponent = ({
       <div className="h-full">
         <a
           onClick={() => navigate({ title: pageTitle })}
-          className={`flex flex-direction-column gap-base justify-content-center align-items-center bg-white p-base h-full radius shadow doc-shadow-large-hover cursor-pointer`}
+          className={`flex flex-direction-column gap-base justify-content-center align-items-center bg-white p-base h-full radius-lg shadow doc-shadow-large-hover cursor-pointer`}
         >
           <div
             className={`bg-purple-1 radius w-full flex ${flexPosition} ${fullscreen ? '' : 'p-sm'}`}
@@ -173,10 +183,35 @@ export const GridComponent = ({
             </div>
           </div>
           <div className="flex-1 h-full w-full">
-            <h2 className="ds-title text-md mb-2xs" id={label}>
+            <h2 className="ds-title text-xl mb-2xs" id={label}>
               {label}
             </h2>
-            <small className="h-full">{description}</small>
+            <p className="h-full text-sm">{resolvedDescription}</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  )
+}
+
+export const GridCategory = ({ children, pageTitle, label, description }) => {
+  return (
+    <div className="ds-col is-12">
+      <div className="h-full">
+        <a
+          onClick={() => navigate({ title: pageTitle })}
+          className="flex flex-direction-column gap-base bg-white p-base h-full radius-lg shadow doc-shadow-large-hover cursor-pointer"
+        >
+          <div
+            className="bg-purple-1 radius w-full flex flex-wrap gap-lg justify-content-center align-items-center p-lg"
+            style={{ minHeight: '220px', position: 'relative' }}
+          >
+            <div style={{ position: 'absolute', inset: 0, background: 'transparent', zIndex: 2000 }}></div>
+            {children}
+          </div>
+          <div>
+            <h2 className="ds-title mb-2xs">{label}</h2>
+            <p className="ds-text mb-none">{description}</p>
           </div>
         </a>
       </div>
@@ -220,7 +255,7 @@ export const GridCard = ({ _children, color, pageTitle, svg, label, description 
           )}
           {!svg ? (
             <div>
-              <ds-icon name="nav-go-right"></ds-icon>
+              <ds-icon name="caret-right"></ds-icon>
             </div>
           ) : (
             ''

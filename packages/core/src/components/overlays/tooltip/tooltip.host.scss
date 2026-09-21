@@ -76,11 +76,6 @@
   background-color: var(--_tooltip-color-background);
   border-radius: var(--_tooltip-radius);
   box-shadow: var(--_tooltip-shadow);
-  color: var(--_tooltip-color-text);
-  font-family: var(--_tooltip-text-font-family);
-  font-weight: var(--_tooltip-text-font-weight);
-  font-size: var(--_tooltip-text-font-size);
-  line-height: var(--_tooltip-text-line-height);
   z-index: var(--_tooltip-z-index);
 }
 
@@ -123,4 +118,18 @@
   padding-inline: var(--_tooltip-px);
   overflow-y: auto;
   max-height: calc(100svh - 8rem);
+  color: var(--_tooltip-color-text);
+  font-family: var(--_tooltip-text-font-family);
+  font-weight: var(--_tooltip-text-font-weight);
+  font-size: var(--_tooltip-text-font-size);
+  line-height: var(--_tooltip-text-line-height);
+}
+
+::slotted(span),
+::slotted(p) {
+  color: inherit;
+  font-family: inherit;
+  font-weight: inherit;
+  font-size: inherit;
+  line-height: inherit;
 }

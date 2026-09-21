@@ -338,7 +338,7 @@ export class Pagination implements DsComponentInterface, DsBreakpointObserver {
               disabled={this.value < 2}
               onClick={() => this.previous()}
             >
-              <ds-icon name="nav-go-left" size="sm" disabled={this.value < 2} />
+              <ds-icon name="caret-left" size="sm" disabled={this.value < 2} />
             </button>
           )}
           {!this.disabled && (
@@ -357,7 +357,7 @@ export class Pagination implements DsComponentInterface, DsBreakpointObserver {
               disabled={this.value === this.totalPages}
               onClick={() => this.next()}
             >
-              <ds-icon name="nav-go-right" size="sm" disabled={this.value === this.totalPages} />
+              <ds-icon name="caret-right" size="sm" disabled={this.value === this.totalPages} />
             </button>
           )}
           {hasBasicNavigationButtons ? (

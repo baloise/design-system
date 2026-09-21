@@ -1,14 +1,5 @@
-import { Canvas, Meta } from '@storybook/addon-docs/blocks'
-import {
-  Banner,
-  ButtonCard,
-  GridCard,
-  GridCards,
-  GridComponent,
-  GridComponents,
-  InfoQuote,
-  Lead,
-} from '../../.storybook/blocks'
+import { Meta } from '@storybook/addon-docs/blocks'
+import { Banner, GridCategory, GridComponents, Lead } from '../../.storybook/blocks'
 
 <Meta
   title="Components/Overview"
@@ -24,872 +15,197 @@ import {
 <Lead>Interactive building blocks for constructing user interfaces.</Lead>
 
 <GridComponents>
-  <GridComponent
-    scale="0.8"
-    label="Accordion"
-    pageTitle="Components/Structure/Accordion"
-    description="Accordions put users in control of showing or hiding content."
+  <GridCategory
+    label="Actions"
+    pageTitle="Components/Actions/Overview"
+    description="Components that trigger an action or event when a user interacts with them."
   >
-    <ds-accordion summary-title="true" open>
-      <div slot="summary">What is Apple Pie?</div>
-      <div slot="content" class="py-base">Apple pie, a quintessential dessert, combines the comforting aroma of baked apples with a flaky, golden crust.</div>
-    </ds-accordion>
-  </GridComponent>
-  <GridComponent
-    scale="0.5"
-    label="Root"
-    fullwidth
-    fullheight
-    fullscreen
-    pageTitle="Components/Structure/Root"
-    description="Root is a container element for a Helvetia Design System application."
-  >
-    <ds-root
-      class="bg-white h-full radius flex flex-direction-column"
-      style={{ minHeight: '336px', margin: '32px', overflow: 'hidden' }}
-    >
-      <header>
-        <ds-app-navbar>
-          <a href="/" slot="brand">
-            <ds-logo color="inverted"></ds-logo>
-          </a>
-          <h1 slot="title">Root</h1>
-        </ds-app-navbar>
-      </header>
-      <main class="flex-1">
-        <div class="ds-container my-lg">
-          <h1 class="ds-title text-2xl">Welcome</h1>
-          <h2 class="ds-subtitle text-2xl">We have the best apple pie</h2>
-        </div>
-      </main>
-      <div class="bg-primary" style={{ height: '3rem', width: '100%' }}></div>
-    </ds-root>
-  </GridComponent>
-  <GridComponent
-    scale="0.5"
-    label="App Footer"
-    fullwidth
-    pageTitle="Components/Structure/AppFooter"
-    description="Footer for the Helvetia Applications. The footer runs pure in blue or with a decorated track line below."
-  >
-    <ds-app-footer></ds-app-footer>
-  </GridComponent>
-  <GridComponent
-    scale="0.5"
-    label="App Navbar"
-    fullheight
-    fullwidth
-    fullscreen
-    pageTitle="Components/Navigation/AppNavbar"
-    description="A responsive horizontal Navbar that can support logos, buttons, and dropdowns."
-  >
-    <ds-app-navbar interface="app">
-      <ds-app-navbar-brand href="/" target="_blank">
-        App Header
-      </ds-app-navbar-brand>
-      <ds-app-navbar-menu>
-        <ds-app-navbar-menu-start>
-          <ds-tabs interface="navbar" v-model="myActiveTab">
-            <ds-tab-item value="tab-a" label="Tab A"></ds-tab-item>
-            <ds-tab-item value="tab-b" label="Tab B"></ds-tab-item>
-            <ds-tab-item value="tab-c" label="Tab C"></ds-tab-item>
-          </ds-tabs>
-        </ds-app-navbar-menu-start>
-        <ds-app-navbar-menu-end>
-          <ds-button-group>
-            <ds-popover v-model="isActive">
-              <ds-button ds-popover-trigger color="light" inverted icon="web">
-                DE
-              </ds-button>
-              <ds-popover-content>
-                <ds-list border>
-                  <ds-list-item clickable>
-                    <ds-list-item-content>
-                      <ds-list-item-title>English</ds-list-item-title>
-                    </ds-list-item-content>
-                  </ds-list-item>
-                  <ds-list-item clickable>
-                    <ds-list-item-content>
-                      <ds-list-item-title>Français</ds-list-item-title>
-                    </ds-list-item-content>
-                  </ds-list-item>
-                  <ds-list-item clickable>
-                    <ds-list-item-content>
-                      <ds-list-item-title>Italiano</ds-list-item-title>
-                    </ds-list-item-content>
-                  </ds-list-item>
-                </ds-list>
-              </ds-popover-content>
-            </ds-popover>
-            <ds-button square color="light" inverted icon="call"></ds-button>
-          </ds-button-group>
-        </ds-app-navbar-menu-end>
-      </ds-app-navbar-menu>
-    </ds-app-navbar>
-    <div class="ds-container mt-base" style={{ height: '280px' }}>
-      <div class="h-full bg-purple-2 radius"></div>
-    </div>
-  </GridComponent>
-  <GridComponent
-    scale="2"
-    label="Badge"
-    pageTitle="Components/Indicators/Badge"
-    description="Badge indicates a not visited or read action. It can only be used in combination with other components like DsButton, DsCard or DsTabs."
-  >
-    <ds-stack>
-      <ds-badge>42</ds-badge>
-      <ds-badge color="success" icon="check"></ds-badge>
-    </ds-stack>
-  </GridComponent>
-  <GridComponent
-    scale="1"
-    label="BrandIcon"
-    fullwidth
-    pageTitle="Components/Media/BrandIcon"
-    description="BrandIcons are used to represent ideas, objects or actions."
-  >
-    <ds-stack align="center" direction="row">
-      <ds-brand-icon src="/assets/images/brand-icons/car-purple.svg"></ds-brand-icon>
-      <ds-brand-icon src="/assets/images/brand-icons/building-purple.svg"></ds-brand-icon>
-      <ds-brand-icon src="/assets/images/brand-icons/diamond-purple.svg"></ds-brand-icon>
-    </ds-stack>
-  </GridComponent>
-  <GridComponent
-    scale="1"
-    label="Button"
-    pageTitle="Components/Actions/Button"
-    description="Buttons provide a clickable element, which can be used in forms, or anywhere that needs simple, standard button functionality."
-  >
-    <ds-stack>
+  <div class="ds-stack gap-md">
+  <div class="ds-stack as-row">
       <ds-button wide>Primary</ds-button>
-      <ds-button wide color="secondary">
-        Secondary
-      </ds-button>
-    </ds-stack>
-  </GridComponent>
-  <GridComponent
-    scale="0.6"
-    label="Card"
-    pageTitle="Components/Structure/Card"
-    description="Cards contain content and actions about a single subject and can be combined with other components."
-  >
-    <ds-card>
-      <ds-card-header>
-        <h3 class="ds-title">Apple Pie</h3>
-      </ds-card-header>
-      <ds-card-content>
-        <p>
-          Apple pie, a quintessential dessert, combines the comforting aroma of baked apples with a flaky, golden crust.
-        </p>
-      </ds-card-content>
-      <ds-card-action>
-        <ds-button>Button</ds-button>
-      </ds-card-action>
-    </ds-card>
-  </GridComponent>
-  <GridComponent
-    scale="1"
-    label="Carousel"
-    fullwidth
-    pageTitle="Components/Structure/Carousel"
-    description="The carousel component combines all the slide use cases."
-  >
-  <div class="flex justify-content-center align-items-center">
-<ds-carousel variant="tile" controls="large" style={{ width: '90%'}}>
-  <ds-carousel-item name="auto" color="purple" navigation="">
-    <div class="px-lg h-4rem bg-purple-3 radius"></div>
-  </ds-carousel-item>
-  <ds-carousel-item name="auto" color="purple" navigation="">
-    <div class="px-lg h-4rem bg-purple-3 radius"></div>
-  </ds-carousel-item>
-    <ds-carousel-item name="auto" color="purple" navigation="">
-    <div class="px-lg h-4rem bg-purple-3 radius"></div>
-  </ds-carousel-item>
-    <ds-carousel-item name="auto" color="purple" navigation="">
-    <div class="px-lg h-4rem bg-purple-3 radius"></div>
-  </ds-carousel-item>
-    <ds-carousel-item name="auto" color="purple" navigation="">
-    <div class="px-lg h-4rem bg-purple-3 radius"></div>
-  </ds-carousel-item>
-    <ds-carousel-item name="auto" color="purple" navigation="">
-    <div class="px-lg h-4rem bg-purple-3 radius"></div>
-  </ds-carousel-item>
-</ds-carousel>
-</div>
-  </GridComponent>
-  <GridComponent
-    scale="1"
-    label="Checkbox"
-    pageTitle="Components/Forms/Checkbox"
-    description="Checkboxes allow users to select one or more items from a set. Checkboxes can turn one or more option(s) on or off."
-  >
-      <ds-checkbox-group vertical >
-        <ds-checkbox label="Apple" checked/>
-        <ds-checkbox label="Mango"   />
-      </ds-checkbox-group>
-  </GridComponent>
-  <GridComponent
-    scale="1"
-    label="Close"
-    fullwidth
-    pageTitle="Components/Actions/Close"
-    description="Close is used as a close button for modals, toast and other components."
-  >
-    <div class="bg-purple-2 radius p-base" style={{ marginLeft: '10%', width: '80%', height: '120px' }}>
-      <div class="flex gap-sm" style={{ height: '24px' }}>
-        <div class="bg-purple-1 radius-lg flex-1" style={{ width: '100%', height: '20px' }}></div>
-        <ds-close></ds-close>
-      </div>
-      <div class="bg-purple-1 radius-lg mt-base" style={{ width: '80%', height: '10px' }}></div>
-      <div class="bg-purple-1 radius-lg mt-xs" style={{ width: '90%', height: '10px' }}></div>
-      <div class="bg-purple-1 radius-lg mt-xs" style={{ width: '60%', height: '10px' }}></div>
-    </div>
-  </GridComponent>
-  <GridComponent
-    scale="1"
-    label="Container"
-    fullwidth
-    pageTitle="Components/Structure/Container"
-    description="Container is a wrapper element that can be used to center content and set maximum widths at each responsive breakpoint."
-  >
-    <div class="bg-purple-2 radius" style={{ marginLeft: '10%', width: '80%', height: '120px' }}>
-      <div class="bg-purple-3 radius p-sm" style={{ marginLeft: '10%', width: '80%', height: '100%' }}>
-        <div class="bg-purple-1 radius-lg mt-base" style={{ width: '80%', height: '10px' }}></div>
-        <div class="bg-purple-1 radius-lg mt-xs" style={{ width: '90%', height: '10px' }}></div>
-        <div class="bg-purple-1 radius-lg mt-xs" style={{ width: '60%', height: '10px' }}></div>
-      </div>
-    </div>
-  </GridComponent>
-  <GridComponent
-    scale="1"
-    label="Content"
-    fullwidth
-    pageTitle="Components/Structure/Content"
-    description="Content helps to align text nodes inside a section."
-  >
-    <ds-content>
-      <ds-label>The Content Component</ds-label>
-      <ds-text>Content helps to align text nodes inside a section.</ds-text>
-    </ds-content>
-  </GridComponent>
-  <GridComponent
-    scale="0.8"
-    label="Data"
-    fullwidth
-    pageTitle="Components/Structure/Data"
-    description="Data component display readonly form data."
-  >
-    <ds-card>
-      <ds-card-content>
-        <ds-data>
-          <ds-data-item editable="true">
-            <ds-data-label>Name</ds-data-label>
-            <ds-data-value>John Doe</ds-data-value>
-          </ds-data-item>
-          <ds-data-item editable="true">
-            <ds-data-label>Email</ds-data-label>
-            <ds-data-value>john@mail.com</ds-data-value>
-          </ds-data-item>
-        </ds-data>
-      </ds-card-content>
-    </ds-card>
-  </GridComponent>
-  <GridComponent
-    scale="1"
-    label="Date"
-    pageTitle="Components/Forms/Datepicker"
-    description="Date Component is a datepicker designed to simplify the process of date selection."
-  >
-    <div class="text-align-center">
-      <ds-datepicker value="2023-10-21"></ds-datepicker>
-    </div>
-  </GridComponent>
-  <GridComponent
-    scale="4"
-    label="Divider"
-    fullwidth
-    pageTitle="Components/Structure/Divider"
-    description="A divider is a slender line that serves to group content within stacks and layouts."
-  >
-    <ds-divider color="primary"></ds-divider>
-  </GridComponent>
-  <GridComponent
-    scale="1"
-    label="Select"
-    pageTitle="Components/Forms/Select"
-    description="Select allows the user to choose one or multiple option from a list."
-  >
-    <ds-select id="flat" label="Fruits" multiple value="apple" description="Select your fruit" style={{ width: '227px' }}>
-      <ds-select-option value="apple">Apple</ds-select-option>
-      <ds-select-option value="banana">Banana</ds-select-option>
-      <ds-select-option value="mango">Mango</ds-select-option>
-    </ds-select>
-  </GridComponent>
-  <GridComponent
-    scale="1"
-    label="Field"
-    pageTitle="Components/Field"
-    description="Field wraps a form field like input. It provides a clear style structure of each control."
-  >
-    <ds-field>
-      <ds-field-label required>Label</ds-field-label>
-      <ds-field-control>
-        <div class="bg-purple-2 radius" style={{ width: '200px', height: '48px' }}></div>
-      </ds-field-control>
-      <ds-field-message color="hint">Field Message</ds-field-message>
-    </ds-field>
-  </GridComponent>
-  <GridComponent
-    scale="0.8"
-    label="File Upload"
-    pageTitle="Components/Forms/FileUpload"
-    description="File Upload is all in one component. It supports drag&drop and the normal file upload dialog of the browser."
-  >
-    <ds-file-upload label="Upload Document" description="All File Types" required></ds-file-upload>
-
-  </GridComponent>
-  <GridComponent
-    scale="0.5"
-    fullheight
-    fullwidth
-    label="Form"
-    pageTitle="Components/Forms/Form"
-    description="The form component wraps the form section. It helps to scroll to the first invalid field after a failed submit."
-  >
-    <div class="bg-purple-2 radius-lg mb-sm mt-2xl" style={{ width: '30%', height: '16px' }}></div>
-    <div class="bg-purple-2 radius mb-md" style={{ width: '100%', height: '48px' }}></div>
-    <div class="bg-purple-2 radius-lg mb-sm mt-lg" style={{ width: '30%', height: '16px' }}></div>
-    <div class="bg-purple-2 radius mb-lg" style={{ width: '100%', height: '48px' }}></div>
-    <div class="bg-purple-2 radius p-base" style={{ width: '20%', height: '48px' }}></div>
-  </GridComponent>
-  <GridComponent
-    scale="0.8"
-    fullheight
-    fullwidth
-    center
-    label="Grid"
-    pageTitle="Components/Structure/Grid"
-    description="Grid is a layout component that allows you to create responsive layouts with a 12-column system."
-  >
-    <div class="ds-grid is-multiline gap-sm">
-      <div class="ds-col is-half">
-        <div class="bg-purple-2 p-sm"></div>
-      </div>
-      <div class="ds-col is-half">
-        <div class="bg-purple-2 p-sm"></div>
-      </div>
-      <div class="ds-col is-half">
-        <div class="bg-purple-2 p-sm"></div>
-      </div>
-      <div class="ds-col is-half">
-        <div class="bg-purple-2 p-sm"></div>
-      </div>
-      <div class="ds-col is-half">
-        <div class="bg-purple-2 p-sm"></div>
-      </div>
-      <div class="ds-col is-half">
-        <div class="bg-purple-2 p-sm"></div>
-      </div>
-      <div class="ds-col is-half">
-        <div class="bg-purple-2 p-sm"></div>
-      </div>
-      <div class="ds-col is-half">
-        <div class="bg-purple-2 p-sm"></div>
-      </div>
-    </div>
-  </GridComponent>
-  <GridComponent
-    scale="1"
-    label="Heading"
-    pageTitle="Components/Structure/Heading"
-    description="Heading provides some additional helpers."
-  >
-    <ds-heading level="h1" space="bottom">
-      Heading
-    </ds-heading>
-  </GridComponent>
-  <GridComponent
-    scale="1"
-    label="Hint"
-    fullwidth
-    fullheight
-    pageTitle="Components/Indicators/Hint"
-    description="Hint hides content with some additional description and shows it by clicking the icon. It can easily combined with the ds-data or ds-field component."
-  >
-    <div class="py-base">
-      <ds-icon name="info-circle" size="medium" style={{ position: 'absolute', top: '20%', left: '15%' }}></ds-icon>
-      <div class="bg-grey-1 radius-md shadow p-base" style={{ scale: '0.5', position: 'absolute', top: '-10%' }}>
-        <ds-stack layout="vertical">
-          <h4 class="ds-title text-lg">Apple pie</h4>
-          <span>
-            Apple pie, a quintessential dessert, combines the comforting aroma of baked apples with a flaky, golden
-            crust.
-          </span>
-          <ds-button color="secondary">Close</ds-button>
-        </ds-stack>
-      </div>
-    </div>
-  </GridComponent>
-  <GridComponent
-    scale="0.8"
-    label="Icon"
-    fullwidth
-    pageTitle="Components/Media/Icon"
-    description="Icons are used to represent ideas, objects or actions."
-  >
-    <ds-stack align="center" direction="row">
-      <ds-icon name="edit" size="sm"></ds-icon>
-      <ds-icon name="edit"></ds-icon>
-      <ds-icon name="edit" size="md"></ds-icon>
-      <ds-icon name="edit" size="lg"></ds-icon>
-      <ds-icon name="edit" size="xl"></ds-icon>
-    </ds-stack>
-  </GridComponent>
-  <GridComponent
-    scale="2"
-    label="Link"
-    fullwidth
-    pageTitle="Components/Actions/Link"
-    description="Link is used to navigate to another page or to a specific section of the current page."
-  >
-    <ds-stack align="center" direction="row">
-      <a class="ds-link" href="https://www.helvetia.com" target="_blank">
-        Link
-      </a>
-    </ds-stack>
-  </GridComponent>
-  <GridComponent
-    scale="1"
-    label="Input"
-    pageTitle="Components/Forms/Input"
-    description="Input component is a wrapper to the HTML input element."
-  >
-    <ds-input placeholder="Placeholder" type="text"></ds-input>
-  </GridComponent>
-    <GridComponent
-    scale="1"
-    label="Input Phone"
-    pageTitle="Components/Forms/InputPhone"
-    description="Input phone renders an international phone number field with a country picker (flag + calling code) and a national-number input that live-formats as the user types."
-  >
-    <ds-input-phone label="Phone number" initial-country="CH" style={{width: '220px'}}></ds-input-phone>
-  </GridComponent>
-  <GridComponent
-    scale="1"
-    label="Slider"
-    pageTitle="Components/Forms/Slider"
-    description="Slider component lets users select from a range of values by moving the slider thumb."
-  >
-    <ds-slider label="Volume" description="0–100" value="60" style={{width: '200px'}}></ds-slider>
-  </GridComponent>
-  <GridComponent
-    scale="1"
-    label="Counter"
-    pageTitle="Components/Forms/Counter"
-    description="Counter can be used to ask the user an amount of limited amounts like the amount of children."
-  >
-    <ds-counter></ds-counter>
-  </GridComponent>
-  <GridComponent
-    scale="1"
-    label="Label"
-    pageTitle="Components/Forms/Label"
-    description="The label component represents a caption for a form control component."
-  >
-    <ds-label>Label</ds-label>
-    <div class="bg-purple-2 radius" style={{ height: '48px', width: '200px' }}></div>
-  </GridComponent>
-  <GridComponent
-    scale="0.8"
-    label="List"
-    fullwidth
-    pageTitle="Components/Structure/List"
-    description="List present content in a way that makes it easy to identify a specific item in a collection."
-  >
-  <div class="ds-grid">
-    <ds-list class="ds-col">
-      <ds-item variant="link" label="Internal Link" href="www.helvetia.com" target="_blank"></ds-item>
-      <ds-item
-        variant="link"
-        action-icon="link-external"
-        label="External Link"
-        description="Description"
-        href="www.helvetia.com"
-        target="_blank"
-      ></ds-item>
-    </ds-list>
-    <ul class="ds-col is-one-third unordered-list has-bullet-circle is-purple">
-      <li>Apple</li>
-      <li>Mango</li>
-      <li>Banana</li>
-    </ul>
-    </div>
-  </GridComponent>
-  <GridComponent
-    scale="1.2"
-    label="Logo"
-    pageTitle="Components/Media/Logo"
-    description="All the Logos of the Helvetia Group are legally protected brands and may not be altered in any way."
-  >
-    <ds-logo size="large"></ds-logo>
-  </GridComponent>
-  <GridComponent
-    scale="0.8"
-    label="Modal"
-    fullwidth
-    fullheight
-    fullscreen
-    pageTitle="Components/Overlays/Modal"
-    description="Modal displays content in a dialog overlay using the native dialog element."
-  >
-    <div style={{ backgroundColor: 'rgba(0, 7, 57, 0.5)' ,width: '100%', height: '280px',     backdropFilter: 'blur(4px)',
-    opacity: '0.8' }}></div>
-    <div class="bg-white radius-lg stack p-base" style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: '80%', height: '140px' }}>
-      <div class="ds-stack as-row">
-        <h4 class="ds-title ds-stack-content">Apple Pie</h4>
-        <ds-close></ds-close>
-      </div>
-      <p class="text-sm mt-sm flex-1">Apple pie, a quintessential dessert, combines the comforting aroma of baked apples with a flaky, golden crust.</p>
-    </div>
-  </GridComponent>
-  <GridComponent
-    scale="0.8"
-    label="Notification"
-    pageTitle="Components/Overlays/Notification"
-    description="Notification is used for alerts or to highlight certain content for the user."
-  >
-    <ds-notification color="danger">
-      <strong>Apple pie</strong>, a quintessential dessert, combines the comforting aroma of baked apples with a flaky,
-      golden crust.
-    </ds-notification>
-  </GridComponent>
-  <GridComponent
-    scale="1"
-    label="Number Input"
-    pageTitle="Components/Forms/Number-input"
-    description="Number Input only allows to enter valid numbers."
-  >
-    <ds-number-input decimal="2" suffix="CHF" value="1234.45"></ds-number-input>
-  </GridComponent>
-  <GridComponent
-    scale="0.5"
-    label="Pagination"
-    fullwidth
-    pageTitle="Components/Navigation/Pagination"
-    description="Pagination allows you to divide large amounts of content into smaller chunks across multiple pages."
-  >
-    <ds-pagination page-range="1" total-pages="20" value="2" class="mb-lg"></ds-pagination>
-    <ds-pagination variant="dots" page-range="1" total-pages="20" value="2"></ds-pagination>
-  </GridComponent>
-  <GridComponent
-    scale="0.8"
-    label="Popup"
-    fullheight
-    fullwidth
-    center
-    pageTitle="Components/Overlays/Popup"
-    description="Tag highlights a label for quick recognition."
-  >
-    <div class="relative" style={{marginLeft: '-160px'}}>
-      <ds-button color="primary">Apple pie</ds-button>
-    <div class="bg-white radius-lg stack p-base" style={{ position: 'absolute', top: '50%', left: '220px', transform: 'translate(-50%, -50%)', width: '140px', height: '140px' }}>
-        <ds-close style={{ position: 'absolute', top: '8px', right: '8px' }}></ds-close>
-      <p class="text-sm">        Apple pie, a quintessential dessert, with a flaky, golden crust.</p>
-    </div>
-    </div>
-  </GridComponent>
-  <GridComponent
-    scale="5"
-    fullwidth
-    fullscreen
-    label="Progressbar"
-    pageTitle="Components/Indicators/Progress-bar"
-    description="Progress bar is used to visualize the progress of a process or action."
-  >
-    <ds-progress-bar color="purple" value="50"></ds-progress-bar>
-  </GridComponent>
-  <GridComponent
-    scale="1"
-    label="Radio"
-    pageTitle="Components/Forms/Radio"
-    description="Radio renders a radio button form control for selecting one option from a group with optional label and help text."
-  >
-      <ds-radio-group vertical value="1">
-        <ds-radio name="basic"  value="1" >Apple</ds-radio>
-        <ds-radio name="basic" value="2" >Mango</ds-radio>
-      </ds-radio-group>
-  </GridComponent>
-  <GridComponent
-    scale="1"
-    label="Segment"
-    pageTitle="Components/Forms/Segment"
-    description="Segment offers a list of options. The user can only select one option from a number of choices."
-  >
-    <div class="text-align-center">
-      <ds-segment value="yes">
-        <ds-segment-item value="yes" label="Yes"></ds-segment-item>
-        <ds-segment-item value="no" label="No"></ds-segment-item>
-      </ds-segment>
-    </div>
-  </GridComponent>
-  <GridComponent
-    scale="0.8"
-    label="Shape"
-    pageTitle="Components/Media/Shape"
-    description="Helvetia Shape with variable color, size and rotation."
-  >
-    <ds-shape color="purple" rotation="0" variation="2"></ds-shape>
-  </GridComponent>
-  <GridComponent
-    scale="0.6"
-    label="Sheet"
-    fullwidth
-    fullheight
-    pageTitle="Components/Overlays/Sheet"
-    description="Sheet component is used to show content over the whole page at the bottom. The element is sticky."
-  >
-    <div class="mx-md">
-      <div class="bg-purple-2" style={{ minHeight: '200px', width: '100%' }}></div>
-    <ds-sheet>
-    <div class="ds-stack">
-      <div class="ds-stack-content">
-        <h3 class="ds-title is-4">CHF 460.60 per year</h3>
-        <p class="text-sm">incl. statutory charges</p>
-      </div>
-      <div class="ds-buttons">
-        <button class="ds-button is-secondary is-square" aria-label="back"><ds-icon name="caret-left"></ds-icon></button>
-        <button class="ds-button flex-1">Select offer</button>
-      </div>
-    </div>
-    </ds-sheet>
-        </div>
-  </GridComponent>
-  <GridComponent
-    scale="0.8"
-    label="Snackbar"
-    fullwidth
-    fullheight
-    pageTitle="Components/Overlays/Snackbar"
-    description="Snackbar displays brief feedback messages at the bottom of the screen with optional action buttons and dismissal control."
-  >
-    <div style={{ position: 'absolute', bottom: '1rem', right: '0' }}>
-      <ds-snackbar heading="Apple Pie"  color="info" closable>
-        Want some more apple pie slices?
-      </ds-snackbar>
-    </div>
-  </GridComponent>
-  <GridComponent
-    scale="1.5"
-    label="Spinner"
-    pageTitle="Components/Indicators/Spinner"
-    description="Spinner displays an animated loading indicator with customizable color, size, and variation."
-  >
-    <ds-spinner></ds-spinner>
-  </GridComponent>
-  <GridComponent
-    scale="0.8"
-    label="Stack"
-    fullwidth
-    pageTitle="Components/Structure/Stack"
-    description="The Stack element is responsible for arranging its direct descendants in a vertical or horizontal direction, while also allowing for the inclusion of optional spacing between each child."
-  >
-    <ds-stack>
-      <div class="bg-purple-2" style={{ height: '4rem', width: '100%' }}></div>
-      <div class="bg-purple-2" style={{ height: '4rem', width: '100%' }}></div>
-      <div class="bg-purple-2" style={{ height: '4rem', width: '100%' }}></div>
-    </ds-stack>
-  </GridComponent>
-  <GridComponent
-    scale="0.8"
-    label="Steps"
-    fullwidth
-    pageTitle="Components/Navigation/Steps"
-    description="Steps are used to structure the information in sub section on the same page."
-  >
-<ds-steps value="b">
-  <ds-step name="a" label="Apple Pie" done></ds-step>
-  <ds-step name="b" label="Mango"></ds-step>
-  <ds-step name="c" label="Banana"></ds-step>
-  <ds-step-panel for="a"></ds-step-panel>
-  <ds-step-panel for="b"></ds-step-panel>
-  <ds-step-panel for="c"></ds-step-panel>
-</ds-steps>
-
-  </GridComponent>
-  <GridComponent
-    scale="0.4"
-    label="Table"
-    fullwidth
-    pageTitle="Components/Structure/Table"
-    description="A table is used to organize and present data, in a structured and accessible format for easy reference."
-  >
-    <ds-card>
-      <ds-card-content>
-        <table class="ds-table is-wide">
-          <thead>
-            <tr>
-              <th>Selected</th>
-              <th>Name</th>
-              <th>Status</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>
-                <ds-checkbox id="checkbox1"></ds-checkbox>
-              </td>
-              <td>Tony Stark</td>
-              <td>
-                <span class="ds-tag is-success is-sm">Ready</span>
-              </td>
-              <td class="has-buttons">
-                <ds-button color="tertiary" size="sm" icon="edit" square="true" outlined="true"></ds-button>
-                <ds-button color="tertiary" size="sm" icon="trash" square="true" outlined="true"></ds-button>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <ds-checkbox id="checkbox2"></ds-checkbox>
-              </td>
-              <td>Steve Rogers</td>
-              <td>
-                <span class="ds-tag is-danger is-sm">Injured</span>
-              </td>
-              <td class="has-buttons">
-                <ds-button color="tertiary" size="sm" icon="edit" square="true" outlined="true"></ds-button>
-                <ds-button color="tertiary" size="sm" icon="trash" square="true" outlined="true"></ds-button>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <ds-checkbox id="checkbox3"></ds-checkbox>
-              </td>
-              <td>Peter Parker</td>
-              <td>
-                <span class="ds-tag is-info is-sm">In School</span>
-              </td>
-              <td class="has-buttons">
-                <ds-button color="tertiary" size="sm" icon="edit" square="true" outlined="true"></ds-button>
-                <ds-button color="tertiary" size="sm" icon="trash" square="true" outlined="true"></ds-button>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <ds-checkbox id="checkbox4"></ds-checkbox>
-              </td>
-              <td>John Doe</td>
-              <td>
-                <span class="ds-tag is-sm">Unknown</span>
-              </td>
-              <td class="has-buttons">
-                <ds-button color="tertiary" size="sm" icon="edit" square="true" outlined="true"></ds-button>
-                <ds-button color="tertiary" size="sm" icon="trash" square="true" outlined="true"></ds-button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </ds-card-content>
-    </ds-card>
-  </GridComponent>
-  <GridComponent
-    scale="1"
-    label="Tabs"
-    pageTitle="Components/Navigation/Tabs"
-    description="Tabs are used to structure the information in sub section on the same page."
-  >
-  <div class="px-lg">
-<ds-tabs>
-  <ds-tab name="a">Apple Pie</ds-tab>
-  <ds-tab name="b">Mango</ds-tab>
-  <ds-tab name="c">Blueberry</ds-tab>
-  <ds-tab-panel for="a"></ds-tab-panel>
-  <ds-tab-panel for="b"></ds-tab-panel>
-  <ds-tab-panel for="c"></ds-tab-panel>
-</ds-tabs>
-</div>
-  </GridComponent>
-  <GridComponent
-    scale="1.2"
-    label="Tag"
-    pageTitle="Components/Indicators/Tag"
-    description="Tag highlights a label for quick recognition."
-  >
-    <ds-stack>
-      <ds-tag color="primary">Blueberry</ds-tag>
-      <ds-tag closable color="red">
-        Apple
-      </ds-tag>
-    </ds-stack>
-  </GridComponent>
-  <GridComponent
-    scale="1"
-    label="Text"
-    pageTitle="Components/Structure/Text"
-    description="Text provides some additional helpers."
-  >
-    <ds-text>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-      magna aliqua.
-    </ds-text>
-  </GridComponent>
-  <GridComponent
-    scale="1"
-    label="Textarea"
-    pageTitle="Components/Forms/Textarea"
-    description="Textarea allows a user to write and edit large texts."
-  >
-    <ds-textarea placeholder="Enter a comment" style={{ width: '227px' }}></ds-textarea>
-  </GridComponent>
-  <GridComponent
-    scale="1"
-    label="Time Input"
-    pageTitle="Components/Forms/Time Input"
-    description="Time Input allows to enter valid numbers for their specific index. The time value will be formatted accordingly."
-  >
-    <div class="ds-field" style={{width: '200px'}}>
-      <label class="ds-label" for="time-input-1">Select a time</label>
-      <div class="ds-control">
-        <input type="time" id="time-input-1" class="ds-time-input" aria-describedby="time-input-help" />
-      </div>
-    <p id="time-input-help" class="ds-help">Select the desired time</p>
+      <ds-button wide color="secondary">Secondary</ds-button>
   </div>
-  </GridComponent>
-  <GridComponent
-    scale="0.8"
-    label="Toast"
-    pageTitle="Components/Overlays/Toast"
-    description="Toast displays temporary notification messages that appear at the top of the page and auto-dismiss with optional action buttons and close control."
+  <div class="ds-stack as-row align-center">
+      <ds-close></ds-close>
+    <a class="ds-link" href="https://www.helvetia.com" target="_blank">
+      Link
+    </a>
+  </div>
+  </div>
+  </GridCategory>
+  <GridCategory
+    label="Forms"
+    zoom="0.8"
+    pageTitle="Components/Forms/Overview"
+    description="Form components let users enter, select and submit data."
   >
-    <div style={{ marginTop: '-100px' }}>
-  <ds-toast color="success" heading="Success"> Your changes have been saved. </ds-toast>
 
+ <div className="ds-form">
+  <div className="ds-form-col">
+    <fieldset className="ds-field">
+      <legend className="ds-label">Gender</legend>
+      <div className="ds-radio-group">
+        <label className="ds-radio">
+          <input required="" type="radio" name="gender" aria-describedby="help-gender" />
+          Male
+        </label>
+        <label className="ds-radio">
+          <input required="" type="radio" name="gender" aria-describedby="help-gender" checked />
+          Female
+        </label>
+      </div>
+    </fieldset>
+  </div>
+
+  <div className="ds-form-col tablet:is-6">
+    <div className="ds-field">
+      <label className="ds-label" htmlFor="fname">First Name</label>
+      <div className="ds-control">
+        <input id="fname" className="ds-input" aria-describedby="help-fname" value="Jane" />
+      </div>
+      <p id="help-fname" className="ds-help">Provide the first name</p>
+    </div>
+  </div>
+
+  <div className="ds-form-col tablet:is-6">
+    <div className="ds-field">
+      <label className="ds-label" htmlFor="lname">Last Name</label>
+      <div className="ds-control">
+        <input id="lname" className="ds-input" aria-describedby="help-lname" value="Doe" />
+      </div>
+      <p id="help-lname" className="ds-help">Provide the last name</p>
+    </div>
+  </div>
+
+  <div className="ds-form-col">
+    <div className="ds-field">
+      <label className="ds-label" htmlFor="email">Email</label>
+      <div className="ds-control">
+        <input id="email" className="ds-input" type="email" aria-describedby="help-email" placeholder="jane@example.com" />
+      </div>
+      <p id="help-email" className="ds-help">Provide your email address</p>
+    </div>
+  </div>
+</div>
+  </GridCategory>
+  <GridCategory
+    label="Indicators"
+    pageTitle="Components/Indicators/Overview"
+    description="Indicators communicate status, progress or emphasis to the user."
+  >
+    <ds-badge>42</ds-badge>
+    <ds-tag color="primary">Blueberry</ds-tag>
+    <ds-spinner></ds-spinner>
+  </GridCategory>
+  <GridCategory
+    label="Media"
+    pageTitle="Components/Media/Overview"
+    description="Media components display icons, images, logos and other visual assets."
+  >
+    <ds-icon name="edit" size="lg"></ds-icon>
+    <ds-brand-icon src="/assets/images/brand-icons/car-purple.svg"></ds-brand-icon>
+    <ds-logo size="large"></ds-logo>
+  </GridCategory>
+  <GridCategory
+    label="Navigation"
+    pageTitle="Components/Navigation/Overview"
+    description="Navigation components help users move through an application."
+  >
+  <div class="stack">
+    <ds-tabs value="c">
+      <ds-tab name="a">Apple Pie</ds-tab>
+      <ds-tab name="b">Mango</ds-tab>
+      <ds-tab name="c">Banana</ds-tab>
+      <ds-tab name="d">Strawberry</ds-tab>
+      <ds-tab-panel for="a"></ds-tab-panel>
+      <ds-tab-panel for="b"></ds-tab-panel>
+      <ds-tab-panel for="c"></ds-tab-panel>
+      <ds-tab-panel for="d"></ds-tab-panel>
+    </ds-tabs>
+    <ds-steps value="b">
+      <ds-step name="a" label="Apple Pie" done></ds-step>
+      <ds-step name="b" label="Mango" ></ds-step>
+      <ds-step name="c" label="Banana"></ds-step>
+      <ds-step name="d" label="Strawberry"></ds-step>
+      <ds-step-panel for="a"></ds-step-panel>
+      <ds-step-panel for="b"></ds-step-panel>
+      <ds-step-panel for="c"></ds-step-panel>
+      <ds-step-panel for="d"></ds-step-panel>
+    </ds-steps>
+    <ds-pagination variant="dots" page-range="1" total-pages="3" value="2"></ds-pagination>
+    </div>
+  </GridCategory>
+  <GridCategory
+    label="Overlays"
+    pageTitle="Components/Overlays/Overview"
+    description="Overlays display content above the main page, either temporarily or until dismissed by the user."
+  >
+    <div class="stack">
+    <ds-toast color="success" heading="Success"> Your changes have been saved. </ds-toast>
+
+    <div class="flex justify-content-center align-items-center p-lg">
+      <button class="ds-button is-secondary" id="grid-tooltip-basic" type="button">
+        Apple Pie
+      </button>
+      <ds-tooltip reference="grid-tooltip-basic" placement="bottom" open="true">
+        Apple pie is a dessert
+      </ds-tooltip>
+    </div>
+    </div>
+  </GridCategory>
+  <GridCategory
+    label="Structure"
+    pageTitle="Components/Structure/Overview"
+    description="Structure components define layout, containers and the organization of content on the page."
+  >
+  <div class="ds-stack as-row">
+    <div style={{minWidth: '200px'}}>
+      <ul class="unordered-list has-bullet-circle is-purple">
+        <li>Apple</li>
+        <li>Mango</li>
+        <li>Banana</li>
+        <li>Strawberry</li>
+      </ul>
     </div>
 
-  </GridComponent>
-  <GridComponent
-    scale="1"
-    label="Toggle"
-    fullheight
-    fullwidth
-    center
-    pageTitle="Components/Forms/Toggle"
-    description="Toggle renders a switch-like form control for toggling between on/off states with optional label and help text."
-  >
-    <ds-toggle checked>Do you like Apples?</ds-toggle>
-  </GridComponent>
-  <GridComponent
-    scale="1"
-    label="Tooltip"
-    fullheight
-    fullwidth
-    center
-    pageTitle="Components/Overlays/Tooltip"
-    description="Tag highlights a label for quick recognition."
-  >
-    <div class="flex justify-content-center align-items-center p-lg" style={{ marginTop: '-48px' }}>
-      <button class="ds-button is-secondary" id="tooltip-basic" type="button">Apple Pie</button>
-      <ds-tooltip reference="tooltip-basic" placement="bottom" open="true">Apple pie is a dessert</ds-tooltip>
-    </div>
-  </GridComponent>
+
+        <article class="ds-card is-fullheight">
+      <div class="ds-card-content ds-stack ">
+<table class="ds-table is-wide">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Apple</td>
+      <td><span class="ds-tag is-success is-sm">Ready</span></td>
+    </tr>
+        <tr>
+      <td>Mango</td>
+      <td><span class="ds-tag is-danger is-sm">Out</span></td>
+    </tr>
+        <tr>
+      <td>Banana</td>
+      <td><span class="ds-tag is-info is-sm">Ordered</span></td>
+    </tr>
+            {/* <tr>
+      <td>Strawberry</td>
+      <td><span class="ds-tag is-info is-sm">Ordered</span></td>
+    </tr> */}
+  </tbody>
+</table>
+  </div>
+    </article>
+<ds-carousel variant="slide" controls="large" label="Image gallery" style={{minWidth: '200px', maxWidth: '300px'}}>
+  <ds-carousel-item name="s1" src="https://fastly.picsum.photos/id/626/1280/720.jpg?hmac=pHWhzQeCr1Zq8_NquZJ51qZ0xXa4psCZpoeJbaUbkWM"></ds-carousel-item>
+  <ds-carousel-item name="s2" src="https://fastly.picsum.photos/id/921/1280/720.jpg?hmac=_kfenyYI38K4FYrzavn01cZUPqpu1pbn2OYNhrGqwvg"></ds-carousel-item>
+  <ds-carousel-item name="s3" src="https://fastly.picsum.photos/id/235/1280/720.jpg?hmac=MBlYf-BNbNbdxmF-qCtt9eNsT1SKJy_1JCHeLDRHYEw"></ds-carousel-item>
+</ds-carousel>
+
+
+  </div>
+  </GridCategory>
 </GridComponents>

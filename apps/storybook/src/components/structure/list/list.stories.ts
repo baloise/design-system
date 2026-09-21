@@ -109,7 +109,7 @@ export const LinkedListHtml = Story({
           <li>
             <a class="ds-item" href="www.helvetia.com" target="_blank">
               <span class="ds-item-content">Internal Link</span>
-              <ds-icon name="nav-go-right"></ds-icon>
+              <ds-icon name="caret-right"></ds-icon>
             </a>
           </li>
           <li>
@@ -265,7 +265,7 @@ export const InvertedHtml = Story({
     <li>
       <a class="ds-item" href="www.helvetia.com" target="_blank">
         <span class="ds-item-content">Internal Link</span>
-        <ds-icon name="nav-go-right"></ds-icon>
+        <ds-icon name="caret-right"></ds-icon>
       </a>
     </li>
     <li>

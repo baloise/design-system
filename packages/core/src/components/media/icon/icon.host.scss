@@ -155,7 +155,7 @@ $colors:
 :host(.turn-plus) #inner {
   transform: rotate(225deg);
 }
-:host(.turn-nav-go-down) #inner,
+:host(.turn-caret-down) #inner,
 :host(.turn-caret-down) #inner,
 :host(.turn-caret-up) #inner {
   transform: rotate(180deg);

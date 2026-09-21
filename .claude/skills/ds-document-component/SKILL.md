@@ -46,8 +46,8 @@ title: 'Components/<Category>/<ComponentName>/Variants'
 
 ### MDX Meta titles
 
-| File                  | Meta title pattern                               |
-| --------------------- | ------------------------------------------------- |
+| File                  | Meta title pattern                                 |
+| --------------------- | -------------------------------------------------- |
 | `1-Overview.mdx`      | `"Components/<Category>/<Name>/<Name>"`            |
 | `2-Usage.mdx`         | `"Components/<Category>/<Name>/Usage"`             |
 | `3-Variants.mdx`      | `"Components/<Category>/<Name>/Variants/Overview"` |

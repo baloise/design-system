@@ -18,8 +18,8 @@ import { Banner, GridComponent, GridComponents, Lead } from '../../../.storybook
   <GridComponent
     scale="1"
     label="Checkbox"
+    component="checkbox"
     pageTitle="Components/Forms/Checkbox"
-    description="Checkboxes allow users to select one or more items from a set. Checkboxes can turn one or more option(s) on or off."
   >
     <ds-checkbox-group vertical>
       <ds-checkbox label="Apple" checked />
@@ -29,16 +29,16 @@ import { Banner, GridComponent, GridComponents, Lead } from '../../../.storybook
   <GridComponent
     scale="1"
     label="Counter"
+    component="counter"
     pageTitle="Components/Forms/Counter"
-    description="Counter can be used to ask the user an amount of limited amounts like the amount of children."
   >
     <ds-counter></ds-counter>
   </GridComponent>
   <GridComponent
     scale="1"
     label="Date"
+    component="datepicker"
     pageTitle="Components/Forms/Datepicker"
-    description="Date Component is a datepicker designed to simplify the process of date selection."
   >
     <div class="text-align-center">
       <ds-datepicker value="2023-10-21"></ds-datepicker>
@@ -47,8 +47,8 @@ import { Banner, GridComponent, GridComponents, Lead } from '../../../.storybook
   <GridComponent
     scale="0.8"
     label="File Upload"
+    component="file-upload"
     pageTitle="Components/Forms/FileUpload"
-    description="File Upload is all in one component. It supports drag&drop and the normal file upload dialog of the browser."
   >
     <ds-file-upload label="Upload Document" description="All File Types" required></ds-file-upload>
   </GridComponent>
@@ -69,24 +69,24 @@ import { Banner, GridComponent, GridComponents, Lead } from '../../../.storybook
   <GridComponent
     scale="1"
     label="Input"
+    component="input"
     pageTitle="Components/Forms/Input"
-    description="Input component is a wrapper to the HTML input element."
   >
     <ds-input placeholder="Placeholder" type="text"></ds-input>
   </GridComponent>
   <GridComponent
     scale="1"
     label="Input Phone"
+    component="input-phone"
     pageTitle="Components/Forms/InputPhone"
-    description="Input phone renders an international phone number field with a country picker (flag + calling code) and a national-number input that live-formats as the user types."
   >
     <ds-input-phone label="Phone number" initial-country="CH" style={{ width: '220px' }}></ds-input-phone>
   </GridComponent>
   <GridComponent
     scale="1"
     label="Label"
+    component="label"
     pageTitle="Components/Forms/Label"
-    description="The label component represents a caption for a form control component."
   >
     <ds-label>Label</ds-label>
     <div class="bg-purple-2 radius" style={{ height: '48px', width: '200px' }}></div>
@@ -94,16 +94,16 @@ import { Banner, GridComponent, GridComponents, Lead } from '../../../.storybook
   <GridComponent
     scale="1"
     label="Number Input"
+    component="number-input"
     pageTitle="Components/Forms/Number-input"
-    description="Number Input only allows to enter valid numbers."
   >
     <ds-number-input decimal="2" suffix="CHF" value="1234.45"></ds-number-input>
   </GridComponent>
   <GridComponent
     scale="1"
     label="Radio"
+    component="radio"
     pageTitle="Components/Forms/Radio"
-    description="Radio renders a radio button form control for selecting one option from a group with optional label and help text."
   >
     <ds-radio-group vertical value="1">
       <ds-radio name="basic" value="1">
@@ -117,8 +117,8 @@ import { Banner, GridComponent, GridComponents, Lead } from '../../../.storybook
   <GridComponent
     scale="1"
     label="Segment"
+    component="segment"
     pageTitle="Components/Forms/Segment"
-    description="Segment offers a list of options. The user can only select one option from a number of choices."
   >
     <div class="text-align-center">
       <ds-segment value="yes">
@@ -130,8 +130,8 @@ import { Banner, GridComponent, GridComponents, Lead } from '../../../.storybook
   <GridComponent
     scale="1"
     label="Select"
+    component="select"
     pageTitle="Components/Forms/Select"
-    description="Select allows the user to choose one or multiple option from a list."
   >
     <ds-select
       id="flat"
@@ -149,16 +149,16 @@ import { Banner, GridComponent, GridComponents, Lead } from '../../../.storybook
   <GridComponent
     scale="1"
     label="Slider"
+    component="slider"
     pageTitle="Components/Forms/Slider"
-    description="Slider component lets users select from a range of values by moving the slider thumb."
   >
     <ds-slider label="Volume" description="0–100" value="60" style={{ width: '200px' }}></ds-slider>
   </GridComponent>
   <GridComponent
     scale="1"
     label="Textarea"
+    component="textarea"
     pageTitle="Components/Forms/Textarea"
-    description="Textarea allows a user to write and edit large texts."
   >
     <ds-textarea placeholder="Enter a comment" style={{ width: '227px' }}></ds-textarea>
   </GridComponent>
@@ -183,11 +183,11 @@ import { Banner, GridComponent, GridComponents, Lead } from '../../../.storybook
   <GridComponent
     scale="1"
     label="Toggle"
+    component="toggle"
     fullheight
     fullwidth
     center
     pageTitle="Components/Forms/Toggle"
-    description="Toggle renders a switch-like form control for toggling between on/off states with optional label and help text."
   >
     <ds-toggle checked>Do you like Apples?</ds-toggle>
   </GridComponent>

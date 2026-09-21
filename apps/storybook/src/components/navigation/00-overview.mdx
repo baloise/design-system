@@ -18,11 +18,11 @@ import { Banner, GridComponent, GridComponents, Lead } from '../../../.storybook
   <GridComponent
     scale="0.5"
     label="App Navbar"
+    component="app-navbar"
     fullheight
     fullwidth
     fullscreen
     pageTitle="Components/Navigation/AppNavbar"
-    description="A responsive horizontal Navbar that can support logos, buttons, and dropdowns."
   >
     <ds-app-navbar interface="app">
       <ds-app-navbar-brand href="/" target="_blank">
@@ -74,9 +74,9 @@ import { Banner, GridComponent, GridComponents, Lead } from '../../../.storybook
   <GridComponent
     scale="0.5"
     label="Pagination"
+    component="pagination"
     fullwidth
     pageTitle="Components/Navigation/Pagination"
-    description="Pagination allows you to divide large amounts of content into smaller chunks across multiple pages."
   >
     <ds-pagination page-range="1" total-pages="20" value="2" class="mb-lg"></ds-pagination>
     <ds-pagination variant="dots" page-range="1" total-pages="20" value="2"></ds-pagination>
@@ -84,9 +84,9 @@ import { Banner, GridComponent, GridComponents, Lead } from '../../../.storybook
   <GridComponent
     scale="0.8"
     label="Steps"
+    component="steps"
     fullwidth
     pageTitle="Components/Navigation/Steps"
-    description="Steps are used to structure the information in sub section on the same page."
   >
     <ds-steps value="b">
       <ds-step name="a" label="Apple Pie" done></ds-step>
@@ -100,8 +100,8 @@ import { Banner, GridComponent, GridComponents, Lead } from '../../../.storybook
   <GridComponent
     scale="1"
     label="Tabs"
+    component="tabs"
     pageTitle="Components/Navigation/Tabs"
-    description="Tabs are used to structure the information in sub section on the same page."
   >
     <div class="px-lg">
       <ds-tabs>

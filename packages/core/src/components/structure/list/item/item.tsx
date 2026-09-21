@@ -237,14 +237,14 @@ export class Item implements DsComponentInterface {
     let actionIconName = ''
     if (hasActionIcon) {
       if (this.actionIcon === 'link') {
-        actionIconName = 'nav-go-right'
+        actionIconName = 'caret-right'
       } else if (this.actionIcon === 'link-external') {
         actionIconName = 'link'
       } else if (this.actionIcon === 'download') {
         actionIconName = 'download'
       } else if (this.actionIcon === 'default' || !hasValue(this.actionIcon)) {
         if (this.variant === 'link' || this.variant === 'button') {
-          actionIconName = 'nav-go-right'
+          actionIconName = 'caret-right'
         }
       }
     }
