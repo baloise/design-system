@@ -103,7 +103,7 @@ jobs:
       - name: Bundle SBOM into all published packages
         if: ${{ !inputs.dry-run }}
         run: |
-          for pkg in packages/core packages/assets packages/styles packages/playwright packages/tokens packages/ds-skills; do
+          for pkg in packages/core packages/assets packages/styles packages/playwright packages/tokens; do
             cp sbom.cdx.json $pkg/sbom.cdx.json
             node -e "
               const fs = require('fs');

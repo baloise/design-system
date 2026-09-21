@@ -27,7 +27,6 @@ const SCOPE_PACKAGE_MAP = {
   react: '@baloise/ds-react',
   assets: '@baloise/ds-assets',
   testing: '@baloise/ds-playwright',
-  skills: '@helvetia/ds-skills',
 }
 
 let cleanUp = () => Promise.resolve()
@@ -175,7 +174,6 @@ async function runInteractive() {
           { title: 'react', value: 'react' },
           { title: 'table', value: 'table' },
           { title: 'assets', value: 'assets' },
-          { title: 'skills', value: 'skills' },
           { title: 'deps', value: 'deps' },
           { title: 'a11y', value: 'a11y' },
           ...tags.map(tag => ({

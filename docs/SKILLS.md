@@ -184,33 +184,6 @@ Auto-generate all test files for a component.
 
 ---
 
-## Consumer Skills (`@helvetia/ds-skills`)
-
-These skills do not live in this repo's `.claude/skills/`. They ship as a standalone npm package and are copied into a **consuming application's** `.claude/skills/` with:
-
-```bash
-npx @helvetia/ds-skills add
-```
-
-Package conventions (compiled CLI vs. self-contained payload, how to add the next component file) are documented in [packages/ds-skills/CONTEXT.md](../packages/ds-skills/CONTEXT.md).
-
-### **ds-migrate-from-baloise**
-
-Menu-driven migration from the Baloise Design System (`bal-*`) to the Helvetia Design System (`ds-*`).
-
-**Usage:** install with `npx @helvetia/ds-skills add`, then invoke `/ds-migrate-from-baloise` in the consumer repo.
-
-**Menu:**
-
-- **Init** — bootstrap Helvetia packages alongside the existing Baloise install (follow-up)
-- **Components** — migrate a `bal-*` component to `ds-*` (file-driven submenu; empty until the first component file lands)
-- **CSS utils (coming soon)**
-- **Assets (coming soon)**
-
-The skill edits files and leaves them unstaged. It never runs `git add` or `git commit`.
-
----
-
 ## Global Skills
 
 These are available across all Anthropic projects.
