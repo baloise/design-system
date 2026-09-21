@@ -11,12 +11,12 @@
  * Variables
  * --------------------------------
  *
- * @prop --date-color: Text color inside the date input field.
- * @prop --date-placeholder: Placeholder text color.
- * @prop --date-family: Font family of the date input text.
- * @prop --date-weight: Font weight of the date input text.
- * @prop --date-size: Font size of the date input text.
- * @prop --date-line-height: Line height of the date input text.
+ * @prop --datepicker-color: Text color inside the date input field.
+ * @prop --datepicker-placeholder: Placeholder text color.
+ * @prop --datepicker-family: Font family of the date input text.
+ * @prop --datepicker-weight: Font weight of the date input text.
+ * @prop --datepicker-size: Font size of the date input text.
+ * @prop --datepicker-line-height: Line height of the date input text.
  * @prop --form-container-background: Background color of the input container.
  * @prop --form-container-border-color: Border color of the input container.
  * @prop --form-container-border-width: Border width of the input container.
@@ -37,33 +37,33 @@
  * @prop --form-description-weight: Font weight of the description.
  * @prop --form-description-size: Font size of the description.
  * @prop --form-description-line-height: Line height of the description.
- * @prop --date-trigger-icon-color-hover: Trigger icon color on hover.
- * @prop --date-trigger-icon-color-active: Trigger icon color when active/pressed.
- * @prop --date-trigger-icon-color-disabled: Trigger icon color when disabled.
- * @prop --date-focus-color: Focus ring color for the trigger, calendar nav buttons and day cells.
- * @prop --date-popup-shadow: Box shadow of the calendar popup.
- * @prop --date-calendar-text-color: Text color of the calendar (weekdays, current date).
- * @prop --date-calendar-family: Font family of the calendar.
- * @prop --date-calendar-size: Font size of the calendar.
- * @prop --date-calendar-weight: Font weight of the calendar container text.
- * @prop --date-calendar-radius: Border radius of the calendar.
- * @prop --date-calendar-shadow: Box shadow of the calendar.
- * @prop --date-calendar-color-inner-border: Border color of the calendar navigation.
- * @prop --date-calendar-disabled-color: Text color of dates outside the selectable range.
- * @prop --date-calendar-day-background-hover: Background color of a day cell on hover.
- * @prop --date-calendar-day-background-active: Background color of a day cell when active/pressed.
- * @prop --date-calendar-day-background-selected: Background color of the selected day cell.
- * @prop --date-calendar-day-background-selected-hover: Background color of the selected day cell on hover.
- * @prop --date-calendar-color-current-date: Border color used to mark today's date.
- * @prop --date-calendar-day-weight: Font weight of a regular day cell.
- * @prop --date-calendar-day-weight-selected: Font weight of the selected day cell.
- * @prop --date-calendar-day-name-family: Font family of the weekday name row.
- * @prop --date-calendar-day-name-weight: Font weight of the weekday name row.
- * @prop --date-calendar-nav-color: Text and icon color of the calendar navigation buttons.
- * @prop --date-calendar-nav-color-hover: Navigation button color on hover.
- * @prop --date-calendar-nav-color-active: Navigation button color when active/pressed.
- * @prop --date-calendar-nav-radius: Border radius of the calendar navigation buttons.
- * @prop --date-calendar-nav-color-disabled: Navigation button color when disabled.
+ * @prop --datepicker-trigger-icon-color-hover: Trigger icon color on hover.
+ * @prop --datepicker-trigger-icon-color-active: Trigger icon color when active/pressed.
+ * @prop --datepicker-trigger-icon-color-disabled: Trigger icon color when disabled.
+ * @prop --datepicker-focus-color: Focus ring color for the trigger, calendar nav buttons and day cells.
+ * @prop --datepicker-popup-shadow: Box shadow of the calendar popup.
+ * @prop --datepicker-calendar-text-color: Text color of the calendar (weekdays, current date).
+ * @prop --datepicker-calendar-family: Font family of the calendar.
+ * @prop --datepicker-calendar-size: Font size of the calendar.
+ * @prop --datepicker-calendar-weight: Font weight of the calendar container text.
+ * @prop --datepicker-calendar-radius: Border radius of the calendar.
+ * @prop --datepicker-calendar-shadow: Box shadow of the calendar.
+ * @prop --datepicker-calendar-color-inner-border: Border color of the calendar navigation.
+ * @prop --datepicker-calendar-disabled-color: Text color of dates outside the selectable range.
+ * @prop --datepicker-calendar-day-background-hover: Background color of a day cell on hover.
+ * @prop --datepicker-calendar-day-background-active: Background color of a day cell when active/pressed.
+ * @prop --datepicker-calendar-day-background-selected: Background color of the selected day cell.
+ * @prop --datepicker-calendar-day-background-selected-hover: Background color of the selected day cell on hover.
+ * @prop --datepicker-calendar-color-current-date: Border color used to mark today's date.
+ * @prop --datepicker-calendar-day-weight: Font weight of a regular day cell.
+ * @prop --datepicker-calendar-day-weight-selected: Font weight of the selected day cell.
+ * @prop --datepicker-calendar-day-name-family: Font family of the weekday name row.
+ * @prop --datepicker-calendar-day-name-weight: Font weight of the weekday name row.
+ * @prop --datepicker-calendar-nav-color: Text and icon color of the calendar navigation buttons.
+ * @prop --datepicker-calendar-nav-color-hover: Navigation button color on hover.
+ * @prop --datepicker-calendar-nav-color-active: Navigation button color when active/pressed.
+ * @prop --datepicker-calendar-nav-radius: Border radius of the calendar navigation buttons.
+ * @prop --datepicker-calendar-nav-color-disabled: Navigation button color when disabled.
  */
 
 :host {
@@ -72,42 +72,51 @@
   @include form.vars-label();
   @include form.vars-description();
 
-  @include input.vars('date');
+  @include input.vars('datepicker');
 
-  @include vars.local(date-trigger-icon-color-hover, var(--ds-date-trigger-color-hover));
-  @include vars.local(date-trigger-icon-color-active, var(--ds-date-trigger-color-active));
-  @include vars.local(date-trigger-icon-color-disabled, var(--ds-date-trigger-color-disabled));
-  @include vars.local(date-focus-color, var(--ds-alias-interaction-focus-color-base));
+  @include vars.local(datepicker-trigger-icon-color-hover, var(--ds-datepicker-trigger-color-hover));
+  @include vars.local(datepicker-trigger-icon-color-active, var(--ds-datepicker-trigger-color-active));
+  @include vars.local(datepicker-trigger-icon-color-disabled, var(--ds-datepicker-trigger-color-disabled));
+  @include vars.local(datepicker-focus-color, var(--ds-alias-interaction-focus-color-base));
 
-  @include vars.local(date-popup-shadow, var(--ds-date-popup-shadow));
+  @include vars.local(datepicker-popup-shadow, var(--ds-datepicker-popup-shadow));
 
-  @include vars.local(date-calendar-text-color, var(--ds-date-calendar-color-text));
-  @include vars.local(date-calendar-family, var(--ds-date-calendar-family));
-  @include vars.local(date-calendar-size, var(--ds-date-calendar-size));
-  @include vars.local(date-calendar-weight, var(--ds-date-calendar-weight));
-  @include vars.local(date-calendar-radius, var(--ds-date-calendar-radius));
-  @include vars.local(date-calendar-shadow, var(--ds-date-calendar-shadow));
-  @include vars.local(date-calendar-color-inner-border, var(--ds-date-calendar-color-inner-border));
-  @include vars.local(date-calendar-disabled-color, var(--ds-date-calendar-color-disabled));
+  @include vars.local(datepicker-calendar-text-color, var(--ds-datepicker-calendar-color-text));
+  @include vars.local(datepicker-calendar-family, var(--ds-datepicker-calendar-family));
+  @include vars.local(datepicker-calendar-size, var(--ds-datepicker-calendar-size));
+  @include vars.local(datepicker-calendar-weight, var(--ds-datepicker-calendar-weight));
+  @include vars.local(datepicker-calendar-radius, var(--ds-datepicker-calendar-radius));
+  @include vars.local(datepicker-calendar-shadow, var(--ds-datepicker-calendar-shadow));
+  @include vars.local(datepicker-calendar-color-inner-border, var(--ds-datepicker-calendar-color-inner-border));
+  @include vars.local(datepicker-calendar-disabled-color, var(--ds-datepicker-calendar-color-disabled));
 
-  @include vars.local(date-calendar-day-background-hover, var(--ds-date-calendar-color-day-hover-background));
-  @include vars.local(date-calendar-day-background-active, var(--ds-date-calendar-color-day-active-background));
-  @include vars.local(date-calendar-day-background-selected, var(--ds-date-calendar-color-day-selected-background));
   @include vars.local(
-    date-calendar-day-background-selected-hover,
-    var(--ds-date-calendar-color-day-selected-hover-background)
+    datepicker-calendar-day-background-hover,
+    var(--ds-datepicker-calendar-color-day-hover-background)
   );
-  @include vars.local(date-calendar-color-current-date, var(--ds-date-calendar-color-current-date));
-  @include vars.local(date-calendar-day-weight, var(--ds-date-calendar-day-weight-base));
-  @include vars.local(date-calendar-day-weight-selected, var(--ds-date-calendar-day-weight-selected));
-  @include vars.local(date-calendar-day-name-family, var(--ds-date-calendar-day-name-family));
-  @include vars.local(date-calendar-day-name-weight, var(--ds-date-calendar-day-name-weight));
+  @include vars.local(
+    datepicker-calendar-day-background-active,
+    var(--ds-datepicker-calendar-color-day-active-background)
+  );
+  @include vars.local(
+    datepicker-calendar-day-background-selected,
+    var(--ds-datepicker-calendar-color-day-selected-background)
+  );
+  @include vars.local(
+    datepicker-calendar-day-background-selected-hover,
+    var(--ds-datepicker-calendar-color-day-selected-hover-background)
+  );
+  @include vars.local(datepicker-calendar-color-current-date, var(--ds-datepicker-calendar-color-current-date));
+  @include vars.local(datepicker-calendar-day-weight, var(--ds-datepicker-calendar-day-weight-base));
+  @include vars.local(datepicker-calendar-day-weight-selected, var(--ds-datepicker-calendar-day-weight-selected));
+  @include vars.local(datepicker-calendar-day-name-family, var(--ds-datepicker-calendar-day-name-family));
+  @include vars.local(datepicker-calendar-day-name-weight, var(--ds-datepicker-calendar-day-name-weight));
 
-  @include vars.local(date-calendar-nav-color, var(--ds-date-calendar-nav-color-base));
-  @include vars.local(date-calendar-nav-color-hover, var(--ds-date-calendar-nav-color-hover));
-  @include vars.local(date-calendar-nav-color-active, var(--ds-date-calendar-nav-color-active));
-  @include vars.local(date-calendar-nav-radius, var(--ds-date-calendar-nav-radius));
-  @include vars.local(date-calendar-nav-color-disabled, var(--ds-date-calendar-nav-color-disabled));
+  @include vars.local(datepicker-calendar-nav-color, var(--ds-datepicker-calendar-nav-color-base));
+  @include vars.local(datepicker-calendar-nav-color-hover, var(--ds-datepicker-calendar-nav-color-hover));
+  @include vars.local(datepicker-calendar-nav-color-active, var(--ds-datepicker-calendar-nav-color-active));
+  @include vars.local(datepicker-calendar-nav-radius, var(--ds-datepicker-calendar-nav-radius));
+  @include vars.local(datepicker-calendar-nav-color-disabled, var(--ds-datepicker-calendar-nav-color-disabled));
 }
 
 /**
@@ -120,7 +129,7 @@
   @include form.label();
   @include form.description();
 
-  @include input.style('date');
+  @include input.style('datepicker');
 
   #inner {
     @include form.field();
@@ -185,19 +194,19 @@
     @include hover {
       &:hover,
       &.is-hovered {
-        --icon-color: var(--_date-trigger-icon-color-hover);
+        --icon-color: var(--_datepicker-trigger-icon-color-hover);
       }
     }
 
     &:active,
     &.is-pressed {
-      --icon-color: var(--_date-trigger-icon-color-active);
+      --icon-color: var(--_datepicker-trigger-icon-color-active);
     }
 
     &:focus-visible,
     &.is-focused {
       &:not(:active) {
-        @include focus-shadow(var(--_date-focus-color));
+        @include focus-shadow(var(--_datepicker-focus-color));
       }
     }
   }
@@ -223,7 +232,7 @@
     top: 100%;
     left: 0;
     z-index: var(--ds-popup-z-index, 100);
-    box-shadow: var(--_date-popup-shadow);
+    box-shadow: var(--_datepicker-popup-shadow);
 
     transition:
       transform 0.2s,
@@ -285,7 +294,7 @@
   }
 
   #trigger {
-    --icon-color: var(--_date-trigger-icon-color-disabled);
+    --icon-color: var(--_datepicker-trigger-icon-color-disabled);
   }
 
   --mod-form-container-background: var(--ds-form-disabled-container-background);
@@ -315,29 +324,29 @@
   --adp-padding: 0.5rem;
   --adp-width: 264px;
 
-  --adp-color: var(--_date-calendar-text-color);
-  --adp-font-family: var(--_date-calendar-family);
-  --adp-font-size: var(--_date-calendar-size);
+  --adp-color: var(--_datepicker-calendar-text-color);
+  --adp-font-family: var(--_datepicker-calendar-family);
+  --adp-font-size: var(--_datepicker-calendar-size);
 
-  --adp-border-color-inner: var(--_date-calendar-color-inner-border);
+  --adp-border-color-inner: var(--_datepicker-calendar-color-inner-border);
 
-  --adp-background-color-hover: var(--_date-calendar-day-background-hover);
-  --adp-background-color-active: var(--_date-calendar-day-background-active);
+  --adp-background-color-hover: var(--_datepicker-calendar-day-background-hover);
+  --adp-background-color-active: var(--_datepicker-calendar-day-background-active);
 
-  --adp-day-name-color: var(--_date-calendar-text-color);
-  --adp-color-current-date: var(--_date-calendar-text-color);
-  --adp-cell-background-color-selected: var(--_date-calendar-day-background-selected);
-  --adp-cell-background-color-selected-hover: var(--_date-calendar-day-background-selected-hover);
+  --adp-day-name-color: var(--_datepicker-calendar-text-color);
+  --adp-color-current-date: var(--_datepicker-calendar-text-color);
+  --adp-cell-background-color-selected: var(--_datepicker-calendar-day-background-selected);
+  --adp-cell-background-color-selected-hover: var(--_datepicker-calendar-day-background-selected-hover);
 
-  --adp-color-other-month: var(--_date-calendar-disabled-color);
-  --adp-color-other-decade: var(--_date-calendar-disabled-color);
-  --adp-color-disabled: var(--_date-calendar-disabled-color);
+  --adp-color-other-month: var(--_datepicker-calendar-disabled-color);
+  --adp-color-other-decade: var(--_datepicker-calendar-disabled-color);
+  --adp-color-disabled: var(--_datepicker-calendar-disabled-color);
 
   font-family: inherit;
-  font-size: var(--_date-calendar-size);
-  border-radius: var(--_date-calendar-radius);
-  box-shadow: var(--_date-calendar-shadow);
-  font-weight: var(--_date-calendar-weight);
+  font-size: var(--_datepicker-calendar-size);
+  border-radius: var(--_datepicker-calendar-radius);
+  box-shadow: var(--_datepicker-calendar-shadow);
+  font-weight: var(--_datepicker-calendar-weight);
   border: none;
 
   * {
@@ -346,7 +355,7 @@
 
   &.-inline- {
     border: none;
-    box-shadow: var(--_date-calendar-shadow);
+    box-shadow: var(--_datepicker-calendar-shadow);
   }
 
   .air-datepicker-nav {
@@ -363,13 +372,13 @@
     justify-content: center;
     height: 2rem;
     min-width: 2rem;
-    color: var(--_date-calendar-nav-color);
+    color: var(--_datepicker-calendar-nav-color);
     // ds-icon defaults to its own primary-blue fill (--ds-icon-color-primary) unless
     // --icon-color is set explicitly — it does not follow `color`. The hover/active states
     // below already set both; without setting it here too, the caret icons stay blue at
-    // rest even when --_date-calendar-nav-color is overridden (e.g. for the disabled state).
-    --icon-color: var(--_date-calendar-nav-color);
-    border-radius: var(--_date-calendar-nav-radius);
+    // rest even when --_datepicker-calendar-nav-color is overridden (e.g. for the disabled state).
+    --icon-color: var(--_datepicker-calendar-nav-color);
+    border-radius: var(--_datepicker-calendar-nav-radius);
     box-shadow: none;
     outline: none;
 
@@ -385,22 +394,22 @@
     @include hover {
       &:hover,
       &.is-hovered {
-        color: var(--_date-calendar-nav-color-hover);
-        --icon-color: var(--_date-calendar-nav-color-hover);
+        color: var(--_datepicker-calendar-nav-color-hover);
+        --icon-color: var(--_datepicker-calendar-nav-color-hover);
       }
     }
 
     &:active,
     &.is-pressed {
-      color: var(--_date-calendar-nav-color-active);
-      --icon-color: var(--_date-calendar-nav-color-active);
+      color: var(--_datepicker-calendar-nav-color-active);
+      --icon-color: var(--_datepicker-calendar-nav-color-active);
       translate: 0 0.5px;
     }
 
     &:focus-visible,
     &.is-focused {
       &:not(:active) {
-        @include focus-shadow(var(--_date-focus-color));
+        @include focus-shadow(var(--_datepicker-focus-color));
       }
     }
   }
@@ -423,28 +432,28 @@
   }
 
   .air-datepicker-body--day-name {
-    font-weight: var(--_date-calendar-day-name-weight);
+    font-weight: var(--_datepicker-calendar-day-name-weight);
     font-size: 1rem;
     text-transform: none;
-    font-family: var(--_date-calendar-day-name-family);
+    font-family: var(--_datepicker-calendar-day-name-family);
   }
 
   .air-datepicker-cell.-selected-:not(.-disabled-) {
-    font-weight: var(--_date-calendar-day-weight-selected);
+    font-weight: var(--_datepicker-calendar-day-weight-selected);
   }
 
   .air-datepicker-cell.-day- {
-    font-weight: var(--_date-calendar-day-weight);
+    font-weight: var(--_datepicker-calendar-day-weight);
     height: 2rem;
     width: 2rem;
   }
 
   .air-datepicker-cell.-day-.-current-:not(.-disabled-) {
-    border: 2px solid var(--_date-calendar-color-current-date);
+    border: 2px solid var(--_datepicker-calendar-color-current-date);
   }
 
   .air-datepicker-cell.-day-.-selected-:not(.-disabled-) {
-    font-weight: var(--_date-calendar-day-weight-selected);
+    font-weight: var(--_datepicker-calendar-day-weight-selected);
   }
 
   .air-datepicker-cell[tabindex='0'] {
@@ -461,7 +470,7 @@
     &:focus-visible,
     &.is-focused {
       &:not(:active) {
-        @include focus-shadow(var(--_date-focus-color));
+        @include focus-shadow(var(--_datepicker-focus-color));
       }
     }
   }
@@ -492,8 +501,8 @@
       align-items: center;
       width: 2rem;
       height: 2rem;
-      color: var(--_date-calendar-nav-color-disabled);
-      --icon-color: var(--_date-calendar-nav-color-disabled);
+      color: var(--_datepicker-calendar-nav-color-disabled);
+      --icon-color: var(--_datepicker-calendar-nav-color-disabled);
       pointer-events: none;
 
       ds-icon {

@@ -26,7 +26,7 @@ export const tags: string[] = [
   "ds-data-item",
   "ds-data-label",
   "ds-data-value",
-  "ds-date",
+  "ds-datepicker",
   "ds-divider",
   "ds-drawer",
   "ds-file-upload",

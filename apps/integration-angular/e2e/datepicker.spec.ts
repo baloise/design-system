@@ -1,6 +1,6 @@
 import { expect, test } from '@playwright/test'
 
-test('ds-date fires dsInput and updates Angular state', async ({ page }) => {
+test('ds-datepicker fires dsInput and updates Angular state', async ({ page }) => {
   await page.goto('/')
 
   const dateInput = page.getByTestId('date').locator('[part="input"]')
@@ -10,7 +10,7 @@ test('ds-date fires dsInput and updates Angular state', async ({ page }) => {
   await expect(page.getByTestId('date-value')).toHaveText('Date value: 2026-07-15')
 })
 
-test('ds-date deleting one digit removes only that digit, not the whole date', async ({ page }) => {
+test('ds-datepicker deleting one digit removes only that digit, not the whole date', async ({ page }) => {
   await page.goto('/')
 
   const dateInput = page.getByTestId('date').locator('[part="input"]')
@@ -24,7 +24,7 @@ test('ds-date deleting one digit removes only that digit, not the whole date', a
   await expect(dateInput).toHaveValue('01.01.200_')
 })
 
-test('ds-date clearing the whole date via backspace updates the reactive value like the clear button', async ({
+test('ds-datepicker clearing the whole date via backspace updates the reactive value like the clear button', async ({
   page,
 }) => {
   await page.goto('/')
@@ -44,7 +44,7 @@ test('ds-date clearing the whole date via backspace updates the reactive value l
   await expect(page.getByTestId('reactive-date-value')).toHaveText('Reactive value:')
 })
 
-test('ds-date deleting only the year then blurring clears the value instead of reverting', async ({ page }) => {
+test('ds-datepicker deleting only the year then blurring clears the value instead of reverting', async ({ page }) => {
   await page.goto('/')
 
   const dateInput = page.getByTestId('date').locator('[part="input"]')
@@ -62,7 +62,9 @@ test('ds-date deleting only the year then blurring clears the value instead of r
   await expect(page.getByTestId('date-value')).toHaveText('Date value:')
 })
 
-test('ds-date reactive form: deleting only the year then blurring clears the reactive value', async ({ page }) => {
+test('ds-datepicker reactive form: deleting only the year then blurring clears the reactive value', async ({
+  page,
+}) => {
   await page.goto('/')
 
   const reactiveDate = page.getByTestId('reactive-date')
@@ -81,7 +83,7 @@ test('ds-date reactive form: deleting only the year then blurring clears the rea
   await expect(page.getByTestId('reactive-date-value')).toHaveText('Reactive value:')
 })
 
-test('ds-date reactive form: initial value, updates, disabled, and touched+invalid', async ({ page }) => {
+test('ds-datepicker reactive form: initial value, updates, disabled, and touched+invalid', async ({ page }) => {
   await page.goto('/')
 
   const reactiveDate = page.getByTestId('reactive-date')
@@ -109,7 +111,9 @@ test('ds-date reactive form: initial value, updates, disabled, and touched+inval
   await expect(reactiveDate.locator('[role="alert"]')).toHaveText('This field is required')
 })
 
-test('ds-date autoInvalidOff skips the automatic touched+invalid state from the reactive form', async ({ page }) => {
+test('ds-datepicker autoInvalidOff skips the automatic touched+invalid state from the reactive form', async ({
+  page,
+}) => {
   await page.goto('/')
 
   const autoInvalidOffDate = page.getByTestId('auto-invalid-off-date')

@@ -17,10 +17,10 @@ Everything in this document sits inside one pipeline:
      existing "CSS-only" mode — a global stylesheet class, no Shadow DOM, no JS. Right fit
      when the pattern is pure presentation with no interactive/stateful behavior.
    - **Component** — a Shadow DOM web component (`ds-*`, Stencil, the DS's "web component"
-     mode) when the pattern needs encapsulated behavior/state — `ds-accordion`, `ds-date`,
+     mode) when the pattern needs encapsulated behavior/state — `ds-accordion`, `ds-datepicker`,
      etc., under `packages/core/src/components/*`. Most of this document is about this tier.
    - **Template** — a composed, multi-component pattern (e.g. a validated form layout
-     combining `ds-date` + `ds-input` + `ds-button`) documented as a reusable Storybook
+     combining `ds-datepicker` + `ds-input` + `ds-button`) documented as a reusable Storybook
      recipe. Not a new custom element — just DS components arranged and documented
      together.
    - **Block** — not a DS deliverable. A larger authored content section assembled _in
@@ -29,7 +29,7 @@ Everything in this document sits inside one pipeline:
 3. **Adopt in AEM with Core Components, when possible.** Wherever a Sites or Adaptive
    Forms Core Component has an equivalent DS style/component/template, integrate by
    overriding its HTL to render the DS output instead of Adobe's own markup — exactly the
-   `ds-accordion` and `ds-date` patterns documented below. Where no matching Core
+   `ds-accordion` and `ds-datepicker` patterns documented below. Where no matching Core
    Component exists, the block is authored directly against the DS's output without a
    Core Components override.
 
@@ -211,7 +211,7 @@ continues to own authoring (item order, title text, nested components in `conten
 
 ## Delivering the DS to server-rendered AEM pages (dev / staging / prod)
 
-Everything above assumes `ds-accordion` / `ds-date` are simply available on the page.
+Everything above assumes `ds-accordion` / `ds-datepicker` are simply available on the page.
 This section covers how they actually get there — and, specifically, how version
 changes can be fast on dev without making prod's version anything other than fixed.
 
@@ -295,7 +295,7 @@ version is fixed, except when it isn't."
 
 ---
 
-# Adaptive Forms: connecting `ds-date`
+# Adaptive Forms: connecting `ds-datepicker`
 
 **Adaptive Forms Core Components** (`adobe/aem-core-forms-components`) is a different
 product from the Sites Core WCM Components covered above, with a different runtime.
@@ -307,7 +307,7 @@ JS, no build step beyond what AEM already requires. If the frontend is a separat
 Next.js/React app consuming AEM headlessly instead, see the
 [Headless: Next.js + AEM](#headless-nextjs--aem) section below — Adobe's headless
 Adaptive Forms renderer is React-only, so that path only makes sense once React is
-already the frontend's own choice, not something adopted just to reach `ds-date`.
+already the frontend's own choice, not something adopted just to reach `ds-datepicker`.
 
 **What the built-in date picker renders** (`core/fd/components/form/datepicker/v1/datepicker`,
 backed by Sling Model `com.adobe.cq.forms.core.components.models.form.DatePicker`):
@@ -350,7 +350,7 @@ get/set, validation feedback, `dataRef` binding). That contract lives on the **o
 wrapper**, not on the `<input>` itself — which is exactly the light-DOM hook a Shadow DOM
 component needs.
 
-**Overridden `datepicker.html`**, same Sling Model, `ds-date` instead of the native input:
+**Overridden `datepicker.html`**, same Sling Model, `ds-datepicker` instead of the native input:
 
 ```html
 <sly data-sly-use.renderer="${'datepicker.js'}" ...></sly>
@@ -365,7 +365,7 @@ component needs.
   id="${datePicker.id}"
   data-cmp-adaptiveformcontainer-path="${formstructparser.formContainerPath}"
 >
-  <ds-date
+  <ds-datepicker
     id="${widgetId}"
     name="${datePicker.name}"
     label="${datePicker.label.value}"
@@ -380,56 +380,56 @@ component needs.
   >
     <!-- AEM's runtime writes the computed validation text into this node
          at validate-time — same partial, same target id it always used.
-         ds-date now renders it in place via its invalid-text slot, so no
+         ds-datepicker now renders it in place via its invalid-text slot, so no
          text copying is needed; the runtime keeps owning this node. -->
     <div
       slot="invalid-text"
       data-sly-call="${errorMessage.errorMessage @componentId=datePicker.id, bemBlock='cmp-adaptiveform-datepicker'}"
       data-sly-unwrap
     ></div>
-  </ds-date>
+  </ds-datepicker>
 </div>
 ```
 
-`ds-date` already maps cleanly onto the Sling Model's fields
-(`packages/core/src/components/date/date.tsx:97-267`): `value` is ISO `YYYY-MM-DD` (same
+`ds-datepicker` already maps cleanly onto the Sling Model's fields
+(`packages/core/src/components/datepicker/datepicker.tsx:97-267`): `value` is ISO `YYYY-MM-DD` (same
 format the model exposes), and `name` / `label` / `description` / `required` / `disabled`
 / `readonly` / `min` / `max` are all real props. `label="${datePicker.label.value}"` maps
 directly too — `datePicker.label` is an object (`{ value, visible, richText }`, same shape
-the built-in `label.html` partial consumes), so `.value` is the plain label text `ds-date`'s
+the built-in `label.html` partial consumes), so `.value` is the plain label text `ds-datepicker`'s
 `label` prop expects.
 
-**DS change:** `ds-date` (via the shared `Field` util,
+**DS change:** `ds-datepicker` (via the shared `Field` util,
 `packages/core/src/components/input/field.util.tsx:81-92`) now exposes an
 **`invalid-text` slot**. When `invalid` is `true`, any light-DOM content slotted as
 `slot="invalid-text"` renders in place of the `invalidText` prop — the prop still works
 unchanged for everyone else, this is additive. That's what removes the need for a
 text-mirroring bridge: AEM's `errorMessage.errorMessage` partial keeps writing into the
 exact same DOM node it always has (by `id`, via `aria-live="assertive"`); that node now
-just lives inside `<ds-date>` instead of next to it, so `ds-date` displays it directly —
+just lives inside `<ds-datepicker>` instead of next to it, so `ds-datepicker` displays it directly —
 no JS needed to move or copy the error text.
 
-**One adapter still needed — not for the text, only for `dsChange`.** `ds-date` is
+**One adapter still needed — not for the text, only for `dsChange`.** `ds-datepicker` is
 `formAssociated: true` and participates in native `<form>` submission via
 `ElementInternals` (so plain form `POST`/`FormData` already sees its value correctly),
 but it emits `dsChange` — not a native `change`/`input` event — when the user picks or
-types a date (`packages/core/src/components/date/date.tsx:279-286`). If the Adaptive
+types a date (`packages/core/src/components/datepicker/datepicker.tsx:279-286`). If the Adaptive
 Forms runtime's field binding listens for DOM `change`/`input` on the widget (rather than
 only reading `FormData` on submit) it won't pick up `dsChange`:
 
 ```js
-document.querySelectorAll('[data-cmp-is="adaptiveFormDatePicker"] ds-date').forEach(dsDate => {
-  dsDate.addEventListener('dsChange', () => {
-    dsDate.dispatchEvent(new Event('change', { bubbles: true }))
+document.querySelectorAll('[data-cmp-is="adaptiveFormDatePicker"] ds-datepicker').forEach(dsDatepicker => {
+  dsDatepicker.addEventListener('dsChange', () => {
+    dsDatepicker.dispatchEvent(new Event('change', { bubbles: true }))
   })
 })
 ```
 
-Toggling `ds-date`'s `invalid` boolean itself (so the slotted text actually renders) still
+Toggling `ds-datepicker`'s `invalid` boolean itself (so the slotted text actually renders) still
 has to come from somewhere — the Sling Model has no static `valid` flag, validity is
 computed client-side by the rule engine. If the runtime already toggles a validity
 indicator (an `is-invalid`/`aria-invalid` class or attribute) on the wrapper when a
-constraint fails, mirror that one boolean onto `ds-date.invalid`; if it only ever writes
+constraint fails, mirror that one boolean onto `ds-datepicker.invalid`; if it only ever writes
 text into the error node and never signals validity separately, fall back to flipping
 `invalid` based on that node's `textContent` being non-empty. Either way this is a single
 boolean flip now, not a text copy.
@@ -445,7 +445,7 @@ component source; the exact write-timing/event contract is the part to double-ch
 
 Drop the built-in `core.forms.components.base.v1` _widget_ rendering for this field (you
 already replaced the markup) but keep the base runtime/rule-engine clientlibs — those are
-what make visibility rules, validation, and data binding work at all, and `ds-date` slots
+what make visibility rules, validation, and data binding work at all, and `ds-datepicker` slots
 into that system via the same `data-cmp-*` hooks, not by replacing it.
 
 ---
@@ -615,7 +615,7 @@ Same `.ds-card` / `.card-content` / `.card-actions` / `.title` markup as the EDS
 adoption pattern — the CSS-only mode is the one piece of the DS that's identical across
 every AEM delivery model.
 
-## Example 2 — Form (Adaptive Forms headless, `ds-date` as a client island)
+## Example 2 — Form (Adaptive Forms headless, `ds-datepicker` as a client island)
 
 Forms are the opposite case from Card: genuinely interactive (calendar popup, keyboard
 nav, masking), so the missing SSR path isn't a real cost here — a form was never going to
@@ -623,15 +623,15 @@ be indexable content anyway. The Shadow DOM component is the right tool, mounted
 explicitly as a client-only chunk inside an otherwise server-rendered page:
 
 ```tsx
-// components/forms/DsDateField.tsx — 'use client': useRuleEngine and DOM refs are browser-only
+// components/forms/DsDatepickerField.tsx — 'use client': useRuleEngine and DOM refs are browser-only
 'use client'
 import { useRuleEngine } from '@aemforms/af-react-renderer'
-import { DsDate } from '@baloise/ds-react'
+import { DsDatepicker } from '@baloise/ds-react'
 
-export function DsDateField(props) {
+export function DsDatepickerField(props) {
   const [state, handlers] = useRuleEngine(props)
   return (
-    <DsDate
+    <DsDatepicker
       id={state.id}
       name={state.name}
       label={state?.label?.value}
@@ -650,9 +650,9 @@ export function DsDateField(props) {
 ```tsx
 // components/forms/mappings.ts
 import { mappings as defaultMappings } from '@aemforms/af-react-renderer'
-import { DsDateField } from './DsDateField'
+import { DsDatepickerField } from './DsDatepickerField'
 
-export const mappings = { ...defaultMappings, 'date-input': DsDateField }
+export const mappings = { ...defaultMappings, 'date-input': DsDatepickerField }
 ```
 
 ```tsx

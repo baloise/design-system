@@ -94,7 +94,7 @@ export function isoToDisplay(isoValue: string | null, format: DateDisplayFormat)
   return date ? nativeDateToDisplay(date, format) : ''
 }
 
-export interface DateMaskConfig {
+export interface DatepickerMaskConfig {
   inputEl: HTMLInputElement
   format: DateDisplayFormat
   initialValue: string | null
@@ -106,8 +106,8 @@ export interface DateMaskConfig {
   onComplete: (iso: string) => void
 }
 
-export function createDateMask(config: DateMaskConfig): DateMask {
-  const mask = new DateMask(config.inputEl, config.format, config.onAccept, config.onComplete)
+export function createDatepickerMask(config: DatepickerMaskConfig): DatepickerMask {
+  const mask = new DatepickerMask(config.inputEl, config.format, config.onAccept, config.onComplete)
   if (config.initialValue) {
     mask.syncFromISO(config.initialValue)
     mask.setLazy(false)
@@ -115,7 +115,7 @@ export function createDateMask(config: DateMaskConfig): DateMask {
   return mask
 }
 
-export class DateMask {
+export class DatepickerMask {
   private mask: any
   private format: DateDisplayFormat
 
@@ -187,7 +187,7 @@ export class DateMask {
 
     // IMask passes the native event that caused the change (only present for a real keystroke — it's
     // `undefined` for any of our own programmatic `.value =`/`.typedValue =` assignments), so we forward
-    // it rather than swallow it. See `DateMaskConfig.onAccept`.
+    // it rather than swallow it. See `DatepickerMaskConfig.onAccept`.
     this.mask.on('accept', (event: Event | undefined) => {
       this.onAccept(this.getISO(), event)
     })

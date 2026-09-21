@@ -5,12 +5,12 @@ import {
   Footer,
   UsageExamples,
 } from '../../../.storybook/blocks'
-import * as DateStories from './date.stories'
-import { DATE_DOC_CONFIG, getDateTabs } from './date.doc-config'
+import * as DatepickerStories from './datepicker.stories'
+import { DATEPICKER_DOC_CONFIG, getDatepickerTabs } from './datepicker.doc-config'
 
-<Meta title="Components/Forms/Date/Usage" name="Usage" />
-<Banner label={'Usage'} section={DATE_DOC_CONFIG.section} color={DATE_DOC_CONFIG.color} />
-<BannerTabs of={DateStories} tabs={getDateTabs('usage')} />
+<Meta title="Components/Forms/Datepicker/Usage" name="Usage" />
+<Banner label={'Usage'} section={DATEPICKER_DOC_CONFIG.section} color={DATEPICKER_DOC_CONFIG.color} />
+<BannerTabs of={DatepickerStories} tabs={getDatepickerTabs('usage')} />
 
 ## When to Use
 
@@ -35,7 +35,7 @@ import { DATE_DOC_CONFIG, getDateTabs } from './date.doc-config'
       title: 'Correct: Provide a clear label',
       contentIsLeftAligned: true,
       content: (
-        <ds-date label="Date of birth" description="Enter your date of birth" required="false"></ds-date>
+        <ds-datepicker label="Date of birth" description="Enter your date of birth" required="false"></ds-datepicker>
       ),
       description: 'A descriptive label and helper text guide the user to enter the right value.',
     },
@@ -44,7 +44,7 @@ import { DATE_DOC_CONFIG, getDateTabs } from './date.doc-config'
       title: 'Incorrect: Omit the label',
             contentIsLeftAligned: true,
       content: (
-        <ds-date></ds-date>
+        <ds-datepicker></ds-datepicker>
       ),
       description: 'Without a label, screen readers and sighted users cannot identify the field purpose.',
     },
@@ -60,7 +60,7 @@ import { DATE_DOC_CONFIG, getDateTabs } from './date.doc-config'
       title: 'Correct: Set min/max for bounded ranges',
             contentIsLeftAligned: true,
       content: (
-        <ds-date label="Appointment date" description="Only future dates" min="2026-01-01"></ds-date>
+        <ds-datepicker label="Appointment date" description="Only future dates" min="2026-01-01"></ds-datepicker>
       ),
       description: 'Restricting the range prevents the user from selecting dates that would cause validation errors.',
     },
@@ -69,7 +69,7 @@ import { DATE_DOC_CONFIG, getDateTabs } from './date.doc-config'
       title: 'Incorrect: Allow any date and validate later',
             contentIsLeftAligned: true,
       content: (
-        <ds-date label="Appointment date" description="Only future dates" invalid invalid-text="Date must be in the future"></ds-date>
+        <ds-datepicker label="Appointment date" description="Only future dates" invalid invalid-text="Date must be in the future"></ds-datepicker>
       ),
       description: 'Validating after submission is a worse experience than preventing invalid selection upfront.',
     },

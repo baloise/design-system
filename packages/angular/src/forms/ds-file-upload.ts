@@ -8,7 +8,7 @@ import { withValueAccessor } from './value-accessor'
  * Wraps the generated `ds-file-upload` proxy with `ControlValueAccessor` support (value: `File[]`, change
  * event: `dsChange`) via the `withValueAccessor` mixin — see `value-accessor.ts` for what that wires up.
  * `ds-file-upload` emits its full `File[]` directly as `dsChange`'s `event.detail` and accepts the same
- * shape back on its `value` prop, so — like `ds-date`'s ISO string or `ds-slider`'s number — no
+ * shape back on its `value` prop, so — like `ds-datepicker`'s ISO string or `ds-slider`'s number — no
  * accessor-level conversion is needed: this is a direct copy of `DsInput`'s config shape, just with a
  * `File[]` value type instead of `string`.
  *

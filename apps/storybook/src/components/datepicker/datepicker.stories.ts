@@ -2,18 +2,18 @@ import type { JSX } from '@baloise/ds-core'
 import type { Meta } from '@storybook/html-vite'
 import { props, StoryFactory, withComponentControls, withRender } from '../../utils'
 
-type Args = JSX.DsDate
+type Args = JSX.DsDatepicker
 
 const meta: Meta<Args> = {
-  title: 'Components/Forms/Date/Variants',
+  title: 'Components/Forms/Datepicker/Variants',
   args: {
     label: 'Label',
     description: 'Description',
   },
   argTypes: {
-    ...withComponentControls({ tag: 'ds-date' }),
+    ...withComponentControls({ tag: 'ds-datepicker' }),
   },
-  ...withRender(({ ...args }) => `<ds-date ${props(args)}></ds-date>`),
+  ...withRender(({ ...args }) => `<ds-datepicker ${props(args)}></ds-datepicker>`),
 }
 
 export default meta
@@ -64,7 +64,7 @@ DefaultDate.storyName = '🧩 Default Date'
 
 export const AllowedDates = Story({
   render: () => `
-    <ds-date id="allowed-dates" label="Label" description="Only even days are selectable"></ds-date>
+    <ds-datepicker id="allowed-dates" label="Label" description="Only even days are selectable"></ds-datepicker>
     <script>
       const date = document.querySelector('#allowed-dates')
       date.allowedDates = dateString => {

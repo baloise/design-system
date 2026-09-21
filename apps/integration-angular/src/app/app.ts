@@ -3,7 +3,7 @@ import { ButtonDemo } from './button-demo/button-demo'
 import { CheckboxDemo } from './checkbox-demo/checkbox-demo'
 import { CheckboxGroupDemo } from './checkbox-group-demo/checkbox-group-demo'
 import { CounterDemo } from './counter-demo/counter-demo'
-import { DateDemo } from './date-demo/date-demo'
+import { DatepickerDemo } from './datepicker-demo/datepicker-demo'
 import { FileUploadDemo } from './file-upload-demo/file-upload-demo'
 import { InputDemo } from './input-demo/input-demo'
 import { SliderDemo } from './slider-demo/slider-demo'
@@ -25,7 +25,7 @@ import { SelectDemo } from './select-demo/select-demo'
     CheckboxDemo,
     CheckboxGroupDemo,
     SegmentDemo,
-    DateDemo,
+    DatepickerDemo,
     RadioGroupDemo,
     FileUploadDemo,
     SelectDemo,

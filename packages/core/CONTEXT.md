@@ -421,9 +421,9 @@ The navbar uses a right-side drawer menu on mobile/tablet viewports. The drawer 
 - [ ] Sub-components if composition needs evolve
 - [ ] Animated hamburger icon transitions (current: SVG path swap)
 
-## Date Field (ds-date)
+## Datepicker (ds-datepicker)
 
-`ds-date` is a form control that mirrors `ds-input`'s field structure and look,
+`ds-datepicker` is a form control that mirrors `ds-input`'s field structure and look,
 adding a calendar-icon trigger that opens a date-picker popup. Shared vocabulary:
 
 - **Model value** — the canonical `value` (ISO `YYYY-MM-DD` string). Locale-
@@ -435,16 +435,16 @@ adding a calendar-icon trigger that opens a date-picker popup. Shared vocabulary
   Switzerland used Local Mean Time until June 1894, and the native `Date`
   engine and Luxon's `Intl`-based engine can disagree on the pre-1894 offset,
   shifting the calendar day by one if a `Date` crosses between them. See the
-  comment on `nativeDateToISO` in `date.mask.ts`.
+  comment on `nativeDateToISO` in `datepicker.mask.ts`.
 - **Trigger** — the calendar-icon `<button>` at the end of the field. It is the
   **only** gesture that opens/toggles the popup; focusing the text input just
   places the typing cursor. `disabled` turns both off; `readonly` is display-only.
 - **Popup** — the calendar dialog, rendered **inside the shadow root** with
   air-datepicker's stylesheet adopted via `adoptedStyleSheets`. Open/close and
-  outside-click are owned by `ds-date` (not air-datepicker's document listener).
+  outside-click are owned by `ds-datepicker` (not air-datepicker's document listener).
 
 Library choices (air-datepicker, imask) and the shadow-root integration are
-recorded in [docs/adr/0001-ds-date-external-datepicker-libraries.md](../../docs/adr/0001-ds-date-external-datepicker-libraries.md).
+recorded in [docs/adr/0001-ds-datepicker-external-datepicker-libraries.md](../../docs/adr/0001-ds-datepicker-external-datepicker-libraries.md).
 
 ## Slider (ds-slider)
 

@@ -1,6 +1,6 @@
-import { DsDate, E2ELocator, expectScreenshot, screenshot, test } from '@baloise/ds-playwright'
+import { DsDatepicker, E2ELocator, expectScreenshot, screenshot, test } from '@baloise/ds-playwright'
 
-const TAG = 'date'
+const TAG = 'datepicker'
 const VARIANTS = [
   'basic',
   'form',
@@ -39,10 +39,15 @@ VARIANTS.forEach(variant => {
 VARIANTS_WITH_PICKER.forEach(variant => {
   test(`${variant}-picker-open`, async ({ page }) => {
     const section = page.getByTestId(variant)
-    const date = new DsDate(section.locator('ds-date').first() as E2ELocator)
+    const date = new DsDatepicker(section.locator('ds-datepicker').first() as E2ELocator)
 
     await date.triggerButton.click()
-    await section.locator('ds-date').first().locator('.air-datepicker-cell.-day-').first().waitFor({ state: 'visible' })
+    await section
+      .locator('ds-datepicker')
+      .first()
+      .locator('.air-datepicker-cell.-day-')
+      .first()
+      .waitFor({ state: 'visible' })
 
     await expectScreenshot(page.locator('body'), image(`${variant}-picker-open`))
 
