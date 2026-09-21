@@ -407,7 +407,14 @@ npm create vite@latest my-app -- --template react-ts
 
 ### Next.js
 
-`@baloise/ds-react` is client-only today. Import Design System components from files marked `'use client'`. Wrap the tree in `DsRootProvider`.
+`@baloise/ds-react` supports server-side rendering with the Next.js App Router. Plain components can render in Server
+Components. Add a client initialization boundary with `@baloise/ds-core`, and keep overlay idioms such as `Modal`,
+`useToast`, and `useSnackbar` in client-only components.
+
+<LinkCard
+  pageTitle="Development/Server Side Rendering"
+  description="Configure Next.js App Router SSR and verify Declarative Shadow DOM in the server response."
+/>
 
 ### TypeScript
 
@@ -456,6 +463,10 @@ Event handlers use the `onDs*` prefix (for example `onDsClick`) and receive the 
     <LinkCard
       pageTitle="Development/Overlays"
       description="Use modals, toasts, and snackbars in HTML and JavaScript or React."
+    />
+    <LinkCard
+      pageTitle="Development/Server Side Rendering"
+      description="Render React components with the Next.js App Router."
     />
   </LinkCards>
 </Footer>
