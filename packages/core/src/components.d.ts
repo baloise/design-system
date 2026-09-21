@@ -28,7 +28,6 @@ import { FileUploadBlurDetail, FileUploadChangeDetail, FileUploadFilesAddedDetai
 import { PopupDismissDetail, PopupPlacement, PopupPresentDetail, PopupRole } from "./components/popup/popup.interfaces";
 import { IconColor as IconColor1, IconSize as IconSize1 } from "./components/icon/icon.interfaces";
 import { PhoneChangeDetail, PhoneCountryChangeDetail, PhoneInputDetail } from "./components/input-phone/input-phone.interfaces";
-import { InputSliderBlurDetail, InputSliderBrandColor, InputSliderChangeDetail, InputSliderClickDetail, InputSliderFocusDetail, InputSliderInputDetail } from "./components/input-slider/input-slider.interfaces";
 import { InputStepperBlurDetail, InputStepperChangeDetail, InputStepperDecreaseDetail, InputStepperFocusDetail, InputStepperIncreaseDetail, InputStepperInputDetail } from "./components/input-stepper/input-stepper.interfaces";
 import { ItemActionIcon, ItemLabelLevel, ItemLabelSize, ItemSize, ItemVariant } from "./components/list/item/item.interfaces";
 import { LabelSize } from "./components/label/label.interfaces";
@@ -43,6 +42,7 @@ import { SegmentBlurDetail, SegmentChangeDetail, SegmentFocusDetail } from "./co
 import { SelectBlurDetail, SelectChangeDetail, SelectClickDetail, SelectFocusDetail, SelectOption, SelectOptionGroup } from "./components/select/select.interfaces";
 import { ShapeColor, ShapeRotation, ShapeVariation } from "./components/shape/shape.interfaces";
 import { SheetContainerSize } from "./components/sheet/sheet.interfaces";
+import { SliderBlurDetail, SliderBrandColor, SliderChangeDetail, SliderClickDetail, SliderFocusDetail, SliderInputDetail } from "./components/slider/slider.interfaces";
 import { SnackbarActionClickDetail, SnackbarCloseClickDetail, SnackbarColor } from "./components/alert/snackbar/snackbar.interfaces";
 import { SpinnerLabelPosition, SpinnerSize, SpinnerVariation } from "./components/spinner/spinner.interfaces";
 import { StepsChangeDetail, StepsColor } from "./components/steps/steps.interfaces";
@@ -76,7 +76,6 @@ export { FileUploadBlurDetail, FileUploadChangeDetail, FileUploadFilesAddedDetai
 export { PopupDismissDetail, PopupPlacement, PopupPresentDetail, PopupRole } from "./components/popup/popup.interfaces";
 export { IconColor as IconColor1, IconSize as IconSize1 } from "./components/icon/icon.interfaces";
 export { PhoneChangeDetail, PhoneCountryChangeDetail, PhoneInputDetail } from "./components/input-phone/input-phone.interfaces";
-export { InputSliderBlurDetail, InputSliderBrandColor, InputSliderChangeDetail, InputSliderClickDetail, InputSliderFocusDetail, InputSliderInputDetail } from "./components/input-slider/input-slider.interfaces";
 export { InputStepperBlurDetail, InputStepperChangeDetail, InputStepperDecreaseDetail, InputStepperFocusDetail, InputStepperIncreaseDetail, InputStepperInputDetail } from "./components/input-stepper/input-stepper.interfaces";
 export { ItemActionIcon, ItemLabelLevel, ItemLabelSize, ItemSize, ItemVariant } from "./components/list/item/item.interfaces";
 export { LabelSize } from "./components/label/label.interfaces";
@@ -91,6 +90,7 @@ export { SegmentBlurDetail, SegmentChangeDetail, SegmentFocusDetail } from "./co
 export { SelectBlurDetail, SelectChangeDetail, SelectClickDetail, SelectFocusDetail, SelectOption, SelectOptionGroup } from "./components/select/select.interfaces";
 export { ShapeColor, ShapeRotation, ShapeVariation } from "./components/shape/shape.interfaces";
 export { SheetContainerSize } from "./components/sheet/sheet.interfaces";
+export { SliderBlurDetail, SliderBrandColor, SliderChangeDetail, SliderClickDetail, SliderFocusDetail, SliderInputDetail } from "./components/slider/slider.interfaces";
 export { SnackbarActionClickDetail, SnackbarCloseClickDetail, SnackbarColor } from "./components/alert/snackbar/snackbar.interfaces";
 export { SpinnerLabelPosition, SpinnerSize, SpinnerVariation } from "./components/spinner/spinner.interfaces";
 export { StepsChangeDetail, StepsColor } from "./components/steps/steps.interfaces";
@@ -1724,103 +1724,6 @@ export namespace Components {
         "value": string | null;
     }
     /**
-     * Input slider renders a noUiSlider-backed slider with validation and label/description messaging.
-     */
-    interface DsInputSlider {
-        /**
-          * If `true`, disables the automatic `invalid`/`invalidText` behavior that the `@baloise/ds-angular` integration applies when the bound `NgControl` is touched and invalid. Only affects the Angular integration; it is a no-op in other framework integrations.
-          * @default false
-         */
-        "autoInvalidOff": boolean;
-        /**
-          * Recolors the connect (the filled progress track) with a brand color instead of the default grey/primary style. Left of the handle uses the darker `-4` shade, right of it the lighter `-2` shade. Empty (default) keeps the current grey/primary look.
-         */
-        "brandColor"?: InputSliderBrandColor;
-        /**
-          * Defines the color of the slider. The default value is `primary`.
-          * @default 'primary'
-         */
-        "color": InputColor;
-        "configChanged": (state: DsConfigState) => Promise<void>;
-        /**
-          * Set the amount of time, in milliseconds, to wait to trigger the `dsChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
-          * @default 0
-         */
-        "debounce": number;
-        /**
-          * The description of the slider, which is displayed below the control.
-          * @default ''
-         */
-        "description": string;
-        /**
-          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
-          * @default false
-         */
-        "disabled": boolean;
-        /**
-          * Returns the noUiSlider handle element used under the hood.
-         */
-        "getInputElement": () => Promise<HTMLElement | undefined>;
-        /**
-          * If `true` the component gets an invalid style.
-          * @default false
-         */
-        "invalid": boolean;
-        /**
-          * The text to display when the slider is in an invalid state.
-          * @default ''
-         */
-        "invalidText": string;
-        /**
-          * The label of the slider, which is displayed above the control.
-          * @default ''
-         */
-        "label": string;
-        /**
-          * The maximum value of the slider.
-          * @default 100
-         */
-        "max": number;
-        /**
-          * The minimum value of the slider.
-          * @default 0
-         */
-        "min": number;
-        /**
-          * The name of the control, which is submitted with the form data.
-          * @default this.inputSliderId
-         */
-        "name": string;
-        /**
-          * If `true` the element can not be mutated. noUiSlider has no native concept of `readonly`, so this is treated as equivalent to `disabled`.
-          * @default false
-         */
-        "readonly": boolean;
-        /**
-          * If `true`, the user must fill in a value before submitting a form.
-          * @default true
-         */
-        "required": boolean;
-        /**
-          * Sets blur on `ds-input-slider`'s slider handle. Use this method instead of the global `element.blur()`.
-         */
-        "setBlur": () => Promise<void>;
-        /**
-          * Sets focus on `ds-input-slider`'s slider handle. Use this method instead of the global `element.focus()`.
-         */
-        "setFocus": () => Promise<void>;
-        /**
-          * The granularity the value must adhere to, as a string so `"any"` (free, continuous dragging with no step snapping) can be expressed alongside numeric step sizes.
-          * @default '1'
-         */
-        "step": string;
-        /**
-          * The value of the slider. Unlike a text input, a slider can never be empty; when unset it defaults to `min`. Internally starts as `NaN` (this codebase's established "empty number" sentinel, see `isValueEmpty`) until `connectedCallback` resolves it — never actually rendered or emitted.
-          * @default NaN
-         */
-        "value": number;
-    }
-    /**
      * Input stepper renders a numeric value flanked by decrease and increase buttons.
      */
     interface DsInputStepper {
@@ -3007,6 +2910,103 @@ export namespace Components {
         "containerSize"?: SheetContainerSize;
     }
     /**
+     * Slider renders a noUiSlider-backed slider with validation and label/description messaging.
+     */
+    interface DsSlider {
+        /**
+          * If `true`, disables the automatic `invalid`/`invalidText` behavior that the `@baloise/ds-angular` integration applies when the bound `NgControl` is touched and invalid. Only affects the Angular integration; it is a no-op in other framework integrations.
+          * @default false
+         */
+        "autoInvalidOff": boolean;
+        /**
+          * Recolors the connect (the filled progress track) with a brand color instead of the default grey/primary style. Left of the handle uses the darker `-4` shade, right of it the lighter `-2` shade. Empty (default) keeps the current grey/primary look.
+         */
+        "brandColor"?: SliderBrandColor;
+        /**
+          * Defines the color of the slider. The default value is `primary`.
+          * @default 'primary'
+         */
+        "color": InputColor;
+        "configChanged": (state: DsConfigState) => Promise<void>;
+        /**
+          * Set the amount of time, in milliseconds, to wait to trigger the `dsChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
+          * @default 0
+         */
+        "debounce": number;
+        /**
+          * The description of the slider, which is displayed below the control.
+          * @default ''
+         */
+        "description": string;
+        /**
+          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+          * @default false
+         */
+        "disabled": boolean;
+        /**
+          * Returns the noUiSlider handle element used under the hood.
+         */
+        "getInputElement": () => Promise<HTMLElement | undefined>;
+        /**
+          * If `true` the component gets an invalid style.
+          * @default false
+         */
+        "invalid": boolean;
+        /**
+          * The text to display when the slider is in an invalid state.
+          * @default ''
+         */
+        "invalidText": string;
+        /**
+          * The label of the slider, which is displayed above the control.
+          * @default ''
+         */
+        "label": string;
+        /**
+          * The maximum value of the slider.
+          * @default 100
+         */
+        "max": number;
+        /**
+          * The minimum value of the slider.
+          * @default 0
+         */
+        "min": number;
+        /**
+          * The name of the control, which is submitted with the form data.
+          * @default this.sliderId
+         */
+        "name": string;
+        /**
+          * If `true` the element can not be mutated. noUiSlider has no native concept of `readonly`, so this is treated as equivalent to `disabled`.
+          * @default false
+         */
+        "readonly": boolean;
+        /**
+          * If `true`, the user must fill in a value before submitting a form.
+          * @default true
+         */
+        "required": boolean;
+        /**
+          * Sets blur on `ds-slider`'s slider handle. Use this method instead of the global `element.blur()`.
+         */
+        "setBlur": () => Promise<void>;
+        /**
+          * Sets focus on `ds-slider`'s slider handle. Use this method instead of the global `element.focus()`.
+         */
+        "setFocus": () => Promise<void>;
+        /**
+          * The granularity the value must adhere to, as a string so `"any"` (free, continuous dragging with no step snapping) can be expressed alongside numeric step sizes.
+          * @default '1'
+         */
+        "step": string;
+        /**
+          * The value of the slider. Unlike a text input, a slider can never be empty; when unset it defaults to `min`. Internally starts as `NaN` (this codebase's established "empty number" sentinel, see `isValueEmpty`) until `connectedCallback` resolves it — never actually rendered or emitted.
+          * @default NaN
+         */
+        "value": number;
+    }
+    /**
      * Snackbar displays brief feedback messages at the bottom of the screen with optional action buttons and dismissal control.
      */
     interface DsSnackbar {
@@ -3804,10 +3804,6 @@ export interface DsInputPhoneCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLDsInputPhoneElement;
 }
-export interface DsInputSliderCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLDsInputSliderElement;
-}
 export interface DsInputStepperCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLDsInputStepperElement;
@@ -3859,6 +3855,10 @@ export interface DsSegmentItemCustomEvent<T> extends CustomEvent<T> {
 export interface DsSelectCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLDsSelectElement;
+}
+export interface DsSliderCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLDsSliderElement;
 }
 export interface DsSnackbarCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -4409,30 +4409,6 @@ declare global {
         prototype: HTMLDsInputPhoneElement;
         new (): HTMLDsInputPhoneElement;
     };
-    interface HTMLDsInputSliderElementEventMap {
-        "dsInput": InputSliderInputDetail;
-        "dsFocus": InputSliderFocusDetail;
-        "dsBlur": InputSliderBlurDetail;
-        "dsClick": InputSliderClickDetail;
-        "dsChange": InputSliderChangeDetail;
-    }
-    /**
-     * Input slider renders a noUiSlider-backed slider with validation and label/description messaging.
-     */
-    interface HTMLDsInputSliderElement extends Components.DsInputSlider, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLDsInputSliderElementEventMap>(type: K, listener: (this: HTMLDsInputSliderElement, ev: DsInputSliderCustomEvent<HTMLDsInputSliderElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLDsInputSliderElementEventMap>(type: K, listener: (this: HTMLDsInputSliderElement, ev: DsInputSliderCustomEvent<HTMLDsInputSliderElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
-    }
-    var HTMLDsInputSliderElement: {
-        prototype: HTMLDsInputSliderElement;
-        new (): HTMLDsInputSliderElement;
-    };
     interface HTMLDsInputStepperElementEventMap {
         "dsInput": InputStepperInputDetail;
         "dsChange": InputStepperChangeDetail;
@@ -4839,6 +4815,30 @@ declare global {
         prototype: HTMLDsSheetElement;
         new (): HTMLDsSheetElement;
     };
+    interface HTMLDsSliderElementEventMap {
+        "dsInput": SliderInputDetail;
+        "dsFocus": SliderFocusDetail;
+        "dsBlur": SliderBlurDetail;
+        "dsClick": SliderClickDetail;
+        "dsChange": SliderChangeDetail;
+    }
+    /**
+     * Slider renders a noUiSlider-backed slider with validation and label/description messaging.
+     */
+    interface HTMLDsSliderElement extends Components.DsSlider, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLDsSliderElementEventMap>(type: K, listener: (this: HTMLDsSliderElement, ev: DsSliderCustomEvent<HTMLDsSliderElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLDsSliderElementEventMap>(type: K, listener: (this: HTMLDsSliderElement, ev: DsSliderCustomEvent<HTMLDsSliderElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLDsSliderElement: {
+        prototype: HTMLDsSliderElement;
+        new (): HTMLDsSliderElement;
+    };
     interface HTMLDsSnackbarElementEventMap {
         "dsCloseClick": SnackbarCloseClickDetail;
         "dsActionClick": SnackbarActionClickDetail;
@@ -5143,7 +5143,6 @@ declare global {
         "ds-icon": HTMLDsIconElement;
         "ds-input": HTMLDsInputElement;
         "ds-input-phone": HTMLDsInputPhoneElement;
-        "ds-input-slider": HTMLDsInputSliderElement;
         "ds-input-stepper": HTMLDsInputStepperElement;
         "ds-item": HTMLDsItemElement;
         "ds-label": HTMLDsLabelElement;
@@ -5167,6 +5166,7 @@ declare global {
         "ds-select-option": HTMLDsSelectOptionElement;
         "ds-shape": HTMLDsShapeElement;
         "ds-sheet": HTMLDsSheetElement;
+        "ds-slider": HTMLDsSliderElement;
         "ds-snackbar": HTMLDsSnackbarElement;
         "ds-spinner": HTMLDsSpinnerElement;
         "ds-stack": HTMLDsStackElement;
@@ -6927,114 +6927,6 @@ declare namespace LocalJSX {
         "value"?: string | null;
     }
     /**
-     * Input slider renders a noUiSlider-backed slider with validation and label/description messaging.
-     */
-    interface DsInputSlider {
-        /**
-          * If `true`, disables the automatic `invalid`/`invalidText` behavior that the `@baloise/ds-angular` integration applies when the bound `NgControl` is touched and invalid. Only affects the Angular integration; it is a no-op in other framework integrations.
-          * @default false
-         */
-        "autoInvalidOff"?: boolean;
-        /**
-          * Recolors the connect (the filled progress track) with a brand color instead of the default grey/primary style. Left of the handle uses the darker `-4` shade, right of it the lighter `-2` shade. Empty (default) keeps the current grey/primary look.
-         */
-        "brandColor"?: InputSliderBrandColor;
-        /**
-          * Defines the color of the slider. The default value is `primary`.
-          * @default 'primary'
-         */
-        "color"?: InputColor;
-        /**
-          * Set the amount of time, in milliseconds, to wait to trigger the `dsChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
-          * @default 0
-         */
-        "debounce"?: number;
-        /**
-          * The description of the slider, which is displayed below the control.
-          * @default ''
-         */
-        "description"?: string;
-        /**
-          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
-          * @default false
-         */
-        "disabled"?: boolean;
-        /**
-          * The `id` of a `<form>` element to associate this element with.
-         */
-        "form"?: string;
-        /**
-          * If `true` the component gets an invalid style.
-          * @default false
-         */
-        "invalid"?: boolean;
-        /**
-          * The text to display when the slider is in an invalid state.
-          * @default ''
-         */
-        "invalidText"?: string;
-        /**
-          * The label of the slider, which is displayed above the control.
-          * @default ''
-         */
-        "label"?: string;
-        /**
-          * The maximum value of the slider.
-          * @default 100
-         */
-        "max"?: number;
-        /**
-          * The minimum value of the slider.
-          * @default 0
-         */
-        "min"?: number;
-        /**
-          * The name of the control, which is submitted with the form data.
-          * @default this.inputSliderId
-         */
-        "name"?: string;
-        /**
-          * Emitted when the input loses focus.
-         */
-        "onDsBlur"?: (event: DsInputSliderCustomEvent<InputSliderBlurDetail>) => void;
-        /**
-          * Emitted when the value is committed (noUiSlider `change`, not `blur` — see ADR-0010/ADR-0007). Fires once per discrete drag/step, independent of focus.
-         */
-        "onDsChange"?: (event: DsInputSliderCustomEvent<InputSliderChangeDetail>) => void;
-        /**
-          * Emitted when the input is clicked.
-         */
-        "onDsClick"?: (event: DsInputSliderCustomEvent<InputSliderClickDetail>) => void;
-        /**
-          * Emitted when the input has focus.
-         */
-        "onDsFocus"?: (event: DsInputSliderCustomEvent<InputSliderFocusDetail>) => void;
-        /**
-          * Emitted on each keyboard/pointer movement, before the value is committed.
-         */
-        "onDsInput"?: (event: DsInputSliderCustomEvent<InputSliderInputDetail>) => void;
-        /**
-          * If `true` the element can not be mutated. noUiSlider has no native concept of `readonly`, so this is treated as equivalent to `disabled`.
-          * @default false
-         */
-        "readonly"?: boolean;
-        /**
-          * If `true`, the user must fill in a value before submitting a form.
-          * @default true
-         */
-        "required"?: boolean;
-        /**
-          * The granularity the value must adhere to, as a string so `"any"` (free, continuous dragging with no step snapping) can be expressed alongside numeric step sizes.
-          * @default '1'
-         */
-        "step"?: string;
-        /**
-          * The value of the slider. Unlike a text input, a slider can never be empty; when unset it defaults to `min`. Internally starts as `NaN` (this codebase's established "empty number" sentinel, see `isValueEmpty`) until `connectedCallback` resolves it — never actually rendered or emitted.
-          * @default NaN
-         */
-        "value"?: number;
-    }
-    /**
      * Input stepper renders a numeric value flanked by decrease and increase buttons.
      */
     interface DsInputStepper {
@@ -8368,6 +8260,114 @@ declare namespace LocalJSX {
         "containerSize"?: SheetContainerSize;
     }
     /**
+     * Slider renders a noUiSlider-backed slider with validation and label/description messaging.
+     */
+    interface DsSlider {
+        /**
+          * If `true`, disables the automatic `invalid`/`invalidText` behavior that the `@baloise/ds-angular` integration applies when the bound `NgControl` is touched and invalid. Only affects the Angular integration; it is a no-op in other framework integrations.
+          * @default false
+         */
+        "autoInvalidOff"?: boolean;
+        /**
+          * Recolors the connect (the filled progress track) with a brand color instead of the default grey/primary style. Left of the handle uses the darker `-4` shade, right of it the lighter `-2` shade. Empty (default) keeps the current grey/primary look.
+         */
+        "brandColor"?: SliderBrandColor;
+        /**
+          * Defines the color of the slider. The default value is `primary`.
+          * @default 'primary'
+         */
+        "color"?: InputColor;
+        /**
+          * Set the amount of time, in milliseconds, to wait to trigger the `dsChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
+          * @default 0
+         */
+        "debounce"?: number;
+        /**
+          * The description of the slider, which is displayed below the control.
+          * @default ''
+         */
+        "description"?: string;
+        /**
+          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+          * @default false
+         */
+        "disabled"?: boolean;
+        /**
+          * The `id` of a `<form>` element to associate this element with.
+         */
+        "form"?: string;
+        /**
+          * If `true` the component gets an invalid style.
+          * @default false
+         */
+        "invalid"?: boolean;
+        /**
+          * The text to display when the slider is in an invalid state.
+          * @default ''
+         */
+        "invalidText"?: string;
+        /**
+          * The label of the slider, which is displayed above the control.
+          * @default ''
+         */
+        "label"?: string;
+        /**
+          * The maximum value of the slider.
+          * @default 100
+         */
+        "max"?: number;
+        /**
+          * The minimum value of the slider.
+          * @default 0
+         */
+        "min"?: number;
+        /**
+          * The name of the control, which is submitted with the form data.
+          * @default this.sliderId
+         */
+        "name"?: string;
+        /**
+          * Emitted when the input loses focus.
+         */
+        "onDsBlur"?: (event: DsSliderCustomEvent<SliderBlurDetail>) => void;
+        /**
+          * Emitted when the value is committed (noUiSlider `change`, not `blur` — see ADR-0010/ADR-0007). Fires once per discrete drag/step, independent of focus.
+         */
+        "onDsChange"?: (event: DsSliderCustomEvent<SliderChangeDetail>) => void;
+        /**
+          * Emitted when the input is clicked.
+         */
+        "onDsClick"?: (event: DsSliderCustomEvent<SliderClickDetail>) => void;
+        /**
+          * Emitted when the input has focus.
+         */
+        "onDsFocus"?: (event: DsSliderCustomEvent<SliderFocusDetail>) => void;
+        /**
+          * Emitted on each keyboard/pointer movement, before the value is committed.
+         */
+        "onDsInput"?: (event: DsSliderCustomEvent<SliderInputDetail>) => void;
+        /**
+          * If `true` the element can not be mutated. noUiSlider has no native concept of `readonly`, so this is treated as equivalent to `disabled`.
+          * @default false
+         */
+        "readonly"?: boolean;
+        /**
+          * If `true`, the user must fill in a value before submitting a form.
+          * @default true
+         */
+        "required"?: boolean;
+        /**
+          * The granularity the value must adhere to, as a string so `"any"` (free, continuous dragging with no step snapping) can be expressed alongside numeric step sizes.
+          * @default '1'
+         */
+        "step"?: string;
+        /**
+          * The value of the slider. Unlike a text input, a slider can never be empty; when unset it defaults to `min`. Internally starts as `NaN` (this codebase's established "empty number" sentinel, see `isValueEmpty`) until `connectedCallback` resolves it — never actually rendered or emitted.
+          * @default NaN
+         */
+        "value"?: number;
+    }
+    /**
      * Snackbar displays brief feedback messages at the bottom of the screen with optional action buttons and dismissal control.
      */
     interface DsSnackbar {
@@ -9505,24 +9505,6 @@ declare namespace LocalJSX {
         "readonly": boolean;
         "placeholder": string;
     }
-    interface DsInputSliderAttributes {
-        "value": number;
-        "name": string;
-        "label": string;
-        "description": string;
-        "color": InputColor;
-        "brandColor": InputSliderBrandColor;
-        "invalid": boolean;
-        "invalidText": string;
-        "min": number;
-        "max": number;
-        "step": string;
-        "debounce": number;
-        "disabled": boolean;
-        "readonly": boolean;
-        "required": boolean;
-        "autoInvalidOff": boolean;
-    }
     interface DsInputStepperAttributes {
         "value": number;
         "name": string;
@@ -9756,6 +9738,24 @@ declare namespace LocalJSX {
     interface DsSheetAttributes {
         "containerSize": SheetContainerSize;
     }
+    interface DsSliderAttributes {
+        "value": number;
+        "name": string;
+        "label": string;
+        "description": string;
+        "color": InputColor;
+        "brandColor": SliderBrandColor;
+        "invalid": boolean;
+        "invalidText": string;
+        "min": number;
+        "max": number;
+        "step": string;
+        "debounce": number;
+        "disabled": boolean;
+        "readonly": boolean;
+        "required": boolean;
+        "autoInvalidOff": boolean;
+    }
     interface DsSnackbarAttributes {
         "color": SnackbarColor;
         "closable": boolean;
@@ -9954,7 +9954,6 @@ declare namespace LocalJSX {
         "ds-icon": Omit<DsIcon, keyof DsIconAttributes> & { [K in keyof DsIcon & keyof DsIconAttributes]?: DsIcon[K] } & { [K in keyof DsIcon & keyof DsIconAttributes as `attr:${K}`]?: DsIconAttributes[K] } & { [K in keyof DsIcon & keyof DsIconAttributes as `prop:${K}`]?: DsIcon[K] };
         "ds-input": Omit<DsInput, keyof DsInputAttributes> & { [K in keyof DsInput & keyof DsInputAttributes]?: DsInput[K] } & { [K in keyof DsInput & keyof DsInputAttributes as `attr:${K}`]?: DsInputAttributes[K] } & { [K in keyof DsInput & keyof DsInputAttributes as `prop:${K}`]?: DsInput[K] };
         "ds-input-phone": Omit<DsInputPhone, keyof DsInputPhoneAttributes> & { [K in keyof DsInputPhone & keyof DsInputPhoneAttributes]?: DsInputPhone[K] } & { [K in keyof DsInputPhone & keyof DsInputPhoneAttributes as `attr:${K}`]?: DsInputPhoneAttributes[K] } & { [K in keyof DsInputPhone & keyof DsInputPhoneAttributes as `prop:${K}`]?: DsInputPhone[K] };
-        "ds-input-slider": Omit<DsInputSlider, keyof DsInputSliderAttributes> & { [K in keyof DsInputSlider & keyof DsInputSliderAttributes]?: DsInputSlider[K] } & { [K in keyof DsInputSlider & keyof DsInputSliderAttributes as `attr:${K}`]?: DsInputSliderAttributes[K] } & { [K in keyof DsInputSlider & keyof DsInputSliderAttributes as `prop:${K}`]?: DsInputSlider[K] };
         "ds-input-stepper": Omit<DsInputStepper, keyof DsInputStepperAttributes> & { [K in keyof DsInputStepper & keyof DsInputStepperAttributes]?: DsInputStepper[K] } & { [K in keyof DsInputStepper & keyof DsInputStepperAttributes as `attr:${K}`]?: DsInputStepperAttributes[K] } & { [K in keyof DsInputStepper & keyof DsInputStepperAttributes as `prop:${K}`]?: DsInputStepper[K] };
         "ds-item": Omit<DsItem, keyof DsItemAttributes> & { [K in keyof DsItem & keyof DsItemAttributes]?: DsItem[K] } & { [K in keyof DsItem & keyof DsItemAttributes as `attr:${K}`]?: DsItemAttributes[K] } & { [K in keyof DsItem & keyof DsItemAttributes as `prop:${K}`]?: DsItem[K] };
         "ds-label": Omit<DsLabel, keyof DsLabelAttributes> & { [K in keyof DsLabel & keyof DsLabelAttributes]?: DsLabel[K] } & { [K in keyof DsLabel & keyof DsLabelAttributes as `attr:${K}`]?: DsLabelAttributes[K] } & { [K in keyof DsLabel & keyof DsLabelAttributes as `prop:${K}`]?: DsLabel[K] };
@@ -9978,6 +9977,7 @@ declare namespace LocalJSX {
         "ds-select-option": Omit<DsSelectOption, keyof DsSelectOptionAttributes> & { [K in keyof DsSelectOption & keyof DsSelectOptionAttributes]?: DsSelectOption[K] } & { [K in keyof DsSelectOption & keyof DsSelectOptionAttributes as `attr:${K}`]?: DsSelectOptionAttributes[K] } & { [K in keyof DsSelectOption & keyof DsSelectOptionAttributes as `prop:${K}`]?: DsSelectOption[K] };
         "ds-shape": Omit<DsShape, keyof DsShapeAttributes> & { [K in keyof DsShape & keyof DsShapeAttributes]?: DsShape[K] } & { [K in keyof DsShape & keyof DsShapeAttributes as `attr:${K}`]?: DsShapeAttributes[K] } & { [K in keyof DsShape & keyof DsShapeAttributes as `prop:${K}`]?: DsShape[K] };
         "ds-sheet": Omit<DsSheet, keyof DsSheetAttributes> & { [K in keyof DsSheet & keyof DsSheetAttributes]?: DsSheet[K] } & { [K in keyof DsSheet & keyof DsSheetAttributes as `attr:${K}`]?: DsSheetAttributes[K] } & { [K in keyof DsSheet & keyof DsSheetAttributes as `prop:${K}`]?: DsSheet[K] };
+        "ds-slider": Omit<DsSlider, keyof DsSliderAttributes> & { [K in keyof DsSlider & keyof DsSliderAttributes]?: DsSlider[K] } & { [K in keyof DsSlider & keyof DsSliderAttributes as `attr:${K}`]?: DsSliderAttributes[K] } & { [K in keyof DsSlider & keyof DsSliderAttributes as `prop:${K}`]?: DsSlider[K] };
         "ds-snackbar": Omit<DsSnackbar, keyof DsSnackbarAttributes> & { [K in keyof DsSnackbar & keyof DsSnackbarAttributes]?: DsSnackbar[K] } & { [K in keyof DsSnackbar & keyof DsSnackbarAttributes as `attr:${K}`]?: DsSnackbarAttributes[K] } & { [K in keyof DsSnackbar & keyof DsSnackbarAttributes as `prop:${K}`]?: DsSnackbar[K] };
         "ds-spinner": Omit<DsSpinner, keyof DsSpinnerAttributes> & { [K in keyof DsSpinner & keyof DsSpinnerAttributes]?: DsSpinner[K] } & { [K in keyof DsSpinner & keyof DsSpinnerAttributes as `attr:${K}`]?: DsSpinnerAttributes[K] } & { [K in keyof DsSpinner & keyof DsSpinnerAttributes as `prop:${K}`]?: DsSpinner[K] };
         "ds-stack": Omit<DsStack, keyof DsStackAttributes> & { [K in keyof DsStack & keyof DsStackAttributes]?: DsStack[K] } & { [K in keyof DsStack & keyof DsStackAttributes as `attr:${K}`]?: DsStackAttributes[K] } & { [K in keyof DsStack & keyof DsStackAttributes as `prop:${K}`]?: DsStack[K] };
@@ -10155,10 +10155,6 @@ declare module "@stencil/core" {
              */
             "ds-input-phone": LocalJSX.IntrinsicElements["ds-input-phone"] & JSXBase.HTMLAttributes<HTMLDsInputPhoneElement>;
             /**
-             * Input slider renders a noUiSlider-backed slider with validation and label/description messaging.
-             */
-            "ds-input-slider": LocalJSX.IntrinsicElements["ds-input-slider"] & JSXBase.HTMLAttributes<HTMLDsInputSliderElement>;
-            /**
              * Input stepper renders a numeric value flanked by decrease and increase buttons.
              */
             "ds-input-stepper": LocalJSX.IntrinsicElements["ds-input-stepper"] & JSXBase.HTMLAttributes<HTMLDsInputStepperElement>;
@@ -10267,6 +10263,10 @@ declare module "@stencil/core" {
              * blocking the main content.
              */
             "ds-sheet": LocalJSX.IntrinsicElements["ds-sheet"] & JSXBase.HTMLAttributes<HTMLDsSheetElement>;
+            /**
+             * Slider renders a noUiSlider-backed slider with validation and label/description messaging.
+             */
+            "ds-slider": LocalJSX.IntrinsicElements["ds-slider"] & JSXBase.HTMLAttributes<HTMLDsSliderElement>;
             /**
              * Snackbar displays brief feedback messages at the bottom of the screen with optional action buttons and dismissal control.
              */

@@ -4,7 +4,7 @@ import { DsInputStepper } from '@baloise/ds-angular'
 
 // `ds-input-stepper` can never be "empty" (see its own `value` prop doc), and its `required` prop only drives
 // the "optional" label suffix — so a `required`-style validator can never fail from user interaction. This
-// minimum-threshold validator stands in for it instead, the same role it plays in the input-slider demo.
+// minimum-threshold validator stands in for it instead, the same role it plays in the slider demo.
 const minValueWithMessage = (min: number, message: string): ValidatorFn => {
   return (control): ValidationErrors | null => ((control.value ?? 0) >= min ? null : { min: message })
 }
@@ -26,7 +26,7 @@ export class InputStepperDemo {
     }),
   })
 
-  // A deliberately *nullable* control, with no counterpart in the input-slider demo: `reset()` on a
+  // A deliberately *nullable* control, with no counterpart in the slider demo: `reset()` on a
   // `nonNullable` control returns the initial value, never `null`, so the form above can't exercise the
   // empty-value path at all. This one calls `writeValue(null)` for real, which is what proves
   // `ds-input-stepper`'s own `@Watch('value')` resolves it onto `min` end-to-end through the value accessor.
