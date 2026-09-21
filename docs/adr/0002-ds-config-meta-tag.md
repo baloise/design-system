@@ -102,15 +102,12 @@ export const DS_CONFIG_META_ATTRIBUTE_MAP: Record<string, (cfg: Partial<DsConfig
 }
 ```
 
-`httpFormSubmit`, `legalLinks`, `legalText`, and `socialLinks` are
-explicitly **out of scope**, alongside icons:
+`legalLinks`, `legalText`, and `socialLinks` are explicitly **out of
+scope**, alongside icons:
 
 - Icons: `icons: DsIcons` is a full name→URL map (from
   `@baloise/ds-assets`) with no base-path concept today, and there's no
   `data-icon-base`-equivalent field being added here.
-- `httpFormSubmit`: a behavioral/functional toggle (native vs. JS form
-  submission) rather than a presentational default — left as JS-only
-  config so it can't be silently flipped by markup.
 - `legalLinks` / `legalText` / `socialLinks`: nested, per-region/per-locale
   structured data — not something a flat `data-*` attribute can represent
   reasonably.
@@ -197,8 +194,8 @@ name="design-system-config">` bootstrapping path alongside the existing
 
 1. Any other fields besides `brand`/`region`/`language`/`fallbackLanguage`/
    `allowedLanguages`/`animated` that should be meta-tag-configurable?
-   (Icons, `httpFormSubmit`, `legalLinks`, `legalText`, and `socialLinks`
-   are explicitly excluded — see above.)
+   (Icons, `legalLinks`, `legalText`, and `socialLinks` are explicitly
+   excluded — see above.)
 2. Multiple DS instances on one page (rare, but `setupDsConfig` is
    reusable): should the meta tag be looked up by a fixed `name`, or should
    we support `win.DesignSystem` picking a differently-named tag via an
@@ -216,7 +213,6 @@ name="design-system-config">` bootstrapping path alongside the existing
 - Slightly increases the config module's responsibility for parsing/
   validating untyped string input from the DOM; mitigated by the explicit
   allowlist and try/catch-wrapped parsing (mirrors `configFromLocalStorage`).
-- Icons, `httpFormSubmit`, `legalLinks`, `legalText`, and `socialLinks`
-  remain JS-only; no new surface for configuring them via markup is
-  introduced.
+- Icons, `legalLinks`, `legalText`, and `socialLinks` remain JS-only; no
+  new surface for configuring them via markup is introduced.
   </content>

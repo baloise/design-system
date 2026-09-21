@@ -36,7 +36,7 @@
 }
 
 // $bordered: false drops the background/border/hover/active/focus-within styling entirely,
-// keeping only the structural layout rules — for controls (e.g. ds-input-slider) whose own
+// keeping only the structural layout rules — for controls (e.g. ds-slider) whose own
 // control already reads as the interactive surface and doesn't need the shared "boxed" look.
 //
 // $active: false drops only the :active/.is-pressed container-wide border — for components

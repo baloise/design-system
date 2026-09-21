@@ -7,7 +7,7 @@ export function ClientInit() {
     void (async () => {
       const { defineCustomElements } = await import('@baloise/ds-core/loader')
       const { initializeDesignSystem } = await import('@baloise/ds-core')
-      initializeDesignSystem({ animated: false, httpFormSubmit: false })
+      initializeDesignSystem({ animated: false })
       await defineCustomElements()
     })()
   }, [])

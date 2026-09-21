@@ -1,8 +1,13 @@
 import { Meta } from '@storybook/addon-docs/blocks'
 import {
+  AngularFramework,
   Banner,
   BannerTabs,
+  Code,
   Footer,
+  HTMLFramework,
+  InfoQuote,
+  ReactFramework,
   UsageExamples,
 } from '../../../.storybook/blocks'
 import * as AppFooterStories from './app-footer.stories'
@@ -13,6 +18,127 @@ import { APP_FOOTER_DOC_CONFIG, getAppFooterTabs } from './app-footer.doc-config
 <Banner label={'Usage'} section={APP_FOOTER_DOC_CONFIG.section} color={APP_FOOTER_DOC_CONFIG.color} />
 
 <BannerTabs of={AppFooterStories} tabs={getAppFooterTabs('usage')} />
+
+## Legal Links, Social Links & Legal Text
+
+`legalLinks` and `socialLinks` are not props on `ds-app-footer` — they live in the global config, keyed by
+`region` (and, for `legalLinks`/`legalText`, also `language`), so every footer instance on the page renders the
+same defaults for the active region/language. `legalText` can additionally be overridden per instance with a prop.
+
+<AngularFramework>
+
+Set the defaults once in `provideDesignSystem()`, in `app.config.ts`.
+
+<Code language="typescript" code={`
+import { ApplicationConfig } from '@angular/core'
+import { provideDesignSystem } from '@baloise/ds-angular'
+
+export const appConfig: ApplicationConfig = {
+${' '}providers: [
+${' '}${' '}provideDesignSystem({
+${' '}${' '}${' '}defaults: {
+${' '}${' '}${' '}${' '}legalLinks: {
+${' '}${' '}${' '}${' '}${' '}CH: {
+${' '}${' '}${' '}${' '}${' '}${' '}de: [
+${' '}${' '}${' '}${' '}${' '}${' '}${' '}{ label: 'Impressum', href: 'https://example.com/impressum' },
+${' '}${' '}${' '}${' '}${' '}${' '}${' '}{ label: 'Datenschutz', href: 'https://example.com/datenschutz' },
+${' '}${' '}${' '}${' '}${' '}${' '}],
+${' '}${' '}${' '}${' '}${' '}},
+${' '}${' '}${' '}${' '}},
+${' '}${' '}${' '}${' '}legalText: {
+${' '}${' '}${' '}${' '}${' '}CH: { de: '© 2026 Your Company · Musterstrasse 1 · CH-4000 Basel' },
+${' '}${' '}${' '}${' '}},
+${' '}${' '}${' '}${' '}socialLinks: {
+${' '}${' '}${' '}${' '}${' '}CH: [{ label: 'LinkedIn', href: 'https://linkedin.com/company/example', icon: 'linkedin' }],
+${' '}${' '}${' '}${' '}},
+${' '}${' '}${' '}},
+${' '}${' '}}),
+${' '}],
+}
+`} />
+
+```html
+<!-- app.html -->
+<ds-app-footer></ds-app-footer>
+
+<!-- override legalText for one instance -->
+<ds-app-footer legalText="© 2026 A Different Entity"></ds-app-footer>
+```
+
+</AngularFramework>
+
+<ReactFramework>
+
+Pass the defaults as props on `DsRootProvider`. Override `legalText` per instance with a prop on `DsAppFooter`.
+
+<Code language="tsx" code={`
+import { DsAppFooter, DsRootProvider } from '@baloise/ds-react'
+
+function App() {
+${' '}return (
+${' '}${' '}<DsRootProvider
+${' '}${' '}${' '}region="CH"
+${' '}${' '}${' '}legalLinks={{
+${' '}${' '}${' '}${' '}CH: {
+${' '}${' '}${' '}${' '}${' '}de: [
+${' '}${' '}${' '}${' '}${' '}${' '}{ label: 'Impressum', href: 'https://example.com/impressum' },
+${' '}${' '}${' '}${' '}${' '}${' '}{ label: 'Datenschutz', href: 'https://example.com/datenschutz' },
+${' '}${' '}${' '}${' '}${' '}],
+${' '}${' '}${' '}${' '}},
+${' '}${' '}${' '}}}
+${' '}${' '}${' '}legalText={{ CH: { de: '© 2026 Your Company · Musterstrasse 1 · CH-4000 Basel' } }}
+${' '}${' '}${' '}socialLinks={{ CH: [{ label: 'LinkedIn', href: 'https://linkedin.com/company/example', icon: 'linkedin' }] }}
+${' '}${' '}>
+${' '}${' '}${' '}<DsAppFooter />
+${' '}${' '}${' '}{/* override legalText for one instance */}
+${' '}${' '}${' '}<DsAppFooter legalText="© 2026 A Different Entity" />
+${' '}${' '}</DsRootProvider>
+${' '})
+}
+`} />
+
+</ReactFramework>
+
+<HTMLFramework>
+
+Set the defaults once with `initialize()` (or `updateDsLegalLinks` / `updateDsLegalText` / `updateDsSocialLinks` at
+runtime).
+
+<Code language="ts" code={`
+import { initialize } from '@baloise/ds-core'
+
+initialize({
+${' '}region: 'CH',
+${' '}legalLinks: {
+${' '}${' '}CH: {
+${' '}${' '}${' '}de: [
+${' '}${' '}${' '}${' '}{ label: 'Impressum', href: 'https://example.com/impressum' },
+${' '}${' '}${' '}${' '}{ label: 'Datenschutz', href: 'https://example.com/datenschutz' },
+${' '}${' '}${' '}],
+${' '}${' '}},
+${' '}},
+${' '}legalText: {
+${' '}${' '}CH: { de: '© 2026 Your Company · Musterstrasse 1 · CH-4000 Basel' },
+${' '}},
+${' '}socialLinks: {
+${' '}${' '}CH: [{ label: 'LinkedIn', href: 'https://linkedin.com/company/example', icon: 'linkedin' }],
+${' '}},
+})
+`} />
+
+```html
+<ds-app-footer></ds-app-footer>
+
+<!-- override legalText for one instance -->
+<ds-app-footer legal-text="© 2026 A Different Entity"></ds-app-footer>
+```
+
+</HTMLFramework>
+
+<InfoQuote>
+  Need fully custom markup instead of the config-driven defaults? Set `disableDefaultLinks` /
+  `disableDefaultSocialLinks` and provide your own content via the `links` / `social-links` slots.
+</InfoQuote>
 
 ## When to Use
 

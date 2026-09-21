@@ -421,9 +421,9 @@ The navbar uses a right-side drawer menu on mobile/tablet viewports. The drawer 
 - [ ] Sub-components if composition needs evolve
 - [ ] Animated hamburger icon transitions (current: SVG path swap)
 
-## Date Field (ds-date)
+## Datepicker (ds-datepicker)
 
-`ds-date` is a form control that mirrors `ds-input`'s field structure and look,
+`ds-datepicker` is a form control that mirrors `ds-input`'s field structure and look,
 adding a calendar-icon trigger that opens a date-picker popup. Shared vocabulary:
 
 - **Model value** — the canonical `value` (ISO `YYYY-MM-DD` string). Locale-
@@ -435,20 +435,20 @@ adding a calendar-icon trigger that opens a date-picker popup. Shared vocabulary
   Switzerland used Local Mean Time until June 1894, and the native `Date`
   engine and Luxon's `Intl`-based engine can disagree on the pre-1894 offset,
   shifting the calendar day by one if a `Date` crosses between them. See the
-  comment on `nativeDateToISO` in `date.mask.ts`.
+  comment on `nativeDateToISO` in `datepicker.mask.ts`.
 - **Trigger** — the calendar-icon `<button>` at the end of the field. It is the
   **only** gesture that opens/toggles the popup; focusing the text input just
   places the typing cursor. `disabled` turns both off; `readonly` is display-only.
 - **Popup** — the calendar dialog, rendered **inside the shadow root** with
   air-datepicker's stylesheet adopted via `adoptedStyleSheets`. Open/close and
-  outside-click are owned by `ds-date` (not air-datepicker's document listener).
+  outside-click are owned by `ds-datepicker` (not air-datepicker's document listener).
 
 Library choices (air-datepicker, imask) and the shadow-root integration are
-recorded in [docs/adr/0001-ds-date-external-datepicker-libraries.md](../../docs/adr/0001-ds-date-external-datepicker-libraries.md).
+recorded in [docs/adr/0001-ds-datepicker-external-datepicker-libraries.md](../../docs/adr/0001-ds-datepicker-external-datepicker-libraries.md).
 
-## Input Slider (ds-input-slider)
+## Slider (ds-slider)
 
-`ds-input-slider` is the web-component-only migration of the old
+`ds-slider` is the web-component-only migration of the old
 `bal-input-slider`: a form control backed by the **noUiSlider** library
 (rendered on a plain `<div part="slider">`, no native `<input>` anywhere in
 the shadow root), using the same `Field` wrapper/`AttachInternals()` pattern
@@ -461,24 +461,24 @@ as `ds-input`/`ds-number-input`. Shared vocabulary:
 - **Slider** — the noUiSlider-owned `<div id="slider" part="slider">`. It is
   the single source of interaction (pointer drag, keyboard) and carries
   noUiSlider's own built-in ARIA (`role="slider"`, `aria-valuemin/max/now`,
-  `tabindex`) on its handle. `ds-input-slider` wires `aria-labelledby`/
+  `tabindex`) on its handle. `ds-slider` wires `aria-labelledby`/
   `aria-describedby` onto the handle to connect it to the `Field`'s label/
   description, the same way `ds-select`'s `SelectPickerController` wires its
   trigger — see `connectLabelToTrigger()` in `select.picker.ts` for the
   precedent.
-- **Picker controller** — `InputSliderPickerController`
-  (`input-slider.picker.ts`) wraps the noUiSlider instance, mirroring
+- **Picker controller** — `SliderPickerController`
+  (`slider.picker.ts`) wraps the noUiSlider instance, mirroring
   `SelectPickerController`'s shape (init in `componentDidLoad`, `destroy()`
   in `disconnectedCallback`, `setValue()`/`setDisabled()`/`focus()`/
-  `blur()`/`updateRange()` as its public API). `input-slider.utils.ts`
+  `blur()`/`updateRange()` as its public API). `slider.utils.ts`
   stays pure functions only (`clampValue`, `resolveInitialValue`,
   step/decimals helpers).
 - **No `FormControl`** — unlike `ds-input`/`ds-number-input`, this component
   does not use the shared `FormControl` helper (`form-control.ts`), because
   `FormControl` assumes a real `nativeEl: HTMLInputElement |
-HTMLTextAreaElement` to focus/blur/read from. `ds-input-slider` manages
+HTMLTextAreaElement` to focus/blur/read from. `ds-slider` manages
   `internals.setFormValue()`, `initialValue`/reset, and click-passthrough
-  directly in `input-slider.tsx`, the same way `ds-select` does.
+  directly in `slider.tsx`, the same way `ds-select` does.
 - **Event mapping** — noUiSlider's own event set replaces native
   `input`/`change`: `update` (fires continuously, incl. every drag/keyboard
   step) maps to `dsInput`; `set` (fires once per discrete interaction —
@@ -486,13 +486,13 @@ HTMLTextAreaElement` to focus/blur/read from. `ds-input-slider` manages
   call) maps to `dsChange`. `set` was chosen over noUiSlider's `change`
   event because `change` only fires for real user interaction — a
   programmatic `.set()` call (used by `picker.setValue()` and by
-  `DsInputSlider`'s `fill()` test helper) never fires it, only `update` +
+  `DsSlider`'s `fill()` test helper) never fires it, only `update` +
   `set`. This preserves
-  [ADR-0010](../../docs/adr/0010-ds-input-slider-change-commit.md)'s
+  [ADR-0010](../../docs/adr/0010-ds-slider-change-commit.md)'s
   commit-on-discrete-interaction semantics with a different event source;
-  see [ADR-0007](../../docs/adr/0007-ds-input-slider-nouislider.md) for why
+  see [ADR-0007](../../docs/adr/0007-ds-slider-nouislider.md) for why
   the event source changed at all.
-- **Programmatic sets don't re-emit events** — `InputSliderPickerController`
+- **Programmatic sets don't re-emit events** — `SliderPickerController`
   guards `setValue()` with a `suppressEvents` flag so an external `value`
   prop change (e.g. an Angular `ControlValueAccessor.writeValue()`) does not
   cascade back into firing `dsInput`/`dsChange`, mirroring how the old
@@ -521,7 +521,7 @@ HTMLTextAreaElement` to focus/blur/read from. `ds-input-slider` manages
   already continuous) — not a special `0` sentinel (the old component's
   `step = 0` convention is dropped).
 - **`readonly` behaves as `disabled`** — noUiSlider has no native concept of
-  read-only either. `ds-input-slider` follows the existing `ds-checkbox`
+  read-only either. `ds-slider` follows the existing `ds-checkbox`
   convention (`disabled={this.disabled || this.readonly}`) and treats the
   two as equivalent for this control. Disabling is done via noUiSlider's own
   attribute-based mechanism (`setAttribute('disabled', '')` /
@@ -529,13 +529,13 @@ HTMLTextAreaElement` to focus/blur/read from. `ds-input-slider` manages
   `.disable()`/`.enable()` JS call).
 - **Commit-on-`change`, not blur** — diverges from the shared `FormControl`
   blur-commit convention; see
-  [ADR-0010](../../docs/adr/0010-ds-input-slider-change-commit.md).
+  [ADR-0010](../../docs/adr/0010-ds-slider-change-commit.md).
 - **`color` vs. `brand-color`** — general naming convention for bal→ds
   migrations: if an old `bal-*` component had a `color` prop meaning brand/
   theme color, it is renamed to `brand-color` on the `ds-*` version, freeing
   up `color` for the `Field`-state semantics (`primary | success | warning |
 danger`) shared with `ds-input`/`ds-number-input`. `bal-input-slider` had
-  no brand `color` prop, but `ds-input-slider` gained its own `brand-color`
+  no brand `color` prop, but `ds-slider` gained its own `brand-color`
   (`yellow | purple | red | green | ''`) — unlike the bal-era meaning, it only
   recolors the `.noUi-connect` fill (via a `linear-gradient` from the `-4`
   shade on the left to the `-2` shade on the right), leaving track, thumb,
@@ -548,15 +548,15 @@ danger`) shared with `ds-input`/`ds-number-input`. `bal-input-slider` had
 - **Dual-thumb (min+max range) is out of scope** — this component is
   single-thumb only, matching `bal-input-slider`'s original scope exactly,
   even though noUiSlider itself supports multi-handle ranges.
-- **Visual design** — `input-slider.host.scss` overrides noUiSlider's stock
+- **Visual design** — `slider.host.scss` overrides noUiSlider's stock
   cosmetic defaults (grey/bordered track, white bordered handle, teal
   connect) via `.noUi-target`/`.noUi-connect`/`.noUi-handle` selectors, using
-  lightweight `--input-slider-*` SCSS component variables that point
+  lightweight `--slider-*` SCSS component variables that point
   directly at **global color tokens** — the same pattern `ds-checkbox`/
   `ds-radio`/`ds-toggle` use (`--ds-global-color-primary-5` for the
   checked/active fill, `--ds-global-color-grey-3` for the unchecked/inactive
   fill), not a dedicated `packages/tokens` entry. `connect: 'lower'` (set in
-  `input-slider.picker.ts`) renders the active/filled track segment via
+  `slider.picker.ts`) renders the active/filled track segment via
   noUiSlider's own `.noUi-connect` element; the remainder shows the plain
   track background — this is the "progress bar" look, not a second DS
   concept. The shared `form.container()` mixin (`form.mixin.scss`) gained a
@@ -691,10 +691,9 @@ name="design-system-config">` tag's `data-*` attributes, but **only**
 3. the `userConfig` object passed to `initializeDesignSystem`/`setupDsConfig`
    — always wins; this is how frameworks, Storybook, and tests override
 
-Icons, `httpFormSubmit`, `legalLinks`, `legalText`, and `socialLinks` are
-**not** meta-tag-configurable — they're either structured/nested data (not
-representable in a flat `data-*` attribute) or considered JS-only
-behavioral config. See
+Icons, `legalLinks`, `legalText`, and `socialLinks` are **not**
+meta-tag-configurable — they're structured/nested data not representable
+in a flat `data-*` attribute. See
 [docs/adr/0002-ds-config-meta-tag.md](../../docs/adr/0002-ds-config-meta-tag.md)
 for the full rationale.
 

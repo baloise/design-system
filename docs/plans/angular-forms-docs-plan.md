@@ -7,7 +7,7 @@
 Milestone **✏️ Angular Forms & Services** (#8) is replacing this with a proper `ControlValueAccessor`-based integration. The foundation ticket #2049 ("Angular forms foundation + ds-input reactive-forms support") establishes:
 - A shared abstract base directive providing standard `ControlValueAccessor` plumbing (`writeValue`, `registerOnChange`, `registerOnTouched`, `setDisabledState`)
 - Automatic invalid-state behavior driven by `NgControl.statusChanges` — when a control is touched and invalid, `invalid`/`invalidText` are set automatically from `FormControl.errors`, with an `autoInvalidOff` prop to opt out
-- This pattern gets rolled out per-component across #2050–#2058 (`ds-textarea`, `ds-date`, `ds-number-input`, `ds-input-slider`, `ds-radio-group`, `ds-segment`, `ds-checkbox-group`, `ds-file-upload`, `ds-select`)
+- This pattern gets rolled out per-component across #2050–#2058 (`ds-textarea`, `ds-datepicker`, `ds-number-input`, `ds-slider`, `ds-radio-group`, `ds-segment`, `ds-checkbox-group`, `ds-file-upload`, `ds-select`)
 
 None of these tickets touch documentation. Once they land, the existing docs will describe a pattern that no longer exists (`ds-ng-error`, manual validator wiring) and won't mention the new automatic invalid-state behavior or `autoInvalidOff`, which consumers need to know about.
 

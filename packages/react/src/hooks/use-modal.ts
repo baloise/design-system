@@ -2,21 +2,31 @@
 
 import { dsModalController, type ModalOptions } from '@baloise/ds-core'
 import { useCallback, useRef, type ReactNode } from 'react'
+import { flushSync } from 'react-dom'
 import { createRoot, type Root } from 'react-dom/client'
 
 /**
- * Imperative modal hook. `present()` injects React content via `ModalOptions.component`,
- * which lands with #2120 — until then this is a scaffold and will not mount content
- * inside the overlay.
+ * Imperative modal hook. `present()` mounts React content into a detached container
+ * and hands it to the modal controller via `ModalOptions.component`.
  */
 export function useModal() {
   const modalRef = useRef<HTMLDsModalElement | null>(null)
   const rootRef = useRef<Root | null>(null)
   const containerRef = useRef<HTMLDivElement | null>(null)
+  const projectedNodesRef = useRef<ChildNode[]>([])
 
   const cleanup = useCallback(() => {
+    // The controller moves the container's children into ds-modal's light DOM so the
+    // browser can slot them; React still thinks they live in the container, so move
+    // them back before unmounting or React's reconciler fails to remove them.
+    const container = containerRef.current
+    if (container) {
+      projectedNodesRef.current.forEach(node => container.appendChild(node))
+    }
     rootRef.current?.unmount()
     containerRef.current?.remove()
+    modalRef.current?.remove?.()
+    projectedNodesRef.current = []
     modalRef.current = null
     rootRef.current = null
     containerRef.current = null
@@ -37,7 +47,10 @@ export function useModal() {
       const root = createRoot(container)
       containerRef.current = container
       rootRef.current = root
-      root.render(content)
+      // The modal controller reads the container's children synchronously to project
+      // them into ds-modal's slots, so the initial render must commit before it runs.
+      flushSync(() => root.render(content))
+      projectedNodesRef.current = Array.from(container.childNodes)
 
       const modal = await dsModalController.create({
         ...options,

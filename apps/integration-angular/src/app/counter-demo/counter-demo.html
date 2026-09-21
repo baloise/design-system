@@ -1,0 +1,35 @@
+<h2>Counter demo</h2>
+
+<p data-testid="counter-value">Counter value: {{ counterValue() }}</p>
+<ds-counter
+  data-testid="counter"
+  name="smoke-test-counter"
+  label="Quantity"
+  [value]="counterValue()"
+  (dsChange)="onChange($event)"
+/>
+
+<form [formGroup]="reactiveForm">
+  <ds-counter data-testid="reactive-counter" name="reactive-counter" label="Quantity" formControlName="quantity" />
+</form>
+<p data-testid="reactive-counter-value">Reactive value: {{ reactiveForm.controls.quantity.value }}</p>
+<button data-testid="toggle-reactive-counter-disabled" type="button" (click)="toggleReactiveFormDisabled()">
+  Toggle disabled
+</button>
+<button data-testid="set-reactive-counter-value" type="button" (click)="setReactiveFormValue()">Set to 7</button>
+<button data-testid="reset-reactive-counter" type="button" (click)="resetReactiveForm()">Reset</button>
+
+<form [formGroup]="nullableForm">
+  <ds-counter data-testid="nullable-counter" name="nullable-counter" label="Quantity" formControlName="quantity" />
+</form>
+<button data-testid="reset-nullable-counter" type="button" (click)="resetNullableForm()">Reset nullable</button>
+
+<form [formGroup]="autoInvalidOffForm">
+  <ds-counter
+    data-testid="auto-invalid-off-counter"
+    name="auto-invalid-off-counter"
+    label="Quantity"
+    autoInvalidOff
+    formControlName="quantity"
+  />
+</form>

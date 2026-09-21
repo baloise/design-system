@@ -1,8 +1,10 @@
 import { Canvas, Meta } from '@storybook/addon-docs/blocks'
 import {
+  AngularFramework,
   Banner,
   BannerTabs,
   Footer,
+  HTMLFramework,
   InfoQuote,
   LinkCard,
   LinkCards,
@@ -18,6 +20,104 @@ import { TOAST_DOC_CONFIG, getToastTabs } from './toast.doc-config'
 <Banner label={'Usage'} section={TOAST_DOC_CONFIG.section} color={TOAST_DOC_CONFIG.color} />
 
 <BannerTabs of={ToastStories} tabs={getToastTabs('usage')} />
+
+{/* ################################################## */}
+{/* -------------------------------------------------- */}
+{/* REACT  ------------------------------------------- */}
+{/* -------------------------------------------------- */}
+{/* ################################################## */}
+
+<ReactFramework>
+
+## Present and dismiss a toast
+
+`useToast()` returns `present` and `dismiss` functions. Pass notification content as data; toast content is not JSX.
+
+<InfoQuote>
+  Import `useToast` from `@baloise/ds-react`. The generated `DsToast` wrapper is deprecated.
+</InfoQuote>
+
+```tsx
+import { DsButton, useToast } from '@baloise/ds-react'
+
+export function ToastExample() {
+  const [presentToast, dismissToast] = useToast()
+
+  const showToast = () =>
+    presentToast({
+      heading: 'Saved',
+      message: 'Your changes have been saved.',
+      closable: true,
+      duration: 5000,
+      closeHandler: () => undefined,
+      actionHandler: () => undefined,
+    })
+
+  return (
+    <>
+      <DsButton onDsClick={showToast}>Show toast</DsButton>
+      <DsButton onDsClick={() => dismissToast()}>Dismiss toast</DsButton>
+    </>
+  )
+}
+```
+
+</ReactFramework>
+
+{/* ################################################## */}
+{/* -------------------------------------------------- */}
+{/* HTML  ------------------------------------------- */}
+{/* -------------------------------------------------- */}
+{/* ################################################## */}
+
+<HTMLFramework>
+
+## Present and dismiss a toast
+
+Use `dsToastController` from `@baloise/ds-core` (also available as `window.DesignSystem.toastController`) to create
+and remove toasts. `create()` returns the toast's ID, which `remove()` needs to dismiss it early.
+
+```html
+<ds-button id="show-toast">Show toast</ds-button>
+<ds-button id="dismiss-toast">Dismiss toast</ds-button>
+
+<script type="module">
+  import { dsToastController } from '@baloise/ds-core'
+
+  let toastId
+
+  document.querySelector('#show-toast').addEventListener('click', async () => {
+    toastId = await dsToastController.create({
+      heading: 'Saved',
+      message: 'Your changes have been saved.',
+      closable: true,
+      duration: 5000,
+      closeHandler: () => undefined,
+      actionHandler: () => undefined,
+    })
+  })
+
+  document.querySelector('#dismiss-toast').addEventListener('click', () => {
+    if (toastId) dsToastController.remove(toastId)
+  })
+</script>
+```
+
+</HTMLFramework>
+
+{/* ################################################## */}
+{/* -------------------------------------------------- */}
+{/* ANGULAR  ------------------------------------------- */}
+{/* -------------------------------------------------- */}
+{/* ################################################## */}
+
+<AngularFramework>
+
+## Present and dismiss a toast
+
+WIP
+
+</AngularFramework>
 
 ## When to Use
 
@@ -89,42 +189,7 @@ import { TOAST_DOC_CONFIG, getToastTabs } from './toast.doc-config'
   ]}
 />
 
-<ReactFramework>
 
-## Present and dismiss a toast
-
-`useToast()` returns `present` and `dismiss` functions. Pass notification content as data; toast content is not JSX.
-
-<InfoQuote>
-  Import `useToast` from `@baloise/ds-react`. The generated `DsToast` wrapper is deprecated.
-</InfoQuote>
-
-```tsx
-import { DsButton, useToast } from '@baloise/ds-react'
-
-export function ToastExample() {
-  const [presentToast, dismissToast] = useToast()
-
-  const showToast = () =>
-    presentToast({
-      heading: 'Saved',
-      message: 'Your changes have been saved.',
-      closable: true,
-      duration: 5000,
-      closeHandler: () => undefined,
-      actionHandler: () => undefined,
-    })
-
-  return (
-    <>
-      <DsButton onDsClick={showToast}>Show toast</DsButton>
-      <DsButton onDsClick={() => dismissToast()}>Dismiss toast</DsButton>
-    </>
-  )
-}
-```
-
-</ReactFramework>
 
 <Footer>
   <LinkCards>

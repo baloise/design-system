@@ -1,0 +1,14 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+import { Banner, BannerTabs, ComponentPageObject, Footer } from '../../../.storybook/blocks'
+import * as SliderStories from './slider.stories'
+import { SLIDER_DOC_CONFIG, getSliderTabs } from './slider.doc-config'
+
+<Meta title="Components/Forms/Slider/Testing" name="Testing" />
+
+<Banner label={'Testing'} section={SLIDER_DOC_CONFIG.section} color={SLIDER_DOC_CONFIG.color} />
+
+<BannerTabs of={SliderStories} tabs={getSliderTabs('testing')} />
+
+<ComponentPageObject component="slider" />
+
+<Footer />

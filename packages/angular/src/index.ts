@@ -1,14 +1,18 @@
+import { EnvironmentProviders, makeEnvironmentProviders, provideEnvironmentInitializer } from '@angular/core'
 import { DsConfig, initializeDesignSystem } from '@baloise/ds-core'
 
-interface DsAngularConfig {
+export interface DsAngularConfig {
   defaults?: DsConfig
 }
 
-export const bootstrapDesignSystem = (config: DsAngularConfig = {}) => {
-  initializeDesignSystem({
-    ...config.defaults,
-    httpFormSubmit: false,
-  })
+export function provideDesignSystem(config: DsAngularConfig = {}): EnvironmentProviders {
+  return makeEnvironmentProviders([
+    provideEnvironmentInitializer(() => {
+      initializeDesignSystem({
+        ...config.defaults,
+      })
+    }),
+  ])
 }
 // A named export (e.g. `DsInput` below) always wins over a colliding `export *` regardless of statement
 // order, so this override doesn't depend on where it's placed relative to './generated/proxies' — it's
@@ -18,10 +22,10 @@ export * from './forms/value-accessor'
 export { DsInput } from './forms/ds-input'
 export { DsTextarea } from './forms/ds-textarea'
 export { DsNumberInput } from './forms/ds-number-input'
-export { DsInputSlider } from './forms/ds-input-slider'
-export { DsInputStepper } from './forms/ds-input-stepper'
+export { DsSlider } from './forms/ds-slider'
+export { DsCounter } from './forms/ds-counter'
 export { DsSegment } from './forms/ds-segment'
-export { DsDate } from './forms/ds-date'
+export { DsDatepicker } from './forms/ds-datepicker'
 export { DsCheckboxGroup } from './forms/ds-checkbox-group'
 export { DsRadioGroup } from './forms/ds-radio-group'
 export { DsFileUpload } from './forms/ds-file-upload'

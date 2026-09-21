@@ -41,7 +41,7 @@ website-context navbar is a new component (e.g. `ds-web-navbar`), not a prop
 on `ds-app-navbar`. This is a hard rename — no deprecated alias is kept for
 the old tags — shipped with a major changeset, and applied consistently
 across the tag, folder/file names (`navbar/` → `app-navbar/`, matching the
-repo's existing compound-name convention, e.g. `input-slider/input-slider.tsx`),
+repo's existing compound-name convention, e.g. `slider/slider.tsx`),
 design tokens (`--ds-navbar-*` → `--ds-app-navbar-*`), Storybook docs, and
 Playwright page objects/snapshots.
 

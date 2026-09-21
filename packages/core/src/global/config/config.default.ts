@@ -16,7 +16,6 @@ export const defaultConfig: DsConfigState = {
     custom: false,
   },
   animated: true,
-  httpFormSubmit: true,
   legalLinks: {
     CH: {
       de: [

@@ -7,8 +7,9 @@ import {
   LinkCard,
   LinkCards,
   ReactFramework,
+  HTMLFramework,
+  AngularFramework,
   UsageExamples,
-  WarningQuote,
 } from '../../../.storybook/blocks'
 import * as ModalStories from './modal.stories'
 import { MODAL_DOC_CONFIG, getModalTabs } from './modal.doc-config'
@@ -19,21 +20,41 @@ import { MODAL_DOC_CONFIG, getModalTabs } from './modal.doc-config'
 
 <BannerTabs of={ModalStories} tabs={getModalTabs('usage')} />
 
-## When to Use
-
-- To interrupt the user with a decision or action that must be completed before continuing.
-- To confirm a destructive or irreversible action (e.g. delete, submit).
-- To display a focused form or secondary workflow without navigating away from the current page.
-- To surface critical information that requires acknowledgement.
-
-## When NOT to Use
-
-- For non-critical or informational messages — use a notification or snackbar instead.
-- When the content is too large to fit comfortably in a dialog — consider a dedicated page or side panel.
-- For complex multi-step workflows — break them into separate pages instead.
-- As a substitute for inline validation or contextual help.
+{/* ################################################## */}
+{/* -------------------------------------------------- */}
+{/* REACT  ------------------------------------------- */}
+{/* -------------------------------------------------- */}
+{/* ################################################## */}
 
 <ReactFramework>
+
+## Imperative modal
+
+Use `useModal()` when a modal must be presented outside of render — for example from an event handler or a promise
+chain — without tracking `open` state yourself. `present()` mounts the given React content into the overlay;
+`dismiss()` closes it and optionally forwards a result.
+
+```tsx
+import { DsButton, DsModalBody, DsModalHeader, useModal } from '@baloise/ds-react'
+
+export function ImperativeModalExample() {
+  const [present, dismiss] = useModal()
+
+  const confirm = () =>
+    present(
+      <>
+        <DsModalHeader>Confirm action</DsModalHeader>
+        <DsModalBody>
+          <p>Do you want to continue?</p>
+          <DsButton onDsClick={() => dismiss('confirmed')}>Continue</DsButton>
+        </DsModalBody>
+      </>,
+      { closable: true },
+    )
+
+  return <DsButton onDsClick={confirm}>Open modal</DsButton>
+}
+```
 
 ## Controlled modal
 
@@ -65,11 +86,116 @@ export function ModalExample() {
 }
 ```
 
-<WarningQuote>
-  Imperative modal presentation with `useModal()` is not available yet. Use the controlled `Modal` component.
-</WarningQuote>
-
 </ReactFramework>
+
+
+{/* ################################################## */}
+{/* -------------------------------------------------- */}
+{/* HTML  ------------------------------------------- */}
+{/* -------------------------------------------------- */}
+{/* ################################################## */}
+
+<HTMLFramework>
+
+## Imperative modal
+
+Use `dsModalController` from `@baloise/ds-core` to present a modal without adding markup to the page. `create()`
+mounts a `ds-modal` into the document and opens it; append your header, body, and actions afterwards — the slots
+pick them up automatically. `dismiss()` closes the currently open modal.
+
+```html
+<ds-button id="open-modal">Open modal</ds-button>
+
+<script type="module">
+  import { dsModalController } from '@baloise/ds-core'
+
+  document.querySelector('#open-modal').addEventListener('click', async () => {
+    const header = document.createElement('ds-modal-header')
+    header.textContent = 'Confirm action'
+
+    const body = document.createElement('ds-modal-body')
+    body.innerHTML = '<p>Do you want to continue?</p>'
+
+    const cancel = document.createElement('ds-button')
+    cancel.slot = 'actions'
+    cancel.textContent = 'Cancel'
+    cancel.addEventListener('click', () => dsModalController.dismiss())
+
+    const modal = await dsModalController.create({ closable: true })
+    modal.append(header, body, cancel)
+  })
+</script>
+```
+
+## Controlled modal
+
+Render the modal in the document and toggle it with its `present()` and `dismiss()` methods, or by setting the
+`open` property/attribute directly.
+
+```html
+<ds-button onclick="document.getElementById('modal-basic').present()">Open modal</ds-button>
+
+<ds-modal id="modal-basic">
+  <ds-modal-header>Confirm action</ds-modal-header>
+  <ds-modal-body>
+    <p>Do you want to continue?</p>
+  </ds-modal-body>
+  <ds-button slot="actions" onclick="document.getElementById('modal-basic').dismiss()">
+    Cancel
+  </ds-button>
+</ds-modal>
+```
+
+## Styling
+
+Customize the modal per instance with its CSS custom properties.
+
+```css
+#modal-basic {
+  --modal-width: 480px;
+  --modal-radius: 1rem;
+  --modal-background: #f5f5f5;
+}
+```
+
+<LinkCards>
+  <LinkCard pageTitle="Components/Modal/Styling" description="See all available CSS variables and design tokens." />
+</LinkCards>
+
+</HTMLFramework>
+
+{/* ################################################## */}
+{/* -------------------------------------------------- */}
+{/* ANGULAR  ------------------------------------------- */}
+{/* -------------------------------------------------- */}
+{/* ################################################## */}
+
+<AngularFramework>
+
+## Imperative modal
+
+WIP
+
+## Controlled modal
+
+WIP
+
+</AngularFramework>
+
+## When to Use
+
+- To interrupt the user with a decision or action that must be completed before continuing.
+- To confirm a destructive or irreversible action (e.g. delete, submit).
+- To display a focused form or secondary workflow without navigating away from the current page.
+- To surface critical information that requires acknowledgement.
+
+## When NOT to Use
+
+- For non-critical or informational messages — use a notification or snackbar instead.
+- When the content is too large to fit comfortably in a dialog — consider a dedicated page or side panel.
+- For complex multi-step workflows — break them into separate pages instead.
+- As a substitute for inline validation or contextual help.
+
 
 <Footer>
   <LinkCards>

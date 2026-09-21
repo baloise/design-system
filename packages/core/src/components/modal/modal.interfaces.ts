@@ -9,6 +9,7 @@ export type ModalDismissDetail = void
 export interface ModalOptions {
   modalWidth?: number
   closable?: boolean
+  component?: HTMLElement
 }
 
 export interface ModalController {

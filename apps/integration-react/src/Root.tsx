@@ -7,6 +7,7 @@ import {
   DsModalBody,
   DsModalHeader,
   Modal,
+  useModal,
   useSnackbar,
   useToast,
 } from '@baloise/ds-react'
@@ -15,6 +16,7 @@ const OverlayDemos = () => {
   const [isOpen, setIsOpen] = useState(false)
   const [presentToast, dismissToast] = useToast()
   const [presentSnackbar, dismissSnackbar] = useSnackbar()
+  const [presentModal, dismissModal] = useModal()
 
   return (
     <section>
@@ -30,6 +32,25 @@ const OverlayDemos = () => {
           <p>Body content</p>
         </DsModalBody>
       </Modal>
+
+      <DsButton
+        data-testid="present-imperative-modal"
+        onDsClick={() =>
+          presentModal(
+            <>
+              <DsModalHeader>Imperative Modal</DsModalHeader>
+              <DsModalBody>
+                <p data-testid="imperative-modal-body">Presented via useModal()</p>
+                <DsButton data-testid="dismiss-imperative-modal" onDsClick={() => dismissModal()}>
+                  Close
+                </DsButton>
+              </DsModalBody>
+            </>,
+          )
+        }
+      >
+        Present modal via useModal()
+      </DsButton>
 
       <DsButton
         data-testid="show-toast"

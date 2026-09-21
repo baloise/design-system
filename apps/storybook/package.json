@@ -17,7 +17,7 @@
     "@storybook/addon-docs": "catalog:",
     "@storybook/addon-links": "catalog:",
     "@storybook/html-vite": "catalog:",
-    "ag-grid-community": "36.1.0",
+    "ag-grid-community": "36.2.0",
     "lodash": "catalog:",
     "react": "19.3.0",
     "react-dom": "19.3.0",

@@ -49,10 +49,10 @@ editing, this doc reflects a point-in-time investigation:
 - `packages/core/src/components/input/field.util.tsx` — the shared `Field`
   functional component and `FieldInterface` type. Co-located per component,
   not a global util — `ds-input-phone` needs its **own** copy/variant
-  (following `ds-select`'s and `ds-input-slider`'s precedent of each
+  (following `ds-select`'s and `ds-slider`'s precedent of each
   implementing `FieldInterface` on their own class), not an import from
   `input/field.util.tsx`. Confirm during Phase 4 whether the repo has since
-  centralized this (check `ds-select`'s and `ds-input-slider`'s current
+  centralized this (check `ds-select`'s and `ds-slider`'s current
   imports first).
 - `packages/core/src/components/select/` (`ds-select`) — reference for
   `SelectPickerController`-style controller separation
@@ -134,7 +134,7 @@ not re-opening grilled decisions):
 - **Typing**: on each `input` event, feed the raw input value through the
   current `AsYouType` instance's `.input(...)`, and set the field's
   displayed value to the formatted result. Track and restore cursor
-  position across the reformat (the trickiest part — `ds-date`'s
+  position across the reformat (the trickiest part — `ds-datepicker`'s
   `imask`-based cursor handling in `input.mask.ts` is a reference point for
   the general problem shape, though the library differs).
 - **Blur**: re-run formatting once more for a stable final form (guards
@@ -226,14 +226,14 @@ checkable before moving on):
    replace the temporary country switch.
 6. Wire `dsCountryChange` and finalize `dsInput`/`dsChange` payloads.
 7. Register the component in the Stencil config / component index
-   (check how `ds-select`/`ds-input-slider` were registered — likely an
+   (check how `ds-select`/`ds-slider` were registered — likely an
    auto-discovered `components.d.ts` regeneration via `pnpm build`, confirm
    no manual index file needs updating).
 
 ## Phase 5 — Field integration
 
 - Implement `FieldInterface` on the `InputPhone` class exactly as `ds-select`
-  and `ds-input-slider` do (see Phase 0 notes — confirm current exact
+  and `ds-slider` do (see Phase 0 notes — confirm current exact
   pattern before writing, as this plan's Phase 0 findings are a snapshot).
 - Wrap the picker trigger + number field together as `Field`'s children;
   the picker trigger occupies the `start` slot, the number field is the
