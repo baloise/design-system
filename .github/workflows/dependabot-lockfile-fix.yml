@@ -45,7 +45,7 @@ jobs:
         run: pnpm install --no-frozen-lockfile
 
       - name: Commit lockfile if changed
-        uses: stefanzweifel/git-auto-commit-action@v5
+        uses: stefanzweifel/git-auto-commit-action@v7
         with:
           commit_message: 'chore: repair pnpm-lock.yaml catalog specifiers'
           file_pattern: pnpm-lock.yaml
