@@ -192,7 +192,7 @@ These skills do not live in this repo's `.claude/skills/`. They ship as a standa
 npx @helvetia/ds-skills add
 ```
 
-Package conventions (compiled CLI vs. self-contained payload, how to add the next component file) are documented in [packages/ds-skills/CONTEXT.md](../packages/ds-skills/CONTEXT.md).
+Package conventions (compiled CLI vs. self-contained payload, how to add the next component file) and **how to test the installer** are documented in [packages/ds-skills/CONTEXT.md](../packages/ds-skills/CONTEXT.md#testing).
 
 ### **ds-migrate-from-baloise**
 

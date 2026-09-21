@@ -42,6 +42,44 @@ The copied skill edits the consumer's files and leaves everything unstaged. It n
 - **Overwrite is the update path** — `add` replaces the destination folder; do not add a separate `update` command.
 - **Coming-soon menu items report "coming soon" and stop** — they exist to show eventual scope, not as errors.
 
+## Testing
+
+Do **not** run `add` from this monorepo root — it would copy the skill into this repo's `.claude/skills/`. Always use a scratch directory.
+
+### Unit tests and lint
+
+```bash
+nvm use
+pnpm --filter @helvetia/ds-skills test
+pnpm --filter @helvetia/ds-skills lint
+```
+
+Done when all four CLI specs pass and eslint exits 0.
+
+### Scratch CLI
+
+```bash
+nvm use
+pnpm --filter @helvetia/ds-skills build
+
+SCRATCH=$(mktemp -d)
+cd "$SCRATCH"
+node /absolute/path/to/packages/ds-skills/dist/cli.js add
+```
+
+Done when:
+
+1. stdout is `Copied ds-migrate-from-baloise to <scratch>/.claude/skills/ds-migrate-from-baloise`
+2. that folder contains `SKILL.md` with the 4-item menu (Init / Components / CSS utils (coming soon) / Assets (coming soon)) and the line that the skill never runs `git add` or `git commit`
+3. `node …/dist/cli.js` with no args, or with `list`, prints `Usage: ds-skills add` and exits 1
+4. after writing a stale `SKILL.md` and `stale.txt` into the destination, a second `add` restores `SKILL.md` and removes `stale.txt`
+
+### Menu (Claude)
+
+In the scratch directory, invoke `/ds-migrate-from-baloise`. Done when Init reports it is a follow-up and stops, Components reports no migrations available and stops, and CSS utils / Assets report "coming soon" and stop.
+
+Init, spinner scan, and rewrites are follow-up tickets — they are out of scope for this package version.
+
 ## Related Contexts
 
 See [CONTEXT-MAP.md](../../CONTEXT-MAP.md) for:
