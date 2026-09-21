@@ -1,0 +1,51 @@
+# CONTEXT — packages/ds-skills (Consumer Claude Code Skills)
+
+This document captures domain language, architectural patterns, and key concepts specific to the published skills package.
+
+## Overview
+
+**packages/ds-skills** (`@helvetia/ds-skills`) ships Claude Code skills that consuming applications install into their own repo. It is not a design-system runtime package — there are no web components, tokens, or styles here. Consumers run `npx @helvetia/ds-skills add`, which copies a skill folder into `<cwd>/.claude/skills/`.
+
+The first (and currently only) skill is **ds-migrate-from-baloise**: a menu-driven helper for migrating an app from the Baloise Design System (`bal-*`, `@baloise/ds-*`) to the Helvetia Design System (`ds-*`, `@helvetia/ds-*`). The menu itself lives in the copied `SKILL.md`; this file documents package conventions, not the menu copy.
+
+## Core Concepts
+
+### Compiled CLI vs. self-contained payload
+
+The package has two parts that must not be confused:
+
+- **Compiled CLI** — `src/cli.ts`, swc-compiled to `dist/cli.js`, exposed as `bin.ds-skills`. Its only job is the `add` subcommand: copy the skill payload into the consumer's `.claude/skills/` directory (creating parents, overwriting on re-run). Re-running `add` is how a consumer updates the skill. The CLI has no other subcommands until a second skill exists.
+- **Self-contained payload** — `skills/ds-migrate-from-baloise/`, plain uncompiled Markdown (and, later, plain Node scripts). Copied verbatim. After copy, the skill must run inside the consumer's repo with **zero runtime dependency** back on `@helvetia/ds-skills` or this monorepo — no imports from `node_modules/@helvetia/*`.
+
+The compiled CLI is a delivery mechanism. The payload is the product.
+
+### Skill payload, not a plugin
+
+Distribution is `npx @helvetia/ds-skills add`. There is no Claude Code plugin manifest and no marketplace registration.
+
+### One `migration.md` per component
+
+**Components** is a file-driven submenu. Adding a component means adding `components/<name>/migration.md` (title in the first heading). `SKILL.md` lists `components/*.md` and `components/*/migration.md` by title and dispatches to the chosen file; the menu control logic does not change. No component files ship in this package version — the first one lands in a follow-up.
+
+### Independent versioning
+
+This package publishes as `@helvetia/ds-skills`, outside the `@baloise/ds-*` lockstep group in `.changeset/config.json`. It versions on its own changeset track, not at `20.0.0-next.x`.
+
+### The skill never commits
+
+The copied skill edits the consumer's files and leaves everything unstaged. It never runs `git add` or `git commit`. That is the same "leave changes for the user" rule this monorepo uses, applied to a stranger's production codebase.
+
+## Key Constraints
+
+- **CLI surface is `add` only** — no arguments, no `list`, no per-skill selection.
+- **Payload stays uncompiled** — Markdown and dependency-free JS only. Do not import from this package's `dist/` or from other workspace packages.
+- **Overwrite is the update path** — `add` replaces the destination folder; do not add a separate `update` command.
+- **Coming-soon menu items report "coming soon" and stop** — they exist to show eventual scope, not as errors.
+
+## Related Contexts
+
+See [CONTEXT-MAP.md](../../CONTEXT-MAP.md) for:
+
+- [[root|CONTEXT.md]] — repository-level concepts, release process
+
+The full migration-skill plan this package starts is [docs/plans/ds-migrate-baloise-plan.md](../../docs/plans/ds-migrate-baloise-plan.md).
