@@ -230,7 +230,7 @@ export function committedVariableIds(baseTokens) {
 /**
  * @param {object} params
  * @param {import('./tokens.mjs').Token[]} params.baseTokens
- * @param {Record<string, import('./tokens.mjs').Token[]>} params.brandTokensByName e.g. { Base: [...], Tcs: [...] }
+ * @param {Record<string, import('./tokens.mjs').Token[]>} params.brandTokensByName e.g. { Base: [...], ERV: [...] }
  * @param {Map<string, string | Record<string, string>>} params.idByPath from assignVariableIds
  * @param {string} params.collectionId the brand collection ("Design Tokens")
  * @param {Record<string, string>} params.modeIdByBrand

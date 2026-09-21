@@ -39,6 +39,9 @@ import { clampValue, stepMinus, stepPlus } from './counter.utils'
 
 const STEP_FALLBACK = 1
 
+// Must match the CSS animation duration in counter.host.scss (`.value-slide` `animation-duration`).
+const VALUE_ANIMATION_MS = 260
+
 /**
  * Counter renders a numeric value flanked by decrease and increase buttons.
  *
@@ -59,6 +62,7 @@ export class Counter implements DsComponentInterface, FieldInterface {
   private stepWarned = false
   private decreaseButtonEl?: HTMLDsButtonElement
   private increaseButtonEl?: HTMLDsButtonElement
+  private valueAnimationTimer?: ReturnType<typeof setTimeout>
 
   counterId = `ds-counter-${CounterIds++}`
 
@@ -76,6 +80,17 @@ export class Counter implements DsComponentInterface, FieldInterface {
 
   @State() language: DsLanguage = defaultConfig.language
   @State() region: DsRegion = defaultConfig.region
+
+  /**
+   * The value the animation is transitioning away from. Set for the duration of `VALUE_ANIMATION_MS`
+   * after a step, then cleared so the outgoing digit is removed from the DOM again.
+   */
+  @State() previousValue: number | null = null
+
+  /**
+   * Direction of the current value step, driving which way the outgoing/incoming digits slide.
+   */
+  @State() valueDirection: 'increase' | 'decrease' | null = null
 
   /**
    * PUBLIC PROPERTY API
@@ -279,6 +294,10 @@ export class Counter implements DsComponentInterface, FieldInterface {
     this.inheritedAttributes = inheritAttributes(this.el, ['aria-label', 'tabindex', 'title'])
   }
 
+  disconnectedCallback() {
+    clearTimeout(this.valueAnimationTimer)
+  }
+
   /**
    * PUBLIC LISTENERS
    * ─────────────────────────────────────────────────────
@@ -435,9 +454,24 @@ export class Counter implements DsComponentInterface, FieldInterface {
   }
 
   private commit(next: number) {
+    this.animateValueChange(next)
     this.value = next
     this.dsInput.emit(next)
     this.dsChange.emit(next)
+  }
+
+  // Slides the outgoing digit out and the incoming one in from the opposite side (up on increase,
+  // down on decrease) — see counter.host.scss `.value-slide`. Purely cosmetic: the previous value is
+  // kept around just long enough to animate, then dropped so it doesn't linger in the DOM/a11y tree.
+  private animateValueChange(next: number) {
+    if (next === this.value) return
+    this.previousValue = this.value
+    this.valueDirection = next > this.value ? 'increase' : 'decrease'
+    clearTimeout(this.valueAnimationTimer)
+    this.valueAnimationTimer = setTimeout(() => {
+      this.previousValue = null
+      this.valueDirection = null
+    }, VALUE_ANIMATION_MS)
   }
 
   /**
@@ -472,7 +506,7 @@ export class Counter implements DsComponentInterface, FieldInterface {
                 ? 'danger'
                 : this.color === 'danger' || this.color === 'warning' || this.color === 'success'
                   ? this.color
-                  : 'secondary'
+                  : 'ghost'
             }
             size="sm"
             square
@@ -484,8 +518,32 @@ export class Counter implements DsComponentInterface, FieldInterface {
             onDsFocus={this.handleFocusDecrease}
             onDsBlur={this.handleBlurDecrease}
           ></ds-button>
-          <span part="value" data-testid="ds-counter-value">
-            {formatLocaleNumber(this.value)}
+          <span id="value" part="value" data-testid="ds-counter-value">
+            {this.previousValue !== null && (
+              <span
+                key={`prev-${this.previousValue}`}
+                aria-hidden="true"
+                class={{
+                  'value-slide': true,
+                  'value-out': true,
+                  'is-increase': this.valueDirection === 'increase',
+                  'is-decrease': this.valueDirection === 'decrease',
+                }}
+              >
+                {formatLocaleNumber(this.previousValue)}
+              </span>
+            )}
+            <span
+              key={`current-${this.value}`}
+              class={{
+                'value-slide': true,
+                'value-in': this.previousValue !== null,
+                'is-increase': this.valueDirection === 'increase',
+                'is-decrease': this.valueDirection === 'decrease',
+              }}
+            >
+              {formatLocaleNumber(this.value)}
+            </span>
           </span>
           <ds-button
             ref={el => (this.increaseButtonEl = el as HTMLDsButtonElement)}
@@ -496,7 +554,7 @@ export class Counter implements DsComponentInterface, FieldInterface {
                 ? 'danger'
                 : this.color === 'danger' || this.color === 'warning' || this.color === 'success'
                   ? this.color
-                  : 'secondary'
+                  : 'ghost'
             }
             size="sm"
             square

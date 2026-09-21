@@ -20,9 +20,7 @@
     "./css/base": "./dist/css/base.tokens.css",
     "./css/base-override": "./dist/css/base.override.css",
     "./css/erv": "./dist/css/erv.tokens.css",
-    "./css/erv-override": "./dist/css/erv.override.css",
-    "./css/tcs": "./dist/css/tcs.tokens.css",
-    "./css/tcs-override": "./dist/css/tcs.override.css"
+    "./css/erv-override": "./dist/css/erv.override.css"
   },
   "scripts": {
     "build": "pnpm exec tsc && node dist/out-tsc",

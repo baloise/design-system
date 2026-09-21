@@ -238,7 +238,7 @@ describe('computePreviewTokens', () => {
 describe('computeBrandPreviewTokens', () => {
   // Regression: the [data-theme] stylesheet the core listener injects only reflects what's
   // already built into dist/css/<brand>.tokens.css - an in-progress brand edit (e.g. changing
-  // Tag's Tcs-brand background to a different color) isn't in there yet, so it needs to be sent
+  // Tag's ERV-brand background to a different color) isn't in there yet, so it needs to be sent
   // as its own inline override the same way a Base edit is.
   it('maps a brand update entry to its resolved CSS value, looked up by id', () => {
     const path = ['🧩 Component', 'Tag', 'Primary', 'Color', 'Bg']

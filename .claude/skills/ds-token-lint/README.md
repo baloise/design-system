@@ -28,7 +28,7 @@ Claude drives this as a two-phase flow:
 ## Scope (v1)
 
 - Component-layer tokens only — not Alias/Global usage in SCSS (that's `ds-lint-component`'s job)
-- `Base.tokens.json` only — brand override files (`Tcs.tokens.json`) are not scanned
+- `Base.tokens.json` only — brand override files (`ERV.tokens.json`) are not scanned
 - Single component per run — no `--all` mode
 - Whole-batch approval — no per-row selection
 

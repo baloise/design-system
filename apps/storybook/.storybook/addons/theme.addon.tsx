@@ -14,7 +14,6 @@ const SvgIcon = ({ html, size = 14 }: { html: string; size?: number }) => (
 
 const themes: { id: string; title: string; color: string }[] = [
   { id: '', title: 'Helvetia', color: '#000d6e' },
-  { id: 'tcs', title: 'TCS', color: '#ffeb02' },
   { id: 'erv', title: 'ERV', color: '#f19654' },
 ]
 

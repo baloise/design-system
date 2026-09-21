@@ -25,7 +25,7 @@ not, with no way to substitute a brand's tokens instead.
 
 ## Decision
 
-- Every brand (Tcs, ERV, future brands) now builds two **full, independently
+- Every brand (ERV, future brands) now builds two **full, independently
   self-sufficient** CSS files instead of one diff file — each contains every
   token (Base's value merged with the brand's overrides), not a diff:
   - `<brand>.tokens.css` — `:host, :root` selector. For an app that commits
@@ -58,7 +58,7 @@ not, with no way to substitute a brand's tokens instead.
   narrower mechanism and is unaffected.
 - `packages/tokens/package.json` gains explicit `exports` subpaths per file
   (`./css/base`, `./css/base-override`, `./css/erv`, `./css/erv-override`,
-  `./css/tcs`, `./css/tcs-override`, …) as the public distribution
+  …) as the public distribution
   mechanism, rather than relying on the implicit copy into
   `packages/core/www/assets/tokens/`.
 

@@ -72,14 +72,6 @@
   flex: 1;
 }
 
-.ds-field + .ds-field {
-  margin-top: 0.5rem;
-}
-
-.ds-field:not(:last-child) {
-  margin-bottom: 0.25rem;
-}
-
 .ds-field.is-danger .ds-help::before,
 .ds-field.is-invalid .ds-help::before {
   content: '';

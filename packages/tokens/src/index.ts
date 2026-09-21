@@ -23,7 +23,7 @@ const StyleDictionaryBase = new StyleDictionary(ConfigBase)
 StyleDictionaryBase.buildAllPlatforms()
 
 // Brand builds — add new brand names here (must match tokens/<Name>.tokens.json)
-const brands = ['Tcs', 'ERV']
+const brands = ['ERV']
 for (const brand of brands) {
   const { config, cleanup } = createBrandConfig(brand)
   try {

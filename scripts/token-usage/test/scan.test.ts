@@ -37,7 +37,7 @@ describe('collectBaseTokens', () => {
   it('ignores layers other than Global, Alias, Device, and Component', () => {
     const docsJson = {
       '🎨 Brand': {
-        Tcs: { path: ['🎨 Brand', 'Tcs'], name: 'ds-brand-tcs' },
+        Zurich: { path: ['🎨 Brand', 'Zurich'], name: 'ds-brand-zurich' },
       },
     }
 
