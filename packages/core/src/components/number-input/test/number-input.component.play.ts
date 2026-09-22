@@ -36,6 +36,37 @@ test.describe('component', () => {
   })
 })
 
+test.describe('value assigned after load', () => {
+  test('should render a value that is assigned after the component has loaded', async ({ page }) => {
+    await page.mount(`<ds-number-input label="Label" decimal="2" suffix="CHF"></ds-number-input>`)
+    const input = new DsNumberInput(page.locator('ds-number-input'))
+
+    await input.assertValue('')
+
+    await input.el.evaluate((el: HTMLDsNumberInputElement) => {
+      el.value = 42.15
+    })
+    await page.waitForChanges()
+
+    await input.assertValue('42.15 CHF')
+  })
+
+  test('should render a value that is re-assigned to the same number after the component has loaded', async ({
+    page,
+  }) => {
+    await page.mount(`<ds-number-input label="Label" decimal="2" suffix="CHF"></ds-number-input>`)
+    const input = new DsNumberInput(page.locator('ds-number-input'))
+
+    await input.el.evaluate((el: HTMLDsNumberInputElement) => {
+      el.value = 42.15
+      el.value = 42.15
+    })
+    await page.waitForChanges()
+
+    await input.assertValue('42.15 CHF')
+  })
+})
+
 test.describe('decimal', () => {
   test('should emit decimal value when decimal="2"', async ({ page }) => {
     await page.mount(`<ds-number-input label="Label" decimal="2"></ds-number-input>`)

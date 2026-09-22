@@ -241,7 +241,7 @@ export class NumberInput implements DsComponentInterface, FieldInterface, FormCo
   @Prop({ mutable: true, reflect: true })
   @Type('number')
   value: number | null = null
-  @Watch('value')
+  @Watch('value', { immediate: true })
   valueChanged(newValue: number | null) {
     const isValueNotDefined = newValue === null || isNaN(newValue as number)
     const emptyValue = this.exactNumber ? '0' : ''
