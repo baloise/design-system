@@ -70,6 +70,7 @@ export class NumberInput
   private inputId = `bal-number-input-${numberInputIds++}`
   private inheritedAttributes: { [k: string]: any } = {}
   private selectTimeout?: NodeJS.Timeout
+  private hasDerivedValue = false
 
   lastValue = ''
   nativeInput?: HTMLInputElement
@@ -179,6 +180,7 @@ export class NumberInput
 
   @Watch('value')
   protected valueChanged(newValue: number | string | undefined, oldValue?: number) {
+    this.hasDerivedValue = true
     const newValueAsNumber: number | undefined = toNumber(newValue, this.decimal)
     if (newValueAsNumber !== oldValue) {
       const isValueNotDefined = (newValueAsNumber as any) === '' || isNil(newValueAsNumber) || isNaN(newValueAsNumber)
@@ -244,6 +246,12 @@ export class NumberInput
 
   componentWillLoad() {
     this.inheritedAttributes = inheritAttributes(this.el, ['aria-label', 'tabindex', 'title'])
+  }
+
+  componentWillRender() {
+    if (!this.hasDerivedValue && !this.focused && this.value !== undefined) {
+      this.valueChanged(this.value, undefined)
+    }
   }
 
   /**
