@@ -1,4 +1,4 @@
-import tokens from '@baloise/ds-tokens/dist/docs/base.tokens.json'
+import tokens from '@helvetia-design/tokens/dist/docs/base.tokens.json'
 import React from 'react'
 import { CssUtilitiesTable } from './helpers/CssPropertyTable'
 import { CssTable } from './helpers/CssTable'

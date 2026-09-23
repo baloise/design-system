@@ -1,4 +1,4 @@
-import { DsLogo, test } from '@baloise/ds-playwright'
+import { DsLogo, test } from '@helvetia-design/playwright'
 
 test.describe('component', () => {
   test('should be visible', async ({ page }) => {

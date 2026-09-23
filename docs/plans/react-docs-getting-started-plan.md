@@ -2,7 +2,7 @@
 
 ## Context
 
-Milestone **⚛️ React Integration** (#21) tracks work improving `@baloise/ds-react`: SSR support for Next.js (#2220–#2223) and overlay-component idioms for modal/toast/snackbar (#2218/#2219). None of the existing tickets cover the developer-facing docs that explain how to get started with `@baloise/ds-react` — the "Getting Started" page in Storybook is where a new consumer lands first, and its React section is noticeably thinner than the Angular section on the same page.
+Milestone **⚛️ React Integration** (#21) tracks work improving `@helvetia-design/react`: SSR support for Next.js (#2220–#2223) and overlay-component idioms for modal/toast/snackbar (#2218/#2219). None of the existing tickets cover the developer-facing docs that explain how to get started with `@helvetia-design/react` — the "Getting Started" page in Storybook is where a new consumer lands first, and its React section is noticeably thinner than the Angular section on the same page.
 
 Comparing `apps/storybook/src/development/00-guides/00-getting-started.mdx`:
 - **Angular** (lines 27–223): prerequisites, recommendations (SCSS, Transloco), schematics install, manual install, style import, both Standalone and Module-based integration patterns, full working examples.

@@ -1,4 +1,4 @@
-import { DsNotification, expect, test } from '@baloise/ds-playwright'
+import { DsNotification, expect, test } from '@helvetia-design/playwright'
 
 test.describe('component', () => {
   test('should have a default slot', async ({ page }) => {

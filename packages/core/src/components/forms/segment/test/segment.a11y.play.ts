@@ -1,4 +1,4 @@
-import { test } from '@baloise/ds-playwright'
+import { test } from '@helvetia-design/playwright'
 
 const ITEMS = `
   <ds-segment-item value="apple" label="Apple"></ds-segment-item>

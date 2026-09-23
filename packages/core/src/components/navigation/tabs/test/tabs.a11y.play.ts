@@ -1,4 +1,4 @@
-import { test } from '@baloise/ds-playwright'
+import { test } from '@helvetia-design/playwright'
 
 const PANELS = `
   <ds-tab name="a">Tab A</ds-tab>

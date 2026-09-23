@@ -1,5 +1,5 @@
-import { DsCarousel, mountSsr, test } from '@baloise/ds-playwright'
-import { renderToString } from '@baloise/ds-core/hydrate'
+import { DsCarousel, mountSsr, test } from '@helvetia-design/playwright'
+import { renderToString } from '@helvetia-design/core/hydrate'
 
 const ITEMS = `
   <ds-carousel-item name="s1"><div style="height:150px">Slide 1</div></ds-carousel-item>

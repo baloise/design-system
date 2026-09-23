@@ -1,5 +1,5 @@
-import { DsSelect, expect, mountSsr, test } from '@baloise/ds-playwright'
-import { renderToString } from '@baloise/ds-core/hydrate'
+import { DsSelect, expect, mountSsr, test } from '@helvetia-design/playwright'
+import { renderToString } from '@helvetia-design/core/hydrate'
 
 test.describe('ssr', () => {
   test('renders and hydrates with declarative ds-select-option/ds-select-optgroup markup', async ({

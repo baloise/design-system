@@ -1,4 +1,4 @@
-import { DsDivider, test } from '@baloise/ds-playwright'
+import { DsDivider, test } from '@helvetia-design/playwright'
 
 test.describe('component', () => {
   test('should be visible', async ({ page }) => {

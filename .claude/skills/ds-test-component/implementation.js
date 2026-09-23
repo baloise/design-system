@@ -221,7 +221,7 @@ function generateVisualHtml(componentName, visualProps, slotsToDemo) {
 }
 
 function generateVisualPlayTs(componentName, visualProps, slotsToDemo) {
-  return `import { expectScreenshot, screenshot, test } from '@baloise/ds-playwright'
+  return `import { expectScreenshot, screenshot, test } from '@helvetia-design/playwright'
 
 const TAG = '${componentName}'
 const VARIANTS = [
@@ -260,7 +260,7 @@ test.describe('host', () => {
 }
 
 function generateA11yPlayTs(componentName, visualProps, slotsToDemo) {
-  return `import { test } from '@baloise/ds-playwright'
+  return `import { test } from '@helvetia-design/playwright'
 
 test('basic', async ({ page, a11y }) => {
   await page.mount(\`<ds-${componentName}>Content</ds-${componentName}>\`)
@@ -272,7 +272,7 @@ test('basic', async ({ page, a11y }) => {
 }
 
 function generateComponentPlayTs(componentName, componentInfo) {
-  let content = `import { Ds${componentName.charAt(0).toUpperCase() + componentName.slice(1)}, expect, test } from '@baloise/ds-playwright'
+  let content = `import { Ds${componentName.charAt(0).toUpperCase() + componentName.slice(1)}, expect, test } from '@helvetia-design/playwright'
 
 test.describe('component', () => {
 `

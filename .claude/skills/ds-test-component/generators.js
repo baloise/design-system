@@ -73,7 +73,7 @@ function generateVisualPlayTsComplete(componentName, variants) {
   const variantsStr =
     variants.length > 0 ? `[\n    '${variants.join("',\n    '")}'${variants.length > 1 ? ',' : ''}\n  ]` : '[]'
 
-  return `import { expectScreenshot, screenshot, test } from '@baloise/ds-playwright'
+  return `import { expectScreenshot, screenshot, test } from '@helvetia-design/playwright'
 
 const TAG = '${componentName}'
 const VARIANTS = ${variantsStr}
@@ -109,7 +109,7 @@ test.describe('host', () => {
 }
 
 function generateA11yPlayTsComplete(componentName, states) {
-  let content = `import { test } from '@baloise/ds-playwright'
+  let content = `import { test } from '@helvetia-design/playwright'
 
 test('basic', async ({ page, a11y }) => {
   await page.mount(\`<ds-${componentName}>Content</ds-${componentName}>\`)
@@ -137,7 +137,7 @@ test.describe('states', () => {
 function generateComponentPlayTsComplete(componentName, componentInfo) {
   const className = componentName.charAt(0).toUpperCase() + componentName.slice(1)
 
-  let content = `import { Ds${className}, expect, test } from '@baloise/ds-playwright'
+  let content = `import { Ds${className}, expect, test } from '@helvetia-design/playwright'
 
 test.describe('component', () => {
 `

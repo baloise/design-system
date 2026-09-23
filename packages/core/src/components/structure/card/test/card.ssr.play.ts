@@ -7,8 +7,8 @@ import {
   DsCardTitle,
   mountSsr,
   test,
-} from '@baloise/ds-playwright'
-import { renderToString } from '@baloise/ds-core/hydrate'
+} from '@helvetia-design/playwright'
+import { renderToString } from '@helvetia-design/core/hydrate'
 
 test.describe('ssr', () => {
   test('renders and hydrates', async ({ page }, testInfo) => {

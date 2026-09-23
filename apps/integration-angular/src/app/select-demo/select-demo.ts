@@ -1,6 +1,6 @@
 import { Component, signal } from '@angular/core'
 import { FormControl, FormGroup, ReactiveFormsModule, ValidationErrors, ValidatorFn } from '@angular/forms'
-import { DsSelect } from '@baloise/ds-angular'
+import { DsSelect } from '@helvetia-design/angular'
 
 const COUNTRY_OPTIONS = [
   { label: 'Switzerland', value: 'ch' },

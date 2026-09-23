@@ -1,6 +1,6 @@
 import { Component, signal } from '@angular/core'
 import { FormControl, FormGroup, ReactiveFormsModule, ValidationErrors, ValidatorFn } from '@angular/forms'
-import { DsRadio, DsRadioGroup } from '@baloise/ds-angular'
+import { DsRadio, DsRadioGroup } from '@helvetia-design/angular'
 
 const requiredWithMessage = (message: string): ValidatorFn => {
   return (control): ValidationErrors | null => (control.value !== null ? null : { required: message })

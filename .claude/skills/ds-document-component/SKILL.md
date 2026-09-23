@@ -125,7 +125,7 @@ Wait for user selection before generating anything.
 Structure stories to expose component props as controls. All props go into the `args` object and are rendered via `${props(args)}`:
 
 ```ts
-import type { JSX } from '@baloise/ds-core'
+import type { JSX } from '@helvetia-design/core'
 import type { Meta } from '@storybook/html-vite'
 import { createCssMappings, cssClasses, props, StoryFactory, withComponentControls, withRender } from '../../../utils'
 

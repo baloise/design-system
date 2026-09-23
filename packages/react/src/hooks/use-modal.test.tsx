@@ -7,7 +7,7 @@ const create = vi.fn()
 const dismiss = vi.fn()
 const addEventListener = vi.fn()
 
-vi.mock('@baloise/ds-core', () => ({
+vi.mock('@helvetia-design/core', () => ({
   dsModalController: {
     create: (...args: unknown[]) => create(...args),
     dismiss: vi.fn(),

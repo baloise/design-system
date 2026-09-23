@@ -25,7 +25,7 @@ This document captures domain language, architectural patterns, and key concepts
 1. **Authoring** → `.tsx` + `.scss` in `packages/core/src/components/<category>/<name>/`
 2. **Compilation** → Stencil compiler transpiles to web components in `dist/`
 3. **Output targets** → Additional targets (Angular, React, Web, hydrate) generate bindings and the SSR renderer
-4. **Distribution** → Built artifacts published to npm as `@baloise/ds-core`
+4. **Distribution** → Built artifacts published to npm as `@helvetia-design/core`
 
 ### Component Types
 
@@ -82,7 +82,7 @@ Components reference design tokens (`--ds-*` CSS variables) for:
 
 ### `components/*.js` Is Guaranteed Dynamic-Import-Free
 
-The `dist-custom-elements`/web output target (`components/*.js`, generated via `libs/output-target-web`) is documented for **static, non-lazy registration** — consumers import it directly (e.g. `@baloise/ds-core/components/ds-input.js`) instead of relying on Stencil's lazy loader. Any real `import()` reachable from those entry points breaks bundlers/build targets that can't code-split (e.g. a single-file IIFE embed for a plain `<script>` tag).
+The `dist-custom-elements`/web output target (`components/*.js`, generated via `libs/output-target-web`) is documented for **static, non-lazy registration** — consumers import it directly (e.g. `@helvetia-design/core/components/ds-input.js`) instead of relying on Stencil's lazy loader. Any real `import()` reachable from those entry points breaks bundlers/build targets that can't code-split (e.g. a single-file IIFE embed for a plain `<script>` tag).
 
 This is enforced automatically, not just by convention: `libs/output-target-web/src/lib/inline-dynamic-imports.ts` runs on every `components/` build and rewrites any `import("./chunk.js")` into a hoisted static import + `Promise.resolve()`, then asserts none remain (build fails otherwise). The lazy-loader build (`dist/`, e.g. `spinner.tsx`'s `import(/* @vite-ignore */ './spinner.animation')` for the Lottie animation payload) is untouched and keeps its dynamic import, since that target is meant to code-split.
 
@@ -599,7 +599,7 @@ danger`) shared with `ds-input`/`ds-number-input`. `bal-input-slider` had
 
 `ds-checkbox-group` is the "controlled group" pattern also used by `ds-radio-group`: when its `control` prop is `true`, the group is the single source of truth for which child `ds-checkbox` elements are checked — it derives each child's `checked` from its own `value: any[]` (an array of the checked children's `value`s) rather than letting children manage their own checked state independently. `internalValue` (a private `@State()`) holds the currently-applied array; `value` (the public `@Prop()`) is compared against it via `areArraysEqual` on every `@Watch('value')` firing, `componentWillLoad`, and `connectedCallback`, and any difference re-derives each child's `checked` in `handleValueChange()`.
 
-**Checked-state sync races a child's own initialization.** A consumer that assigns `.value` as a plain JS property immediately after inserting the group into the DOM — rather than via a static HTML attribute present before parsing, e.g. `@baloise/ds-angular`'s `ControlValueAccessor.writeValue()`, called as soon as the host connects — can land that assignment before a child `ds-checkbox` has finished its own `componentWillLoad`. Setting `.checked` on such a not-yet-ready child is silently lost once the child's own initialization runs afterwards and applies its default. `handleValueChange()` closes this by awaiting `shallowReady()` (from `@utils/helpers`) on every child before touching `.checked` — a no-op once children are already loaded (e.g. a later user- or form-driven value change), so it only adds a delay on this specific early-write race. `ds-radio-group` has the same "controlled group" shape and would need the same fix if it ever grows a reactive-forms `ControlValueAccessor` of its own.
+**Checked-state sync races a child's own initialization.** A consumer that assigns `.value` as a plain JS property immediately after inserting the group into the DOM — rather than via a static HTML attribute present before parsing, e.g. `@helvetia-design/angular`'s `ControlValueAccessor.writeValue()`, called as soon as the host connects — can land that assignment before a child `ds-checkbox` has finished its own `componentWillLoad`. Setting `.checked` on such a not-yet-ready child is silently lost once the child's own initialization runs afterwards and applies its default. `handleValueChange()` closes this by awaiting `shallowReady()` (from `@utils/helpers`) on every child before touching `.checked` — a no-op once children are already loaded (e.g. a later user- or form-driven value change), so it only adds a delay on this specific early-write race. `ds-radio-group` has the same "controlled group" shape and would need the same fix if it ever grows a reactive-forms `ControlValueAccessor` of its own.
 
 `componentWillLoad` re-derives `internalValue` by calling `valueChanged()` (the `@Watch('value')` handler itself, not a separate re-check) rather than assuming `connectedCallback`'s own `valueChanged()` call already caught the current `value` — the same "written as a property right after connecting" ordering can put a very first write in the gap between `connectedCallback` returning and `componentWillLoad` running, before the watch is reliably wired up. Calling `valueChanged()` again here reads `this.value` fresh regardless of whether the watch fired for that particular assignment.
 
@@ -726,13 +726,13 @@ in a flat `data-*` attribute. See
 [docs/adr/0002-ds-config-meta-tag.md](../../docs/adr/0002-ds-config-meta-tag.md)
 for the full rationale.
 
-### Dynamic-Import-Free Entry Point (`@baloise/ds-core/initialize`)
+### Dynamic-Import-Free Entry Point (`@helvetia-design/core/initialize`)
 
-The bare `@baloise/ds-core` specifier resolves (via `module`/`es2015`) to the
+The bare `@helvetia-design/core` specifier resolves (via `module`/`es2015`) to the
 ESM bundle that also contains Stencil's `bootstrapLazy`/`loadModule` lazy-
 component-loader machinery — dozens of dynamic `import()` calls, one per
 component. Consumers who can't code-split (single-file/IIFE bundler targets)
-and hand-register components individually via `@baloise/ds-core/components/*.js`
+and hand-register components individually via `@helvetia-design/core/components/*.js`
 need `initialize`/`initializeDesignSystem` without pulling that in.
 
 `package.json`'s `exports["./initialize"]` maps to the pre-built CJS entry
@@ -740,7 +740,7 @@ need `initialize`/`initializeDesignSystem` without pulling that in.
 dynamic imports:
 
 ```ts
-import { initialize } from '@baloise/ds-core/initialize'
+import { initialize } from '@helvetia-design/core/initialize'
 ```
 
 `exports` also declares `"."`, `"./components"`, `"./loader"`, and
@@ -748,7 +748,7 @@ import { initialize } from '@baloise/ds-core/initialize'
 resolution) plus a `"./*"` fallback, so adding this map doesn't drop any
 previously-working deep import.
 
-### Hydrate Script (`@baloise/ds-core/hydrate`)
+### Hydrate Script (`@helvetia-design/core/hydrate`)
 
 `stencil.config.ts` includes a `dist-hydrate-script` output target (skipped in
 dev/docs builds, same as `dist` / `dist-custom-elements`). It produces a
@@ -756,7 +756,7 @@ Node-compatible renderer at `hydrate/` on the package root, published via the
 `files` array. `exports["./hydrate"]` maps types to `hydrate/index.d.ts` and
 the Node entries to `index.mjs`/`index.js` — the `"./*"` fallback is enough
 for untyped Node resolution, but TypeScript (and the generated React server
-wrappers that `import('@baloise/ds-core/hydrate')`) need the explicit types
+wrappers that `import('@helvetia-design/core/hydrate')`) need the explicit types
 condition, the same pattern as `./components` and `./loader`.
 
 The React generator (`config/stencil.bindings.react.ts`) points
@@ -764,7 +764,7 @@ The React generator (`config/stencil.bindings.react.ts`) points
 'declarative-shadow-dom'`, so a core build also emits
 `packages/react/src/generated/components.server.ts` alongside the existing
 client `components.ts`. Consumer-facing SSR (a `"node"`-condition exports map
-on `@baloise/ds-react`, and a client-only carve-out for the Modal/Toast/Snackbar
+on `@helvetia-design/react`, and a client-only carve-out for the Modal/Toast/Snackbar
 idioms) is the next ticket — see
 [ADR-0031](../../docs/adr/0031-ssr-hydrate-build.md).
 
@@ -792,7 +792,7 @@ idioms) is the next ticket — see
 | Visual      | `.visual.play.ts`    | Playwright       | Visual regression detection       |
 | A11y        | `.a11y.play.ts`      | Playwright + axe | WCAG 2.2 AA compliance            |
 
-All tests mount via Page Objects from `@baloise/ds-playwright`.
+All tests mount via Page Objects from `@helvetia-design/playwright`.
 
 ## Related Contexts
 

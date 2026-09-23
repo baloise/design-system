@@ -5,7 +5,7 @@ import { template } from './mount'
 import { waitForChanges } from './wait-for-changes'
 
 /**
- * Matches `renderToString`'s overloaded signature from `@baloise/ds-core/hydrate` (not imported
+ * Matches `renderToString`'s overloaded signature from `@helvetia-design/core/hydrate` (not imported
  * directly here — see the package doc comment on why) closely enough for TS to accept the real
  * function as an argument. `mountSsr` only ever calls it with the 2-arg, non-streaming overload.
  */
@@ -23,7 +23,7 @@ export type RenderToString = (
 
 /**
  * SSR twin of `mount()`. Renders `content` server-side via the injected `renderToString`
- * (from `@baloise/ds-core/hydrate`), serves the resulting markup to a real page using the same
+ * (from `@helvetia-design/core/hydrate`), serves the resulting markup to a real page using the same
  * route-interception trick as `mount()`, then lets the client-side bundle hydrate it — so tests can
  * use the same page-object infrastructure as `.component.play.ts` post-hydration.
  */

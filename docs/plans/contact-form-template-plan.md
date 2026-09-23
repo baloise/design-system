@@ -67,7 +67,7 @@ structure; no new layout component needed.
       layout. Happy-path only (no invalid/error-state demonstration).
 - [ ] `packages/core/src/templates/contact-form.visual.play.ts` — Playwright
       visual regression test, following the existing `*.visual.play.ts`
-      pattern (e.g. `select.visual.play.ts`) using `@baloise/ds-playwright`
+      pattern (e.g. `select.visual.play.ts`) using `@helvetia-design/playwright`
       helpers.
 - [ ] `packages/core/src/templates/contact-form.a11y.play.ts` — accessibility
       test (WCAG 2.2 AA), following the existing component-checklist

@@ -208,7 +208,7 @@ export const BUTTON_SIZES: ButtonSize[] = ['sm', 'md', 'lg']
 The generated SCSS file includes token structure, variables, and variants:
 
 ```scss
-@use '@baloise/ds-styles/dist/scss/mixins' as *;
+@use '@helvetia-design/styles/dist/scss/mixins' as *;
 @use '../../vars' as vars;
 
 /**

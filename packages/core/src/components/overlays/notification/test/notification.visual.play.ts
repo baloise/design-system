@@ -1,4 +1,4 @@
-import { expectScreenshot, screenshot, test } from '@baloise/ds-playwright'
+import { expectScreenshot, screenshot, test } from '@helvetia-design/playwright'
 
 const TAG = 'notification'
 const VARIANTS = ['basic', 'long-content', 'no-icon', 'colors', 'outline', 'sizes']

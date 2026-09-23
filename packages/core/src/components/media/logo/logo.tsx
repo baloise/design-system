@@ -10,7 +10,7 @@ import {
   DsComponentLogoSizeLgMobile,
   DsComponentLogoSizeSmDesktop,
   DsComponentLogoSizeSmMobile,
-} from '@baloise/ds-tokens'
+} from '@helvetia-design/tokens'
 import {
   DsBreakpointObserver,
   DsBreakpoints,

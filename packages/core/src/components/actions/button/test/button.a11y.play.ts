@@ -1,4 +1,4 @@
-import { test } from '@baloise/ds-playwright'
+import { test } from '@helvetia-design/playwright'
 
 test('basic', async ({ page, a11y }) => {
   await page.mount(`<ds-button>Button</ds-button>`)

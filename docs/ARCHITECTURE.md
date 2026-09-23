@@ -78,8 +78,8 @@ The Stencil config in `packages/core/stencil.config.ts` uses environment variabl
 ```json
 {
   "paths": {
-    "@baloise/ds-core": ["packages/core/src/index.ts"],
-    "@baloise/ds-tokens": ["packages/tokens/src/index.ts"],
+    "@helvetia-design/core": ["packages/core/src/index.ts"],
+    "@helvetia-design/tokens": ["packages/tokens/src/index.ts"],
     "@utils": ["packages/core/src/utils/index.ts"],
     "@global": ["packages/core/src/global/index.ts"]
   }
@@ -337,7 +337,7 @@ Both modes share the exact same styling logic:
 ### Component Interaction Tests
 
 - **Location:** `packages/core/src/components/<component>/test/<component>.component.play.ts`
-- **Framework:** Playwright with custom `@baloise/ds-playwright` matchers
+- **Framework:** Playwright with custom `@helvetia-design/playwright` matchers
 - **Purpose:** Test user interactions, event firing, and event payloads
 
 ### Visual Regression Tests
@@ -445,7 +445,7 @@ Post this comment in the PR to trigger `snapshot.yml`. The resulting version fol
      └─ snapshot ─┘ └─ PR # ─┘ └─ commit ─┘
 ```
 
-**When to use:** After significant features or breaking changes, invite reviewers or stakeholders to `npm install @baloise/ds-core@1.2.3-snapshot.456.abc1234` and test the design system in their project before the official release.
+**When to use:** After significant features or breaking changes, invite reviewers or stakeholders to `npm install @helvetia-design/core@1.2.3-snapshot.456.abc1234` and test the design system in their project before the official release.
 
 ### Release Flow
 

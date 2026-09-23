@@ -22,7 +22,7 @@ export function watchInvalidTextSlot(el: HTMLElement, onChange: (hasContent: boo
     }
   }
 
-  // Node's SSR mock-doc (used by `@baloise/ds-core/hydrate`) has no MutationObserver — the initial
+  // Node's SSR mock-doc (used by `@helvetia-design/core/hydrate`) has no MutationObserver — the initial
   // `check()` below still runs, the live-updating observer just isn't set up there.
   const hostObserver = typeof MutationObserver !== 'undefined' ? new MutationObserver(check) : undefined
   hostObserver?.observe(el, { childList: true })

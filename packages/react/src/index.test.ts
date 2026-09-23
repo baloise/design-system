@@ -107,7 +107,7 @@ describe('client/server entry split', () => {
   test('requiring the package under Node resolves the server entry', () => {
     const resolved = execFileSync(
       process.execPath,
-      ['--conditions=node', '--input-type=module', '-e', "console.log(import.meta.resolve('@baloise/ds-react'))"],
+      ['--conditions=node', '--input-type=module', '-e', "console.log(import.meta.resolve('@helvetia-design/react'))"],
       { cwd: pkgRoot, encoding: 'utf8' },
     ).trim()
 
@@ -131,13 +131,13 @@ describe('client/server entry split', () => {
         `import { registerHooks } from 'node:module'
 registerHooks({
   resolve(specifier, context, nextResolve) {
-    if (specifier === '@baloise/ds-react') {
+    if (specifier === '@helvetia-design/react') {
       return nextResolve(specifier, { ...context, conditions: ['import', 'default'] })
     }
     return nextResolve(specifier, context)
   },
 })
-console.log(import.meta.resolve('@baloise/ds-react'))`,
+console.log(import.meta.resolve('@helvetia-design/react'))`,
       ],
       { cwd: pkgRoot, encoding: 'utf8' },
     ).trim()

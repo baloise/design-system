@@ -1,5 +1,5 @@
-import { DsSegment, mountSsr, test } from '@baloise/ds-playwright'
-import { renderToString } from '@baloise/ds-core/hydrate'
+import { DsSegment, mountSsr, test } from '@helvetia-design/playwright'
+import { renderToString } from '@helvetia-design/core/hydrate'
 
 const ITEMS = `
   <ds-segment-item value="apple" label="Apple"></ds-segment-item>

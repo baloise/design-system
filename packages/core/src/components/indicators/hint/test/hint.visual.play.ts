@@ -1,4 +1,4 @@
-import { DsHint, E2ELocator, expectScreenshot, screenshot, test } from '@baloise/ds-playwright'
+import { DsHint, E2ELocator, expectScreenshot, screenshot, test } from '@helvetia-design/playwright'
 
 const TAG = 'hint'
 

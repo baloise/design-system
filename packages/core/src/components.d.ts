@@ -781,7 +781,7 @@ export namespace Components {
      */
     interface DsCheckboxGroup {
         /**
-          * If `true`, disables the automatic `invalid`/`invalidText` behavior that the `@baloise/ds-angular` integration applies when the bound `NgControl` is touched and invalid. Only affects the Angular integration; it is a no-op in other framework integrations.
+          * If `true`, disables the automatic `invalid`/`invalidText` behavior that the `@helvetia-design/angular` integration applies when the bound `NgControl` is touched and invalid. Only affects the Angular integration; it is a no-op in other framework integrations.
           * @default false
          */
         "autoInvalidOff": boolean;
@@ -1571,7 +1571,7 @@ export namespace Components {
          */
         "allowedKeyPress": string;
         /**
-          * If `true`, disables the automatic `invalid`/`invalidText` behavior that the `@baloise/ds-angular` integration applies when the bound `NgControl` is touched and invalid. Only affects the Angular integration; it is a no-op in other framework integrations.
+          * If `true`, disables the automatic `invalid`/`invalidText` behavior that the `@helvetia-design/angular` integration applies when the bound `NgControl` is touched and invalid. Only affects the Angular integration; it is a no-op in other framework integrations.
           * @default false
          */
         "autoInvalidOff": boolean;
@@ -2077,7 +2077,7 @@ export namespace Components {
      */
     interface DsNumberInput {
         /**
-          * If `true`, disables the automatic `invalid`/`invalidText` behavior that the `@baloise/ds-angular` integration applies when the bound `NgControl` is touched and invalid. Only affects the Angular integration; it is a no-op in other framework integrations.
+          * If `true`, disables the automatic `invalid`/`invalidText` behavior that the `@helvetia-design/angular` integration applies when the bound `NgControl` is touched and invalid. Only affects the Angular integration; it is a no-op in other framework integrations.
           * @default false
          */
         "autoInvalidOff": boolean;
@@ -2464,7 +2464,7 @@ export namespace Components {
          */
         "allowEmptySelection": boolean;
         /**
-          * If `true`, disables the automatic `invalid`/`invalidText` behavior that the `@baloise/ds-angular` integration applies when the bound `NgControl` is touched and invalid. Only affects the Angular integration; it is a no-op in other framework integrations.
+          * If `true`, disables the automatic `invalid`/`invalidText` behavior that the `@helvetia-design/angular` integration applies when the bound `NgControl` is touched and invalid. Only affects the Angular integration; it is a no-op in other framework integrations.
           * @default false
          */
         "autoInvalidOff": boolean;
@@ -2633,7 +2633,7 @@ export namespace Components {
          */
         "allowEmptySelection": boolean;
         /**
-          * If `true`, disables the automatic `invalid`/`invalidText` behavior that the `@baloise/ds-angular` integration applies when the bound `NgControl` is touched and invalid. Only affects the Angular integration; it is a no-op in other framework integrations.
+          * If `true`, disables the automatic `invalid`/`invalidText` behavior that the `@helvetia-design/angular` integration applies when the bound `NgControl` is touched and invalid. Only affects the Angular integration; it is a no-op in other framework integrations.
           * @default false
          */
         "autoInvalidOff": boolean;
@@ -2745,7 +2745,7 @@ export namespace Components {
      */
     interface DsSelect {
         /**
-          * If `true`, disables the automatic `invalid`/`invalidText` behavior that the `@baloise/ds-angular` integration applies when the bound `NgControl` is touched and invalid. Only affects the Angular integration; it is a no-op in other framework integrations.
+          * If `true`, disables the automatic `invalid`/`invalidText` behavior that the `@helvetia-design/angular` integration applies when the bound `NgControl` is touched and invalid. Only affects the Angular integration; it is a no-op in other framework integrations.
           * @default false
          */
         "autoInvalidOff": boolean;
@@ -2914,7 +2914,7 @@ export namespace Components {
      */
     interface DsSlider {
         /**
-          * If `true`, disables the automatic `invalid`/`invalidText` behavior that the `@baloise/ds-angular` integration applies when the bound `NgControl` is touched and invalid. Only affects the Angular integration; it is a no-op in other framework integrations.
+          * If `true`, disables the automatic `invalid`/`invalidText` behavior that the `@helvetia-design/angular` integration applies when the bound `NgControl` is touched and invalid. Only affects the Angular integration; it is a no-op in other framework integrations.
           * @default false
          */
         "autoInvalidOff": boolean;
@@ -5918,7 +5918,7 @@ declare namespace LocalJSX {
      */
     interface DsCheckboxGroup {
         /**
-          * If `true`, disables the automatic `invalid`/`invalidText` behavior that the `@baloise/ds-angular` integration applies when the bound `NgControl` is touched and invalid. Only affects the Angular integration; it is a no-op in other framework integrations.
+          * If `true`, disables the automatic `invalid`/`invalidText` behavior that the `@helvetia-design/angular` integration applies when the bound `NgControl` is touched and invalid. Only affects the Angular integration; it is a no-op in other framework integrations.
           * @default false
          */
         "autoInvalidOff"?: boolean;
@@ -6767,7 +6767,7 @@ declare namespace LocalJSX {
          */
         "allowedKeyPress"?: string;
         /**
-          * If `true`, disables the automatic `invalid`/`invalidText` behavior that the `@baloise/ds-angular` integration applies when the bound `NgControl` is touched and invalid. Only affects the Angular integration; it is a no-op in other framework integrations.
+          * If `true`, disables the automatic `invalid`/`invalidText` behavior that the `@helvetia-design/angular` integration applies when the bound `NgControl` is touched and invalid. Only affects the Angular integration; it is a no-op in other framework integrations.
           * @default false
          */
         "autoInvalidOff"?: boolean;
@@ -7324,7 +7324,7 @@ declare namespace LocalJSX {
      */
     interface DsNumberInput {
         /**
-          * If `true`, disables the automatic `invalid`/`invalidText` behavior that the `@baloise/ds-angular` integration applies when the bound `NgControl` is touched and invalid. Only affects the Angular integration; it is a no-op in other framework integrations.
+          * If `true`, disables the automatic `invalid`/`invalidText` behavior that the `@helvetia-design/angular` integration applies when the bound `NgControl` is touched and invalid. Only affects the Angular integration; it is a no-op in other framework integrations.
           * @default false
          */
         "autoInvalidOff"?: boolean;
@@ -7729,7 +7729,7 @@ declare namespace LocalJSX {
          */
         "allowEmptySelection"?: boolean;
         /**
-          * If `true`, disables the automatic `invalid`/`invalidText` behavior that the `@baloise/ds-angular` integration applies when the bound `NgControl` is touched and invalid. Only affects the Angular integration; it is a no-op in other framework integrations.
+          * If `true`, disables the automatic `invalid`/`invalidText` behavior that the `@helvetia-design/angular` integration applies when the bound `NgControl` is touched and invalid. Only affects the Angular integration; it is a no-op in other framework integrations.
           * @default false
          */
         "autoInvalidOff"?: boolean;
@@ -7951,7 +7951,7 @@ declare namespace LocalJSX {
          */
         "allowEmptySelection"?: boolean;
         /**
-          * If `true`, disables the automatic `invalid`/`invalidText` behavior that the `@baloise/ds-angular` integration applies when the bound `NgControl` is touched and invalid. Only affects the Angular integration; it is a no-op in other framework integrations.
+          * If `true`, disables the automatic `invalid`/`invalidText` behavior that the `@helvetia-design/angular` integration applies when the bound `NgControl` is touched and invalid. Only affects the Angular integration; it is a no-op in other framework integrations.
           * @default false
          */
         "autoInvalidOff"?: boolean;
@@ -8092,7 +8092,7 @@ declare namespace LocalJSX {
      */
     interface DsSelect {
         /**
-          * If `true`, disables the automatic `invalid`/`invalidText` behavior that the `@baloise/ds-angular` integration applies when the bound `NgControl` is touched and invalid. Only affects the Angular integration; it is a no-op in other framework integrations.
+          * If `true`, disables the automatic `invalid`/`invalidText` behavior that the `@helvetia-design/angular` integration applies when the bound `NgControl` is touched and invalid. Only affects the Angular integration; it is a no-op in other framework integrations.
           * @default false
          */
         "autoInvalidOff"?: boolean;
@@ -8264,7 +8264,7 @@ declare namespace LocalJSX {
      */
     interface DsSlider {
         /**
-          * If `true`, disables the automatic `invalid`/`invalidText` behavior that the `@baloise/ds-angular` integration applies when the bound `NgControl` is touched and invalid. Only affects the Angular integration; it is a no-op in other framework integrations.
+          * If `true`, disables the automatic `invalid`/`invalidText` behavior that the `@helvetia-design/angular` integration applies when the bound `NgControl` is touched and invalid. Only affects the Angular integration; it is a no-op in other framework integrations.
           * @default false
          */
         "autoInvalidOff"?: boolean;

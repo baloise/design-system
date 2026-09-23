@@ -1,5 +1,5 @@
 import { ComponentProps, ComponentRef, forwardRef, type ComponentType } from 'react'
-import { initializeDesignSystem, type DsConfig, type DsLanguage } from '@baloise/ds-core'
+import { initializeDesignSystem, type DsConfig, type DsLanguage } from '@helvetia-design/core'
 import type { DsRoot as DsRootClient } from '../generated/components'
 
 type DsRootProps = ComponentProps<typeof DsRootClient>

@@ -1,4 +1,4 @@
-import { DsShape, test } from '@baloise/ds-playwright'
+import { DsShape, test } from '@helvetia-design/playwright'
 
 test.describe('component', () => {
   test('should be visible', async ({ page }) => {

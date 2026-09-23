@@ -20,7 +20,7 @@ There's an existing half-finished precedent for this exact pattern in `packages/
 - **All ~48 components, one PR.** Not phased/gradual — avoids a long-lived mixed state.
 - **Sub-element/structural classes are prefixed too** (`.badge`, `.icon-left`, `.icon-right`, `.buttons`, `.table-container`, `.stack-content`, `.col`, `.field`, etc.) — same collision risk as root classes, since they're equally generic, bare nouns.
 - **Modifiers, utilities, and CSS custom properties are out of scope.**
-- **Shipped as a breaking change** via changeset (major bump for `@baloise/ds-core`), since existing CSS-only consumers must update their markup.
+- **Shipped as a breaking change** via changeset (major bump for `@helvetia-design/core`), since existing CSS-only consumers must update their markup.
 - **Migration is scripted**, not hand-edited, given the number of files and the need for consistency across source, stories, and test fixtures.
 - **Record an ADR** (`docs/adr/0022-ds-prefix-component-classes.md`) — this is the kind of decision that's hard to reverse (breaking change, wide blast radius), non-obvious from the code alone (a reader would wonder why `.button` suddenly became `.ds-button`), and the result of a real trade-off (hard cutover vs. dual-class transition, scoped-in sub-elements vs. root-only). Content:
 
@@ -75,7 +75,7 @@ Model the script's structure (pure logic module + thin CLI wrapper) on `scripts/
 
 ### 4. Changeset
 
-Add a changeset for `@baloise/ds-core` (major bump), following the format in `.changeset/*.md` (frontmatter package + bump, then description), explicitly calling out the breaking rename and pointing to ADR-0022 for rationale.
+Add a changeset for `@helvetia-design/core` (major bump), following the format in `.changeset/*.md` (frontmatter package + bump, then description), explicitly calling out the breaking rename and pointing to ADR-0022 for rationale.
 
 ### 5. ADR
 

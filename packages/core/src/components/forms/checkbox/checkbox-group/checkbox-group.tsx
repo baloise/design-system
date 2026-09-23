@@ -79,7 +79,7 @@ export class CheckboxGroup implements DsComponentInterface, FieldInterface {
    */
 
   /**
-   * If `true`, disables the automatic `invalid`/`invalidText` behavior that the `@baloise/ds-angular` integration
+   * If `true`, disables the automatic `invalid`/`invalidText` behavior that the `@helvetia-design/angular` integration
    * applies when the bound `NgControl` is touched and invalid. Only affects the Angular integration; it is a no-op
    * in other framework integrations.
    */
@@ -299,7 +299,7 @@ export class CheckboxGroup implements DsComponentInterface, FieldInterface {
     if (target && isDescendant(this.el, target) && hasTagName(target, 'ds-checkbox')) {
       stopEventBubbling(ev)
       // Re-emit as the group's own `dsBlur`, mirroring `listenToDsChange`/`updateValues` re-emitting `dsChange`
-      // above: consumers (and the `@baloise/ds-angular` `ControlValueAccessor`, which listens for `dsBlur`
+      // above: consumers (and the `@helvetia-design/angular` `ControlValueAccessor`, which listens for `dsBlur`
       // directly on this host to mark the bound `NgControl` as touched) only ever interact with the group, not
       // its individual checkboxes, and the child event was just stopped from bubbling any further than this.
       this.dsBlur.emit(ev.detail)

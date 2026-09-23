@@ -1,5 +1,5 @@
 {
-  "name": "@baloise/ds-core/components",
+  "name": "@helvetia-design/core/components",
   "version": "0.0.0",
   "description": "Helvetia Design System Components exported as custom elements, extending HTMLElement.",
   "main": "./index.js",

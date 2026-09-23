@@ -111,7 +111,7 @@ Each `<section data-testid="section-name">` contains:
 ### visual.play.ts Structure
 
 ```ts
-import { expectScreenshot, screenshot, test } from '@baloise/ds-playwright'
+import { expectScreenshot, screenshot, test } from '@helvetia-design/playwright'
 
 const TAG = 'button'
 const VARIANTS = ['basic', 'colors', 'sizes', 'disabled', 'loading', ...]
@@ -155,7 +155,7 @@ test.describe('host', () => {
 
 #### 1. Axe-Core Checks
 
-- Use `a11y()` function from `@baloise/ds-playwright`
+- Use `a11y()` function from `@helvetia-design/playwright`
 - Auto-detects accessibility violations
 - Tests all variant combinations
 
@@ -187,7 +187,7 @@ test.describe('host', () => {
 **Example structure:**
 
 ```ts
-import { test } from '@baloise/ds-playwright'
+import { test } from '@helvetia-design/playwright'
 
 test('basic', async ({ page, a11y }) => {
   await page.mount(`<ds-button>Button</ds-button>`)

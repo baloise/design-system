@@ -1,4 +1,4 @@
-import { expectScreenshot, screenshot, test } from '@baloise/ds-playwright'
+import { expectScreenshot, screenshot, test } from '@helvetia-design/playwright'
 
 const TAG = 'progress-bar'
 const VARIANTS = ['basic', 'value', 'dark-variants', 'light-variants']

@@ -1,4 +1,4 @@
-import { DsSteps, expect, test } from '@baloise/ds-playwright'
+import { DsSteps, expect, test } from '@helvetia-design/playwright'
 
 const PANELS = `
   <ds-step name="a" label="Cart"></ds-step>

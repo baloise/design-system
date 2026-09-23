@@ -1,5 +1,5 @@
 {
   "installCommand": "cd ../.. && pnpm install --frozen-lockfile",
-  "buildCommand": "cd ../.. && pnpm turbo run build --filter=@baloise/ds-core",
+  "buildCommand": "cd ../.. && pnpm turbo run build --filter=@helvetia-design/core",
   "outputDirectory": "www"
 }

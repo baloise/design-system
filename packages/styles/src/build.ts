@@ -31,7 +31,7 @@ console.log(`
 \x1b[35m┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\x1b[0m
 `)
 
-// Sass resolves bare package specifiers (e.g. `@baloise/ds-tokens/...`) only via loadPaths.
+// Sass resolves bare package specifiers (e.g. `@helvetia-design/tokens/...`) only via loadPaths.
 // Unlike npm, pnpm does not hoist workspace deps to the repo-root node_modules — the
 // `@baloise/*` symlinks live inside each consuming package's own node_modules. Include those
 // package-local dirs so `@use '@baloise/...'` keeps resolving.
@@ -201,7 +201,7 @@ const { css } = await uno.generate(new Set(fullSafelist), { preflights: true })
 const prefixedUtilities = await autoprefix(css)
 
 // ds-styles never bundles token *values* — only var(--ds-*) references (built from
-// tokensJsonPath above). Consumers install @baloise/ds-tokens separately and load a theme file
+// tokensJsonPath above). Consumers install @helvetia-design/tokens separately and load a theme file
 // themselves. See docs/adr/0030-full-merge-brand-token-css.md.
 const output = prefixedUtilities
 
@@ -273,12 +273,12 @@ styleFiles.sort()
 // Normalize paths to forward slashes for Sass compatibility on Windows
 const barrelContent = styleFiles.map(f => `@use '../../../core/src/${f.replace(/\\/g, '/')}';`).join('\n')
 
-// FileImporter: redirect @baloise/ds-styles/scss/* → packages/styles/src/scss/*
+// FileImporter: redirect @helvetia-design/styles/scss/* → packages/styles/src/scss/*
 // Handles internal monorepo imports during development
 const dsStylesImporter = {
   findFileUrl(url: string) {
-    if (!url.startsWith('@baloise/ds-styles/scss/')) return null
-    const rel = url.replace('@baloise/ds-styles/scss/', '')
+    if (!url.startsWith('@helvetia-design/styles/scss/')) return null
+    const rel = url.replace('@helvetia-design/styles/scss/', '')
     return new URL(`file://${resolve(__dirname, `scss/${rel}`)}`)
   },
 }
@@ -293,7 +293,7 @@ console.log(`\x1b[32m✔\x1b[0m Components compiled for ${styleFiles.length} com
 
 // --- Write dist/scss/utilities.scss (pre-compiled, no SCSS source) ----------
 // UnoCSS output is plain CSS; expose via a forwarding stub for Sass consumers.
-const utilitiesScss = `// Auto-generated — utilities are compiled by UnoCSS, not Sass.\n// Use the CSS directly: @import '@baloise/ds-styles/css/utilities';\n`
+const utilitiesScss = `// Auto-generated — utilities are compiled by UnoCSS, not Sass.\n// Use the CSS directly: @import '@helvetia-design/styles/css/utilities';\n`
 writeFileSync(resolve(scssOutDir, 'utilities.scss'), utilitiesScss)
 console.log('\x1b[32m✔\x1b[0m dist/scss/utilities.scss written')
 
@@ -309,7 +309,7 @@ const allLocalCss =
 await writeCssWithMinified(resolve(outDir, 'design-system.local.css'), allLocalCss)
 
 // --- Write dist/scss/design-system.scss (Sass entry that pulls foundation + component) ------
-const allScss = `@use './foundation';\n// component styles are only shipped pre-bundled — use\n// @baloise/ds-styles/css/design-system directly, there is no standalone Sass source for them\n`
+const allScss = `@use './foundation';\n// component styles are only shipped pre-bundled — use\n// @helvetia-design/styles/css/design-system directly, there is no standalone Sass source for them\n`
 writeFileSync(resolve(scssOutDir, 'design-system.scss'), allScss)
 console.log('\x1b[32m✔\x1b[0m dist/scss/design-system.scss written')
 

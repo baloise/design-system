@@ -913,7 +913,7 @@
       ],
       "pageObject": {
         "class": "DsAccordion",
-        "import": "@baloise/ds-playwright",
+        "import": "@helvetia-design/playwright",
         "locators": [
           {
             "name": "header",
@@ -1773,7 +1773,7 @@
       ],
       "pageObject": {
         "class": "DsAppFooter",
-        "import": "@baloise/ds-playwright",
+        "import": "@helvetia-design/playwright",
         "locators": [
           {
             "name": "languageSelect",
@@ -4837,7 +4837,7 @@
       ],
       "pageObject": {
         "class": "DsAppNavbar",
-        "import": "@baloise/ds-playwright",
+        "import": "@helvetia-design/playwright",
         "locators": [],
         "actions": [
           {
@@ -6056,7 +6056,7 @@
       ],
       "pageObject": {
         "class": "DsBadge",
-        "import": "@baloise/ds-playwright",
+        "import": "@helvetia-design/playwright",
         "locators": [],
         "actions": [],
         "assertions": [
@@ -7346,7 +7346,7 @@
       ],
       "pageObject": {
         "class": "DsBrandIcon",
-        "import": "@baloise/ds-playwright",
+        "import": "@helvetia-design/playwright",
         "locators": [
           {
             "name": "inner",
@@ -14003,7 +14003,7 @@
       ],
       "pageObject": {
         "class": "DsButton",
-        "import": "@baloise/ds-playwright",
+        "import": "@helvetia-design/playwright",
         "locators": [],
         "actions": [
           {
@@ -16021,7 +16021,7 @@
       ],
       "pageObject": {
         "class": "DsCard",
-        "import": "@baloise/ds-playwright",
+        "import": "@helvetia-design/playwright",
         "locators": [],
         "actions": [],
         "assertions": [
@@ -17239,7 +17239,7 @@
       ],
       "pageObject": {
         "class": "DsCarousel",
-        "import": "@baloise/ds-playwright",
+        "import": "@helvetia-design/playwright",
         "locators": [],
         "actions": [
           {
@@ -18883,7 +18883,7 @@
       ],
       "pageObject": {
         "class": "DsCheckbox",
-        "import": "@baloise/ds-playwright",
+        "import": "@helvetia-design/playwright",
         "locators": [
           {
             "name": "nativeInput",
@@ -18963,7 +18963,7 @@
           "mutable": false,
           "attr": "auto-invalid-off",
           "reflectToAttr": true,
-          "docs": "If `true`, disables the automatic `invalid`/`invalidText` behavior that the `@baloise/ds-angular` integration\napplies when the bound `NgControl` is touched and invalid. Only affects the Angular integration; it is a no-op\nin other framework integrations.",
+          "docs": "If `true`, disables the automatic `invalid`/`invalidText` behavior that the `@helvetia-design/angular` integration\napplies when the bound `NgControl` is touched and invalid. Only affects the Angular integration; it is a no-op\nin other framework integrations.",
           "docsTags": [
             {
               "name": "default",
@@ -20667,7 +20667,7 @@
       ],
       "pageObject": {
         "class": "DsClose",
-        "import": "@baloise/ds-playwright",
+        "import": "@helvetia-design/playwright",
         "locators": [],
         "actions": [
           {
@@ -21008,7 +21008,7 @@
       "listeners": [],
       "pageObject": {
         "class": "DsContent",
-        "import": "@baloise/ds-playwright",
+        "import": "@helvetia-design/playwright",
         "locators": [],
         "actions": [],
         "assertions": [
@@ -21810,7 +21810,7 @@
       ],
       "pageObject": {
         "class": "DsCounter",
-        "import": "@baloise/ds-playwright",
+        "import": "@helvetia-design/playwright",
         "locators": [
           {
             "name": "counter",
@@ -21951,7 +21951,7 @@
       "listeners": [],
       "pageObject": {
         "class": "DsData",
-        "import": "@baloise/ds-playwright",
+        "import": "@helvetia-design/playwright",
         "locators": [],
         "actions": [],
         "assertions": [
@@ -22379,7 +22379,7 @@
       ],
       "pageObject": {
         "class": "DsDataItem",
-        "import": "@baloise/ds-playwright",
+        "import": "@helvetia-design/playwright",
         "locators": [],
         "actions": [],
         "assertions": [
@@ -24737,7 +24737,7 @@
       ],
       "pageObject": {
         "class": "DsDatepicker",
-        "import": "@baloise/ds-playwright",
+        "import": "@helvetia-design/playwright",
         "locators": [
           {
             "name": "nativeInput",
@@ -25236,7 +25236,7 @@
       ],
       "pageObject": {
         "class": "DsDivider",
-        "import": "@baloise/ds-playwright",
+        "import": "@helvetia-design/playwright",
         "locators": [],
         "actions": [],
         "assertions": []
@@ -25774,7 +25774,7 @@
       ],
       "pageObject": {
         "class": "DsDrawer",
-        "import": "@baloise/ds-playwright",
+        "import": "@helvetia-design/playwright",
         "locators": [
           {
             "name": "dialog",
@@ -27806,7 +27806,7 @@
       ],
       "pageObject": {
         "class": "DsFileUpload",
-        "import": "@baloise/ds-playwright",
+        "import": "@helvetia-design/playwright",
         "locators": [],
         "actions": [
           {
@@ -28797,7 +28797,7 @@
       ],
       "pageObject": {
         "class": "DsHeading",
-        "import": "@baloise/ds-playwright",
+        "import": "@helvetia-design/playwright",
         "locators": [],
         "actions": [],
         "assertions": [
@@ -29548,7 +29548,7 @@
       ],
       "pageObject": {
         "class": "DsHint",
-        "import": "@baloise/ds-playwright",
+        "import": "@helvetia-design/playwright",
         "locators": [
           {
             "name": "trigger",
@@ -30537,7 +30537,7 @@
       ],
       "pageObject": {
         "class": "DsIcon",
-        "import": "@baloise/ds-playwright",
+        "import": "@helvetia-design/playwright",
         "locators": [
           {
             "name": "inner",
@@ -30656,7 +30656,7 @@
           "mutable": false,
           "attr": "auto-invalid-off",
           "reflectToAttr": true,
-          "docs": "If `true`, disables the automatic `invalid`/`invalidText` behavior that the `@baloise/ds-angular` integration\napplies when the bound `NgControl` is touched and invalid. Only affects the Angular integration; it is a no-op\nin other framework integrations.",
+          "docs": "If `true`, disables the automatic `invalid`/`invalidText` behavior that the `@helvetia-design/angular` integration\napplies when the bound `NgControl` is touched and invalid. Only affects the Angular integration; it is a no-op\nin other framework integrations.",
           "docsTags": [
             {
               "name": "default",
@@ -32293,7 +32293,7 @@
       ],
       "pageObject": {
         "class": "DsInput",
-        "import": "@baloise/ds-playwright",
+        "import": "@helvetia-design/playwright",
         "locators": [
           {
             "name": "nativeInput",
@@ -33499,7 +33499,7 @@
       ],
       "pageObject": {
         "class": "DsInputPhone",
-        "import": "@baloise/ds-playwright",
+        "import": "@helvetia-design/playwright",
         "locators": [
           {
             "name": "inner",
@@ -35191,7 +35191,7 @@
       ],
       "pageObject": {
         "class": "DsLabel",
-        "import": "@baloise/ds-playwright",
+        "import": "@helvetia-design/playwright",
         "locators": [],
         "actions": [],
         "assertions": [
@@ -36381,7 +36381,7 @@
       ],
       "pageObject": {
         "class": "DsList",
-        "import": "@baloise/ds-playwright",
+        "import": "@helvetia-design/playwright",
         "locators": [
           {
             "name": "list",
@@ -36767,7 +36767,7 @@
       ],
       "pageObject": {
         "class": "DsLogo",
-        "import": "@baloise/ds-playwright",
+        "import": "@helvetia-design/playwright",
         "locators": [
           {
             "name": "animated",
@@ -37371,7 +37371,7 @@
       ],
       "pageObject": {
         "class": "DsModal",
-        "import": "@baloise/ds-playwright",
+        "import": "@helvetia-design/playwright",
         "locators": [
           {
             "name": "dialog",
@@ -39654,7 +39654,7 @@
       ],
       "pageObject": {
         "class": "DsNotification",
-        "import": "@baloise/ds-playwright",
+        "import": "@helvetia-design/playwright",
         "locators": [
           {
             "name": "section",
@@ -39749,7 +39749,7 @@
           "mutable": false,
           "attr": "auto-invalid-off",
           "reflectToAttr": true,
-          "docs": "If `true`, disables the automatic `invalid`/`invalidText` behavior that the `@baloise/ds-angular` integration\napplies when the bound `NgControl` is touched and invalid. Only affects the Angular integration; it is a no-op\nin other framework integrations.",
+          "docs": "If `true`, disables the automatic `invalid`/`invalidText` behavior that the `@helvetia-design/angular` integration\napplies when the bound `NgControl` is touched and invalid. Only affects the Angular integration; it is a no-op\nin other framework integrations.",
           "docsTags": [
             {
               "name": "default",
@@ -40675,7 +40675,7 @@
       ],
       "pageObject": {
         "class": "DsNumberInput",
-        "import": "@baloise/ds-playwright",
+        "import": "@helvetia-design/playwright",
         "locators": [
           {
             "name": "nativeInput",
@@ -41511,7 +41511,7 @@
       ],
       "pageObject": {
         "class": "DsPagination",
-        "import": "@baloise/ds-playwright",
+        "import": "@helvetia-design/playwright",
         "locators": [
           {
             "name": "previousButton",
@@ -42525,7 +42525,7 @@
       ],
       "pageObject": {
         "class": "DsPopup",
-        "import": "@baloise/ds-playwright",
+        "import": "@helvetia-design/playwright",
         "locators": [
           {
             "name": "panel",
@@ -44615,7 +44615,7 @@
       ],
       "pageObject": {
         "class": "DsRadio",
-        "import": "@baloise/ds-playwright",
+        "import": "@helvetia-design/playwright",
         "locators": [
           {
             "name": "nativeInput",
@@ -44719,7 +44719,7 @@
           "mutable": false,
           "attr": "auto-invalid-off",
           "reflectToAttr": true,
-          "docs": "If `true`, disables the automatic `invalid`/`invalidText` behavior that the `@baloise/ds-angular` integration\napplies when the bound `NgControl` is touched and invalid. Only affects the Angular integration; it is a no-op\nin other framework integrations.",
+          "docs": "If `true`, disables the automatic `invalid`/`invalidText` behavior that the `@helvetia-design/angular` integration\napplies when the bound `NgControl` is touched and invalid. Only affects the Angular integration; it is a no-op\nin other framework integrations.",
           "docsTags": [
             {
               "name": "default",
@@ -46916,7 +46916,7 @@
       "listeners": [],
       "pageObject": {
         "class": "DsRoot",
-        "import": "@baloise/ds-playwright",
+        "import": "@helvetia-design/playwright",
         "locators": [],
         "actions": [],
         "assertions": [
@@ -47007,7 +47007,7 @@
           "mutable": false,
           "attr": "auto-invalid-off",
           "reflectToAttr": true,
-          "docs": "If `true`, disables the automatic `invalid`/`invalidText` behavior that the `@baloise/ds-angular` integration\napplies when the bound `NgControl` is touched and invalid. Only affects the Angular integration; it is a no-op\nin other framework integrations.",
+          "docs": "If `true`, disables the automatic `invalid`/`invalidText` behavior that the `@helvetia-design/angular` integration\napplies when the bound `NgControl` is touched and invalid. Only affects the Angular integration; it is a no-op\nin other framework integrations.",
           "docsTags": [
             {
               "name": "default",
@@ -48159,7 +48159,7 @@
       ],
       "pageObject": {
         "class": "DsSegment",
-        "import": "@baloise/ds-playwright",
+        "import": "@helvetia-design/playwright",
         "locators": [],
         "actions": [
           {
@@ -48498,7 +48498,7 @@
           "mutable": false,
           "attr": "auto-invalid-off",
           "reflectToAttr": true,
-          "docs": "If `true`, disables the automatic `invalid`/`invalidText` behavior that the `@baloise/ds-angular` integration\napplies when the bound `NgControl` is touched and invalid. Only affects the Angular integration; it is a no-op\nin other framework integrations.",
+          "docs": "If `true`, disables the automatic `invalid`/`invalidText` behavior that the `@helvetia-design/angular` integration\napplies when the bound `NgControl` is touched and invalid. Only affects the Angular integration; it is a no-op\nin other framework integrations.",
           "docsTags": [
             {
               "name": "default",
@@ -51748,7 +51748,7 @@
       ],
       "pageObject": {
         "class": "DsSelect",
-        "import": "@baloise/ds-playwright",
+        "import": "@helvetia-design/playwright",
         "locators": [
           {
             "name": "trigger",
@@ -52564,7 +52564,7 @@
       "listeners": [],
       "pageObject": {
         "class": "DsShape",
-        "import": "@baloise/ds-playwright",
+        "import": "@helvetia-design/playwright",
         "locators": [],
         "actions": [],
         "assertions": []
@@ -52765,7 +52765,7 @@
       ],
       "pageObject": {
         "class": "DsSheet",
-        "import": "@baloise/ds-playwright",
+        "import": "@helvetia-design/playwright",
         "locators": [],
         "actions": [],
         "assertions": [
@@ -52838,7 +52838,7 @@
           "mutable": false,
           "attr": "auto-invalid-off",
           "reflectToAttr": true,
-          "docs": "If `true`, disables the automatic `invalid`/`invalidText` behavior that the `@baloise/ds-angular` integration\napplies when the bound `NgControl` is touched and invalid. Only affects the Angular integration; it is a no-op\nin other framework integrations.",
+          "docs": "If `true`, disables the automatic `invalid`/`invalidText` behavior that the `@helvetia-design/angular` integration\napplies when the bound `NgControl` is touched and invalid. Only affects the Angular integration; it is a no-op\nin other framework integrations.",
           "docsTags": [
             {
               "name": "default",
@@ -53595,7 +53595,7 @@
       ],
       "pageObject": {
         "class": "DsSlider",
-        "import": "@baloise/ds-playwright",
+        "import": "@helvetia-design/playwright",
         "locators": [
           {
             "name": "slider",
@@ -54843,7 +54843,7 @@
       ],
       "pageObject": {
         "class": "DsSnackbar",
-        "import": "@baloise/ds-playwright",
+        "import": "@helvetia-design/playwright",
         "locators": [
           {
             "name": "heading",
@@ -55551,7 +55551,7 @@
       ],
       "pageObject": {
         "class": "DsSpinner",
-        "import": "@baloise/ds-playwright",
+        "import": "@helvetia-design/playwright",
         "locators": [
           {
             "name": "inner",
@@ -56294,7 +56294,7 @@
       "listeners": [],
       "pageObject": {
         "class": "DsStack",
-        "import": "@baloise/ds-playwright",
+        "import": "@helvetia-design/playwright",
         "locators": [],
         "actions": [],
         "assertions": [
@@ -57733,7 +57733,7 @@
       ],
       "pageObject": {
         "class": "DsSteps",
-        "import": "@baloise/ds-playwright",
+        "import": "@helvetia-design/playwright",
         "locators": [],
         "actions": [
           {
@@ -59401,7 +59401,7 @@
       ],
       "pageObject": {
         "class": "DsTabs",
-        "import": "@baloise/ds-playwright",
+        "import": "@helvetia-design/playwright",
         "locators": [],
         "actions": [
           {
@@ -61552,7 +61552,7 @@
       ],
       "pageObject": {
         "class": "DsTag",
-        "import": "@baloise/ds-playwright",
+        "import": "@helvetia-design/playwright",
         "locators": [
           {
             "name": "closeButton",
@@ -62614,7 +62614,7 @@
       ],
       "pageObject": {
         "class": "DsText",
-        "import": "@baloise/ds-playwright",
+        "import": "@helvetia-design/playwright",
         "locators": [],
         "actions": [],
         "assertions": [
@@ -63919,7 +63919,7 @@
       ],
       "pageObject": {
         "class": "DsTextarea",
-        "import": "@baloise/ds-playwright",
+        "import": "@helvetia-design/playwright",
         "locators": [
           {
             "name": "nativeTextarea",
@@ -65442,7 +65442,7 @@
       ],
       "pageObject": {
         "class": "DsToast",
-        "import": "@baloise/ds-playwright",
+        "import": "@helvetia-design/playwright",
         "locators": [
           {
             "name": "heading",
@@ -66923,7 +66923,7 @@
       ],
       "pageObject": {
         "class": "DsToggle",
-        "import": "@baloise/ds-playwright",
+        "import": "@helvetia-design/playwright",
         "locators": [
           {
             "name": "nativeInput",
@@ -67545,7 +67545,7 @@
       ],
       "pageObject": {
         "class": "DsTooltip",
-        "import": "@baloise/ds-playwright",
+        "import": "@helvetia-design/playwright",
         "locators": [],
         "actions": [],
         "assertions": [

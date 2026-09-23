@@ -39,9 +39,9 @@ If you do not have an Angular app yet, create one with [Angular CLI](https://ang
 Install the Angular bindings and the global styles. All three packages are required.
 
 ```bash
-npm add -E @baloise/ds-angular @baloise/ds-styles @baloise/ds-tokens
+npm add -E @helvetia-design/angular @helvetia-design/styles @helvetia-design/tokens
 // or
-pnpm add -E @baloise/ds-angular @baloise/ds-styles @baloise/ds-tokens
+pnpm add -E @helvetia-design/angular @helvetia-design/styles @helvetia-design/tokens
 ```
 
 ## Usage
@@ -56,22 +56,22 @@ Add these to your global stylesheet (e.g. `styles.scss`). Only **Tokens** and
   Required: design tokens (--ds-* CSS custom properties).
   Load before ds-styles
 */
-@import '@baloise/ds-tokens/css/base';
+@import '@helvetia-design/tokens/css/base';
 
 /*
   Required: CSS reset, structural styles, and
   CSS-only component classes (e.g. class="ds-button")
 */
-@import '@baloise/ds-styles/css/design-system';
+@import '@helvetia-design/styles/css/design-system';
 
 /*
   Optional: only needed if you use utility classes
   (spacing, layout, typography, color helpers, etc. — e.g. class="mt-base" below)
 */
-@import '@baloise/ds-styles/css/utilities';
+@import '@helvetia-design/styles/css/utilities';
 ```
 
-For SASS mixins (breakpoints, etc.) without any styles, import `@baloise/ds-styles/scss/mixins` instead.
+For SASS mixins (breakpoints, etc.) without any styles, import `@helvetia-design/styles/scss/mixins` instead.
 
 ### provideDesignSystem
 
@@ -82,7 +82,7 @@ initializes the system once and every nested component picks up brand, region, l
 // app.config.ts
 
 import { ApplicationConfig } from '@angular/core'
-import { provideDesignSystem } from '@baloise/ds-angular'
+import { provideDesignSystem } from '@helvetia-design/angular'
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -119,7 +119,7 @@ required.
 // app.ts
 
 import { Component } from '@angular/core'
-import { DsAppFooter, DsButton, DsRoot } from '@baloise/ds-angular'
+import { DsAppFooter, DsButton, DsRoot } from '@helvetia-design/angular'
 
 @Component({
   selector: 'app-root',
@@ -213,9 +213,9 @@ Just an `index.html` file. This is the recommended setup for static sites, serve
 pages, or any HTML5 app you keep under version control with npm.
 
 ```bash
-npm add -E @baloise/ds-core @baloise/ds-styles @baloise/ds-tokens
+npm add -E @helvetia-design/core @helvetia-design/styles @helvetia-design/tokens
 // or
-pnpm add -E @baloise/ds-core @baloise/ds-styles @baloise/ds-tokens
+pnpm add -E @helvetia-design/core @helvetia-design/styles @helvetia-design/tokens
 ```
 
 ### Usage
@@ -241,18 +241,18 @@ Create an `index.html` file in your project root and add the following:
     />
 
     <!-- Required: design tokens (--ds-* CSS custom properties). Load before ds-styles -->
-    <link rel="stylesheet" href="node_modules/@baloise/ds-tokens/css/base" />
+    <link rel="stylesheet" href="node_modules/@helvetia-design/tokens/css/base" />
     <!-- Required: CSS reset, structural styles, and CSS-only component classes (e.g. class="ds-button") -->
-    <link rel="stylesheet" href="node_modules/@baloise/ds-styles/css/design-system" />
+    <link rel="stylesheet" href="node_modules/@helvetia-design/styles/css/design-system" />
     <!-- Optional: only needed if you use utility classes (spacing, layout, typography, color helpers, etc. — e.g. class="mt-base" below) -->
-    <link rel="stylesheet" href="node_modules/@baloise/ds-styles/css/utilities" />
+    <link rel="stylesheet" href="node_modules/@helvetia-design/styles/css/utilities" />
 
     <!-- Register the web components used in markup -->
     <script
       type="module"
-      src="node_modules/@baloise/ds-core/dist/design-system/design-system.esm.js"
+      src="node_modules/@helvetia-design/core/dist/design-system/design-system.esm.js"
     ></script>
-    <script nomodule src="node_modules/@baloise/ds-core/dist/design-system/design-system.js"></script>
+    <script nomodule src="node_modules/@helvetia-design/core/dist/design-system/design-system.js"></script>
 
   </head>
 
@@ -277,9 +277,9 @@ live in `<head>`; `ds-root` wraps the page content in `<body>`.
 - **`<meta name="design-system-config">`** — sets brand, region, and language before the app
   boots. Optional, but recommended so there's no flash of default config. See "Configure Language
   & Region" further below.
-- **The three stylesheets** — `base.tokens.css` (from `@baloise/ds-tokens`) defines every `--ds-*`
+- **The three stylesheets** — `base.tokens.css` (from `@helvetia-design/tokens`) defines every `--ds-*`
   custom property and must load first — `ds-styles` no longer ships token values itself, only
-  `var(--ds-*)` references. `design-system.css` (from `@baloise/ds-styles`) bundles the CSS reset,
+  `var(--ds-*)` references. `design-system.css` (from `@helvetia-design/styles`) bundles the CSS reset,
   structural styles, and CSS-only component classes (`.ds-button`, `.ds-heading`, ...) — the only
   one you really need alongside tokens. `utilities.css` (spacing, layout, typography, color
   helpers, e.g. `.mt-base` used below) is entirely optional — drop it if you don't use utility
@@ -296,7 +296,7 @@ live in `<head>`; `ds-root` wraps the page content in `<body>`.
 
 For a CMS or any server-rendered page, components can be pre-rendered to real HTML before they
 reach the browser — useful for SEO, faster first paint, and CMS previews that don't execute
-JavaScript. `@baloise/ds-core` ships a Node-compatible renderer for this that has no framework
+JavaScript. `@helvetia-design/core` ships a Node-compatible renderer for this that has no framework
 dependency. The example below uses [Express](https://expressjs.com/), but `renderToString` itself
 works with any Node server.
 
@@ -306,10 +306,10 @@ are still required for the browser to render the page correctly; only the render
 assets, and `copyfiles` as a dev dependency to stage those assets at build time.
 
 ```bash
-npm add -E @baloise/ds-core @baloise/ds-styles @baloise/ds-tokens express
+npm add -E @helvetia-design/core @helvetia-design/styles @helvetia-design/tokens express
 npm add -D -E copyfiles
 // or
-pnpm add -E @baloise/ds-core @baloise/ds-styles @baloise/ds-tokens express
+pnpm add -E @helvetia-design/core @helvetia-design/styles @helvetia-design/tokens express
 pnpm add -D -E copyfiles
 ```
 
@@ -323,7 +323,7 @@ via the matching `pre*` lifecycle scripts:
 ```json
 {
   "scripts": {
-    "copy-assets": "copyfiles -u 5 \"node_modules/@baloise/ds-core/dist/design-system/**/*\" public/design-system && copyfiles -f node_modules/@baloise/ds-tokens/dist/css/base.tokens.css node_modules/@baloise/ds-styles/dist/css/design-system.css public",
+    "copy-assets": "copyfiles -u 5 \"node_modules/@helvetia-design/core/dist/design-system/**/*\" public/design-system && copyfiles -f node_modules/@helvetia-design/tokens/dist/css/base.tokens.css node_modules/@helvetia-design/styles/dist/css/design-system.css public",
     "predev": "pnpm copy-assets",
     "dev": "tsx watch server.ts",
     "prestart": "pnpm copy-assets",
@@ -337,7 +337,7 @@ via the matching `pre*` lifecycle scripts:
 The first `copyfiles` call copies the design-system JS entry and all of its lazily-loaded
 component chunks (Stencil splits every component into its own file) into `public/design-system`,
 preserving that folder structure. The second copies the two CSS bundles straight into `public`.
-`-u 5` strips the five leading path segments (`node_modules/@baloise/ds-core/dist/design-system`)
+`-u 5` strips the five leading path segments (`node_modules/@helvetia-design/core/dist/design-system`)
 so only the files themselves land in the destination; `-f` flattens the CSS sources to their
 basenames.
 
@@ -345,7 +345,7 @@ basenames.
 
 ```js
 import express from 'express'
-import { renderToString } from '@baloise/ds-core/hydrate'
+import { renderToString } from '@helvetia-design/core/hydrate'
 
 const fragment = `
   <ds-root>
@@ -421,7 +421,7 @@ app in the repo for a working example.
 **Note**
 
 This renderer (`dist-hydrate-script`, generated by Stencil) is framework-agnostic by design and is
-what powers SSR for `@baloise/ds-react` under the hood. Calling it directly from a plain
+what powers SSR for `@helvetia-design/react` under the hood. Calling it directly from a plain
 Node/CMS pipeline, as shown above, is exercised by the `integration-ssr` example app linked above —
 still verify the output against your specific CMS/templating stack before relying on it in
 production.
@@ -434,16 +434,16 @@ Prototyping or don't want to install anything? Load everything straight from
 [jsDelivr](https://www.jsdelivr.com/), a CDN, by adding these to `<head></head>`:
 
 ```html
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@baloise/ds-tokens/css/base" />
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@baloise/ds-styles/css/design-system" />
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@baloise/ds-styles/css/utilities" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@helvetia-design/tokens/css/base" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@helvetia-design/styles/css/design-system" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@helvetia-design/styles/css/utilities" />
 <script
   type="module"
-  src="https://cdn.jsdelivr.net/npm/@baloise/ds-core/dist/design-system/design-system.esm.js"
+  src="https://cdn.jsdelivr.net/npm/@helvetia-design/core/dist/design-system/design-system.esm.js"
 ></script>
 <script
   nomodule
-  src="https://cdn.jsdelivr.net/npm/@baloise/ds-core/dist/design-system/design-system.js"
+  src="https://cdn.jsdelivr.net/npm/@helvetia-design/core/dist/design-system/design-system.js"
 ></script>
 ```
 
@@ -457,7 +457,7 @@ section above — only where the CSS/JS come from changes.
 
 Not recommended for production — it depends on a third party to host and distribute the assets.
 Pin a specific version rather than relying on the latest one:
-`https://cdn.jsdelivr.net/npm/@baloise/ds-styles@16/css`
+`https://cdn.jsdelivr.net/npm/@helvetia-design/styles@16/css`
 
 </InfoQuote>
 
@@ -560,7 +560,7 @@ npm create vite@latest my-app -- --template react-ts
 <InfoQuote>
   **Recommendations**
 
-  - Use **TypeScript**. `@baloise/ds-react` ships its own types; no extra `@types` package or `tsconfig` flags are
+  - Use **TypeScript**. `@helvetia-design/react` ships its own types; no extra `@types` package or `tsconfig` flags are
     needed.
   - Use **SCSS** as stylesheet format to access breakpoint mixins and more. A pre-built CSS bundle is also available.
   - `react` and `react-dom` **18** or **19** are required as peer dependencies.
@@ -571,9 +571,9 @@ npm create vite@latest my-app -- --template react-ts
 Install the React bindings and the global styles. All three packages are required.
 
 ```bash
-npm add -E @baloise/ds-react @baloise/ds-styles @baloise/ds-tokens
+npm add -E @helvetia-design/react @helvetia-design/styles @helvetia-design/tokens
 // or
-pnpm add -E @baloise/ds-react @baloise/ds-styles @baloise/ds-tokens
+pnpm add -E @helvetia-design/react @helvetia-design/styles @helvetia-design/tokens
 ```
 
 ### Usage
@@ -585,15 +585,15 @@ Global CSS (design tokens, fonts, resets, utilities) needs to be imported into t
 ```typescript
 // Required: design tokens (--ds-* CSS custom properties).
 // Load before ds-styles
-import '@baloise/ds-tokens/css/base'
+import '@helvetia-design/tokens/css/base'
 
 // Required: CSS reset, structural styles, and
 // CSS-only component classes (e.g. class="ds-button")
-import '@baloise/ds-styles/css/design-system'
+import '@helvetia-design/styles/css/design-system'
 
 // Optional: only needed if you use utility classes
 // (spacing, layout, typography, color helpers, etc. — e.g. class="mt-base" below)
-import '@baloise/ds-styles/css/utilities'
+import '@helvetia-design/styles/css/utilities'
 ```
 
 ### DsRootProvider
@@ -610,15 +610,15 @@ import App from './App'
 
 // Required: design tokens (--ds-* CSS custom properties).
 // Load before ds-styles
-import '@baloise/ds-tokens/css/base'
+import '@helvetia-design/tokens/css/base'
 
 // Required: CSS reset, structural styles, and
 // CSS-only component classes (e.g. class="ds-button")
-import '@baloise/ds-styles/css/design-system'
+import '@helvetia-design/styles/css/design-system'
 
 // Optional: only needed if you use utility classes
 // (spacing, layout, typography, color helpers, etc. — e.g. class="mt-base" below)
-import '@baloise/ds-styles/css/utilities'
+import '@helvetia-design/styles/css/utilities'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
@@ -632,7 +632,7 @@ Pass live config as props. If you omit them, components still work with the defa
 ```tsx
 // App.tsx
 
-import { DsRootProvider, DsAppFooter, DsButton, DsHeading } from '@baloise/ds-react'
+import { DsRootProvider, DsAppFooter, DsButton, DsHeading } from '@helvetia-design/react'
 
 function App() {
   return (
@@ -678,14 +678,14 @@ markup, not an empty tag.
 Same three packages as the client-side setup, plus `next` itself.
 
 ```bash
-npm add -E @baloise/ds-react @baloise/ds-styles @baloise/ds-tokens next
+npm add -E @helvetia-design/react @helvetia-design/styles @helvetia-design/tokens next
 // or
-pnpm add -E @baloise/ds-react @baloise/ds-styles @baloise/ds-tokens next
+pnpm add -E @helvetia-design/react @helvetia-design/styles @helvetia-design/tokens next
 ```
 
 ### Configure Next.js
 
-Keep `@baloise/ds-core` external in the Next.js server build.
+Keep `@helvetia-design/core` external in the Next.js server build.
 
 **next.config.ts**
 
@@ -693,7 +693,7 @@ Keep `@baloise/ds-core` external in the Next.js server build.
 import type { NextConfig } from 'next'
 
 const nextConfig: NextConfig = {
-  serverExternalPackages: ['@baloise/ds-core'],
+  serverExternalPackages: ['@helvetia-design/core'],
 }
 
 export default nextConfig
@@ -709,7 +709,7 @@ export default nextConfig
     turbopack: {
       root: path.join(__dirname, '..', '..'),
     },
-    serverExternalPackages: ['@baloise/ds-core'],
+    serverExternalPackages: ['@helvetia-design/core'],
   }
   ```
 </InfoQuote>
@@ -726,19 +726,19 @@ the runtime in the browser (custom elements + config) via an internal client lea
 // app/layout.tsx
 
 import type { Metadata } from 'next'
-import { DsRootSSRProvider } from '@baloise/ds-react'
+import { DsRootSSRProvider } from '@helvetia-design/react'
 
 // Required: design tokens (--ds-* CSS custom properties).
 // Load before ds-styles
-import '@baloise/ds-tokens/css/base'
+import '@helvetia-design/tokens/css/base'
 
 // Required: CSS reset, structural styles, and
 // CSS-only component classes (e.g. class="ds-button")
-import '@baloise/ds-styles/css/design-system'
+import '@helvetia-design/styles/css/design-system'
 
 // Optional: only needed if you use utility classes
 // (spacing, layout, typography, color helpers, etc. — e.g. class="mt-base" below)
-import '@baloise/ds-styles/css/utilities'
+import '@helvetia-design/styles/css/utilities'
 
 export const metadata: Metadata = {
   title: 'My App',
@@ -772,7 +772,7 @@ a `'use client'` file, no `DsRootProvider`:
 ```tsx
 // app/page.tsx
 
-import { DsButton, DsCheckbox, DsInput } from '@baloise/ds-react'
+import { DsButton, DsCheckbox, DsInput } from '@helvetia-design/react'
 
 export default function HomePage() {
   return (

@@ -1,4 +1,4 @@
-import { DsPopup, expectScreenshot, screenshot, test } from '@baloise/ds-playwright'
+import { DsPopup, expectScreenshot, screenshot, test } from '@helvetia-design/playwright'
 
 const TAG = 'popup'
 

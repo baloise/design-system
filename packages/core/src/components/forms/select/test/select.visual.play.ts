@@ -1,4 +1,4 @@
-import { DsSelect, expectScreenshot, screenshot, test } from '@baloise/ds-playwright'
+import { DsSelect, expectScreenshot, screenshot, test } from '@helvetia-design/playwright'
 
 const TAG = 'select'
 const VARIANTS = ['basic', 'disabled', 'invalid', 'invalid-slot', 'valid', 'warning'] as const

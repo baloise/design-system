@@ -8,7 +8,7 @@ over every existing variant.
 
 ## Goal
 
-Every component must be provably able to server-render via `@baloise/ds-core/hydrate`'s
+Every component must be provably able to server-render via `@helvetia-design/core/hydrate`'s
 `renderToString`, and then hydrate cleanly in a real browser, without error — the "window is not
 available" class of bug. Confirmed as a real, non-hypothetical risk: the first fixture spiked
 against this approach (`button.visual.html`) surfaced a genuine bug in `ds-brand-icon` (relative-URL
@@ -52,13 +52,13 @@ Node/SSR (verified against the live dev server).
      silent no-op).
    - Zero browser console errors after the page loads and the client claims the server-rendered
      markup (the hydration-mismatch check).
-8. **`mountSsr()` lives in `@baloise/ds-playwright`, dependency-injected.** Same package as
+8. **`mountSsr()` lives in `@helvetia-design/playwright`, dependency-injected.** Same package as
    `mount()`, for consistency and shared plumbing (route interception, template wrapper) — but it
-   does **not** import `@baloise/ds-core/hydrate` directly. `@baloise/ds-playwright` has zero
-   dependency on `@baloise/ds-core` today, and `@baloise/ds-core` already depends on
-   `@baloise/ds-playwright` for its own testing — importing `renderToString` directly would create
+   does **not** import `@helvetia-design/core/hydrate` directly. `@helvetia-design/playwright` has zero
+   dependency on `@helvetia-design/core` today, and `@helvetia-design/core` already depends on
+   `@helvetia-design/playwright` for its own testing — importing `renderToString` directly would create
    a circular workspace dependency. Instead: `mountSsr(page, html, renderToString)` — each
-   `*.ssr.play.ts` file in `packages/core` imports `renderToString` from `@baloise/ds-core/hydrate`
+   `*.ssr.play.ts` file in `packages/core` imports `renderToString` from `@helvetia-design/core/hydrate`
    itself and passes it in.
 
 ## Key technical fact confirmed during the spike
@@ -77,14 +77,14 @@ suite (which already manages that server's lifecycle), passing a `url` based on 
 
 ### 1. Confirm the fetchSvg fix is the only pre-existing blocker
 
-A sweep script (Node, using `@baloise/ds-core/hydrate` directly) renders all
+A sweep script (Node, using `@helvetia-design/core/hydrate` directly) renders all
 `src/components/**/test/*.{visual,style}.html` fixtures (~79 files) against the live dev server,
 before/after the `svg.ts` fix, to check for any other pre-existing SSR bugs before committing to a
 hard gate. **Status: sweep in progress as of this plan being written — results pending.** Any
 additional bug found gets the same small, targeted fix (same shape as the brand-icon one), not a
 change to this plan.
 
-### 2. Add `mountSsr()` to `@baloise/ds-playwright`
+### 2. Add `mountSsr()` to `@helvetia-design/playwright`
 
 New file: `packages/playwright/src/lib/page/utils/mount-ssr.ts`, alongside `mount.ts`.
 
@@ -153,8 +153,8 @@ Mirrors today's `*.component.play.ts` groupings (46 files today — see "File co
 Each file:
 
 ```ts
-import { DsBadge, mountSsr, test } from '@baloise/ds-playwright'
-import { renderToString } from '@baloise/ds-core/hydrate'
+import { DsBadge, mountSsr, test } from '@helvetia-design/playwright'
+import { renderToString } from '@helvetia-design/core/hydrate'
 
 test.describe('ssr', () => {
   test('renders and hydrates', async ({ page }, testInfo) => {
@@ -201,7 +201,7 @@ distributes tests from every project (including the new `🧬 SSR` one) across t
 
 ## Verification
 
-- `pnpm --filter @baloise/ds-core start` (dev server) + `pnpm --filter @baloise/ds-core exec playwright test --project="🧬 SSR"` locally, all files green.
+- `pnpm --filter @helvetia-design/core start` (dev server) + `pnpm --filter @helvetia-design/core exec playwright test --project="🧬 SSR"` locally, all files green.
 - Existing `Visual`/`Component`/`A11Y` projects unaffected (no shared state, no snapshot changes).
 - `pnpm build && pnpm test` (root) still green — confirms the `svg.ts` fix didn't regress anything
   client-side.

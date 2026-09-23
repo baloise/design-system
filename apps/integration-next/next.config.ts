@@ -5,7 +5,7 @@ const nextConfig: NextConfig = {
   turbopack: {
     root: path.join(__dirname, '..', '..'),
   },
-  serverExternalPackages: ['@baloise/ds-core'],
+  serverExternalPackages: ['@helvetia-design/core'],
 }
 
 export default nextConfig

@@ -4,7 +4,7 @@ Status: brainstorm, not yet an issue or committed plan.
 
 ## Context
 
-`@baloise/ds-core/hydrate` (Stencil's `dist-hydrate-script` output, see
+`@helvetia-design/core/hydrate` (Stencil's `dist-hydrate-script` output, see
 [ADR-0031](../adr/0031-ssr-hydrate-build.md)) already lets any component be
 server-rendered into declarative shadow DOM. `apps/integration-ssr` proves the
 primitive works end to end with a plain Node server + Playwright test.

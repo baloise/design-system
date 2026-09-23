@@ -72,7 +72,7 @@ Or scope it to a single instance with a class:
 ## Predefined Brand Themes
 
 Each brand (e.g. Orange Vacations) ships as two complete, standalone token stylesheets from
-`@baloise/ds-tokens` — not a diff against Base, the full token set either way. Pick the one that
+`@helvetia-design/tokens` — not a diff against Base, the full token set either way. Pick the one that
 matches how your app switches (or doesn't switch) brands:
 
 - **`css/<brand>`** (e.g. `css/orange-vacations`) — scoped to `:host, :root`. Use this when your whole app is
@@ -89,11 +89,11 @@ matches how your app switches (or doesn't switch) brands:
 <Code
   language="css"
   code={`
-@import '@baloise/ds-tokens/css/orange-vacations';
+@import '@helvetia-design/tokens/css/orange-vacations';
 `}
 />
 
-Load this instead of `@baloise/ds-tokens/css/base` (see
+Load this instead of `@helvetia-design/tokens/css/base` (see
 [Styles](?path=/docs/development-styles--documentation)) — don't load both.
 
 ### Scoped to an element
@@ -105,7 +105,7 @@ Load this instead of `@baloise/ds-tokens/css/base` (see
 <Code
   language="css"
   code={`
-@import '@baloise/ds-tokens/css/orange-vacations-override';
+@import '@helvetia-design/tokens/css/orange-vacations-override';
 `}
 />
 

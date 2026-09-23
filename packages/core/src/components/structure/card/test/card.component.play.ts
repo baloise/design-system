@@ -6,7 +6,7 @@ import {
   DsCardSubtitle,
   DsCardTitle,
   test,
-} from '@baloise/ds-playwright'
+} from '@helvetia-design/playwright'
 
 test.describe('component', () => {
   test('should render ds-card with default slot', async ({ page }) => {

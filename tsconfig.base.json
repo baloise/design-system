@@ -31,13 +31,13 @@
       "@global": [
         "packages/core/src/global/index.ts"
       ],
-      "@baloise/ds-core": [
+      "@helvetia-design/core": [
         "packages/core/src/index.ts"
       ],
-      "@baloise/ds-tokens": [
+      "@helvetia-design/tokens": [
         "packages/tokens/dist/tokens.js"
       ],
-      "@baloise/ds-playwright": [
+      "@helvetia-design/playwright": [
         "packages/playwright/src/index.ts"
       ],
       "libs-output-target-web": [

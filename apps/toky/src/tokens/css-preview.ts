@@ -5,7 +5,7 @@ import {
   TYPOGRAPHY_CSS_SUFFIXES,
   responsiveDimensionValueToCss,
   RESPONSIVE_DIMENSION_CSS_SUFFIXES,
-} from '@baloise/ds-tokens/css-preview'
+} from '@helvetia-design/tokens/css-preview'
 
 import { pathFor, type TokenDiffEntry, type WorkingToken } from './edit'
 import type { FlatToken } from './types'
@@ -21,7 +21,7 @@ export interface PreviewToken {
 //
 // The `keyof typeof css` casts below (rather than importing a `TypographyCssValue` type) are
 // deliberate — this package ships no .d.ts (see tsconfig.json), so apps/toky's TS only sees
-// `@baloise/ds-tokens/css-preview` through allowJs inference over the compiled JS, which can't
+// `@helvetia-design/tokens/css-preview` through allowJs inference over the compiled JS, which can't
 // recover a type-only export. Deriving the key type structurally from `css` itself sidesteps that.
 function pushTypographyPreviewTokens(tokens: PreviewToken[], path: string[], resolvedValue: unknown): void {
   const css = typographyValueToCss(resolvedValue)
@@ -68,7 +68,7 @@ function pushResponsiveDimensionDeleteTokens(tokens: PreviewToken[], path: strin
 
 /**
  * Turns the working-vs-baseline diff into the `{ name, value }` pairs the Live Preview sidebar
- * posts to `packages/core`'s token-preview listener. Reuses `@baloise/ds-tokens/css-preview` (see
+ * posts to `packages/core`'s token-preview listener. Reuses `@helvetia-design/tokens/css-preview` (see
  * ADR-0021) so the preview never computes a CSS var name or value differently than the real
  * build. Deletions map to `value: null` so the listener calls `removeProperty` instead of leaving
  * a stale override in place. Entries whose value can't be resolved to a CSS string (e.g. a
