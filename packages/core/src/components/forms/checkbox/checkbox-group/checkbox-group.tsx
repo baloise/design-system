@@ -26,6 +26,7 @@ import {
   shallowReady,
   Type,
   watchInvalidTextSlot,
+  setFormValue,
 } from '@utils'
 import { INPUT_COLORS, InputColor } from '../../input/input.interfaces'
 import {
@@ -261,7 +262,7 @@ export class CheckboxGroup implements DsComponentInterface, FieldInterface {
       this.hasInvalidTextSlotContent = hasContent
     })
     this.passDownAttributes()
-    this.internals.setFormValue(this.internalValue.join(','))
+    setFormValue(this.internals, this.internalValue.join(','))
   }
 
   disconnectedCallback() {
@@ -443,7 +444,7 @@ export class CheckboxGroup implements DsComponentInterface, FieldInterface {
     if (!areArraysEqual(this.internalValue, newValue)) {
       this.internalValue = [...newValue]
       this.dsChange.emit(this.internalValue)
-      this.internals.setFormValue(this.internalValue.join(','))
+      setFormValue(this.internals, this.internalValue.join(','))
     }
   }
 

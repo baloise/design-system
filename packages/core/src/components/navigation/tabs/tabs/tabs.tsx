@@ -1,6 +1,6 @@
 import { Component, Element, Event, EventEmitter, h, Host, Listen, Method, Prop, State } from '@stencil/core'
 import { HTMLStencilElement } from '@stencil/core/internal'
-import { Logger, type LogInstance, stopEventBubbling, OneOf, Type, raf } from '@utils'
+import { Logger, type LogInstance, stopEventBubbling, byTagName, directChildren, OneOf, Type, raf } from '@utils'
 import {
   DsComponentInterface,
   DsConfigObserver,
@@ -159,11 +159,11 @@ export class Tabs implements DsComponentInterface, DsConfigObserver {
    */
 
   private getTabs(): HTMLDsTabElement[] {
-    return Array.from(this.el.querySelectorAll<HTMLDsTabElement>(':scope > ds-tab'))
+    return directChildren<HTMLDsTabElement>(this.el, byTagName('DS-TAB'))
   }
 
   private getPanels(): HTMLDsTabPanelElement[] {
-    return Array.from(this.el.querySelectorAll<HTMLDsTabPanelElement>(':scope > ds-tab-panel'))
+    return directChildren<HTMLDsTabPanelElement>(this.el, byTagName('DS-TAB-PANEL'))
   }
 
   private isNavigation(): boolean {

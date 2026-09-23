@@ -22,6 +22,7 @@ import {
   hasValue,
   OneOf,
   Type,
+  setFormValue,
 } from '@utils'
 import { FOCUS_KEYS } from '../../structure/root/root.focus.util'
 import {
@@ -230,7 +231,7 @@ export class Radio implements DsComponentInterface {
   }
 
   componentWillLoad() {
-    this.internals.setFormValue(this.checked ? (this.value as string) : null)
+    setFormValue(this.internals, this.checked ? (this.value as string) : null)
     this.inheritedAttributes = inheritAttributes(this.el, ['aria-label', 'tabindex', 'title'])
   }
 
@@ -321,7 +322,7 @@ export class Radio implements DsComponentInterface {
   private handleChange = (ev: Event): void => {
     this.checked = (ev.target as HTMLInputElement).checked
     this.dsChange.emit(this.checked)
-    this.internals.setFormValue(this.checked ? (this.value as string) : null)
+    setFormValue(this.internals, this.checked ? (this.value as string) : null)
   }
 
   private handleFocus = (ev: FocusEvent) => {

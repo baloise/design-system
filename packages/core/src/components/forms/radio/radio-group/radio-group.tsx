@@ -20,6 +20,7 @@ import {
   OneOf,
   Type,
   watchInvalidTextSlot,
+  setFormValue,
 } from '@utils'
 import { Field, FieldInterface } from '../../input/field.util'
 import { DsComponentInterface, defaultConfig, DsConfigState, DsLanguage, DsRegion, ListenToConfig } from '@global'
@@ -247,7 +248,7 @@ export class RadioGroup implements DsComponentInterface, FieldInterface {
 
   connectedCallback() {
     this.initialValue = this.value
-    this.internals.setFormValue(this.value)
+    setFormValue(this.internals, this.value)
     this.disconnectInvalidTextSlotWatcher = watchInvalidTextSlot(this.el, hasContent => {
       this.hasInvalidTextSlotContent = hasContent
     })
@@ -357,7 +358,7 @@ export class RadioGroup implements DsComponentInterface, FieldInterface {
 
         this.value = next.value
         this.dsChange.emit(this.value)
-        this.internals.setFormValue(this.value)
+        setFormValue(this.internals, this.value)
       }
 
       // Update the radio group value when a user presses the
@@ -365,7 +366,7 @@ export class RadioGroup implements DsComponentInterface, FieldInterface {
       if (['Space'].includes(ev.code)) {
         this.value = this.allowEmptySelection && this.value !== undefined ? undefined : current.value
         this.dsChange.emit(this.value)
-        this.internals.setFormValue(this.value)
+        setFormValue(this.internals, this.value)
 
         // Prevent browsers from jumping to the bottom of the screen
         ev.preventDefault()
@@ -427,7 +428,7 @@ export class RadioGroup implements DsComponentInterface, FieldInterface {
         this.value = undefined
       }
       this.dsChange.emit(this.value)
-      this.internals.setFormValue(this.value)
+      setFormValue(this.internals, this.value)
     }
   }
 

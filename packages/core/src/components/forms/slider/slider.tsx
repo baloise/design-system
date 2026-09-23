@@ -23,6 +23,7 @@ import {
   OneOf,
   Type,
   watchInvalidTextSlot,
+  setFormValue,
 } from '@utils'
 import { defaultConfig, DsComponentInterface, DsConfigState, DsLanguage, DsRegion, ListenToConfig } from '@global'
 import { Field, FieldInterface } from '../input/field.util'
@@ -428,7 +429,7 @@ export class Slider implements DsComponentInterface, FieldInterface {
   }
 
   private syncFormValue(value: number) {
-    this.internals.setFormValue(String(value))
+    setFormValue(this.internals, String(value))
   }
 
   private syncDisabledState() {
