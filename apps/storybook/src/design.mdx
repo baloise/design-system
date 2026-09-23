@@ -1,0 +1,153 @@
+import { Markdown, Meta, Unstyled } from '@storybook/addon-docs/blocks'
+import { navigate } from '@storybook/addon-links'
+import { Banner, ButtonCard, Footer, InfoQuote, Lead, LinkCard, LinkCards, WarningQuote } from '../.storybook/blocks'
+
+<Meta
+  title="Design"
+  name="Design"
+  parameters={{
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+<Banner label="Design" />
+
+<Lead>
+  A guide for designers working with the Helvetia Design System — what it gives you, how to connect to it in Figma,
+  and where to go when you're stuck.
+</Lead>
+
+## Intro
+
+The Helvetia Design System (HDS) is the same source of truth designers and developers build from — so a component
+looks, behaves, and names things the same way whether you're in Figma or in the browser. As a designer, it gives
+you:
+
+- <a className="ds-link" onClick={() => navigate({ title: 'Tokens/Design Tokens Explained' })}><b>Design Tokens</b></a> — every color, spacing, shadow, and type value, named once and kept in sync between Figma Variables and code (see [Plugin: Toky](#plugin-toky) below).
+- <a className="ds-link" onClick={() => navigate({ title: 'Components/Overview' })}><b>Components</b></a> — 50+ accessible, framework-agnostic components (Angular, React, or plain Web Components), mirrored in Figma as reusable components with the same names and variants.
+- <a className="ds-link" onClick={() => navigate({ title: 'Foundation/Overview' })}><b>Foundation</b></a> — the shared visual principles: grid, spacing, elevation, iconography, and brand assets.
+- <a className="ds-link" onClick={() => navigate({ title: 'CSS Utilities/Overview' })}><b>CSS Utilities</b></a> — utility classes that cover everyday layout needs without custom CSS, useful context for understanding what's "free" versus custom-built.
+
+These building blocks are what today's separate Figma files package for specific contexts. See
+[Connect to Helvetia Figma Libraries](#connect-to-helvetia-figma-libraries) for details on each.
+
+
+
+## Onboarding
+
+New to the Helvetia Design System as a designer? Here's how to get set up:
+
+1. Make sure you have a Figma seat and are part of the relevant Helvetia Figma team, so the shared
+   libraries are visible to you.
+2. Reach out to **ux-design@baloise.ch** — the team will point you to the libraries relevant to your product and
+   answer any onboarding questions.
+3. Skim this documentation, especially **Foundation** and **Tokens**, so you share the same vocabulary developers
+   use when a design gets built.
+4. Read the [Tips](#tips) section below before you start working inside a library file.
+
+## Helvetia Figma Libraries
+
+<WarningQuote>
+  Helvetia/Baloise design assets currently live across **multiple separate Figma files** rather than one unified
+  library – we're currently working on this. 
+</WarningQuote>
+
+<Markdown>
+  {`
+| Figma File | Purpose |
+|---|---|
+| **App Pattern Library** | Patterns for calculators and interactive tools |
+| **Components** | Core component library, mirroring the code components 1:1 from the design system. |
+| **Website Component Kit** | Components tailored for helvetia.com website surfaces |
+`}
+</Markdown>
+
+<InfoQuote>
+  Links to these files aren't published here yet — ask <b>ux-design@helvetia.ch</b> for access in the meantime.
+</InfoQuote>
+
+## Tips
+
+- **Don't detach instances.** A detached component stops receiving library updates and silently drifts from what
+  actually ships.
+- **Keep libraries up to date.** Enable Figma's library update notifications so you catch new components and token
+  changes as they land.
+- **Design with variables, not raw values.** Pick token-bound styles/variables over hand-picked hex or pixel values
+  so your file stays in sync with what gets built.
+- **Cross-check with this Storybook.** [Foundation](/?path=/docs/foundation-overview--documentation) and
+  [Components](/?path=/docs/components-overview--documentation) show the real, shipped, accessible behavior —
+  states, responsive breakpoints, and edge cases a static Figma frame can't always capture.
+- **Design for accessibility from the start.** The system targets **WCAG 2.2 AA** — contrast, focus states, and
+  touch target sizes are part of the component contract, not just a developer concern.
+
+## Toky
+
+**Toky** is how design tokens stay in sync between Figma and code. 
+
+<Unstyled>
+  <div className="flex flex-wrap gap-base my-lg">
+    <ButtonCard
+      color="green"
+      icon="🧮"
+      label="Toky (web app)"
+      description="An internal tool where token changes — colors, spacing, typography, and more — are pushed into Figma directly."
+      link="https://design-system-toky.vercel.app/"
+      wide
+    ></ButtonCard>
+  </div>
+</Unstyled>
+
+
+
+Updates flow automatically from code into Figma the moment a Toky-authored change is merged — you don't need to
+manually "check for updates" for that direction. Going the other way, from a Figma edit back into code, always goes
+through a reviewed pull request, the same as any other change to the design system.
+
+<InfoQuote>
+  Toky signs you in via <b>GitHub</b>, and only lets in people added to the <b>baloise</b> GitHub organization. If
+  you get stuck at sign-in, ask <b>ux-design@helvetia.ch</b> to add you to the project first.
+</InfoQuote>
+
+## Assets
+
+Beyond components, the design system documents the visual assets behind them:
+
+<Unstyled>
+  <div className="flex flex-wrap gap-base my-lg">
+    <LinkCard
+      label="Brand Assets"
+      pageTitle="Foundation/Brand Assets"
+      description="Logos, imagery, and brand-approved visual elements."
+    />
+    
+  </div>
+</Unstyled>
+
+For any asset that isn't covered yet, **ux-design@baloise.ch** is the right place to ask.
+
+## Connect
+
+Have a question, found something outdated, or want to suggest a change?
+
+
+- **Design questions** (Figma access, which library to use, proposing a token change) →
+  **ux-design@baloise.ch**
+- **Component or code questions** → see the [Support page](/?path=/docs/support--documentation) for how the
+  maintainers handle issues.
+
+<Footer>
+  <LinkCards>
+    <LinkCard
+      label="Support"
+      pageTitle="Support"
+      description="How to get help, report a bug, or ask a question about a component."
+    />
+    <LinkCard
+      label="Design Tokens Explained"
+      pageTitle="Tokens/Design Tokens Explained"
+      description="Understand how design tokens are structured, named, and used across the system."
+    />
+  </LinkCards>
+</Footer>

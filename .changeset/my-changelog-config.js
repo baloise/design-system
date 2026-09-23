@@ -141,7 +141,8 @@ const changelogFunctions = {
       }
     })()
     const prefix = links.pull === null ? ` ${links.commit}` : ` ${links.pull}`
-    return `\n- ${firstLine} ${prefix ? `(${prefix})` : ''}\n${futureLines.map(l => `  ${l}`).join('\n')}${
+    const authorMarker = links.user ? `<!-- author:${links.user.match(/\[@?([^\]]+)\]/)?.[1] ?? ''} -->` : ''
+    return `\n- ${firstLine} ${prefix ? `(${prefix})` : ''}${authorMarker}\n${futureLines.map(l => `  ${l}`).join('\n')}${
       futureLines && futureLines.length > 0 ? '\n' : ''
     }`
   },

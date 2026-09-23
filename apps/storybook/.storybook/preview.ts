@@ -95,6 +95,7 @@ const preview: Preview = {
           'Welcome',
           "What's New",
           'Versions',
+          'Design',
           'Support',
           'Contributing',
           'Foundation',

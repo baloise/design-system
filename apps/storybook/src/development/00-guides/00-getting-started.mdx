@@ -683,6 +683,37 @@ npm add -E @baloise/ds-react @baloise/ds-styles @baloise/ds-tokens next
 pnpm add -E @baloise/ds-react @baloise/ds-styles @baloise/ds-tokens next
 ```
 
+### Configure Next.js
+
+Keep `@baloise/ds-core` external in the Next.js server build.
+
+**next.config.ts**
+
+```ts
+import type { NextConfig } from 'next'
+
+const nextConfig: NextConfig = {
+  serverExternalPackages: ['@baloise/ds-core'],
+}
+
+export default nextConfig
+```
+
+<InfoQuote>
+  In a monorepo, you may also need to point Turbopack at the workspace root:
+
+  ```ts
+  import path from 'node:path'
+
+  const nextConfig: NextConfig = {
+    turbopack: {
+      root: path.join(__dirname, '..', '..'),
+    },
+    serverExternalPackages: ['@baloise/ds-core'],
+  }
+  ```
+</InfoQuote>
+
 ### Root layout
 
 `DsRootProvider`'s client build carries a top-of-file `'use client'` pragma — wrapping the root
@@ -775,6 +806,19 @@ export default function OverlaysPage() {
 ```
 
 </WarningQuote>
+
+### Verify server rendering
+
+Test server rendering with a production build — `next dev` does not produce the same output, so
+don't use it to verify SSR:
+
+```bash
+next build
+next start
+```
+
+Open the page source and look for `shadowrootmode` inside a rendered `ds-*` element. This confirms
+the server response contains Declarative Shadow DOM before JavaScript runs.
 
 See the [integration-next](https://github.com/baloise/design-system/tree/next/apps/integration-next)
 app in the repo for a working example, including the `overlays-demo` referenced above.
