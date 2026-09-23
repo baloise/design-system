@@ -36,8 +36,7 @@ jobs:
           commit-message: 'prepare release'
           create-github-releases: false
           publish-script: echo "Publish"
-        env:
-          GITHUB_TOKEN: ${{ secrets.PRE_RELEASE_GITHUB_TOKEN }}
+          github-token: ${{ secrets.PRE_RELEASE_GITHUB_TOKEN }}
 
       - name: Echo Changeset output
         shell: bash
