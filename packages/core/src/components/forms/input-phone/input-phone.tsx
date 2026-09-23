@@ -99,7 +99,7 @@ export class InputPhone implements DsComponentInterface, FieldInterface {
   @Type('string')
   value: string | null = null
 
-  @Watch('value')
+  @Watch('value', { immediate: true })
   protected valueChanged(newVal: string | null) {
     if (this.skipValueWatch) {
       return

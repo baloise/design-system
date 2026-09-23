@@ -1,6 +1,40 @@
 import { DsFileUpload, test } from '@baloise/ds-playwright'
 import { expect } from '@playwright/test'
 
+test.describe('value assigned after load', () => {
+  test('should render a value that is assigned after the component has loaded', async ({ page }) => {
+    await page.mount(`<ds-file-upload label="Upload"></ds-file-upload>`)
+    const component = new DsFileUpload(page.locator('ds-file-upload'))
+
+    await component.assertHasNoFileList()
+
+    await component.el.evaluate((el: HTMLDsFileUploadElement) => {
+      el.value = [new File(['content'], 'file1.txt', { type: 'text/plain' })]
+    })
+    await page.waitForChanges()
+
+    await component.assertHasFileList()
+    await expect(component.fileList).toContainText('file1.txt')
+  })
+
+  test('should render a value that is re-assigned to the same files after the component has loaded', async ({
+    page,
+  }) => {
+    await page.mount(`<ds-file-upload label="Upload"></ds-file-upload>`)
+    const component = new DsFileUpload(page.locator('ds-file-upload'))
+
+    await component.el.evaluate((el: HTMLDsFileUploadElement) => {
+      const files = [new File(['content'], 'file1.txt', { type: 'text/plain' })]
+      el.value = files
+      el.value = files
+    })
+    await page.waitForChanges()
+
+    await component.assertHasFileList()
+    await expect(component.fileList).toContainText('file1.txt')
+  })
+})
+
 test.describe('component', () => {
   test.describe('events', () => {
     test('should emit dsFocus on input focus', async ({ page }) => {

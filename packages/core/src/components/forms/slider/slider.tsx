@@ -91,7 +91,7 @@ export class Slider implements DsComponentInterface, FieldInterface {
   @Type('number')
   value: number = NaN
 
-  @Watch('value')
+  @Watch('value', { immediate: true })
   protected valueChanged(newVal: number) {
     // A slider can never be empty (see the `value` prop doc): resolve `null`/`undefined`/`NaN` — e.g. from
     // a framework binding resetting to "no value" (Angular's `FormControl.reset()`, React's `value={null}`,

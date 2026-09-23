@@ -66,7 +66,7 @@ export class FileUpload implements DsComponentInterface, FieldInterface {
   @Type('array')
   value: File[] = []
 
-  @Watch('value')
+  @Watch('value', { immediate: true })
   valueChanged() {
     const newFiles = this.value || []
     if (!areArraysEqual(this.files, newFiles)) {

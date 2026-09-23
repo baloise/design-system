@@ -1,5 +1,36 @@
 import { DsInputPhone, expect, test } from '@baloise/ds-playwright'
 
+test.describe('value assigned after load', () => {
+  test('should render a value that is assigned after the component has loaded', async ({ page }) => {
+    await page.mount(`<ds-input-phone label="Phone number" initial-country="CH"></ds-input-phone>`)
+    const phone = new DsInputPhone(page.locator('ds-input-phone'))
+
+    await phone.assertNationalNumber('')
+
+    await phone.el.evaluate((el: HTMLDsInputPhoneElement) => {
+      el.value = '+41791234567'
+    })
+    await page.waitForChanges()
+
+    await phone.assertNationalNumber('79 123 45 67')
+  })
+
+  test('should render a value that is re-assigned to the same number after the component has loaded', async ({
+    page,
+  }) => {
+    await page.mount(`<ds-input-phone label="Phone number" initial-country="CH"></ds-input-phone>`)
+    const phone = new DsInputPhone(page.locator('ds-input-phone'))
+
+    await phone.el.evaluate((el: HTMLDsInputPhoneElement) => {
+      el.value = '+41791234567'
+      el.value = '+41791234567'
+    })
+    await page.waitForChanges()
+
+    await phone.assertNationalNumber('79 123 45 67')
+  })
+})
+
 test.describe('component', () => {
   test('should fire dsInput with E.164 payload on fill', async ({ page }) => {
     await page.mount(`<ds-input-phone label="Phone number" initial-country="CH"></ds-input-phone>`)
