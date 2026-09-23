@@ -21726,6 +21726,14 @@
           "docs": "Text color of the value display."
         },
         {
+          "name": "--counter-value-animation-duration",
+          "docs": "Duration of the slide animation played when the value changes."
+        },
+        {
+          "name": "--counter-value-animation-easing",
+          "docs": "Easing of the slide animation played when the value changes."
+        },
+        {
           "name": "--form-label-color",
           "docs": "Text color of the label."
         },

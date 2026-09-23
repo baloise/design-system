@@ -42,10 +42,10 @@ const SvgIcons: Record<string, string> = {
 const labels: Record<string, string> = {
   angular: 'Angular',
   html: 'HTML & JS',
-  react: 'React',
+  react: 'React / Next.js',
 }
 
-const frameworks = ['angular', 'html', 'react']
+const frameworks = ['html', 'react', 'angular']
 
 const LOCAL_STORE_ID = 'ds-docs-framework'
 

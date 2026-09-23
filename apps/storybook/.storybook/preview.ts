@@ -83,6 +83,12 @@ const preview: Preview = {
   parameters: {
     actions: { argTypesRegex: '^on[A-Z].*' },
     controls: { expanded: false },
+    // docs: {
+    //   toc: {
+    //     title: 'On this page',
+    //     headingSelector: 'h2',
+    //   },
+    // },
     options: {
       storySort: {
         order: [

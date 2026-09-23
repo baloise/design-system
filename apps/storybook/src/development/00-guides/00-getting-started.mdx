@@ -52,14 +52,22 @@ Add these to your global stylesheet (e.g. `styles.scss`). Only **Tokens** and
 **Foundation + Components** are required — add Utilities as you need it:
 
 ```css
-// 1. Tokens — every --ds-* CSS custom property. Always required; load before Foundation + Components.
+/*
+  Required: design tokens (--ds-* CSS custom properties).
+  Load before ds-styles
+*/
 @import '@baloise/ds-tokens/css/base';
 
-// 2. Foundation + Components — CSS reset, structural styles, and CSS-only component classes
-//    (e.g. class="ds-button"). Ship together as one pre-built bundle. Always required.
+/*
+  Required: CSS reset, structural styles, and
+  CSS-only component classes (e.g. class="ds-button")
+*/
 @import '@baloise/ds-styles/css/design-system';
 
-// 3. Utilities — spacing, layout, typography, color helpers, etc. Optional.
+/*
+  Optional: only needed if you use utility classes
+  (spacing, layout, typography, color helpers, etc. — e.g. class="mt-base" below)
+*/
 @import '@baloise/ds-styles/css/utilities';
 ```
 
@@ -70,12 +78,9 @@ For SASS mixins (breakpoints, etc.) without any styles, import `@baloise/ds-styl
 Angular apps are standalone by default. Add `provideDesignSystem()` to the providers in `app.config.ts` — it
 initializes the system once and every nested component picks up brand, region, language, and animation settings.
 
-Pass the default config via `defaults`. If you omit it, components still work with the default config. Region and
-language can also be changed at runtime with `updateDsRegion` / `updateDsLanguage`. See **Development/Configuration**.
-
-**app.config.ts**
-
 ```typescript
+// app.config.ts
+
 import { ApplicationConfig } from '@angular/core'
 import { provideDesignSystem } from '@baloise/ds-angular'
 
@@ -92,9 +97,12 @@ export const appConfig: ApplicationConfig = {
 }
 ```
 
-**main.ts**
+Pass the default config via `defaults`. If you omit it, components still work with the default config. Region and
+language can also be changed at runtime with `updateDsRegion` / `updateDsLanguage`. See **Development/Configuration**.
 
 ```typescript
+// main.ts
+
 import { bootstrapApplication } from '@angular/platform-browser'
 
 import { App } from './app/app'
@@ -103,13 +111,13 @@ import { appConfig } from './app/app.config'
 bootstrapApplication(App, appConfig).catch(err => console.error(err))
 ```
 
-**app.ts**
-
 Every component — including layout elements like `DsRoot` and `DsAppFooter` — ships as a real, standalone Angular
 component generated from the underlying web component. Import what you need directly; no `CUSTOM_ELEMENTS_SCHEMA` is
 required.
 
 ```typescript
+// app.ts
+
 import { Component } from '@angular/core'
 import { DsAppFooter, DsButton, DsRoot } from '@baloise/ds-angular'
 
@@ -121,12 +129,12 @@ import { DsAppFooter, DsButton, DsRoot } from '@baloise/ds-angular'
 export class App {}
 ```
 
-**app.html**
-
 Add `ds-root` to your root template. Elements like the heading below are plain HTML styled with a CSS class — no
 import or registration needed.
 
 ```html
+<!-- app.html -->
+
 <ds-root class="has-sticky-footer">
   <header>
     <!-- Header content -->
@@ -152,10 +160,57 @@ import or registration needed.
 
 <HTMLFramework>
 
-## Installation
+No build tool, no framework required. Pick the setup that fits your project — a plain
+`index.html`, server-rendered pages via SSR, or a CDN with nothing to install at all.
 
-No build tool, no framework — just an `index.html` file. This is the recommended setup for
-static sites, server-rendered pages, or any HTML5 app you keep under version control with npm.
+<div className="sb-unstyled doc-link-cards">
+  <button
+    type="button"
+    onClick={() => document.getElementById('default-html')?.scrollIntoView({ behavior: 'smooth', block: 'start' })}
+    className="sb-unstyled ds-button is-secondary flex py-base"
+  >
+    <div className="flex-1 flex flex-direction-column justify-content-center align-items-start">
+      <span className="block ds-title text-base mb-none">Default HTML</span>
+      <span className="block ds-text text-align-left is-sm">Just an index.html file, no build tool or framework.</span>
+    </div>
+    <span className="flex justify-content-center align-items-center text-2xl text-align-center">
+      <ds-icon name="caret-right"></ds-icon>
+    </span>
+  </button>
+  <button
+    type="button"
+    onClick={() =>
+      document.getElementById('server-side-rendering-ssr')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    }
+    className="sb-unstyled ds-button is-secondary flex py-base"
+  >
+    <div className="flex-1 flex flex-direction-column justify-content-center align-items-start">
+      <span className="block ds-title text-base mb-none">Server-Side Rendering</span>
+      <span className="block ds-text text-align-left is-sm">Pre-render components to HTML for a CMS or server.</span>
+    </div>
+    <span className="flex justify-content-center align-items-center text-2xl text-align-center">
+      <ds-icon name="caret-right"></ds-icon>
+    </span>
+  </button>
+  <button
+    type="button"
+    onClick={() => document.getElementById('cdn')?.scrollIntoView({ behavior: 'smooth', block: 'start' })}
+    className="sb-unstyled ds-button is-secondary flex py-base"
+  >
+    <div className="flex-1 flex flex-direction-column justify-content-center align-items-start">
+      <span className="block ds-title text-base mb-none">CDN</span>
+      <span className="block ds-text text-align-left is-sm">Nothing to install, load everything from jsDelivr.</span>
+    </div>
+    <span className="flex justify-content-center align-items-center text-2xl text-align-center">
+      <ds-icon name="caret-right"></ds-icon>
+    </span>
+  </button>
+</div>
+
+## Default HTML
+
+Just an `index.html` file. This is the recommended setup for static sites, server-rendered
+pages, or any HTML5 app you keep under version control with npm.
 
 ```bash
 npm add -E @baloise/ds-core @baloise/ds-styles @baloise/ds-tokens
@@ -163,7 +218,7 @@ npm add -E @baloise/ds-core @baloise/ds-styles @baloise/ds-tokens
 pnpm add -E @baloise/ds-core @baloise/ds-styles @baloise/ds-tokens
 ```
 
-## Usage
+### Usage
 
 Create an `index.html` file in your project root and add the following:
 
@@ -237,7 +292,143 @@ live in `<head>`; `ds-root` wraps the page content in `<body>`.
   class. No script needed for these — only elements that need JS behavior (like `<ds-root>`) are
   web components.
 
-### CDN
+## Server-Side Rendering (SSR)
+
+For a CMS or any server-rendered page, components can be pre-rendered to real HTML before they
+reach the browser — useful for SEO, faster first paint, and CMS previews that don't execute
+JavaScript. `@baloise/ds-core` ships a Node-compatible renderer for this that has no framework
+dependency. The example below uses [Express](https://expressjs.com/), but `renderToString` itself
+works with any Node server.
+
+Install the same three packages as the "Default HTML" setup above — `ds-styles` and `ds-tokens`
+are still required for the browser to render the page correctly; only the renderer itself
+(`renderToString`) is additive on top of `ds-core`. Add `express` to serve the page and its
+assets, and `copyfiles` as a dev dependency to stage those assets at build time.
+
+```bash
+npm add -E @baloise/ds-core @baloise/ds-styles @baloise/ds-tokens express
+npm add -D -E copyfiles
+// or
+pnpm add -E @baloise/ds-core @baloise/ds-styles @baloise/ds-tokens express
+pnpm add -D -E copyfiles
+```
+
+### Stage the client assets
+
+The browser still needs the design-system loader script and the tokens/styles CSS — none of
+which live in a ready-to-serve folder inside `node_modules`. Add a `copy-assets` script that
+stages them into a `public` folder next to the server, and run it before `dev`/`start`/`build`
+via the matching `pre*` lifecycle scripts:
+
+```json
+{
+  "scripts": {
+    "copy-assets": "copyfiles -u 5 \"node_modules/@baloise/ds-core/dist/design-system/**/*\" public/design-system && copyfiles -f node_modules/@baloise/ds-tokens/dist/css/base.tokens.css node_modules/@baloise/ds-styles/dist/css/design-system.css public",
+    "predev": "pnpm copy-assets",
+    "dev": "tsx watch server.ts",
+    "prestart": "pnpm copy-assets",
+    "start": "tsx server.ts",
+    "prebuild": "pnpm copy-assets",
+    "build": "tsc --noEmit"
+  }
+}
+```
+
+The first `copyfiles` call copies the design-system JS entry and all of its lazily-loaded
+component chunks (Stencil splits every component into its own file) into `public/design-system`,
+preserving that folder structure. The second copies the two CSS bundles straight into `public`.
+`-u 5` strips the five leading path segments (`node_modules/@baloise/ds-core/dist/design-system`)
+so only the files themselves land in the destination; `-f` flattens the CSS sources to their
+basenames.
+
+### Render and serve
+
+```js
+import express from 'express'
+import { renderToString } from '@baloise/ds-core/hydrate'
+
+const fragment = `
+  <ds-root>
+    <main class="ds-container mt-base">
+      <h1 class="ds-heading">Hello World</h1>
+      <button class="ds-button">Button</button>
+    </main>
+  </ds-root>
+`
+
+async function renderPage() {
+  const { html } = await renderToString(fragment, {
+    // Render only the fragment, not a full <html> document — for embedding into an
+    // existing CMS page template. Omit (defaults to `true`) to get a full document.
+    fullDocument: false,
+    // Real shadow DOM, sent as part of the HTML response (the default).
+    serializeShadowRoot: 'declarative-shadow-dom',
+  })
+
+  return `<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Helvetia Design System</title>
+    <link rel="stylesheet" href="/assets/base.tokens.css" />
+    <link rel="stylesheet" href="/assets/design-system.css" />
+  </head>
+  <body>
+    ${html}
+    <script type="module" src="/assets/design-system/design-system.esm.js"></script>
+  </body>
+</html>
+`
+}
+
+const app = express()
+
+app.get('/', async (_req, res) => {
+  res.type('html').send(await renderPage())
+})
+
+// The public folder staged by `pnpm copy-assets` — served as-is.
+app.use('/assets', express.static('public'))
+
+app.listen(3000)
+```
+
+Need a non-default brand, region, or language? Add the `<meta name="design-system-config">` tag
+from the "Default HTML" section above into `<head>`, before the stylesheets.
+
+`renderToString` embeds HTML comments and attributes (`clientHydrateAnnotations`, on by default)
+that tell Stencil's runtime to **claim** the server-rendered elements rather than re-render them —
+the same trick React and Next.js use for hydration, without requiring either.
+
+**Requirements**:
+
+- A Node.js-capable server or build step to call `renderToString` (or `hydrateDocument` /
+  `streamToString` for a `Document` or streaming variant).
+- A browser that supports [declarative shadow
+  DOM](https://developer.chrome.com/docs/css-ui/declarative-shadow-dom) (Chrome/Edge, Safari 16.4+,
+  Firefox 123+) — the design system's default target already assumes evergreen browsers.
+- The client loader script still included, so interactive components pick up their event listeners
+  after claiming.
+
+Components that never need interactivity (e.g. a static header or footer) can be listed in
+`staticComponents` — they render once and are excluded from client-side hydration entirely.
+
+See the [`integration-ssr`](https://github.com/baloise/design-system/tree/next/apps/integration-ssr)
+app in the repo for a working example.
+
+<WarningQuote>
+**Note**
+
+This renderer (`dist-hydrate-script`, generated by Stencil) is framework-agnostic by design and is
+what powers SSR for `@baloise/ds-react` under the hood. Calling it directly from a plain
+Node/CMS pipeline, as shown above, is exercised by the `integration-ssr` example app linked above —
+still verify the output against your specific CMS/templating stack before relying on it in
+production.
+
+</WarningQuote>
+
+## CDN
 
 Prototyping or don't want to install anything? Load everything straight from
 [jsDelivr](https://www.jsdelivr.com/), a CDN, by adding these to `<head></head>`:
@@ -258,8 +449,8 @@ Prototyping or don't want to install anything? Load everything straight from
 
 Same as before, only `base.tokens.css` and `design-system.css` are really required — drop
 `utilities.css` if you don't use utility classes. The rest of the page (the
-`<meta name="design-system-config">` tag, `<ds-root>`, etc.) works exactly like the "Plain HTML"
-example above — only where the CSS/JS come from changes.
+`<meta name="design-system-config">` tag, `<ds-root>`, etc.) works exactly like the "Default HTML"
+section above — only where the CSS/JS come from changes.
 
 <InfoQuote>
 **TIP**
@@ -280,9 +471,91 @@ Pin a specific version rather than relying on the latest one:
 
 <ReactFramework>
 
-## Installation
+Pick the setup that fits your app — a client-side SPA with [Vite](https://vite.dev/guide/), or
+server-rendered pages with [Next.js](https://nextjs.org/docs/app/getting-started) App Router.
 
-If you do not have a React app yet, create one with [Vite](https://vite.dev/guide/) (recommended for SPAs) or [Next.js](https://nextjs.org/docs/app/getting-started).
+<div className="sb-unstyled doc-link-cards">
+  <button
+    type="button"
+    onClick={() => document.getElementById('client-side-vite')?.scrollIntoView({ behavior: 'smooth', block: 'start' })}
+    className="sb-unstyled ds-button is-secondary flex py-base"
+  >
+    <span
+      className="flex-shrink-0 flex justify-content-center align-items-center"
+      style={{ width: '2.5rem', height: '2.5rem' }}
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="36" height="36">
+        <defs>
+          <linearGradient id="vite-logo-bolt" x1="4" y1="4" x2="19" y2="20" gradientUnits="userSpaceOnUse">
+            <stop offset="0" stopColor="#41d1ff" />
+            <stop offset="1" stopColor="#bd34fe" />
+          </linearGradient>
+        </defs>
+        <path
+          fill="url(#vite-logo-bolt)"
+          d="M22.5 4.1 12.9 21.8a.5.5 0 0 1-.88 0L1.5 4.1a.5.5 0 0 1 .55-.73l9.75 1.77a.5.5 0 0 0 .18 0l9.75-1.77a.5.5 0 0 1 .55.73z"
+        />
+        <path
+          fill="#ffcb00"
+          d="M16.9.02 8.55 1.55a.3.3 0 0 0-.24.3l-.5 8.02a.3.3 0 0 0 .35.31l2.28-.42a.3.3 0 0 1 .35.34l-.68 3.86a.3.3 0 0 0 .36.34l1.4-.33a.3.3 0 0 1 .35.36l-.82 4.86c-.06.35.4.55.6.24l.13-.19 6.86-12.7.03-.06c.13-.27-.1-.58-.4-.53l-2.36.44a.3.3 0 0 1-.34-.35l.56-5.6A.3.3 0 0 0 16.9.02z"
+        />
+      </svg>
+    </span>
+    <div className="flex-1 flex flex-direction-column justify-content-center align-items-start">
+      <span className="block ds-title text-base mb-none">Client-Side (Vite)</span>
+      <span className="block ds-text text-align-left is-sm">A React SPA, no server rendering.</span>
+    </div>
+    <span className="flex justify-content-center align-items-center text-2xl text-align-center">
+      <ds-icon name="caret-right"></ds-icon>
+    </span>
+  </button>
+  <button
+    type="button"
+    onClick={() =>
+      document.getElementById('server-side-rendering-nextjs')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    }
+    className="sb-unstyled ds-button is-secondary flex py-base"
+  >
+    <span
+      className="flex-shrink-0 flex justify-content-center align-items-center"
+      style={{ width: '2.5rem', height: '2.5rem' }}
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 180" width="36" height="36">
+        <defs>
+          <linearGradient id="nextjs-logo-n" x1="109" y1="116.5" x2="144.5" y2="160.5" gradientUnits="userSpaceOnUse">
+            <stop stopColor="#fff" />
+            <stop offset="1" stopColor="#fff" stopOpacity="0" />
+          </linearGradient>
+          <linearGradient id="nextjs-logo-bar" x1="121" y1="54" x2="120.8" y2="106.875" gradientUnits="userSpaceOnUse">
+            <stop stopColor="#fff" />
+            <stop offset="1" stopColor="#fff" stopOpacity="0" />
+          </linearGradient>
+        </defs>
+        <circle cx="90" cy="90" r="90" fill="#000" />
+        <path
+          fill="url(#nextjs-logo-n)"
+          d="M149.5 157.5 69.1 54H54v72h12.1V69.4l73.9 95.5a90 90 0 0 0 9.5-7.4z"
+        />
+        <rect x="115" y="54" width="12" height="72" fill="url(#nextjs-logo-bar)" />
+      </svg>
+    </span>
+    <div className="flex-1 flex flex-direction-column justify-content-center align-items-start">
+      <span className="block ds-title text-base mb-none">Server-Side Rendering (Next.js)</span>
+      <span className="block ds-text text-align-left is-sm">App Router, Server Components, real SSR.</span>
+    </div>
+    <span className="flex justify-content-center align-items-center text-2xl text-align-center">
+      <ds-icon name="caret-right"></ds-icon>
+    </span>
+  </button>
+</div>
+
+## Client-Side (Vite)
+
+Vite is the recommended setup for a client-side React SPA.
+
+```bash
+npm create vite@latest my-app -- --template react-ts
+```
 
 <InfoQuote>
   **Recommendations**
@@ -293,6 +566,8 @@ If you do not have a React app yet, create one with [Vite](https://vite.dev/guid
   - `react` and `react-dom` **18** or **19** are required as peer dependencies.
 </InfoQuote>
 
+### Installation
+
 Install the React bindings and the global styles. All three packages are required.
 
 ```bash
@@ -301,57 +576,49 @@ npm add -E @baloise/ds-react @baloise/ds-styles @baloise/ds-tokens
 pnpm add -E @baloise/ds-react @baloise/ds-styles @baloise/ds-tokens
 ```
 
-## Usage
+### Usage
 
-Component styles are automatically loaded lazily in the browser. Global CSS (design tokens, fonts, resets, utilities) needs to be imported into the application.
+Component styles are automatically loaded lazily in the browser.
 
-`@baloise/ds-styles` no longer ships design tokens itself — only `var(--ds-*)` references — so
-`@baloise/ds-tokens` must be imported too, before `@baloise/ds-styles`:
-
-```typescript
-import '@baloise/ds-tokens/css/base'
-import '@baloise/ds-styles/css/design-system'
-```
-
-`@baloise/ds-styles/css/design-system` bundles reset, structural styles, and CSS-only component classes
-(`.ds-button`, `.ds-heading`, ...) together. Utility classes (spacing, layout, typography, color
-helpers, ...) are a separate, optional import:
+Global CSS (design tokens, fonts, resets, utilities) needs to be imported into the application.
 
 ```typescript
+// Required: design tokens (--ds-* CSS custom properties).
+// Load before ds-styles
 import '@baloise/ds-tokens/css/base'
+
+// Required: CSS reset, structural styles, and
+// CSS-only component classes (e.g. class="ds-button")
 import '@baloise/ds-styles/css/design-system'
+
+// Optional: only needed if you use utility classes
+// (spacing, layout, typography, color helpers, etc. — e.g. class="mt-base" below)
 import '@baloise/ds-styles/css/utilities'
 ```
-
-<InfoQuote>
-Using a different brand? Import `@baloise/ds-tokens/css/erv`
-instead of `@baloise/ds-tokens/css/base` — each is a complete, standalone token set. See
-**Development/Theming**.
-</InfoQuote>
-
-<LinkCard
-  pageTitle="Development/Responsive"
-  description="Breakpoint mixins, CSS utilities, and the breakpoint service."
-/>
 
 ### DsRootProvider
 
 Wrap the application in `DsRootProvider`. It is the React root for Design System config: it initializes the system once and renders `DsRoot` so nested components pick up brand, region, language, and animation settings.
 
-Pass live config as props. If you omit them, components still work with the default config. Region and language can also be changed at runtime — update the props from React state. See **Development/Internationalization**.
-
-Do not call `initializeDesignSystem()` / `bootstrapDesignSystem()` in the React entry. `DsRootProvider` replaces that.
-
-**main.tsx**
-
 ```tsx
+// main.tsx
+
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 
 import App from './App'
 
+// Required: design tokens (--ds-* CSS custom properties).
+// Load before ds-styles
 import '@baloise/ds-tokens/css/base'
+
+// Required: CSS reset, structural styles, and
+// CSS-only component classes (e.g. class="ds-button")
 import '@baloise/ds-styles/css/design-system'
+
+// Optional: only needed if you use utility classes
+// (spacing, layout, typography, color helpers, etc. — e.g. class="mt-base" below)
+import '@baloise/ds-styles/css/utilities'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
@@ -360,9 +627,11 @@ createRoot(document.getElementById('root')!).render(
 )
 ```
 
-**App.tsx**
+Pass live config as props. If you omit them, components still work with the default config. Region and language can also be changed at runtime — update the props from React state. See **Development/Internationalization**.
 
 ```tsx
+// App.tsx
+
 import { DsRootProvider, DsAppFooter, DsButton, DsHeading } from '@baloise/ds-react'
 
 function App() {
@@ -395,25 +664,120 @@ function App() {
 export default App
 ```
 
-## Frameworks
+Do not call `initializeDesignSystem()` / `bootstrapDesignSystem()` in the React entry. `DsRootProvider` replaces that.
 
-### Vite
 
-Vite is the recommended setup for a client-side React SPA. Scaffold a TypeScript app, then install the Design System as described above. The app entry is `src/main.tsx`.
+## Server-Side Rendering (Next.js)
+
+Plain, non-interactive components like `DsButton` or `DsInput` render on the server — no
+`'use client'` needed. Import them straight into a Server Component and Next.js renders real
+markup, not an empty tag.
+
+### Installation
+
+Same three packages as the client-side setup, plus `next` itself.
 
 ```bash
-npm create vite@latest my-app -- --template react-ts
+npm add -E @baloise/ds-react @baloise/ds-styles @baloise/ds-tokens next
+// or
+pnpm add -E @baloise/ds-react @baloise/ds-styles @baloise/ds-tokens next
 ```
 
-### Next.js
+### Root layout
 
-`@baloise/ds-react` is client-only today. Import Design System components from files marked `'use client'`. Wrap the tree in `DsRootProvider`.
+`DsRootProvider`'s client build carries a top-of-file `'use client'` pragma — wrapping the root
+layout in it would force the entire tree, including every page, into a client boundary and defeat
+Server Components. Use `DsRootSSRProvider` instead: it needs no client boundary of its own, boots
+the runtime in the browser (custom elements + config) via an internal client leaf, and passes
+`children` through untouched. Keep the root layout a Server Component:
 
-### TypeScript
+```tsx
+// app/layout.tsx
 
-`@baloise/ds-react` publishes TypeScript declarations (`types` in `package.json` points at `dist/index.d.ts`). After installing the package, component props, events, and the `DsRootProvider` config are typed — no extra `@types/*` package or `tsconfig.json` changes are required.
+import type { Metadata } from 'next'
+import { DsRootSSRProvider } from '@baloise/ds-react'
 
-Event handlers use the `onDs*` prefix (for example `onDsClick`) and receive the custom event, not a React synthetic event.
+// Required: design tokens (--ds-* CSS custom properties).
+// Load before ds-styles
+import '@baloise/ds-tokens/css/base'
+
+// Required: CSS reset, structural styles, and
+// CSS-only component classes (e.g. class="ds-button")
+import '@baloise/ds-styles/css/design-system'
+
+// Optional: only needed if you use utility classes
+// (spacing, layout, typography, color helpers, etc. — e.g. class="mt-base" below)
+import '@baloise/ds-styles/css/utilities'
+
+export const metadata: Metadata = {
+  title: 'My App',
+}
+
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+  return (
+    <html lang="en">
+      <body>
+        <DsRootSSRProvider region="CH" language="de" animated={false}>
+          {children}
+        </DsRootSSRProvider>
+      </body>
+    </html>
+  )
+}
+```
+
+<InfoQuote>
+`DsRootSSRProvider` does not render `<ds-root>` itself — its SSR wrapper would flatten `children`
+into static HTML, breaking every interactive component nested inside it. It only boots the
+runtime; add `<ds-root>` yourself as a plain tag around your layout if you need it for CSS/layout
+purposes.
+</InfoQuote>
+
+### Pages
+
+Plain, non-interactive components render straight from a Server Component page — no imports from
+a `'use client'` file, no `DsRootProvider`:
+
+```tsx
+// app/page.tsx
+
+import { DsButton, DsCheckbox, DsInput } from '@baloise/ds-react'
+
+export default function HomePage() {
+  return (
+    <main>
+      <h1>Hello World</h1>
+      <DsButton>Click me</DsButton>
+      <DsInput name="example" />
+      <DsCheckbox>Accept</DsCheckbox>
+    </main>
+  )
+}
+```
+
+<WarningQuote>
+**Overlays need `window`**
+
+Modal/Toast/Snackbar idioms are `useState`- and imperative-controller-driven — server-rendering
+them has no meaning, and their generated wrappers need `window` / custom-element upgrade at
+import time. Disable SSR for pages that use them with `next/dynamic`:
+
+```tsx
+'use client'
+
+import dynamic from 'next/dynamic'
+
+const OverlaysDemo = dynamic(() => import('./overlays-demo'), { ssr: false })
+
+export default function OverlaysPage() {
+  return <OverlaysDemo />
+}
+```
+
+</WarningQuote>
+
+See the [integration-next](https://github.com/baloise/design-system/tree/next/apps/integration-next)
+app in the repo for a working example, including the `overlays-demo` referenced above.
 
 </ReactFramework>
 
