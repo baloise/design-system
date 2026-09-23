@@ -204,7 +204,7 @@ Menu-driven migration from the Baloise Design System (`bal-*`) to the Helvetia D
 
 **Menu:**
 
-- **Init** — bootstrap Helvetia packages alongside the existing Baloise install (follow-up)
+- **Init** — bootstrap Helvetia packages alongside the existing Baloise install. Detects `@baloise/ds-*`, adds `@helvetia/*` npm aliases for the current `next` version, and inserts the new CSS/JS import next to the old one. Stops with "nothing to migrate" when no Baloise install is found.
 - **Components** — migrate a `bal-*` component to `ds-*` (file-driven submenu; empty until the first component file lands)
 - **CSS utils (coming soon)**
 - **Assets (coming soon)**
