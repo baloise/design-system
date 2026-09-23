@@ -17,7 +17,7 @@ This file documents the file templates and code patterns the skill generates.
 Each component generated follows this structure:
 
 ```
-packages/core/src/components/button/
+packages/core/src/components/actions/button/
 ├── button.tsx              # Stencil component class
 ├── button.interfaces.ts    # TypeScript types and enums
 ├── button.host.scss        # Shadow DOM styles with tokens
@@ -32,7 +32,7 @@ packages/core/src/components/button/
 For subcomponents:
 
 ```
-packages/core/src/components/tabs/
+packages/core/src/components/navigation/tabs/
 ├── tabs.tsx
 ├── tabs.interfaces.ts
 ├── tabs.host.scss
@@ -510,13 +510,13 @@ After generating, the skill registers the component in `packages/core/src/index.
 
 ```typescript
 // Before
-export { Button } from './components/button/button'
-export type { ButtonSize, ButtonType } from './components/button/button.interfaces'
+export { Button } from './components/actions/button/button'
+export type { ButtonSize, ButtonType } from './components/actions/button/button.interfaces'
 
 // After
-export { Button, NewComponent } from './components/button/button'
-export { NewSubcomponent } from './components/button/new-subcomponent/new-subcomponent'
-export type { ButtonSize, ButtonType, NewComponentType } from './components/button/button.interfaces'
+export { Button, NewComponent } from './components/actions/button/button'
+export { NewSubcomponent } from './components/actions/button/new-subcomponent/new-subcomponent'
+export type { ButtonSize, ButtonType, NewComponentType } from './components/actions/button/button.interfaces'
 ```
 
 The skill:

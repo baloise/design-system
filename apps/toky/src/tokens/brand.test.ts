@@ -3,7 +3,7 @@ import { validateBrandName } from './brand'
 
 describe('validateBrandName', () => {
   it('accepts a valid PascalCase name with no collisions', () => {
-    expect(validateBrandName('Acme', ['Tcs'])).toBeNull()
+    expect(validateBrandName('Acme', ['Zurich'])).toBeNull()
   })
 
   it('rejects an empty or whitespace-only name', () => {
@@ -29,8 +29,8 @@ describe('validateBrandName', () => {
   })
 
   it('rejects a name colliding with an existing brand, case-insensitively', () => {
-    expect(validateBrandName('Tcs', ['Tcs'])).toBe('duplicate')
-    expect(validateBrandName('TCS', ['Tcs'])).toBe('duplicate')
+    expect(validateBrandName('Zurich', ['Zurich'])).toBe('duplicate')
+    expect(validateBrandName('ZURICH', ['Zurich'])).toBe('duplicate')
   })
 
   it('rejects a name colliding with a staged (not-yet-real) brand', () => {

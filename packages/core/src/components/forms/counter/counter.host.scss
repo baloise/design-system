@@ -1,0 +1,194 @@
+@use '@baloise/ds-styles/dist/scss/mixins' as *;
+@use '../../../vars' as vars;
+@use '../form/form.mixin' as form;
+
+/**
+ * Variables
+ * --------------------------------
+ * Define here the css variables for the component to be able to use it in host or non-host mode.
+ * These variables can be used in the component styles below and later on be overridden in themes.
+ *
+ * @prop --counter-gap: Space between the buttons and the value display.
+ * @prop --counter-value-min-width: Minimum width of the value display so single- and multi-digit values render at the same widget width.
+ * @prop --counter-value-font-weight: Font weight of the value display.
+ * @prop --counter-value-font-family: Font family of the value display.
+ * @prop --counter-value-color: Text color of the value display.
+ * @prop --counter-value-animation-duration: Duration of the slide animation played when the value changes.
+ * @prop --counter-value-animation-easing: Easing of the slide animation played when the value changes.
+ * @prop --form-label-color: Text color of the label.
+ * @prop --form-label-family: Font family of the label.
+ * @prop --form-label-weight: Font weight of the label.
+ * @prop --form-label-size: Font size of the label.
+ * @prop --form-label-line-height: Line height of the label.
+ * @prop --form-description-color: Text color of the description.
+ * @prop --form-description-family: Font family of the description.
+ * @prop --form-description-weight: Font weight of the description.
+ * @prop --form-description-size: Font size of the description.
+ * @prop --form-description-line-height: Line height of the description.
+ */
+
+:host {
+  @include form.vars-field();
+  @include form.vars-container();
+  @include form.vars-label();
+  @include form.vars-description();
+
+  @include vars.local(counter-gap, 0.125rem);
+  @include vars.local(counter-value-min-width, 3rem);
+  @include vars.local(counter-value-font-weight, var(--ds-alias-text-weight-bold));
+  @include vars.local(counter-value-font-family, var(--ds-alias-text-family-text));
+  @include vars.local(counter-value-color, var(--ds-form-default-label-color));
+  // Must match VALUE_ANIMATION_MS in counter.tsx, which clears the outgoing digit from the DOM once
+  // the animation finishes.
+  @include vars.local(counter-value-animation-duration, 260ms);
+  @include vars.local(counter-value-animation-easing, cubic-bezier(0.22, 1, 0.36, 1));
+}
+
+/**
+ * Basic Component Styles
+ * --------------------------------
+ */
+
+:host {
+  @include form.field();
+  @include form.container($active: false);
+  @include form.label();
+  @include form.description();
+
+  display: block;
+
+  #inner {
+    @include form.field();
+  }
+
+  #container {
+    width: fit-content;
+  }
+
+  #counter {
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: var(--_counter-gap);
+  }
+
+  [part='value'] {
+    display: inline-grid;
+    grid-template-columns: 1fr;
+    min-width: var(--_counter-value-min-width);
+    text-align: center;
+    font-weight: var(--_counter-value-font-weight);
+    font-family: var(--_counter-value-font-family);
+    color: var(--_counter-value-color);
+    user-select: none;
+    overflow: hidden;
+  }
+}
+
+/**
+ * Value Change Animation
+ * --------------------------------
+ * The outgoing and incoming digit are stacked in the same grid cell (`#value`, clipped via
+ * `overflow: hidden`) and slide past each other: on increase the old value moves up and out while the
+ * new one rises in from below; on decrease it's reversed. Disabled entirely under
+ * `prefers-reduced-motion: reduce`, where the value just swaps instantly.
+ */
+
+.value-slide {
+  grid-area: 1 / 1;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .value-slide.value-out.is-increase {
+    animation: ds-counter-value-out-up var(--_counter-value-animation-duration) var(--_counter-value-animation-easing)
+      forwards;
+  }
+
+  .value-slide.value-out.is-decrease {
+    animation: ds-counter-value-out-down var(--_counter-value-animation-duration) var(--_counter-value-animation-easing)
+      forwards;
+  }
+
+  .value-slide.value-in.is-increase {
+    animation: ds-counter-value-in-up var(--_counter-value-animation-duration) var(--_counter-value-animation-easing)
+      forwards;
+  }
+
+  .value-slide.value-in.is-decrease {
+    animation: ds-counter-value-in-down var(--_counter-value-animation-duration) var(--_counter-value-animation-easing)
+      forwards;
+  }
+}
+
+@keyframes ds-counter-value-out-up {
+  to {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+}
+
+@keyframes ds-counter-value-in-up {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+}
+
+@keyframes ds-counter-value-out-down {
+  to {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+}
+
+@keyframes ds-counter-value-in-down {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+}
+
+/**
+ * Variants and States
+ * --------------------------------
+ */
+
+//
+// Invalid or Color Danger
+// --------------------------------
+:host(.is-danger) {
+  --mod-form-description-color: var(--ds-form-danger-description-color);
+  --mod-counter-value-color: var(--ds-alias-text-color-danger);
+}
+
+//
+// Valid or Color Success
+// --------------------------------
+:host(.is-success) {
+  --mod-form-description-color: var(--ds-form-success-description-color);
+}
+
+//
+// Color Warning
+// --------------------------------
+:host(.is-warning) {
+  --mod-form-description-color: var(--ds-form-warning-description-color);
+}
+
+//
+// Disabled (also covers `readonly`, treated as equivalent at the field level — see counter.tsx)
+// --------------------------------
+:host(.is-disabled) {
+  --mod-form-label-color: var(--ds-form-disabled-label-color);
+  --mod-form-description-color: var(--ds-form-disabled-description-color);
+  --mod-counter-value-color: var(--ds-form-disabled-label-color);
+
+  &,
+  #label,
+  #description,
+  #counter,
+  [part='value'] {
+    pointer-events: none;
+    cursor: default;
+  }
+}

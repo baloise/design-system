@@ -13,9 +13,13 @@ export const clearSvgCache = () => svgCache.clear()
 
 export const fetchSvg = (url: string): Promise<string> => {
   if (!svgCache.has(url)) {
+    // Resolve against the document's base URL: browsers already do this for relative fetches,
+    // but Node's fetch (used during SSR) has no notion of a "current page" and throws on a bare
+    // path like "/assets/icon.svg".
+    const resolvedUrl = new URL(url, document.baseURI).href
     svgCache.set(
       url,
-      fetch(url)
+      fetch(resolvedUrl)
         .then(r => {
           if (!r.ok) throw new Error(`ds-icon: failed to fetch SVG "${url}" (${r.status})`)
           return r.text()

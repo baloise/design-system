@@ -1,0 +1,44 @@
+/**
+ * Container provides a responsive width-constrained wrapper for page content.
+ * Centers content with responsive horizontal padding and supports multiple max-width variants
+ * for different layout needs (default, fluid, compact).
+ *
+ * @variant is-fluid - Fluid container with maximum width set to fluid breakpoint.
+ * @variant is-compact - Compact container with reduced maximum width for narrower layouts.
+ */
+
+@use '@baloise/ds-styles/dist/scss/mixins' as *;
+@use '../../../vars' as vars;
+
+/**
+  * Spaces are defined at body level to allow for consistent spacing across the application.
+  * Container spaces are use for example in the app-header and app-footer to provide consistent horizontal padding.
+  */
+
+body {
+  @include vars.local(container-px, var(--ds-device-container-space));
+  @include vars.local(container-py, 0);
+}
+
+.ds-container {
+  @include vars.local(container-max-width, var(--ds-alias-container-width-default));
+
+  flex-grow: 1;
+  margin: 0 auto;
+  position: relative;
+  width: auto;
+  padding-block: var(--_container-py);
+  padding-inline: var(--_container-px);
+
+  @include desktop {
+    max-width: var(--_container-max-width);
+  }
+
+  &.is-fluid {
+    --mod-container-max-width: var(--ds-alias-container-width-fluid);
+  }
+
+  &.is-compact {
+    --mod-container-max-width: var(--ds-alias-container-width-compact);
+  }
+}

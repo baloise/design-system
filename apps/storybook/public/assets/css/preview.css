@@ -1,5 +1,55 @@
 #storybook-docs > .sbdocs-wrapper {
+  display: block;
+  position: relative;
   padding: 0 3rem 0 3rem;
+}
+
+/* addon-docs centers the content+toc pair as a flex group, which shifts the
+   content column off the viewport center and breaks full-bleed banners that
+   rely on `calc(-50vw + 50%)`. Take the toc out of flow so the content column
+   stays centered on the viewport like it is when no toc is rendered. */
+#storybook-docs > .sbdocs-wrapper > .sbdocs-content {
+  margin: 0 auto;
+}
+
+#storybook-docs > .sbdocs-wrapper > *:not(.sbdocs-content) {
+  position: absolute;
+  top: 0;
+  right: 3rem;
+}
+
+::-moz-selection {
+  /* Code for Firefox */
+  color: #000d6e;
+  background: #cccfe2;
+}
+
+::selection {
+  color: #000d6e;
+  background: #cccfe2;
+}
+
+#table-of-contents {
+  font-family: 'BaloiseCreateHeadline';
+  font-weight: 700;
+  color: var(--ds-global-color-primary-5);
+  font-size: 1.25rem;
+  text-transform: none;
+}
+
+nav[aria-labelledby='table-of-contents'] {
+  padding-top: 5rem;
+  z-index: 1001;
+  font-family: 'BaloiseCreateHeadline';
+  font-weight: 700;
+}
+
+.toc-list-item::before {
+  border-color: var(--ds-global-color-grey-3) !important;
+}
+
+.toc-list-item.is-active-li::before {
+  border-color: var(--ds-global-color-primary-5) !important;
 }
 
 /***************************************

@@ -13,7 +13,7 @@ import {
 import type { FlatToken } from './types'
 
 const BASE_MODE = '1:0'
-const TCS_MODE = '1:1'
+const ZURICH_MODE = '1:1'
 
 function collection(brandNames: string[] = []): FigmaVariablesMeta['variableCollections'] {
   return {
@@ -72,8 +72,8 @@ const white = token({
 
 describe('findCollectionAndModes', () => {
   it('resolves Base + brand mode ids', () => {
-    const result = findCollectionAndModes(meta([], ['Tcs']), ['Tcs'])
-    expect(result.modeIdByBrand).toEqual({ Base: BASE_MODE, Tcs: TCS_MODE })
+    const result = findCollectionAndModes(meta([], ['Zurich']), ['Zurich'])
+    expect(result.modeIdByBrand).toEqual({ Base: BASE_MODE, Zurich: ZURICH_MODE })
   })
 
   it('throws when there is not exactly one collection', () => {
@@ -82,7 +82,7 @@ describe('findCollectionAndModes', () => {
   })
 
   it('throws when a brand has no matching mode', () => {
-    expect(() => findCollectionAndModes(meta([], []), ['Tcs'])).toThrow(/No Figma mode named "Tcs"/)
+    expect(() => findCollectionAndModes(meta([], []), ['Zurich'])).toThrow(/No Figma mode named "Zurich"/)
   })
 })
 
@@ -1652,14 +1652,14 @@ describe('buildBrandPullPlan', () => {
     const v = variable({
       id: 'VariableID:99',
       name: '🌐 Global/🌈 Color/New',
-      valuesByMode: { [TCS_MODE]: { r: 0, g: 0, b: 0, a: 1 } },
+      valuesByMode: { [ZURICH_MODE]: { r: 0, g: 0, b: 0, a: 1 } },
     })
     const plan = buildBrandPullPlan({
       baseOriginal: [],
       brandOriginal: [],
       brandWorking: [],
-      figmaMeta: meta([v], ['Tcs']),
-      brandModeId: TCS_MODE,
+      figmaMeta: meta([v], ['Zurich']),
+      brandModeId: ZURICH_MODE,
     })
     expect(plan.creates).toHaveLength(0)
   })
@@ -1668,14 +1668,14 @@ describe('buildBrandPullPlan', () => {
     const v = variable({
       id: white.figmaId as string,
       name: 'x',
-      valuesByMode: { [TCS_MODE]: { r: 0, g: 0, b: 0, a: 1 } },
+      valuesByMode: { [ZURICH_MODE]: { r: 0, g: 0, b: 0, a: 1 } },
     })
     const plan = buildBrandPullPlan({
       baseOriginal: [white],
       brandOriginal: [],
       brandWorking: [],
-      figmaMeta: meta([v], ['Tcs']),
-      brandModeId: TCS_MODE,
+      figmaMeta: meta([v], ['Zurich']),
+      brandModeId: ZURICH_MODE,
     })
     expect(plan.creates).toHaveLength(1)
   })
@@ -1688,14 +1688,14 @@ describe('buildBrandPullPlan', () => {
     const v = variable({
       id: white.figmaId as string,
       name: 'x',
-      valuesByMode: { [TCS_MODE]: { r: 1, g: 1, b: 1, a: 1 } }, // back to white, same as Base
+      valuesByMode: { [ZURICH_MODE]: { r: 1, g: 1, b: 1, a: 1 } }, // back to white, same as Base
     })
     const plan = buildBrandPullPlan({
       baseOriginal: [white],
       brandOriginal: [override],
       brandWorking: [working(override)],
-      figmaMeta: meta([v], ['Tcs']),
-      brandModeId: TCS_MODE,
+      figmaMeta: meta([v], ['Zurich']),
+      brandModeId: ZURICH_MODE,
     })
     expect(plan.deletes).toHaveLength(1)
   })
@@ -1710,20 +1710,20 @@ describe('buildBrandPullPlan', () => {
     const override = token({
       path: baseHeading.path,
       type: 'fontFamily',
-      rawValue: ['TcsHeadline', 'Helvetica', 'sans-serif'],
+      rawValue: ['ZurichHeadline', 'Helvetica', 'sans-serif'],
     })
     const v = variable({
       id: baseHeading.figmaId as string,
       name: 'x',
       resolvedType: 'STRING',
-      valuesByMode: { [TCS_MODE]: 'Roboto' },
+      valuesByMode: { [ZURICH_MODE]: 'Roboto' },
     })
     const plan = buildBrandPullPlan({
       baseOriginal: [baseHeading],
       brandOriginal: [override],
       brandWorking: [working(override)],
-      figmaMeta: meta([v], ['Tcs']),
-      brandModeId: TCS_MODE,
+      figmaMeta: meta([v], ['Zurich']),
+      brandModeId: ZURICH_MODE,
     })
     expect(plan.updates).toHaveLength(1)
     // Helvetica/sans-serif (the override's own fallback tail) survive — not Arial/sans-serif from Base.
@@ -1739,8 +1739,8 @@ describe('buildBrandPullPlan', () => {
       baseOriginal: [white],
       brandOriginal: [override],
       brandWorking: [working(override)],
-      figmaMeta: meta([], ['Tcs']),
-      brandModeId: TCS_MODE,
+      figmaMeta: meta([], ['Zurich']),
+      brandModeId: ZURICH_MODE,
     })
     expect(plan.deletes).toHaveLength(1)
   })
@@ -1803,19 +1803,19 @@ describe('buildBrandPullPlan — typography', () => {
         id: typographyFigmaId.fontFamily,
         name: 'x/FontFamily',
         resolvedType: 'STRING',
-        valuesByMode: { [TCS_MODE]: fontFamily },
+        valuesByMode: { [ZURICH_MODE]: fontFamily },
       }),
       variable({
         id: typographyFigmaId.fontSize,
         name: 'x/FontSize',
         resolvedType: 'FLOAT',
-        valuesByMode: { [TCS_MODE]: 16 },
+        valuesByMode: { [ZURICH_MODE]: 16 },
       }),
       variable({
         id: typographyFigmaId.fontWeight,
         name: 'x/FontWeight',
         resolvedType: 'STRING',
-        valuesByMode: { [TCS_MODE]: 'Bold' },
+        valuesByMode: { [ZURICH_MODE]: 'Bold' },
       }),
       variable({
         id: typographyFigmaId.lineHeight,
@@ -1823,7 +1823,7 @@ describe('buildBrandPullPlan — typography', () => {
         resolvedType: 'FLOAT',
         // Figma-side value — a percentage (130), not this codebase's raw multiplier (1.3). See
         // LINE_HEIGHT_PERCENT_MULTIPLIER.
-        valuesByMode: { [TCS_MODE]: 130 },
+        valuesByMode: { [ZURICH_MODE]: 130 },
       }),
     ]
   }
@@ -1833,8 +1833,8 @@ describe('buildBrandPullPlan — typography', () => {
       baseOriginal,
       brandOriginal: [],
       brandWorking: [],
-      figmaMeta: meta(typographyBrandVariables('BaloiseCreateText'), ['Tcs']),
-      brandModeId: TCS_MODE,
+      figmaMeta: meta(typographyBrandVariables('BaloiseCreateText'), ['Zurich']),
+      brandModeId: ZURICH_MODE,
     })
     expect(plan.creates).toHaveLength(1)
     expect(plan.creates[0].rawValue).toEqual({
@@ -1868,8 +1868,8 @@ describe('buildBrandPullPlan — typography', () => {
       brandWorking: [working(override)],
       // Neither Base's own family (Heading) nor the override's current one (Body) — exercises the
       // update path specifically, distinct from the "reconverges with Base" delete path below.
-      figmaMeta: meta(typographyBrandVariables('BaloiseCreateMono'), ['Tcs']),
-      brandModeId: TCS_MODE,
+      figmaMeta: meta(typographyBrandVariables('BaloiseCreateMono'), ['Zurich']),
+      brandModeId: ZURICH_MODE,
     })
     expect(plan.updates).toHaveLength(1)
     expect(plan.updates[0].rawValue).toEqual({
@@ -1901,8 +1901,8 @@ describe('buildBrandPullPlan — typography', () => {
       baseOriginal,
       brandOriginal: [override],
       brandWorking: [working(override)],
-      figmaMeta: meta(typographyBrandVariables('BaloiseCreateHeadline'), ['Tcs']), // back to Base's own family
-      brandModeId: TCS_MODE,
+      figmaMeta: meta(typographyBrandVariables('BaloiseCreateHeadline'), ['Zurich']), // back to Base's own family
+      brandModeId: ZURICH_MODE,
     })
     expect(plan.deletes).toHaveLength(1)
   })
@@ -1922,8 +1922,8 @@ describe('buildBrandPullPlan — typography', () => {
       baseOriginal,
       brandOriginal: [override],
       brandWorking: [working(override)],
-      figmaMeta: meta([], ['Tcs']),
-      brandModeId: TCS_MODE,
+      figmaMeta: meta([], ['Zurich']),
+      brandModeId: ZURICH_MODE,
     })
     expect(plan.deletes).toHaveLength(1)
   })
@@ -1964,19 +1964,19 @@ describe('buildBrandPullPlan — responsive dimension', () => {
         id: responsiveFigmaId.mobile,
         name: 'x/Mobile',
         resolvedType: 'FLOAT',
-        valuesByMode: { [TCS_MODE]: overrides?.mobile ?? 8 },
+        valuesByMode: { [ZURICH_MODE]: overrides?.mobile ?? 8 },
       }),
       variable({
         id: responsiveFigmaId.tablet,
         name: 'x/Tablet',
         resolvedType: 'FLOAT',
-        valuesByMode: { [TCS_MODE]: overrides?.tablet ?? 12 },
+        valuesByMode: { [ZURICH_MODE]: overrides?.tablet ?? 12 },
       }),
       variable({
         id: responsiveFigmaId.desktop,
         name: 'x/Desktop',
         resolvedType: 'FLOAT',
-        valuesByMode: { [TCS_MODE]: overrides?.desktop ?? 16 },
+        valuesByMode: { [ZURICH_MODE]: overrides?.desktop ?? 16 },
       }),
     ]
   }
@@ -1986,8 +1986,8 @@ describe('buildBrandPullPlan — responsive dimension', () => {
       baseOriginal: baseOriginalResponsive,
       brandOriginal: [],
       brandWorking: [],
-      figmaMeta: meta(responsiveBrandVariables(), ['Tcs']),
-      brandModeId: TCS_MODE,
+      figmaMeta: meta(responsiveBrandVariables(), ['Zurich']),
+      brandModeId: ZURICH_MODE,
     })
     expect(plan.creates).toHaveLength(1)
     expect(plan.creates[0].responsive).toEqual({
@@ -2018,8 +2018,8 @@ describe('buildBrandPullPlan — responsive dimension', () => {
       baseOriginal: baseOriginalResponsive,
       brandOriginal: [override],
       brandWorking: [working(override)],
-      figmaMeta: meta(responsiveBrandVariables({ desktop: 20 }), ['Tcs']),
-      brandModeId: TCS_MODE,
+      figmaMeta: meta(responsiveBrandVariables({ desktop: 20 }), ['Zurich']),
+      brandModeId: ZURICH_MODE,
     })
     expect(plan.updates).toHaveLength(1)
     expect(plan.updates[0].responsive).toEqual({
@@ -2051,8 +2051,8 @@ describe('buildBrandPullPlan — responsive dimension', () => {
       brandOriginal: [override],
       brandWorking: [working(override)],
       // Back to Base's own values (16/24/32).
-      figmaMeta: meta(responsiveBrandVariables({ mobile: 16, tablet: 24, desktop: 32 }), ['Tcs']),
-      brandModeId: TCS_MODE,
+      figmaMeta: meta(responsiveBrandVariables({ mobile: 16, tablet: 24, desktop: 32 }), ['Zurich']),
+      brandModeId: ZURICH_MODE,
     })
     expect(plan.deletes).toHaveLength(1)
   })
@@ -2072,8 +2072,8 @@ describe('buildBrandPullPlan — responsive dimension', () => {
       baseOriginal: baseOriginalResponsive,
       brandOriginal: [override],
       brandWorking: [working(override)],
-      figmaMeta: meta([], ['Tcs']),
-      brandModeId: TCS_MODE,
+      figmaMeta: meta([], ['Zurich']),
+      brandModeId: ZURICH_MODE,
     })
     expect(plan.deletes).toHaveLength(1)
   })
@@ -2084,18 +2084,18 @@ describe('buildFigmaPullPlan', () => {
     const v = variable({
       id: white.figmaId as string,
       name: 'x',
-      valuesByMode: { [BASE_MODE]: { r: 0, g: 0, b: 0, a: 1 }, [TCS_MODE]: { r: 1, g: 0, b: 0, a: 1 } },
+      valuesByMode: { [BASE_MODE]: { r: 0, g: 0, b: 0, a: 1 }, [ZURICH_MODE]: { r: 1, g: 0, b: 0, a: 1 } },
     })
     const result = buildFigmaPullPlan({
       original: [white],
       working: [working(white)],
-      brandNames: ['Tcs'],
-      brandOriginal: { Tcs: [] },
-      brandWorking: { Tcs: [] },
-      figmaMeta: meta([v], ['Tcs']),
+      brandNames: ['Zurich'],
+      brandOriginal: { Zurich: [] },
+      brandWorking: { Zurich: [] },
+      figmaMeta: meta([v], ['Zurich']),
     })
     expect(result.base.updates).toHaveLength(1)
-    expect(result.brands.Tcs.creates).toHaveLength(1)
+    expect(result.brands.Zurich.creates).toHaveLength(1)
   })
 })
 
@@ -2104,18 +2104,18 @@ describe('allPullEntryKeys / filterPlanBySelection', () => {
     const v = variable({
       id: white.figmaId as string,
       name: 'x',
-      valuesByMode: { [BASE_MODE]: { r: 0, g: 0, b: 0, a: 1 }, [TCS_MODE]: { r: 1, g: 0, b: 0, a: 1 } },
+      valuesByMode: { [BASE_MODE]: { r: 0, g: 0, b: 0, a: 1 }, [ZURICH_MODE]: { r: 1, g: 0, b: 0, a: 1 } },
     })
     const result = buildFigmaPullPlan({
       original: [white],
       working: [working(white)],
-      brandNames: ['Tcs'],
-      brandOriginal: { Tcs: [] },
-      brandWorking: { Tcs: [] },
-      figmaMeta: meta([v], ['Tcs']),
+      brandNames: ['Zurich'],
+      brandOriginal: { Zurich: [] },
+      brandWorking: { Zurich: [] },
+      figmaMeta: meta([v], ['Zurich']),
     })
     const keys = allPullEntryKeys(result)
-    expect(keys).toEqual(new Set([pullEntryKey('base', white.path), pullEntryKey('Tcs', white.path)]))
+    expect(keys).toEqual(new Set([pullEntryKey('base', white.path), pullEntryKey('Zurich', white.path)]))
   })
 
   it('filters a plan down to only the selected entries, leaving conflicts/skipped untouched', () => {

@@ -18,7 +18,7 @@ This follows the same overall pattern as `fontWeight`/`fontFamily`/`dimension` (
   - `Global.🗂️ Elevation.Shadow.0` = `"none"`.
   - `Global.🗂️ Elevation.Shadow.{1,2,3,4}` = single-layer shorthands, e.g. `"0 2px 5px 1px rgba(0, 7, 57, 0.12)"`.
   - Referenced by: `Alias.🔤 Text.Shadow`, `Alias.🌓 Shadow.Text`, `Alias.🌓 Shadow.Box.{None,Header,Base,Elevated}`, and 9 Component leaves (`Heading.Shadow`, `Card.Shadow.{Flat,Base,Hover}`, `Date.Calendar.Shadow`, `Date.Popup.Shadow`, `Select.Content.Shadow`, `Navbar.Base.Layout.Shadow`, `Tooltip.Shadow`, `Popup.Shadow`) — all references, no additional literal values.
-  - No `Tcs.tokens.json` overrides exist for any of these — Base-only, like every prior type migration.
+  - No `ERV.tokens.json` overrides exist for any of these — Base-only, like every prior type migration.
 
 ## Decisions locked in with the user
 
@@ -140,7 +140,7 @@ export function figmaShadowSubValuesFor(literalValue) {
   2. For every Figma variable whose id appears in that reverse index, group by `tokenPath`; a token is "fully matched" once all 5 of its sub-ids are found among the fetched variables (should always be true for anything previously pushed).
   3. For each fully-matched group, reconstruct the DTCG shadow value (`{color, offsetX, offsetY, blur, spread}`, converting each dimension sub-value's px float back to rem) and diff against the local token the same way `buildBasePullPlan`'s main loop already does (clean update / conflict / no-op).
   4. Any Figma variable whose name matches the `.../OffsetX` etc. suffix convention but isn't in the reverse index (no local shadow token references it yet) is left for a human — no auto-create from loose Figma-side variables, consistent with every other type's "new token definitions originate in code" precedent, and avoids the much harder problem of guessing which 5 stray variables belong together for a brand-new shadow.
-- Called as an additional step in `buildBasePullPlan` (base only — brand shadow overrides are out of scope for this pass, since nothing in `Tcs.tokens.json` needs it today and brand-scoped shadow sync compounds the same complexity again); its results get merged into the returned `PullPlan` alongside the existing per-variable loop's.
+- Called as an additional step in `buildBasePullPlan` (base only — brand shadow overrides are out of scope for this pass, since nothing in `ERV.tokens.json` needs it today and brand-scoped shadow sync compounds the same complexity again); its results get merged into the returned `PullPlan` alongside the existing per-variable loop's.
 
 ## 7. Toky editor — shadow popup
 

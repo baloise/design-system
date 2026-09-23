@@ -6,6 +6,7 @@
  */
 
 const implementation = require('./implementation')
+const { CATEGORIES } = require('../_shared/component-categories')
 
 async function main() {
   console.log('🧩 Creating a new design system component...\n')
@@ -26,10 +27,14 @@ async function main() {
 
   if (result.status === 'ready') {
     // Write files to disk
-    writeComponentFiles(result.componentName, result.files, result.subcomponents)
+    writeComponentFiles(result.category, result.componentName, result.files, result.subcomponents)
 
     // Register in index.ts
-    registerComponentInIndex(result.componentName, result.subcomponents)
+    registerComponentInIndex(result.category, result.componentName, result.subcomponents)
+
+    // Scaffold the mirrored (empty) Storybook category folder — stories/MDX content itself
+    // stays out of scope here; see /ds-document-component.
+    scaffoldStorybookFolder(result.category, result.componentName)
 
     // Print token warnings
     if (result.tokenWarnings.length > 0) {
@@ -49,7 +54,11 @@ async function main() {
     }
 
     // Success
-    console.log(`\n✅ Component created: packages/core/src/components/${result.componentName}/`)
+    console.log(`\n✅ Component created: packages/core/src/components/${result.category}/${result.componentName}/`)
+    console.log(
+      `   Storybook folder scaffolded: apps/storybook/src/components/${result.category}/${result.componentName}/`,
+    )
+    console.log('   Add stories/MDX with /ds-document-component.')
     console.log('\nNext steps:')
     console.log('  1. Review the generated component files')
     console.log('  2. Refine render() logic and add your component-specific code')
@@ -70,6 +79,13 @@ async function gatherUserInput() {
   const componentName = await prompt('Component name (e.g., "button"):')
   if (!componentName) throw new Error('Component name is required')
   responses.componentName = componentName.toLowerCase()
+
+  // Q1b: Category
+  const category = await prompt(`Category (${CATEGORIES.join(' / ')}):`)
+  if (!CATEGORIES.includes(category)) {
+    throw new Error(`Category must be one of: ${CATEGORIES.join(', ')}`)
+  }
+  responses.category = category
 
   // Q2: Component purpose
   const purpose = await prompt('Component purpose (e.g., "Renders a clickable element"):')
@@ -159,11 +175,11 @@ function parseEventInput(input) {
 /**
  * Write component files to disk
  */
-function writeComponentFiles(componentName, files, subcomponents) {
+function writeComponentFiles(category, componentName, files, subcomponents) {
   const path = require('path')
   const fs = require('fs')
 
-  const componentPath = path.join(process.cwd(), 'packages/core/src/components', componentName)
+  const componentPath = path.join(process.cwd(), 'packages/core/src/components', category, componentName)
 
   // Ensure test directory exists
   const testPath = path.join(componentPath, 'test')
@@ -193,9 +209,24 @@ function writeComponentFiles(componentName, files, subcomponents) {
 }
 
 /**
+ * Create the mirrored components/<category>/<name>/ folder in apps/storybook, so it exists in
+ * the right place from the start. Stories/MDX content is out of scope here — see
+ * /ds-document-component.
+ */
+function scaffoldStorybookFolder(category, componentName) {
+  const path = require('path')
+  const fs = require('fs')
+
+  const storybookPath = path.join(process.cwd(), 'apps/storybook/src/components', category, componentName)
+  if (!fs.existsSync(storybookPath)) {
+    fs.mkdirSync(storybookPath, { recursive: true })
+  }
+}
+
+/**
  * Register component in packages/core/src/index.ts
  */
-function registerComponentInIndex(componentName, subcomponents) {
+function registerComponentInIndex(category, componentName, subcomponents) {
   const path = require('path')
   const fs = require('fs')
 
@@ -206,8 +237,8 @@ function registerComponentInIndex(componentName, subcomponents) {
   const PascalName = implementation.toPascalCase(componentName)
 
   // Add export for main component
-  const exportLine = `export { ${PascalName} } from './components/${componentName}/${componentName}'`
-  const typeExportLine = `export type { ${PascalName}Type, ${PascalName}Size } from './components/${componentName}/${componentName}.interfaces'`
+  const exportLine = `export { ${PascalName} } from './components/${category}/${componentName}/${componentName}'`
+  const typeExportLine = `export type { ${PascalName}Type, ${PascalName}Size } from './components/${category}/${componentName}/${componentName}.interfaces'`
 
   // Insert in alphabetical order (simplified)
   if (!indexContent.includes(`export { ${PascalName}`)) {
@@ -218,7 +249,7 @@ function registerComponentInIndex(componentName, subcomponents) {
   // Add exports for subcomponents
   subcomponents.forEach(subcomponent => {
     const SubPascalName = implementation.toPascalCase(subcomponent)
-    const subExportLine = `export { ${SubPascalName} } from './components/${componentName}/${subcomponent}/${subcomponent}'`
+    const subExportLine = `export { ${SubPascalName} } from './components/${category}/${componentName}/${subcomponent}/${subcomponent}'`
 
     if (!indexContent.includes(`export { ${SubPascalName}`)) {
       indexContent += `\n${subExportLine}`

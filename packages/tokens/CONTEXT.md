@@ -182,7 +182,7 @@ A token whose Figma value and GitHub value have both diverged from the sync base
 _Avoid_: diff, difference (a diff is any Figma/GitHub mismatch; a conflict is specifically one where the baseline shows both sides moved)
 
 **Brand mode**:
-A Figma Variable Collection mode representing one brand (Base, Tcs, future brands). A brand's token override is a different mode-value on the same variable, not a separate variable.
+A Figma Variable Collection mode representing one brand (Base, ERV, future brands). A brand's token override is a different mode-value on the same variable, not a separate variable.
 _Avoid_: theme, variant (component variants are a distinct concept in this system)
 
 ## Key Concepts

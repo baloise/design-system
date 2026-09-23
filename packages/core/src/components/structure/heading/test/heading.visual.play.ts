@@ -1,0 +1,32 @@
+import { expectScreenshot, screenshot, test } from '@baloise/ds-playwright'
+
+const TAG = 'heading'
+const VARIANTS = ['basic', 'colors', 'display', 'sizes', 'visual-level', 'shadow', 'no-wrap', 'spaces']
+
+const image = screenshot(TAG)
+
+test.describe('style', () => {
+  test.beforeEach('Setup', async ({ page }) => {
+    await page.setupVisualTest(`/components/structure/${TAG}/test/${TAG}.style.html`)
+  })
+
+  VARIANTS.forEach(variant => {
+    test(variant, async ({ page }) => {
+      const el = page.getByTestId(variant)
+      await expectScreenshot(el, image(`style-${variant}`))
+    })
+  })
+})
+
+test.describe('host', () => {
+  test.beforeEach('Setup', async ({ page }) => {
+    await page.setupVisualTest(`/components/structure/${TAG}/test/${TAG}.visual.html`)
+  })
+
+  VARIANTS.forEach(variant => {
+    test(variant, async ({ page }) => {
+      const el = page.getByTestId(variant)
+      await expectScreenshot(el, image(variant))
+    })
+  })
+})

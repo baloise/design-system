@@ -35,7 +35,7 @@ import { StoryFactory } from '@storybook/html'
 const story = new StoryFactory<TagStoryArgs>('ds-tag')
 
 export default story.meta({
-  title: 'Components/Tag',
+  title: 'Components/Indicators/Tag/Variants',
   description: 'Removable tag component',
 })
 
@@ -88,10 +88,11 @@ Documentation is organized by type:
 ```
 apps/storybook/
   src/
-    components/           # Component stories + MDX docs
-      <component>/
-        <component>.stories.ts      # Story definitions
-        <component>.mdx             # MDX documentation (Overview, Usage, Variants, Styling, Accessibility, Testing)
+    components/                 # Component stories + MDX docs
+      <category>/                # actions | forms | indicators | media | navigation | overlays | structure
+        <component>/
+          <component>.stories.ts      # Story definitions
+          <component>.mdx             # MDX documentation (Overview, Usage, Variants, Styling, Accessibility, Testing)
     css-utilities/         # Utility class reference (spacing, typography, background, flexbox, ...)
     foundation/            # Brand foundations: color, typography, spacing, grid, elevation, iconography
     tokens/                # Design token explainer pages (All Tokens, Design Tokens Explained, Use Tokens in Code, Component Variables)
@@ -105,6 +106,24 @@ Every page in this app is written for **consumers of the design system** — peo
 apps with these components, not people maintaining the design system itself. Keep pages short,
 practical, and example-driven; link out to a deeper page rather than embedding internal
 implementation detail (SCSS mixins, build pipeline internals, token compiler internals) inline.
+
+### Usage-Category Taxonomy
+
+`src/components/` mirrors `packages/core/src/components/`'s category folder exactly — see the
+full component → category mapping and the alphabetical-ordering rule in `packages/core/CONTEXT.md`.
+Both trees must stay in sync; a component's story/docs folder always lives at
+`components/<category>/<name>/`, the same category as its core implementation.
+
+Each `title:` (in `.stories.ts` meta) and `<Meta title="...">` (in `.mdx`) is a **static string
+literal that encodes the category**, e.g. `'Components/Actions/Button/Variants'`. Storybook's
+CSF/MDX indexer requires `title` to be statically analyzable — a computed/dynamic title
+(`categoryTitle(import.meta.url, ...)`-style helper) fails to index with a `CSF: unexpected
+dynamic title` error, so the category can't be derived at runtime from the file's folder path.
+Instead, the literal string is kept in sync with the folder by convention: when moving a
+component to a different category, update its `title`/`<Meta title>` strings (and any
+`storyId`/`pageTitle` cross-references in `.doc-config.ts` files, `.storybook/story-paths.json`,
+and `LinkCard`/`GridCard` navigation targets in other MDX files) to match. `/ds-create-component`
+scaffolds new components with the correct category folder from the start.
 
 ## Notable Patterns
 

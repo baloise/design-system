@@ -1,5 +1,5 @@
 import { DsLogger } from '@utils'
-import { AppFooterLink, AppFooterSocialLink } from '../../components/app-footer/app-footer.interfaces'
+import { AppFooterLink, AppFooterSocialLink } from '../../components/structure/app-footer/app-footer.interfaces'
 
 export type DsRegion = 'CH' | 'DE' | 'BE' | 'LU' | 'AT' | 'ES' | 'IT' | 'NL' | 'FR'
 

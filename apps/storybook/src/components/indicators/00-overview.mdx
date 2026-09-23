@@ -1,0 +1,82 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+import { Banner, GridComponent, GridComponents, Lead } from '../../../.storybook/blocks'
+
+<Meta
+  title="Components/Indicators/Overview"
+  parameters={{
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+<Banner label="Indicators" color="purple" />
+
+<Lead>Indicators communicate status, progress or emphasis to the user.</Lead>
+
+<GridComponents>
+  <GridComponent
+    scale="2"
+    label="Badge"
+    component="badge"
+    pageTitle="Components/Indicators/Badge"
+  >
+    <ds-stack>
+      <ds-badge>42</ds-badge>
+      <ds-badge color="success" icon="check"></ds-badge>
+    </ds-stack>
+  </GridComponent>
+  <GridComponent
+    scale="1"
+    label="Hint"
+    component="hint"
+    fullwidth
+    fullheight
+    pageTitle="Components/Indicators/Hint"
+  >
+    <div class="py-base">
+      <ds-icon name="info-circle" size="medium" style={{ position: 'absolute', top: '20%', left: '15%' }}></ds-icon>
+      <div class="bg-grey-1 radius-md shadow p-base" style={{ scale: '0.5', position: 'absolute', top: '-10%' }}>
+        <ds-stack layout="vertical">
+          <h4 class="ds-title text-lg">Apple pie</h4>
+          <span>
+            Apple pie, a quintessential dessert, combines the comforting aroma of baked apples with a flaky, golden
+            crust.
+          </span>
+          <ds-button color="secondary">Close</ds-button>
+        </ds-stack>
+      </div>
+    </div>
+  </GridComponent>
+  <GridComponent
+    scale="5"
+    fullwidth
+    fullscreen
+    label="Progressbar"
+    component="progress-bar"
+    pageTitle="Components/Indicators/Progress-bar"
+  >
+    <ds-progress-bar color="purple" value="50"></ds-progress-bar>
+  </GridComponent>
+  <GridComponent
+    scale="1.5"
+    label="Spinner"
+    component="spinner"
+    pageTitle="Components/Indicators/Spinner"
+  >
+    <ds-spinner></ds-spinner>
+  </GridComponent>
+  <GridComponent
+    scale="1.2"
+    label="Tag"
+    component="tag"
+    pageTitle="Components/Indicators/Tag"
+  >
+    <ds-stack>
+      <ds-tag color="primary">Blueberry</ds-tag>
+      <ds-tag closable color="red">
+        Apple
+      </ds-tag>
+    </ds-stack>
+  </GridComponent>
+</GridComponents>

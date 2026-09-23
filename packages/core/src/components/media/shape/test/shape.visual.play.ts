@@ -1,0 +1,17 @@
+import { expectScreenshot, screenshot, test } from '@baloise/ds-playwright'
+
+const TAG = 'shape'
+const VARIANTS = ['basic', 'colors', 'variation-1', 'variation-2', 'variation-3']
+
+const image = screenshot(TAG)
+
+test.beforeEach('Setup', async ({ page }) => {
+  await page.setupVisualTest(`/components/media/${TAG}/test/${TAG}.visual.html`)
+})
+
+VARIANTS.forEach(variant => {
+  test(variant, async ({ page }) => {
+    const el = page.getByTestId(variant)
+    await expectScreenshot(el, image(variant))
+  })
+})

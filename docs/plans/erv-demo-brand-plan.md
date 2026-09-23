@@ -8,7 +8,8 @@
 
 The multi-brand pipeline already exists and only has one brand today, `Tcs`
 (`packages/tokens/tokens/Tcs.tokens.json`), which is a 15-line stub (only
-overrides `White`). ERV is the first **real, complete** brand override — the
+overrides `White`) — this placeholder brand was later removed once ERV
+shipped. ERV is the first **real, complete** brand override — the
 goal is to prove the existing pipeline end-to-end (colors → buttons →
 typography), not to build new infrastructure.
 

@@ -1,0 +1,31 @@
+{
+  "name": "integration-ssr",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "copy-assets": "copyfiles -u 5 \"node_modules/@baloise/ds-core/dist/design-system/**/*\" public/design-system && copyfiles -f node_modules/@baloise/ds-tokens/dist/css/base.tokens.css node_modules/@baloise/ds-styles/dist/css/design-system.css public",
+    "predev": "pnpm copy-assets",
+    "dev": "tsx watch server.ts",
+    "prestart": "pnpm copy-assets",
+    "start": "tsx server.ts",
+    "prebuild": "pnpm copy-assets",
+    "build": "tsc --noEmit",
+    "lint": "eslint .",
+    "play:run": "pnpm exec playwright test"
+  },
+  "dependencies": {
+    "@baloise/ds-core": "workspace:*",
+    "@baloise/ds-styles": "workspace:*",
+    "@baloise/ds-tokens": "workspace:*",
+    "express": "catalog:"
+  },
+  "devDependencies": {
+    "@types/express": "5.0.3",
+    "@types/node": "24.13.5",
+    "copyfiles": "2.4.1",
+    "eslint": "catalog:",
+    "tsx": "catalog:",
+    "typescript": "catalog:"
+  }
+}

@@ -10,11 +10,11 @@ export type DsRootProviderProps = Omit<DsRootProps, 'allowedLanguages'> & {
 
 type DsRootComponent = ComponentType<DsRootProps>
 
-function serializeAllowedLanguages(value: DsLanguage[] | string | undefined) {
+export function serializeAllowedLanguages(value: DsLanguage[] | string | undefined) {
   return Array.isArray(value) ? value.join(',') : value
 }
 
-function parseAllowedLanguages(value: DsLanguage[] | string | undefined) {
+export function parseAllowedLanguages(value: DsLanguage[] | string | undefined) {
   if (Array.isArray(value)) {
     return value
   }
@@ -26,11 +26,11 @@ function parseAllowedLanguages(value: DsLanguage[] | string | undefined) {
   return value.split(',').map(language => language.trim()) as DsLanguage[]
 }
 
-function omitUndefined<T extends object>(value: T): Partial<T> {
+export function omitUndefined<T extends object>(value: T): Partial<T> {
   return Object.fromEntries(Object.entries(value).filter(([, item]) => item !== undefined)) as Partial<T>
 }
 
-function ensureInit(config: DsConfig) {
+export function ensureInit(config: DsConfig) {
   if (typeof window === 'undefined') {
     return
   }

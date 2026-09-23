@@ -1,0 +1,26 @@
+import { Source, Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  Clipboard,
+  Footer,
+  ComponentParts,
+  ComponentCssVariables,
+  ComponentDesignTokens,
+} from '../../../../.storybook/blocks'
+import * as LinkStories from './link.stories'
+import { LINK_DOC_CONFIG, getLinkTabs } from './link.doc-config'
+
+<Meta title="Components/Actions/Link/Styling" name="Styling" />
+
+<Banner label={'Styling'} section={LINK_DOC_CONFIG.section} color={LINK_DOC_CONFIG.color} />
+
+<BannerTabs of={LinkStories} tabs={getLinkTabs('styling')} />
+
+{/* <ComponentParts component="link" /> */}
+
+<ComponentCssVariables component="link" />
+
+<ComponentDesignTokens component="link" />
+
+<Footer />

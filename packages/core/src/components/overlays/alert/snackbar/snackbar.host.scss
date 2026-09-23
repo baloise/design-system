@@ -1,0 +1,240 @@
+@use '@baloise/ds-styles/dist/scss/mixins' as *;
+@use '../../../../vars' as vars;
+
+/**
+ * Variables
+ * --------------------------------
+ * Define here the css variables for the component to be able to use it in host or non-host mode
+ * These variables can be used in the component styles below and later on be overridden in themes.
+ *
+ * @prop --snackbar-shadow: Box shadow of the snackbar.
+ * @prop --snackbar-radius: Border radius of the snackbar.
+ * @prop --snackbar-bg: Background color of the snackbar.
+ * @prop --snackbar-border: Border of the snackbar.
+ * @prop --snackbar-color: Text color inside the snackbar.
+ * @prop --snackbar-icon-color: Color of the snackbar icon.
+ * @prop --snackbar-heading-color: Text color of the snackbar heading.
+ * @prop --snackbar-content-color: Text color of the snackbar message.
+ * @prop --snackbar-p: Padding inside the snackbar.
+ * @prop --snackbar-gap: Gap between content and close button.
+ */
+
+:host {
+  @include vars.base(snackbar);
+  @include vars.local(snackbar-shadow, var(--ds-alias-shadow-box-base));
+  @include vars.local(snackbar-radius, var(--ds-snackbar-radius));
+  @include vars.local(snackbar-bg, var(--ds-snackbar-primary-color-background));
+  @include vars.local(snackbar-border, var(--ds-snackbar-primary-border));
+  @include vars.local(snackbar-color, var(--ds-snackbar-primary-color-body));
+
+  @include vars.local(snackbar-heading-font-family, var(--ds-snackbar-heading-font-family));
+  @include vars.local(snackbar-heading-font-weight, var(--ds-snackbar-heading-font-weight));
+  @include vars.local(snackbar-heading-font-size, var(--ds-snackbar-heading-font-size));
+  @include vars.local(snackbar-heading-line-height, var(--ds-snackbar-heading-line-height));
+  @include vars.local(snackbar-heading-color, var(--ds-snackbar-primary-color-heading));
+  @include vars.local(snackbar-icon-color, var(--_snackbar-heading-color));
+
+  @include vars.local(snackbar-content-font-family, var(--ds-snackbar-body-font-family));
+  @include vars.local(snackbar-content-font-weight, var(--ds-snackbar-body-font-weight));
+  @include vars.local(snackbar-content-font-size, var(--ds-snackbar-body-font-size));
+  @include vars.local(snackbar-content-line-height, var(--ds-snackbar-body-line-height));
+  @include vars.local(snackbar-content-color, var(--ds-snackbar-primary-color-body));
+
+  @include vars.local(snackbar-gap, var(--ds-snackbar-gap));
+  @include vars.local(snackbar-p, var(--ds-snackbar-padding));
+
+  // Animation
+  @include vars.local(snackbar-animation-start-opacity, 1);
+  @include vars.local(snackbar-animation-start-transform, none);
+
+  @include vars.local(snackbar-animation-transition, none);
+
+  @include vars.local(snackbar-animation-end-opacity, 1);
+  @include vars.local(snackbar-animation-end-transform, none);
+}
+
+/**
+  * Basic Component Styles
+  * --------------------------------
+  * Define here the component styles using the mixin to support host and non-host mode for hybrid components.
+  */
+
+:host {
+  @include font-smoothing();
+  @include unselectable();
+  @include print-hidden();
+
+  opacity: var(--_snackbar-animation-start-opacity);
+  transform: var(--_snackbar-animation-start-transform);
+
+  flex: 1;
+  position: relative;
+  hyphens: auto;
+
+  color: var(--_snackbar-color);
+  background: var(--_snackbar-bg);
+  border: var(--_snackbar-border);
+  border-radius: var(--_snackbar-radius);
+  box-shadow: var(--_snackbar-shadow);
+
+  padding: var(--_snackbar-p);
+
+  column-gap: calc(var(--_snackbar-gap) * 4);
+  row-gap: var(--_snackbar-gap);
+  align-items: center;
+
+  //
+  // Icon
+  // --------------------------------
+  #icon {
+    grid-area: icon;
+    align-self: flex-start;
+    --icon-color: var(--_snackbar-heading-color);
+  }
+
+  //
+  // Content
+  // --------------------------------
+
+  #content {
+    margin: 0 !important;
+    grid-area: content;
+    display: flex;
+    flex-direction: column;
+
+    //
+    // Heading
+    // --------------------------------
+    & > strong,
+    & > b,
+    & > h2 {
+      font-family: var(--_snackbar-heading-font-family);
+      font-weight: var(--_snackbar-heading-font-weight);
+      line-height: var(--_snackbar-heading-line-height);
+      font-size: var(--_snackbar-heading-font-size);
+      color: var(--_snackbar-heading-color);
+      margin: 0 !important;
+    }
+
+    //
+    // Message
+    // --------------------------------
+    &,
+    & > span,
+    & > p {
+      font-family: var(--_snackbar-content-font-family);
+      font-size: var(--_snackbar-content-font-size);
+      font-weight: var(--_snackbar-content-font-weight);
+      line-height: var(--_snackbar-content-line-height);
+      color: var(--_snackbar-content-color);
+    }
+  }
+
+  //
+  // Action Button
+  // --------------------------------
+  #action {
+    grid-area: action;
+    align-self: center;
+
+    ds-close,
+    ds-button,
+    .ds-button {
+      --button-mt: 1rem;
+      --button-font-size: var(--ds-button-size-sm-font-size);
+      --button-min-height: 2rem;
+      --button-min-width: 2rem;
+      --button-px: 0.75rem;
+    }
+  }
+
+  ::slotted(ds-button),
+  ::slotted(ds-close),
+  ::slotted(ds-button-group) {
+    --button-mt: 1rem;
+    --button-font-size: var(--ds-button-size-sm-font-size);
+    --button-min-height: 2rem;
+    --button-min-width: 2rem;
+    --button-px: 0.75rem;
+  }
+
+  //
+  // Close Button
+  // --------------------------------
+  .ds-close,
+  ds-close {
+    grid-area: close;
+    align-self: flex-start;
+  }
+}
+
+//
+// Grid Layout
+// --------------------------------
+:host {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-areas:
+    'icon content'
+    '. action';
+}
+
+:host(.is-closable) {
+  grid-template-columns: auto 1fr auto;
+  grid-template-areas:
+    'icon content close'
+    '. action action';
+}
+
+//
+// Mobile Solution
+// --------------------------------
+
+:host(.is-mobile-closed) {
+  display: block;
+  max-width: fit-content;
+
+  --mod-snackbar-p: 0;
+  --mod-snackbar-bg: transparent;
+  --mod-snackbar-width: fit-content;
+
+  #icon,
+  #content,
+  #action {
+    display: none;
+  }
+}
+
+//
+// Container Animations
+// --------------------------------
+
+:host(.is-ready) {
+  transition: var(--_snackbar-animation-transition);
+}
+
+:host(.is-visible) {
+  opacity: var(--_snackbar-animation-end-opacity);
+  transform: var(--_snackbar-animation-end-transform);
+}
+
+/**
+  * Variants and States
+  * --------------------------------
+  * Define here the variants and states like size or colors for the component.
+  */
+
+//
+// Colors
+// --------------------------------
+$colors: ('info', 'success', 'warning', 'danger');
+
+@each $color in $colors {
+  :host(.is-#{$color}) {
+    --mod-snackbar-color: var(--ds-snackbar-#{$color}-color-body);
+    --mod-snackbar-border: var(--ds-snackbar-#{$color}-border);
+    --mod-snackbar-bg: var(--ds-snackbar-#{$color}-color-background);
+    --mod-snackbar-heading-color: var(--ds-snackbar-#{$color}-color-heading);
+    --mod-snackbar-content-color: var(--ds-snackbar-#{$color}-color-body);
+  }
+}

@@ -1,0 +1,58 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+import { Banner, BannerTabs, CanvasTabs, Footer, StoryHeading } from '../../../../.storybook/blocks'
+import * as CarouselStories from './carousel.stories'
+import { CAROUSEL_DOC_CONFIG, getCarouselTabs } from './carousel.doc-config'
+
+<Meta title="Components/Structure/Carousel/Variants/Overview" name="Overview" />
+
+<StoryHeading of={CarouselStories.Slide} hidden></StoryHeading>
+
+<Banner label={'Variants'} section={CAROUSEL_DOC_CONFIG.section} color={CAROUSEL_DOC_CONFIG.color} />
+
+<BannerTabs of={CarouselStories} tabs={getCarouselTabs('variants')} />
+
+{/* STORIES */}
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={CarouselStories.Slide}></StoryHeading>
+
+One slide visible at a time with scroll-snap. The default `controls="dots"` shows dot pagination together with the
+prev/next arrows.
+
+<CanvasTabs htmlOf={CarouselStories.SlideHtml} of={CarouselStories.Slide} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={CarouselStories.SlideLargeControls}></StoryHeading>
+
+Use `controls="large"` to replace the dot pagination with large side-arrow scroll buttons.
+
+<CanvasTabs htmlOf={CarouselStories.SlideLargeControlsHtml} of={CarouselStories.SlideLargeControls} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={CarouselStories.SlideNoControls}></StoryHeading>
+
+Use `controls="none"` to hide all navigation controls, leaving swipe or scroll as the only way to move between
+slides.
+
+<CanvasTabs htmlOf={CarouselStories.SlideNoControlsHtml} of={CarouselStories.SlideNoControls} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={CarouselStories.Product}></StoryHeading>
+
+The `tile` variant shows multiple items with free scrolling, each sized automatically by its own content.
+
+<CanvasTabs htmlOf={CarouselStories.ProductHtml} of={CarouselStories.Product} />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={CarouselStories.ProductBrandIcons}></StoryHeading>
+
+Combine the `tile` variant with `navigation` items and a fixed `--carousel-item-width` to build a strip of linked
+product tiles with brand icons. Use `steps` to control how many items scroll per arrow click.
+
+<CanvasTabs htmlOf={CarouselStories.ProductBrandIconsHtml} of={CarouselStories.ProductBrandIcons} />
+
+<Footer />

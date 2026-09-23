@@ -1,0 +1,14 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+import { Banner, BannerTabs, ComponentPageObject, Footer } from '../../../../.storybook/blocks'
+import * as CounterStories from './counter.stories'
+import { COUNTER_DOC_CONFIG, getCounterTabs } from './counter.doc-config'
+
+<Meta title="Components/Forms/Counter/Testing" name="Testing" />
+
+<Banner label={'Testing'} section={COUNTER_DOC_CONFIG.section} color={COUNTER_DOC_CONFIG.color} />
+
+<BannerTabs of={CounterStories} tabs={getCounterTabs('testing')} />
+
+<ComponentPageObject component="counter" />
+
+<Footer />

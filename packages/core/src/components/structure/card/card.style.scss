@@ -1,0 +1,465 @@
+@use '@baloise/ds-styles/dist/scss/mixins' as *;
+@use '../../../hybrid' as hybrid;
+@use '../../../vars' as vars;
+@use '../../../typography' as typography;
+@use '../../actions/button/button-group/button-group.mixin.scss' as button-group;
+@use './card-header/card-header.mixin.scss' as card-header;
+
+$use-host: false !default;
+$name: card;
+$css-selector: ('.ds-card');
+$host-selector: ('#card');
+
+/**
+ * Variables
+ * --------------------------------
+ * Define here the css variables for the component to be able to use it in host or non-host mode
+ * These variables can be used in the component styles below and later on be overridden in themes.
+ */
+
+@include vars.hybrid($name, $css-selector, $use-host) {
+  @include vars.local(card-color-background, var(--ds-card-color-default-background));
+  @include vars.local(card-color-text, var(--ds-card-color-default-text));
+  @include vars.local(card-color-border, var(--ds-card-color-default-border));
+  @include vars.local(card-radius, var(--ds-card-radius));
+  @include vars.local(card-shadow, var(--ds-card-shadow-base));
+  @include vars.local(card-gap, var(--ds-card-gap-base));
+  @include vars.local(card-pl, var(--ds-card-padding-base));
+  @include vars.local(card-pr, var(--ds-card-padding-base));
+  @include vars.local(card-pt, var(--ds-card-padding-base));
+  @include vars.local(card-pb, var(--ds-card-padding-base));
+
+  @include vars.local(card-header-grid-template-columns, 1fr auto);
+  @include vars.local(card-header-margin-left, 0);
+
+  // only works without the mixin local() because of the grid-template-areas syntax
+  --_card-header-grid-template-areas: var(
+    --card-header-grid-template-areas,
+    var(--mod-card-header-grid-template-areas, 'title .' 'subtitle subtitle')
+  );
+}
+
+/**
+  * Basic Component Styles
+  * --------------------------------
+  * Define here the component styles using the mixin to support host and non-host mode for hybrid components.
+  */
+
+@include hybrid.component($host-selector, $css-selector, $use-host) {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  width: 100%;
+  color: var(--_card-color-text);
+  background-color: var(--_card-color-background);
+  border-radius: var(--_card-radius);
+  border: var(--_card-color-border);
+  box-shadow: var(--_card-shadow);
+  gap: var(--_card-gap);
+  padding-left: var(--_card-pl);
+  padding-right: var(--_card-pr);
+  padding-top: var(--_card-pt);
+  padding-bottom: var(--_card-pb);
+  text-decoration: none;
+
+  // Header
+  .ds-card-header {
+    @include card-header.style();
+  }
+
+  // Content
+  .ds-card-content {
+    @include typography.content();
+  }
+
+  // Actions as button group
+  .ds-card-actions {
+    @include button-group.style();
+  }
+
+  // Allignment
+  &.align-center {
+    align-items: center;
+    --buttons-align-items: center;
+    --buttons-justify-content: center;
+  }
+
+  &.align-right {
+    --buttons-align-items: flex-end;
+    --buttons-justify-content: flex-end;
+  }
+}
+
+//
+// Picture
+// --------------------------------
+@include hybrid.styles($css-selector, $use-host) {
+  picture {
+    --picture-img-radius: var(--_card-radius);
+  }
+}
+
+@include hybrid.host($use-host) {
+  :host {
+    ::slotted(picture) {
+      --picture-img-radius: var(--_card-radius);
+    }
+  }
+}
+
+//
+// Full Height
+// --------------------------------
+@include hybrid.styles($css-selector, $use-host) {
+  &.is-fullheight {
+    height: 100%;
+
+    .ds-card-content,
+    .ds-card-content > .ds-stack,
+    .ds-card-content > .flex,
+    .ds-card-content > .is-flex {
+      height: 100%;
+    }
+  }
+}
+
+@include hybrid.host($use-host) {
+  :host(.is-fullheight),
+  :host(.is-fullheight) #card {
+    height: 100%;
+  }
+
+  :host(.is-fullheight) {
+    ::slotted(ds-card-content) {
+      height: 100%;
+    }
+  }
+}
+
+//
+// Badge Positioning
+// --------------------------------
+@include hybrid.styles($css-selector, $use-host) {
+  > .ds-badge:first-child,
+  > ds-badge:first-child {
+    --badge-position: absolute;
+    --badge-top: 0;
+    transform: translate(calc(50% + var(--_card-gap)), -50%);
+    align-self: flex-end;
+  }
+}
+
+@include hybrid.host($use-host) {
+  :host {
+    ::slotted(ds-badge) {
+      --badge-position: absolute;
+      --badge-top: 0;
+
+      transform: translate(calc(50% + var(--_card-gap)), -50%);
+      align-self: flex-end;
+    }
+  }
+}
+
+//
+// Tags Positioning
+// --------------------------------
+@include hybrid.styles($css-selector, $use-host) {
+  > .ds-tag.is-center:first-child,
+  > ds-tag[position='center']:first-child {
+    --tag-position: absolute;
+    --tag-top: 0;
+
+    align-self: center;
+    transform: translateY(-50%);
+  }
+
+  > .ds-tag.is-left:first-child,
+  > ds-tag[position='left']:first-child {
+    --tag-position: absolute;
+    --tag-top: 0;
+
+    align-self: flex-start;
+    transform: translateY(-50%);
+  }
+
+  > .ds-tag.is-right:first-child,
+  > ds-tag[position='right']:first-child {
+    --tag-position: absolute;
+    --tag-top: 0;
+
+    align-self: flex-end;
+    transform: translateY(-50%);
+  }
+}
+
+@include hybrid.host($use-host) {
+  :host {
+    ::slotted(ds-tag[position='left']) {
+      --tag-position: absolute;
+      --tag-top: 0;
+
+      align-self: flex-start;
+      transform: translateY(-50%);
+    }
+
+    ::slotted(ds-tag[position='center']) {
+      --tag-position: absolute;
+      --tag-top: 0;
+
+      align-self: center;
+      transform: translateY(-50%);
+    }
+
+    ::slotted(ds-tag[position='right']) {
+      --tag-position: absolute;
+      --tag-top: 0;
+
+      align-self: flex-end;
+      transform: translateY(-50%);
+    }
+  }
+}
+
+/**
+  * Variants and States
+  * --------------------------------
+  * Define here the variants and states like size or colors for the component.
+  */
+
+//
+// Flat
+// --------------------------------
+@mixin flat {
+  --mod-card-shadow: var(--ds-card-shadow-flat);
+}
+
+@include hybrid.styles($css-selector, $use-host) {
+  &.is-flat {
+    @include flat();
+  }
+}
+
+@include hybrid.host($use-host) {
+  :host(.is-flat) {
+    @include flat();
+  }
+}
+
+//
+// Dense
+// --------------------------------
+@mixin dense {
+  --mod-card-shadow: var(--ds-card-shadow-flat);
+  --mod-card-pl: 0;
+  --mod-card-pr: 0;
+  --mod-card-pt: 0;
+  --mod-card-pb: 0;
+}
+
+@include hybrid.styles($css-selector, $use-host) {
+  &.is-dense {
+    @include dense();
+  }
+}
+
+@include hybrid.host($use-host) {
+  :host(.is-dense) {
+    @include dense();
+  }
+}
+
+//
+// Colors
+// --------------------------------
+
+$backgrounds: (
+  'primary',
+  'grey',
+  'dashed',
+  'red',
+  'red-dark',
+  'green',
+  'green-dark',
+  'purple',
+  'purple-dark',
+  'yellow',
+  'yellow-dark'
+);
+
+@mixin background-color($color) {
+  --mod-card-color-background: var(--ds-card-color-#{$color}-background);
+  --mod-card-color-text: var(--ds-card-color-#{$color}-text);
+  --mod-card-color-border: var(--ds-card-color-#{$color}-border, none);
+}
+
+@each $color in $backgrounds {
+  @include hybrid.styles($css-selector, $use-host) {
+    &.is-#{$color} {
+      @include background-color($color);
+    }
+  }
+
+  @include hybrid.host($use-host) {
+    :host(.is-#{$color}) {
+      @include background-color($color);
+    }
+  }
+}
+
+//
+// Space
+// --------------------------------
+$spaces: ('sm', 'lg');
+
+@each $space in $spaces {
+  @include hybrid.styles($css-selector, $use-host) {
+    &.has-space-#{$space} {
+      --mod-card-gap: var(--ds-card-gap-#{$space});
+    }
+    &.has-space-#{$space}:not(.is-dense) {
+      --mod-card-pl: var(--ds-card-padding-#{$space});
+      --mod-card-pr: var(--ds-card-padding-#{$space});
+      --mod-card-pt: var(--ds-card-padding-#{$space});
+      --mod-card-pb: var(--ds-card-padding-#{$space});
+    }
+  }
+
+  @include hybrid.host($use-host) {
+    :host(.has-space-#{$space}) {
+      --mod-card-gap: var(--ds-card-gap-#{$space});
+    }
+    :host(.has-space-#{$space}:not(.is-dense)) {
+      --mod-card-pl: var(--ds-card-padding-#{$space});
+      --mod-card-pr: var(--ds-card-padding-#{$space});
+      --mod-card-pt: var(--ds-card-padding-#{$space});
+      --mod-card-pb: var(--ds-card-padding-#{$space});
+    }
+  }
+}
+
+//
+// Tile
+// --------------------------------
+
+@include hybrid.styles($css-selector, $use-host) {
+  &.is-tile {
+    --mod-card-header-grid-template-columns: auto 1fr auto;
+    --mod-card-header-grid-template-areas: 'icon title .' 'icon subtitle subtitle';
+  }
+}
+
+@include hybrid.host($use-host) {
+  :host(.is-tile) {
+    --mod-card-header-grid-template-columns: auto 1fr auto;
+    --mod-card-header-grid-template-areas: 'icon title .' 'icon subtitle subtitle';
+  }
+}
+
+//
+// Image Teaser
+// --------------------------------
+
+@include hybrid.styles('.ds-image-teaser ', $use-host) {
+  .ds-card {
+    margin-top: calc(var(--_card-gap) * -1 * 2);
+    margin-left: calc(var(--_card-gap));
+    margin-right: calc(var(--_card-gap));
+    max-width: fit-content;
+  }
+
+  &.is-wide {
+    @include tablet() {
+      .ds-card {
+        width: 75%;
+        margin-left: calc(var(--_card-gap) * 2);
+        margin-right: calc(var(--_card-gap));
+      }
+
+      &.is-center {
+        .ds-card {
+          margin-left: auto;
+          margin-right: auto;
+        }
+      }
+
+      &.is-right {
+        .ds-card {
+          margin-left: auto;
+          margin-right: calc(var(--_card-gap) * 2);
+        }
+      }
+    }
+
+    @include desktop() {
+      .ds-card {
+        width: 50%;
+      }
+    }
+  }
+}
+
+@include hybrid.host($use-host) {
+  :host(.is-image-teaser) #card {
+    margin-top: calc(var(--_card-gap) * -1 * 2);
+    margin-left: calc(var(--_card-gap));
+    margin-right: calc(var(--_card-gap));
+    max-width: fit-content;
+  }
+
+  :host(.is-image-teaser-wide) #card,
+  :host(.is-image-teaser-wide-center) #card,
+  :host(.is-image-teaser-wide-right) #card {
+    @include tablet() {
+      width: 75%;
+      margin-left: calc(var(--_card-gap) * 2);
+      margin-right: calc(var(--_card-gap));
+    }
+
+    @include desktop() {
+      width: 50%;
+    }
+  }
+
+  :host(.is-image-teaser-wide-center) #card {
+    @include tablet() {
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+
+  :host(.is-image-teaser-wide-right) #card {
+    @include tablet() {
+      margin-left: auto;
+      margin-right: calc(var(--_card-gap) * 2);
+    }
+  }
+}
+
+a.ds-image-link,
+button.ds-image-link {
+  cursor: pointer;
+
+  picture {
+    display: block;
+    overflow: hidden;
+  }
+
+  img {
+    display: block;
+    transition: all 0.4s ease-out;
+
+    @include hover {
+      &:hover,
+      &.is-hovered {
+        transform: scale(1.1);
+      }
+    }
+
+    &:active,
+    &.is-pressed {
+      transform: scale(1.1);
+    }
+  }
+}

@@ -1,0 +1,205 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+import { Banner, GridComponent, GridComponents, Lead } from '../../../.storybook/blocks'
+
+<Meta
+  title="Components/Overlays/Overview"
+  parameters={{
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+<Banner label="Overlays" color="purple" />
+
+<Lead>Overlays display content above the main page, either temporarily or until dismissed by the user.</Lead>
+
+<GridComponents>
+  <GridComponent
+    scale="0.8"
+    label="Drawer"
+    component="drawer"
+    fullwidth
+    fullheight
+    fullscreen
+    pageTitle="Components/Overlays/Drawer"
+  >
+    <div
+      style={{
+        backgroundColor: 'rgba(0, 7, 57, 0.5)',
+        width: '100%',
+        height: '280px',
+        backdropFilter: 'blur(4px)',
+        opacity: '0.8',
+      }}
+    ></div>
+    <div
+      class="bg-white radius-lg stack p-base"
+      style={{
+        position: 'absolute',
+        bottom: '0',
+        left: '50%',
+        transform: 'translateX(-50%)',
+        width: '80%',
+        height: '130px',
+      }}
+    >
+      <div class="ds-stack as-row">
+        <h4 class="ds-title ds-stack-content">Apple Pie</h4>
+        <ds-close></ds-close>
+      </div>
+      <p class="text-sm mt-sm flex-1">
+        Apple pie, a quintessential dessert with a flaky, golden crust.
+      </p>
+    </div>
+  </GridComponent>
+  <GridComponent
+    scale="0.8"
+    label="Modal"
+    component="modal"
+    fullwidth
+    fullheight
+    fullscreen
+    pageTitle="Components/Overlays/Modal"
+  >
+    <div
+      style={{
+        backgroundColor: 'rgba(0, 7, 57, 0.5)',
+        width: '100%',
+        height: '280px',
+        backdropFilter: 'blur(4px)',
+        opacity: '0.8',
+      }}
+    ></div>
+    <div
+      class="bg-white radius-lg stack p-base"
+      style={{
+        position: 'absolute',
+        top: '50%',
+        left: '50%',
+        transform: 'translate(-50%, -50%)',
+        width: '80%',
+        height: '150px',
+      }}
+    >
+      <div class="ds-stack as-row">
+        <h4 class="ds-title ds-stack-content">Apple Pie</h4>
+        <ds-close></ds-close>
+      </div>
+      <p class="text-sm mt-sm flex-1">
+        Apple pie, a quintessential dessert, combines the comforting aroma of baked apples with a flaky, golden crust.
+      </p>
+    </div>
+  </GridComponent>
+  <GridComponent
+    scale="0.8"
+    label="Notification"
+    component="notification"
+    pageTitle="Components/Overlays/Notification"
+  >
+    <ds-notification color="danger">
+      <strong>Apple pie</strong>, a quintessential dessert with a
+      flaky, golden crust.
+    </ds-notification>
+  </GridComponent>
+  <GridComponent
+    scale="0.8"
+    label="Popup"
+    component="popup"
+    fullheight
+    fullwidth
+    center
+    pageTitle="Components/Overlays/Popup"
+  >
+    <div class="relative" style={{ marginLeft: '-160px' }}>
+      <ds-button color="primary">Apple pie</ds-button>
+      <div
+        class="bg-white radius-lg stack p-base"
+        style={{
+          position: 'absolute',
+          top: '50%',
+          left: '220px',
+          transform: 'translate(-50%, -50%)',
+          width: '140px',
+          height: '140px',
+        }}
+      >
+        <ds-close style={{ position: 'absolute', top: '8px', right: '8px' }}></ds-close>
+        <p class="text-sm"> Apple pie, a quintessential dessert, with a flaky, golden crust.</p>
+      </div>
+    </div>
+  </GridComponent>
+  <GridComponent
+    scale="0.6"
+    label="Sheet"
+    component="sheet"
+    fullwidth
+    fullheight
+    pageTitle="Components/Overlays/Sheet"
+  >
+    <div class="mx-md">
+      <div class="bg-purple-2" style={{ minHeight: '200px', width: '100%' }}></div>
+      <ds-sheet>
+        <div class="ds-stack">
+          <div class="ds-stack-content">
+            <h3 class="ds-title is-4">CHF 460.60 per year</h3>
+            <p class="text-sm">incl. statutory charges</p>
+          </div>
+          <div class="ds-buttons">
+            <button class="ds-button is-secondary is-square" aria-label="back">
+              <ds-icon name="caret-left"></ds-icon>
+            </button>
+            <button class="ds-button flex-1">Select offer</button>
+          </div>
+        </div>
+      </ds-sheet>
+    </div>
+  </GridComponent>
+  <GridComponent
+    scale="0.8"
+    label="Snackbar"
+    component="snackbar"
+    fullwidth
+    fullheight
+    pageTitle="Components/Overlays/Snackbar"
+  >
+    <div style={{ position: 'absolute', bottom: '1rem', right: '0' }}>
+      <ds-snackbar heading="Apple Pie" color="info" closable>
+        Want some more apple pie slices?
+      </ds-snackbar>
+    </div>
+  </GridComponent>
+  <GridComponent
+    scale="0.8"
+    label="Toast"
+    component="toast"
+    pageTitle="Components/Overlays/Toast"
+  >
+    <div style={{ marginTop: '-100px' }}>
+      <ds-toast color="success" heading="Apple Pie">
+        Saved you some slice
+      </ds-toast>
+    </div>
+  </GridComponent>
+  <GridComponent
+    scale="1"
+    label="Tooltip"
+    component="tooltip"
+    fullheight
+    fullwidth
+    center
+    pageTitle="Components/Overlays/Tooltip"
+  >
+    <div
+      class="flex justify-content-center align-items-center p-lg"
+      style={{ marginTop: '-48px' }}
+    >
+      <button class="ds-button is-secondary" id="tooltip-basic" type="button">
+        Apple Pie
+      </button>
+      <ds-tooltip reference="tooltip-basic" placement="bottom" open="true">
+        Apple pie is a dessert
+      </ds-tooltip>
+    </div>
+  </GridComponent>
+</GridComponents>
