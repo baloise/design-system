@@ -1,5 +1,36 @@
 import { DsSlider, expect, test } from '@baloise/ds-playwright'
 
+test.describe('value assigned after load', () => {
+  test('should render a value that is assigned after the component has loaded', async ({ page }) => {
+    await page.mount(`<ds-slider label="Label" min="0" max="100"></ds-slider>`)
+    const slider = new DsSlider(page.locator('ds-slider'))
+
+    await slider.el.evaluate((el: HTMLDsSliderElement) => {
+      el.value = 75
+    })
+    await page.waitForChanges()
+
+    await slider.assertValue('75')
+    await expect(slider.handle).toHaveAttribute('aria-valuenow', '75.0')
+  })
+
+  test('should render a value that is re-assigned to the same number after the component has loaded', async ({
+    page,
+  }) => {
+    await page.mount(`<ds-slider label="Label" min="0" max="100"></ds-slider>`)
+    const slider = new DsSlider(page.locator('ds-slider'))
+
+    await slider.el.evaluate((el: HTMLDsSliderElement) => {
+      el.value = 75
+      el.value = 75
+    })
+    await page.waitForChanges()
+
+    await slider.assertValue('75')
+    await expect(slider.handle).toHaveAttribute('aria-valuenow', '75.0')
+  })
+})
+
 test.describe('component', () => {
   test('should fire dsInput with numeric value on fill', async ({ page }) => {
     await page.mount(`<ds-slider label="Label"></ds-slider>`)

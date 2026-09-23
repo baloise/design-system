@@ -1,5 +1,36 @@
 import { DsDatepicker, expect, test } from '@baloise/ds-playwright'
 
+test.describe('value assigned after load', () => {
+  test('should render a value that is assigned after the component has loaded', async ({ page }) => {
+    await page.mount(`<ds-datepicker label="Date of birth"></ds-datepicker>`)
+    const date = new DsDatepicker(page.locator('ds-datepicker'))
+
+    await date.assertValue('')
+
+    await date.el.evaluate((el: HTMLDsDatepickerElement) => {
+      el.value = '2026-07-13'
+    })
+    await page.waitForChanges()
+
+    await date.assertValue('13.07.2026')
+  })
+
+  test('should render a value that is re-assigned to the same date after the component has loaded', async ({
+    page,
+  }) => {
+    await page.mount(`<ds-datepicker label="Date of birth"></ds-datepicker>`)
+    const date = new DsDatepicker(page.locator('ds-datepicker'))
+
+    await date.el.evaluate((el: HTMLDsDatepickerElement) => {
+      el.value = '2026-07-13'
+      el.value = '2026-07-13'
+    })
+    await page.waitForChanges()
+
+    await date.assertValue('13.07.2026')
+  })
+})
+
 test.describe('type', () => {
   test('should set value when typing a date', async ({ page }) => {
     await page.mount(`<ds-datepicker label="Date of birth"></ds-datepicker>`)
