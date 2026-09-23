@@ -36,12 +36,14 @@ If `status` is `nothing-to-migrate`, tell the user: no Baloise Design System ins
 
 If `status` is `error`, tell the user `message` and stop. Do not edit files and do not install.
 
-If `status` is `ready`:
+If `status` is `ready`, show the detected framework, package manager, version, aliases, and bootstrap files, then ask for one yes/no. On no, stop without editing. On yes:
 
 1. Add each entry in `aliases` to the `dependencies` object of `packageJsonPath` (relative to `<project-root>`). Create `dependencies` if it is missing. Do not change or remove existing keys. If an `@helvetia/*` key is already present, leave its value unchanged and report both the existing value and the alias from the JSON.
 2. From `<project-root>`, run `installCommand` exactly (`pnpm install`, `yarn install`, or `npm install`). Do not add extra package arguments.
 3. Insert the new CSS/JS import next to the existing `@baloise/*` one:
-   - For every `imports` entry with `kind` `bootstrap`, duplicate that line immediately below it. In the duplicate only, replace `@baloise/ds-core`, `@baloise/ds-react`, `@baloise/ds-angular`, and `@baloise/ds-styles` with the same package name under `@helvetia`. Leave the original line unchanged.
+   - For every `imports` entry with `kind` `bootstrap`, add the `@helvetia` equivalent immediately below that line. Leave the original line unchanged.
+   - When the line is HTML, CSS, or a side-effect import, duplicate the line. In the duplicate only, replace `@baloise/ds-core`, `@baloise/ds-react`, `@baloise/ds-angular`, and `@baloise/ds-styles` with the same package name under `@helvetia`.
+   - When the line is JSON, such as an `angular.json` styles entry, insert a sibling string with that same scope replacement. Keep the file valid JSON. Do not copy surrounding keys, and do not duplicate the whole file when the match is only one string.
    - If that duplicate would still be an `http://` or `https://` URL, do not write the URL. Insert the local form below instead.
    - Do not duplicate `kind` `reference` lines. Those are component imports; migrating them is a later menu item.
    - If there is no `bootstrap` import, insert the local form immediately after the first `reference` line, without editing that line.
