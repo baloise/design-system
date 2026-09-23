@@ -18,7 +18,7 @@ Interestingly, `packages/tokens/src/css-value.ts`'s `NUMBER_ONLY_PATH_MARKERS` a
 6. Figma push: `fontWeight` → Figma `STRING` resolvedType. **Superseded (see Addendum below):** the value is *not* the stringified number — Figma has no native font-weight type and expects the font's named style, so `700` maps to the keyword `"Bold"` via a fixed number→keyword lookup, not `String(700)`.
 7. Figma pull: no disambiguation heuristic added for *brand-new* Figma variables — `STRING` keeps defaulting to DTCG `'string'` when there's no local counterpart to inherit a type from. Known, accepted edge case. **Addendum:** this does *not* apply to already-matched variables — see below.
 8. Toky editor: Global font-weight tokens (literal values) get a fixed `<Select>` of the 10 DTCG-legal weights, e.g. "700 — Bold". Alias/Component tokens are references and keep using the existing reference-picker (`SearchSelect`), untouched.
-9. Scope is `Base.tokens.json` only — `ERV.tokens.json` has no `FontWeight` entries to touch.
+9. Scope is `Base.tokens.json` only — `OrangeVacations.tokens.json` has no `FontWeight` entries to touch.
 
 ## 1. `packages/tokens/tokens/Base.tokens.json`
 

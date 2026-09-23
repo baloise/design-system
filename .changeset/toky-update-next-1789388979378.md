@@ -2,6 +2,6 @@
 '@baloise/ds-tokens': minor
 ---
 
-**tokens**: create erv brand
+**tokens**: create orange-vacations brand
 
-**Created brand:** ERV
+**Created brand:** OrangeVacations

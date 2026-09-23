@@ -192,8 +192,9 @@ export default meta
  * `designSystemGridTheme` themes AG Grid's headers and cells using
  * `var(--ds-alias-*)` params, which re-resolve automatically against
  * whichever brand's token cascade is active. Use the "Theme" toggle in the
- * toolbar above to switch between Helvetia and ERV — ERV tokens aren't
- * populated yet, so no visible color/font change is expected there.
+ * toolbar above to switch between Helvetia and Orange Vacations — Orange
+ * Vacations tokens aren't populated yet, so no visible color/font change is
+ * expected there.
  */
 export const AgGrid: StoryObj = {
   render: () => {

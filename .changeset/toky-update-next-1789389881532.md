@@ -2,7 +2,7 @@
 '@baloise/ds-tokens': patch
 ---
 
-**tokens**: Update more erv tokens
+**tokens**: Update more orange-vacations tokens
 
 **Updated:** 🧩 Component/Button/Size/Base/Radius
-**ERV — Overridden:** 🔗 Alias/🎬 Action/Primary/Surface/Base, 🔗 Alias/🎬 Action/Primary/Surface/Hover
+**OrangeVacations — Overridden:** 🔗 Alias/🎬 Action/Primary/Surface/Base, 🔗 Alias/🎬 Action/Primary/Surface/Hover

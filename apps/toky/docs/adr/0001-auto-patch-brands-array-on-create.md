@@ -8,7 +8,7 @@ Accepted
 
 Creating a new brand means writing a sparse `packages/tokens/tokens/<Name>.tokens.json`
 file. But that file alone doesn't get built into CSS — `packages/tokens/src/index.ts`
-has a hardcoded `const brands = ['ERV'] // add new brand names here` array that the
+has a hardcoded `const brands = ['OrangeVacations'] // add new brand names here` array that the
 Style Dictionary build loops over. A brand created through Toky without also being
 added to that array would silently produce no CSS output, with no error to signal it.
 

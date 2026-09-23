@@ -14,7 +14,7 @@ const SvgIcon = ({ html, size = 14 }: { html: string; size?: number }) => (
 
 const themes: { id: string; title: string; color: string }[] = [
   { id: '', title: 'Helvetia', color: '#000d6e' },
-  { id: 'erv', title: 'ERV', color: '#f19654' },
+  { id: 'orange-vacations', title: 'Orange Vacations', color: '#f19654' },
 ]
 
 export const registerTheme: React.FC = () => {

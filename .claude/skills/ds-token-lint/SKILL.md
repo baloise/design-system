@@ -86,7 +86,7 @@ This:
 
 **After applying, invoke the `ds-changeset` skill** (bump: `major`, scope: `tokens` + the component name) — every rename here is a breaking change and must be recorded, per project convention.
 
-`ERV.tokens.json` (and any future brand file) is out of scope for v1 — currently no component-layer tokens are overridden there. If a future brand file does override a path this skill renames, it will go out of sync silently; check for that manually until brand-file support is added.
+`OrangeVacations.tokens.json` (and any future brand file) is out of scope for v1 — currently no component-layer tokens are overridden there. If a future brand file does override a path this skill renames, it will go out of sync silently; check for that manually until brand-file support is added.
 
 ## Examples
 

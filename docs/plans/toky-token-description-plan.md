@@ -2,7 +2,7 @@
 
 ## Context
 
-Design tokens in this repo currently carry only `$type`/`$value` (plus `$extensions` for Figma variable IDs) — there's no way to document what a token means or is for. The W3C Design Tokens Format Module (2025.10 draft, https://www.designtokens.org/tr/drafts/format/) defines an optional `$description` field as a sibling of `$type`/`$value` on a token, which this repo doesn't yet use anywhere. This plan adds that field end-to-end: visible (truncated) in toky's token table, editable via the existing create/edit dialogs, persisted in `Base.tokens.json`/`ERV.tokens.json` in spec-conformant shape, and synced bidirectionally with Figma's native variable `description` field (JSON as source of truth).
+Design tokens in this repo currently carry only `$type`/`$value` (plus `$extensions` for Figma variable IDs) — there's no way to document what a token means or is for. The W3C Design Tokens Format Module (2025.10 draft, https://www.designtokens.org/tr/drafts/format/) defines an optional `$description` field as a sibling of `$type`/`$value` on a token, which this repo doesn't yet use anywhere. This plan adds that field end-to-end: visible (truncated) in toky's token table, editable via the existing create/edit dialogs, persisted in `Base.tokens.json`/`OrangeVacations.tokens.json` in spec-conformant shape, and synced bidirectionally with Figma's native variable `description` field (JSON as source of truth).
 
 ## Decisions locked in
 
@@ -102,7 +102,7 @@ Same field, directly after "Full name" (~line 6386-6395), before "Base value" (~
 </div>
 ```
 
-### 8. `packages/tokens/Base.tokens.json` / `ERV.tokens.json`
+### 8. `packages/tokens/Base.tokens.json` / `OrangeVacations.tokens.json`
 No migration script needed — purely additive/optional field; existing tokens simply have no `$description` and none gets written for them.
 
 ### 9. Figma sync — push (JSON → Figma), `scripts/figma-sync/lib/write.mjs`

@@ -8,7 +8,7 @@ The goal of this phase (MVP, per user's explicit scope) is:
 1. Run the core dev-server locally and embed it as an iframe inside toky so token edits are visible immediately.
 2. Give `packages/core` generic postMessage-listening logic so *any* page it serves (not just one dedicated page — confirmed with user) can receive token updates. Because every HTML page already loads Stencil's `globalScript` bundle (`src/global/global.ts` → `design-system.esm.js`/`.js`), adding the listener there means zero per-HTML-file edits and it works uniformly across playground.html and all visual.html files.
 3. Send only *changed* tokens as CSS custom property updates (diff-based), not a full re-render.
-4. Support basic multi-brand preview switching via the `data-theme` attribute, since `packages/tokens` already emits brand CSS wrapped in `[data-theme="erv"] { ... }` (`packages/tokens/dist/css/erv.tokens.css`, copied to `packages/core/www/assets/tokens/`).
+4. Support basic multi-brand preview switching via the `data-theme` attribute, since `packages/tokens` already emits brand CSS wrapped in `[data-theme="orange-vacations"] { ... }` (`packages/tokens/dist/css/orange-vacations.tokens.css`, copied to `packages/core/www/assets/tokens/`).
 
 Explicitly **out of scope** for this phase (confirmed with user): serving from a copied `www` build on Vercel, and pointing the mechanism at arbitrary external DS websites. Turbo/build wiring is limited to what's needed for local dev + a documented growth point for later.
 
@@ -97,7 +97,7 @@ New `apps/toky/app/preview-sidebar.tsx`, following the same shape/conventions as
 1. `pnpm --filter core start` (or repo equivalent) — confirm `localhost:4000/playground.html` loads.
 2. `pnpm --filter toky dev` — open toky, toggle the preview panel on, confirm the iframe loads and (via browser devtools console in the iframe) confirm a `ready` postMessage was received by toky (add a temporary `console.log` during dev, remove before done — or check via the Chrome extension tools).
 3. Edit a color/spacing token in the toky table; confirm the corresponding `--ds-*` custom property updates live in the iframe's `document.documentElement.style` (inspect via devtools) and that a visible component using that token (if present on `playground.html`) reflects the change.
-4. Switch brand in `BrandsSidebar`; confirm `data-theme` attribute updates on the iframe's `<html>` and the `erv.tokens.css` link gets injected once (no duplicates on repeated switches).
+4. Switch brand in `BrandsSidebar`; confirm `data-theme` attribute updates on the iframe's `<html>` and the `orange-vacations.tokens.css` link gets injected once (no duplicates on repeated switches).
 5. `pnpm --filter toky test` / `pnpm --filter core test` (unit tests for `css-preview.ts` and any core changes) — run repo-wide `pnpm test` if scope allows.
 6. Manually undo a token change in toky (existing undo button) and confirm the preview panel doesn't need special-casing — it should just re-derive `changedTokens` from the updated `diff` via existing memoization.
 

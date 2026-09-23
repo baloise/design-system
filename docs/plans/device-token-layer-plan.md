@@ -101,7 +101,7 @@ collection alongside everything else. This plan consolidates all 4 variants into
   Alias groups are of course untouched).
 - Leave `Component.Text.Space` and `Component.Logo.Size.*`'s own `$extensions.com.helvetia.
   responsive` maps untouched (decision 1 — phase 2).
-- `ERV.tokens.json` needs no change — confirmed it only overrides `🌐 Global`, no `Alias.Space`/
+- `OrangeVacations.tokens.json` needs no change — confirmed it only overrides `🌐 Global`, no `Alias.Space`/
   `Text.Size` brand overrides exist today.
 
 ## Phase 2 — `packages/tokens/src` (Style Dictionary build)
@@ -267,7 +267,7 @@ a specific shape that this change must stay compatible with or deliberately migr
 - Migrating `Component.Text.Space` / `Component.Logo.Size.*` (or any other component's own
   responsive extension) to reference Device instead of defining their own breakpoints — the
   deferred phase 2 audit.
-- Any brand-level (ERV) override of Device tokens — none exist today; if one is needed later, it
+- Any brand-level (OrangeVacations) override of Device tokens — none exist today; if one is needed later, it
   follows whatever pattern this plan establishes for Global brand overrides.
 - Changing the `$extensions.com.helvetia.responsive` mechanism itself (decision 2-10 in the
   original responsive-dimension-token-plan) — this plan only relocates which layer holds tokens

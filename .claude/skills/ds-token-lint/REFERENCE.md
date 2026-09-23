@@ -107,6 +107,6 @@ The skill derives a token's CSS variable name directly from its `Base.tokens.jso
 
 ## Scope limits (v1)
 
-- **Base.tokens.json only.** `ERV.tokens.json` (or any future brand file) is not scanned or updated. Per ADR-0012, brands are modes on the same variable rather than separate variables, so a component-layer override at the same path in a brand file would need the identical rename to stay matched — currently no component-layer tokens are overridden per-brand, so this is inert today, not silently broken.
+- **Base.tokens.json only.** `OrangeVacations.tokens.json` (or any future brand file) is not scanned or updated. Per ADR-0012, brands are modes on the same variable rather than separate variables, so a component-layer override at the same path in a brand file would need the identical rename to stay matched — currently no component-layer tokens are overridden per-brand, so this is inert today, not silently broken.
 - **Single component per run.** No `--all` mode; run once per component.
 - **Whole-batch apply.** No per-row selection — approve the full table or none of it.
