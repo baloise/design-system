@@ -104,44 +104,47 @@ const changelogFunctions = {
       })
       .trim()
     const [firstLine, ...futureLines] = replacedChangelog.split('\n').map(l => l.trimRight())
-    const links = await (async () => {
+    const info = await (async () => {
       if (prFromSummary !== undefined) {
-        let { links } = await getGithubInfo.getInfoFromPullRequest({
+        let result = await getGithubInfo.getPullRequestInfo({
           repo: options.repo,
           pull: prFromSummary,
         })
 
         if (commitFromSummary) {
-          links = _objectSpread2(
-            _objectSpread2({}, links),
+          result = _objectSpread2(
+            _objectSpread2({}, result),
             {},
             {
-              commit: `[\`${commitFromSummary}\`](https://github.com/${options.repo}/commit/${commitFromSummary})`,
+              commit: {
+                markdownLink: `[\`${commitFromSummary}\`](https://github.com/${options.repo}/commit/${commitFromSummary})`,
+              },
             },
           )
         }
 
-        return links
+        return result
       }
 
       const commitToFetchFrom = commitFromSummary || changeset.commit
 
       if (commitToFetchFrom) {
-        let { links } = await getGithubInfo.getInfo({
+        return await getGithubInfo.getCommitInfo({
           repo: options.repo,
           commit: commitToFetchFrom,
         })
-        return links
       }
 
       return {
         commit: null,
         pull: null,
-        user: null,
+        author: null,
       }
     })()
-    const prefix = links.pull === null ? ` ${links.commit}` : ` ${links.pull}`
-    const authorMarker = links.user ? `<!-- author:${links.user.match(/\[@?([^\]]+)\]/)?.[1] ?? ''} -->` : ''
+    const pullLink = info.pull?.markdownLink ?? null
+    const commitLink = info.commit?.markdownLink ?? null
+    const prefix = pullLink === null ? ` ${commitLink}` : ` ${pullLink}`
+    const authorMarker = info.author ? `<!-- author:${info.author.login} -->` : ''
     return `\n- ${firstLine} ${prefix ? `(${prefix})` : ''}${authorMarker}\n${futureLines.map(l => `  ${l}`).join('\n')}${
       futureLines && futureLines.length > 0 ? '\n' : ''
     }`
