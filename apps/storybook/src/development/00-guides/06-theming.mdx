@@ -71,13 +71,13 @@ Or scope it to a single instance with a class:
 
 ## Predefined Brand Themes
 
-Each brand (e.g. ERV) ships as two complete, standalone token stylesheets from
+Each brand (e.g. Orange Vacations) ships as two complete, standalone token stylesheets from
 `@baloise/ds-tokens` — not a diff against Base, the full token set either way. Pick the one that
 matches how your app switches (or doesn't switch) brands:
 
-- **`css/<brand>`** (e.g. `css/erv`) — scoped to `:host, :root`. Use this when your whole app is
+- **`css/<brand>`** (e.g. `css/orange-vacations`) — scoped to `:host, :root`. Use this when your whole app is
   committed to one brand; import it instead of `css/base`, nothing else needed.
-- **`css/<brand>-override`** (e.g. `css/erv-override`) — scoped to
+- **`css/<brand>-override`** (e.g. `css/orange-vacations-override`) — scoped to
   `[data-theme="<brand>"], :host([data-theme="<brand>"])`. Use this to switch brands at runtime,
   scoped to whichever element carries the `data-theme` attribute — the rest of the page keeps
   whatever tokens it already has.
@@ -89,7 +89,7 @@ matches how your app switches (or doesn't switch) brands:
 <Code
   language="css"
   code={`
-@import '@baloise/ds-tokens/css/erv';
+@import '@baloise/ds-tokens/css/orange-vacations';
 `}
 />
 
@@ -105,7 +105,7 @@ Load this instead of `@baloise/ds-tokens/css/base` (see
 <Code
   language="css"
   code={`
-@import '@baloise/ds-tokens/css/erv-override';
+@import '@baloise/ds-tokens/css/orange-vacations-override';
 `}
 />
 
@@ -122,7 +122,7 @@ root:
   language="html"
   noPreview
   code={`
-<div data-theme="erv">
+<div data-theme="orange-vacations">
 `}
 />
 

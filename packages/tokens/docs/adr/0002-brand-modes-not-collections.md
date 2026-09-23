@@ -8,10 +8,10 @@ Accepted
 
 ## Context
 
-`Base.tokens.json` and brand files (e.g. `ERV.tokens.json`) need a
+`Base.tokens.json` and brand files (e.g. `OrangeVacations.tokens.json`) need a
 corresponding structure in Figma. Figma Variables support two ways to model
 this: multiple **modes** on a single Variable Collection (e.g. "Base" and
-"ERV" modes on every variable), or a **separate Collection per brand**, with
+"OrangeVacations" modes on every variable), or a **separate Collection per brand**, with
 brand collections aliasing Base collection variables for inherited tokens.
 
 Modes are Figma's native mechanism for "the same variable, different value
@@ -23,7 +23,7 @@ scalable as brands grow.
 
 ## Decision
 
-One Figma Variable Collection holds every token; each brand (Base, ERV, and
+One Figma Variable Collection holds every token; each brand (Base, OrangeVacations, and
 future brands) is a mode on that collection. A brand override is simply a
 different mode-value on the same variable.
 

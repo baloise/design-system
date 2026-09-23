@@ -161,7 +161,7 @@ graph TD
 ```mermaid
 flowchart TB
     T1[Base.tokens.json] --> M[TokenMerger]
-    T2[ERV.tokens.json] --> M
+    T2[OrangeVacations.tokens.json] --> M
     M --> R[Resolved token tree per brand]
     R --> ID[IdentityMapper: variableId to token]
     ID --> W[FigmaVariableWriter]
@@ -310,7 +310,7 @@ change (only one side differs from baseline) is `value-changed`,
 | **Synchronization (Pull)**  | Every brand's resolved tree is written into its Figma mode. Non-overridden tokens get Base's value copied into the brand mode (Figma requires an explicit per-mode value — see [ADR-0002](adr/0002-brand-modes-not-collections.md)); this copy is not tagged as anything special in `SyncState` — its "is this a real override" status is re-derived by comparison at the next Push. |
 | **Diff generation**         | The diff engine runs per-brand-mode against the corresponding brand's baseline entries. A token that's identical across Base and a brand never appears in that brand's diff, even if it appears in Base's.                                                                                                                                                                           |
 | **Writing updated files**   | Push recomputes, per brand, which mode-values differ from the resolved Base value (mirroring `computeTokenDiff`) and writes only those to the brand's `*.tokens.json` — never a full resolved copy (locked in as a deliberate choice, not just the Style Dictionary build's tolerance of one).                                                                                       |
-| **Pull Request generation** | A single PR can span multiple brand files plus the sync-state file in one commit (Git Data API, ADR-0004); the diff table groups changes by brand so a reviewer can see "this PR touches Base and ERV" at a glance.                                                                                                                                                                  |
+| **Pull Request generation** | A single PR can span multiple brand files plus the sync-state file in one commit (Git Data API, ADR-0004); the diff table groups changes by brand so a reviewer can see "this PR touches Base and OrangeVacations" at a glance.                                                                                                                                                      |
 
 ## 7. Phased implementation
 
@@ -344,7 +344,7 @@ all existing tokens (cross-checked against current `pnpm tokens` build).
 
 **Risks**: Design Tokens Format edge cases in existing token data (emoji
 keys, unusual `$type`s) not anticipated by the merger — mitigate by
-fixturing the _actual_ `Base.tokens.json`/`ERV.tokens.json` in tests, not
+fixturing the _actual_ `Base.tokens.json`/`OrangeVacations.tokens.json` in tests, not
 synthetic samples.
 
 **Open questions**: exact PAT scope-validation UX when a classic PAT is
@@ -439,7 +439,7 @@ Global token after an Alias token references it.
 **Risks**: alias creation ordering — a token referencing another
 not-yet-created token needs a two-pass write (create all variables first,
 bind aliases second); Figma API rate limits on very large first-time
-population (Base + ERV currently ~1,585 tokens per the current file).
+population (Base + OrangeVacations currently ~1,585 tokens per the current file).
 
 **Open questions**: whether "optionally removing obsolete variables" on
 Pull needs the same extra-confirmation treatment as Push-side deletion —
@@ -472,7 +472,7 @@ create), Git Data API commit sequence, `POST /repos/{owner}/{repo}/pulls`.
 `figma.notify()` for in-plugin status.
 
 **Data flow**: Figma Variables (current) → `DiffEngine` (against baseline)
-→ designer selection → `BrandWriter` → `{Base,ERV}.tokens.json` + updated
+→ designer selection → `BrandWriter` → `{Base,OrangeVacations}.tokens.json` + updated
 `SyncState` → one commit → PR.
 
 **Milestones**: (1) a designer-only value change produces a minimal,
@@ -502,7 +502,7 @@ multi-brand conditions and tighten the parts Phases 1–3 deliberately kept
 simple.
 
 **Features delivered**: full brand-mode round-tripping validated against
-the real `ERV.tokens.json`, alias-vs-literal change type distinguished in
+the real `OrangeVacations.tokens.json`, alias-vs-literal change type distinguished in
 the diff UI, `reference-changed` handled correctly through a full
 Pull→edit→Push cycle, brand-file stripping validated against
 `config.brand.ts`'s `computeTokenDiff` with a shared test fixture so the

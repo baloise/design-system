@@ -11,7 +11,7 @@ Accepted
 ## Context
 
 A single Push-to-Code sync can touch multiple files at once: one or more
-token files (`Base.tokens.json`, `ERV.tokens.json`) and the sync-state
+token files (`Base.tokens.json`, `OrangeVacations.tokens.json`) and the sync-state
 baseline file (`.figma-sync-state.json`, see ADR-0015). GitHub's Contents
 API (`PUT /repos/{owner}/{repo}/contents/{path}`) writes one file per call,
 which means one commit per file — a failure between calls would leave the
