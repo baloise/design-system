@@ -34,6 +34,9 @@
       "@baloise/ds-core": [
         "packages/core/src/index.ts"
       ],
+      "@baloise/ds-core/hydrate": [
+        "packages/core/hydrate/index.js"
+      ],
       "@baloise/ds-tokens": [
         "packages/tokens/dist/tokens.js"
       ],

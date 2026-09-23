@@ -17,6 +17,7 @@ import {
   isHomeKey,
   isEndKey,
   isTabKey,
+  setFormValue,
 } from '@utils'
 import { Field, FieldInterface } from '../input/field.util'
 import { INPUT_COLORS, InputColor } from '../input/input.interfaces'
@@ -622,7 +623,7 @@ export class InputPhone implements DsComponentInterface, FieldInterface {
   }
 
   private syncFormValue() {
-    this.internals.setFormValue(this.value)
+    setFormValue(this.internals, this.value)
   }
 
   private eventDetail(): PhoneInputDetail {

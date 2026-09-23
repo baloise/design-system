@@ -1,5 +1,15 @@
 import { AttachInternals, Component, Element, Event, EventEmitter, h, Host, Listen, Prop, State } from '@stencil/core'
-import { Logger, type LogInstance, inheritAttributes, type Attributes, hasValue, OneOf, Required, Type } from '@utils'
+import {
+  Logger,
+  type LogInstance,
+  inheritAttributes,
+  type Attributes,
+  hasValue,
+  OneOf,
+  Required,
+  setFormValue,
+  Type,
+} from '@utils'
 import {
   CheckboxLabelPosition,
   CheckboxTileColor,
@@ -190,11 +200,11 @@ export class Checkbox implements DsComponentInterface {
 
   connectedCallback(): void {
     this.initialValue = this.checked
-    this.internals.setFormValue(this.checked ? (this.value as string) : null)
+    setFormValue(this.internals, this.checked ? (this.value as string) : null)
   }
 
   componentWillLoad() {
-    this.internals.setFormValue(this.checked ? (this.value as string) : null)
+    setFormValue(this.internals, this.checked ? (this.value as string) : null)
     this.inheritAttributes = inheritAttributes(this.el, ['aria-label', 'tabindex', 'title'])
   }
 
@@ -219,7 +229,7 @@ export class Checkbox implements DsComponentInterface {
   private handleChange = (ev: Event) => {
     this.checked = (ev.target as HTMLInputElement).checked
     this.dsChange.emit(this.checked)
-    this.internals.setFormValue(this.checked ? (this.value as string) : null)
+    setFormValue(this.internals, this.checked ? (this.value as string) : null)
   }
 
   private handleClick = (ev: MouseEvent) => {
@@ -251,7 +261,7 @@ export class Checkbox implements DsComponentInterface {
     this.nativeInput?.focus()
     this.checked = !this.checked
     this.dsChange.emit(this.checked)
-    this.internals.setFormValue(this.checked ? (this.value as string) : null)
+    setFormValue(this.internals, this.checked ? (this.value as string) : null)
   }
 
   private handleFocus = (ev: FocusEvent) => {

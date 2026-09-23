@@ -9,6 +9,7 @@ import {
   stopEventBubbling,
   raf,
   watchInvalidTextSlot,
+  setFormValue,
 } from '@utils'
 import { AttachInternals, HTMLStencilElement } from '@stencil/core/internal'
 import { defaultConfig, DsConfigState, DsLanguage, DsRegion, ListenToConfig } from '@global'
@@ -283,6 +284,15 @@ export class DsSelect implements DsComponentInterface, FieldInterface {
 
     this.readOptionsFromSlot()
 
+    // `slim-select` (the picker library) uses `MutationObserver` unconditionally during setup —
+    // unavailable in Node's SSR mock-doc (`@baloise/ds-core/hydrate`). The picker only matters for
+    // user interaction, which SSR output can't have, so skip it there.
+    if (typeof MutationObserver === 'undefined') {
+      this.syncFormValue(this.value)
+      this.initialValue = this.value
+      return
+    }
+
     this.picker = new SelectPickerController({
       selectEl: this.selectEl,
       popupEl: this.popupEl,
@@ -478,9 +488,9 @@ export class DsSelect implements DsComponentInterface, FieldInterface {
     if (Array.isArray(val)) {
       const formData = new FormData()
       val.forEach(v => formData.append(this.name, v))
-      this.internals.setFormValue(formData)
+      setFormValue(this.internals, formData)
     } else {
-      this.internals.setFormValue(val)
+      setFormValue(this.internals, val)
     }
   }
 

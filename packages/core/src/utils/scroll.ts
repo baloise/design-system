@@ -38,8 +38,10 @@ export class ScrollHandler {
         this.target = document
       }
     }
-    onscroll = null
-    onkeydown = null
+    if (dsBrowser.hasWindow) {
+      window.onscroll = null
+      window.onkeydown = null
+    }
   }
 
   disconnect() {
@@ -47,8 +49,10 @@ export class ScrollHandler {
       this.enable()
     }
     this.target = undefined
-    onscroll = null
-    onkeydown = null
+    if (dsBrowser.hasWindow) {
+      window.onscroll = null
+      window.onkeydown = null
+    }
   }
 
   isDisabled() {

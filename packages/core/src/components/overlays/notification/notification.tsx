@@ -1,5 +1,5 @@
 import { Element, Component, Method, h, Host, Prop, Event, EventEmitter, State } from '@stencil/core'
-import { stopEventBubbling, Logger, type LogInstance, hasValue, OneOf, Type } from '@utils'
+import { stopEventBubbling, Logger, type LogInstance, byTagName, directChildren, hasValue, OneOf, Type } from '@utils'
 import {
   NOTIFICATION_COLORS,
   NOTIFICATION_SIZES,
@@ -133,7 +133,7 @@ export class Notification implements DsComponentInterface {
    */
 
   private updateHasBrandIcon = (): void => {
-    this.hasBrandIcon = !!this.el.querySelector(':scope > ds-brand-icon')
+    this.hasBrandIcon = directChildren(this.el, byTagName('DS-BRAND-ICON')).length > 0
   }
 
   /**

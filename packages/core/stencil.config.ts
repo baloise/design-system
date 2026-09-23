@@ -13,6 +13,16 @@ const IS_DS_RELEASE = process.env.DS_RELEASE === 'true'
 const IS_DS_DEVELOPMENT = process.env.DS_DEVELOPMENT === 'true'
 const IS_DS_SILENT = process.env.DS_SILENT === 'true'
 const IS_DS_DOCUMENTATION = process.env.DS_DOCUMENTATION === 'true'
+/**
+ * Stencil only compiles the client-side hydration-adoption code path (`hydrateClientSide`,
+ * internal build flag) into a bundle when a `dist-hydrate-script` output target is present in the
+ * *same* build pass — otherwise the client silently re-renders every shadow root from scratch
+ * instead of adopting the server-rendered declarative shadow DOM, duplicating all shadow content
+ * with no error. That output target is normally skipped in dev mode (see below) for faster
+ * rebuilds, but the `🧬 SSR` Playwright project needs it present in the dev server it runs
+ * against — see `playwright.config.mts`'s `webServer.command`.
+ */
+const IS_DS_SSR_TESTING = process.env.DS_SSR_TESTING === 'true'
 
 let message = ''
 
@@ -141,9 +151,15 @@ export const config: Config = {
      * Node-compatible SSR renderer used by the React output target's hydrateModule.
      * Produces `hydrate/` at the package root, published as `@baloise/ds-core/hydrate`.
      *
+     * Also kept in dev builds when `IS_DS_SSR_TESTING` is set: its mere presence in this build
+     * pass is what makes Stencil compile the client-side hydration-adoption code path into the dev
+     * server's bundle too (see `IS_DS_SSR_TESTING`'s doc comment above) — without it, the `🧬 SSR`
+     * Playwright project's dev server would silently double-render every shadow root instead of
+     * hydrating it.
+     *
      * {@link https://stenciljs.com/docs/hydrate-app}
      */
-    !IS_DS_DEVELOPMENT &&
+    (!IS_DS_DEVELOPMENT || IS_DS_SSR_TESTING) &&
       !IS_DS_DOCUMENTATION && {
         type: 'dist-hydrate-script',
         dir: './hydrate',

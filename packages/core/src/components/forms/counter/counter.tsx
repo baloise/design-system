@@ -22,6 +22,7 @@ import {
   type LogInstance,
   OneOf,
   Type,
+  setFormValue,
 } from '@utils'
 import { defaultConfig, DsComponentInterface, DsConfigState, DsLanguage, DsRegion, ListenToConfig } from '@global'
 import { Field, FieldInterface } from '../input/field.util'
@@ -437,7 +438,7 @@ export class Counter implements DsComponentInterface, FieldInterface {
   }
 
   private syncFormValue(value: number) {
-    this.internals.setFormValue(String(value))
+    setFormValue(this.internals, String(value))
   }
 
   private effectiveStep(): number {

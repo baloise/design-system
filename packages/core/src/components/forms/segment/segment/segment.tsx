@@ -7,6 +7,7 @@ import {
   ListenToResize,
   Type,
   watchInvalidTextSlot,
+  setFormValue,
 } from '@utils'
 import { Field, FieldInterface } from '../../input/field.util'
 import { DsComponentInterface, defaultConfig, DsConfigState, DsLanguage, DsRegion, ListenToConfig } from '@global'
@@ -191,7 +192,7 @@ export class Segment implements DsComponentInterface, Omit<FieldInterface, 'colo
 
   connectedCallback() {
     this.initialValue = this.value
-    this.internals.setFormValue(this.value)
+    setFormValue(this.internals, this.value)
     this.resizeObserver = new ResizeObserver(() => {
       this.updateLayout()
       this.updatePill()
@@ -291,7 +292,7 @@ export class Segment implements DsComponentInterface, Omit<FieldInterface, 'colo
     if (this.disabled || this.readonly) return
     this.value = itemValue
     this.dsChange.emit(this.value)
-    this.internals.setFormValue(this.value)
+    setFormValue(this.internals, this.value)
   }
 
   // Native radio never fires "change" when clicking an already-checked item,
@@ -302,7 +303,7 @@ export class Segment implements DsComponentInterface, Omit<FieldInterface, 'colo
       ev.preventDefault()
       this.value = undefined
       this.dsChange.emit(this.value)
-      this.internals.setFormValue(null)
+      setFormValue(this.internals, null)
     }
   }
 

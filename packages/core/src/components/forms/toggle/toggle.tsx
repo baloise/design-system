@@ -1,5 +1,5 @@
 import { AttachInternals, Component, Element, Event, EventEmitter, h, Host, Listen, Prop, State } from '@stencil/core'
-import { Logger, type LogInstance, inheritAttributes, type Attributes, OneOf, Type } from '@utils'
+import { Logger, type LogInstance, inheritAttributes, type Attributes, OneOf, setFormValue, Type } from '@utils'
 import { DsComponentInterface } from '@global'
 import {
   ToggleLabelPosition,
@@ -148,11 +148,11 @@ export class Toggle implements DsComponentInterface {
 
   connectedCallback(): void {
     this.initialValue = this.checked
-    this.internals.setFormValue(this.checked ? (this.value as string) : null)
+    setFormValue(this.internals, this.checked ? (this.value as string) : null)
   }
 
   componentWillLoad() {
-    this.internals.setFormValue(this.checked ? (this.value as string) : null)
+    setFormValue(this.internals, this.checked ? (this.value as string) : null)
     this.inheritAttributes = inheritAttributes(this.el, ['aria-label', 'tabindex', 'title'])
   }
 
@@ -183,7 +183,7 @@ export class Toggle implements DsComponentInterface {
   private handleChange = (ev: Event): void => {
     this.checked = (ev.target as HTMLInputElement).checked
     this.dsChange.emit(this.checked)
-    this.internals.setFormValue(this.checked ? (this.value as string) : null)
+    setFormValue(this.internals, this.checked ? (this.value as string) : null)
   }
 
   private handleFocus = (ev: FocusEvent) => {

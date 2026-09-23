@@ -1,6 +1,6 @@
 import { Component, Element, Event, EventEmitter, h, Host, Listen, Prop } from '@stencil/core'
 import { HTMLStencilElement } from '@stencil/core/internal'
-import { Logger, type LogInstance, stopEventBubbling, OneOf, Type } from '@utils'
+import { Logger, type LogInstance, stopEventBubbling, byTagName, directChildren, OneOf, Type } from '@utils'
 import { DsComponentInterface } from '@global'
 import { STEPS_COLORS, StepsColor, StepsChangeDetail } from '../steps.interfaces'
 
@@ -96,11 +96,11 @@ export class Steps implements DsComponentInterface {
    */
 
   private getSteps(): HTMLDsStepElement[] {
-    return Array.from(this.el.querySelectorAll<HTMLDsStepElement>(':scope > ds-step'))
+    return directChildren<HTMLDsStepElement>(this.el, byTagName('DS-STEP'))
   }
 
   private getPanels(): HTMLDsStepPanelElement[] {
-    return Array.from(this.el.querySelectorAll<HTMLDsStepPanelElement>(':scope > ds-step-panel'))
+    return directChildren<HTMLDsStepPanelElement>(this.el, byTagName('DS-STEP-PANEL'))
   }
 
   private isNavigation(): boolean {

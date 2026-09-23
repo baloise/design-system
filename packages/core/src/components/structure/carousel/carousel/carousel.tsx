@@ -1,6 +1,6 @@
 import { Component, Element, Event, EventEmitter, h, Host, Listen, Method, Prop, State } from '@stencil/core'
 import { HTMLStencilElement } from '@stencil/core/internal'
-import { Logger, type LogInstance, stopEventBubbling, OneOf, Type, raf } from '@utils'
+import { Logger, type LogInstance, stopEventBubbling, byTagName, directChildren, OneOf, Type, raf } from '@utils'
 import {
   DsComponentInterface,
   DsConfigObserver,
@@ -367,7 +367,7 @@ export class Carousel implements DsComponentInterface, DsConfigObserver {
    */
 
   private getItems(): HTMLDsCarouselItemElement[] {
-    return Array.from(this.el.querySelectorAll<HTMLDsCarouselItemElement>(':scope > ds-carousel-item'))
+    return directChildren<HTMLDsCarouselItemElement>(this.el, byTagName('DS-CAROUSEL-ITEM'))
   }
 
   private setup() {
