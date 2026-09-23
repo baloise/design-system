@@ -6,7 +6,7 @@ const VARIANTS = ['basic', 'variants', 'variants-with-brand-icon', 'colors']
 const image = screenshot(TAG)
 
 test.beforeEach('Setup', async ({ page }) => {
-  await page.setupVisualTest(`/components/alert/test/${TAG}.visual.html`)
+  await page.setupVisualTest(`/components/overlays/alert/test/${TAG}.visual.html`)
 })
 
 VARIANTS.forEach(variant => {

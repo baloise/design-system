@@ -7,7 +7,7 @@ const image = screenshot(TAG)
 
 test.describe('style', () => {
   test.beforeEach('Setup', async ({ page }) => {
-    await page.setupVisualTest(`/components/button/test/${TAG}.style.html`)
+    await page.setupVisualTest(`/components/actions/button/test/${TAG}.style.html`)
   })
 
   VARIANTS.forEach(variant => {
@@ -20,7 +20,7 @@ test.describe('style', () => {
 
 test.describe('host', () => {
   test.beforeEach('Setup', async ({ page }) => {
-    await page.setupVisualTest(`/components/button/test/${TAG}.visual.html`)
+    await page.setupVisualTest(`/components/actions/button/test/${TAG}.visual.html`)
   })
 
   VARIANTS.forEach(variant => {

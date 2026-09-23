@@ -11,7 +11,7 @@ test.beforeEach('Setup', async ({ page }) => {
 
 test.describe('style', () => {
   test.beforeEach('Setup', async ({ page }) => {
-    await page.setupVisualTest(`/components/${TAG}/test/${TAG}.style.html`)
+    await page.setupVisualTest(`/components/structure/${TAG}/test/${TAG}.style.html`)
   })
 
   VARIANTS.forEach(variant => {
@@ -24,7 +24,7 @@ test.describe('style', () => {
 
 test.describe('host', () => {
   test.beforeEach('Setup', async ({ page }) => {
-    await page.setupVisualTest(`/components/${TAG}/test/${TAG}.visual.html`)
+    await page.setupVisualTest(`/components/structure/${TAG}/test/${TAG}.visual.html`)
   })
 
   VARIANTS.forEach(variant => {

@@ -6,7 +6,7 @@ const VARIANTS = ['basic', 'striped', 'narrow'] as const
 const image = screenshot(TAG)
 
 test.beforeEach('Setup', async ({ page }) => {
-  await page.setupVisualTest(`/components/${TAG}/test/${TAG}.style.html`)
+  await page.setupVisualTest(`/components/structure/${TAG}/test/${TAG}.style.html`)
 })
 
 VARIANTS.forEach(variant => {

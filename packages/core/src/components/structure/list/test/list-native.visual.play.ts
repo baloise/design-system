@@ -5,7 +5,7 @@ const VARIANTS = ['unordered-list', 'ordered-list', 'inside-list', 'compact-list
 const image = screenshot('ds-list-native')
 
 test.beforeEach('Setup', async ({ page }) => {
-  await page.setupVisualTest(`/components/list/test/list-native.visual.html`)
+  await page.setupVisualTest(`/components/structure/list/test/list-native.visual.html`)
 })
 
 VARIANTS.forEach(variant => {

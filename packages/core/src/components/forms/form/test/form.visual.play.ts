@@ -18,7 +18,7 @@ const VARIANTS = [
 const image = screenshot(TAG)
 
 test.beforeEach('Setup', async ({ page }) => {
-  await page.setupVisualTest(`/components/${TAG}/test/${TAG}.style.html`)
+  await page.setupVisualTest(`/components/forms/${TAG}/test/${TAG}.style.html`)
 })
 
 VARIANTS.forEach(variant => {

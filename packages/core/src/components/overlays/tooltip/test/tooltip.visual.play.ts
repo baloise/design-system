@@ -6,7 +6,7 @@ const VARIANTS = ['basic', 'placement-top', 'placement-right', 'placement-bottom
 const image = screenshot(TAG)
 
 test.beforeEach('Setup', async ({ page }) => {
-  await page.setupVisualTest(`/components/${TAG}/test/${TAG}.visual.html`)
+  await page.setupVisualTest(`/components/overlays/${TAG}/test/${TAG}.visual.html`)
 })
 
 VARIANTS.forEach(variant => {

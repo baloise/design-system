@@ -5,7 +5,7 @@ const TAG = 'alert'
 const image = screenshot(TAG)
 
 test.beforeEach('Setup', async ({ page }) => {
-  await page.setupVisualTest(`/components/${TAG}/test/${TAG}.visual.html`)
+  await page.setupVisualTest(`/components/overlays/${TAG}/test/${TAG}.visual.html`)
 })
 
 test.describe('toast', () => {

@@ -13,7 +13,7 @@ const image = screenshot(TAG)
 
 test.describe('host', () => {
   test.beforeEach('Setup', async ({ page }) => {
-    await page.setupVisualTest(`/components/${TAG}/test/${TAG}.visual.html`)
+    await page.setupVisualTest(`/components/overlays/${TAG}/test/${TAG}.visual.html`)
   })
 
   VARIANTS.forEach(({ testId, drawerId }) => {

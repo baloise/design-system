@@ -6,7 +6,7 @@ const VARIANTS = ['basic', 'label', 'sizes', 'inverted', 'circle-variation']
 const image = screenshot(TAG)
 
 test.beforeEach('Setup', async ({ page }) => {
-  await page.setupVisualTest(`/components/${TAG}/test/${TAG}.visual.html`)
+  await page.setupVisualTest(`/components/indicators/${TAG}/test/${TAG}.visual.html`)
 })
 
 VARIANTS.forEach(variant => {
