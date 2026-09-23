@@ -1,0 +1,194 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+import { Banner, GridComponent, GridComponents, Lead } from '../../../.storybook/blocks'
+
+<Meta
+  title="Components/Forms/Overview"
+  parameters={{
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+<Banner label="Forms" color="purple" />
+
+<Lead>Form components let users enter, select and submit data.</Lead>
+
+<GridComponents>
+  <GridComponent
+    scale="1"
+    label="Checkbox"
+    component="checkbox"
+    pageTitle="Components/Forms/Checkbox"
+  >
+    <ds-checkbox-group vertical>
+      <ds-checkbox label="Apple" checked />
+      <ds-checkbox label="Mango" />
+    </ds-checkbox-group>
+  </GridComponent>
+  <GridComponent
+    scale="1"
+    label="Counter"
+    component="counter"
+    pageTitle="Components/Forms/Counter"
+  >
+    <ds-counter></ds-counter>
+  </GridComponent>
+  <GridComponent
+    scale="1"
+    label="Date"
+    component="datepicker"
+    pageTitle="Components/Forms/Datepicker"
+  >
+    <div class="text-align-center">
+      <ds-datepicker value="2023-10-21"></ds-datepicker>
+    </div>
+  </GridComponent>
+  <GridComponent
+    scale="0.8"
+    label="File Upload"
+    component="file-upload"
+    pageTitle="Components/Forms/FileUpload"
+  >
+    <ds-file-upload label="Upload Document" description="All File Types" required></ds-file-upload>
+  </GridComponent>
+  <GridComponent
+    scale="0.5"
+    fullheight
+    fullwidth
+    label="Form"
+    pageTitle="Components/Forms/Form"
+    description="The form component wraps the form section. It helps to scroll to the first invalid field after a failed submit."
+  >
+    <div class="bg-purple-2 radius-lg mb-sm mt-2xl" style={{ width: '30%', height: '16px' }}></div>
+    <div class="bg-purple-2 radius mb-md" style={{ width: '100%', height: '48px' }}></div>
+    <div class="bg-purple-2 radius-lg mb-sm mt-lg" style={{ width: '30%', height: '16px' }}></div>
+    <div class="bg-purple-2 radius mb-lg" style={{ width: '100%', height: '48px' }}></div>
+    <div class="bg-purple-2 radius p-base" style={{ width: '20%', height: '48px' }}></div>
+  </GridComponent>
+  <GridComponent
+    scale="1"
+    label="Input"
+    component="input"
+    pageTitle="Components/Forms/Input"
+  >
+    <ds-input placeholder="Placeholder" type="text"></ds-input>
+  </GridComponent>
+  <GridComponent
+    scale="1"
+    label="Input Phone"
+    component="input-phone"
+    pageTitle="Components/Forms/InputPhone"
+  >
+    <ds-input-phone label="Phone number" initial-country="CH" style={{ width: '220px' }}></ds-input-phone>
+  </GridComponent>
+  <GridComponent
+    scale="1"
+    label="Label"
+    component="label"
+    pageTitle="Components/Forms/Label"
+  >
+    <ds-label>Label</ds-label>
+    <div class="bg-purple-2 radius" style={{ height: '48px', width: '200px' }}></div>
+  </GridComponent>
+  <GridComponent
+    scale="1"
+    label="Number Input"
+    component="number-input"
+    pageTitle="Components/Forms/Number-input"
+  >
+    <ds-number-input decimal="2" suffix="CHF" value="1234.45"></ds-number-input>
+  </GridComponent>
+  <GridComponent
+    scale="1"
+    label="Radio"
+    component="radio"
+    pageTitle="Components/Forms/Radio"
+  >
+    <ds-radio-group vertical value="1">
+      <ds-radio name="basic" value="1">
+        Apple
+      </ds-radio>
+      <ds-radio name="basic" value="2">
+        Mango
+      </ds-radio>
+    </ds-radio-group>
+  </GridComponent>
+  <GridComponent
+    scale="1"
+    label="Segment"
+    component="segment"
+    pageTitle="Components/Forms/Segment"
+  >
+    <div class="text-align-center">
+      <ds-segment value="yes">
+        <ds-segment-item value="yes" label="Yes"></ds-segment-item>
+        <ds-segment-item value="no" label="No"></ds-segment-item>
+      </ds-segment>
+    </div>
+  </GridComponent>
+  <GridComponent
+    scale="1"
+    label="Select"
+    component="select"
+    pageTitle="Components/Forms/Select"
+  >
+    <ds-select
+      id="flat"
+      label="Fruits"
+      multiple
+      value="apple"
+      description="Select your fruit"
+      style={{ width: '227px' }}
+    >
+      <ds-select-option value="apple">Apple</ds-select-option>
+      <ds-select-option value="banana">Banana</ds-select-option>
+      <ds-select-option value="mango">Mango</ds-select-option>
+    </ds-select>
+  </GridComponent>
+  <GridComponent
+    scale="1"
+    label="Slider"
+    component="slider"
+    pageTitle="Components/Forms/Slider"
+  >
+    <ds-slider label="Volume" description="0–100" value="60" style={{ width: '200px' }}></ds-slider>
+  </GridComponent>
+  <GridComponent
+    scale="1"
+    label="Textarea"
+    component="textarea"
+    pageTitle="Components/Forms/Textarea"
+  >
+    <ds-textarea placeholder="Enter a comment" style={{ width: '227px' }}></ds-textarea>
+  </GridComponent>
+  <GridComponent
+    scale="1"
+    label="Time Input"
+    pageTitle="Components/Forms/Time Input"
+    description="Time Input allows to enter valid numbers for their specific index. The time value will be formatted accordingly."
+  >
+    <div class="ds-field" style={{ width: '200px' }}>
+      <label class="ds-label" for="time-input-1">
+        Select a time
+      </label>
+      <div class="ds-control">
+        <input type="time" id="time-input-1" class="ds-time-input" aria-describedby="time-input-help" />
+      </div>
+      <p id="time-input-help" class="ds-help">
+        Select the desired time
+      </p>
+    </div>
+  </GridComponent>
+  <GridComponent
+    scale="1"
+    label="Toggle"
+    component="toggle"
+    fullheight
+    fullwidth
+    center
+    pageTitle="Components/Forms/Toggle"
+  >
+    <ds-toggle checked>Do you like Apples?</ds-toggle>
+  </GridComponent>
+</GridComponents>

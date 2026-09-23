@@ -1,6 +1,7 @@
 const fs = require('fs')
 const path = require('path')
 const { globSync } = require('glob')
+const { resolveComponentPath } = require('../_shared/component-categories')
 
 const REPO_ROOT = path.resolve(__dirname, '../../..')
 
@@ -39,9 +40,9 @@ const DOC_KEYWORDS = [
 ]
 
 async function lintComponent(componentName, shouldFix = false) {
-  const componentPath = path.join(REPO_ROOT, 'packages/core/src/components', componentName)
+  const componentPath = resolveComponentPath(REPO_ROOT, componentName)
 
-  if (!fs.existsSync(componentPath)) {
+  if (!componentPath || !fs.existsSync(componentPath)) {
     throw new Error(`Component not found: ${componentName}`)
   }
 
@@ -314,9 +315,11 @@ function findExternalEmptyStringUsages(componentName, tsxFilePath, propName) {
     }
   })
 
-  // Storybook stories / doc-config
-  const storybookDir = path.join(REPO_ROOT, 'apps/storybook/src/components', componentName)
-  for (const file of globSync(`${storybookDir}/*.{stories,doc-config}.ts`)) {
+  // Storybook stories / doc-config (mirrors the core component's category folder)
+  for (const file of globSync(`apps/storybook/src/components/*/${componentName}/*.{stories,doc-config}.ts`, {
+    cwd: REPO_ROOT,
+    absolute: true,
+  })) {
     violations.push(...scanFileForPropEmptyString(file, propName))
   }
 

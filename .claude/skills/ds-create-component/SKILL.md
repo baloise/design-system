@@ -22,16 +22,17 @@ The skill will ask you a series of questions to understand your component, then 
 The skill asks:
 
 1. **Component name** — e.g., `button`, `card`, `modal`
-2. **Component purpose** — What does it do? e.g., "Renders a clickable element with text and optional icon"
-3. **Migration?** — Are you migrating from the old design system? If yes, provide the old component name
+2. **Category** — one of `actions`, `forms`, `indicators`, `media`, `navigation`, `overlays`, `structure` (see the taxonomy in [packages/core/CONTEXT.md](../../packages/core/CONTEXT.md)). Determines where the component is scaffolded: `components/<category>/<name>/`.
+3. **Component purpose** — What does it do? e.g., "Renders a clickable element with text and optional icon"
+4. **Migration?** — Are you migrating from the old design system? If yes, provide the old component name
    - The skill auto-extracts props and events from the old component
-4. **Props** — Define component properties (you can edit auto-extracted ones)
+5. **Props** — Define component properties (you can edit auto-extracted ones)
    - Format: `propName: PropType = defaultValue` (e.g., `label: string = ''`, `disabled: boolean = false`)
-5. **Events** — Define custom events (you can edit auto-extracted ones)
+6. **Events** — Define custom events (you can edit auto-extracted ones)
    - Format: `dsEventName` (e.g., `dsClick`, `dsChange`)
-6. **Subcomponents?** — Does this component have child components? (e.g., `tab` inside `tabs`)
+7. **Subcomponents?** — Does this component have child components? (e.g., `tab` inside `tabs`)
    - If yes, list them (e.g., `tab, tab-content`)
-7. **Variants** — List visual variants for your component (e.g., `primary, secondary, danger`)
+8. **Variants** — List visual variants for your component (e.g., `primary, secondary, danger`)
    - The skill generates a visual HTML section for each variant
 
 ### 2. Skill Generates Files
@@ -55,6 +56,7 @@ The skill:
   - ⚠️ Global tokens (`--ds-*` without alias prefix) — **warning** with recommendation to create an alias token
   - 🚫 Hardcoded values — flagged
 - ✅ **Registers component** — Adds to `packages/core/src/index.ts`
+- ✅ **Scaffolds the mirrored Storybook folder** — creates (empty) `apps/storybook/src/components/<category>/<name>/`; stories/MDX content is generated separately by `/ds-document-component`
 - ✅ **Migration handling** — If migrating from old design system:
   - Extracts props/events automatically
   - Flags a11y/SEO breaking changes
@@ -65,7 +67,9 @@ The skill:
 After generation, the skill prints:
 
 ```
-✅ Component created: packages/core/src/components/button/
+✅ Component created: packages/core/src/components/actions/button/
+   Storybook folder scaffolded: apps/storybook/src/components/actions/button/
+   Add stories/MDX with /ds-document-component.
 
 Next steps:
 1. Review the generated component files
@@ -84,6 +88,7 @@ The skill enforces these design system rules:
 - ✅ **Accessibility** — Generates WCAG 2.2 AA compliant structure with `<slot>` for light DOM content
 - ✅ **Design tokens** — Uses alias tokens first, warns about globals
 - ✅ **Subcomponents** — Nested in parent folder (`tabs/tab.tsx`, not `tabs` and `tab` at same level)
+- ✅ **Category folder** — Scaffolded directly into `components/<category>/<name>/`, matching the folder's category taxonomy
 - ✅ **Component registration** — Automatically added to `packages/core/src/index.ts`
 - ✅ **Naming conventions** — `ds-` prefix, `ComponentInterface` + `Loggable` implementation (see STYLE_GUIDE.md)
 
@@ -94,6 +99,9 @@ The skill enforces these design system rules:
 ```
 Q: Component name?
 A: badge
+
+Q: Category?
+A: indicators
 
 Q: Component purpose?
 A: Displays a small label with customizable color and size
@@ -121,6 +129,9 @@ Result: Generated `badge.tsx`, `badge.interfaces.ts`, `badge.host.scss`, `badge.
 ```
 Q: Component name?
 A: tabs
+
+Q: Category?
+A: navigation
 
 Q: Component purpose?
 A: Container for tab content with keyboard navigation and ARIA support

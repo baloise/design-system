@@ -1,6 +1,6 @@
-// PascalCase, letters/digits only — matches the existing "Tcs" brand file and
-// doubles as a safe filename (<Name>.tokens.json) and a clean future Figma
-// mode name (see ADR-0002 in packages/tokens/docs/adr).
+// PascalCase, letters/digits only — matches the existing "OrangeVacations"
+// brand file and doubles as a safe filename (<Name>.tokens.json) and a clean
+// future Figma mode name (see ADR-0002 in packages/tokens/docs/adr).
 const BRAND_NAME_PATTERN = /^[A-Z][A-Za-z0-9]*$/
 
 export type BrandNameError = 'empty' | 'invalid-format' | 'reserved' | 'duplicate'

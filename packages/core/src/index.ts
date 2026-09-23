@@ -12,17 +12,17 @@ export { Components, JSX } from './components'
  * Types
  */
 // TODO: export all interfaces
-export * from './components/modal/modal.interfaces'
-export * from './components/app-footer/app-footer.interfaces'
-export * from './components/sheet/sheet.interfaces'
+export * from './components/overlays/modal/modal.interfaces'
+export * from './components/structure/app-footer/app-footer.interfaces'
+export * from './components/overlays/sheet/sheet.interfaces'
 
 /**
  * i18n
  */
-export * from './components/close/close.i18n'
-export * from './components/app-footer/app-footer.i18n'
-export * from './components/label/label.i18n'
-export * from './components/pagination/pagination.i18n'
+export * from './components/actions/close/close.i18n'
+export * from './components/structure/app-footer/app-footer.i18n'
+export * from './components/forms/label/label.i18n'
+export * from './components/navigation/pagination/pagination.i18n'
 
 /**
  * Utils
@@ -65,5 +65,5 @@ export { ScrollHandler } from './utils/scroll'
 /**
  * Controllers
  */
-export * from './components/modal/modal.controller'
-export * from './components/alert/alert.controller'
+export * from './components/overlays/modal/modal.controller'
+export * from './components/overlays/alert/alert.controller'

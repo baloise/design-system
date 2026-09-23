@@ -64,18 +64,18 @@ describe('getBrandTokensFileMeta', () => {
     const fetchMock = vi.fn().mockResolvedValue(jsonResponse({ sha: 'brand-sha', content }))
     vi.stubGlobal('fetch', fetchMock)
 
-    const result = await getBrandTokensFileMeta('Tcs')
+    const result = await getBrandTokensFileMeta('Zurich')
 
     expect(result).toEqual({ sha: 'brand-sha', content: { '🌐 Global': {} } })
     const [url] = fetchMock.mock.calls[0] as [string]
     expect(url).toBe(
-      'https://api.github.com/repos/baloise/design-system/contents/packages/tokens/tokens/Tcs.tokens.json?ref=next',
+      'https://api.github.com/repos/baloise/design-system/contents/packages/tokens/tokens/Zurich.tokens.json?ref=next',
     )
   })
 
   it('throws a descriptive error on a non-OK response', async () => {
     vi.stubGlobal('fetch', vi.fn().mockResolvedValue(new Response('nope', { status: 404 })))
-    await expect(getBrandTokensFileMeta('Tcs')).rejects.toThrow(/404/)
+    await expect(getBrandTokensFileMeta('Zurich')).rejects.toThrow(/404/)
   })
 })
 
@@ -105,7 +105,7 @@ describe('listTokenBrandFiles', () => {
     const fetchMock = vi.fn().mockResolvedValue(
       jsonResponse([
         { name: 'Base.tokens.json', type: 'file' },
-        { name: 'Tcs.tokens.json', type: 'file' },
+        { name: 'Zurich.tokens.json', type: 'file' },
         { name: 'Acme.tokens.json', type: 'file' },
         { name: 'README.md', type: 'file' },
         { name: 'subdir', type: 'dir' },
@@ -113,7 +113,7 @@ describe('listTokenBrandFiles', () => {
     )
     vi.stubGlobal('fetch', fetchMock)
 
-    await expect(listTokenBrandFiles('next')).resolves.toEqual(['Acme', 'Tcs'])
+    await expect(listTokenBrandFiles('next')).resolves.toEqual(['Acme', 'Zurich'])
     const [url] = fetchMock.mock.calls[0] as [string]
     expect(url).toBe('https://api.github.com/repos/baloise/design-system/contents/packages/tokens/tokens?ref=next')
   })
@@ -317,9 +317,9 @@ describe('createBrandFile', () => {
 
 describe('insertBrandIntoIndexSource', () => {
   it('appends a name to an existing single-quoted array', () => {
-    const source = "const brands = ['Tcs'] // add new brand names here\n"
+    const source = "const brands = ['Zurich'] // add new brand names here\n"
     expect(insertBrandIntoIndexSource(source, 'Acme')).toBe(
-      "const brands = ['Tcs', 'Acme'] // add new brand names here\n",
+      "const brands = ['Zurich', 'Acme'] // add new brand names here\n",
     )
   })
 
@@ -335,7 +335,7 @@ describe('insertBrandIntoIndexSource', () => {
 
 describe('addBrandToIndex', () => {
   it('reads the index file, patches it, and writes it back', async () => {
-    const content = Buffer.from("const brands = ['Tcs']", 'utf-8').toString('base64')
+    const content = Buffer.from("const brands = ['Zurich']", 'utf-8').toString('base64')
     const fetchMock = vi
       .fn()
       .mockResolvedValueOnce(jsonResponse({ sha: 'index-sha', content }))
@@ -348,7 +348,7 @@ describe('addBrandToIndex', () => {
     const [, writeInit] = fetchMock.mock.calls[1] as [string, RequestInit]
     const body = JSON.parse(writeInit.body as string)
     expect(body.sha).toBe('index-sha')
-    expect(Buffer.from(body.content, 'base64').toString('utf-8')).toBe("const brands = ['Tcs', 'Acme']")
+    expect(Buffer.from(body.content, 'base64').toString('utf-8')).toBe("const brands = ['Zurich', 'Acme']")
   })
 
   it('throws (without writing) when the brands array pattern is not found', async () => {

@@ -19,10 +19,8 @@
     "./dist/docs/base.tokens.json": "./dist/docs/base.tokens.json",
     "./css/base": "./dist/css/base.tokens.css",
     "./css/base-override": "./dist/css/base.override.css",
-    "./css/erv": "./dist/css/erv.tokens.css",
-    "./css/erv-override": "./dist/css/erv.override.css",
-    "./css/tcs": "./dist/css/tcs.tokens.css",
-    "./css/tcs-override": "./dist/css/tcs.override.css"
+    "./css/orange-vacations": "./dist/css/orange-vacations.tokens.css",
+    "./css/orange-vacations-override": "./dist/css/orange-vacations.override.css"
   },
   "scripts": {
     "build": "pnpm exec tsc && node dist/out-tsc",

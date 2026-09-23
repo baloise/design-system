@@ -1,0 +1,49 @@
+import { Meta, Controls } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  BannerTabs,
+  CanvasTabs,
+  ComponentTabs,
+  CanvasWithCodePen,
+  ComponentPublicMethods,
+  Footer,
+  InfoQuote,
+} from '../../../../.storybook/blocks'
+import * as TableStories from './table.stories'
+import { TABLE_DOC_CONFIG, getTableTabs } from './table.doc-config'
+
+<Meta title="Components/Structure/Table/Table" name="Table" />
+
+<Banner label={'Table'} section={TABLE_DOC_CONFIG.section} color={TABLE_DOC_CONFIG.color} />
+
+<BannerTabs of={TableStories} tabs={getTableTabs('overview')} />
+
+The **Table** is a CSS-only component for displaying structured tabular data with support for striped rows, hover effects, borders, compact sizing, and row selection states. It has no JavaScript behaviour — all variants are controlled via modifier CSS classes.
+{/* <ComponentLead component="table" /> */}
+
+<CanvasWithCodePen of={TableStories.Basic} sourceState="shown" />
+
+<InfoQuote>
+  **NEED SORTING, FILTERING, OR LARGE DATASETS?**
+
+  This CSS-only table is built for static or server-rendered data with no JavaScript behaviour. For sortable,
+  filterable grids with pagination or large/dynamic datasets, use the
+  [AG Grid variant](?path=/docs/components-table-variants--ag-grid) — it themes
+  [AG Grid](https://www.ag-grid.com/) with the same Design System tokens and ships ready-made cell renderers for
+  `ds-badge`, `ds-button`, `ds-tag`, and text/icon cells. See [Variants](?path=/docs/components-table-variants-overview--documentation)
+  for the full comparison.
+</InfoQuote>
+
+<ComponentTabs
+  tabs={[
+    {
+      id: 'table',
+      label: 'Table',
+      content: <Controls of={TableStories.Basic} />,
+    },
+  ]}
+/>
+
+{/* <ComponentPublicMethods component="table" /> */}
+
+<Footer />

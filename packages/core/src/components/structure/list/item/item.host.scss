@@ -1,0 +1,387 @@
+@use '@baloise/ds-styles/dist/scss/mixins' as *;
+
+@use '../../../../vars' as vars;
+@use '../../../../hybrid' as hybrid;
+@use '../../../../typography' as typography;
+
+/**
+ * Variables
+ * --------------------------------
+ * Define here the css variables for the component to be able to use it in host or non-host mode
+ * These variables can be used in the component styles below and later on be overridden in themes.
+ *
+ * @prop --list-item-grid-template-columns: Grid template columns of the list item host element.
+ * @prop --list-item-min-height: Minimum height of a list item row.
+ * @prop --list-item-gap: Horizontal gap between the icon slot, content, and action icon.
+ * @prop --list-item-py: Vertical padding applied to the top and bottom of a list item.
+ * @prop --list-item-content-gap: Vertical gap between the label and description inside the content area.
+ * @prop --list-item-color: Text color of the list item.
+ * @prop --list-item-color-hover: Text color of a clickable (link or button) list item on hover.
+ * @prop --list-item-color-active: Text color of a clickable (link or button) list item when active.
+ * @prop --list-item-color-disabled: Text color of a disabled list item.
+ * @prop --list-item-border-color: Color of the bottom border line drawn after each list item.
+ * @prop --list-item-border-width: Thickness of the bottom border line drawn after each list item.
+ * @prop --list-item-border-radius: Border radius of the bottom border line drawn after each list item.
+ * @prop --list-item-accordion-py: Vertical padding applied to slotted paragraph content inside the accordion variant.
+ * @prop --list-item-action-icon-size: Size of the trailing action icon shown in link and button variants.
+ * @prop --list-item-title-size: Font size of the label heading inside a list item.
+ * @prop --list-item-title-weight: Font weight of the label heading inside a list item.
+ * @prop --list-item-title-family: Font family of the label heading inside a list item.
+ * @prop --list-item-title-line-height: Line height of the label heading inside a list item.
+ * @prop --list-item-text-family: Font family of the description text inside a list item.
+ * @prop --list-item-text-weight: Font weight of the description text inside a list item.
+ * @prop --list-item-text-size: Font size of the description text inside a list item.
+ * @prop --list-item-text-line-height: Line height of the description text inside a list item.
+ *
+ * @variant is-inverted - Inverted color scheme for use on dark backgrounds such as the primary surface.
+ * @variant is-lg - Large size, increasing the minimum row height.
+ */
+
+:host {
+  @include vars.focus(list-item);
+
+  @include vars.local(list-item-grid-template-columns, 1fr);
+  @include vars.local(list-item-min-height, var(--ds-list-item-size-base-min-height));
+  @include vars.local(list-item-gap, var(--ds-list-item-gap));
+  @include vars.local(list-item-py, var(--ds-list-item-size-base-padding-y));
+  @include vars.local(list-item-content-gap, var(--ds-list-item-content-gap));
+
+  @include vars.local(list-item-color, var(--ds-list-item-color-text-base));
+  @include vars.local(list-item-color-hover, var(--ds-list-item-color-text-hover));
+  @include vars.local(list-item-color-active, var(--ds-list-item-color-text-active));
+  @include vars.local(list-item-color-disabled, var(--ds-list-item-color-text-disabled));
+  @include vars.local(list-item-border-color-base, var(--ds-alias-border-color-grey-light));
+  @include vars.local(list-item-border-color-hover, var(--ds-alias-border-color-primary-hover));
+  @include vars.local(list-item-border-color-active, var(--ds-alias-border-color-primary-active));
+  @include vars.local(list-item-border-width, var(--ds-alias-border-width-base));
+  @include vars.local(list-item-border-radius, var(--ds-list-item-radius));
+
+  @include vars.local(list-item-background-base, transparent);
+  @include vars.local(list-item-background-hover, var(--ds-alias-surface-primary-lighter));
+  @include vars.local(list-item-background-active, var(--ds-alias-surface-primary-lighter));
+
+  @include vars.local(list-item-accordion-py, var(--ds-list-item-accordion-py));
+
+  @include vars.local(list-item-action-icon-size, var(--ds-list-item-action-icon-size));
+
+  @include vars.local(list-item-title-size, var(--ds-list-item-title-font-size));
+  @include vars.local(list-item-title-weight, var(--ds-list-item-title-font-weight));
+  @include vars.local(list-item-title-family, var(--ds-list-item-title-font-family));
+  @include vars.local(list-item-title-line-height, var(--ds-list-item-title-line-height));
+
+  @include vars.local(list-item-text-family, var(--ds-list-item-text-font-family));
+  @include vars.local(list-item-text-weight, var(--ds-list-item-text-font-weight));
+  @include vars.local(list-item-text-size, var(--ds-list-item-text-font-size));
+  @include vars.local(list-item-text-line-height, var(--ds-list-item-text-line-height));
+}
+
+/**
+  * Mixins
+  * --------------------------------
+  */
+@mixin border() {
+  content: '';
+  border-radius: var(--_list-item-border-radius);
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+/**
+  * Basic Component Styles
+  * --------------------------------
+  * Define here the component styles using the mixin to support host and non-host mode for hybrid components.
+  */
+
+:host {
+  position: relative;
+  display: grid;
+  box-sizing: border-box;
+  grid-template-columns: var(--_list-item-grid-template-columns);
+
+  ::slotted([slot='content']) {
+    min-height: 46px;
+  }
+}
+
+:host #item {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: var(--_list-item-gap);
+  width: 100%;
+
+  color: var(--_list-item-color);
+  background: inherit;
+  border: none;
+  align-self: stretch;
+  text-align: left;
+
+  @include font-smoothing();
+  font-family: var(--_list-item-title-family);
+  padding: var(--_list-item-py) 0.25rem;
+  padding-bottom: calc(var(--_list-item-py) + 2px);
+  min-height: var(--_list-item-min-height);
+
+  //
+  // Icons
+  ds-icon {
+    flex-shrink: 0;
+  }
+
+  #content + ds-icon {
+    --icon-size: var(--_list-item-action-icon-size);
+    --icon-inner-size: var(--_list-item-action-icon-size);
+  }
+
+  //
+  // Content
+  #content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: var(--_list-item-content-gap);
+
+    font-family: var(--_list-item-text-family);
+    font-weight: var(--_list-item-text-weight);
+  }
+
+  #label {
+    font-family: var(--_list-item-title-family);
+    font-weight: var(--_list-item-title-weight);
+    font-size: var(--_list-item-title-size);
+    line-height: var(--_list-item-title-line-height);
+    margin: 0;
+  }
+
+  #description {
+    font-family: var(--_list-item-text-family);
+    font-weight: var(--_list-item-text-weight);
+    font-size: var(--_list-item-text-size);
+    line-height: var(--_list-item-text-line-height);
+    margin: 0;
+  }
+
+  //
+  // Border
+  &:after {
+    @include border();
+    height: var(--_list-item-border-width);
+    background: var(--_list-item-border-color-base);
+    z-index: 1;
+  }
+}
+
+/**
+  * Label Sizes
+  */
+
+$size-aliases: (
+  (h1, 3xl): 1,
+  (h2, 2xl): 2,
+  (h3, xl): 3,
+  (h4, lg): 4,
+  (h5, base): 5,
+);
+
+@each $class-group, $token in $size-aliases {
+  @each $class in $class-group {
+    :host(.has-label-#{$class}) {
+      --mod-list-item-title-size: var(--ds-heading-level-#{$token}-font-size);
+    }
+  }
+}
+
+/**
+  * Link inside list item
+  */
+
+:host(.is-link),
+:host(.is-button) {
+  #item {
+    @include unselectable();
+    text-decoration: none;
+    outline: none;
+    cursor: pointer;
+    background: var(--_list-item-background-base);
+  }
+}
+
+:host(.is-link:not(.is-disabled)),
+:host(.is-button:not(.is-disabled)) {
+  #item {
+    &::-moz-focus-inner {
+      border: 0;
+    }
+
+    #content {
+      hyphens: auto;
+      overflow-wrap: break-word;
+      font-family: var(--_list-item-title-family);
+      font-weight: var(--_list-item-title-weight);
+      font-size: var(--_list-item-title-size);
+      line-height: var(--_list-item-title-line-height);
+      color: var(--_list-item-color);
+    }
+
+    #content + ds-icon {
+      --icon-color: var(--_list-item-color);
+    }
+
+    @include hover {
+      &:hover,
+      &.is-hovered {
+        background: var(--_list-item-background-hover);
+        color: var(--_list-item-color-hover);
+        #content {
+          color: var(--_list-item-color-hover);
+        }
+        #content + ds-icon,
+        ::slotted(ds-icon),
+        ::slotted(ds-badge) {
+          --icon-color: var(--_list-item-color-hover);
+        }
+      }
+    }
+
+    &:active,
+    &.is-pressed {
+      background: var(--_list-item-background-active);
+      color: var(--_list-item-color-active);
+      #content {
+        color: var(--_list-item-color-active);
+      }
+      #content + ds-icon,
+      ::slotted(ds-icon),
+      ::slotted(ds-badge) {
+        --icon-color: var(--_list-item-color-active);
+      }
+    }
+
+    &:before {
+      @include vars.focus-basic(list-item);
+    }
+
+    &:focus-visible,
+    &.is-focused {
+      &:not(:active) {
+        &:before {
+          @include vars.focus-styles(list-item);
+        }
+      }
+    }
+  }
+}
+
+:host(.is-link:not(.is-disabled)),
+:host(.is-button:not(.is-disabled)),
+:host(.is-accordion:not(.is-disabled)) {
+  #item {
+    @include hover {
+      &:hover,
+      &.is-hovered {
+        &:after {
+          background: var(--_list-item-border-color-hover);
+        }
+      }
+    }
+
+    &:active,
+    &.is-pressed {
+      &:after {
+        background: var(--_list-item-border-color-active);
+      }
+    }
+  }
+}
+
+/**
+  * Accordion
+  */
+:host(.is-accordion) {
+  ::slotted(p) {
+    padding-block: var(--_list-item-accordion-py);
+  }
+
+  ds-accordion {
+    --accordion-summary-color-hover: var(--_list-item-color-hover);
+  }
+
+  ds-accordion::part(header) {
+    background: var(--_list-item-background-base);
+  }
+
+  ds-accordion::part(summary) {
+    padding-right: 0.25rem;
+  }
+
+  ds-accordion::part(summary):hover {
+    background: var(--_list-item-background-hover);
+  }
+
+  ds-accordion::part(summary):active {
+    background: var(--_list-item-background-active);
+  }
+
+  #accordion-content {
+    //
+    // Border
+    &:after {
+      @include border();
+      height: var(--_list-item-border-width);
+      background: var(--_list-item-border-color-base);
+    }
+  }
+}
+/**
+  * Disabled
+  */
+:host(.is-disabled) #item {
+  pointer-events: none !important;
+  cursor: default !important;
+
+  color: var(--_list-item-color-disabled);
+  #content {
+    color: var(--_list-item-color-disabled);
+  }
+
+  ds-icon,
+  ds-badge,
+  ::slotted(ds-icon),
+  ::slotted(ds-badge) {
+    --icon-color: var(--_list-item-color-disabled);
+  }
+
+  ds-badge,
+  ::slotted(ds-badge) {
+    --badge-color-background: var(--ds-badge-disabled-color-background);
+    --badge-color-text: var(--ds-badge-disabled-color-text);
+  }
+}
+
+/**
+  * Inverted
+  */
+:host(.is-inverted) {
+  --mod-list-item-color: var(--ds-list-item-inverted-color-text-base);
+  --mod-list-item-color-hover: var(--ds-list-item-inverted-color-text-hover);
+  --mod-list-item-color-active: var(--ds-list-item-inverted-color-text-active);
+  --mod-list-item-color-disabled: var(--ds-list-item-inverted-color-text-disabled);
+  --mod-list-item-border-color-base: var(--ds-alias-border-color-inverted-primary);
+  --mod-list-item-border-color-hover: var(--ds-alias-border-color-inverted-primary-hover);
+  --mod-list-item-border-color-active: var(--ds-alias-border-color-inverted-primary-active);
+  --mod-list-item-background-hover: transparent;
+  --mod-list-item-background-active: transparent;
+  --mod-list-item-focus: var(--ds-alias-interaction-focus-color-inverted);
+}
+
+/**
+  * Size
+  */
+:host(.is-lg) {
+  --mod-list-item-min-height: var(--ds-list-item-size-lg-min-height);
+  --mod-list-item-py: var(--ds-list-item-size-lg-padding-y);
+}

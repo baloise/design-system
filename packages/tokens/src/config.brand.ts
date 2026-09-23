@@ -51,8 +51,10 @@ export function mergeTokenTree(base: Record<string, unknown>, brand: Record<stri
  * was written to disk so Style Dictionary can read it as `source`.
  */
 export function createBrandConfig(mode: string): { config: Config; cleanup: () => void } {
-  const brandLower = mode.toLowerCase()
-  const tmpFile = `tokens/.${brandLower}-full.tmp.json`
+  // PascalCase brand name → kebab-case (e.g. "OrangeVacations" → "orange-vacations") for CSS
+  // output, export paths, and the `data-theme` attribute value.
+  const brandSlug = mode.replace(/([a-z0-9])([A-Z])/g, '$1-$2').toLowerCase()
+  const tmpFile = `tokens/.${brandSlug}-full.tmp.json`
 
   const baseJson = JSON.parse(readFileSync(`tokens/Base.tokens.json`, 'utf8'))
   const brandJson = JSON.parse(readFileSync(`tokens/${mode}.tokens.json`, 'utf8'))
@@ -71,7 +73,7 @@ export function createBrandConfig(mode: string): { config: Config; cleanup: () =
         files: [
           {
             format: 'ds/css/variables-brand',
-            destination: `css/${brandLower}.tokens.css`,
+            destination: `css/${brandSlug}.tokens.css`,
             options: {
               selector: ':host, :root',
               outputReferences: true,
@@ -79,9 +81,9 @@ export function createBrandConfig(mode: string): { config: Config; cleanup: () =
           },
           {
             format: 'ds/css/variables-brand',
-            destination: `css/${brandLower}.override.css`,
+            destination: `css/${brandSlug}.override.css`,
             options: {
-              selector: `[data-theme="${brandLower}"], :host([data-theme="${brandLower}"])`,
+              selector: `[data-theme="${brandSlug}"], :host([data-theme="${brandSlug}"])`,
               outputReferences: true,
             },
           },

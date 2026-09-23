@@ -1,0 +1,37 @@
+/**
+ * Shared configuration for Progress-bar component documentation pages.
+ * Import and reuse this across all progress-bar documentation MDX files to reduce duplication.
+ */
+
+export const PROGRESS_BAR_DOC_CONFIG = {
+  section: 'Components / Progress-bar',
+  color: 'green' as const,
+  tabs: [
+    { label: 'Overview', storyId: 'components-indicators-progress-bar-progress-bar--progress-bar' },
+    { label: 'Usage', storyId: 'components-indicators-progress-bar-usage--usage' },
+    { label: 'Variants', storyId: 'components-indicators-progress-bar-variants-overview--overview' },
+    { label: 'Styling', storyId: 'components-indicators-progress-bar-styling--styling' },
+    { label: 'Accessibility', storyId: 'components-indicators-progress-bar-accessibility--accessibility' },
+    { label: 'Testing', storyId: 'components-indicators-progress-bar-testing--testing' },
+  ],
+}
+
+export const PROGRESS_BAR_TAB_TITLES = {
+  overview: 'Overview',
+  usage: 'Usage',
+  variants: 'Variants',
+  styling: 'Styling',
+  accessibility: 'Accessibility',
+  testing: 'Testing',
+}
+
+/**
+ * Helper to get tabs with active state set.
+ * Usage: getProgressBarTabs('usage')
+ */
+export const getProgressBarTabs = (activeLabel: keyof typeof PROGRESS_BAR_TAB_TITLES) => {
+  return PROGRESS_BAR_DOC_CONFIG.tabs.map(tab => ({
+    ...tab,
+    active: tab.label === PROGRESS_BAR_TAB_TITLES[activeLabel],
+  }))
+}

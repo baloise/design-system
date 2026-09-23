@@ -3,8 +3,8 @@ import { setPlatformHelpers } from '@stencil/core/internal'
 import { tags } from './constants/tags.constant'
 import { DsConfig, DsPlatformConfig, setupDsConfig } from './config'
 import { VERSION } from './constants/version.constant'
-import { dsSnackbarController, dsToastController } from '../components/alert/alert.controller'
-import { dsModalController } from '../components/modal/modal.controller'
+import { dsSnackbarController, dsToastController } from '../components/overlays/alert/alert.controller'
+import { dsModalController } from '../components/overlays/modal/modal.controller'
 import { dsBrowser } from '@utils'
 
 export const initializeDesignSystem = (

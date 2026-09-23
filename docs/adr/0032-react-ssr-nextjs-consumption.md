@@ -58,11 +58,14 @@ DOM.
    to reconcile that template node.
 
 4. **Initialize browser behavior at a client boundary.**
-   A Next.js root layout remains a Server Component and renders a small
-   `ClientInit` component. Its effect dynamically imports
-   `defineCustomElements` from `@baloise/ds-core/loader` and
-   `initializeDesignSystem` from `@baloise/ds-core`. Vite SPA consumers
-   continue to use `DsRootProvider`.
+   A Next.js root layout remains a Server Component and renders
+   `DsRootSSRProvider` from `@baloise/ds-react`, which requires no client
+   boundary of its own. Internally it renders a small client leaf whose
+   effect dynamically imports `defineCustomElements` from
+   `@baloise/ds-core/loader` and calls `initializeDesignSystem` from
+   `@baloise/ds-core`, then passes `children` through unchanged — it does not
+   render `<ds-root>`, since that element's SSR wrapper flattens children
+   into static HTML. Vite SPA consumers continue to use `DsRootProvider`.
 
 5. **Keep overlay idioms client-only.** `Modal`, `useModal`, `useToast`, and
    `useSnackbar` declare `'use client'`. The reference application loads its

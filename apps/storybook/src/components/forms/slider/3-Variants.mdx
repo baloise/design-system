@@ -1,0 +1,64 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+import { Banner, BannerTabs, CanvasWithCodePen, Footer, StoryHeading } from '../../../../.storybook/blocks'
+import * as SliderStories from './slider.stories'
+import { SLIDER_DOC_CONFIG, getSliderTabs } from './slider.doc-config'
+
+<Meta title="Components/Forms/Slider/Variants/Overview" name="Overview" />
+
+<StoryHeading of={SliderStories.Basic} hidden></StoryHeading>
+
+<Banner label={'Variants'} section={SLIDER_DOC_CONFIG.section} color={SLIDER_DOC_CONFIG.color} />
+
+<BannerTabs of={SliderStories} tabs={getSliderTabs('variants')} />
+
+{/* STORIES */}
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={SliderStories.Basic}></StoryHeading>
+
+<CanvasWithCodePen of={SliderStories.Basic} sourceState="shown" overflowVisible={true}  />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={SliderStories.Invalid}></StoryHeading>
+
+An invalid slider shows validation styling and displays `invalidText` to explain why the value is out of range.
+
+<CanvasWithCodePen of={SliderStories.Invalid} sourceState="shown" overflowVisible={true}  />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={SliderStories.Disabled}></StoryHeading>
+
+A disabled slider cannot be focused, dragged, or submitted with the form.
+
+<CanvasWithCodePen of={SliderStories.Disabled} sourceState="shown" overflowVisible={true}  />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={SliderStories.Step}></StoryHeading>
+
+Use `step` to control granularity — a numeric value snaps to increments, while `step="any"` allows continuous, free-form dragging.
+
+<CanvasWithCodePen of={SliderStories.Step} sourceState="shown" overflowVisible={true}  />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={SliderStories.MinMax}></StoryHeading>
+
+`min` and `max` define the slider's bounds, which don't need to start at zero.
+
+<CanvasWithCodePen of={SliderStories.MinMax} sourceState="shown" overflowVisible={true}  />
+
+{/* ------------------------------------------------------ */}
+
+<StoryHeading of={SliderStories.BrandColor}></StoryHeading>
+
+`brand-color` recolors the progress bar (the filled track and its unfilled remainder) with a
+brand color — `yellow`, `purple`, `red`, or `green`. It's independent of `color`, which still
+drives the `invalid`/`success`/`warning` field state; the label, description, and handle are
+unaffected.
+
+<CanvasWithCodePen of={SliderStories.BrandColor} sourceState="shown" overflowVisible={true}  />
+
+<Footer />

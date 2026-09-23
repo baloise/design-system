@@ -1,0 +1,66 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+import { Banner, BannerTabs, Code, Footer, UsageExamples } from '../../../../.storybook/blocks'
+import * as CounterStories from './counter.stories'
+import { COUNTER_DOC_CONFIG, getCounterTabs } from './counter.doc-config'
+
+<Meta title="Components/Forms/Counter/Usage" name="Usage" />
+<Banner label={'Usage'} section={COUNTER_DOC_CONFIG.section} color={COUNTER_DOC_CONFIG.color} />
+<BannerTabs of={CounterStories} tabs={getCounterTabs('usage')} />
+
+## When to Use
+
+- Adjusting a small, bounded integer or decimal value one step at a time (quantity, count, percentage)
+- When the exact current value matters and should always be visible
+- For inputs where overshooting by one step is recoverable and expected (e.g. adding items to a cart)
+
+## When NOT to Use
+
+- When the range is large (e.g. 0–1000) — repeated clicking becomes tedious; use `ds-number-input` instead
+- For free-form numeric entry where the user knows the exact value — use `ds-number-input`
+- For continuous ranges where dragging is more natural — use `ds-slider`
+
+## Do's and Don'ts
+
+### Always Provide a Label
+
+<UsageExamples
+  items={[
+    {
+      type: 'correct',
+      title: 'Correct: Descriptive label',
+      contentIsLeftAligned: true,
+      content: <ds-counter label="Quantity" min="0" max="10" value="1"></ds-counter>,
+      description: 'Users immediately understand what they are adjusting',
+    },
+    {
+      type: 'incorrect',
+      title: 'Incorrect: No label',
+      contentIsLeftAligned: true,
+      content: <ds-counter min="0" max="10" value="1"></ds-counter>,
+      description: 'The number displayed has no meaning without context',
+    },
+  ]}
+/>
+
+### Communicate the Bounds
+
+<UsageExamples
+  items={[
+    {
+      type: 'correct',
+      title: 'Correct: Bounds in description',
+      contentIsLeftAligned: true,
+      content: <ds-counter label="Adults" description="Maximum 9 per booking" min="1" max="9" value="1"></ds-counter>,
+      description: 'Users know when to stop without hitting a disabled button first',
+    },
+    {
+      type: 'incorrect',
+      title: 'Incorrect: Silent limits',
+      contentIsLeftAligned: true,
+      content: <ds-counter label="Adults" min="1" max="9" value="1"></ds-counter>,
+      description: 'Users discover the maximum only when the increase button disables',
+    },
+  ]}
+/>
+
+<Footer />

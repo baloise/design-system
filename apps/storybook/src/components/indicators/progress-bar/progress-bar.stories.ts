@@ -1,0 +1,60 @@
+import type { JSX } from '@baloise/ds-core'
+import type { Meta } from '@storybook/html-vite'
+import { props, StoryFactory, withComponentControls, withRender } from '../../../utils'
+
+type Args = JSX.DsProgressBar
+
+const tag = 'ds-progress-bar'
+
+const meta: Meta<Args> = {
+  title: 'Components/Indicators/Progress Bar/Variants',
+  argTypes: {
+    ...withComponentControls({ tag }),
+  },
+  ...withRender(({ ...args }) => `<ds-progress-bar ${props(args)}></ds-progress-bar>`),
+}
+
+export default meta
+
+/**
+ * STORIES
+ * -------
+ */
+
+const Story = StoryFactory<Args>(meta)
+
+export const Basic = Story({
+  args: {
+    value: 50,
+  },
+})
+Basic.storyName = '🧩 Basic'
+
+export const DarkVariants = Story({
+  ...withRender(
+    () => `<div class="mb-md flex gap-sm flex-direction-column">
+  <ds-progress-bar value="50"></ds-progress-bar>
+  <ds-progress-bar value="50" color="purple"></ds-progress-bar>
+  <ds-progress-bar value="50" color="yellow"></ds-progress-bar>
+  <ds-progress-bar value="50" color="red"></ds-progress-bar>
+  <ds-progress-bar value="50" color="green"></ds-progress-bar>
+</div>`,
+  ),
+})
+DarkVariants.storyName = '🧩 Dark Variants'
+
+export const LightVariants = Story({
+  globals: {
+    backgrounds: { value: 'purple' },
+  },
+  ...withRender(
+    () => `<div class="mb-md flex gap-sm flex-direction-column">
+  <ds-progress-bar value="50" background="light"></ds-progress-bar>
+  <ds-progress-bar value="50" background="light" color="purple"></ds-progress-bar>
+  <ds-progress-bar value="50" background="light" color="yellow"></ds-progress-bar>
+  <ds-progress-bar value="50" background="light" color="red"></ds-progress-bar>
+  <ds-progress-bar value="50" background="light" color="green"></ds-progress-bar>
+</div>`,
+  ),
+})
+LightVariants.storyName = '🧩 Light Variants'
