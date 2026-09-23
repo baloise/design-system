@@ -32,10 +32,10 @@ jobs:
         id: changesets
         uses: changesets/action@v2
         with:
-          title: '🛡️📦️ LTS Release'
-          commit: 'prepare release'
-          createGithubReleases: false
-          publish: echo "Publish"
+          pr-title: '🛡️📦️ LTS Release'
+          commit-message: 'prepare release'
+          create-github-releases: false
+          publish-script: echo "Publish"
         env:
           GITHUB_TOKEN: ${{ secrets.PRE_RELEASE_GITHUB_TOKEN }}
 

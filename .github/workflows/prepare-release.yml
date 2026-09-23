@@ -32,11 +32,11 @@ jobs:
         id: changesets
         uses: changesets/action@v2
         with:
-          title: '📦️ Release'
-          commit: 'prepare release'
-          version: pnpm run changeset:version
-          createGithubReleases: false
-          publish: echo "Publish"
+          pr-title: '📦️ Release'
+          commit-message: 'prepare release'
+          version-script: pnpm run changeset:version
+          create-github-releases: false
+          publish-script: echo "Publish"
         env:
           GITHUB_TOKEN: ${{ secrets.DS_BOT_GITHUB_TOKEN }}
 
