@@ -734,14 +734,14 @@
 
   Please check out the more detailed [Upgrade Guide to v16](https://design.baloise.dev/?path=/docs/development-upgrade-guides-updating-to-v16--documentation).
 
-  | Old Package Name                                       |       | New Package Name             |
-  | :----------------------------------------------------- | :---: | :--------------------------- |
-  | `@baloise/design-system-components`                    | **→** | `@baloise/ds-core`           |
-  | `@baloise/design-system-components-angular/standalone` | **→** | `@baloise/ds-angular`        |
-  | `@baloise/design-system-components-react`              | **→** | `@baloise/ds-react`          |
-  | `@baloise/design-system-components-table`              | **→** | `@baloise/ds-table`          |
-  | `@baloise/design-system-cli`                           | **→** | `@baloise/ds-devkit`         |
-  | `@baloise/design-system-\*`                            | **→** | `@baloise/ds-\*`             |
+  | Old Package Name                                       |       | New Package Name      |
+  | :----------------------------------------------------- | :---: | :-------------------- |
+  | `@baloise/design-system-components`                    | **→** | `@baloise/ds-core`    |
+  | `@baloise/design-system-components-angular/standalone` | **→** | `@baloise/ds-angular` |
+  | `@baloise/design-system-components-react`              | **→** | `@baloise/ds-react`   |
+  | `@baloise/design-system-components-table`              | **→** | `@baloise/ds-table`   |
+  | `@baloise/design-system-cli`                           | **→** | `@baloise/ds-devkit`  |
+  | `@baloise/design-system-\*`                            | **→** | `@baloise/ds-\*`      |
 
 - **css**: The CSS package is marked as deprecated. Upgrade to `@baloise/ds-styles`. ( [#1344](https://github.com/baloise/design-system/pull/1344))
 

@@ -91,7 +91,7 @@ Every published GitHub Security Advisory for this project will include:
 | CVE ID            | Assigned identifier (or "pending" if not yet issued)     |
 | Affected versions | Exact semver range of vulnerable releases                |
 | Patched version   | First version containing the fix                         |
-| npm packages      | All `@helvetia-design/*` packages affected                    |
+| npm packages      | All `@helvetia-design/*` packages affected               |
 | Severity          | CVSS score and vector                                    |
 | Description       | What the vulnerability is and what an attacker can do    |
 | Workaround        | Mitigation steps if available before a patch is released |

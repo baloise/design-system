@@ -92,8 +92,8 @@ export const WebComponentQuote = ({ tag }: StylesQuoteProps): React.ReactElement
       <div>
         <h3 className="ds-title">Installation</h3>
         <span>
-          Make sure the <b>@helvetia-design/core</b>, <b>@helvetia-design/angular</b> or <b>@helvetia-design/react</b> packages is
-          already present in your project or follow the{' '}
+          Make sure the <b>@helvetia-design/core</b>, <b>@helvetia-design/angular</b> or <b>@helvetia-design/react</b>{' '}
+          packages is already present in your project or follow the{' '}
           <a className="ds-link" onClick={() => navigate({ title: 'Development/Getting Started' })}>
             installation guidelines
           </a>

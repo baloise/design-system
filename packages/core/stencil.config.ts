@@ -53,7 +53,7 @@ export const config: Config = {
   autoprefixCss: true,
   sourceMap: false,
   namespace: 'design-system',
-  preamble: '(C) Helvetia Design System https://design.baloise.dev/ - Apache License 2.0',
+  preamble: '(C) Helvetia Design System https://helvetia-design.vercel.app/ - Apache License 2.0',
   hashedFileNameLength: 10,
   enableCache: true,
   transformAliasedImportPaths: true,

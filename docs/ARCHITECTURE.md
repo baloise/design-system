@@ -595,7 +595,7 @@ The design system documentation site is automatically deployed to **Vercel** whe
 
 | Domain                                                                         | Branch                  | Purpose                                                                     |
 | ------------------------------------------------------------------------------ | ----------------------- | --------------------------------------------------------------------------- |
-| [design.baloise.dev](https://design.baloise.dev)                               | `next` (latest release) | Production domain serving the latest published version                      |
+| [design.baloise.dev](https://helvetia-design.vercel.app)                       | `next` (latest release) | Production domain serving the latest published version                      |
 | [baloise-design-preview.vercel.app](https://baloise-design-preview.vercel.app) | `main`                  | LTS version of Baloise                                                      |
 | `design-system-*.vercel.app`                                                   | Every PR                | Each pull request gets a unique preview URL (linked in Vercel's PR comment) |
 

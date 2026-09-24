@@ -9,7 +9,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "homepage": "https://design.baloise.dev",
+  "homepage": "https://helvetia-design.vercel.app",
   "security": "https://github.com/baloise/design-system/security/advisories/new",
   "license": "Apache-2.0",
   "sideEffects": false,
