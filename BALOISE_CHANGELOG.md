@@ -1,5 +1,138 @@
 # Changelog
 
+## 19.11.0
+
+### Minor Changes
+
+- **icon**: add new icons tag, table-cell-merger and add-user ( [#2305](https://github.com/baloise/design-system/pull/2305))
+
+## 19.10.2
+
+### Patch Changes
+
+- **footer, navbar**: add logo-brand prop to define the logo ( [#2000](https://github.com/baloise/design-system/pull/2000))
+
+- **icon**: adds type defintions. ( [#1996](https://github.com/baloise/design-system/pull/1996))
+
+## 19.10.1
+
+### Patch Changes
+
+- **core**: update deps ( [#1987](https://github.com/baloise/design-system/pull/1987))
+
+## 19.10.0
+
+### Minor Changes
+
+- **icon**: add new icons home, filter, bell and dashboard ( [#1976](https://github.com/baloise/design-system/pull/1976))
+
+### Patch Changes
+
+- **steps**: adjust tabindex for disabled steps ( [#1958](https://github.com/baloise/design-system/pull/1958))
+
+- **icon**: do not fill empty paths in svgs. ( [#1947](https://github.com/baloise/design-system/pull/1947))
+
+## 19.9.5
+
+### Patch Changes
+
+- **checkbox**: defines now the two icon component bal-check and bal-switch ( [#1907](https://github.com/baloise/design-system/pull/1907))
+
+## 19.9.4
+
+### Patch Changes
+
+- **date**: can be used now inside a tabs component. click event should no longer be prevented. ( [#1899](https://github.com/baloise/design-system/pull/1899))
+
+- **accordion**: make version prop visible for the deprecated v1 ( [#1900](https://github.com/baloise/design-system/pull/1900))
+
+- **file-upload**: emits balRejectedFile event for each rejected file. ( [#1898](https://github.com/baloise/design-system/pull/1898))
+
+## 19.9.3
+
+### Patch Changes
+
+- **accordion**: fix animation cancellation logic ( [#1893](https://github.com/baloise/design-system/pull/1893))
+
+## 19.9.2
+
+### Patch Changes
+
+- **logo**: animation will only happen if set to true ( [#1889](https://github.com/baloise/design-system/pull/1889))
+
+## 19.9.1
+
+### Patch Changes
+
+- **core**: fix audit issues ( [#1885](https://github.com/baloise/design-system/pull/1885))
+
+## 19.9.0
+
+### Minor Changes
+
+- **logo**: add Helvetia brand ( [#1883](https://github.com/baloise/design-system/pull/1883))
+
+  Adds support for rendering the Helvetia logo while keeping the Baloise logo as the default. Existing applications continue to show the Baloise logo unless you explicitly switch the brand.
+
+  Why: Let consumers decide when to switch their logo without a breaking change.
+
+  Usage options
+
+  Component-level (single instance):
+
+  ```html
+  <!-- Baloise remains the default -->
+  <bal-logo></bal-logo>
+
+  <!-- Opt-in Helvetia logo for a specific instance -->
+  <bal-logo brand="helvetia"></bal-logo>
+  ```
+
+  Global configuration (all instances):
+
+  ```js
+  // Set once at startup to switch all logos to Helvetia
+  BaloiseDesignSystem.config.brand = 'helvetia'
+
+  // Omit or set to 'baloise' to keep the default
+  // BaloiseDesignSystem.config.brand = 'baloise'
+  ```
+
+  Angular (provider defaults):
+
+  ```ts
+  import { ApplicationConfig } from '@angular/core'
+  import { provideBaloiseDesignSystem } from '@baloise/ds-angular'
+
+  export const appConfig: ApplicationConfig = {
+    providers: [
+      provideBaloiseDesignSystem({
+        defaults: {
+          // Switch all logos to Helvetia by default
+          brand: 'helvetia',
+        },
+      }),
+    ],
+  }
+  ```
+
+  React (hook defaults):
+
+  ```ts
+  import { useBaloiseDesignSystem } from '@baloise/ds-react'
+
+  function App() {
+    useBaloiseDesignSystem({
+      defaults: {
+        // Switch all logos to Helvetia by default
+        brand: 'helvetia',
+      },
+    })
+
+    return ( /* ... */ )
+  }
+  ```
+
 ## 19.8.4
 
 ### Patch Changes
