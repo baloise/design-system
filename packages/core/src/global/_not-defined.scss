@@ -1,0 +1,21 @@
+@use './constants/component-names' as *;
+
+/**
+ * Replaces Stencil's own runtime-injected hide-until-hydrated CSS (disabled via
+ * `invisiblePrehydration: false` in stencil.config.ts). That default gates visibility per DOM
+ * node instance on the `.hydrated` class, which is not guaranteed to be re-earned by a node
+ * inserted outside Stencil's own reconciliation (HTMX, `innerHTML`, jQuery `.html()`, ...),
+ * leaving it permanently hidden - see docs/adr/0033-not-defined-hydration-visibility.md.
+ *
+ * `:defined` becomes true once a tag is registered at all, globally, not per instance - so any
+ * later-inserted instance of an already-defined tag is visible immediately.
+ */
+:where(#{$component-names}) {
+  &:not(:defined):not(.hydrated) {
+    visibility: hidden;
+
+    @media (scripting: none) {
+      visibility: visible;
+    }
+  }
+}
