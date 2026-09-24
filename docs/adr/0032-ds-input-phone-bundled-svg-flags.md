@@ -42,7 +42,7 @@ renders its `<div id="inner">`. Unlike icons, flags are not exposed through the 
 consumer-extensible list, so a static import is sufficient.
 
 Because `getAssetPath()`/`setAssetPath()` was used _only_ for flags, the whole workaround this
-introduced for `@baloise/ds-angular`/`@baloise/ds-react` (documented in `packages/core/CONTEXT.md`'s
+introduced for `@helvetia-design/angular`/`@helvetia-design/react` (documented in `packages/core/CONTEXT.md`'s
 former "Asset path (`resourcesUrl`)" section) is removed entirely along with it — there is no runtime
 asset path left to resolve.
 
@@ -56,7 +56,7 @@ asset path left to resolve.
   imported at runtime.
 - The `getAssetPath()`/`setAssetPath()` workaround is deleted wholesale: `flagAssetsCopy` and its
   `www`-target twin in `packages/core/stencil.config.ts`, the `setAssetPath()` call in
-  `@baloise/ds-angular`'s `bootstrapDesignSystem()`, and `@baloise/ds-react`'s `asset-path.ts` plus
+  `@helvetia-design/angular`'s `bootstrapDesignSystem()`, and `@helvetia-design/react`'s `asset-path.ts` plus
   its wiring into `DsRootProvider`/`bootstrap.client.ts`. Consuming apps' equivalents
   (`apps/integration-angular`'s `angular.json` assets glob, `apps/integration-react`'s
   `copyPhoneFlags()` Vite plugin) are removed too, since they no longer serve any purpose.
