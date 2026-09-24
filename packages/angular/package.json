@@ -13,9 +13,9 @@
   "security": "https://github.com/baloise/design-system/security/advisories/new",
   "license": "Apache-2.0",
   "sideEffects": false,
-  "main": "dist/fesm2022/baloise-ds-angular.mjs",
-  "module": "dist/fesm2022/baloise-ds-angular.mjs",
-  "types": "dist/types/baloise-ds-angular.d.ts",
+  "main": "dist/fesm2022/helvetia-design-angular.mjs",
+  "module": "dist/fesm2022/helvetia-design-angular.mjs",
+  "types": "dist/types/helvetia-design-angular.d.ts",
   "files": [
     "dist/"
   ],
