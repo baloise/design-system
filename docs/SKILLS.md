@@ -194,22 +194,35 @@ npx @helvetia/ds-skills@next add
 
 The package is published on the `next` dist-tag (same as the rest of this monorepo). `npx` without a tag resolves `latest`, which will not exist until a stable release.
 
-Package conventions (compiled CLI vs. self-contained payload, how to add the next component file) and **how to test the installer** are documented in [packages/ds-skills/CONTEXT.md](../packages/ds-skills/CONTEXT.md#testing).
+Package conventions (compiled CLI vs. self-contained payload, [how to add the next component's `migration.md`](../packages/ds-skills/CONTEXT.md#adding-the-next-component)) and [how to test the installer](../packages/ds-skills/CONTEXT.md#testing) are documented in [packages/ds-skills/CONTEXT.md](../packages/ds-skills/CONTEXT.md).
 
 ### **ds-migrate-from-baloise**
 
 Menu-driven migration from the Baloise Design System (`bal-*`) to the Helvetia Design System (`ds-*`).
 
-**Usage:** install with `npx @helvetia/ds-skills@next add`, then invoke `/ds-migrate-from-baloise` in the consumer repo.
+**Usage:**
 
-**Menu:**
+```bash
+npx @helvetia/ds-skills@next add
+/ds-migrate-from-baloise
+```
 
-- **Init** — bootstrap Helvetia packages alongside the existing Baloise install. Detects `@baloise/ds-*`, adds `@helvetia/*` npm aliases for the current `next` version, and inserts the new CSS/JS import next to the old one. Stops with "nothing to migrate" when no Baloise install is found.
-- **Components** — migrate a `bal-*` component to `ds-*`. The submenu lists each `components/*/migration.md` by its first heading. **spinner** finds `bal-spinner` usages and, after one confirmation, rewrites them to `ds-spinner`.
-- **CSS utils (coming soon)**
-- **Assets (coming soon)**
+Run `add` in the consuming application, then invoke the skill there.
 
-The skill edits files and leaves them unstaged. It never runs `git add` or `git commit`.
+**What it does:**
+
+- Copies the skill into the consumer's `.claude/skills/ds-migrate-from-baloise/`
+- **Init** — detects `@baloise/ds-*`, adds `@helvetia/*` npm aliases for the current `next` version, and inserts the new CSS/JS import next to the old one. Stops with "nothing to migrate" when no Baloise install is found
+- **Components** — lists each `components/*/migration.md` by its first heading. **spinner** finds `bal-spinner` usages and, after one confirmation, rewrites them to `ds-spinner`
+- **CSS utils** and **Assets** — report "coming soon" and stop
+- Edits files and leaves them unstaged. Never runs `git add` or `git commit`
+
+**Use when:**
+
+- A consuming app still depends on `@baloise/ds-*` and is adopting `@helvetia/ds-*` beside it
+- Migrating `bal-spinner` to `ds-spinner`
+
+**Output:** The copied skill folder, and unstaged edits in the consumer repo
 
 ---
 
@@ -373,16 +386,17 @@ Example: `--ds-button-primary-color-base-text`
 
 ## Key Commands Reference
 
-| Task                | Command                           |
-| ------------------- | --------------------------------- |
-| Create component    | `/ds-create-component`            |
-| Create tokens       | `/ds-create-token <name>`         |
-| Generate tests      | `/ds-test-component <name>`       |
-| Generate docs       | `/ds-document-component <name>`   |
-| Lint component      | `/ds-lint-component <name> check` |
-| Fix component       | `/ds-lint-component <name> fix`   |
-| Find tokens         | `/ds-find-token value <value>`    |
-| Find tokens by type | `/ds-find-token type <type>`      |
+| Task                 | Command                                                             |
+| -------------------- | ------------------------------------------------------------------- |
+| Create component     | `/ds-create-component`                                              |
+| Create tokens        | `/ds-create-token <name>`                                           |
+| Generate tests       | `/ds-test-component <name>`                                         |
+| Generate docs        | `/ds-document-component <name>`                                     |
+| Lint component       | `/ds-lint-component <name> check`                                   |
+| Fix component        | `/ds-lint-component <name> fix`                                     |
+| Find tokens          | `/ds-find-token value <value>`                                      |
+| Find tokens by type  | `/ds-find-token type <type>`                                        |
+| Migrate from Baloise | `npx @helvetia/ds-skills@next add`, then `/ds-migrate-from-baloise` |
 
 ## See Also
 

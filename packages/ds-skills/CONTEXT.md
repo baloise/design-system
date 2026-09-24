@@ -25,11 +25,23 @@ Distribution is `npx @helvetia/ds-skills@next add`. There is no Claude Code plug
 
 ### One `migration.md` per component
 
-**Components** is a file-driven submenu. Adding a component means adding `components/<name>/migration.md` (title in the first heading). `SKILL.md` lists `components/*.md` and `components/*/migration.md` by title and dispatches to the chosen file; the menu control logic does not change. Spinner is the first one: `components/spinner/migration.md` (title `spinner`). `scripts/scan-bal-spinner.mjs` lists `bal-spinner` / `BalSpinner` usages as JSON. The agent rewrites them after one bulk confirmation, using that file as the mapping. The script does not edit files.
+**Components** is a file-driven submenu. `SKILL.md` lists `components/*.md` and `components/*/migration.md` by the first heading and dispatches to that file. The menu control logic stays fixed.
+
+### Adding the next component
+
+Paths below are inside `skills/ds-migrate-from-baloise/`.
+
+1. Add `components/<name>/migration.md`. The first heading is the menu title.
+2. Write the confirm-then-rewrite steps and the prop mapping in that file. When the component needs a finder, add a dependency-free `scripts/scan-bal-<name>.mjs` that prints JSON findings and does not edit files, and invoke it from the migration file.
+3. Stop there. The **Components** section already lists every `migration.md` in that directory, so a new file shows up in the picker on its own.
+
+Spinner is the template: `components/spinner/migration.md` (heading `spinner`) and `scripts/scan-bal-spinner.mjs`. The agent rewrites matches after one bulk confirmation. The script does not edit files.
+
+Done when **Components** lists the new heading and choosing it follows that file.
 
 ### Independent versioning
 
-This package publishes as `@helvetia/ds-skills`, outside the `@baloise/ds-*` lockstep group in `.changeset/config.json`. It versions on its own changeset track, not at `20.0.0-next.x`.
+This package publishes as `@helvetia/ds-skills`, outside the `@baloise/ds-*` fixed group in `.changeset/config.json`. A changeset bumps only this package, on its own version track.
 
 ### The skill never commits
 
