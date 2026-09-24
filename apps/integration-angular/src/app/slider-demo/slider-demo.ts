@@ -1,6 +1,6 @@
 import { Component, signal } from '@angular/core'
 import { FormControl, FormGroup, ReactiveFormsModule, ValidationErrors, ValidatorFn } from '@angular/forms'
-import { DsSlider } from '@baloise/ds-angular'
+import { DsSlider } from '@helvetia-design/angular'
 
 // `ds-slider` can never be "empty" (see its own `value` prop doc), so a `required`-style validator can
 // never fail from user interaction — this repo's minimum-threshold validator stands in for it instead, the

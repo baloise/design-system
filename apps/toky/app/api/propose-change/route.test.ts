@@ -191,7 +191,7 @@ describe('POST /api/propose-change', () => {
     const [changesetBranch, changesetPath, changesetContent] = createFileOnBranch.mock.calls[0]
     expect(changesetBranch).toBe('toky/update-next')
     expect(changesetPath).toMatch(/^\.changeset\/toky-update-next-\d+\.md$/)
-    expect(changesetContent).toContain("'@baloise/ds-tokens': patch")
+    expect(changesetContent).toContain("'@helvetia-design/tokens': patch")
     expect(changesetContent).toContain('**tokens**: Lighten white slightly')
 
     expect(getBaseTokensFileMeta).toHaveBeenCalledWith('next')
@@ -429,7 +429,7 @@ describe('POST /api/propose-change', () => {
     expect(addBrandToIndex).toHaveBeenCalledWith('toky/update-next', 'Acme')
 
     const [, , changesetContent] = createFileOnBranch.mock.calls[0]
-    expect(changesetContent).toContain("'@baloise/ds-tokens': minor")
+    expect(changesetContent).toContain("'@helvetia-design/tokens': minor")
     expect(changesetContent).toContain('**Created brand:** Acme')
   })
 

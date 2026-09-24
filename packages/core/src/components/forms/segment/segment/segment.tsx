@@ -66,7 +66,7 @@ export class Segment implements DsComponentInterface, Omit<FieldInterface, 'colo
   readonly allowEmptySelection: boolean = false
 
   /**
-   * If `true`, disables the automatic `invalid`/`invalidText` behavior that the `@baloise/ds-angular` integration
+   * If `true`, disables the automatic `invalid`/`invalidText` behavior that the `@helvetia-design/angular` integration
    * applies when the bound `NgControl` is touched and invalid. Only affects the Angular integration; it is a no-op
    * in other framework integrations.
    */

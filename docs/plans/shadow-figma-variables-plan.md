@@ -47,7 +47,7 @@ export function boxShadowToCss(parts: ShadowParts): string        // inverse, us
 
 ## Verification
 
-- `pnpm --filter @baloise/ds-tokens build` (or the repo's equivalent turbo target) — the new drift check runs as part of this; confirm it passes with the migrated JSON, and confirm (by diffing `dist/css/base.tokens.css` before/after) that `--ds-global-elevation-shadow-1` through `-4` are byte-identical to before the change.
+- `pnpm --filter @helvetia-design/tokens build` (or the repo's equivalent turbo target) — the new drift check runs as part of this; confirm it passes with the migrated JSON, and confirm (by diffing `dist/css/base.tokens.css` before/after) that `--ds-global-elevation-shadow-1` through `-4` are byte-identical to before the change.
 - Temporarily break one `ShadowParts.N` value and re-run the build to confirm the drift check actually fails loudly (proves the guard works, not just that it's present).
 - `pnpm --filter toky dev` — open the token editor, confirm the new `ShadowParts` tokens show up under Global/Elevation as ordinary editable number/color rows, and that a manual "Pull from Figma" (once this PR is merged and a sync has run) doesn't propose them as duplicates on a second pull (reuses the existing figmaId-matching machinery from this session's earlier work — no new code path, but worth a real end-to-end look).
 - `pnpm lint` / repo-root type-check for the new `shadow-value.ts` module.

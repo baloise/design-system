@@ -138,7 +138,7 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Build Core
-        run: pnpm exec turbo run build --filter=@baloise/ds-core
+        run: pnpm exec turbo run build --filter=@helvetia-design/core
 
       - name: Run Playwright tests
         working-directory: packages/core
@@ -217,8 +217,8 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Build @baloise/ds-core, @baloise/ds-react and @baloise/ds-styles
-        run: pnpm exec turbo run build --filter=@baloise/ds-core --filter=@baloise/ds-react --filter=@baloise/ds-styles
+      - name: Build @helvetia-design/core, @helvetia-design/react and @helvetia-design/styles
+        run: pnpm exec turbo run build --filter=@helvetia-design/core --filter=@helvetia-design/react --filter=@helvetia-design/styles
 
       - name: Install Playwright browsers
         working-directory: apps/integration-react
@@ -262,8 +262,8 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Build @baloise/ds-core, @baloise/ds-angular and @baloise/ds-styles
-        run: pnpm exec turbo run build --filter=@baloise/ds-core --filter=@baloise/ds-angular --filter=@baloise/ds-styles
+      - name: Build @helvetia-design/core, @helvetia-design/angular and @helvetia-design/styles
+        run: pnpm exec turbo run build --filter=@helvetia-design/core --filter=@helvetia-design/angular --filter=@helvetia-design/styles
 
       - name: Install Playwright browsers
         working-directory: apps/integration-angular
@@ -307,8 +307,8 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Build @baloise/ds-core, @baloise/ds-react and @baloise/ds-styles
-        run: pnpm exec turbo run build --filter=@baloise/ds-core --filter=@baloise/ds-react --filter=@baloise/ds-styles
+      - name: Build @helvetia-design/core, @helvetia-design/react and @helvetia-design/styles
+        run: pnpm exec turbo run build --filter=@helvetia-design/core --filter=@helvetia-design/react --filter=@helvetia-design/styles
 
       - name: Install Playwright browsers
         working-directory: apps/integration-next
@@ -352,8 +352,8 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Build @baloise/ds-core and @baloise/ds-styles
-        run: pnpm exec turbo run build --filter=@baloise/ds-core --filter=@baloise/ds-styles
+      - name: Build @helvetia-design/core and @helvetia-design/styles
+        run: pnpm exec turbo run build --filter=@helvetia-design/core --filter=@helvetia-design/styles
 
       - name: Install Playwright browsers
         working-directory: apps/integration-ssr

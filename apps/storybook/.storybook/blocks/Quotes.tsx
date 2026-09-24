@@ -35,7 +35,7 @@ export const StylesQuote = ({ _tag }: StylesQuoteProps): React.ReactElement => {
       <div>
         <h3 className="ds-title">Styles import</h3>
         <span>
-          Make sure the <b>@baloise/ds-styles</b> package is already present in your project or follow the{' '}
+          Make sure the <b>@helvetia-design/styles</b> package is already present in your project or follow the{' '}
           <a className="ds-link" onClick={() => navigate({ title: 'Development/Styles' })}>
             installation guidelines
           </a>
@@ -51,7 +51,7 @@ export const StylesQuote = ({ _tag }: StylesQuoteProps): React.ReactElement => {
                   <Code
                     language="css"
                     code={`
-@import '@baloise/ds-styles/css/design-system.css';
+@import '@helvetia-design/styles/css/design-system.css';
 `}
                   />
                 </>
@@ -65,7 +65,7 @@ export const StylesQuote = ({ _tag }: StylesQuoteProps): React.ReactElement => {
                   <Code
                     language="css"
                     code={`
-@use '@baloise/ds-styles/sass/design-system';
+@use '@helvetia-design/styles/sass/design-system';
 `}
                   />
                 </>
@@ -92,8 +92,8 @@ export const WebComponentQuote = ({ tag }: StylesQuoteProps): React.ReactElement
       <div>
         <h3 className="ds-title">Installation</h3>
         <span>
-          Make sure the <b>@baloise/ds-core</b>, <b>@baloise/ds-angular</b> or <b>@baloise/ds-react</b> packages is
-          already present in your project or follow the{' '}
+          Make sure the <b>@helvetia-design/core</b>, <b>@helvetia-design/angular</b> or <b>@helvetia-design/react</b>{' '}
+          packages is already present in your project or follow the{' '}
           <a className="ds-link" onClick={() => navigate({ title: 'Development/Getting Started' })}>
             installation guidelines
           </a>
@@ -106,7 +106,7 @@ export const WebComponentQuote = ({ tag }: StylesQuoteProps): React.ReactElement
               language="ts"
               code={`
 import { Component } from '@angular/core'
-import { Ds${fromKebabToPascal(tag)} } from '@baloise/ds-angular'
+import { Ds${fromKebabToPascal(tag)} } from '@helvetia-design/angular'
 
 @Component({
   selector: 'app-example',

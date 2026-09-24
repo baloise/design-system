@@ -1,6 +1,6 @@
 import { useCallback, useRef } from 'react'
-import type { Alert, AlertController } from '@baloise/ds-core'
-import { defineCustomElement as defineDsAlertContainer } from '@baloise/ds-core/components/ds-alert-container.js'
+import type { Alert, AlertController } from '@helvetia-design/core'
+import { defineCustomElement as defineDsAlertContainer } from '@helvetia-design/core/components/ds-alert-container.js'
 
 export function useAlertController(controller: AlertController) {
   defineDsAlertContainer()

@@ -25,7 +25,7 @@
 
 Before any reporting, confirm that the vulnerability is:
 
-- [ ] Present in a **published** version of `@baloise/ds-core` or another published package
+- [ ] Present in a **published** version of `@helvetia-design/core` or another published package
 - [ ] **Actively exploited** (not just theoretically possible) — exploitation evidence may come from:
   - A Dependabot alert flagging a CVE marked "exploited in wild"
   - An external security researcher's report with a proof of concept
@@ -49,7 +49,7 @@ If exploitation is not confirmed, follow the standard [CVD process](../../SECURI
 - [ ] Open a private [GitHub Security Advisory](https://github.com/baloise/design-system/security/advisories/new):
   - Title: `[CVE-YYYY-XXXXX] Short description`
   - Ecosystem: npm
-  - Package name: `@baloise/ds-core` (and any other affected packages)
+  - Package name: `@helvetia-design/core` (and any other affected packages)
   - Affected versions: semver range
   - Patched version: leave blank until fix is ready
 - [ ] Request a CVE ID via [cveform.mitre.org](https://cveform.mitre.org) if one has not been assigned yet — reference the GitHub advisory URL in the request
@@ -69,7 +69,7 @@ File an early warning with both authorities if EU consumers are affected. Duplic
 
 ```
 Product name:     Baloise Design System
-Package:          @baloise/ds-core (and affected packages)
+Package:          @helvetia-design/core (and affected packages)
 Affected version: <semver range>
 CVE ID:           <CVE-YYYY-XXXXX or "pending">
 Short description: <1–2 sentences — what the vulnerability is>
@@ -94,13 +94,13 @@ Update both authority submissions (reference the ticket numbers from Step 3) wit
 
 ```
 Product:           Baloise Design System
-Package(s):        @baloise/ds-core <semver>
+Package(s):        @helvetia-design/core <semver>
 CVE ID:            CVE-YYYY-XXXXX
 CVSS score:        <score> (<vector string>)
 CWE:               CWE-XXXX — <name>
 Description:       <paragraph — root cause, attack vector, what an attacker can do>
 Impact:            <what is at risk for consumers — XSS, data exposure, etc.>
-Affected users:    ~<N> weekly npm downloads (see npmjs.com/package/@baloise/ds-core)
+Affected users:    ~<N> weekly npm downloads (see npmjs.com/package/@helvetia-design/core)
 Mitigation:        <workaround if available; or "update to vX.Y.Z once released">
 Fix status:        In progress — expected release: <date>
 Timeline:
@@ -129,7 +129,7 @@ Update both authority submissions with the final report:
 
 ```
 Fix released:      Yes — version <X.Y.Z>, released <ISO date>
-npm package:       https://www.npmjs.com/package/@baloise/ds-core/v/X.Y.Z
+npm package:       https://www.npmjs.com/package/@helvetia-design/core/v/X.Y.Z
 GitHub release:    https://github.com/baloise/design-system/releases/tag/vX.Y.Z
 SBOM:              Bundled in npm package as sbom.cdx.json
 Provenance:        GitHub Actions provenance attestation (see npm package page)

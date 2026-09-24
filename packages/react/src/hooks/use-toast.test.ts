@@ -1,6 +1,6 @@
 import { act } from 'react'
 import { afterEach, beforeEach, describe, expect, test, vi } from 'vitest'
-import type { Alert } from '@baloise/ds-core'
+import type { Alert } from '@helvetia-design/core'
 import { renderHook } from '../test/render'
 import { useToast } from './use-toast'
 
@@ -9,7 +9,7 @@ const remove = vi.fn()
 const defineDsAlertContainer = vi.fn()
 const defineDsToast = vi.fn()
 
-vi.mock('@baloise/ds-core', () => ({
+vi.mock('@helvetia-design/core', () => ({
   dsToastController: {
     create: (...args: unknown[]) => create(...args),
     remove: (...args: unknown[]) => remove(...args),
@@ -17,11 +17,11 @@ vi.mock('@baloise/ds-core', () => ({
   },
 }))
 
-vi.mock('@baloise/ds-core/components/ds-alert-container.js', () => ({
+vi.mock('@helvetia-design/core/components/ds-alert-container.js', () => ({
   defineCustomElement: (...args: unknown[]) => defineDsAlertContainer(...args),
 }))
 
-vi.mock('@baloise/ds-core/components/ds-toast.js', () => ({
+vi.mock('@helvetia-design/core/components/ds-toast.js', () => ({
   defineCustomElement: (...args: unknown[]) => defineDsToast(...args),
 }))
 

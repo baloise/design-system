@@ -1,4 +1,4 @@
-import type { JSX } from '@baloise/ds-core'
+import type { JSX } from '@helvetia-design/core'
 import type { Meta } from '@storybook/html-vite'
 import { lorem1, props, StoryFactory, withComponentControls, withRender } from '../../../utils'
 
@@ -38,7 +38,7 @@ const Story = StoryFactory<Args>(meta)
 export const Basic = Story({})
 Basic.storyName = '🧩 Basic'
 
-import { BrandIconCarCrashWithAnimalGreen } from '@baloise/ds-assets'
+import { BrandIconCarCrashWithAnimalGreen } from '@helvetia-design/assets'
 export const WithBrandIcon = Story({
   args: {
     color: 'base',

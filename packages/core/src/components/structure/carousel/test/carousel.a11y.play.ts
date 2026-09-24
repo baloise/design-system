@@ -1,4 +1,4 @@
-import { test } from '@baloise/ds-playwright'
+import { test } from '@helvetia-design/playwright'
 
 const ITEMS = `
   <ds-carousel-item name="s1"><div style="height:150px;background:#4a5568">Slide 1</div></ds-carousel-item>

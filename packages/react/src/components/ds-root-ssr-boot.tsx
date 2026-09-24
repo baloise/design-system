@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useRef } from 'react'
-import type { DsConfig } from '@baloise/ds-core'
+import type { DsConfig } from '@helvetia-design/core'
 import { ensureInit } from './ds-root-provider.shared'
 
 export function DsRootSSRBoot({ config }: { config: DsConfig }) {
@@ -14,7 +14,7 @@ export function DsRootSSRBoot({ config }: { config: DsConfig }) {
     initialized.current = true
 
     ensureInit(config)
-    void import('@baloise/ds-core/loader').then(({ defineCustomElements }) => defineCustomElements())
+    void import('@helvetia-design/core/loader').then(({ defineCustomElements }) => defineCustomElements())
   }, [config])
 
   return null

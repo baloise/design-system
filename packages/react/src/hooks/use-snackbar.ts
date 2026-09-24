@@ -1,7 +1,7 @@
 'use client'
 
-import { dsSnackbarController } from '@baloise/ds-core'
-import { defineCustomElement as defineDsSnackbar } from '@baloise/ds-core/components/ds-snackbar.js'
+import { dsSnackbarController } from '@helvetia-design/core'
+import { defineCustomElement as defineDsSnackbar } from '@helvetia-design/core/components/ds-snackbar.js'
 import { useAlertController } from './use-alert-controller'
 
 export function useSnackbar() {

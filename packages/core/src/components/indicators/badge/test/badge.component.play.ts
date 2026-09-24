@@ -1,4 +1,4 @@
-import { DsBadge, test } from '@baloise/ds-playwright'
+import { DsBadge, test } from '@helvetia-design/playwright'
 import { expect } from '@playwright/test'
 
 test.describe('component', () => {

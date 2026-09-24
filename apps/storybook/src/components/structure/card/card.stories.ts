@@ -1,9 +1,9 @@
-import type { JSX } from '@baloise/ds-core'
+import type { JSX } from '@helvetia-design/core'
 import {
   BrandIconInvestSaveChfPurple,
   BrandIconInvestSaveChfRed,
   BrandIconSavingComfortKidsTangerine,
-} from '@baloise/ds-assets'
+} from '@helvetia-design/assets'
 import type { Meta } from '@storybook/html-vite'
 import { lorem1, props, StoryFactory, withComponentControls, withRender } from '../../../utils'
 

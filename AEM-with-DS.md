@@ -215,8 +215,8 @@ Everything above assumes `ds-accordion` / `ds-datepicker` are simply available o
 This section covers how they actually get there — and, specifically, how version
 changes can be fast on dev without making prod's version anything other than fixed.
 
-`@baloise/ds-*` packages are published to the public npm registry and version-locked
-together via changesets (`.changeset/config.json`: `"fixed": [["@baloise/ds-*"]]`) — a
+`@helvetia-design/*` packages are published to the public npm registry and version-locked
+together via changesets (`.changeset/config.json`: `"fixed": [["@helvetia-design/*"]]`) — a
 single version number (e.g. `20.0.0-next.8`) always identifies a matching `ds-core` +
 `ds-styles` pair.
 
@@ -240,8 +240,8 @@ published package's build output to Helvetia's own CDN/object storage under immu
 version-prefixed paths:
 
 ```
-https://cdn.helvetia.example/ds/core/{version}/...   ← @baloise/ds-core (Stencil lazy-loader output)
-https://cdn.helvetia.example/ds/css/{version}/...    ← @baloise/ds-styles
+https://cdn.helvetia.example/ds/core/{version}/...   ← @helvetia-design/core (Stencil lazy-loader output)
+https://cdn.helvetia.example/ds/css/{version}/...    ← @helvetia-design/styles
 ```
 
 Only `ds-core` and `ds-styles` are synced — `ds-tokens` is a build-time input already
@@ -280,7 +280,7 @@ maintaining per-template conditional inclusion logic.
 
 ### Staging and prod: Maven-bundled, pinned, promoted
 
-Staging and prod both consume `@baloise/ds-core` / `@baloise/ds-styles` the conventional
+Staging and prod both consume `@helvetia-design/core` / `@helvetia-design/styles` the conventional
 way — as an npm dependency of the `ui.frontend` Maven module, pinned by version in
 `package.json`, bundled into the AEM clientlib at build time. Staging is the **release
 gate**: its `package.json` pin is always the exact candidate being validated for the
@@ -460,7 +460,7 @@ Next.js, chosen for its server rendering) owns all markup and rendering. There's
 to override and no Sling Model to map props from; the integration point moves entirely
 into the frontend.
 
-One fact drives most of the decisions below: **`@baloise/ds-react`'s Stencil-generated
+One fact drives most of the decisions below: **`@helvetia-design/react`'s Stencil-generated
 React wrappers have no SSR/hydrate support** (`packages/react/CONTEXT.md`: _"No SSR/hydrate
 support yet (`hydrateModule` is not configured) — client-side only."_). A Next.js Server
 Component cannot produce real server-rendered HTML for a Shadow DOM `ds-*` component
@@ -490,7 +490,7 @@ architectures.
 - **Two release trains to coordinate.** A Content Fragment Model or Form JSON schema
   change and the frontend code that consumes it can drift out of sync independently —
   there's no compiler tying them together the way a typed Sling Model does.
-- **The Shadow DOM component gap is real.** `@baloise/ds-react` has no SSR path today, so
+- **The Shadow DOM component gap is real.** `@helvetia-design/react` has no SSR path today, so
   anything that needs an actual `ds-*` component (not just its CSS) becomes a client-only
   island — a hydration boundary and a JS payload the CSS-only and HTL paths didn't need.
 - **Headless Adaptive Forms locks the forms frontend to React.** Unlike Core Components'
@@ -626,7 +626,7 @@ explicitly as a client-only chunk inside an otherwise server-rendered page:
 // components/forms/DsDatepickerField.tsx — 'use client': useRuleEngine and DOM refs are browser-only
 'use client'
 import { useRuleEngine } from '@aemforms/af-react-renderer'
-import { DsDatepicker } from '@baloise/ds-react'
+import { DsDatepicker } from '@helvetia-design/react'
 
 export function DsDatepickerField(props) {
   const [state, handlers] = useRuleEngine(props)

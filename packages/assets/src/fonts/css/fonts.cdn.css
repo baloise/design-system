@@ -6,8 +6,9 @@
   src:
     local('BaloiseCreateHeadline'),
     local('BaloiseCreateHeadline-bold'),
-    url('https://cdn.jsdelivr.net/npm/@baloise/ds-assets/src/fonts/BaloiseCreateHeadline-bold.woff2') format('woff2'),
-    url('https://cdn.jsdelivr.net/npm/@baloise/ds-assets/src/fonts/BaloiseCreateHeadline-bold.woff') format('woff');
+    url('https://cdn.jsdelivr.net/npm/@helvetia-design/assets/src/fonts/BaloiseCreateHeadline-bold.woff2')
+      format('woff2'),
+    url('https://cdn.jsdelivr.net/npm/@helvetia-design/assets/src/fonts/BaloiseCreateHeadline-bold.woff') format('woff');
 }
 
 @font-face {
@@ -18,8 +19,10 @@
   src:
     local('BaloiseCreateHeadline'),
     local('BaloiseCreateHeadline-light'),
-    url('https://cdn.jsdelivr.net/npm/@baloise/ds-assets/src/fonts/BaloiseCreateHeadline-light.woff2') format('woff2'),
-    url('https://cdn.jsdelivr.net/npm/@baloise/ds-assets/src/fonts/BaloiseCreateHeadline-light.woff') format('woff');
+    url('https://cdn.jsdelivr.net/npm/@helvetia-design/assets/src/fonts/BaloiseCreateHeadline-light.woff2')
+      format('woff2'),
+    url('https://cdn.jsdelivr.net/npm/@helvetia-design/assets/src/fonts/BaloiseCreateHeadline-light.woff')
+      format('woff');
 }
 
 @font-face {
@@ -30,8 +33,8 @@
   src:
     local('BaloiseCreateText'),
     local('BaloiseCreateText-bold'),
-    url('https://cdn.jsdelivr.net/npm/@baloise/ds-assets/src/fonts/BaloiseCreateText-bold.woff2') format('woff2'),
-    url('https://cdn.jsdelivr.net/npm/@baloise/ds-assets/src/fonts/BaloiseCreateText-bold.woff') format('woff');
+    url('https://cdn.jsdelivr.net/npm/@helvetia-design/assets/src/fonts/BaloiseCreateText-bold.woff2') format('woff2'),
+    url('https://cdn.jsdelivr.net/npm/@helvetia-design/assets/src/fonts/BaloiseCreateText-bold.woff') format('woff');
 }
 
 @font-face {
@@ -42,6 +45,7 @@
   src:
     local('BaloiseCreateText'),
     local('BaloiseCreateText-regular'),
-    url('https://cdn.jsdelivr.net/npm/@baloise/ds-assets/src/fonts/BaloiseCreateText-regular.woff2') format('woff2'),
-    url('https://cdn.jsdelivr.net/npm/@baloise/ds-assets/src/fonts/BaloiseCreateText-regular.woff') format('woff');
+    url('https://cdn.jsdelivr.net/npm/@helvetia-design/assets/src/fonts/BaloiseCreateText-regular.woff2')
+      format('woff2'),
+    url('https://cdn.jsdelivr.net/npm/@helvetia-design/assets/src/fonts/BaloiseCreateText-regular.woff') format('woff');
 }

@@ -1,9 +1,4 @@
-import {
-  BrandIconInvestSaveChfRed,
-  BrandIconPiggyBankPurple,
-  BrandIconSafeSavingChildTangerine,
-} from '@baloise/ds-assets'
-import type { JSX } from '@baloise/ds-core'
+import type { JSX } from '@helvetia-design/core'
 import type { Meta } from '@storybook/html-vite'
 import { props, StoryFactory, withComponentControls, withRender } from '../../../utils'
 

@@ -34,7 +34,7 @@ that the Design System is initialized correctly, it is crucial that the applicat
 
 ```ts
 import { ApplicationConfig } from '@angular/core'
-import { provideDesignSystem } from '@baloise/ds-angular'
+import { provideDesignSystem } from '@helvetia-design/angular'
 
 export const appConfig: ApplicationConfig = {
   providers: [provideDesignSystem()],
@@ -56,7 +56,7 @@ bootstrapApplication(App, appConfig).catch(err => console.error(err))
 
 ```ts
 import { Component } from '@angular/core'
-import { DsHeading, DsRoot } from '@baloise/ds-angular'
+import { DsHeading, DsRoot } from '@helvetia-design/angular'
 
 @Component({
   selector: 'app-root',
@@ -132,7 +132,7 @@ Import the components that are used inside the template and that is it.
 
 ```tsx
 import React from "react";
-import { DsRootProvider, DsHeading } from "@baloise/ds-react";
+import { DsRootProvider, DsHeading } from "@helvetia-design/react";
 
 function App() {
   return (
@@ -237,7 +237,7 @@ export class AppComponent {
 
 ```tsx
 import { useState } from 'react'
-import { DsButton } from '@baloise/ds-react'
+import { DsButton } from '@helvetia-design/react'
 
 function App() {
   const [color, setColor] = useState<'info' | 'secondary'>('info')
@@ -289,7 +289,7 @@ In Angular the events are written like that `(dsEventName)="yourComponentHandler
 
 ```ts
 import { Component } from '@angular/core'
-import type { InputInputDetail } from '@baloise/ds-core'
+import type { InputInputDetail } from '@helvetia-design/core'
 
 @Component({
   selector: 'app-event',
@@ -346,7 +346,7 @@ Each event in React is prefixed with `on`. `dsInput` becomes `onDsInput`.
 
 ```tsx
 import { useState } from 'react'
-import { DsInput, DsText } from '@baloise/ds-react'
+import { DsInput, DsText } from '@helvetia-design/react'
 
 function EventComponent() {
   const [myName, setMyName] = useState<string | undefined>()
@@ -396,8 +396,8 @@ To access the method of the component use the reference directly.
 
 ```typescript
 import { Component, ViewChild } from '@angular/core'
-import type { Components } from '@baloise/ds-core'
-import { ProxyComponent } from '@baloise/ds-angular'
+import type { Components } from '@helvetia-design/core'
+import { ProxyComponent } from '@helvetia-design/angular'
 
 @Component({
   selector: 'app-method',
@@ -458,7 +458,7 @@ export class MethodComponent {
 
 ```tsx
 import { useRef } from 'react'
-import { DsSelect, DsButton } from '@baloise/ds-react'
+import { DsSelect, DsButton } from '@helvetia-design/react'
 
 const hobbyOptions = [
   { label: 'Tennis', value: 'tennis' },

@@ -26,7 +26,7 @@ export interface FormControlInterface<Value extends NonNullable<unknown> | null 
 type ControlValue = File | string | FormData | null
 
 /**
- * Stencil's mock-doc `attachInternals()` (used by `@baloise/ds-core/hydrate` during SSR) returns a
+ * Stencil's mock-doc `attachInternals()` (used by `@helvetia-design/core/hydrate` during SSR) returns a
  * Proxy whose methods aren't implemented — calling them throws. Form association is meaningless
  * during SSR anyway, so this is a no-op there.
  */

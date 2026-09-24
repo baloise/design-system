@@ -1,4 +1,4 @@
-import { DsRoot, expect, test } from '@baloise/ds-playwright'
+import { DsRoot, expect, test } from '@helvetia-design/playwright'
 
 test.describe('props', () => {
   test('applies brand, region, language, allowedLanguages and fallbackLanguage to the global config', async ({

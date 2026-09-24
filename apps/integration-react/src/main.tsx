@@ -3,8 +3,8 @@ import { createRoot } from 'react-dom/client'
 
 import { Root } from './Root'
 
-import '@baloise/ds-tokens/css/base'
-import '@baloise/ds-styles/css/design-system'
+import '@helvetia-design/tokens/css/base'
+import '@helvetia-design/styles/css/design-system'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

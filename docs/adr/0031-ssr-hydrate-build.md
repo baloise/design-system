@@ -1,4 +1,4 @@
-# 31. SSR-capable hydrate build for `@baloise/ds-core`
+# 31. SSR-capable hydrate build for `@helvetia-design/core`
 
 Package: `packages/core`, `packages/react`
 
@@ -10,7 +10,7 @@ Accepted
 
 ## Context
 
-`@baloise/ds-react` is client-only: `@stencil/react-output-target` emits
+`@helvetia-design/react` is client-only: `@stencil/react-output-target` emits
 `packages/react/src/generated/components.ts` with a `'use client'` pragma,
 and `packages/core/stencil.config.ts` had no `dist-hydrate-script` output
 target. A Next.js App Router server component therefore cannot render any
@@ -32,18 +32,18 @@ the follow-up tickets in
 
 ## Decision
 
-1. **`dist-hydrate-script` on `@baloise/ds-core`.** Stencil produces a
+1. **`dist-hydrate-script` on `@helvetia-design/core`.** Stencil produces a
    Node-compatible renderer at `hydrate/` on the package root, published via
    the `files` array. `exports["./hydrate"]` is declared explicitly (types
    → `hydrate/index.d.ts`, import → `index.mjs`, require → `index.js`),
    matching `./components` and `./loader`. The `"./*"` wildcard is enough
    for untyped Node resolution, but TypeScript cannot resolve the subpath
    without a types-bearing export — the generated React server wrappers
-   `import('@baloise/ds-core/hydrate')`, so the react package build would
+   `import('@helvetia-design/core/hydrate')`, so the react package build would
    fail without it.
 
 2. **`reactOutputTarget()` gains `hydrateModule` and DSD serialization.**
-   `hydrateModule: '@baloise/ds-core/hydrate'` and
+   `hydrateModule: '@helvetia-design/core/hydrate'` and
    `serializeShadowRoot: 'declarative-shadow-dom'` (not `'scoped'`) match
    how components already render client-side (real shadow DOM). DSD
    requires evergreen browsers only (Chrome/Edge, Safari 16.4+, Firefox
@@ -53,7 +53,7 @@ the follow-up tickets in
    the sibling client wrappers.
 
 3. **Planned: `"node"` condition, not `"react-server"`, on
-   `@baloise/ds-react`.** Next.js's SSR pass runs under the `"node"`
+   `@helvetia-design/react`.** Next.js's SSR pass runs under the `"node"`
    export condition. `"react-server"` is RSC-specific: the module must
    never ship to the client at all. That does not fit these components —
    they are interactive and must hydrate. The exports map itself lands in
@@ -70,11 +70,11 @@ the follow-up tickets in
 
 ## Consequences
 
-- `pnpm --filter @baloise/ds-core build` now emits `hydrate/` (gitignored,
+- `pnpm --filter @helvetia-design/core build` now emits `hydrate/` (gitignored,
   like `loader/` and `components/`). Turbo's `build` outputs include
   `hydrate/**` so the cache keeps it.
 - The same core build emits `packages/react/src/generated/components.server.ts`
-  alongside `components.ts`. `@baloise/ds-react` remains client-only at
+  alongside `components.ts`. `@helvetia-design/react` remains client-only at
   its public entry until the exports map lands. Compiling that server file
   requires `moduleResolution: "bundler"` in `packages/react/tsconfig.lib.json`
   so TypeScript can resolve the `@stencil/react-output-target/ssr` entry
@@ -84,6 +84,6 @@ the follow-up tickets in
   must no-op when `window.parent` is `null` (Node) as well as when
   `parent === window` (top-level browsing context); otherwise
   `parent.postMessage` throws and `renderToString` hydrates nothing.
-- Consumers cannot yet SSR from `@baloise/ds-react` — that is the next
+- Consumers cannot yet SSR from `@helvetia-design/react` — that is the next
   ticket. This change only publishes the renderer and teaches the React
   generator to emit the server wrappers.

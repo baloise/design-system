@@ -1,4 +1,4 @@
-import { DsModal, expectScreenshot, screenshot, test } from '@baloise/ds-playwright'
+import { DsModal, expectScreenshot, screenshot, test } from '@helvetia-design/playwright'
 
 const TAG = 'modal'
 

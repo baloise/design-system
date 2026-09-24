@@ -1,4 +1,4 @@
-import { DsBrandIcon, expect, test } from '@baloise/ds-playwright'
+import { DsBrandIcon, expect, test } from '@helvetia-design/playwright'
 
 test.describe('component', () => {
   test('renders SVG fetched from src URL', async ({ page }) => {

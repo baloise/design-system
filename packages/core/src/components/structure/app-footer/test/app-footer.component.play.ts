@@ -1,4 +1,4 @@
-import { DsAppFooter, expect, test } from '@baloise/ds-playwright'
+import { DsAppFooter, expect, test } from '@helvetia-design/playwright'
 
 test.describe('component', () => {
   test('renders content and legal text', async ({ page }) => {

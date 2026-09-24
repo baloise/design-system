@@ -1,4 +1,4 @@
-<a href="https://design.baloise.dev" target="blank">
+<a href="https://helvetia-design.vercel.app" target="blank">
     <img src="https://raw.githubusercontent.com/baloise/design-system/next/apps/storybook/src/assets/images/banner.svg?sanitize=true" alt="Helvetia Design System" />
 </a>
 
@@ -9,11 +9,11 @@
   <a href="https://github.com/baloise/design-system/actions/workflows/security.yml">
     <img src="https://github.com/baloise/design-system/actions/workflows/security.yml/badge.svg?branch=next" alt="Security" />
   </a>
-  <a href="https://www.npmjs.com/package/@baloise/ds-core">
-    <img src="https://img.shields.io/npm/v/@baloise/ds-core" alt="NPM" />
+  <a href="https://www.npmjs.com/package/@helvetia-design/core">
+    <img src="https://img.shields.io/npm/v/@helvetia-design/core" alt="NPM" />
   </a>
-  <a href="https://www.npmjs.com/package/@baloise/ds-core">
-    <img src="https://img.shields.io/bundlephobia/min/@baloise/ds-core" alt="Bundle Size" />
+  <a href="https://www.npmjs.com/package/@helvetia-design/core">
+    <img src="https://img.shields.io/bundlephobia/min/@helvetia-design/core" alt="Bundle Size" />
   </a>
   <a href="https://github.com/baloise/design-system/blob/next/LICENSE">
     <img src="https://img.shields.io/github/license/baloise/design-system" alt="License" />
@@ -36,17 +36,17 @@ Built with accessibility and simplicity in mind, the Helvetia Design System prov
 Install the core design system package via npm:
 
 ```bash
-npm install @baloise/ds-core
+npm install @helvetia-design/core
 ```
 
 Then import the CSS and component loader in your application:
 
 ```html
-<link rel="stylesheet" href="node_modules/@baloise/ds-styles/dist/css/design-system.css" />
-<script type="module" src="node_modules/@baloise/ds-core/dist/design-system/design-system.esm.js"></script>
+<link rel="stylesheet" href="node_modules/@helvetia-design/styles/dist/css/design-system.css" />
+<script type="module" src="node_modules/@helvetia-design/core/dist/design-system/design-system.esm.js"></script>
 ```
 
-For framework-specific integrations, see the [Quick Start guide](https://design.baloise.dev/?path=/docs/development-getting-started--documentation).
+For framework-specific integrations, see the [Quick Start guide](https://helvetia-design.vercel.app/?path=/docs/development-getting-started--documentation).
 
 ## Quick Start
 
@@ -60,7 +60,7 @@ Use any design system component in your HTML:
 </ds-card>
 ```
 
-Explore all available components, design tokens, and examples in the [component library](https://design.baloise.dev).
+Explore all available components, design tokens, and examples in the [component library](https://helvetia-design.vercel.app).
 
 ## Contributing
 
@@ -76,8 +76,8 @@ Follow our [Code of Conduct](https://github.com/baloise/design-system/blob/next/
 
 ## Learn More
 
-- **[Documentation](https://design.baloise.dev)** — Component library, design tokens, and interactive examples in Storybook
-- **[Quick Start](https://design.baloise.dev/?path=/docs/development-getting-started--documentation)** — Get started with the design system in your project
+- **[Documentation](https://helvetia-design.vercel.app)** — Component library, design tokens, and interactive examples in Storybook
+- **[Quick Start](https://helvetia-design.vercel.app/?path=/docs/development-getting-started--documentation)** — Get started with the design system in your project
 - **[CHANGELOG.md](https://github.com/baloise/design-system/blob/next/CHANGELOG.md)** — Release notes, version history, and changes for each version
 - **[ARCHITECTURE.md](https://github.com/baloise/design-system/blob/next/docs/ARCHITECTURE.md)** — System design, workspace structure, component lifecycle, web components patterns, CSS variables, testing strategy
 - **[DEVELOPMENT.md](https://github.com/baloise/design-system/blob/next/docs/DEVELOPMENT.md)** — Local setup, dev servers, building, testing, troubleshooting

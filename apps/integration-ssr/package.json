@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "copy-assets": "copyfiles -u 5 \"node_modules/@baloise/ds-core/dist/design-system/**/*\" public/design-system && copyfiles -f node_modules/@baloise/ds-tokens/dist/css/base.tokens.css node_modules/@baloise/ds-styles/dist/css/design-system.css public",
+    "copy-assets": "copyfiles -u 5 \"node_modules/@helvetia-design/core/dist/design-system/**/*\" public/design-system && copyfiles -f node_modules/@helvetia-design/tokens/dist/css/base.tokens.css node_modules/@helvetia-design/styles/dist/css/design-system.css public",
     "predev": "pnpm copy-assets",
     "dev": "tsx watch server.ts",
     "prestart": "pnpm copy-assets",
@@ -15,9 +15,9 @@
     "play:run": "pnpm exec playwright test"
   },
   "dependencies": {
-    "@baloise/ds-core": "workspace:*",
-    "@baloise/ds-styles": "workspace:*",
-    "@baloise/ds-tokens": "workspace:*",
+    "@helvetia-design/core": "workspace:*",
+    "@helvetia-design/styles": "workspace:*",
+    "@helvetia-design/tokens": "workspace:*",
     "express": "catalog:"
   },
   "devDependencies": {

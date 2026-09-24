@@ -1,4 +1,4 @@
-import { DsCounter, expect, test } from '@baloise/ds-playwright'
+import { DsCounter, expect, test } from '@helvetia-design/playwright'
 
 test.describe('events', () => {
   test('fires dsInput, dsChange, dsIncrease on increase click', async ({ page }) => {

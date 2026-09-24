@@ -35,7 +35,7 @@ chain — without tracking `open` state yourself. `present()` mounts the given R
 `dismiss()` closes it and optionally forwards a result.
 
 ```tsx
-import { DsButton, DsModalBody, DsModalHeader, useModal } from '@baloise/ds-react'
+import { DsButton, DsModalBody, DsModalHeader, useModal } from '@helvetia-design/react'
 
 export function ImperativeModalExample() {
   const [present, dismiss] = useModal()
@@ -62,12 +62,12 @@ Use `Modal` as a controlled component. Update `open` through `onOpenChange` so R
 user closes the modal with Escape, the close button, or the backdrop.
 
 <InfoQuote>
-  Import `Modal` from `@baloise/ds-react`. The generated `DsModal` wrapper is deprecated.
+  Import `Modal` from `@helvetia-design/react`. The generated `DsModal` wrapper is deprecated.
 </InfoQuote>
 
 ```tsx
 import { useState } from 'react'
-import { DsButton, DsModalBody, DsModalHeader, Modal } from '@baloise/ds-react'
+import { DsButton, DsModalBody, DsModalHeader, Modal } from '@helvetia-design/react'
 
 export function ModalExample() {
   const [isOpen, setIsOpen] = useState(false)
@@ -99,7 +99,7 @@ export function ModalExample() {
 
 ## Imperative modal
 
-Use `dsModalController` from `@baloise/ds-core` to present a modal without adding markup to the page. `create()`
+Use `dsModalController` from `@helvetia-design/core` to present a modal without adding markup to the page. `create()`
 mounts a `ds-modal` into the document and opens it; append your header, body, and actions afterwards — the slots
 pick them up automatically. `dismiss()` closes the currently open modal.
 
@@ -107,7 +107,7 @@ pick them up automatically. `dismiss()` closes the currently open modal.
 <ds-button id="open-modal">Open modal</ds-button>
 
 <script type="module">
-  import { dsModalController } from '@baloise/ds-core'
+  import { dsModalController } from '@helvetia-design/core'
 
   document.querySelector('#open-modal').addEventListener('click', async () => {
     const header = document.createElement('ds-modal-header')

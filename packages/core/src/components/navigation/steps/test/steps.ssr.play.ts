@@ -1,5 +1,5 @@
-import { DsSteps, mountSsr, test } from '@baloise/ds-playwright'
-import { renderToString } from '@baloise/ds-core/hydrate'
+import { DsSteps, mountSsr, test } from '@helvetia-design/playwright'
+import { renderToString } from '@helvetia-design/core/hydrate'
 
 const PANELS = `
   <ds-step name="a" label="Cart"></ds-step>

@@ -10,7 +10,7 @@ import {
   useModal,
   useSnackbar,
   useToast,
-} from '@baloise/ds-react'
+} from '@helvetia-design/react'
 
 const OverlayDemos = () => {
   const [isOpen, setIsOpen] = useState(false)

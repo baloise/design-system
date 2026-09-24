@@ -5,14 +5,14 @@ import { DsRootSSRProvider } from './ds-root-ssr-provider'
 const initialize = vi.fn()
 const defineCustomElements = vi.fn().mockResolvedValue(undefined)
 
-vi.mock('@baloise/ds-core', () => ({
+vi.mock('@helvetia-design/core', () => ({
   initializeDesignSystem: (config: unknown) => {
     initialize(config)
     ;(window as Window & { DesignSystem?: { config?: unknown } }).DesignSystem = { config: {} }
   },
 }))
 
-vi.mock('@baloise/ds-core/loader', () => ({
+vi.mock('@helvetia-design/core/loader', () => ({
   defineCustomElements: () => defineCustomElements(),
 }))
 

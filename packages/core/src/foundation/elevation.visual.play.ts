@@ -1,4 +1,4 @@
-import { expectScreenshot, screenshot, test } from '@baloise/ds-playwright'
+import { expectScreenshot, screenshot, test } from '@helvetia-design/playwright'
 
 const TAG = 'elevation'
 const VARIANTS = ['z-index', 'opacity', 'shadow', 'text-shadow']

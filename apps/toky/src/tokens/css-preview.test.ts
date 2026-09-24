@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { resolvedValueToCss, tokenNameToCssVar } from '@baloise/ds-tokens/css-preview'
+import { resolvedValueToCss, tokenNameToCssVar } from '@helvetia-design/tokens/css-preview'
 
 import { computeBrandPreviewTokens, computePreviewTokens } from './css-preview'
 import type { TokenDiffEntry, WorkingToken } from './edit'

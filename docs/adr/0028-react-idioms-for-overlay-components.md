@@ -10,7 +10,7 @@ Accepted. Supersedes [ADR-0003](0003-ds-react-no-custom-output-target.md) for th
 
 ## Context
 
-[ADR-0003](0003-ds-react-no-custom-output-target.md) decided that `@baloise/ds-react` needed no custom output-target package: `@stencil/react-output-target` already generates typed wrappers, and React consumers handle controlled/uncontrolled state themselves. That still holds for generation — there is still no `libs/output-target-react`, and Stencil still emits a wrapper for every `ds-*` component.
+[ADR-0003](0003-ds-react-no-custom-output-target.md) decided that `@helvetia-design/react` needed no custom output-target package: `@stencil/react-output-target` already generates typed wrappers, and React consumers handle controlled/uncontrolled state themselves. That still holds for generation — there is still no `libs/output-target-react`, and Stencil still emits a wrapper for every `ds-*` component.
 
 Three overlay-style components do not fit a raw generated wrapper as the _public_ React API:
 
@@ -28,7 +28,7 @@ Keep generating every wrapper with the stock `@stencil/react-output-target` (no 
 - **`src/hooks/use-modal.ts`**: scaffolded `[present, dismiss]` hook that will pass a detached element as `ModalOptions.component` once that lands in core ([#2120](https://github.com/baloise/design-system/issues/2120)).
 
 The generated `DsModal`, `DsToast`, `DsSnackbar`, and `DsAlertContainer`
-**values** stay re-exported from `@baloise/ds-react` via `src/wrappers.ts`,
+**values** stay re-exported from `@helvetia-design/react` via `src/wrappers.ts`,
 marked `@deprecated` in favor of `Modal`, `useToast`, and `useSnackbar`.
 Generated overlay _types_ (`DsModalEvents`, etc.) still come through
 `export type *` so the rest of the typed barrel stays mechanical. Idiom
@@ -39,7 +39,7 @@ This is not a custom output target. Generation stays stock; only the public barr
 
 ## Consequences
 
-- Overlay consumers get a React-idiomatic API instead of fighting mutable `open` or importing vanilla controllers from `@baloise/ds-core`. Existing imports of the generated overlay wrappers keep compiling, with a deprecation diagnostic pointing at the idiom.
+- Overlay consumers get a React-idiomatic API instead of fighting mutable `open` or importing vanilla controllers from `@helvetia-design/core`. Existing imports of the generated overlay wrappers keep compiling, with a deprecation diagnostic pointing at the idiom.
 - `useToast` / `useSnackbar` must call Stencil's `defineCustomElement()` for the tags their controllers create at runtime. The shared controller hook defines `ds-alert-container` inline, while each public hook defines `ds-toast` or `ds-snackbar` inline. The generated wrappers are `/*@__PURE__*/`, so importing only the hook would otherwise let consumer bundlers drop the custom-element definitions. The type-specific imports remain separate so each hook tree-shakes independently.
 - Adding a new `ds-*` component still only requires the Stencil generator, except that `packages/react/src/wrappers.ts` must list it — unit tests fail when a generated wrapper is not re-exported.
 - `useModal()` is not functional until core accepts `ModalOptions.component` (#2120). `Modal`, `useToast()`, and `useSnackbar()` do not depend on that work.

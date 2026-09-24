@@ -1,4 +1,4 @@
-import { test, expectScreenshot, screenshot } from '@baloise/ds-playwright'
+import { test, expectScreenshot, screenshot } from '@helvetia-design/playwright'
 
 const TAG = 'app-navbar'
 const image = screenshot(TAG)

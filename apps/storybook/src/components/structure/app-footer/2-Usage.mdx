@@ -31,7 +31,7 @@ Set the defaults once in `provideDesignSystem()`, in `app.config.ts`.
 
 <Code language="typescript" code={`
 import { ApplicationConfig } from '@angular/core'
-import { provideDesignSystem } from '@baloise/ds-angular'
+import { provideDesignSystem } from '@helvetia-design/angular'
 
 export const appConfig: ApplicationConfig = {
 ${' '}providers: [
@@ -72,7 +72,7 @@ ${' '}],
 Pass the defaults as props on `DsRootProvider`. Override `legalText` per instance with a prop on `DsAppFooter`.
 
 <Code language="tsx" code={`
-import { DsAppFooter, DsRootProvider } from '@baloise/ds-react'
+import { DsAppFooter, DsRootProvider } from '@helvetia-design/react'
 
 function App() {
 ${' '}return (
@@ -105,7 +105,7 @@ Set the defaults once with `initialize()` (or `updateDsLegalLinks` / `updateDsLe
 runtime).
 
 <Code language="ts" code={`
-import { initialize } from '@baloise/ds-core'
+import { initialize } from '@helvetia-design/core'
 
 initialize({
 ${' '}region: 'CH',

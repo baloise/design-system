@@ -1,4 +1,4 @@
-import { DsHeading, test } from '@baloise/ds-playwright'
+import { DsHeading, test } from '@helvetia-design/playwright'
 
 test.describe('component', () => {
   test('should have a default slot', async ({ page }) => {

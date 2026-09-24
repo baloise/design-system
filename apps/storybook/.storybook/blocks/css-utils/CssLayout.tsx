@@ -1,6 +1,6 @@
 import React from 'react'
 import { CssTable } from './helpers/CssTable'
-import tokens from '@baloise/ds-tokens/dist/docs/base.tokens.json'
+import tokens from '@helvetia-design/tokens/dist/docs/base.tokens.json'
 import { CssUtilitiesTable } from './helpers/CssPropertyTable'
 
 export const CssLayoutContainer = ({}) => {

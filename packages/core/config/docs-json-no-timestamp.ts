@@ -92,7 +92,7 @@ export function parsePOFile(content: string): PageObjectData | null {
     }
   }
 
-  return { class: className, import: '@baloise/ds-playwright', locators, actions, assertions }
+  return { class: className, import: '@helvetia-design/playwright', locators, actions, assertions }
 }
 
 function extractComponentPageObjects(playwrightDir: string): Map<string, PageObjectData> {

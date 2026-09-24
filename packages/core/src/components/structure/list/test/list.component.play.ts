@@ -1,4 +1,4 @@
-import { DsItem, DsList, expect, test } from '@baloise/ds-playwright'
+import { DsItem, DsList, expect, test } from '@helvetia-design/playwright'
 
 test.describe('component', () => {
   test('should render ds-list', async ({ page }) => {

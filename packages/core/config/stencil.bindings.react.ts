@@ -4,7 +4,7 @@ export const ReactGenerator = (): any =>
   reactOutputTarget({
     outDir: '../react/src/generated',
     customElementsDir: 'components',
-    hydrateModule: '@baloise/ds-core/hydrate',
+    hydrateModule: '@helvetia-design/core/hydrate',
     /**
      * Required by `@stencil/react-output-target` whenever `hydrateModule` is set.
      * The generated `components.server.ts` namespace-imports the sibling client wrappers.

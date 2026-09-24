@@ -1,4 +1,4 @@
-import { expectScreenshot, screenshot, test } from '@baloise/ds-playwright'
+import { expectScreenshot, screenshot, test } from '@helvetia-design/playwright'
 
 const TAG = 'colors'
 const VARIANTS = ['primary', 'grey', 'sky', 'purple', 'green', 'red', 'yellow', 'info', 'success', 'warning', 'danger']

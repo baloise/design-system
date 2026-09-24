@@ -1,4 +1,4 @@
-import { DsToggle, expect, test } from '@baloise/ds-playwright'
+import { DsToggle, expect, test } from '@helvetia-design/playwright'
 
 test.describe('dsChange', () => {
   test('should fire dsChange with true when checked', async ({ page }) => {

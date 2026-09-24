@@ -1,4 +1,4 @@
-import { DsPagination, expect, test } from '@baloise/ds-playwright'
+import { DsPagination, expect, test } from '@helvetia-design/playwright'
 
 test.describe('dsChange — page click', () => {
   test('should fire dsChange with the clicked page number', async ({ page }) => {

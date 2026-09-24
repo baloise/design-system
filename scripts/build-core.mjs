@@ -25,7 +25,7 @@ console.log(`
 // 1. Run Stencil build
 // ============================================================================
 // Documentation builds only run the `dist` output target (see stencil.config.ts) so Storybook's
-// preview can import `@baloise/ds-core` directly, but Stencil still validates that every path in
+// preview can import `@helvetia-design/core` directly, but Stencil still validates that every path in
 // package.json's "files" array exists once any dist-collection target is active — including
 // "components/" and "hydrate/", which come from output targets that stay skipped in docs mode.
 // Pre-create them as empty placeholders so that validation passes.

@@ -4,7 +4,7 @@ import {
   DsAliasBreakpointDesktopLg,
   DsAliasBreakpointDesktopXl,
   DsAliasBreakpointDesktop2Xl,
-} from '@baloise/ds-tokens'
+} from '@helvetia-design/tokens'
 
 const breakpointTablet = DsAliasBreakpointTablet
 const breakpointDesktop = DsAliasBreakpointDesktop

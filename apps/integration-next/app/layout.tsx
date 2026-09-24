@@ -1,12 +1,12 @@
 import type { Metadata } from 'next'
-import { DsRootSSRProvider } from '@baloise/ds-react'
+import { DsRootSSRProvider } from '@helvetia-design/react'
 
-import '@baloise/ds-tokens/css/base'
-import '@baloise/ds-styles/css/design-system'
+import '@helvetia-design/tokens/css/base'
+import '@helvetia-design/styles/css/design-system'
 
 export const metadata: Metadata = {
   title: 'ds-react Next.js SSR',
-  description: 'SSR verification app for @baloise/ds-react',
+  description: 'SSR verification app for @helvetia-design/react',
 }
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {

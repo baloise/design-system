@@ -8,7 +8,7 @@
  * parent class. Importing these generated constants instead of hand-listing every prop keeps that
  * declaration in sync with the underlying Stencil component automatically.
  *
- * Run as part of `pnpm --filter @baloise/ds-core build`, after Stencil has (re)written proxies.ts. Safe to
+ * Run as part of `pnpm --filter @helvetia-design/core build`, after Stencil has (re)written proxies.ts. Safe to
  * call unconditionally: `proxies.ts` only exists when Stencil's `AngularGenerator()` output target actually
  * ran (it's skipped in dev/docs builds — see `stencil.config.ts`), so its presence on disk is itself the
  * single source of truth for whether there's anything to generate meta from, rather than the caller having

@@ -1,4 +1,4 @@
-import { test, DsData, DsDataItem } from '@baloise/ds-playwright'
+import { test, DsData, DsDataItem } from '@helvetia-design/playwright'
 
 test.describe('ds-data', () => {
   test.describe('vertical layout (default)', () => {

@@ -1,4 +1,4 @@
-import { DsLabel, test } from '@baloise/ds-playwright'
+import { DsLabel, test } from '@helvetia-design/playwright'
 
 test.describe('component', () => {
   test('should have a default slot', async ({ page }) => {

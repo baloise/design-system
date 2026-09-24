@@ -1,4 +1,4 @@
-import { test } from '@baloise/ds-playwright'
+import { test } from '@helvetia-design/playwright'
 
 test('basic', async ({ page, a11y }) => {
   test.skip(true, 'Contrast issue tracked in https://github.com/baloise/design-system/issues/2189')

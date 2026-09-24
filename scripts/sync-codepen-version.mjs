@@ -1,6 +1,6 @@
 /**
  * Sync codepen version — updates DESIGN_SYSTEM_VERSION in apps/storybook/.storybook/blocks/codepen.ts
- * to match the current @baloise/ds-core package version. Run after `changeset version`.
+ * to match the current @helvetia-design/core package version. Run after `changeset version`.
  */
 import { readFile, writeFile } from 'node:fs/promises'
 import { resolve, dirname } from 'node:path'

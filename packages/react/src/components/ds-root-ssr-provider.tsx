@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react'
-import type { DsConfig, DsLanguage } from '@baloise/ds-core'
+import type { DsConfig, DsLanguage } from '@helvetia-design/core'
 import { omitUndefined, parseAllowedLanguages } from './ds-root-provider.shared'
 import { DsRootSSRBoot } from './ds-root-ssr-boot'
 

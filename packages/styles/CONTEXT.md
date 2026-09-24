@@ -83,16 +83,16 @@ All utility values come from design tokens. No hardcoded colors, sizes, or spaci
 
 When a token value changes, utility classes automatically reflect the new value.
 
-**ds-styles never ships token values, only `var(--ds-*)` references.** `@baloise/ds-tokens` is
+**ds-styles never ships token values, only `var(--ds-*)` references.** `@helvetia-design/tokens` is
 a build-time-only (`devDependencies`) input — `packages/styles/src/build.ts` reads its token JSON
 to know which var names to reference when generating a utility like `.p-lg { padding:
 var(--ds-alias-space-lg) }`, but no ds-styles output (`utilities.css`, `design-system.css`, …) ever
 re-declares `--ds-alias-space-lg`'s actual value. A consumer of ds-styles
-must separately install `@baloise/ds-tokens` and load one of its theme files (see
+must separately install `@helvetia-design/tokens` and load one of its theme files (see
 [[packages/tokens|packages/tokens/CONTEXT.md]]'s "Theme File vs Override File") for those
 references to resolve to anything — see
 [ADR-0030](../../docs/adr/0030-full-merge-brand-token-css.md). The one exception is
-`foundation.scss`'s `@use '@baloise/ds-tokens/dist/sass/base.tokens.scss'`, a narrow Sass-only import
+`foundation.scss`'s `@use '@helvetia-design/tokens/dist/sass/base.tokens.scss'`, a narrow Sass-only import
 of just the Breakpoint tokens, needed for `@media` mixins at compile time — that's a Sass
 variable, not a shipped CSS custom property, so it isn't "bundling tokens" in the sense this
 section means.
@@ -136,7 +136,7 @@ Utilities are generated from `packages/tokens/dist/json/tokens.json` via a build
 - **Mobile-first responsive** — Base rules apply to mobile; add breakpoint prefixes for larger screens
 - **Standards compliance** — Use standard CSS features; avoid experimental syntax
 - **No token values in shipped output** — ds-styles output references `var(--ds-*)` names only;
-  the values themselves come from a separately installed `@baloise/ds-tokens` theme file, never
+  the values themselves come from a separately installed `@helvetia-design/tokens` theme file, never
   from ds-styles itself (see [ADR-0030](../../docs/adr/0030-full-merge-brand-token-css.md))
 
 ## Related Contexts

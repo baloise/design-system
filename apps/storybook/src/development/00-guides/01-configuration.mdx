@@ -60,7 +60,7 @@ Pass the config to `provideDesignSystem()` in `app.config.ts`.
 
 <Code language="typescript" code={`
 import { ApplicationConfig } from '@angular/core'
-import { provideDesignSystem } from '@baloise/ds-angular'
+import { provideDesignSystem } from '@helvetia-design/angular'
 
 export const appConfig: ApplicationConfig = {
 ${' '}providers: [
@@ -84,7 +84,7 @@ Wrap the application in `DsRootProvider` and pass config items as props. It call
 on first render.
 
 <Code language="tsx" code={`
-import { DsRootProvider } from '@baloise/ds-react'
+import { DsRootProvider } from '@helvetia-design/react'
 
 function App() {
 ${' '}return (
@@ -102,7 +102,7 @@ ${' '})
 Call `initialize()` before any design system component renders.
 
 <Code language="ts" code={`
-import { initialize } from '@baloise/ds-core'
+import { initialize } from '@helvetia-design/core'
 
 initialize({
 ${' '}brand: 'helvetia',
@@ -139,11 +139,11 @@ Only `brand`, `region`, `language`, `fallbackLanguage`, `allowedLanguages` (comm
 
 <AngularFramework>
 
-Import the `updateDs*` functions from `@baloise/ds-core` and call them wherever the change originates.
+Import the `updateDs*` functions from `@helvetia-design/core` and call them wherever the change originates.
 
 <Code language="typescript" code={`
 import { Component } from '@angular/core'
-import { updateDsLanguage, updateDsRegion, DsSwissLanguage } from '@baloise/ds-core'
+import { updateDsLanguage, updateDsRegion, DsSwissLanguage } from '@helvetia-design/core'
 
 @Component({
 ${' '}selector: 'app-tab-a',
@@ -170,8 +170,8 @@ new values automatically.
 
 <Code language="tsx" code={`
 import { useState } from 'react'
-import { DsRootProvider } from '@baloise/ds-react'
-import type { DsLanguage } from '@baloise/ds-core'
+import { DsRootProvider } from '@helvetia-design/react'
+import type { DsLanguage } from '@helvetia-design/core'
 
 function App() {
 ${' '}const [language, setLanguage] = useState<DsLanguage>('de')
@@ -194,11 +194,11 @@ ${' '})
 
 <HTMLFramework>
 
-Call the matching `updateDs*` function from `@baloise/ds-core`, or set the property/attribute directly on
+Call the matching `updateDs*` function from `@helvetia-design/core`, or set the property/attribute directly on
 `<ds-root>` — both end up updating the same global config.
 
 <Code language="typescript" code={`
-import { updateDsLanguage, updateDsRegion, updateDsAllowedLanguages } from '@baloise/ds-core'
+import { updateDsLanguage, updateDsRegion, updateDsAllowedLanguages } from '@helvetia-design/core'
 
 updateDsLanguage('de')
 updateDsRegion('CH')
@@ -225,7 +225,7 @@ event. Everything else (`icons`, `legalLinks`, `legalText`, `socialLinks`, `logg
 
 <Code language="typescript" code={`
 import { Component, OnInit } from '@angular/core'
-import { onDsConfigChange, DsConfigState } from '@baloise/ds-core'
+import { onDsConfigChange, DsConfigState } from '@helvetia-design/core'
 
 @Component({
 ${' '}selector: 'app-sample',
@@ -251,8 +251,8 @@ Listen to the corresponding `onDs*Change` event on `DsRootProvider` instead of c
 
 <Code language="tsx" code={`
 import { useState } from 'react'
-import { DsRootProvider } from '@baloise/ds-react'
-import type { DsLanguage } from '@baloise/ds-core'
+import { DsRootProvider } from '@helvetia-design/react'
+import type { DsLanguage } from '@helvetia-design/core'
 
 function App() {
 ${' '}const [language, setLanguage] = useState<DsLanguage>()
@@ -273,7 +273,7 @@ ${' '})
 For `icons`, `legalLinks`, `legalText`, `socialLinks`, or `logger`, fall back to `onDsConfigChange`.
 
 <Code language="tsx" code={`
-import { onDsConfigChange, DsConfigState } from '@baloise/ds-core'
+import { onDsConfigChange, DsConfigState } from '@helvetia-design/core'
 
 onDsConfigChange((config: DsConfigState) => {
 ${' '}// do something with the updated config here
@@ -288,7 +288,7 @@ Register a callback with `onDsConfigChange`, or listen to the matching DOM event
 about one field.
 
 <Code language="typescript" code={`
-import { onDsConfigChange, DsConfigState } from '@baloise/ds-core'
+import { onDsConfigChange, DsConfigState } from '@helvetia-design/core'
 
 onDsConfigChange((config: DsConfigState) => {
 ${' '}// do something with the updated config here

@@ -1,4 +1,4 @@
-import { DsNumberInput, expect, test } from '@baloise/ds-playwright'
+import { DsNumberInput, expect, test } from '@helvetia-design/playwright'
 
 test.describe('component', () => {
   test('should fire dsInput with numeric value on fill', async ({ page }) => {

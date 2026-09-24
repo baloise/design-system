@@ -1,7 +1,7 @@
 import type { TokenDiffEntry } from './edit'
 
 // Toky only ever touches the tokens package's source file.
-const CHANGESET_PACKAGE = '@baloise/ds-tokens'
+const CHANGESET_PACKAGE = '@helvetia-design/tokens'
 
 export type ChangesetBumpLevel = 'patch' | 'minor' | 'major'
 

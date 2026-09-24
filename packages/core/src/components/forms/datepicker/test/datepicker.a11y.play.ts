@@ -1,4 +1,4 @@
-import { DsDatepicker, test } from '@baloise/ds-playwright'
+import { DsDatepicker, test } from '@helvetia-design/playwright'
 
 test('basic', async ({ page, a11y }) => {
   await page.mount(`<ds-datepicker label="Date of birth"></ds-datepicker>`)

@@ -7,7 +7,7 @@ import { DsRootProvider as DsRootProviderServer } from './ds-root-provider.serve
 const initialize = vi.fn()
 const DsRoot = vi.fn(({ children }: { children?: ReactNode }) => <div data-testid="ds-root">{children}</div>)
 
-vi.mock('@baloise/ds-core', () => ({
+vi.mock('@helvetia-design/core', () => ({
   initializeDesignSystem: (config: unknown) => {
     initialize(config)
     ;(window as Window & { DesignSystem?: { config?: unknown } }).DesignSystem = { config: {} }

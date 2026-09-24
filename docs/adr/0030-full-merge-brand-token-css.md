@@ -17,7 +17,7 @@ the brand's `[data-theme]` block winning the cascade over `:root`'s Base
 declarations, i.e. on load order and selector specificity rather than on the
 brand file being self-sufficient. This produced real override bugs.
 
-Separately, `packages/styles` (ds-styles) depended on `@baloise/ds-tokens` and
+Separately, `packages/styles` (ds-styles) depended on `@helvetia-design/tokens` and
 prepended the full `base.tokens.css` declarations into its own
 `utilities.css`/`design-system.css`/`design-system.local.css`/`base.css`
 bundles, so a consumer of ds-styles got Base's tokens whether it wanted them or
@@ -46,14 +46,14 @@ not, with no way to substitute a brand's tokens instead.
 - This full-merge treatment is CSS-only — the sass/web(json)/javascript/docs
   Style Dictionary platforms stay Base-only, unchanged.
 - `ds-styles` no longer bundles literal `--ds-*` declarations into any output
-  it ships. `@baloise/ds-tokens` moves from its `dependencies` to
+  it ships. `@helvetia-design/tokens` moves from its `dependencies` to
   `devDependencies` — `packages/styles/src/build.ts` still reads
   `dist/docs/base.tokens.json` at build time to emit utility classes that
   reference `var(--ds-*)` names, it just never re-declares the values.
   Consumers of ds-styles must separately install and load a theme file from
   ds-tokens for those references to resolve.
   `packages/styles/src/scss/foundation.scss`'s
-  `@use '@baloise/ds-tokens/dist/sass/base.tokens.scss'` (filtered to
+  `@use '@helvetia-design/tokens/dist/sass/base.tokens.scss'` (filtered to
   `Breakpoint` tokens only, feeding Sass `@media` mixins) is a distinct,
   narrower mechanism and is unaffected.
 - `packages/tokens/package.json` gains explicit `exports` subpaths per file
@@ -79,5 +79,5 @@ not, with no way to substitute a brand's tokens instead.
   div.
 - Any app that was relying on ds-styles to supply Base's tokens implicitly
   (via the old bundled `utilities.css`/`design-system.css`) breaks until it
-  adds an explicit `@baloise/ds-tokens` dependency and loads the right theme
+  adds an explicit `@helvetia-design/tokens` dependency and loads the right theme
   file itself.

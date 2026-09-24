@@ -1,6 +1,6 @@
 import { Component, signal } from '@angular/core'
 import { FormControl, FormGroup, ReactiveFormsModule, ValidationErrors, ValidatorFn } from '@angular/forms'
-import { DsCheckbox, DsCheckboxGroup } from '@baloise/ds-angular'
+import { DsCheckbox, DsCheckboxGroup } from '@helvetia-design/angular'
 
 // `ds-checkbox-group`'s `value` is an array, so "empty" is a zero-length array rather than `null`/`undefined`
 // — the same role `requiredWithMessage`/`minValueWithMessage` play in the other demos' reactive forms.

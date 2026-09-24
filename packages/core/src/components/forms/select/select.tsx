@@ -226,7 +226,7 @@ export class DsSelect implements DsComponentInterface, FieldInterface {
   }
 
   /**
-   * If `true`, disables the automatic `invalid`/`invalidText` behavior that the `@baloise/ds-angular` integration
+   * If `true`, disables the automatic `invalid`/`invalidText` behavior that the `@helvetia-design/angular` integration
    * applies when the bound `NgControl` is touched and invalid. Only affects the Angular integration; it is a no-op
    * in other framework integrations.
    */
@@ -285,7 +285,7 @@ export class DsSelect implements DsComponentInterface, FieldInterface {
     this.readOptionsFromSlot()
 
     // `slim-select` (the picker library) uses `MutationObserver` unconditionally during setup —
-    // unavailable in Node's SSR mock-doc (`@baloise/ds-core/hydrate`). The picker only matters for
+    // unavailable in Node's SSR mock-doc (`@helvetia-design/core/hydrate`). The picker only matters for
     // user interaction, which SSR output can't have, so skip it there.
     if (typeof MutationObserver === 'undefined') {
       this.syncFormValue(this.value)

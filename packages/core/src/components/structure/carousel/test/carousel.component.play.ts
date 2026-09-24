@@ -1,4 +1,4 @@
-import { DsCarousel, expect, test } from '@baloise/ds-playwright'
+import { DsCarousel, expect, test } from '@helvetia-design/playwright'
 
 const ITEMS = `
   <ds-carousel-item name="s1"><div style="height:150px">Slide 1</div></ds-carousel-item>
