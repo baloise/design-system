@@ -81,7 +81,7 @@ export const Field: FunctionalComponent<FieldProps> = (props, children) => {
         {/* ---------------------------------------- */}
         {/* Description / Invalid Text               */}
         {/* ---------------------------------------- */}
-        {props.label && (
+        {(props.label || props.description || props.invalidText || props.invalid) && (
           <span id="description" part="description" role={props.invalid && props.invalidText ? 'alert' : undefined}>
             {props.invalid && props.invalidText && <ds-icon name="alert"></ds-icon>}
             {props.invalid ? (

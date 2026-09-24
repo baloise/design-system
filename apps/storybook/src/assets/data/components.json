@@ -29678,7 +29678,8 @@
         "ds-step",
         "ds-tabs",
         "ds-textarea",
-        "ds-toast"
+        "ds-toast",
+        "ds-toggle"
       ],
       "dependencies": [],
       "dependencyGraph": {
@@ -29755,6 +29756,9 @@
           "ds-icon"
         ],
         "ds-toast": [
+          "ds-icon"
+        ],
+        "ds-toggle": [
           "ds-icon"
         ]
       },
@@ -54938,7 +54942,8 @@
         "ds-segment",
         "ds-select",
         "ds-slider",
-        "ds-textarea"
+        "ds-textarea",
+        "ds-toggle"
       ],
       "dependencies": [],
       "dependencyGraph": {
@@ -54979,6 +54984,9 @@
           "ds-spinner"
         ],
         "ds-textarea": [
+          "ds-spinner"
+        ],
+        "ds-toggle": [
           "ds-spinner"
         ]
       },
@@ -65508,6 +65516,10 @@
           "text": "helper - The helper or hint text below the toggle."
         },
         {
+          "name": "slot",
+          "text": "invalid-text - Overrides the `invalidText` prop with custom markup, shown instead of the description when `invalid` is `true`."
+        },
+        {
           "name": "part",
           "text": "label - The label element wrapping the toggle."
         },
@@ -65522,8 +65534,16 @@
       ],
       "encapsulation": "shadow",
       "dependents": [],
-      "dependencies": [],
-      "dependencyGraph": {},
+      "dependencies": [
+        "ds-spinner",
+        "ds-icon"
+      ],
+      "dependencyGraph": {
+        "ds-toggle": [
+          "ds-spinner",
+          "ds-icon"
+        ]
+      },
       "props": [
         {
           "name": "autoInvalidOff",
@@ -65535,8 +65555,8 @@
           },
           "mutable": false,
           "attr": "auto-invalid-off",
-          "reflectToAttr": false,
-          "docs": "If `true`, in Angular reactive forms the control will not be set invalid",
+          "reflectToAttr": true,
+          "docs": "If `true`, disables the automatic `invalid`/`invalidText` behavior that the `@baloise/ds-angular` integration\napplies when the bound `NgControl` is touched and invalid. Only affects the Angular integration; it is a no-op\nin other framework integrations.",
           "docsTags": [
             {
               "name": "default",
@@ -65663,6 +65683,35 @@
           "values": [
             {
               "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "invalidText",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "invalid-text",
+          "reflectToAttr": false,
+          "docs": "The text to display when the toggle is in an invalid state.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "''"
+            }
+          ],
+          "default": "''",
+          "values": [
+            {
+              "type": "string"
             }
           ],
           "optional": false,
@@ -65991,6 +66040,26 @@
         {
           "name": "--toggle-helper-font-size",
           "docs": "Font size of helper text."
+        },
+        {
+          "name": "--form-description-color",
+          "docs": "Text color of the invalid text below the toggle."
+        },
+        {
+          "name": "--form-description-family",
+          "docs": "Font family of the invalid text below the toggle."
+        },
+        {
+          "name": "--form-description-weight",
+          "docs": "Font weight of the invalid text below the toggle."
+        },
+        {
+          "name": "--form-description-size",
+          "docs": "Font size of the invalid text below the toggle."
+        },
+        {
+          "name": "--form-description-line-height",
+          "docs": "Line height of the invalid text below the toggle."
         }
       ],
       "slots": [
@@ -66001,6 +66070,10 @@
         {
           "name": "helper",
           "docs": "The helper or hint text below the toggle."
+        },
+        {
+          "name": "invalid-text",
+          "docs": "Overrides the `invalidText` prop with custom markup, shown instead of the description when `invalid` is `true`."
         }
       ],
       "parts": [

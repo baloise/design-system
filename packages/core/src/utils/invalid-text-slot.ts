@@ -10,15 +10,20 @@ import { directChildren } from './dom'
  */
 export function watchInvalidTextSlot(el: HTMLElement, onChange: (hasContent: boolean) => void): () => void {
   let contentObserver: MutationObserver | undefined
+  let observedSlotted: HTMLElement | undefined
 
   const check = () => {
     const slotted = directChildren<HTMLElement>(el, child => child.getAttribute('slot') === 'invalid-text')[0]
     onChange(!!slotted && (slotted.textContent ?? '').trim().length > 0)
 
-    contentObserver?.disconnect()
-    if (slotted && typeof MutationObserver !== 'undefined') {
-      contentObserver = new MutationObserver(check)
-      contentObserver.observe(slotted, { childList: true, characterData: true, subtree: true })
+    if (slotted !== observedSlotted) {
+      contentObserver?.disconnect()
+      observedSlotted = slotted ?? undefined
+      contentObserver = undefined
+      if (slotted && typeof MutationObserver !== 'undefined') {
+        contentObserver = new MutationObserver(check)
+        contentObserver.observe(slotted, { childList: true, characterData: true, subtree: true })
+      }
     }
   }
 

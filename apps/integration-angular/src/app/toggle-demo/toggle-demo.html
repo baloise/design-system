@@ -1,0 +1,28 @@
+<h2>Toggle demo</h2>
+
+<p data-testid="toggle-value">Toggle value: {{ toggleValue() }}</p>
+<ds-toggle data-testid="toggle" name="smoke-test-toggle" [checked]="toggleValue()" (dsChange)="onChange($event)">
+  Accept
+</ds-toggle>
+
+<form [formGroup]="reactiveForm">
+  <ds-toggle data-testid="reactive-toggle" name="reactive-toggle" formControlName="accepted">
+    Accept terms and conditions
+  </ds-toggle>
+</form>
+<p data-testid="reactive-toggle-value">Reactive value: {{ reactiveForm.controls.accepted.value }}</p>
+<button data-testid="toggle-reactive-toggle-disabled" type="button" (click)="toggleReactiveFormDisabled()">
+  Toggle disabled
+</button>
+<button data-testid="set-reactive-toggle-value" type="button" (click)="setReactiveFormValue()">Set to false</button>
+
+<form [formGroup]="autoInvalidOffForm">
+  <ds-toggle
+    data-testid="auto-invalid-off-toggle"
+    name="auto-invalid-off-toggle"
+    autoInvalidOff
+    formControlName="accepted"
+  >
+    Accept terms and conditions
+  </ds-toggle>
+</form>

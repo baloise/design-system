@@ -3654,7 +3654,7 @@ export namespace Components {
      */
     interface DsToggle {
         /**
-          * If `true`, in Angular reactive forms the control will not be set invalid
+          * If `true`, disables the automatic `invalid`/`invalidText` behavior that the `@helvetia-design/angular` integration applies when the bound `NgControl` is touched and invalid. Only affects the Angular integration; it is a no-op in other framework integrations.
           * @default false
          */
         "autoInvalidOff": boolean;
@@ -3678,6 +3678,11 @@ export namespace Components {
           * @default false
          */
         "invalid": boolean;
+        /**
+          * The text to display when the toggle is in an invalid state.
+          * @default ''
+         */
+        "invalidText": string;
         /**
           * Label of the toggle item.
           * @default ''
@@ -9059,7 +9064,7 @@ declare namespace LocalJSX {
      */
     interface DsToggle {
         /**
-          * If `true`, in Angular reactive forms the control will not be set invalid
+          * If `true`, disables the automatic `invalid`/`invalidText` behavior that the `@helvetia-design/angular` integration applies when the bound `NgControl` is touched and invalid. Only affects the Angular integration; it is a no-op in other framework integrations.
           * @default false
          */
         "autoInvalidOff"?: boolean;
@@ -9087,6 +9092,11 @@ declare namespace LocalJSX {
           * @default false
          */
         "invalid"?: boolean;
+        /**
+          * The text to display when the toggle is in an invalid state.
+          * @default ''
+         */
+        "invalidText"?: string;
         /**
           * Label of the toggle item.
           * @default ''
@@ -9903,6 +9913,7 @@ declare namespace LocalJSX {
         "dense": boolean;
         "disabled": boolean;
         "invalid": boolean;
+        "invalidText": string;
         "label": string;
         "labelPosition": ToggleLabelPosition;
         "name": string;

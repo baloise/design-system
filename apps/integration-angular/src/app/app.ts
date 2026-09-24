@@ -12,6 +12,7 @@ import { SegmentDemo } from './segment-demo/segment-demo'
 import { TextareaDemo } from './textarea-demo/textarea-demo'
 import { RadioGroupDemo } from './radio-group-demo/radio-group-demo'
 import { SelectDemo } from './select-demo/select-demo'
+import { ToggleDemo } from './toggle-demo/toggle-demo'
 
 @Component({
   selector: 'app-root',
@@ -29,6 +30,7 @@ import { SelectDemo } from './select-demo/select-demo'
     RadioGroupDemo,
     FileUploadDemo,
     SelectDemo,
+    ToggleDemo,
   ],
   templateUrl: './app.html',
 })
