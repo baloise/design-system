@@ -90,3 +90,8 @@ test('with dropdown open', async ({ page, a11y }) => {
   await select.option('Germany').waitFor({ state: 'visible' })
   await a11y('ds-select')
 })
+
+test('with aria-label override', async ({ page, a11y }) => {
+  await mountSelect(page, `<ds-select label="Country" aria-label="Custom name"></ds-select>`)
+  await a11y('ds-select')
+})

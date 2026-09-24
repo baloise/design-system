@@ -298,6 +298,7 @@ export class DsSelect implements DsComponentInterface, FieldInterface {
       popupEl: this.popupEl,
       shadowRoot: this.el.shadowRoot,
       triggerId: this.selectId,
+      ariaLabel: this.inheritedAttributes['aria-label'],
       language: this.language,
       placeholder: this.placeholder,
       searchable: this.searchable,

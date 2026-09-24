@@ -241,3 +241,23 @@ test.describe('form reset', () => {
     await select.assertValue('Italy')
   })
 })
+
+test.describe('aria-label', () => {
+  test('should use the label prop as the accessible name by default', async ({ page }) => {
+    await page.mount(`<ds-select label="Country"></ds-select>`)
+    const select = new DsSelect(page.locator('ds-select'))
+    await setOptions(page, select.el, COUNTRY_OPTIONS)
+
+    await expect(select.trigger).toHaveAttribute('aria-labelledby', 'label')
+    await expect(select.trigger).not.toHaveAttribute('aria-label')
+  })
+
+  test('should let a consumer-provided aria-label override the accessible name', async ({ page }) => {
+    await page.mount(`<ds-select label="Country" aria-label="Custom name"></ds-select>`)
+    const select = new DsSelect(page.locator('ds-select'))
+    await setOptions(page, select.el, COUNTRY_OPTIONS)
+
+    await expect(select.trigger).toHaveAttribute('aria-label', 'Custom name')
+    await expect(select.trigger).not.toHaveAttribute('aria-labelledby')
+  })
+})
