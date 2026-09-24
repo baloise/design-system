@@ -658,7 +658,7 @@ vocabulary:
 - **Flags are supplementary, not the accessible name.** Each flag SVG is
   `aria-hidden`; the country's localized name is always present as visible/
   accessible text next to it. Flags are bundled as inline SVG strings in
-  `@baloise/ds-assets`, the same build-time approach as `ds-icon` — every
+  `@helvetia-design/assets`, the same build-time approach as `ds-icon` — every
   country ships in every consumer's bundle, no runtime asset path or
   consumer-side asset copy needed — see
   [docs/adr/0032-ds-input-phone-bundled-svg-flags.md](../../docs/adr/0032-ds-input-phone-bundled-svg-flags.md).

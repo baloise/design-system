@@ -11,7 +11,7 @@ Accepted
 ## Context
 
 `ds-toggle` reactive-forms support (issue #2283) requires `invalidText`, since
-`@baloise/ds-angular`'s `DsValueAccessor` (see `packages/angular/CONTEXT.md`)
+`@helvetia-design/angular`'s `DsValueAccessor` (see `packages/angular/CONTEXT.md`)
 derives `invalid`/`invalidText` from the bound `NgControl` and requires both
 properties to exist on the target element. `ds-toggle` had `invalid` but no
 `invalidText`, and — unlike every other `Field`-based form component

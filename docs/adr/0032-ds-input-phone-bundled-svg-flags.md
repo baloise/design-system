@@ -12,7 +12,7 @@ Accepted. Supersedes [ADR-0024](0024-ds-input-phone-lazy-svg-flags.md).
 
 A PR review of `ds-input-phone` flagged that consumers currently have to configure their own build
 to make the country flags show up at all: Angular apps need an `assets` glob entry in `angular.json`
-copying `@baloise/ds-core`'s `assets/flags` folder into their build output, React/Vite apps need a
+copying `@helvetia-design/core`'s `assets/flags` folder into their build output, React/Vite apps need a
 bespoke copy plugin (`apps/integration-react`'s `copyPhoneFlags()`), and neither step is documented
 anywhere a consumer would find it. That requirement exists because of
 [ADR-0024](0024-ds-input-phone-lazy-svg-flags.md)'s decision to resolve each country's flag SVG
