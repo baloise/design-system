@@ -20,7 +20,7 @@
   ],
   "tasks": {
     "build": {
-      "dependsOn": ["^build"],
+      "dependsOn": ["^build", "optimize"],
       "inputs": ["src/**", "app/**", "tokens/**", "!**/*.spec.*", "!**/*.play.*"],
       "outputs": [
         "dist/**",
