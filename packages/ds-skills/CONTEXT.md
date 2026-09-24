@@ -15,7 +15,7 @@ The first (and currently only) skill is **ds-migrate-from-baloise**: a menu-driv
 The package has two parts that must not be confused:
 
 - **Compiled CLI** — `src/cli.ts`, swc-compiled to `dist/cli.js`, exposed as `bin.ds-skills`. Its only job is the `add` subcommand: copy the skill payload into the consumer's `.claude/skills/` directory (creating parents, overwriting on re-run). Re-running `add` is how a consumer updates the skill. The CLI has no other subcommands until a second skill exists.
-- **Self-contained payload** — `skills/ds-migrate-from-baloise/`, plain uncompiled Markdown (and, later, plain Node scripts). Copied verbatim. After copy, the skill must run inside the consumer's repo with **zero runtime dependency** back on `@helvetia/ds-skills` or this monorepo — no imports from `node_modules/@helvetia/*`.
+- **Self-contained payload** — `skills/ds-migrate-from-baloise/`, plain uncompiled Markdown and dependency-free Node scripts. Copied verbatim. After copy, the skill must run inside the consumer's repo with **zero runtime dependency** back on `@helvetia/ds-skills` or this monorepo — no imports from `node_modules/@helvetia/*`.
 
 The compiled CLI is a delivery mechanism. The payload is the product.
 
@@ -25,7 +25,7 @@ Distribution is `npx @helvetia/ds-skills@next add`. There is no Claude Code plug
 
 ### One `migration.md` per component
 
-**Components** is a file-driven submenu. Adding a component means adding `components/<name>/migration.md` (title in the first heading). `SKILL.md` lists `components/*.md` and `components/*/migration.md` by title and dispatches to the chosen file; the menu control logic does not change. No component files ship in this package version — the first one lands in a follow-up.
+**Components** is a file-driven submenu. Adding a component means adding `components/<name>/migration.md` (title in the first heading). `SKILL.md` lists `components/*.md` and `components/*/migration.md` by title and dispatches to the chosen file; the menu control logic does not change. Spinner is the first one: `components/spinner/migration.md` (title `spinner`). `scripts/scan-bal-spinner.mjs` lists `bal-spinner` / `BalSpinner` usages as JSON. The agent rewrites them after one bulk confirmation, using that file as the mapping. The script does not edit files.
 
 ### Independent versioning
 
@@ -54,7 +54,7 @@ pnpm --filter @helvetia/ds-skills test
 pnpm --filter @helvetia/ds-skills lint
 ```
 
-Done when the CLI specs and `test/detect-baloise.spec.ts` pass and eslint exits 0.
+Done when the CLI specs, `test/detect-baloise.spec.ts`, and `test/scan-bal-spinner.spec.ts` pass and eslint exits 0.
 
 ### Scratch CLI
 
@@ -76,11 +76,11 @@ Done when:
 
 ### Menu (Claude)
 
-In the scratch directory, invoke `/ds-migrate-from-baloise`. Done when Init runs `scripts/detect-baloise.mjs`, Components reports no migrations available and stops, and CSS utils / Assets report "coming soon" and stop.
+In the scratch directory, invoke `/ds-migrate-from-baloise`. Done when Init runs `scripts/detect-baloise.mjs`, Components lists **spinner** from the first heading of `components/spinner/migration.md`, and CSS utils / Assets report "coming soon" and stop.
 
 Against a project with no `@baloise/ds-*` dependency and no CSS/JS import, Init says "no Baloise Design System installation detected, nothing to migrate" and does not edit files. Against a project that has both, Init adds the `@helvetia/*` aliases from the script JSON, runs that JSON's `installCommand`, inserts the new import beside the untouched `@baloise/*` import, and leaves the result unstaged.
 
-Spinner scan and component rewrites are follow-up tickets — they are out of scope for this package version.
+Spinner: `node <skill>/scripts/scan-bal-spinner.mjs <project>` prints JSON findings (`total`, then `files` with `line` and `snippet`) and does not edit files. After one yes, the agent rewrites from `components/spinner/migration.md` and leaves the result unstaged.
 
 ## Related Contexts
 
