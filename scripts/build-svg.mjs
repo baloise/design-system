@@ -26,7 +26,7 @@ const SVG_GROUND_COLOR = '#000D6E'
 const SUB_PACKAGES = ['maps', 'icons', 'brand-icons', 'flags']
 
 // `flags` has no hand-authored SVGs of its own — its source of truth is the `country-flag-icons`
-// npm package (see docs/adr/0032-ds-input-phone-bundled-svg-flags.md). Syncing it into
+// npm package (see docs/adr/0033-ds-input-phone-bundled-svg-flags.md). Syncing it into
 // `packages/assets/src/flags/svg` before the normal scan/optimize/write pipeline runs lets it reuse
 // that pipeline unchanged, and keeps the checked-in `svg/*.svg` files in sync with the dependency
 // instead of a manually maintained copy.
