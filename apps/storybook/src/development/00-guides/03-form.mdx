@@ -152,6 +152,38 @@ ${' '}${' '}}
 `}
 />
 
+Opt out of the automatic `invalid`/`invalid-text` behavior with `autoInvalidOff` — for example when a
+parent component assembles its own combined error summary instead of per-field messages, or when a
+field's invalid state needs to stay under manual control.
+
+<Code
+  language="html"
+  noPreview
+  code={`
+<ds-input name="email" label="Email" placeholder="Enter your email" formControlName="email" autoInvalidOff></ds-input>
+`}
+/>
+
+### Supported Components
+
+Reactive-forms support currently covers:
+
+<LinkCards>
+  <LinkCard pageTitle="Components/Forms/Checkbox/Checkbox" description="ds-checkbox-group" />
+  <LinkCard pageTitle="Components/Forms/Counter/Counter" description="ds-counter" />
+  <LinkCard pageTitle="Components/Forms/Datepicker/Datepicker" description="ds-datepicker" />
+  <LinkCard pageTitle="Components/Forms/FileUpload/FileUpload" description="ds-file-upload" />
+  <LinkCard pageTitle="Components/Forms/Input/Input" description="ds-input" />
+  <LinkCard pageTitle="Components/Forms/Number-input/Number-input" description="ds-number-input" />
+  <LinkCard pageTitle="Components/Forms/Phone-Input/Phone-input" description="ds-phone-input" />
+  <LinkCard pageTitle="Components/Forms/Radio/Radio" description="ds-radio-group" />
+  <LinkCard pageTitle="Components/Forms/Segment/Segment" description="ds-segment" />
+  <LinkCard pageTitle="Components/Forms/Select/Select" description="ds-select" />
+  <LinkCard pageTitle="Components/Forms/Slider/Slider" description="ds-slider" />
+  <LinkCard pageTitle="Components/Forms/Textarea/Textarea" description="ds-textarea" />
+  <LinkCard pageTitle="Components/Forms/Toggle/Toggle" description="ds-toggle" />
+</LinkCards>
+
 </AngularFramework>
 
 <Footer>
