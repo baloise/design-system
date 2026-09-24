@@ -17,16 +17,16 @@ const BUMP_LEVELS = ['patch', 'minor', 'major']
 /**
  * Maps a scope choice to the package it should bump. Scopes without an entry here
  * (component tags like `slider`, or cross-cutting scopes like `a11y`/`deps`/`table`/`devkit`)
- * fall back to `@baloise/ds-core`, since that's where components/utilities actually live.
+ * fall back to `@helvetia-design/core`, since that's where components/utilities actually live.
  */
 const SCOPE_PACKAGE_MAP = {
-  core: '@baloise/ds-core',
-  angular: '@baloise/ds-angular',
-  styles: '@baloise/ds-styles',
-  tokens: '@baloise/ds-tokens',
-  react: '@baloise/ds-react',
-  assets: '@baloise/ds-assets',
-  testing: '@baloise/ds-playwright',
+  core: '@helvetia-design/core',
+  angular: '@helvetia-design/angular',
+  styles: '@helvetia-design/styles',
+  tokens: '@helvetia-design/tokens',
+  react: '@helvetia-design/react',
+  assets: '@helvetia-design/assets',
+  testing: '@helvetia-design/playwright',
 }
 
 let cleanUp = () => Promise.resolve()
@@ -83,7 +83,7 @@ async function writeChangeset({ bumpLevel, scope, summary }) {
   }
 
   const label = cleanScopes.join('/')
-  const packages = [...new Set(cleanScopes.map(s => SCOPE_PACKAGE_MAP[s] ?? '@baloise/ds-core'))]
+  const packages = [...new Set(cleanScopes.map(s => SCOPE_PACKAGE_MAP[s] ?? '@helvetia-design/core'))]
   const frontmatter = packages.map(pkg => `'${pkg}': ${bumpLevel}`).join('\n')
   const content = `---
 ${frontmatter}

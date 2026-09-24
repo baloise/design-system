@@ -1,7 +1,7 @@
 import { Source } from '@storybook/addon-docs/blocks'
 import React from 'react'
 import componentsData from '../../src/assets/data/components.json'
-import tokensData from '@baloise/ds-tokens/dist/docs/base.tokens.json'
+import tokensData from '@helvetia-design/tokens/dist/docs/base.tokens.json'
 import { Clipboard } from './Clipboard'
 
 type ComponentDesignTokensProps = {

@@ -1,5 +1,5 @@
 import { Component, signal } from '@angular/core'
-import { DsButton } from '@baloise/ds-angular'
+import { DsButton } from '@helvetia-design/angular'
 
 @Component({
   selector: 'app-button-demo',

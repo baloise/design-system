@@ -1,4 +1,4 @@
-import { DsPage, DsSelect, test } from '@baloise/ds-playwright'
+import { DsPage, DsSelect, test } from '@helvetia-design/playwright'
 
 const COUNTRY_OPTIONS = [
   { label: 'Switzerland', value: 'ch' },

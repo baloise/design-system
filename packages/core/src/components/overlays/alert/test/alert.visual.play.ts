@@ -1,4 +1,4 @@
-import { DsSnackbar, DsToast, expectScreenshot, screenshot, test } from '@baloise/ds-playwright'
+import { DsSnackbar, DsToast, expectScreenshot, screenshot, test } from '@helvetia-design/playwright'
 
 const TAG = 'alert'
 

@@ -67,8 +67,8 @@ describe('parsePOFile', () => {
     expect(parsePOFile(INPUT_PO)?.class).toBe('DsInput')
   })
 
-  it('always sets import to @baloise/ds-playwright', () => {
-    expect(parsePOFile(BUTTON_PO)?.import).toBe('@baloise/ds-playwright')
+  it('always sets import to @helvetia-design/playwright', () => {
+    expect(parsePOFile(BUTTON_PO)?.import).toBe('@helvetia-design/playwright')
   })
 
   it('skips the constructor', () => {

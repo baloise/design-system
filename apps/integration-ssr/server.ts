@@ -1,5 +1,5 @@
 import express from 'express'
-import { renderToString } from '@baloise/ds-core/hydrate'
+import { renderToString } from '@helvetia-design/core/hydrate'
 
 // Server-rendered fragment: real markup for every ds-* custom element, already inside a
 // declarative shadow root, before any client-side JavaScript runs.

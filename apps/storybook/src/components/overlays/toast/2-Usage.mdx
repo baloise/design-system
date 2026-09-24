@@ -34,11 +34,11 @@ import { TOAST_DOC_CONFIG, getToastTabs } from './toast.doc-config'
 `useToast()` returns `present` and `dismiss` functions. Pass notification content as data; toast content is not JSX.
 
 <InfoQuote>
-  Import `useToast` from `@baloise/ds-react`. The generated `DsToast` wrapper is deprecated.
+  Import `useToast` from `@helvetia-design/react`. The generated `DsToast` wrapper is deprecated.
 </InfoQuote>
 
 ```tsx
-import { DsButton, useToast } from '@baloise/ds-react'
+import { DsButton, useToast } from '@helvetia-design/react'
 
 export function ToastExample() {
   const [presentToast, dismissToast] = useToast()
@@ -74,7 +74,7 @@ export function ToastExample() {
 
 ## Present and dismiss a toast
 
-Use `dsToastController` from `@baloise/ds-core` (also available as `window.DesignSystem.toastController`) to create
+Use `dsToastController` from `@helvetia-design/core` (also available as `window.DesignSystem.toastController`) to create
 and remove toasts. `create()` returns the toast's ID, which `remove()` needs to dismiss it early.
 
 ```html
@@ -82,7 +82,7 @@ and remove toasts. `create()` returns the toast's ID, which `remove()` needs to 
 <ds-button id="dismiss-toast">Dismiss toast</ds-button>
 
 <script type="module">
-  import { dsToastController } from '@baloise/ds-core'
+  import { dsToastController } from '@helvetia-design/core'
 
   let toastId
 

@@ -1,6 +1,6 @@
 import { Component, signal } from '@angular/core'
 import { FormControl, FormGroup, ReactiveFormsModule, ValidationErrors, ValidatorFn } from '@angular/forms'
-import { DsFileUpload } from '@baloise/ds-angular'
+import { DsFileUpload } from '@helvetia-design/angular'
 
 const requiredWithMessage = (message: string): ValidatorFn => {
   return (control): ValidationErrors | null => (control.value?.length ? null : { required: message })

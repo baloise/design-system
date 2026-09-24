@@ -36,7 +36,7 @@ jobs:
       - uses: ./.github/workflows/actions/setup-environment
         with:
           token: ${{ secrets.DS_BOT_RELEASE_TOKEN }}
-          npm-token: ${{ secrets.NPM_PUBLISH_TOKEN }}
+          npm-token: ${{ secrets.NPM_HELVETIA_TOKEN }}
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
@@ -71,7 +71,7 @@ jobs:
           echo "🏷️  Tag: v${{ steps.package-version.outputs.current-version }}"
           echo ""
           echo "📤 NPM Publish (Dry Run):"
-          pnpm -r publish --tag next --dry-run --no-git-checks
+          pnpm -r publish --dry-run --no-git-checks
 
       - name: Commit release
         if: ${{ !inputs.dry-run }}
@@ -130,4 +130,4 @@ jobs:
 
       - name: Publish
         if: ${{ !inputs.dry-run }}
-        run: pnpm -r publish --tag next --no-git-checks
+        run: pnpm -r publish --no-git-checks

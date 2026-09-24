@@ -1,4 +1,4 @@
-import { DsSnackbar, expectScreenshot, screenshot, test } from '@baloise/ds-playwright'
+import { DsSnackbar, expectScreenshot, screenshot, test } from '@helvetia-design/playwright'
 
 const TAG = 'snackbar'
 const VARIANTS = ['basic', 'variants', 'variants-with-brand-icon', 'colors']

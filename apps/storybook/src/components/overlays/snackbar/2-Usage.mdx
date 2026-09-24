@@ -35,11 +35,11 @@ import { SNACKBAR_DOC_CONFIG, getSnackbarTabs } from './snackbar.doc-config'
 it is dismissed.
 
 <InfoQuote>
-  Import `useSnackbar` from `@baloise/ds-react`. The generated `DsSnackbar` wrapper is deprecated.
+  Import `useSnackbar` from `@helvetia-design/react`. The generated `DsSnackbar` wrapper is deprecated.
 </InfoQuote>
 
 ```tsx
-import { DsButton, useSnackbar } from '@baloise/ds-react'
+import { DsButton, useSnackbar } from '@helvetia-design/react'
 
 export function SnackbarExample() {
   const [presentSnackbar, dismissSnackbar] = useSnackbar()
@@ -75,7 +75,7 @@ export function SnackbarExample() {
 
 ## Present and dismiss a snackbar
 
-Use `dsSnackbarController` from `@baloise/ds-core` (also available as `window.DesignSystem.snackbarController`) to
+Use `dsSnackbarController` from `@helvetia-design/core` (also available as `window.DesignSystem.snackbarController`) to
 create and remove snackbars. `create()` returns the snackbar's ID, which `remove()` needs to dismiss it early.
 
 ```html
@@ -83,7 +83,7 @@ create and remove snackbars. `create()` returns the snackbar's ID, which `remove
 <ds-button id="dismiss-snackbar">Dismiss snackbar</ds-button>
 
 <script type="module">
-  import { dsSnackbarController } from '@baloise/ds-core'
+  import { dsSnackbarController } from '@helvetia-design/core'
 
   let snackbarId
 

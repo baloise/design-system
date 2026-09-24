@@ -38,9 +38,9 @@ describe('bumpLevelForDiff', () => {
 })
 
 describe('buildChangesetContent', () => {
-  it('writes frontmatter for @baloise/ds-tokens at the computed bump level', () => {
+  it('writes frontmatter for @helvetia-design/tokens at the computed bump level', () => {
     const content = buildChangesetContent([makeEntry({ kind: 'update' })], '')
-    expect(content).toContain("'@baloise/ds-tokens': patch")
+    expect(content).toContain("'@helvetia-design/tokens': patch")
   })
 
   it('uses the caller-supplied description as the summary when given', () => {
@@ -94,7 +94,7 @@ describe('buildChangesetContent', () => {
   it('mentions a created brand and bumps minor, even with no token diff', () => {
     const content = buildChangesetContent([], '', ['Acme'])
 
-    expect(content).toContain("'@baloise/ds-tokens': minor")
+    expect(content).toContain("'@helvetia-design/tokens': minor")
     expect(content).toContain('**tokens**: Add the Acme brand.')
     expect(content).toContain('**Created brand:** Acme')
   })
@@ -122,7 +122,7 @@ describe('buildChangesetContent', () => {
 
     const content = buildChangesetContent([], '', [], brandDiffs)
 
-    expect(content).toContain("'@baloise/ds-tokens': patch")
+    expect(content).toContain("'@helvetia-design/tokens': patch")
     expect(content).toContain('**tokens**: 2 brand overrides.')
     expect(content).toContain('**Zurich — Overridden:** 🌐 Global/White')
     expect(content).toContain('**Zurich — Reverted:** 🌐 Global/Black')

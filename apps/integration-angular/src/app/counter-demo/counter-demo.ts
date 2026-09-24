@@ -1,6 +1,6 @@
 import { Component, signal } from '@angular/core'
 import { FormControl, FormGroup, ReactiveFormsModule, ValidationErrors, ValidatorFn } from '@angular/forms'
-import { DsCounter } from '@baloise/ds-angular'
+import { DsCounter } from '@helvetia-design/angular'
 
 // `ds-counter` can never be "empty" (see its own `value` prop doc), and its `required` prop only drives
 // the "optional" label suffix — so a `required`-style validator can never fail from user interaction. This

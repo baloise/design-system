@@ -1,4 +1,4 @@
-import { DsCheckbox, expect, test } from '@baloise/ds-playwright'
+import { DsCheckbox, expect, test } from '@helvetia-design/playwright'
 
 const GROUP = `
   <ds-checkbox-group control name="heroes" label="Label">

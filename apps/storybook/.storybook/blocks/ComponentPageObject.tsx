@@ -94,12 +94,12 @@ const InstallGuide = () => (
   <div className="sb-unstyled my-lg">
     <h2 className="ds-title text-2xl mb-base">Installation</h2>
     <p className="text-base mb-base">Install the Playwright helper package:</p>
-    <Source dark language="bash" code="npm install @baloise/ds-playwright" />
+    <Source dark language="bash" code="npm install @helvetia-design/playwright" />
     <p className="text-base mt-base mb-base">Replace the standard Playwright import in your test files:</p>
     <Source
       dark
       language="ts"
-      code={`// Before\nimport { test, expect } from '@playwright/test'\n\n// After\nimport { test, expect } from '@baloise/ds-playwright'`}
+      code={`// Before\nimport { test, expect } from '@playwright/test'\n\n// After\nimport { test, expect } from '@helvetia-design/playwright'`}
     />
   </div>
 )

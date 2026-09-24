@@ -1,4 +1,4 @@
-import { DsRadio, expect, test } from '@baloise/ds-playwright'
+import { DsRadio, expect, test } from '@helvetia-design/playwright'
 
 const GROUP = `
   <ds-radio-group name="heroes" label="Label">

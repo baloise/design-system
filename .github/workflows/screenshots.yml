@@ -152,7 +152,7 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Build Core
-        run: pnpm exec turbo run build --filter=@baloise/ds-core
+        run: pnpm exec turbo run build --filter=@helvetia-design/core
 
       - name: Write visual config template
         run: |

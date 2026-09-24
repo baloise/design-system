@@ -1,4 +1,4 @@
-import { DsInputPhone, expect, test } from '@baloise/ds-playwright'
+import { DsInputPhone, expect, test } from '@helvetia-design/playwright'
 
 test('default', async ({ page, a11y }) => {
   await page.mount(`<ds-input-phone label="Phone number" initial-country="CH"></ds-input-phone>`)

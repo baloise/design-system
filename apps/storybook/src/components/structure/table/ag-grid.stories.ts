@@ -4,7 +4,7 @@ import {
   createTagCellRenderer,
   createTextCellRenderer,
   designSystemGridTheme,
-} from '@baloise/ds-ag-grid'
+} from '@helvetia-design/ag-grid'
 import { AllCommunityModule, createGrid, ModuleRegistry, type GridOptions } from 'ag-grid-community'
 import type { Meta, StoryObj } from '@storybook/html-vite'
 

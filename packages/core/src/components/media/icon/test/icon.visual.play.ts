@@ -1,4 +1,4 @@
-import { expectScreenshot, screenshot, test } from '@baloise/ds-playwright'
+import { expectScreenshot, screenshot, test } from '@helvetia-design/playwright'
 
 const TAG = 'icon'
 const VARIANTS = ['basic', 'override', 'inline', 'svg-content', 'shadow', 'turn', 'colors', 'states', 'sizes']

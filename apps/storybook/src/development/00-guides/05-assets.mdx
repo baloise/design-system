@@ -5,12 +5,12 @@ import { Banner, Footer, InfoQuote, Lead, LinkCard, LinkCards } from '../../../.
 
 <Banner label="Assets" section="Development" />
 
-<Lead>Fonts, favicons, and Google Maps styling are all shipped from a single package: `@baloise/ds-assets`.</Lead>
+<Lead>Fonts, favicons, and Google Maps styling are all shipped from a single package: `@helvetia-design/assets`.</Lead>
 
 Install it once, then copy over whichever assets your application needs.
 
 ```bash
-npm add -D @baloise/ds-assets copyfiles
+npm add -D @helvetia-design/assets copyfiles
 ```
 
 <InfoQuote>
@@ -21,7 +21,7 @@ npm add -D @baloise/ds-assets copyfiles
 
 ## Font
 
-By default, `@baloise/ds-styles/css/design-system` ships with **no** `@font-face` rules — text
+By default, `@helvetia-design/styles/css/design-system` ships with **no** `@font-face` rules — text
 renders in the browser's fallback font until you self-host the BaloiseCreate fonts.
 
 <br/>
@@ -29,13 +29,13 @@ renders in the browser's fallback font until you self-host the BaloiseCreate fon
 **1. Copy the font files**
 
 Add a copy script to your `package.json`. `postinstall` keeps it running automatically whenever
-`@baloise/ds-assets` is installed or updated.
+`@helvetia-design/assets` is installed or updated.
 
 ```json
 "scripts": {
   "postinstall": "npm run copy:assets",
   "copy:assets": "npm run copy:fonts",
-  "copy:fonts": "copyfiles --flat node_modules/@baloise/ds-assets/src/fonts/*.woff2 node_modules/@baloise/ds-assets/src/fonts/*.woff src/assets/fonts"
+  "copy:fonts": "copyfiles --flat node_modules/@helvetia-design/assets/src/fonts/*.woff2 node_modules/@helvetia-design/assets/src/fonts/*.woff src/assets/fonts"
 }
 ```
 
@@ -49,7 +49,7 @@ Swap `css/design-system` for the `css/design-system.local` variant, which points
 `@font-face` rules at `/assets/fonts/` — the folder you just copied the files into.
 
 ```html
-<link rel="stylesheet" href="node_modules/@baloise/ds-styles/css/design-system.local" />
+<link rel="stylesheet" href="node_modules/@helvetia-design/styles/css/design-system.local" />
 ```
 
 <InfoQuote>
@@ -68,7 +68,7 @@ folder name in the path below to pick one.
 "scripts": {
   "postinstall": "npm run copy:assets",
   "copy:assets": "npm run copy:favicons",
-  "copy:favicons": "copyfiles --flat node_modules/@baloise/ds-assets/src/favicons/primary/* src/assets/favicons"
+  "copy:favicons": "copyfiles --flat node_modules/@helvetia-design/assets/src/favicons/primary/* src/assets/favicons"
 }
 ```
 
@@ -91,11 +91,11 @@ npm install
 
 ## Google Maps
 
-Map styles and markers are exported directly from `@baloise/ds-assets` — no separate package or
+Map styles and markers are exported directly from `@helvetia-design/assets` — no separate package or
 copy step needed.
 
 ```bash
-npm install @baloise/ds-assets
+npm install @helvetia-design/assets
 npm install @types/google.maps --save-dev
 ```
 
@@ -107,7 +107,7 @@ loading the Maps API itself.
 Import `MapTypeStyles` into your Google Maps config object.
 
 ```ts
-import { MapTypeStyles } from '@baloise/ds-assets'
+import { MapTypeStyles } from '@helvetia-design/assets'
 
 const myMap = new google.maps.Map(myMapElement, {
   ...
@@ -120,7 +120,7 @@ const myMap = new google.maps.Map(myMapElement, {
 Import a marker constant (e.g. `balMapMarkerDefault`) and pass it as the icon URL.
 
 ```ts
-import { balMapMarkerDefault } from '@baloise/ds-assets'
+import { balMapMarkerDefault } from '@helvetia-design/assets'
 
 new google.maps.Marker({
   position: { lat: 36.6163, lng: -100.61 },

@@ -1,4 +1,4 @@
-import { matchers } from '@baloise/ds-playwright'
+import { matchers } from '@helvetia-design/playwright'
 import { dirname } from 'path'
 import { fileURLToPath } from 'url'
 import { defineConfig, devices, expect } from '@playwright/test'

@@ -1,4 +1,4 @@
-import { expectScreenshot, screenshot, test } from '@baloise/ds-playwright'
+import { expectScreenshot, screenshot, test } from '@helvetia-design/playwright'
 
 const TAG = 'logo'
 const VARIANTS = ['basic', 'sizes', 'inverted', 'basic-baloise', 'sizes-baloise', 'inverted-baloise']

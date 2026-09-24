@@ -1,4 +1,4 @@
-import { DsDrawer, expectScreenshot, screenshot, test } from '@baloise/ds-playwright'
+import { DsDrawer, expectScreenshot, screenshot, test } from '@helvetia-design/playwright'
 
 const TAG = 'drawer'
 

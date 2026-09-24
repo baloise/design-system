@@ -1,4 +1,4 @@
-import type { JSX } from '@baloise/ds-core'
+import type { JSX } from '@helvetia-design/core'
 import type { Meta } from '@storybook/html-vite'
 import { StoryFactory, props, withComponentControls, withRender } from '../../../utils'
 

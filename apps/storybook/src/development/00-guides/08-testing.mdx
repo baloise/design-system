@@ -7,19 +7,19 @@ import { Banner, Footer, InfoQuote, Lead, LinkCard } from '../../../.storybook/b
 
 <Lead>
   Test the Design System's web components inside your own Angular, React, or plain JS application with
-  `@baloise/ds-playwright` — a thin wrapper around Playwright that waits for components to be ready and
+  `@helvetia-design/playwright` — a thin wrapper around Playwright that waits for components to be ready and
   ships Page Objects for every component.
 </Lead>
 
 Design System components are asynchronous web components: they upgrade, render, and apply attribute
 changes after a tick. A plain Playwright test can race that upgrade and interact with the element too
-early. `@baloise/ds-playwright` re-exports Playwright's `test` and `expect` with this synchronization
+early. `@helvetia-design/playwright` re-exports Playwright's `test` and `expect` with this synchronization
 built in, so tests behave the same whether the component was rendered by Angular, React, or plain HTML.
 
 ## Installation
 
 ```bash
-npm install -D @baloise/ds-playwright
+npm install -D @helvetia-design/playwright
 ```
 
 Then swap the import in your test files — everything else about writing a Playwright test stays the same:
@@ -29,7 +29,7 @@ Then swap the import in your test files — everything else about writing a Play
 import { test, expect } from '@playwright/test'
 
 // After
-import { test, expect } from '@baloise/ds-playwright'
+import { test, expect } from '@helvetia-design/playwright'
 ```
 
 <InfoQuote>
@@ -45,7 +45,7 @@ with that component, so tests don't need to know its internal DOM structure. Wra
 pointing at the component's tag and call methods on it instead of querying the DOM directly.
 
 ```typescript
-import { DsButton, expect, test } from '@baloise/ds-playwright'
+import { DsButton, expect, test } from '@helvetia-design/playwright'
 
 test('submits the form', async ({ page }) => {
   await page.goto('/checkout')
@@ -72,7 +72,7 @@ Each component's documentation page lists its Page Object's locators, actions, a
 Spy on custom events a component fires and assert on them with the built-in matchers.
 
 ```typescript
-import { DsButton, expect, test } from '@baloise/ds-playwright'
+import { DsButton, expect, test } from '@helvetia-design/playwright'
 
 test('fires dsClick when clicked', async ({ page }) => {
   await page.goto('/checkout')
@@ -102,7 +102,7 @@ The `a11y` fixture runs axe-core (WCAG 2.2 AA rules) against a selector on the c
 catching accessibility regressions introduced by how your app composes or styles Design System components.
 
 ```typescript
-import { test } from '@baloise/ds-playwright'
+import { test } from '@helvetia-design/playwright'
 
 test('checkout form is accessible', async ({ page, a11y }) => {
   await page.goto('/checkout')

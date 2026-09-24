@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { DsButton, DsModalBody, DsModalHeader, Modal, useSnackbar, useToast } from '@baloise/ds-react'
+import { DsButton, DsModalBody, DsModalHeader, Modal, useSnackbar, useToast } from '@helvetia-design/react'
 
 export default function OverlaysDemo() {
   const [isOpen, setIsOpen] = useState(false)

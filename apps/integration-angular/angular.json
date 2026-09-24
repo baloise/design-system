@@ -26,8 +26,8 @@
             ],
             "styles": [
               "src/styles.css",
-              "node_modules/@baloise/ds-tokens/dist/css/base.tokens.css",
-              "node_modules/@baloise/ds-styles/dist/css/design-system.css"
+              "node_modules/@helvetia-design/tokens/dist/css/base.tokens.css",
+              "node_modules/@helvetia-design/styles/dist/css/design-system.css"
             ]
           },
           "configurations": {

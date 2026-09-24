@@ -5,7 +5,7 @@ import {
   updateDsRegion,
   type DsLanguage,
   type DsRegion,
-} from '@baloise/ds-core'
+} from '@helvetia-design/core'
 
 const BRAND_LINK_ID = 'brand-theme-stylesheet'
 

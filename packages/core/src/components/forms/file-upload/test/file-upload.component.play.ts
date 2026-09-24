@@ -1,4 +1,4 @@
-import { DsFileUpload, test } from '@baloise/ds-playwright'
+import { DsFileUpload, test } from '@helvetia-design/playwright'
 import { expect } from '@playwright/test'
 
 test.describe('value assigned after load', () => {

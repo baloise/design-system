@@ -1,6 +1,6 @@
 import { Component, signal } from '@angular/core'
 import { FormControl, FormGroup, ReactiveFormsModule, ValidationErrors, ValidatorFn } from '@angular/forms'
-import { DsDatepicker } from '@baloise/ds-angular'
+import { DsDatepicker } from '@helvetia-design/angular'
 
 const requiredWithMessage = (message: string): ValidatorFn => {
   return (control): ValidationErrors | null => (control.value ? null : { required: message })

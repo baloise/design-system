@@ -1,4 +1,4 @@
-import { test } from '@baloise/ds-playwright'
+import { test } from '@helvetia-design/playwright'
 
 test.describe('a11y', () => {
   test('basic', async ({ page, a11y }) => {

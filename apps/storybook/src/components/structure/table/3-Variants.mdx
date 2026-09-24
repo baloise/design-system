@@ -54,17 +54,17 @@ Install the package alongside AG Grid Community (`ag-grid-community` is a peer d
 or later):
 
 ```
-npm install --save @baloise/ds-ag-grid ag-grid-community
+npm install --save @helvetia-design/ag-grid ag-grid-community
 ```
 
 ### Theming
 
 `designSystemGridTheme` is a Theming API theme built with AG Grid's own `themeQuartz.withParams(...)`. Its params are
-`var(--ds-alias-*)` strings pointing at the live `@baloise/ds-tokens` cascade, so the grid re-themes itself whenever
+`var(--ds-alias-*)` strings pointing at the live `@helvetia-design/tokens` cascade, so the grid re-themes itself whenever
 the token cascade changes (brand override, dark mode) — no rebuild, no new package version.
 
 ```typescript
-import { designSystemGridTheme } from '@baloise/ds-ag-grid'
+import { designSystemGridTheme } from '@helvetia-design/ag-grid'
 import { createGrid } from 'ag-grid-community'
 
 createGrid(gridDiv, {
@@ -77,7 +77,7 @@ createGrid(gridDiv, {
 <InfoQuote>
   **TIP**
 
-  The theme reads `--ds-alias-*` custom properties, so `@baloise/ds-tokens`' CSS must be loaded on the page —
+  The theme reads `--ds-alias-*` custom properties, so `@helvetia-design/tokens`' CSS must be loaded on the page —
   otherwise the params resolve to nothing and AG Grid falls back to its own defaults.
 </InfoQuote>
 
@@ -95,7 +95,7 @@ an options object and returns an AG Grid `cellRenderer` function.
 Renders the cell's value inside a `ds-badge`.
 
 ```typescript
-import { createBadgeCellRenderer } from '@baloise/ds-ag-grid'
+import { createBadgeCellRenderer } from '@helvetia-design/ag-grid'
 
 // ...
 {
@@ -125,7 +125,7 @@ interface BadgeCellRendererOptions<TData = unknown, TValue = unknown> {
 Renders one or more `ds-button` elements into the cell, typically for a row-actions column.
 
 ```typescript
-import { createButtonCellRenderer } from '@baloise/ds-ag-grid'
+import { createButtonCellRenderer } from '@helvetia-design/ag-grid'
 
 // ...
 {
@@ -160,7 +160,7 @@ interface ButtonCellRendererAction<TData = unknown, TValue = unknown> {
 Renders the cell's value inside a `ds-tag`.
 
 ```typescript
-import { createTagCellRenderer } from '@baloise/ds-ag-grid'
+import { createTagCellRenderer } from '@helvetia-design/ag-grid'
 
 // ...
 {
@@ -186,7 +186,7 @@ interface TagCellRendererOptions<TData = unknown, TValue = unknown> {
 Renders the cell's value as text, with an optional `ds-icon` placed before or after it.
 
 ```typescript
-import { createTextCellRenderer } from '@baloise/ds-ag-grid'
+import { createTextCellRenderer } from '@helvetia-design/ag-grid'
 
 // ...
 {

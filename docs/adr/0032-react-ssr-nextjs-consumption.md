@@ -12,7 +12,7 @@ Accepted
 
 [ADR-0031](0031-ssr-hydrate-build.md) added the Stencil hydrate build and
 generated React server wrappers. That foundation did not by itself make
-`@baloise/ds-react` usable in a Next.js App Router application.
+`@helvetia-design/react` usable in a Next.js App Router application.
 
 Next.js must resolve server wrappers during its Node render and client
 wrappers in the browser. The stock Stencil server output also exposed three
@@ -33,7 +33,7 @@ DOM.
 ## Decision
 
 1. **Use one public import with conditional entries.**
-   `@baloise/ds-react` maps the `"node"` export condition to
+   `@helvetia-design/react` maps the `"node"` export condition to
    `dist/index.server.js` and the default condition to `dist/index.js`, with
    matching type declarations. Consumers use the same package import in
    Server and Client Components. We use `"node"` rather than
@@ -59,11 +59,11 @@ DOM.
 
 4. **Initialize browser behavior at a client boundary.**
    A Next.js root layout remains a Server Component and renders
-   `DsRootSSRProvider` from `@baloise/ds-react`, which requires no client
+   `DsRootSSRProvider` from `@helvetia-design/react`, which requires no client
    boundary of its own. Internally it renders a small client leaf whose
    effect dynamically imports `defineCustomElements` from
-   `@baloise/ds-core/loader` and calls `initializeDesignSystem` from
-   `@baloise/ds-core`, then passes `children` through unchanged — it does not
+   `@helvetia-design/core/loader` and calls `initializeDesignSystem` from
+   `@helvetia-design/core`, then passes `children` through unchanged — it does not
    render `<ds-root>`, since that element's SSR wrapper flattens children
    into static HTML. Vite SPA consumers continue to use `DsRootProvider`.
 
@@ -74,7 +74,7 @@ DOM.
 
 6. **Externalize core in the Next.js server build.**
    Next.js applications configure
-   `serverExternalPackages: ['@baloise/ds-core']`. Monorepos may additionally
+   `serverExternalPackages: ['@helvetia-design/core']`. Monorepos may additionally
    set `turbopack.root` to their workspace root.
 
 7. **Verify SSR in a production integration application.**

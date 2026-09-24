@@ -106,7 +106,7 @@ export const DS_CONFIG_META_ATTRIBUTE_MAP: Record<string, (cfg: Partial<DsConfig
 scope**, alongside icons:
 
 - Icons: `icons: DsIcons` is a full name→URL map (from
-  `@baloise/ds-assets`) with no base-path concept today, and there's no
+  `@helvetia-design/assets`) with no base-path concept today, and there's no
   `data-icon-base`-equivalent field being added here.
 - `legalLinks` / `legalText` / `socialLinks`: nested, per-region/per-locale
   structured data — not something a flat `data-*` attribute can represent

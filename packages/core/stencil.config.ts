@@ -53,7 +53,7 @@ export const config: Config = {
   autoprefixCss: true,
   sourceMap: false,
   namespace: 'design-system',
-  preamble: '(C) Helvetia Design System https://design.baloise.dev/ - Apache License 2.0',
+  preamble: '(C) Helvetia Design System https://helvetia-design.vercel.app/ - Apache License 2.0',
   hashedFileNameLength: 10,
   enableCache: true,
   transformAliasedImportPaths: true,
@@ -101,7 +101,7 @@ export const config: Config = {
      */
     /**
      * Kept enabled in documentation builds too: the Storybook preview imports config utilities
-     * (e.g. `updateDsLanguage`, `updateDsRegion`) directly from `@baloise/ds-core`'s main entry,
+     * (e.g. `updateDsLanguage`, `updateDsRegion`) directly from `@helvetia-design/core`'s main entry,
      * which this target produces.
      */
     !IS_DS_DEVELOPMENT && {
@@ -149,7 +149,7 @@ export const config: Config = {
       }),
     /**
      * Node-compatible SSR renderer used by the React output target's hydrateModule.
-     * Produces `hydrate/` at the package root, published as `@baloise/ds-core/hydrate`.
+     * Produces `hydrate/` at the package root, published as `@helvetia-design/core/hydrate`.
      *
      * Also kept in dev builds when `IS_DS_SSR_TESTING` is set: its mere presence in this build
      * pass is what makes Stencil compile the client-side hydration-adoption code path into the dev
@@ -166,7 +166,7 @@ export const config: Config = {
       },
     /**
      * Generates React component wrappers for each Stencil component in ../react/src/generated,
-     * consumed by the @baloise/ds-react package. Requires the dist-custom-elements output target above.
+     * consumed by the @helvetia-design/react package. Requires the dist-custom-elements output target above.
      * With hydrateModule set, also emits `components.server.ts` for Node SSR.
      *
      * {@link https://www.npmjs.com/package/@stencil/react-output-target}
@@ -174,7 +174,7 @@ export const config: Config = {
     !IS_DS_DEVELOPMENT && !IS_DS_DOCUMENTATION && ReactGenerator(),
     /**
      * Generates standalone Angular component wrappers for each Stencil component in
-     * ../angular/src/generated, consumed by the @baloise/ds-angular package. Requires the
+     * ../angular/src/generated, consumed by the @helvetia-design/angular package. Requires the
      * dist-custom-elements output target above.
      *
      * {@link https://www.npmjs.com/package/@stencil/angular-output-target}

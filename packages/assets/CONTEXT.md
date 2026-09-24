@@ -79,8 +79,8 @@ Icons follow a hierarchical naming pattern:
 
 Assets are packaged and published as part of the npm release process. Consumers can:
 
-- Import assets directly: `import checkIcon from '@baloise/ds-assets/icons/check.svg'`
-- Reference asset URLs: `@baloise/ds-assets/fonts/brand-font.woff2`
+- Import assets directly: `import checkIcon from '@helvetia-design/assets/icons/check.svg'`
+- Reference asset URLs: `@helvetia-design/assets/fonts/brand-font.woff2`
 - Use asset-based components: `<ds-icon name="check">`
 
 ## Key Constraints

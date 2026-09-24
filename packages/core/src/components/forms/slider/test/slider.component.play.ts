@@ -1,4 +1,4 @@
-import { DsSlider, expect, test } from '@baloise/ds-playwright'
+import { DsSlider, expect, test } from '@helvetia-design/playwright'
 
 test.describe('value assigned after load', () => {
   test('should render a value that is assigned after the component has loaded', async ({ page }) => {

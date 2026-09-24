@@ -57,7 +57,7 @@ async function adjustInterfacePath(config: Config) {
   replaceInFileSync({
     files: files,
     from: `/// <reference types="packages/core/src/interfaces" />`,
-    to: `/// <reference types="@baloise/ds-core" />`,
+    to: `/// <reference types="@helvetia-design/core" />`,
   })
 }
 

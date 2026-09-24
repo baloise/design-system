@@ -1,4 +1,4 @@
-import { DsTooltip, test, expect } from '@baloise/ds-playwright'
+import { DsTooltip, test, expect } from '@helvetia-design/playwright'
 
 test.describe('component', () => {
   test.beforeEach('Setup', async ({ page }) => {

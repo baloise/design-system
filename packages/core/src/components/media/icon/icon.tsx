@@ -172,7 +172,7 @@ export class Icon implements DsComponentInterface, DsConfigObserver {
         console.error(
           `Icon "${iconName}" not found in design system configuration.`,
           '\n\nCheck out the documentation on how to import icons during initialization.',
-          '\nhttps://design.baloise.dev/?path=/docs/components-data-display-icon--documentation&globals=framework:angular#import-during-initialization',
+          '\nhttps://helvetia-design.vercel.app/?path=/docs/components-data-display-icon--documentation&globals=framework:angular#import-during-initialization',
         )
       }
     }

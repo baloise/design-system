@@ -1,6 +1,6 @@
 import React from 'react'
 import { CssPropertyTable } from './helpers/CssPropertyTable'
-import tokens from '@baloise/ds-tokens/dist/docs/base.tokens.json'
+import tokens from '@helvetia-design/tokens/dist/docs/base.tokens.json'
 
 export const CssSpacingMargin = ({}): React.ReactElement => {
   const obj = tokens['📱 Device']['↔️ Space']

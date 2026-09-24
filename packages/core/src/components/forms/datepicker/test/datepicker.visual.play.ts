@@ -1,4 +1,4 @@
-import { DsDatepicker, E2ELocator, expectScreenshot, screenshot, test } from '@baloise/ds-playwright'
+import { DsDatepicker, E2ELocator, expectScreenshot, screenshot, test } from '@helvetia-design/playwright'
 
 const TAG = 'datepicker'
 const VARIANTS = [

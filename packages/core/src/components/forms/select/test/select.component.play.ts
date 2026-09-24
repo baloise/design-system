@@ -1,4 +1,4 @@
-import { DsSelect, DsPage, expect, test } from '@baloise/ds-playwright'
+import { DsSelect, DsPage, expect, test } from '@helvetia-design/playwright'
 import { Locator } from '@playwright/test'
 
 const COUNTRY_OPTIONS = [

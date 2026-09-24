@@ -1,5 +1,5 @@
 import { Component, signal } from '@angular/core'
-import { DsCheckbox } from '@baloise/ds-angular'
+import { DsCheckbox } from '@helvetia-design/angular'
 
 @Component({
   selector: 'app-checkbox-demo',

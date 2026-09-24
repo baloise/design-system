@@ -1,4 +1,4 @@
-import { expectScreenshot, screenshot, test } from '@baloise/ds-playwright'
+import { expectScreenshot, screenshot, test } from '@helvetia-design/playwright'
 
 const TAG = 'accordion'
 const VARIANTS = ['basic', 'nested', 'markers', 'left-markers', 'stack-item', 'accordions', 'button-accordion']

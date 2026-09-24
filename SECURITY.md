@@ -80,7 +80,7 @@ GitHub will email you whenever a new [Security Advisory](../../security/advisori
 
 **npm release feed:**
 
-Every security fix is released as a new npm version. Subscribe to release notifications on GitHub (Watch → Releases) or monitor the package on [npmjs.com](https://www.npmjs.com/package/@baloise/ds-core).
+Every security fix is released as a new npm version. Subscribe to release notifications on GitHub (Watch → Releases) or monitor the package on [npmjs.com](https://www.npmjs.com/package/@helvetia-design/core).
 
 ### What each advisory contains
 
@@ -91,7 +91,7 @@ Every published GitHub Security Advisory for this project will include:
 | CVE ID            | Assigned identifier (or "pending" if not yet issued)     |
 | Affected versions | Exact semver range of vulnerable releases                |
 | Patched version   | First version containing the fix                         |
-| npm packages      | All `@baloise/ds-*` packages affected                    |
+| npm packages      | All `@helvetia-design/*` packages affected               |
 | Severity          | CVSS score and vector                                    |
 | Description       | What the vulnerability is and what an attacker can do    |
 | Workaround        | Mitigation steps if available before a patch is released |
@@ -100,7 +100,7 @@ This information is sufficient to assess impact and plan an upgrade without read
 
 ### For large consumers
 
-If your organisation integrates the Baloise Design System into a regulated product, consider enabling [Dependabot alerts](https://docs.github.com/en/code-security/dependabot) in your own repository. GitHub will automatically raise an alert in your project when a CVE is published for any version of `@baloise/ds-core` you depend on.
+If your organisation integrates the Baloise Design System into a regulated product, consider enabling [Dependabot alerts](https://docs.github.com/en/code-security/dependabot) in your own repository. GitHub will automatically raise an alert in your project when a CVE is published for any version of `@helvetia-design/core` you depend on.
 
 ## Security Measures
 
@@ -223,7 +223,7 @@ When in doubt, report to both. Duplicate reports are explicitly allowed under th
 **What to include in each report:**
 
 ```
-Product:          Baloise Design System (@baloise/ds-core)
+Product:          Baloise Design System (@helvetia-design/core)
 Affected version: <semver range>
 CVE ID:           CVE-YYYY-XXXXX (or "pending" if not yet assigned)
 CVSS score:       <score and vector>
@@ -267,7 +267,7 @@ The Baloise Design System is a client-side component library. Its attack surface
 - **Code rules** — documented in [STYLE_GUIDE.md — Security](docs/STYLE_GUIDE.md#security); violations are flagged during code review
 - **Static analysis** — CodeQL runs on every push and PR and weekly; catches `innerHTML` misuse, unvalidated network data, and injection patterns
 - **Dependency auditing** — `pnpm audit --audit-level high` blocks CI and both release workflows if a high or critical CVE is present in a dependency
-- **DOMPurify** — pinned as a runtime dependency of `@baloise/ds-core`; all external HTML content passes through it before rendering
+- **DOMPurify** — pinned as a runtime dependency of `@helvetia-design/core`; all external HTML content passes through it before rendering
 
 ### Secure Release Process
 

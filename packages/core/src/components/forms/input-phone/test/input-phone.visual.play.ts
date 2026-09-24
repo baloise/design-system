@@ -1,4 +1,4 @@
-import { DsInputPhone, expectScreenshot, screenshot, test } from '@baloise/ds-playwright'
+import { DsInputPhone, expectScreenshot, screenshot, test } from '@helvetia-design/playwright'
 
 const TAG = 'input-phone'
 const VARIANTS = [

@@ -86,9 +86,9 @@ Starts Storybook at http://localhost:6006. Useful for:
 pnpm build
 
 # Build specific packages
-pnpm build -- --filter=@baloise/ds-core     # Web components
-pnpm build -- --filter=@baloise/ds-tokens   # Design tokens
-pnpm build -- --filter=@baloise/ds-styles      # Styles
+pnpm build -- --filter=@helvetia-design/core     # Web components
+pnpm build -- --filter=@helvetia-design/tokens   # Design tokens
+pnpm build -- --filter=@helvetia-design/styles      # Styles
 
 # Build docs for production
 pnpm build:docs
@@ -206,7 +206,7 @@ Tokens are defined in `packages/tokens/src/` and compiled via Style Dictionary:
 pnpm tokens     # Rebuild token outputs
 ```
 
-Tokens sync to `@baloise/ds-tokens` package and are imported by components.
+Tokens sync to `@helvetia-design/tokens` package and are imported by components.
 
 ### Update Global Styles
 
@@ -216,7 +216,7 @@ Global styles live in `packages/styles/dist/css`:
 pnpm styles     # Rebuild CSS
 ```
 
-Outputs to `@baloise/ds-styles` package.
+Outputs to `@helvetia-design/styles` package.
 
 ### Create Storybook Stories
 

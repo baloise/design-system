@@ -9,11 +9,11 @@
     "lint": "eslint ."
   },
   "dependencies": {
-    "@baloise/ds-ag-grid": "workspace:*",
-    "@baloise/ds-assets": "workspace:*",
-    "@baloise/ds-core": "workspace:*",
-    "@baloise/ds-styles": "workspace:*",
-    "@baloise/ds-tokens": "workspace:*",
+    "@helvetia-design/ag-grid": "workspace:*",
+    "@helvetia-design/assets": "workspace:*",
+    "@helvetia-design/core": "workspace:*",
+    "@helvetia-design/styles": "workspace:*",
+    "@helvetia-design/tokens": "workspace:*",
     "@storybook/addon-docs": "catalog:",
     "@storybook/addon-links": "catalog:",
     "@storybook/html-vite": "catalog:",

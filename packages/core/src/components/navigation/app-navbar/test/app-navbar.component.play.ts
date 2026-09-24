@@ -1,4 +1,4 @@
-import { DsAppNavbar, test } from '@baloise/ds-playwright'
+import { DsAppNavbar, test } from '@helvetia-design/playwright'
 import { expect } from '@playwright/test'
 
 test('should fire dsMenuOpenStart and dsMenuOpenEnd events', async ({ page }) => {

@@ -1,4 +1,4 @@
-import { Icons } from '@baloise/ds-assets'
+import { Icons } from '@helvetia-design/assets'
 import type { DsConfigState } from './config.types'
 
 export const defaultConfig: DsConfigState = {

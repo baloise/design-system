@@ -1,7 +1,7 @@
-import type { JSX } from '@baloise/ds-core'
+import type { JSX } from '@helvetia-design/core'
 import type { Meta } from '@storybook/html-vite'
 import { StoryFactory, withComponentControls, withRender } from '../../utils'
-import { BrandIconError404Red } from '@baloise/ds-assets'
+import { BrandIconError404Red } from '@helvetia-design/assets'
 
 type Args = JSX.DsBadge & { slot: string }
 

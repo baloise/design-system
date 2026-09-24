@@ -2,7 +2,7 @@
   "$schema": "https://unpkg.com/@changesets/config@2.3.0/schema.json",
   "changelog": ["./my-changelog-config.js", { "repo": "baloise/design-system" }],
   "commit": false,
-  "fixed": [["@baloise/ds-*"]],
+  "fixed": [["@helvetia-design/*"]],
   "ignore": ["libs-*", "storybook", "toky", "integration-react", "integration-angular", "integration-next"],
   "linked": [],
   "access": "public",

@@ -66,7 +66,7 @@ Pass the defaults to `provideDesignSystem()` in `app.config.ts`.
 
 <Code language="typescript" code={`
 import { ApplicationConfig } from '@angular/core'
-import { provideDesignSystem } from '@baloise/ds-angular'
+import { provideDesignSystem } from '@helvetia-design/angular'
 
 export const appConfig: ApplicationConfig = {
 ${' '}providers: [
@@ -86,7 +86,7 @@ ${' '}],
 <HTMLFramework>
 
 <Code language="ts" code={`
-import { initialize } from '@baloise/ds-core'
+import { initialize } from '@helvetia-design/core'
 
 initialize({
 ${' '}region: 'CH',
@@ -102,7 +102,7 @@ ${' '}allowedLanguages: ['de', 'fr', 'it', 'en'],
 Wrap the application in `DsRootProvider` and pass the default values as props. `DsRootProvider` replaces `initializeDesignSystem()` / `bootstrapDesignSystem()` in React.
 
 <Code language="tsx" code={`
-import { DsRootProvider } from '@baloise/ds-react'
+import { DsRootProvider } from '@helvetia-design/react'
 
 function App() {
 ${' '}return (
@@ -173,7 +173,7 @@ To change the language or region during run time use the two functions `updateDs
 
 <Code language="typescript" code={`
 import { Component } from '@angular/core'
-import { updateDsLanguage, DsSwissLanguage } from '@baloise/ds-core'
+import { updateDsLanguage, DsSwissLanguage } from '@helvetia-design/core'
 
 @Component({
 ${' '}selector: 'app-tab-a',
@@ -194,8 +194,8 @@ To change the language or region at runtime, update the props on `DsRootProvider
 
 <Code language="tsx" code={`
 import { useState } from 'react'
-import { DsRootProvider, DsAppFooter } from '@baloise/ds-react'
-import type { DsLanguage } from '@baloise/ds-core'
+import { DsRootProvider, DsAppFooter } from '@helvetia-design/react'
+import type { DsLanguage } from '@helvetia-design/core'
 
 function App() {
 ${' '}const [language, setLanguage] = useState<DsLanguage>('de')
@@ -223,7 +223,7 @@ import {
   updateDsAllowedLanguages,
   updateDsLanguage,
   updateDsRegion,
-} from '@baloise/ds-core'
+} from '@helvetia-design/core'
 
 updateDsLanguage('de')
 updateDsRegion('CH')
@@ -233,7 +233,7 @@ updateDsAllowedLanguages(['fr', 'it'])
 The config can be accessed with `useConfig`. Both variants have the same effect.
 
 <Code language="typescript" code={`
-import { useConfig } from '@baloise/ds-core'
+import { useConfig } from '@helvetia-design/core'
 
 const config = useConfig()
 config.language = 'de'
@@ -261,7 +261,7 @@ To subscribe to changes of the region or language during runtime you can registe
 
 <Code language="typescript" code={`
 import { Component, OnInit } from '@angular/core'
-import { onDsConfigChange, DsConfigState } from '@baloise/ds-core'
+import { onDsConfigChange, DsConfigState } from '@helvetia-design/core'
 
 @Component({
 ${' '}selector: 'app-sample',
@@ -288,8 +288,8 @@ To subscribe to changes of the region or language during runtime, listen to the 
 
 <Code language="tsx" code={`
 import { useState } from 'react'
-import { DsRootProvider } from '@baloise/ds-react'
-import type { DsLanguage } from '@baloise/ds-core'
+import { DsRootProvider } from '@helvetia-design/react'
+import type { DsLanguage } from '@helvetia-design/core'
 
 function App() {
 ${' '}const [language, setLanguage] = useState<DsLanguage>()
@@ -316,7 +316,7 @@ ${' '})
 To subscribe to changes of the region or language during runtime you can register your callback function using `onDsConfigChange`.
 
 <Code language="typescript" code={`
-import { onDsConfigChange, DsConfigState } from '@baloise/ds-core'
+import { onDsConfigChange, DsConfigState } from '@helvetia-design/core'
 
 onDsConfigChange((config: DsConfigState) => {
 // do something with the updated config here

@@ -1,4 +1,4 @@
-import tokens from '@baloise/ds-tokens/dist/docs/base.tokens.json'
+import tokens from '@helvetia-design/tokens/dist/docs/base.tokens.json'
 import React from 'react'
 
 export const ColorCard = ({ background, color, small = false }): React.ReactElement => {

@@ -1,4 +1,4 @@
-import { DsConfig, initializeDesignSystem } from '@baloise/ds-core'
+import { DsConfig, initializeDesignSystem } from '@helvetia-design/core'
 
 interface DsReactConfig {
   defaults?: DsConfig

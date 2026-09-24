@@ -1,4 +1,4 @@
-import { DsHint, expect, test } from '@baloise/ds-playwright'
+import { DsHint, expect, test } from '@helvetia-design/playwright'
 
 test.describe('component', () => {
   test('should render ds-hint closed by default', async ({ page }) => {

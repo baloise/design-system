@@ -5,20 +5,20 @@
  * @param html - The rendered story HTML (body content only)
  */
 export const openInCodePen = (html: string): void => {
-  const DESIGN_SYSTEM_VERSION = '20.0.0-next.11'
+  const DESIGN_SYSTEM_VERSION = '0.0.0'
   const JS_DELIVR = 'https://cdn.jsdelivr.net/npm/'
 
   const payload: Record<string, string> = {
     title: 'Helvetia Design System',
     editors: '100',
     html: html || '',
-    head: `<script type="module" src="${JS_DELIVR}@baloise/ds-core@${DESIGN_SYSTEM_VERSION}/dist/design-system/design-system.esm.js"></script>`,
+    head: `<script type="module" src="${JS_DELIVR}@helvetia-design/core@${DESIGN_SYSTEM_VERSION}/dist/design-system/design-system.esm.js"></script>`,
     css_external: [
-      `${JS_DELIVR}@baloise/ds-tokens@${DESIGN_SYSTEM_VERSION}/dist/css/base.tokens.css`,
-      `${JS_DELIVR}@baloise/ds-styles@${DESIGN_SYSTEM_VERSION}/dist/css/utilities.css`,
-      `${JS_DELIVR}@baloise/ds-styles@${DESIGN_SYSTEM_VERSION}/dist/css/design-system.css`,
+      `${JS_DELIVR}@helvetia-design/tokens@${DESIGN_SYSTEM_VERSION}/dist/css/base.tokens.css`,
+      `${JS_DELIVR}@helvetia-design/styles@${DESIGN_SYSTEM_VERSION}/dist/css/utilities.css`,
+      `${JS_DELIVR}@helvetia-design/styles@${DESIGN_SYSTEM_VERSION}/dist/css/design-system.css`,
     ].join(';'),
-    js_external: `${JS_DELIVR}@baloise/ds-core@${DESIGN_SYSTEM_VERSION}/dist/design-system/design-system.js`,
+    js_external: `${JS_DELIVR}@helvetia-design/core@${DESIGN_SYSTEM_VERSION}/dist/design-system/design-system.js`,
   }
 
   // Create a temporary form and submit it to CodePen

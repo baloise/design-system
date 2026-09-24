@@ -1,4 +1,4 @@
-import { test } from '@baloise/ds-playwright'
+import { test } from '@helvetia-design/playwright'
 
 test('default', async ({ page, a11y }) => {
   await page.mount(`<ds-slider label="Label" description="Description"></ds-slider>`)

@@ -102,7 +102,7 @@ A11y tests verify WCAG 2.2 AA compliance:
 Each component has a PO in `packages/playwright/src/lib/components/<component>.po.ts`:
 
 ```typescript
-import { PageObject, E2ELocator } from '@baloise/ds-playwright'
+import { PageObject, E2ELocator } from '@helvetia-design/playwright'
 
 export class DsTag extends PageObject {
   private readonly closeButton: Locator

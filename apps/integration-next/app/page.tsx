@@ -1,4 +1,4 @@
-import { DsButton, DsCheckbox, DsInput } from '@baloise/ds-react'
+import { DsButton, DsCheckbox, DsInput } from '@helvetia-design/react'
 
 export default function HomePage() {
   return (

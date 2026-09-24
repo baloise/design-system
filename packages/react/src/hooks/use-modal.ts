@@ -1,6 +1,6 @@
 'use client'
 
-import { dsModalController, type ModalOptions } from '@baloise/ds-core'
+import { dsModalController, type ModalOptions } from '@helvetia-design/core'
 import { useCallback, useRef, type ReactNode } from 'react'
 import { flushSync } from 'react-dom'
 import { createRoot, type Root } from 'react-dom/client'

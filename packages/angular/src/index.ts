@@ -1,5 +1,5 @@
 import { EnvironmentProviders, makeEnvironmentProviders, provideEnvironmentInitializer } from '@angular/core'
-import { DsConfig, initializeDesignSystem } from '@baloise/ds-core'
+import { DsConfig, initializeDesignSystem } from '@helvetia-design/core'
 
 export interface DsAngularConfig {
   defaults?: DsConfig
