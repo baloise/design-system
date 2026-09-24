@@ -54,7 +54,7 @@ pnpm --filter @helvetia/ds-skills test
 pnpm --filter @helvetia/ds-skills lint
 ```
 
-Done when all four CLI specs pass and eslint exits 0.
+Done when the CLI specs and `test/detect-baloise.spec.ts` pass and eslint exits 0.
 
 ### Scratch CLI
 
@@ -76,9 +76,11 @@ Done when:
 
 ### Menu (Claude)
 
-In the scratch directory, invoke `/ds-migrate-from-baloise`. Done when Init reports it is a follow-up and stops, Components reports no migrations available and stops, and CSS utils / Assets report "coming soon" and stop.
+In the scratch directory, invoke `/ds-migrate-from-baloise`. Done when Init runs `scripts/detect-baloise.mjs`, Components reports no migrations available and stops, and CSS utils / Assets report "coming soon" and stop.
 
-Init, spinner scan, and rewrites are follow-up tickets — they are out of scope for this package version.
+Against a project with no `@baloise/ds-*` dependency and no CSS/JS import, Init says "no Baloise Design System installation detected, nothing to migrate" and does not edit files. Against a project that has both, Init adds the `@helvetia/*` aliases from the script JSON, runs that JSON's `installCommand`, inserts the new import beside the untouched `@baloise/*` import, and leaves the result unstaged.
+
+Spinner scan and component rewrites are follow-up tickets — they are out of scope for this package version.
 
 ## Related Contexts
 
