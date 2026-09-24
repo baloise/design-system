@@ -85,6 +85,8 @@ packages/assets/src/brand-icons/svg.ts
 packages/assets/src/brand-icons/svg.json
 packages/assets/src/maps/svg.ts
 packages/assets/src/maps/svg.json
+packages/assets/src/flags/svg.ts
+packages/assets/src/flags/svg.json
 
 libs/output-targets-angular/CHANGELOG.md
 libs/output-targets-react/CHANGELOG.md
