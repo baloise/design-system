@@ -1,0 +1,37 @@
+/**
+ * Shared configuration for List component documentation pages.
+ * Import and reuse this across all list documentation MDX files to reduce duplication.
+ */
+
+export const LIST_DOC_CONFIG = {
+  section: 'Components / List',
+  color: 'green' as const,
+  tabs: [
+    { label: 'Overview', storyId: 'components-structure-list-list--list' },
+    { label: 'Usage', storyId: 'components-structure-list-usage--usage' },
+    { label: 'Variants', storyId: 'components-structure-list-variants-overview--overview' },
+    { label: 'Styling', storyId: 'components-structure-list-styling--styling' },
+    { label: 'Accessibility', storyId: 'components-structure-list-accessibility--accessibility' },
+    { label: 'Testing', storyId: 'components-structure-list-testing--testing' },
+  ],
+}
+
+export const LIST_TAB_TITLES = {
+  overview: 'Overview',
+  usage: 'Usage',
+  variants: 'Variants',
+  styling: 'Styling',
+  accessibility: 'Accessibility',
+  testing: 'Testing',
+}
+
+/**
+ * Helper to get tabs with active state set.
+ * Usage: getListTabs('usage')
+ */
+export const getListTabs = (activeLabel: keyof typeof LIST_TAB_TITLES) => {
+  return LIST_DOC_CONFIG.tabs.map(tab => ({
+    ...tab,
+    active: tab.label === LIST_TAB_TITLES[activeLabel],
+  }))
+}

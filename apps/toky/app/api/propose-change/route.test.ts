@@ -84,7 +84,7 @@ const cleanDiff: TokenDiffEntry[] = [
   },
 ]
 
-const tcsFixtureDoc = {
+const zurichFixtureDoc = {
   '🌐 Global': {
     '🌈 Color': {
       Black: { $type: 'color', $value: { hex: '#000000' } },
@@ -96,8 +96,8 @@ beforeEach(() => {
   vi.clearAllMocks()
   auth.mockResolvedValue({ user: { login: 'octocat', isOrgMember: true } })
   getBaseTokensFileMeta.mockResolvedValue({ sha: 'file-sha', content: fixtureDoc })
-  getBrandTokensFileMeta.mockResolvedValue({ sha: 'tcs-sha', content: tcsFixtureDoc })
-  listTokenBrandFiles.mockResolvedValue(['Tcs'])
+  getBrandTokensFileMeta.mockResolvedValue({ sha: 'zurich-sha', content: zurichFixtureDoc })
+  listTokenBrandFiles.mockResolvedValue(['Zurich'])
   resolveReadRef.mockResolvedValue({ ref: 'next', status: { state: 'synced', prUrl: null, prNumber: null } })
   createBranch.mockResolvedValue(undefined)
   updateFileOnBranch.mockResolvedValue(undefined)
@@ -461,7 +461,7 @@ describe('POST /api/propose-change', () => {
   })
 
   it('409s when the brand name already exists on GitHub, without creating anything', async () => {
-    listTokenBrandFiles.mockResolvedValue(['Tcs', 'Acme'])
+    listTokenBrandFiles.mockResolvedValue(['Zurich', 'Acme'])
 
     const response = await POST(makeRequest({ diff: [], description: '', newBrands: ['Acme'] }))
     expect(response.status).toBe(409)
@@ -472,7 +472,7 @@ describe('POST /api/propose-change', () => {
   })
 
   describe('brandDiffs (overriding an existing brand)', () => {
-    const tcsCleanDiff: TokenDiffEntry[] = [
+    const zurichCleanDiff: TokenDiffEntry[] = [
       {
         kind: 'update',
         layer: 'Global',
@@ -480,20 +480,20 @@ describe('POST /api/propose-change', () => {
         newPath: ['🌐 Global', '🌈 Color', 'Black'],
         type: 'color',
         value: { hex: '#111111' },
-        before: { hex: '#000000' }, // matches tcsFixtureDoc's current value — clean
+        before: { hex: '#000000' }, // matches zurichFixtureDoc's current value — clean
       },
     ]
 
     it('writes the brand overrides to its own file using its own sha', async () => {
-      const response = await POST(makeRequest({ diff: [], description: '', brandDiffs: { Tcs: tcsCleanDiff } }))
+      const response = await POST(makeRequest({ diff: [], description: '', brandDiffs: { Zurich: zurichCleanDiff } }))
       expect(response.status).toBe(200)
 
-      expect(getBrandTokensFileMeta).toHaveBeenCalledWith('Tcs', 'next')
+      expect(getBrandTokensFileMeta).toHaveBeenCalledWith('Zurich', 'next')
       expect(updateFileAtPath).toHaveBeenCalledTimes(1)
       const [branch, path, content, sha] = updateFileAtPath.mock.calls[0]
       expect(branch).toBe('toky/update-next')
-      expect(path).toBe('packages/tokens/tokens/Tcs.tokens.json')
-      expect(sha).toBe('tcs-sha')
+      expect(path).toBe('packages/tokens/tokens/Zurich.tokens.json')
+      expect(sha).toBe('zurich-sha')
       expect(JSON.parse(content)).toEqual({
         '🌐 Global': { '🌈 Color': { Black: { $type: 'color', $value: { hex: '#111111' } } } },
       })
@@ -503,20 +503,20 @@ describe('POST /api/propose-change', () => {
 
     it('409s when the brand file changed since the diff was computed', async () => {
       const staleDiff: TokenDiffEntry[] = [
-        { ...tcsCleanDiff[0], before: { hex: '#ABCDEF' } }, // stale — doesn't match tcsFixtureDoc's #000000
+        { ...zurichCleanDiff[0], before: { hex: '#ABCDEF' } }, // stale — doesn't match zurichFixtureDoc's #000000
       ]
 
-      const response = await POST(makeRequest({ diff: [], description: '', brandDiffs: { Tcs: staleDiff } }))
+      const response = await POST(makeRequest({ diff: [], description: '', brandDiffs: { Zurich: staleDiff } }))
       expect(response.status).toBe(409)
       const json = await response.json()
-      expect(json.conflicts).toEqual([{ path: 'Tcs: 🌐 Global.🌈 Color.Black', reason: 'changed' }])
+      expect(json.conflicts).toEqual([{ path: 'Zurich: 🌐 Global.🌈 Color.Black', reason: 'changed' }])
       expect(updateFileAtPath).not.toHaveBeenCalled()
     })
 
     it('400s when the brand no longer exists and is not being created in the same request', async () => {
-      listTokenBrandFiles.mockResolvedValue([]) // Tcs no longer on GitHub
+      listTokenBrandFiles.mockResolvedValue([]) // Zurich no longer on GitHub
 
-      const response = await POST(makeRequest({ diff: [], description: '', brandDiffs: { Tcs: tcsCleanDiff } }))
+      const response = await POST(makeRequest({ diff: [], description: '', brandDiffs: { Zurich: zurichCleanDiff } }))
       expect(response.status).toBe(400)
       expect(getBrandTokensFileMeta).not.toHaveBeenCalled()
     })
@@ -558,14 +558,14 @@ describe('POST /api/propose-change', () => {
     })
 
     it('mentions brand overrides in the changeset and PR body', async () => {
-      const response = await POST(makeRequest({ diff: [], description: '', brandDiffs: { Tcs: tcsCleanDiff } }))
+      const response = await POST(makeRequest({ diff: [], description: '', brandDiffs: { Zurich: zurichCleanDiff } }))
       expect(response.status).toBe(200)
 
       const [, , changesetContent] = createFileOnBranch.mock.calls[0]
-      expect(changesetContent).toContain('**Tcs — Overridden:** 🌐 Global/🌈 Color/Black')
+      expect(changesetContent).toContain('**Zurich — Overridden:** 🌐 Global/🌈 Color/Black')
 
       const [, , prBody] = openPullRequest.mock.calls[0]
-      expect(prBody).toContain('**Tcs — Overridden:**\n- 🌐 Global.🌈 Color.Black: #000000 → #111111')
+      expect(prBody).toContain('**Zurich — Overridden:**\n- 🌐 Global.🌈 Color.Black: #000000 → #111111')
     })
   })
 })

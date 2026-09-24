@@ -1,8 +1,30 @@
 import type { Decorator, Preview } from '@storybook/html-vite'
+import {
+  updateDsAllowedLanguages,
+  updateDsLanguage,
+  updateDsRegion,
+  type DsLanguage,
+  type DsRegion,
+} from '@baloise/ds-core'
 
 const BRAND_LINK_ID = 'brand-theme-stylesheet'
 
+// The language toolbar (see addons/language.addon.tsx) lets you preview every translation the
+// design system ships, but components reject any language outside `config.allowedLanguages`
+// (which defaults to a region-specific subset) and silently fall back instead. Widen it here so
+// switching the toolbar actually changes the rendered text.
+updateDsAllowedLanguages(['de', 'en', 'fr', 'it', 'nl', 'es', 'pl', 'pt', 'sv', 'fi'])
+
 export const decorators: Decorator[] = [
+  (Story: any, context: any) => {
+    const region: DsRegion | undefined = context.globals?.region
+    const language: DsLanguage | undefined = context.globals?.language
+
+    if (region) updateDsRegion(region)
+    if (language) updateDsLanguage(language)
+
+    return Story()
+  },
   (Story: any, context: any) => {
     const theme: string = context.globals?.theme ?? ''
     const story = Story()
@@ -44,6 +66,16 @@ const preview: Preview = {
       description: 'Brand theme',
       defaultValue: '',
     },
+    region: {
+      name: 'Region',
+      description: 'Design system region',
+      defaultValue: 'CH',
+    },
+    language: {
+      name: 'Language',
+      description: 'Design system language',
+      defaultValue: 'de',
+    },
   },
   initialGlobals: {
     backgrounds: { value: 'light' },
@@ -51,12 +83,19 @@ const preview: Preview = {
   parameters: {
     actions: { argTypesRegex: '^on[A-Z].*' },
     controls: { expanded: false },
+    // docs: {
+    //   toc: {
+    //     title: 'On this page',
+    //     headingSelector: 'h2',
+    //   },
+    // },
     options: {
       storySort: {
         order: [
           'Welcome',
           "What's New",
           'Versions',
+          'Design',
           'Support',
           'Contributing',
           'Foundation',
@@ -76,7 +115,23 @@ const preview: Preview = {
           'Tokens',
           'CSS Utilities',
           'Components',
-          ['Overview'],
+          [
+            'Overview',
+            'Actions',
+            ['Overview'],
+            'Forms',
+            ['Overview'],
+            'Indicators',
+            ['Overview'],
+            'Media',
+            ['Overview'],
+            'Navigation',
+            ['Overview'],
+            'Overlays',
+            ['Overview'],
+            'Structure',
+            ['Overview'],
+          ],
           'Development',
         ],
       },

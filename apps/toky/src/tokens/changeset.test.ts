@@ -114,7 +114,7 @@ describe('buildChangesetContent', () => {
 
   it('mentions brand overrides in the summary and lists them by name, staying patch-level', () => {
     const brandDiffs = {
-      Tcs: [
+      Zurich: [
         makeEntry({ kind: 'update', oldPath: ['🌐 Global', 'White'], newPath: ['🌐 Global', 'White'] }),
         makeEntry({ kind: 'delete', oldPath: ['🌐 Global', 'Black'], newPath: null }),
       ],
@@ -124,7 +124,7 @@ describe('buildChangesetContent', () => {
 
     expect(content).toContain("'@baloise/ds-tokens': patch")
     expect(content).toContain('**tokens**: 2 brand overrides.')
-    expect(content).toContain('**Tcs — Overridden:** 🌐 Global/White')
-    expect(content).toContain('**Tcs — Reverted:** 🌐 Global/Black')
+    expect(content).toContain('**Zurich — Overridden:** 🌐 Global/White')
+    expect(content).toContain('**Zurich — Reverted:** 🌐 Global/Black')
   })
 })

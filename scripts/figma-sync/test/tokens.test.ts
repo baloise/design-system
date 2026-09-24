@@ -138,7 +138,7 @@ describe('mergeBrandTree', () => {
     expect(resolved['🔗 Alias'].Background.$value).toBe('{🌐 Global.🌈 Color.White}')
   })
 
-  it('resolves identically to base when the brand file is empty (Tcs.tokens.json before any override)', () => {
+  it('resolves identically to base when the brand file is empty (Zurich.tokens.json before any override)', () => {
     const resolved = mergeBrandTree(base, {})
     expect(resolved).toEqual(base)
   })
@@ -241,7 +241,7 @@ describe('computeTokenDiff (local copy) matches packages/tokens/src/config.brand
 describe('mergeBrandTree round-trips on the real Base + brand token files', () => {
   it('resolving then diffing a real brand file against Base reproduces the same sparse diff the raw file itself produces', () => {
     // Not "reproduces the raw override file" — a real brand file can contain
-    // an entry whose $value happens to equal Base's (e.g. Tcs.tokens.json's
+    // an entry whose $value happens to equal Base's (e.g. Zurich.tokens.json's
     // White, which is byte-identical to Base's White today), and
     // computeTokenDiff correctly treats that as no override at all. The
     // real round-trip invariant is against the *diffed* override, not the

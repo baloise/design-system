@@ -1,0 +1,123 @@
+@use '@baloise/ds-styles/dist/scss/mixins' as *;
+@use '../../../vars' as vars;
+
+/**
+ * Variables
+ * --------------------------------
+ * Define here the css variables for the component to be able to use it in host or non-host mode
+ * These variables can be used in the component styles below and later on be overridden in themes.
+ *
+ * @prop --spinner-logo-size: Size of the spinner logo variant.
+ * @prop --spinner-circle-size: Size of the spinner circle.
+ * @prop --spinner-circle-thickness: Border width of the spinner circle.
+ * @prop --spinner-circle-background-color: Background color of the circle border.
+ * @prop --spinner-circle-progress-color: Progress/animation color of the circle border.
+ * @prop --spinner-animation-duration: Duration of the spinner animation.
+ * @prop --spinner-animation-easing: Easing function of the spinner animation.
+ */
+
+:host {
+  @include vars.base(spinner);
+  @include vars.local(spinner-logo-size, var(--ds-spinner-logo-size-md));
+  @include vars.local(spinner-circle-size, var(--ds-spinner-circle-size-md));
+
+  @include vars.local(spinner-circle-thickness, var(--ds-spinner-circle-thickness-md));
+  @include vars.local(spinner-circle-background-color, var(--ds-spinner-circle-primary-background));
+  @include vars.local(spinner-circle-progress-color, var(--ds-spinner-circle-primary-progress));
+}
+
+/**
+  * Basic Component Styles
+  * --------------------------------
+  * Define here the component styles using the mixin to support host and non-host mode for hybrid components.
+  */
+
+:host {
+  @include unselectable();
+
+  &,
+  & > div {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+  }
+
+  svg {
+    transform: unset !important;
+  }
+}
+
+:host(:not(.is-circle)) > div {
+  width: var(--_spinner-logo-size);
+}
+
+:host(.is-circle) #inner {
+  border-radius: 50%;
+  border-style: solid;
+  border-width: var(--_spinner-circle-thickness);
+  border-color: var(--_spinner-circle-background-color);
+  border-top-color: var(--_spinner-circle-progress-color);
+  width: var(--_spinner-circle-size);
+  height: var(--_spinner-circle-size);
+}
+
+:host(.is-animated) #inner {
+  animation: spinner 1.6s linear infinite;
+}
+
+/**
+  * Variants and States
+  * --------------------------------
+  * Define here the variants and states like size or colors for the component.
+  */
+
+:host(.is-sm) {
+  --mod-spinner-logo-size: var(--ds-spinner-logo-size-sm);
+  --mod-spinner-circle-size: var(--ds-spinner-circle-size-sm);
+  --mod-spinner-circle-thickness: var(--ds-spinner-circle-thickness-sm);
+}
+
+:host(.is-inverted) {
+  --mod-spinner-circle-background-color: var(--ds-spinner-circle-inverted-background);
+  --mod-spinner-circle-progress-color: var(--ds-spinner-circle-inverted-progress);
+}
+
+/**
+  * Label
+  * --------------------------------
+  */
+
+:host(.is-label-right) {
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem;
+  width: auto;
+}
+
+:host(.is-label-bottom) {
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  width: auto;
+}
+
+::part(label) {
+  font-family: var(--ds-alias-text-family-text);
+  line-height: var(--ds-alias-text-line-height-text);
+}
+
+/**
+  * Animations
+  * --------------------------------
+  * Define here the animations for the component.
+  */
+
+@keyframes spinner {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

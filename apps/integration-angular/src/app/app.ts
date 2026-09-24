@@ -2,11 +2,11 @@ import { Component } from '@angular/core'
 import { ButtonDemo } from './button-demo/button-demo'
 import { CheckboxDemo } from './checkbox-demo/checkbox-demo'
 import { CheckboxGroupDemo } from './checkbox-group-demo/checkbox-group-demo'
-import { DateDemo } from './date-demo/date-demo'
+import { CounterDemo } from './counter-demo/counter-demo'
+import { DatepickerDemo } from './datepicker-demo/datepicker-demo'
 import { FileUploadDemo } from './file-upload-demo/file-upload-demo'
 import { InputDemo } from './input-demo/input-demo'
-import { InputSliderDemo } from './input-slider-demo/input-slider-demo'
-import { InputStepperDemo } from './input-stepper-demo/input-stepper-demo'
+import { SliderDemo } from './slider-demo/slider-demo'
 import { NumberInputDemo } from './number-input-demo/number-input-demo'
 import { SegmentDemo } from './segment-demo/segment-demo'
 import { TextareaDemo } from './textarea-demo/textarea-demo'
@@ -20,13 +20,13 @@ import { ToggleDemo } from './toggle-demo/toggle-demo'
     ButtonDemo,
     InputDemo,
     NumberInputDemo,
-    InputSliderDemo,
-    InputStepperDemo,
+    SliderDemo,
+    CounterDemo,
     TextareaDemo,
     CheckboxDemo,
     CheckboxGroupDemo,
     SegmentDemo,
-    DateDemo,
+    DatepickerDemo,
     RadioGroupDemo,
     FileUploadDemo,
     SelectDemo,

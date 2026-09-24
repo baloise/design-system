@@ -1,0 +1,37 @@
+/**
+ * Shared configuration for Accordion component documentation pages.
+ * Import and reuse this across all accordion documentation MDX files to reduce duplication.
+ */
+
+export const ACCORDION_DOC_CONFIG = {
+  section: 'Components / Accordion',
+  color: 'purple' as const,
+  tabs: [
+    { label: 'Overview', storyId: 'components-structure-accordion-accordion--accordion' },
+    { label: 'Usage', storyId: 'components-structure-accordion-usage--usage' },
+    { label: 'Variants', storyId: 'components-structure-accordion-variants-overview--overview' },
+    { label: 'Styling', storyId: 'components-structure-accordion-styling--styling' },
+    { label: 'Accessibility', storyId: 'components-structure-accordion-accessibility--accessibility' },
+    { label: 'Testing', storyId: 'components-structure-accordion-testing--testing' },
+  ],
+}
+
+export const ACCORDION_TAB_TITLES = {
+  overview: 'Overview',
+  usage: 'Usage',
+  variants: 'Variants',
+  styling: 'Styling',
+  accessibility: 'Accessibility',
+  testing: 'Testing',
+}
+
+/**
+ * Helper to get tabs with active state set.
+ * Usage: getAccordionTabs('usage')
+ */
+export const getAccordionTabs = (activeLabel: keyof typeof ACCORDION_TAB_TITLES) => {
+  return ACCORDION_DOC_CONFIG.tabs.map(tab => ({
+    ...tab,
+    active: tab.label === ACCORDION_TAB_TITLES[activeLabel],
+  }))
+}

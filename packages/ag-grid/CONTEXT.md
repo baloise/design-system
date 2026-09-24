@@ -10,7 +10,7 @@ This document captures domain language, architectural patterns, and key concepts
 
 ### Theme params vs. resolved values
 
-AG Grid's Theming API builds a `Theme` object from a base theme (`themeQuartz`) plus a set of **params** — named style properties (`accentColor`, `cellFontFamily`, `headerFontFamily`, etc.) that AG Grid resolves into CSS internally. This package's params are not static values (e.g. `'#005EFF'`); they are `var(--ds-alias-*)` **strings** referencing the live `@baloise/ds-tokens` CSS custom property cascade. This is the entire point of the package: the grid re-themes itself whenever the cascade changes (brand override, dark mode, `data-theme="tcs"`) — no theme rebuild, no new package version needed.
+AG Grid's Theming API builds a `Theme` object from a base theme (`themeQuartz`) plus a set of **params** — named style properties (`accentColor`, `cellFontFamily`, `headerFontFamily`, etc.) that AG Grid resolves into CSS internally. This package's params are not static values (e.g. `'#005EFF'`); they are `var(--ds-alias-*)` **strings** referencing the live `@baloise/ds-tokens` CSS custom property cascade. This is the entire point of the package: the grid re-themes itself whenever the cascade changes (brand override, dark mode, `data-theme="orange-vacations"`) — no theme rebuild, no new package version needed.
 
 ### `designSystemGridThemeParams` vs. `designSystemGridTheme`
 
@@ -28,7 +28,7 @@ AG Grid's public `Theme<TParams>` type (from the `ag-stack` dependency) only exp
 - **Community edition only** — no Enterprise-only widgets are referenced or tested here. The theme itself works unchanged for Enterprise (it shares the same theming layer), but this package's scope stops at Community.
 - **`ag-grid-community` is a peer dependency** — consumers supply their own AG Grid v33+ version; it's a `devDependency` here only for local type-checking and testing.
 - **`@baloise/ds-tokens` is a regular dependency**, not a peer — the `--ds-alias-*` names it exports are an internal contract with this package, not a bring-your-own-version situation.
-- **No brand-specific code** — multi-brand support (e.g. TCS) comes entirely from the existing `[data-theme="tcs"]` token-cascade mechanism plus `var()` binding; nothing in this package's source changes per brand.
+- **No brand-specific code** — multi-brand support (e.g. OrangeVacations) comes entirely from the existing `[data-theme="orange-vacations"]` token-cascade mechanism plus `var()` binding; nothing in this package's source changes per brand.
 - **Consumers must load `@baloise/ds-tokens` CSS themselves** — the theme's params reference custom properties, so if the token stylesheet isn't on the page, they resolve to nothing.
 
 ## Related Contexts

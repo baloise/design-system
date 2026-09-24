@@ -1,0 +1,377 @@
+import type { JSX } from '@baloise/ds-core'
+import type { Meta } from '@storybook/html-vite'
+import { createCssMappings, cssClasses, props, StoryFactory, withComponentControls, withRender } from '../../../utils'
+
+type Args = JSX.DsButton & { slot: string }
+
+const tag = 'ds-button'
+const css = createCssMappings(tag)
+
+const meta: Meta<Args> = {
+  title: 'Components/Actions/Button/Variants',
+  args: {
+    slot: 'Button',
+  },
+  argTypes: {
+    ...withComponentControls({ tag }),
+  },
+  ...withRender(
+    ({ slot, ...args }) => `
+<button ${cssClasses(
+      {
+        ...css('color', (color: string) => `is-${color}`),
+        size: args.size === 'sm' ? 'is-sm' : '',
+        disabled: 'is-disabled',
+        wide: 'is-wide',
+        inverted: 'is-inverted',
+        square: 'is-square',
+        loading: 'is-loading',
+      },
+      args,
+      'ds-button',
+    )}>${slot}</button>
+`,
+  ),
+}
+
+export default meta
+
+/**
+ * STORIES
+ * ------------------------------------------------------
+ */
+
+const Story = StoryFactory<Args>(meta)
+
+export const Basic = Story({
+  ...withRender(({ slot, ...args }) => `<ds-button ${props(args)}>${slot}</ds-button>`),
+})
+Basic.storyName = '🧩 Basic'
+
+export const BasicHtml = Story({})
+BasicHtml.storyName = '🌍 Basic'
+
+export const Group = Story({
+  ...withRender(
+    ({ slot, ...args }) => `
+ <ds-button-group>
+  <ds-button ${props(args)}>${slot}</ds-button>
+  <ds-button ${props(args)}>${slot}</ds-button>
+ </ds-button-group>
+  `,
+  ),
+})
+Group.storyName = '🧩 Group'
+
+export const Variants = Story({
+  ...withRender(
+    () => `<ds-button-group>
+  <ds-button color="primary">Primary</ds-button>
+  <ds-button color="secondary">Secondary</ds-button>
+  <ds-button color="tertiary">Tertiary</ds-button>
+  <ds-button color="ghost">Ghost</ds-button>
+</ds-button-group>
+<ds-button-group class="mt-base">
+  <ds-button color="link">Link</ds-button>
+</ds-button-group>`,
+  ),
+})
+Variants.storyName = '🧩 Variants'
+
+export const VariantsHtml = Story({
+  ...withRender(
+    () => `<div class="ds-buttons">
+  <button class="ds-button is-primary">Primary</button>
+  <button class="ds-button is-secondary">Secondary</button>
+  <button class="ds-button is-tertiary">Tertiary</button>
+</div>
+<div class="ds-buttons mt-base">
+  <button class="ds-button is-link">Link</button>
+</div>`,
+  ),
+})
+VariantsHtml.storyName = '🌍 Variants'
+
+export const Sizes = Story({
+  ...withRender(
+    () => `<ds-button-group>
+  <ds-button size="sm">Small</ds-button>
+  <ds-button>Normal</ds-button>
+  <ds-button size="lg">Large</ds-button>
+</ds-button-group>`,
+  ),
+})
+Sizes.storyName = '🧩 Sizes'
+
+export const SizesHtml = Story({
+  ...withRender(
+    () => `<div class="ds-buttons">
+  <button class="ds-button is-sm">Small</button>
+  <button class="ds-button">Normal</button>
+  <button class="ds-button is-lg">Large</button>
+</div>`,
+  ),
+})
+SizesHtml.storyName = '🌍 Sizes'
+
+export const Inverted = Story({
+  ...withRender(
+    () => `<div class="ds-stack bg-primary p-base">
+  <ds-button-group>
+    <ds-button inverted color="primary">Primary</ds-button>
+    <ds-button inverted color="secondary">Secondary</ds-button>
+  </ds-button-group>
+  <ds-button-group>
+    <ds-button inverted color="link">Link</ds-button>
+  </ds-button-group>
+</div>`,
+  ),
+})
+Inverted.storyName = '🧩 Inverted'
+
+export const InvertedHtml = Story({
+  ...withRender(
+    () => `<div class="ds-stack bg-primary p-base">
+  <div class="ds-buttons">
+    <button class="ds-button is-inverted is-primary">Primary</button>
+    <button class="ds-button is-inverted is-secondary">Secondary</button>
+  </div>
+  <div class="ds-buttons">
+    <button class="ds-button is-inverted is-link">Link</button>
+  </div>
+</div>`,
+  ),
+})
+InvertedHtml.storyName = '🌍 Inverted'
+
+export const WithIcon = Story({
+  ...withRender(
+    () => `
+<ds-button color="primary" icon="plus">
+  Button
+</ds-button>`,
+  ),
+})
+WithIcon.storyName = '🧩 With Icon'
+
+export const WithIconHtml = Story({
+  ...withRender(
+    () => `
+<button class="ds-button is-primary">
+  <ds-icon name="plus"></ds-icon>
+  Button
+</button>`,
+  ),
+})
+WithIconHtml.storyName = '🌍 With Icon'
+
+export const States = Story({
+  ...withRender(
+    () => `<ds-button-group>
+  <ds-button loading>loading...</ds-button>
+  <ds-button disabled>Disabled</ds-button>
+</ds-button-group>`,
+  ),
+})
+States.storyName = '🧩 States'
+
+export const StatesHtml = Story({
+  ...withRender(
+    () => `<div class="ds-buttons">
+  <button class="ds-button is-loading is-disabled">
+    <ds-spinner></ds-spinner>
+    loading...
+  </button>
+  <button class="ds-button" disabled>Disabled</button>
+</div>`,
+  ),
+})
+StatesHtml.storyName = '🌍 States'
+
+export const AlertButtons = Story({
+  ...withRender(
+    () => `<ds-button-group>
+  <ds-button color="info">Info</ds-button>
+  <ds-button color="success">Success</ds-button>
+  <ds-button color="warning">Warning</ds-button>
+  <ds-button color="danger">Danger</ds-button>
+</ds-button-group>`,
+  ),
+})
+AlertButtons.storyName = '🧩 Alert Buttons'
+
+export const AlertButtonsHtml = Story({
+  ...withRender(
+    () => `<div class="ds-buttons">
+  <button class="ds-button is-info">Info</button>
+  <button class="ds-button is-success">Success</button>
+  <button class="ds-button is-warning">Warning</button>
+  <button class="ds-button is-danger">Danger</button>
+</div>`,
+  ),
+})
+AlertButtonsHtml.storyName = '🌍 Alert Buttons'
+
+export const SquareButtons = Story({
+  ...withRender(
+    () => `<ds-button-group>
+  <ds-button square icon="plus"></ds-button>
+  <ds-button square color="secondary" icon="plus"></ds-button>
+  <ds-button square color="tertiary" icon="plus"></ds-button>
+</ds-button-group>`,
+  ),
+})
+SquareButtons.storyName = '🧩 Square Buttons'
+
+export const SquareButtonsHtml = Story({
+  ...withRender(
+    () => `<div class="ds-buttons">
+  <button class="ds-button is-square">
+    <ds-icon name="plus"></ds-icon>
+  </button>
+  <button class="ds-button is-square is-secondary">
+    <ds-icon name="plus"></ds-icon>
+  </button>
+  <button class="ds-button is-square is-tertiary">
+    <ds-icon name="plus"></ds-icon>
+  </button>
+</div>`,
+  ),
+})
+SquareButtonsHtml.storyName = '🌍 Square Buttons'
+
+export const NoWrap = Story({
+  ...withRender(
+    () => `<div class="ds-buttons">
+  <button class="ds-button has-no-wrap is-tertiary">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec venenatis vulputate lorem.
+  </button>
+</div>`,
+  ),
+})
+NoWrap.storyName = '🌍 No Wrap'
+
+/**
+ * GROUPS
+ * ------------------------------------------------------
+ */
+
+export const ButtonGroup = Story({
+  ...withRender(
+    () => `<div class="ds-buttons">
+  <button class="ds-button">Left</button>
+  <button class="ds-button">Middle</button>
+  <button class="ds-button">Right</button>
+</div>`,
+  ),
+})
+ButtonGroup.storyName = '🌍 Button Group'
+
+export const ButtonGroupAlignment = Story({
+  ...withRender(
+    () => `<div class="ds-stack">
+  <div class="ds-buttons">
+    <button class="ds-button">Left</button>
+    <button class="ds-button">Middle</button>
+    <button class="ds-button">Right</button>
+  </div>
+  <div class="ds-buttons is-centered">
+    <button class="ds-button">Left</button>
+    <button class="ds-button">Middle</button>
+    <button class="ds-button">Right</button>
+  </div>
+  <div class="ds-buttons is-right">
+    <button class="ds-button">Left</button>
+    <button class="ds-button">Middle</button>
+    <button class="ds-button">Right</button>
+  </div>
+</div>`,
+  ),
+})
+ButtonGroupAlignment.storyName = '🌍 Button Group Alignment'
+
+export const ButtonGroupAsRow = Story({
+  ...withRender(
+    () => `<div class="ds-stack">
+  <div class="ds-buttons as-row">
+    <button class="ds-button is-scondary">
+      <ds-icon name="caret-left"></ds-icon>
+      Back
+    </button>
+    <button class="ds-button">Next</button>
+  </div>
+  <div class="ds-buttons as-row">
+    <button class="ds-button is-square">
+      <ds-icon name="caret-left"></ds-icon>
+    </button>
+    <button class="ds-button">Next</button>
+  </div>
+</div>`,
+  ),
+})
+ButtonGroupAsRow.storyName = '🌍 Button Group As Row'
+
+export const ButtonGroupAsCol = Story({
+  ...withRender(
+    () => `<div class="ds-stack">
+  <div class="ds-buttons as-col is-left">
+    <button class="ds-button">Left</button>
+    <button class="ds-button">Middle</button>
+    <button class="ds-button">Right</button>
+  </div>
+  <div class="ds-buttons as-col is-centered">
+    <button class="ds-button">Left</button>
+    <button class="ds-button">Middle</button>
+    <button class="ds-button">Right</button>
+  </div>
+  <div class="ds-buttons as-col is-right">
+    <button class="ds-button">Left</button>
+    <button class="ds-button">Middle</button>
+    <button class="ds-button">Right</button>
+  </div>
+</div>`,
+  ),
+})
+ButtonGroupAsCol.storyName = '🌍 Button Group As Col'
+
+/**
+ * LINKS
+ * ------------------------------------------------------
+ */
+
+export const Link = Story({
+  ...withRender(
+    () => `<div class="ds-stack">
+  <a class="ds-link"> Link</a>
+  <div class="bg-primary p-base">
+    <a class="ds-link is-inverted"> Inverted Link</a>
+  </div>
+  </div>`,
+  ),
+})
+Link.storyName = '🌍 Link'
+
+export const LinkButton = Story({
+  ...withRender(
+    () => `
+<a class="ds-button is-link">
+  <ds-icon name="plus"></ds-icon>
+  Link
+</a>`,
+  ),
+})
+LinkButton.storyName = '🌍 Link Button'
+
+export const NativeLink = Story({
+  ...withRender(
+    () => `<div class="columns m-none">
+  <div class="column">
+      <a class="ds-link">Link</a>
+  </div>
+  <div class="column bg-primary">
+      <a class="ds-link is-inverted">Link</a>
+  </div>
+</div>`,
+  ),
+})
+NativeLink.storyName = '🌍 Native Link'

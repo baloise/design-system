@@ -182,7 +182,7 @@ A token whose Figma value and GitHub value have both diverged from the sync base
 _Avoid_: diff, difference (a diff is any Figma/GitHub mismatch; a conflict is specifically one where the baseline shows both sides moved)
 
 **Brand mode**:
-A Figma Variable Collection mode representing one brand (Base, Tcs, future brands). A brand's token override is a different mode-value on the same variable, not a separate variable.
+A Figma Variable Collection mode representing one brand (Base, OrangeVacations, future brands). A brand's token override is a different mode-value on the same variable, not a separate variable.
 _Avoid_: theme, variant (component variants are a distinct concept in this system)
 
 ## Key Concepts
@@ -379,17 +379,17 @@ Each brand (and Base) compiles to CSS as two **fully self-sufficient**
 files — every token declared with its resolved value (Base's, or the
 brand's where it overrides Base), never a diff of one against the other:
 
-- **Theme file** (`<brand>.tokens.css`, e.g. `erv.tokens.css`) — scoped to
+- **Theme file** (`<brand>.tokens.css`, e.g. `orange-vacations.tokens.css`) — scoped to
   `:host, :root`. For an app that commits to exactly one brand at
   import/build time and never switches at runtime; it loads only this file
   and never Base's.
-- **Override file** (`<brand>.override.css`, e.g. `erv.override.css`) —
+- **Override file** (`<brand>.override.css`, e.g. `orange-vacations.override.css`) —
   scoped to `[data-theme="<brand>"], :host([data-theme="<brand>"])` (a plain
   attribute selector, not `:root`-scoped, so it matches any element carrying
-  the attribute — e.g. `<div data-theme="erv">` — not just the document
+  the attribute — e.g. `<div data-theme="orange-vacations">` — not just the document
   root). For scoping a brand's tokens to one element/subtree without affecting the
   rest of the page (today: Storybook's per-story theme switcher, which
-  wraps a story in `<div data-theme="erv">`). Base gets an override file
+  wraps a story in `<div data-theme="orange-vacations">`). Base gets an override file
   too (`base.override.css`) so "Base" can be selected as a scoped option
   the same way a brand can, even though it has no overrides of its own.
 

@@ -32,6 +32,7 @@
     "baloise",
     "Baloise",
     "Barrierefreiheit",
+    "basenames",
     "Basilea",
     "bday",
     "behaviour",
@@ -122,8 +123,6 @@
     "incididunt",
     "Informations",
     "INPUTPHONE",
-    "INPUTSLIDER",
-    "INPUTSTEPPER",
     "invidunt",
     "ipsum",
     "isarray",
@@ -158,6 +157,7 @@
     "mladenplaninicic",
     "mmarinkov",
     "msapplication",
+    "Musterstrasse",
     "myusername",
     "ngcc",
     "ngneat",
@@ -175,6 +175,8 @@
     "Pausable",
     "Pinia",
     "popperjs",
+    "predev",
+    "prestart",
     "prettierignore",
     "prettierrc",
     "privatkunden",
@@ -229,6 +231,7 @@
     "transloco",
     "TRANSLOCO",
     "travelling",
+    "Turbopack",
     "typeahead",
     "unocss",
     "unref",
@@ -247,7 +250,6 @@
     "WCAG",
     "Wohnen",
     "xsmall",
-    "yannickholzenkamp",
-    "retargets"
+    "yannickholzenkamp"
   ]
 }

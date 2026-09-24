@@ -2,7 +2,7 @@
 
 ## 19.8.4
 
-### Patch Changes
+### 🩹 Fixes
 
 - **dropdown**: define missing custom elements ( [#1877](https://github.com/baloise/design-system/pull/1877))
 

@@ -1,0 +1,34 @@
+import { Controls, Meta } from '@storybook/addon-docs/blocks'
+import {
+  Banner,
+  CanvasWithCodePen,
+  BannerTabs,
+  ComponentLead,
+  ComponentPublicMethods,
+  Footer,
+} from '../../../../.storybook/blocks'
+import * as ToastStories from './toast.stories'
+import { TOAST_DOC_CONFIG, getToastTabs } from './toast.doc-config'
+
+<Meta title="Components/Overlays/Toast/Toast" name="Toast" />
+
+<Banner label={'Toast'} section={TOAST_DOC_CONFIG.section} color={TOAST_DOC_CONFIG.color} />
+
+<BannerTabs of={ToastStories} tabs={getToastTabs('overview')} />
+
+<ComponentLead component="toast" />
+
+Toasts are usually not placed in markup directly, but presented imperatively from the `toastController` (available as
+`window.DesignSystem.toastController`, or via `dsToastController` when importing `@baloise/ds-core`). Calling
+`create()` mounts a `ds-toast` into a shared container, animates it in, and manages auto-dismissal — click a trigger
+below to see it fly in.
+
+<CanvasWithCodePen of={ToastStories.Controller} sourceState="closed" />
+
+<CanvasWithCodePen of={ToastStories.Basic} sourceState="shown" />
+
+<Controls of={ToastStories.Basic} />
+
+<ComponentPublicMethods component="toast" />
+
+<Footer />

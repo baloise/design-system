@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { ClientInit } from './client-init'
+import { DsRootSSRProvider } from '@baloise/ds-react'
 
 import '@baloise/ds-tokens/css/base'
 import '@baloise/ds-styles/css/design-system'
@@ -13,13 +13,14 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="en">
       <body>
-        <ClientInit />
-        <nav>
-          <a href="/">SSR</a>
-          {' · '}
-          <a href="/overlays">Overlays</a>
-        </nav>
-        {children}
+        <DsRootSSRProvider animated={false}>
+          <nav>
+            <a href="/">SSR</a>
+            {' · '}
+            <a href="/overlays">Overlays</a>
+          </nav>
+          {children}
+        </DsRootSSRProvider>
       </body>
     </html>
   )

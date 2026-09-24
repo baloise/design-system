@@ -5,102 +5,102 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { AccordionButtonColor, AccordionButtonSize, AccordionMarker, AccordionMarkerPosition, AccordionSummaryLevel, AccordionToggleDetail } from "./components/accordion/accordion.interfaces";
-import { DsBrand, DsConfigState, DsLanguage, DsRegion } from "./global/index";
-import { Alert, AlertComponent, AlertContainerSize, AlertType } from "./components/alert/alert-container.interfaces";
-import { AppFooterContainer, AppFooterLanguageChangeDetail } from "./components/app-footer/app-footer.interfaces";
-import { AppNavbarContainer } from "./components/app-navbar/app-navbar.interfaces";
-import { BadgeColor, BadgePosition, BadgeSize } from "./components/badge/badge.interfaces";
-import { IconColor, IconSize } from "./components/brand-icon/brand-icon.interfaces";
-import { ButtonBlurDetail, ButtonBrandSize, ButtonClickDetail, ButtonColor, ButtonDidRenderDetail, ButtonElementType, ButtonFocusDetail, ButtonGroupAlignment, ButtonGroupDirection, ButtonNavigateDetail, ButtonSize, ButtonTarget } from "./components/button/button.interfaces";
-import { CardActionsAlignment, CardAlignment, CardColor, CardHeaderDirection, CardImageTeaser, CardSpace } from "./components/card/card.interfaces";
-import { HeadingColor, HeadingLevel, HeadingSpace, HeadingVisualLevel } from "./components/heading/heading.interfaces";
-import { CarouselChangeDetail, CarouselControls, CarouselItemColor, CarouselVariant } from "./components/carousel/carousel.interfaces";
-import { CheckboxBlurDetail, CheckboxChangeDetail, CheckboxFocusDetail, CheckboxGroupBlurDetail, CheckboxGroupChangeDetail, CheckboxGroupColumns, CheckboxGroupFocusDetail, CheckboxLabelPosition, CheckboxTileColor } from "./components/checkbox/checkbox.interfaces";
-import { InputAutocomplete, InputAutocorrect, InputBlurDetail, InputChangeDetail, InputClickDetail, InputColor, InputFocusDetail, InputInputDetail, InputInputMode, InputInputType, InputKeyPressDetail, InputMask } from "./components/input/input.interfaces";
-import { CloseButtonSize, CloseSize } from "./components/close/close.interfaces";
-import { StackAlignment, StackDirection, StackLayout, StackPadding, StackSpace } from "./components/stack/stack.interfaces";
-import { ContentAlignment, ContentSpace, ContentTextAlignment } from "./components/content/content.interfaces";
-import { DateBlurDetail, DateChangeDetail, DateClickDetail, DateColor, DateFocusDetail, DateInputDetail, DateKeyPressDetail } from "./components/date/date.interfaces";
-import { DividerColor, DividerLayout, DividerSpace } from "./components/divider/divider.interfaces";
-import { DrawerContainer, DrawerDismissDetail, DrawerPresentDetail } from "./components/drawer/drawer.interfaces";
-import { FileUploadBlurDetail, FileUploadChangeDetail, FileUploadFilesAddedDetail, FileUploadFilesRemovedDetail, FileUploadFocusDetail, FileUploadInputClickDetail, FileUploadRejectedFileDetail } from "./components/file-upload/file-upload.interfaces";
-import { PopupDismissDetail, PopupPlacement, PopupPresentDetail, PopupRole } from "./components/popup/popup.interfaces";
-import { IconColor as IconColor1, IconSize as IconSize1 } from "./components/icon/icon.interfaces";
-import { PhoneChangeDetail, PhoneCountryChangeDetail, PhoneInputDetail } from "./components/input-phone/input-phone.interfaces";
-import { InputSliderBlurDetail, InputSliderBrandColor, InputSliderChangeDetail, InputSliderClickDetail, InputSliderFocusDetail, InputSliderInputDetail } from "./components/input-slider/input-slider.interfaces";
-import { InputStepperBlurDetail, InputStepperChangeDetail, InputStepperDecreaseDetail, InputStepperFocusDetail, InputStepperIncreaseDetail, InputStepperInputDetail } from "./components/input-stepper/input-stepper.interfaces";
-import { ItemActionIcon, ItemLabelLevel, ItemLabelSize, ItemSize, ItemVariant } from "./components/list/item/item.interfaces";
-import { LabelSize } from "./components/label/label.interfaces";
-import { LogoBrand, LogoColor, LogoSize } from "./components/logo/logo.interfaces";
-import { ModalDismissDetail, ModalPresentDetail } from "./components/modal/modal.interfaces";
-import { NotificationCloseClickDetail, NotificationColor, NotificationSize } from "./components/notification/notification.interfaces";
-import { NumberInputBlurDetail, NumberInputChangeDetail, NumberInputClickDetail, NumberInputFocusDetail, NumberInputInputDetail, NumberInputKeyPressDetail } from "./components/number-input/number-input.interfaces";
-import { PaginationAlignment, PaginationChangeDetail, PaginationSize, PaginationVariant } from "./components/pagination/pagination.interfaces";
-import { ProgressBarBackground, ProgressBarColor } from "./components/progress-bar/progress-bar.interfaces";
-import { RadioBlurDetail, RadioChangeDetail, RadioFocusDetail, RadioGroupBlurDetail, RadioGroupChangeDetail, RadioGroupColumns, RadioGroupFocusDetail, RadioLabelPosition, RadioTileColor } from "./components/radio/radio.interfaces";
-import { SegmentBlurDetail, SegmentChangeDetail, SegmentFocusDetail } from "./components/segment/segment-item.interfaces";
-import { SelectBlurDetail, SelectChangeDetail, SelectClickDetail, SelectFocusDetail, SelectOption, SelectOptionGroup } from "./components/select/select.interfaces";
-import { ShapeColor, ShapeRotation, ShapeVariation } from "./components/shape/shape.interfaces";
-import { SheetContainerSize } from "./components/sheet/sheet.interfaces";
-import { SnackbarActionClickDetail, SnackbarCloseClickDetail, SnackbarColor } from "./components/alert/snackbar/snackbar.interfaces";
-import { SpinnerLabelPosition, SpinnerSize, SpinnerVariation } from "./components/spinner/spinner.interfaces";
-import { StepsChangeDetail, StepsColor } from "./components/steps/steps.interfaces";
-import { TabsChangeDetail, TabsColor, TabsVerticalColSize } from "./components/tabs/tabs.interfaces";
-import { TagCloseClickDetail, TagColor, TagPlacement, TagSize } from "./components/tag/tag.interfaces";
-import { TextAlign, TextColor, TextSize, TextSpace } from "./components/text/text.interfaces";
-import { TextareaBlurDetail, TextareaChangeDetail, TextareaClickDetail, TextareaFocusDetail, TextareaInputDetail, TextareaInputMode, TextareaKeyPressDetail, TextareaWrap } from "./components/textarea/textarea.interfaces";
-import { ToastActionClickDetail, ToastCloseClickDetail, ToastColor, ToastDuration } from "./components/alert/toast/toast.interfaces";
-import { ToggleBlurDetail, ToggleChangeDetail, ToggleFocusDetail, ToggleLabelPosition } from "./components/toggle/toggle.interfaces";
-import { TooltipDidAnimateDetail, TooltipPlacement, TooltipWillAnimateDetail } from "./components/tooltip/tooltip.interfaces";
-export { AccordionButtonColor, AccordionButtonSize, AccordionMarker, AccordionMarkerPosition, AccordionSummaryLevel, AccordionToggleDetail } from "./components/accordion/accordion.interfaces";
-export { DsBrand, DsConfigState, DsLanguage, DsRegion } from "./global/index";
-export { Alert, AlertComponent, AlertContainerSize, AlertType } from "./components/alert/alert-container.interfaces";
-export { AppFooterContainer, AppFooterLanguageChangeDetail } from "./components/app-footer/app-footer.interfaces";
-export { AppNavbarContainer } from "./components/app-navbar/app-navbar.interfaces";
-export { BadgeColor, BadgePosition, BadgeSize } from "./components/badge/badge.interfaces";
-export { IconColor, IconSize } from "./components/brand-icon/brand-icon.interfaces";
-export { ButtonBlurDetail, ButtonBrandSize, ButtonClickDetail, ButtonColor, ButtonDidRenderDetail, ButtonElementType, ButtonFocusDetail, ButtonGroupAlignment, ButtonGroupDirection, ButtonNavigateDetail, ButtonSize, ButtonTarget } from "./components/button/button.interfaces";
-export { CardActionsAlignment, CardAlignment, CardColor, CardHeaderDirection, CardImageTeaser, CardSpace } from "./components/card/card.interfaces";
-export { HeadingColor, HeadingLevel, HeadingSpace, HeadingVisualLevel } from "./components/heading/heading.interfaces";
-export { CarouselChangeDetail, CarouselControls, CarouselItemColor, CarouselVariant } from "./components/carousel/carousel.interfaces";
-export { CheckboxBlurDetail, CheckboxChangeDetail, CheckboxFocusDetail, CheckboxGroupBlurDetail, CheckboxGroupChangeDetail, CheckboxGroupColumns, CheckboxGroupFocusDetail, CheckboxLabelPosition, CheckboxTileColor } from "./components/checkbox/checkbox.interfaces";
-export { InputAutocomplete, InputAutocorrect, InputBlurDetail, InputChangeDetail, InputClickDetail, InputColor, InputFocusDetail, InputInputDetail, InputInputMode, InputInputType, InputKeyPressDetail, InputMask } from "./components/input/input.interfaces";
-export { CloseButtonSize, CloseSize } from "./components/close/close.interfaces";
-export { StackAlignment, StackDirection, StackLayout, StackPadding, StackSpace } from "./components/stack/stack.interfaces";
-export { ContentAlignment, ContentSpace, ContentTextAlignment } from "./components/content/content.interfaces";
-export { DateBlurDetail, DateChangeDetail, DateClickDetail, DateColor, DateFocusDetail, DateInputDetail, DateKeyPressDetail } from "./components/date/date.interfaces";
-export { DividerColor, DividerLayout, DividerSpace } from "./components/divider/divider.interfaces";
-export { DrawerContainer, DrawerDismissDetail, DrawerPresentDetail } from "./components/drawer/drawer.interfaces";
-export { FileUploadBlurDetail, FileUploadChangeDetail, FileUploadFilesAddedDetail, FileUploadFilesRemovedDetail, FileUploadFocusDetail, FileUploadInputClickDetail, FileUploadRejectedFileDetail } from "./components/file-upload/file-upload.interfaces";
-export { PopupDismissDetail, PopupPlacement, PopupPresentDetail, PopupRole } from "./components/popup/popup.interfaces";
-export { IconColor as IconColor1, IconSize as IconSize1 } from "./components/icon/icon.interfaces";
-export { PhoneChangeDetail, PhoneCountryChangeDetail, PhoneInputDetail } from "./components/input-phone/input-phone.interfaces";
-export { InputSliderBlurDetail, InputSliderBrandColor, InputSliderChangeDetail, InputSliderClickDetail, InputSliderFocusDetail, InputSliderInputDetail } from "./components/input-slider/input-slider.interfaces";
-export { InputStepperBlurDetail, InputStepperChangeDetail, InputStepperDecreaseDetail, InputStepperFocusDetail, InputStepperIncreaseDetail, InputStepperInputDetail } from "./components/input-stepper/input-stepper.interfaces";
-export { ItemActionIcon, ItemLabelLevel, ItemLabelSize, ItemSize, ItemVariant } from "./components/list/item/item.interfaces";
-export { LabelSize } from "./components/label/label.interfaces";
-export { LogoBrand, LogoColor, LogoSize } from "./components/logo/logo.interfaces";
-export { ModalDismissDetail, ModalPresentDetail } from "./components/modal/modal.interfaces";
-export { NotificationCloseClickDetail, NotificationColor, NotificationSize } from "./components/notification/notification.interfaces";
-export { NumberInputBlurDetail, NumberInputChangeDetail, NumberInputClickDetail, NumberInputFocusDetail, NumberInputInputDetail, NumberInputKeyPressDetail } from "./components/number-input/number-input.interfaces";
-export { PaginationAlignment, PaginationChangeDetail, PaginationSize, PaginationVariant } from "./components/pagination/pagination.interfaces";
-export { ProgressBarBackground, ProgressBarColor } from "./components/progress-bar/progress-bar.interfaces";
-export { RadioBlurDetail, RadioChangeDetail, RadioFocusDetail, RadioGroupBlurDetail, RadioGroupChangeDetail, RadioGroupColumns, RadioGroupFocusDetail, RadioLabelPosition, RadioTileColor } from "./components/radio/radio.interfaces";
-export { SegmentBlurDetail, SegmentChangeDetail, SegmentFocusDetail } from "./components/segment/segment-item.interfaces";
-export { SelectBlurDetail, SelectChangeDetail, SelectClickDetail, SelectFocusDetail, SelectOption, SelectOptionGroup } from "./components/select/select.interfaces";
-export { ShapeColor, ShapeRotation, ShapeVariation } from "./components/shape/shape.interfaces";
-export { SheetContainerSize } from "./components/sheet/sheet.interfaces";
-export { SnackbarActionClickDetail, SnackbarCloseClickDetail, SnackbarColor } from "./components/alert/snackbar/snackbar.interfaces";
-export { SpinnerLabelPosition, SpinnerSize, SpinnerVariation } from "./components/spinner/spinner.interfaces";
-export { StepsChangeDetail, StepsColor } from "./components/steps/steps.interfaces";
-export { TabsChangeDetail, TabsColor, TabsVerticalColSize } from "./components/tabs/tabs.interfaces";
-export { TagCloseClickDetail, TagColor, TagPlacement, TagSize } from "./components/tag/tag.interfaces";
-export { TextAlign, TextColor, TextSize, TextSpace } from "./components/text/text.interfaces";
-export { TextareaBlurDetail, TextareaChangeDetail, TextareaClickDetail, TextareaFocusDetail, TextareaInputDetail, TextareaInputMode, TextareaKeyPressDetail, TextareaWrap } from "./components/textarea/textarea.interfaces";
-export { ToastActionClickDetail, ToastCloseClickDetail, ToastColor, ToastDuration } from "./components/alert/toast/toast.interfaces";
-export { ToggleBlurDetail, ToggleChangeDetail, ToggleFocusDetail, ToggleLabelPosition } from "./components/toggle/toggle.interfaces";
-export { TooltipDidAnimateDetail, TooltipPlacement, TooltipWillAnimateDetail } from "./components/tooltip/tooltip.interfaces";
+import { AccordionButtonColor, AccordionButtonSize, AccordionMarker, AccordionMarkerPosition, AccordionSummaryLevel, AccordionToggleDetail } from "./components/structure/accordion/accordion.interfaces";
+import { DsBrand, DsConfigState, DsIcons, DsLanguage, DsLegalLinks, DsLegalText, DsRegion, DsSocialLinks } from "./global/index";
+import { Alert, AlertComponent, AlertContainerSize, AlertType } from "./components/overlays/alert/alert-container.interfaces";
+import { AppFooterContainer, AppFooterLanguageChangeDetail } from "./components/structure/app-footer/app-footer.interfaces";
+import { AppNavbarContainer } from "./components/navigation/app-navbar/app-navbar.interfaces";
+import { BadgeColor, BadgePosition, BadgeSize } from "./components/indicators/badge/badge.interfaces";
+import { IconColor, IconSize } from "./components/media/brand-icon/brand-icon.interfaces";
+import { ButtonBlurDetail, ButtonBrandSize, ButtonClickDetail, ButtonColor, ButtonDidRenderDetail, ButtonElementType, ButtonFocusDetail, ButtonGroupAlignment, ButtonGroupDirection, ButtonNavigateDetail, ButtonSize, ButtonTarget } from "./components/actions/button/button.interfaces";
+import { CardActionsAlignment, CardAlignment, CardColor, CardHeaderDirection, CardImageTeaser, CardSpace } from "./components/structure/card/card.interfaces";
+import { HeadingColor, HeadingLevel, HeadingSpace, HeadingVisualLevel } from "./components/structure/heading/heading.interfaces";
+import { CarouselChangeDetail, CarouselControls, CarouselItemColor, CarouselVariant } from "./components/structure/carousel/carousel.interfaces";
+import { CheckboxBlurDetail, CheckboxChangeDetail, CheckboxFocusDetail, CheckboxGroupBlurDetail, CheckboxGroupChangeDetail, CheckboxGroupColumns, CheckboxGroupFocusDetail, CheckboxLabelPosition, CheckboxTileColor } from "./components/forms/checkbox/checkbox.interfaces";
+import { InputAutocomplete, InputAutocorrect, InputBlurDetail, InputChangeDetail, InputClickDetail, InputColor, InputFocusDetail, InputInputDetail, InputInputMode, InputInputType, InputKeyPressDetail, InputMask } from "./components/forms/input/input.interfaces";
+import { CloseButtonSize, CloseSize } from "./components/actions/close/close.interfaces";
+import { StackAlignment, StackDirection, StackLayout, StackPadding, StackSpace } from "./components/structure/stack/stack.interfaces";
+import { ContentAlignment, ContentSpace, ContentTextAlignment } from "./components/structure/content/content.interfaces";
+import { CounterBlurDetail, CounterChangeDetail, CounterDecreaseDetail, CounterFocusDetail, CounterIncreaseDetail, CounterInputDetail } from "./components/forms/counter/counter.interfaces";
+import { DatepickerBlurDetail, DatepickerChangeDetail, DatepickerClickDetail, DatepickerColor, DatepickerFocusDetail, DatepickerInputDetail, DatepickerKeyPressDetail } from "./components/forms/datepicker/datepicker.interfaces";
+import { DividerColor, DividerLayout, DividerSpace } from "./components/structure/divider/divider.interfaces";
+import { DrawerContainer, DrawerDismissDetail, DrawerPresentDetail } from "./components/overlays/drawer/drawer.interfaces";
+import { FileUploadBlurDetail, FileUploadChangeDetail, FileUploadFilesAddedDetail, FileUploadFilesRemovedDetail, FileUploadFocusDetail, FileUploadInputClickDetail, FileUploadRejectedFileDetail } from "./components/forms/file-upload/file-upload.interfaces";
+import { PopupDismissDetail, PopupPlacement, PopupPresentDetail, PopupRole } from "./components/overlays/popup/popup.interfaces";
+import { IconColor as IconColor1, IconSize as IconSize1 } from "./components/media/icon/icon.interfaces";
+import { PhoneChangeDetail, PhoneCountryChangeDetail, PhoneInputDetail } from "./components/forms/input-phone/input-phone.interfaces";
+import { ItemActionIcon, ItemLabelLevel, ItemLabelSize, ItemSize, ItemVariant } from "./components/structure/list/item/item.interfaces";
+import { LabelSize } from "./components/forms/label/label.interfaces";
+import { LogoBrand, LogoColor, LogoSize } from "./components/media/logo/logo.interfaces";
+import { ModalDismissDetail, ModalPresentDetail } from "./components/overlays/modal/modal.interfaces";
+import { NotificationCloseClickDetail, NotificationColor, NotificationSize } from "./components/overlays/notification/notification.interfaces";
+import { NumberInputBlurDetail, NumberInputChangeDetail, NumberInputClickDetail, NumberInputFocusDetail, NumberInputInputDetail, NumberInputKeyPressDetail } from "./components/forms/number-input/number-input.interfaces";
+import { PaginationAlignment, PaginationChangeDetail, PaginationSize, PaginationVariant } from "./components/navigation/pagination/pagination.interfaces";
+import { ProgressBarBackground, ProgressBarColor } from "./components/indicators/progress-bar/progress-bar.interfaces";
+import { RadioBlurDetail, RadioChangeDetail, RadioFocusDetail, RadioGroupBlurDetail, RadioGroupChangeDetail, RadioGroupColumns, RadioGroupFocusDetail, RadioLabelPosition, RadioTileColor } from "./components/forms/radio/radio.interfaces";
+import { SegmentBlurDetail, SegmentChangeDetail, SegmentFocusDetail } from "./components/forms/segment/segment-item.interfaces";
+import { SelectBlurDetail, SelectChangeDetail, SelectClickDetail, SelectFocusDetail, SelectOption, SelectOptionGroup } from "./components/forms/select/select.interfaces";
+import { ShapeColor, ShapeRotation, ShapeVariation } from "./components/media/shape/shape.interfaces";
+import { SheetContainerSize } from "./components/overlays/sheet/sheet.interfaces";
+import { SliderBlurDetail, SliderBrandColor, SliderChangeDetail, SliderClickDetail, SliderFocusDetail, SliderInputDetail } from "./components/forms/slider/slider.interfaces";
+import { SnackbarActionClickDetail, SnackbarCloseClickDetail, SnackbarColor } from "./components/overlays/alert/snackbar/snackbar.interfaces";
+import { SpinnerLabelPosition, SpinnerSize, SpinnerVariation } from "./components/indicators/spinner/spinner.interfaces";
+import { StepsChangeDetail, StepsColor } from "./components/navigation/steps/steps.interfaces";
+import { TabsChangeDetail, TabsColor, TabsVerticalColSize } from "./components/navigation/tabs/tabs.interfaces";
+import { TagCloseClickDetail, TagColor, TagPlacement, TagSize } from "./components/indicators/tag/tag.interfaces";
+import { TextAlign, TextColor, TextSize, TextSpace } from "./components/structure/text/text.interfaces";
+import { TextareaBlurDetail, TextareaChangeDetail, TextareaClickDetail, TextareaFocusDetail, TextareaInputDetail, TextareaInputMode, TextareaKeyPressDetail, TextareaWrap } from "./components/forms/textarea/textarea.interfaces";
+import { ToastActionClickDetail, ToastCloseClickDetail, ToastColor, ToastDuration } from "./components/overlays/alert/toast/toast.interfaces";
+import { ToggleBlurDetail, ToggleChangeDetail, ToggleFocusDetail, ToggleLabelPosition } from "./components/forms/toggle/toggle.interfaces";
+import { TooltipDidAnimateDetail, TooltipPlacement, TooltipWillAnimateDetail } from "./components/overlays/tooltip/tooltip.interfaces";
+export { AccordionButtonColor, AccordionButtonSize, AccordionMarker, AccordionMarkerPosition, AccordionSummaryLevel, AccordionToggleDetail } from "./components/structure/accordion/accordion.interfaces";
+export { DsBrand, DsConfigState, DsIcons, DsLanguage, DsLegalLinks, DsLegalText, DsRegion, DsSocialLinks } from "./global/index";
+export { Alert, AlertComponent, AlertContainerSize, AlertType } from "./components/overlays/alert/alert-container.interfaces";
+export { AppFooterContainer, AppFooterLanguageChangeDetail } from "./components/structure/app-footer/app-footer.interfaces";
+export { AppNavbarContainer } from "./components/navigation/app-navbar/app-navbar.interfaces";
+export { BadgeColor, BadgePosition, BadgeSize } from "./components/indicators/badge/badge.interfaces";
+export { IconColor, IconSize } from "./components/media/brand-icon/brand-icon.interfaces";
+export { ButtonBlurDetail, ButtonBrandSize, ButtonClickDetail, ButtonColor, ButtonDidRenderDetail, ButtonElementType, ButtonFocusDetail, ButtonGroupAlignment, ButtonGroupDirection, ButtonNavigateDetail, ButtonSize, ButtonTarget } from "./components/actions/button/button.interfaces";
+export { CardActionsAlignment, CardAlignment, CardColor, CardHeaderDirection, CardImageTeaser, CardSpace } from "./components/structure/card/card.interfaces";
+export { HeadingColor, HeadingLevel, HeadingSpace, HeadingVisualLevel } from "./components/structure/heading/heading.interfaces";
+export { CarouselChangeDetail, CarouselControls, CarouselItemColor, CarouselVariant } from "./components/structure/carousel/carousel.interfaces";
+export { CheckboxBlurDetail, CheckboxChangeDetail, CheckboxFocusDetail, CheckboxGroupBlurDetail, CheckboxGroupChangeDetail, CheckboxGroupColumns, CheckboxGroupFocusDetail, CheckboxLabelPosition, CheckboxTileColor } from "./components/forms/checkbox/checkbox.interfaces";
+export { InputAutocomplete, InputAutocorrect, InputBlurDetail, InputChangeDetail, InputClickDetail, InputColor, InputFocusDetail, InputInputDetail, InputInputMode, InputInputType, InputKeyPressDetail, InputMask } from "./components/forms/input/input.interfaces";
+export { CloseButtonSize, CloseSize } from "./components/actions/close/close.interfaces";
+export { StackAlignment, StackDirection, StackLayout, StackPadding, StackSpace } from "./components/structure/stack/stack.interfaces";
+export { ContentAlignment, ContentSpace, ContentTextAlignment } from "./components/structure/content/content.interfaces";
+export { CounterBlurDetail, CounterChangeDetail, CounterDecreaseDetail, CounterFocusDetail, CounterIncreaseDetail, CounterInputDetail } from "./components/forms/counter/counter.interfaces";
+export { DatepickerBlurDetail, DatepickerChangeDetail, DatepickerClickDetail, DatepickerColor, DatepickerFocusDetail, DatepickerInputDetail, DatepickerKeyPressDetail } from "./components/forms/datepicker/datepicker.interfaces";
+export { DividerColor, DividerLayout, DividerSpace } from "./components/structure/divider/divider.interfaces";
+export { DrawerContainer, DrawerDismissDetail, DrawerPresentDetail } from "./components/overlays/drawer/drawer.interfaces";
+export { FileUploadBlurDetail, FileUploadChangeDetail, FileUploadFilesAddedDetail, FileUploadFilesRemovedDetail, FileUploadFocusDetail, FileUploadInputClickDetail, FileUploadRejectedFileDetail } from "./components/forms/file-upload/file-upload.interfaces";
+export { PopupDismissDetail, PopupPlacement, PopupPresentDetail, PopupRole } from "./components/overlays/popup/popup.interfaces";
+export { IconColor as IconColor1, IconSize as IconSize1 } from "./components/media/icon/icon.interfaces";
+export { PhoneChangeDetail, PhoneCountryChangeDetail, PhoneInputDetail } from "./components/forms/input-phone/input-phone.interfaces";
+export { ItemActionIcon, ItemLabelLevel, ItemLabelSize, ItemSize, ItemVariant } from "./components/structure/list/item/item.interfaces";
+export { LabelSize } from "./components/forms/label/label.interfaces";
+export { LogoBrand, LogoColor, LogoSize } from "./components/media/logo/logo.interfaces";
+export { ModalDismissDetail, ModalPresentDetail } from "./components/overlays/modal/modal.interfaces";
+export { NotificationCloseClickDetail, NotificationColor, NotificationSize } from "./components/overlays/notification/notification.interfaces";
+export { NumberInputBlurDetail, NumberInputChangeDetail, NumberInputClickDetail, NumberInputFocusDetail, NumberInputInputDetail, NumberInputKeyPressDetail } from "./components/forms/number-input/number-input.interfaces";
+export { PaginationAlignment, PaginationChangeDetail, PaginationSize, PaginationVariant } from "./components/navigation/pagination/pagination.interfaces";
+export { ProgressBarBackground, ProgressBarColor } from "./components/indicators/progress-bar/progress-bar.interfaces";
+export { RadioBlurDetail, RadioChangeDetail, RadioFocusDetail, RadioGroupBlurDetail, RadioGroupChangeDetail, RadioGroupColumns, RadioGroupFocusDetail, RadioLabelPosition, RadioTileColor } from "./components/forms/radio/radio.interfaces";
+export { SegmentBlurDetail, SegmentChangeDetail, SegmentFocusDetail } from "./components/forms/segment/segment-item.interfaces";
+export { SelectBlurDetail, SelectChangeDetail, SelectClickDetail, SelectFocusDetail, SelectOption, SelectOptionGroup } from "./components/forms/select/select.interfaces";
+export { ShapeColor, ShapeRotation, ShapeVariation } from "./components/media/shape/shape.interfaces";
+export { SheetContainerSize } from "./components/overlays/sheet/sheet.interfaces";
+export { SliderBlurDetail, SliderBrandColor, SliderChangeDetail, SliderClickDetail, SliderFocusDetail, SliderInputDetail } from "./components/forms/slider/slider.interfaces";
+export { SnackbarActionClickDetail, SnackbarCloseClickDetail, SnackbarColor } from "./components/overlays/alert/snackbar/snackbar.interfaces";
+export { SpinnerLabelPosition, SpinnerSize, SpinnerVariation } from "./components/indicators/spinner/spinner.interfaces";
+export { StepsChangeDetail, StepsColor } from "./components/navigation/steps/steps.interfaces";
+export { TabsChangeDetail, TabsColor, TabsVerticalColSize } from "./components/navigation/tabs/tabs.interfaces";
+export { TagCloseClickDetail, TagColor, TagPlacement, TagSize } from "./components/indicators/tag/tag.interfaces";
+export { TextAlign, TextColor, TextSize, TextSpace } from "./components/structure/text/text.interfaces";
+export { TextareaBlurDetail, TextareaChangeDetail, TextareaClickDetail, TextareaFocusDetail, TextareaInputDetail, TextareaInputMode, TextareaKeyPressDetail, TextareaWrap } from "./components/forms/textarea/textarea.interfaces";
+export { ToastActionClickDetail, ToastCloseClickDetail, ToastColor, ToastDuration } from "./components/overlays/alert/toast/toast.interfaces";
+export { ToggleBlurDetail, ToggleChangeDetail, ToggleFocusDetail, ToggleLabelPosition } from "./components/forms/toggle/toggle.interfaces";
+export { TooltipDidAnimateDetail, TooltipPlacement, TooltipWillAnimateDetail } from "./components/overlays/tooltip/tooltip.interfaces";
 export namespace Components {
     /**
      * Accordion displays collapsible content sections with open/close toggle buttons and optional animations.
@@ -946,6 +946,95 @@ export namespace Components {
         "textAlign"?: ContentTextAlignment;
     }
     /**
+     * Counter renders a numeric value flanked by decrease and increase buttons.
+     */
+    interface DsCounter {
+        /**
+          * If `true`, in Angular reactive forms the control will not be set invalid
+          * @default false
+         */
+        "autoInvalidOff": boolean;
+        /**
+          * Defines the color of the counter. The default value is `primary`.
+          * @default 'primary'
+         */
+        "color": InputColor;
+        "configChanged": (state: DsConfigState) => Promise<void>;
+        /**
+          * Set the amount of time, in milliseconds, to wait to trigger the `dsChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
+          * @default 0
+         */
+        "debounce": number;
+        /**
+          * The description of the counter, which is displayed below the control.
+          * @default ''
+         */
+        "description": string;
+        /**
+          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+          * @default false
+         */
+        "disabled": boolean;
+        /**
+          * Returns the underlying interactive element used under the hood. Returns the increase button (or decrease, if increase is disabled).
+         */
+        "getInputElement": () => Promise<HTMLElement | undefined>;
+        /**
+          * If `true` the component gets an invalid style.
+          * @default false
+         */
+        "invalid": boolean;
+        /**
+          * The text to display when the counter is in an invalid state.
+          * @default ''
+         */
+        "invalidText": string;
+        /**
+          * The label of the counter, which is displayed above the control.
+          * @default ''
+         */
+        "label": string;
+        /**
+          * The maximum value the counter can take.
+          * @default 10
+         */
+        "max": number;
+        /**
+          * The minimum value the counter can take.
+          * @default 0
+         */
+        "min": number;
+        /**
+          * The name of the control, which is submitted with the form data.
+          * @default this.counterId
+         */
+        "name": string;
+        /**
+          * If `true` the element can not be mutated. Both buttons are disabled while the form value continues to be submitted.
+          * @default false
+         */
+        "readonly": boolean;
+        /**
+          * If `true`, the user must have a value before submitting a form. Because the counter always has a numeric value, this only affects the "optional" suffix on the label.
+          * @default true
+         */
+        "required": boolean;
+        /**
+          * Sets focus on the counter. Prefers the increase button; falls back to decrease if the increase is disabled (value at max).
+         */
+        "setFocus": () => Promise<void>;
+        /**
+          * The granularity by which the value increases or decreases per click. Must be a positive number (integer or decimal). If a non-positive value is provided, a warning is logged and `1` is used at click time.
+          * @default 1
+         */
+        "step": number;
+        /**
+          * The current numeric value of the counter. A counter can never be empty: every write is resolved onto `[min, max]`, with an empty value (`null`/`undefined`/`NaN`) falling back to `min`. The resolution is silent — no `dsChange` is emitted — because a programmatic write must never look like user input (a `ControlValueAccessor`'s `writeValue()` may not call back into `onChange()`). A framework binding that writes an out-of-range value therefore keeps that value on its side while the element shows the clamped one, until the next user interaction emits a real `dsChange`.
+          * @default 0
+         */
+        "value": number;
+    }
+    /**
      * Data displays a list of label-value pairs in a organized, accessible format.
      * Supports vertical and horizontal layouts with dividers always shown in vertical layout.
      */
@@ -1001,9 +1090,9 @@ export namespace Components {
     interface DsDataValue {
     }
     /**
-     * Date renders a masked date input field with an interactive calendar popup for date selection.
+     * Datepicker renders a masked date input field with an interactive calendar popup for date selection.
      */
-    interface DsDate {
+    interface DsDatepicker {
         /**
           * Callback to determine which dates in the calendar are selectable. Receives an ISO date string (YYYY-MM-DD) and should return `true` to allow the date or `false` to disable it. Typed input that resolves to a disallowed date is also rejected.
           * @default undefined
@@ -1028,7 +1117,7 @@ export namespace Components {
           * Defines the color of the date input. The default value is `primary`.
           * @default 'primary'
          */
-        "color": DateColor;
+        "color": DatepickerColor;
         "configChanged": (state: DsConfigState) => Promise<void>;
         /**
           * Set the amount of time, in milliseconds, to wait to trigger the `dsChange` event after each keystroke.
@@ -1125,11 +1214,11 @@ export namespace Components {
          */
         "required": boolean;
         /**
-          * Sets blur on the native `input` in `ds-date`.
+          * Sets blur on the native `input` in `ds-datepicker`.
          */
         "setBlur": () => Promise<void>;
         /**
-          * Sets focus on the native `input` in `ds-date`.
+          * Sets focus on the native `input` in `ds-datepicker`.
          */
         "setFocus": () => Promise<void>;
         /**
@@ -1724,192 +1813,6 @@ export namespace Components {
         "value": string | null;
     }
     /**
-     * Input slider renders a noUiSlider-backed slider with validation and label/description messaging.
-     */
-    interface DsInputSlider {
-        /**
-          * If `true`, disables the automatic `invalid`/`invalidText` behavior that the `@baloise/ds-angular` integration applies when the bound `NgControl` is touched and invalid. Only affects the Angular integration; it is a no-op in other framework integrations.
-          * @default false
-         */
-        "autoInvalidOff": boolean;
-        /**
-          * Recolors the connect (the filled progress track) with a brand color instead of the default grey/primary style. Left of the handle uses the darker `-4` shade, right of it the lighter `-2` shade. Empty (default) keeps the current grey/primary look.
-         */
-        "brandColor"?: InputSliderBrandColor;
-        /**
-          * Defines the color of the slider. The default value is `primary`.
-          * @default 'primary'
-         */
-        "color": InputColor;
-        "configChanged": (state: DsConfigState) => Promise<void>;
-        /**
-          * Set the amount of time, in milliseconds, to wait to trigger the `dsChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
-          * @default 0
-         */
-        "debounce": number;
-        /**
-          * The description of the slider, which is displayed below the control.
-          * @default ''
-         */
-        "description": string;
-        /**
-          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
-          * @default false
-         */
-        "disabled": boolean;
-        /**
-          * Returns the noUiSlider handle element used under the hood.
-         */
-        "getInputElement": () => Promise<HTMLElement | undefined>;
-        /**
-          * If `true` the component gets an invalid style.
-          * @default false
-         */
-        "invalid": boolean;
-        /**
-          * The text to display when the slider is in an invalid state.
-          * @default ''
-         */
-        "invalidText": string;
-        /**
-          * The label of the slider, which is displayed above the control.
-          * @default ''
-         */
-        "label": string;
-        /**
-          * The maximum value of the slider.
-          * @default 100
-         */
-        "max": number;
-        /**
-          * The minimum value of the slider.
-          * @default 0
-         */
-        "min": number;
-        /**
-          * The name of the control, which is submitted with the form data.
-          * @default this.inputSliderId
-         */
-        "name": string;
-        /**
-          * If `true` the element can not be mutated. noUiSlider has no native concept of `readonly`, so this is treated as equivalent to `disabled`.
-          * @default false
-         */
-        "readonly": boolean;
-        /**
-          * If `true`, the user must fill in a value before submitting a form.
-          * @default true
-         */
-        "required": boolean;
-        /**
-          * Sets blur on `ds-input-slider`'s slider handle. Use this method instead of the global `element.blur()`.
-         */
-        "setBlur": () => Promise<void>;
-        /**
-          * Sets focus on `ds-input-slider`'s slider handle. Use this method instead of the global `element.focus()`.
-         */
-        "setFocus": () => Promise<void>;
-        /**
-          * The granularity the value must adhere to, as a string so `"any"` (free, continuous dragging with no step snapping) can be expressed alongside numeric step sizes.
-          * @default '1'
-         */
-        "step": string;
-        /**
-          * The value of the slider. Unlike a text input, a slider can never be empty; when unset it defaults to `min`. Internally starts as `NaN` (this codebase's established "empty number" sentinel, see `isValueEmpty`) until `connectedCallback` resolves it — never actually rendered or emitted.
-          * @default NaN
-         */
-        "value": number;
-    }
-    /**
-     * Input stepper renders a numeric value flanked by decrease and increase buttons.
-     */
-    interface DsInputStepper {
-        /**
-          * If `true`, in Angular reactive forms the control will not be set invalid
-          * @default false
-         */
-        "autoInvalidOff": boolean;
-        /**
-          * Defines the color of the stepper. The default value is `primary`.
-          * @default 'primary'
-         */
-        "color": InputColor;
-        "configChanged": (state: DsConfigState) => Promise<void>;
-        /**
-          * Set the amount of time, in milliseconds, to wait to trigger the `dsChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
-          * @default 0
-         */
-        "debounce": number;
-        /**
-          * The description of the stepper, which is displayed below the control.
-          * @default ''
-         */
-        "description": string;
-        /**
-          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
-          * @default false
-         */
-        "disabled": boolean;
-        /**
-          * Returns the underlying interactive element used under the hood. Returns the increase button (or decrease, if increase is disabled).
-         */
-        "getInputElement": () => Promise<HTMLElement | undefined>;
-        /**
-          * If `true` the component gets an invalid style.
-          * @default false
-         */
-        "invalid": boolean;
-        /**
-          * The text to display when the stepper is in an invalid state.
-          * @default ''
-         */
-        "invalidText": string;
-        /**
-          * The label of the stepper, which is displayed above the control.
-          * @default ''
-         */
-        "label": string;
-        /**
-          * The maximum value the stepper can take.
-          * @default 10
-         */
-        "max": number;
-        /**
-          * The minimum value the stepper can take.
-          * @default 0
-         */
-        "min": number;
-        /**
-          * The name of the control, which is submitted with the form data.
-          * @default this.inputStepperId
-         */
-        "name": string;
-        /**
-          * If `true` the element can not be mutated. Both buttons are disabled while the form value continues to be submitted.
-          * @default false
-         */
-        "readonly": boolean;
-        /**
-          * If `true`, the user must have a value before submitting a form. Because the stepper always has a numeric value, this only affects the "optional" suffix on the label.
-          * @default true
-         */
-        "required": boolean;
-        /**
-          * Sets focus on the stepper. Prefers the increase button; falls back to decrease if the increase is disabled (value at max).
-         */
-        "setFocus": () => Promise<void>;
-        /**
-          * The granularity by which the value increases or decreases per click. Must be a positive number (integer or decimal). If a non-positive value is provided, a warning is logged and `1` is used at click time.
-          * @default 1
-         */
-        "step": number;
-        /**
-          * The current numeric value of the stepper. A stepper can never be empty: every write is resolved onto `[min, max]`, with an empty value (`null`/`undefined`/`NaN`) falling back to `min`. The resolution is silent — no `dsChange` is emitted — because a programmatic write must never look like user input (a `ControlValueAccessor`'s `writeValue()` may not call back into `onChange()`). A framework binding that writes an out-of-range value therefore keeps that value on its side while the element shows the clamped one, until the next user interaction emits a real `dsChange`.
-          * @default 0
-         */
-        "value": number;
-    }
-    /**
      * Item displays a list entry that supports plain content, accordion, link, and button variants with optional icon, label, and description slots.
      */
     interface DsItem {
@@ -2084,8 +1987,6 @@ export namespace Components {
     }
     /**
      * Modal displays content in a dialog overlay using the native dialog element.
-     * Supports both slot-based sub-components (ds-modal-header, ds-modal-body) and
-     * direct named slots (slot="header", slot="body").
      */
     interface DsModal {
         /**
@@ -2686,9 +2587,21 @@ export namespace Components {
          */
         "fallbackLanguage"?: DsLanguage;
         /**
+          * Merges custom icons into the global config, keyed by name. Not reflected as an attribute — pass a JS object.
+         */
+        "icons"?: DsIcons;
+        /**
           * Sets the active language for all design system components. Falls back to the global config default when unset.
          */
         "language"?: DsLanguage;
+        /**
+          * Merges per-region, per-language legal links into the global config. Not reflected as an attribute — pass a JS object.
+         */
+        "legalLinks"?: DsLegalLinks;
+        /**
+          * Merges per-region, per-language legal text into the global config. Not reflected as an attribute — pass a JS object.
+         */
+        "legalText"?: DsLegalText;
         /**
           * @default ''
          */
@@ -2705,6 +2618,10 @@ export namespace Components {
           * Sets focus on the given elements using the root's focus-visible handling.
          */
         "setFocus": (elements: HTMLElement[]) => Promise<void>;
+        /**
+          * Merges per-region social links into the global config. Not reflected as an attribute — pass a JS object.
+         */
+        "socialLinks"?: DsSocialLinks;
     }
     /**
      * Segment renders a group of button-like controls for selecting a single option from multiple choices with toggle behavior.
@@ -2991,6 +2908,103 @@ export namespace Components {
           * Defines the content width of the sheet. Leave unset for the default width, or use `'fluid'` for full width, or `'compact'` for a narrow layout.
          */
         "containerSize"?: SheetContainerSize;
+    }
+    /**
+     * Slider renders a noUiSlider-backed slider with validation and label/description messaging.
+     */
+    interface DsSlider {
+        /**
+          * If `true`, disables the automatic `invalid`/`invalidText` behavior that the `@baloise/ds-angular` integration applies when the bound `NgControl` is touched and invalid. Only affects the Angular integration; it is a no-op in other framework integrations.
+          * @default false
+         */
+        "autoInvalidOff": boolean;
+        /**
+          * Recolors the connect (the filled progress track) with a brand color instead of the default grey/primary style. Left of the handle uses the darker `-4` shade, right of it the lighter `-2` shade. Empty (default) keeps the current grey/primary look.
+         */
+        "brandColor"?: SliderBrandColor;
+        /**
+          * Defines the color of the slider. The default value is `primary`.
+          * @default 'primary'
+         */
+        "color": InputColor;
+        "configChanged": (state: DsConfigState) => Promise<void>;
+        /**
+          * Set the amount of time, in milliseconds, to wait to trigger the `dsChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
+          * @default 0
+         */
+        "debounce": number;
+        /**
+          * The description of the slider, which is displayed below the control.
+          * @default ''
+         */
+        "description": string;
+        /**
+          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+          * @default false
+         */
+        "disabled": boolean;
+        /**
+          * Returns the noUiSlider handle element used under the hood.
+         */
+        "getInputElement": () => Promise<HTMLElement | undefined>;
+        /**
+          * If `true` the component gets an invalid style.
+          * @default false
+         */
+        "invalid": boolean;
+        /**
+          * The text to display when the slider is in an invalid state.
+          * @default ''
+         */
+        "invalidText": string;
+        /**
+          * The label of the slider, which is displayed above the control.
+          * @default ''
+         */
+        "label": string;
+        /**
+          * The maximum value of the slider.
+          * @default 100
+         */
+        "max": number;
+        /**
+          * The minimum value of the slider.
+          * @default 0
+         */
+        "min": number;
+        /**
+          * The name of the control, which is submitted with the form data.
+          * @default this.sliderId
+         */
+        "name": string;
+        /**
+          * If `true` the element can not be mutated. noUiSlider has no native concept of `readonly`, so this is treated as equivalent to `disabled`.
+          * @default false
+         */
+        "readonly": boolean;
+        /**
+          * If `true`, the user must fill in a value before submitting a form.
+          * @default true
+         */
+        "required": boolean;
+        /**
+          * Sets blur on `ds-slider`'s slider handle. Use this method instead of the global `element.blur()`.
+         */
+        "setBlur": () => Promise<void>;
+        /**
+          * Sets focus on `ds-slider`'s slider handle. Use this method instead of the global `element.focus()`.
+         */
+        "setFocus": () => Promise<void>;
+        /**
+          * The granularity the value must adhere to, as a string so `"any"` (free, continuous dragging with no step snapping) can be expressed alongside numeric step sizes.
+          * @default '1'
+         */
+        "step": string;
+        /**
+          * The value of the slider. Unlike a text input, a slider can never be empty; when unset it defaults to `min`. Internally starts as `NaN` (this codebase's established "empty number" sentinel, see `isValueEmpty`) until `connectedCallback` resolves it — never actually rendered or emitted.
+          * @default NaN
+         */
+        "value": number;
     }
     /**
      * Snackbar displays brief feedback messages at the bottom of the screen with optional action buttons and dismissal control.
@@ -3775,9 +3789,13 @@ export interface DsCheckboxGroupCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLDsCheckboxGroupElement;
 }
-export interface DsDateCustomEvent<T> extends CustomEvent<T> {
+export interface DsCounterCustomEvent<T> extends CustomEvent<T> {
     detail: T;
-    target: HTMLDsDateElement;
+    target: HTMLDsCounterElement;
+}
+export interface DsDatepickerCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLDsDatepickerElement;
 }
 export interface DsDrawerCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -3794,14 +3812,6 @@ export interface DsInputCustomEvent<T> extends CustomEvent<T> {
 export interface DsInputPhoneCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLDsInputPhoneElement;
-}
-export interface DsInputSliderCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLDsInputSliderElement;
-}
-export interface DsInputStepperCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLDsInputStepperElement;
 }
 export interface DsItemCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -3850,6 +3860,10 @@ export interface DsSegmentItemCustomEvent<T> extends CustomEvent<T> {
 export interface DsSelectCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLDsSelectElement;
+}
+export interface DsSliderCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLDsSliderElement;
 }
 export interface DsSnackbarCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -4176,6 +4190,31 @@ declare global {
         prototype: HTMLDsContentElement;
         new (): HTMLDsContentElement;
     };
+    interface HTMLDsCounterElementEventMap {
+        "dsInput": CounterInputDetail;
+        "dsChange": CounterChangeDetail;
+        "dsIncrease": CounterIncreaseDetail;
+        "dsDecrease": CounterDecreaseDetail;
+        "dsFocus": CounterFocusDetail;
+        "dsBlur": CounterBlurDetail;
+    }
+    /**
+     * Counter renders a numeric value flanked by decrease and increase buttons.
+     */
+    interface HTMLDsCounterElement extends Components.DsCounter, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLDsCounterElementEventMap>(type: K, listener: (this: HTMLDsCounterElement, ev: DsCounterCustomEvent<HTMLDsCounterElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLDsCounterElementEventMap>(type: K, listener: (this: HTMLDsCounterElement, ev: DsCounterCustomEvent<HTMLDsCounterElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLDsCounterElement: {
+        prototype: HTMLDsCounterElement;
+        new (): HTMLDsCounterElement;
+    };
     /**
      * Data displays a list of label-value pairs in a organized, accessible format.
      * Supports vertical and horizontal layouts with dividers always shown in vertical layout.
@@ -4216,30 +4255,30 @@ declare global {
         prototype: HTMLDsDataValueElement;
         new (): HTMLDsDataValueElement;
     };
-    interface HTMLDsDateElementEventMap {
-        "dsBlur": DateBlurDetail;
-        "dsKeyPress": DateKeyPressDetail;
-        "dsFocus": DateFocusDetail;
-        "dsClick": DateClickDetail;
-        "dsInput": DateInputDetail;
-        "dsChange": DateChangeDetail;
+    interface HTMLDsDatepickerElementEventMap {
+        "dsBlur": DatepickerBlurDetail;
+        "dsKeyPress": DatepickerKeyPressDetail;
+        "dsFocus": DatepickerFocusDetail;
+        "dsClick": DatepickerClickDetail;
+        "dsInput": DatepickerInputDetail;
+        "dsChange": DatepickerChangeDetail;
     }
     /**
-     * Date renders a masked date input field with an interactive calendar popup for date selection.
+     * Datepicker renders a masked date input field with an interactive calendar popup for date selection.
      */
-    interface HTMLDsDateElement extends Components.DsDate, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLDsDateElementEventMap>(type: K, listener: (this: HTMLDsDateElement, ev: DsDateCustomEvent<HTMLDsDateElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+    interface HTMLDsDatepickerElement extends Components.DsDatepicker, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLDsDatepickerElementEventMap>(type: K, listener: (this: HTMLDsDatepickerElement, ev: DsDatepickerCustomEvent<HTMLDsDatepickerElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLDsDateElementEventMap>(type: K, listener: (this: HTMLDsDateElement, ev: DsDateCustomEvent<HTMLDsDateElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLDsDatepickerElementEventMap>(type: K, listener: (this: HTMLDsDatepickerElement, ev: DsDatepickerCustomEvent<HTMLDsDatepickerElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
-    var HTMLDsDateElement: {
-        prototype: HTMLDsDateElement;
-        new (): HTMLDsDateElement;
+    var HTMLDsDatepickerElement: {
+        prototype: HTMLDsDatepickerElement;
+        new (): HTMLDsDatepickerElement;
     };
     /**
      * Divider renders a visual separator line for grouping or distinguishing content sections.
@@ -4400,55 +4439,6 @@ declare global {
         prototype: HTMLDsInputPhoneElement;
         new (): HTMLDsInputPhoneElement;
     };
-    interface HTMLDsInputSliderElementEventMap {
-        "dsInput": InputSliderInputDetail;
-        "dsFocus": InputSliderFocusDetail;
-        "dsBlur": InputSliderBlurDetail;
-        "dsClick": InputSliderClickDetail;
-        "dsChange": InputSliderChangeDetail;
-    }
-    /**
-     * Input slider renders a noUiSlider-backed slider with validation and label/description messaging.
-     */
-    interface HTMLDsInputSliderElement extends Components.DsInputSlider, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLDsInputSliderElementEventMap>(type: K, listener: (this: HTMLDsInputSliderElement, ev: DsInputSliderCustomEvent<HTMLDsInputSliderElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLDsInputSliderElementEventMap>(type: K, listener: (this: HTMLDsInputSliderElement, ev: DsInputSliderCustomEvent<HTMLDsInputSliderElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
-    }
-    var HTMLDsInputSliderElement: {
-        prototype: HTMLDsInputSliderElement;
-        new (): HTMLDsInputSliderElement;
-    };
-    interface HTMLDsInputStepperElementEventMap {
-        "dsInput": InputStepperInputDetail;
-        "dsChange": InputStepperChangeDetail;
-        "dsIncrease": InputStepperIncreaseDetail;
-        "dsDecrease": InputStepperDecreaseDetail;
-        "dsFocus": InputStepperFocusDetail;
-        "dsBlur": InputStepperBlurDetail;
-    }
-    /**
-     * Input stepper renders a numeric value flanked by decrease and increase buttons.
-     */
-    interface HTMLDsInputStepperElement extends Components.DsInputStepper, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLDsInputStepperElementEventMap>(type: K, listener: (this: HTMLDsInputStepperElement, ev: DsInputStepperCustomEvent<HTMLDsInputStepperElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLDsInputStepperElementEventMap>(type: K, listener: (this: HTMLDsInputStepperElement, ev: DsInputStepperCustomEvent<HTMLDsInputStepperElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
-    }
-    var HTMLDsInputStepperElement: {
-        prototype: HTMLDsInputStepperElement;
-        new (): HTMLDsInputStepperElement;
-    };
     interface HTMLDsItemElementEventMap {
         "dsClick": ButtonClickDetail;
         "dsAccordionToggle": AccordionToggleDetail;
@@ -4509,8 +4499,6 @@ declare global {
     }
     /**
      * Modal displays content in a dialog overlay using the native dialog element.
-     * Supports both slot-based sub-components (ds-modal-header, ds-modal-body) and
-     * direct named slots (slot="header", slot="body").
      */
     interface HTMLDsModalElement extends Components.DsModal, HTMLStencilElement {
         addEventListener<K extends keyof HTMLDsModalElementEventMap>(type: K, listener: (this: HTMLDsModalElement, ev: DsModalCustomEvent<HTMLDsModalElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -4700,6 +4688,10 @@ declare global {
         "dsLanguageChange": DsLanguage;
         "dsAllowedLanguagesChange": DsLanguage[];
         "dsFallbackLanguageChange": DsLanguage;
+        "dsIconsChange": DsIcons;
+        "dsLegalLinksChange": DsLegalLinks;
+        "dsLegalTextChange": DsLegalText;
+        "dsSocialLinksChange": DsSocialLinks;
     }
     /**
      * Root is a root wrapper component that provides global configuration, focus management, and responsive behavior context for all design system components.
@@ -4827,6 +4819,30 @@ declare global {
     var HTMLDsSheetElement: {
         prototype: HTMLDsSheetElement;
         new (): HTMLDsSheetElement;
+    };
+    interface HTMLDsSliderElementEventMap {
+        "dsInput": SliderInputDetail;
+        "dsFocus": SliderFocusDetail;
+        "dsBlur": SliderBlurDetail;
+        "dsClick": SliderClickDetail;
+        "dsChange": SliderChangeDetail;
+    }
+    /**
+     * Slider renders a noUiSlider-backed slider with validation and label/description messaging.
+     */
+    interface HTMLDsSliderElement extends Components.DsSlider, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLDsSliderElementEventMap>(type: K, listener: (this: HTMLDsSliderElement, ev: DsSliderCustomEvent<HTMLDsSliderElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLDsSliderElementEventMap>(type: K, listener: (this: HTMLDsSliderElement, ev: DsSliderCustomEvent<HTMLDsSliderElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLDsSliderElement: {
+        prototype: HTMLDsSliderElement;
+        new (): HTMLDsSliderElement;
     };
     interface HTMLDsSnackbarElementEventMap {
         "dsCloseClick": SnackbarCloseClickDetail;
@@ -5117,11 +5133,12 @@ declare global {
         "ds-checkbox-group": HTMLDsCheckboxGroupElement;
         "ds-close": HTMLDsCloseElement;
         "ds-content": HTMLDsContentElement;
+        "ds-counter": HTMLDsCounterElement;
         "ds-data": HTMLDsDataElement;
         "ds-data-item": HTMLDsDataItemElement;
         "ds-data-label": HTMLDsDataLabelElement;
         "ds-data-value": HTMLDsDataValueElement;
-        "ds-date": HTMLDsDateElement;
+        "ds-datepicker": HTMLDsDatepickerElement;
         "ds-divider": HTMLDsDividerElement;
         "ds-drawer": HTMLDsDrawerElement;
         "ds-file-upload": HTMLDsFileUploadElement;
@@ -5132,8 +5149,6 @@ declare global {
         "ds-icon": HTMLDsIconElement;
         "ds-input": HTMLDsInputElement;
         "ds-input-phone": HTMLDsInputPhoneElement;
-        "ds-input-slider": HTMLDsInputSliderElement;
-        "ds-input-stepper": HTMLDsInputStepperElement;
         "ds-item": HTMLDsItemElement;
         "ds-label": HTMLDsLabelElement;
         "ds-list": HTMLDsListElement;
@@ -5156,6 +5171,7 @@ declare global {
         "ds-select-option": HTMLDsSelectOptionElement;
         "ds-shape": HTMLDsShapeElement;
         "ds-sheet": HTMLDsSheetElement;
+        "ds-slider": HTMLDsSliderElement;
         "ds-snackbar": HTMLDsSnackbarElement;
         "ds-spinner": HTMLDsSpinnerElement;
         "ds-stack": HTMLDsStackElement;
@@ -6086,6 +6102,114 @@ declare namespace LocalJSX {
         "textAlign"?: ContentTextAlignment;
     }
     /**
+     * Counter renders a numeric value flanked by decrease and increase buttons.
+     */
+    interface DsCounter {
+        /**
+          * If `true`, in Angular reactive forms the control will not be set invalid
+          * @default false
+         */
+        "autoInvalidOff"?: boolean;
+        /**
+          * Defines the color of the counter. The default value is `primary`.
+          * @default 'primary'
+         */
+        "color"?: InputColor;
+        /**
+          * Set the amount of time, in milliseconds, to wait to trigger the `dsChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
+          * @default 0
+         */
+        "debounce"?: number;
+        /**
+          * The description of the counter, which is displayed below the control.
+          * @default ''
+         */
+        "description"?: string;
+        /**
+          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+          * @default false
+         */
+        "disabled"?: boolean;
+        /**
+          * The `id` of a `<form>` element to associate this element with.
+         */
+        "form"?: string;
+        /**
+          * If `true` the component gets an invalid style.
+          * @default false
+         */
+        "invalid"?: boolean;
+        /**
+          * The text to display when the counter is in an invalid state.
+          * @default ''
+         */
+        "invalidText"?: string;
+        /**
+          * The label of the counter, which is displayed above the control.
+          * @default ''
+         */
+        "label"?: string;
+        /**
+          * The maximum value the counter can take.
+          * @default 10
+         */
+        "max"?: number;
+        /**
+          * The minimum value the counter can take.
+          * @default 0
+         */
+        "min"?: number;
+        /**
+          * The name of the control, which is submitted with the form data.
+          * @default this.counterId
+         */
+        "name"?: string;
+        /**
+          * Emitted when focus leaves the widget entirely. Tabbing between the two buttons does not emit — see `handleFocusout`.
+         */
+        "onDsBlur"?: (event: DsCounterCustomEvent<CounterBlurDetail>) => void;
+        /**
+          * Emitted once per successful step. Debounceable via the `debounce` prop.
+         */
+        "onDsChange"?: (event: DsCounterCustomEvent<CounterChangeDetail>) => void;
+        /**
+          * Emitted after a successful decrease step, in addition to `dsChange`/`dsInput`.
+         */
+        "onDsDecrease"?: (event: DsCounterCustomEvent<CounterDecreaseDetail>) => void;
+        /**
+          * Emitted when focus enters the widget (either button).
+         */
+        "onDsFocus"?: (event: DsCounterCustomEvent<CounterFocusDetail>) => void;
+        /**
+          * Emitted after a successful increase step, in addition to `dsChange`/`dsInput`.
+         */
+        "onDsIncrease"?: (event: DsCounterCustomEvent<CounterIncreaseDetail>) => void;
+        /**
+          * Emitted whenever the value changes via a step. Fires alongside `dsChange`.
+         */
+        "onDsInput"?: (event: DsCounterCustomEvent<CounterInputDetail>) => void;
+        /**
+          * If `true` the element can not be mutated. Both buttons are disabled while the form value continues to be submitted.
+          * @default false
+         */
+        "readonly"?: boolean;
+        /**
+          * If `true`, the user must have a value before submitting a form. Because the counter always has a numeric value, this only affects the "optional" suffix on the label.
+          * @default true
+         */
+        "required"?: boolean;
+        /**
+          * The granularity by which the value increases or decreases per click. Must be a positive number (integer or decimal). If a non-positive value is provided, a warning is logged and `1` is used at click time.
+          * @default 1
+         */
+        "step"?: number;
+        /**
+          * The current numeric value of the counter. A counter can never be empty: every write is resolved onto `[min, max]`, with an empty value (`null`/`undefined`/`NaN`) falling back to `min`. The resolution is silent — no `dsChange` is emitted — because a programmatic write must never look like user input (a `ControlValueAccessor`'s `writeValue()` may not call back into `onChange()`). A framework binding that writes an out-of-range value therefore keeps that value on its side while the element shows the clamped one, until the next user interaction emits a real `dsChange`.
+          * @default 0
+         */
+        "value"?: number;
+    }
+    /**
      * Data displays a list of label-value pairs in a organized, accessible format.
      * Supports vertical and horizontal layouts with dividers always shown in vertical layout.
      */
@@ -6140,9 +6264,9 @@ declare namespace LocalJSX {
     interface DsDataValue {
     }
     /**
-     * Date renders a masked date input field with an interactive calendar popup for date selection.
+     * Datepicker renders a masked date input field with an interactive calendar popup for date selection.
      */
-    interface DsDate {
+    interface DsDatepicker {
         /**
           * Callback to determine which dates in the calendar are selectable. Receives an ISO date string (YYYY-MM-DD) and should return `true` to allow the date or `false` to disable it. Typed input that resolves to a disallowed date is also rejected.
           * @default undefined
@@ -6167,7 +6291,7 @@ declare namespace LocalJSX {
           * Defines the color of the date input. The default value is `primary`.
           * @default 'primary'
          */
-        "color"?: DateColor;
+        "color"?: DatepickerColor;
         /**
           * Set the amount of time, in milliseconds, to wait to trigger the `dsChange` event after each keystroke.
           * @default 0
@@ -6250,27 +6374,27 @@ declare namespace LocalJSX {
         /**
           * Emitted when the input loses focus.
          */
-        "onDsBlur"?: (event: DsDateCustomEvent<DateBlurDetail>) => void;
+        "onDsBlur"?: (event: DsDatepickerCustomEvent<DatepickerBlurDetail>) => void;
         /**
           * Emitted when the date value has changed (ISO value or null).
          */
-        "onDsChange"?: (event: DsDateCustomEvent<DateChangeDetail>) => void;
+        "onDsChange"?: (event: DsDatepickerCustomEvent<DatepickerChangeDetail>) => void;
         /**
           * Emitted when the input is clicked.
          */
-        "onDsClick"?: (event: DsDateCustomEvent<DateClickDetail>) => void;
+        "onDsClick"?: (event: DsDatepickerCustomEvent<DatepickerClickDetail>) => void;
         /**
           * Emitted when the input receives focus.
          */
-        "onDsFocus"?: (event: DsDateCustomEvent<DateFocusDetail>) => void;
+        "onDsFocus"?: (event: DsDatepickerCustomEvent<DatepickerFocusDetail>) => void;
         /**
           * Emitted when a keyboard input occurred (ISO value or null if incomplete).
          */
-        "onDsInput"?: (event: DsDateCustomEvent<DateInputDetail>) => void;
+        "onDsInput"?: (event: DsDatepickerCustomEvent<DatepickerInputDetail>) => void;
         /**
           * Emitted when a keyboard key has been pressed.
          */
-        "onDsKeyPress"?: (event: DsDateCustomEvent<DateKeyPressDetail>) => void;
+        "onDsKeyPress"?: (event: DsDatepickerCustomEvent<DatepickerKeyPressDetail>) => void;
         /**
           * Instructional text that shows before the input has a value.
           * @default ''
@@ -6916,222 +7040,6 @@ declare namespace LocalJSX {
         "value"?: string | null;
     }
     /**
-     * Input slider renders a noUiSlider-backed slider with validation and label/description messaging.
-     */
-    interface DsInputSlider {
-        /**
-          * If `true`, disables the automatic `invalid`/`invalidText` behavior that the `@baloise/ds-angular` integration applies when the bound `NgControl` is touched and invalid. Only affects the Angular integration; it is a no-op in other framework integrations.
-          * @default false
-         */
-        "autoInvalidOff"?: boolean;
-        /**
-          * Recolors the connect (the filled progress track) with a brand color instead of the default grey/primary style. Left of the handle uses the darker `-4` shade, right of it the lighter `-2` shade. Empty (default) keeps the current grey/primary look.
-         */
-        "brandColor"?: InputSliderBrandColor;
-        /**
-          * Defines the color of the slider. The default value is `primary`.
-          * @default 'primary'
-         */
-        "color"?: InputColor;
-        /**
-          * Set the amount of time, in milliseconds, to wait to trigger the `dsChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
-          * @default 0
-         */
-        "debounce"?: number;
-        /**
-          * The description of the slider, which is displayed below the control.
-          * @default ''
-         */
-        "description"?: string;
-        /**
-          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
-          * @default false
-         */
-        "disabled"?: boolean;
-        /**
-          * The `id` of a `<form>` element to associate this element with.
-         */
-        "form"?: string;
-        /**
-          * If `true` the component gets an invalid style.
-          * @default false
-         */
-        "invalid"?: boolean;
-        /**
-          * The text to display when the slider is in an invalid state.
-          * @default ''
-         */
-        "invalidText"?: string;
-        /**
-          * The label of the slider, which is displayed above the control.
-          * @default ''
-         */
-        "label"?: string;
-        /**
-          * The maximum value of the slider.
-          * @default 100
-         */
-        "max"?: number;
-        /**
-          * The minimum value of the slider.
-          * @default 0
-         */
-        "min"?: number;
-        /**
-          * The name of the control, which is submitted with the form data.
-          * @default this.inputSliderId
-         */
-        "name"?: string;
-        /**
-          * Emitted when the input loses focus.
-         */
-        "onDsBlur"?: (event: DsInputSliderCustomEvent<InputSliderBlurDetail>) => void;
-        /**
-          * Emitted when the value is committed (noUiSlider `change`, not `blur` — see ADR-0010/ADR-0007). Fires once per discrete drag/step, independent of focus.
-         */
-        "onDsChange"?: (event: DsInputSliderCustomEvent<InputSliderChangeDetail>) => void;
-        /**
-          * Emitted when the input is clicked.
-         */
-        "onDsClick"?: (event: DsInputSliderCustomEvent<InputSliderClickDetail>) => void;
-        /**
-          * Emitted when the input has focus.
-         */
-        "onDsFocus"?: (event: DsInputSliderCustomEvent<InputSliderFocusDetail>) => void;
-        /**
-          * Emitted on each keyboard/pointer movement, before the value is committed.
-         */
-        "onDsInput"?: (event: DsInputSliderCustomEvent<InputSliderInputDetail>) => void;
-        /**
-          * If `true` the element can not be mutated. noUiSlider has no native concept of `readonly`, so this is treated as equivalent to `disabled`.
-          * @default false
-         */
-        "readonly"?: boolean;
-        /**
-          * If `true`, the user must fill in a value before submitting a form.
-          * @default true
-         */
-        "required"?: boolean;
-        /**
-          * The granularity the value must adhere to, as a string so `"any"` (free, continuous dragging with no step snapping) can be expressed alongside numeric step sizes.
-          * @default '1'
-         */
-        "step"?: string;
-        /**
-          * The value of the slider. Unlike a text input, a slider can never be empty; when unset it defaults to `min`. Internally starts as `NaN` (this codebase's established "empty number" sentinel, see `isValueEmpty`) until `connectedCallback` resolves it — never actually rendered or emitted.
-          * @default NaN
-         */
-        "value"?: number;
-    }
-    /**
-     * Input stepper renders a numeric value flanked by decrease and increase buttons.
-     */
-    interface DsInputStepper {
-        /**
-          * If `true`, in Angular reactive forms the control will not be set invalid
-          * @default false
-         */
-        "autoInvalidOff"?: boolean;
-        /**
-          * Defines the color of the stepper. The default value is `primary`.
-          * @default 'primary'
-         */
-        "color"?: InputColor;
-        /**
-          * Set the amount of time, in milliseconds, to wait to trigger the `dsChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
-          * @default 0
-         */
-        "debounce"?: number;
-        /**
-          * The description of the stepper, which is displayed below the control.
-          * @default ''
-         */
-        "description"?: string;
-        /**
-          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
-          * @default false
-         */
-        "disabled"?: boolean;
-        /**
-          * The `id` of a `<form>` element to associate this element with.
-         */
-        "form"?: string;
-        /**
-          * If `true` the component gets an invalid style.
-          * @default false
-         */
-        "invalid"?: boolean;
-        /**
-          * The text to display when the stepper is in an invalid state.
-          * @default ''
-         */
-        "invalidText"?: string;
-        /**
-          * The label of the stepper, which is displayed above the control.
-          * @default ''
-         */
-        "label"?: string;
-        /**
-          * The maximum value the stepper can take.
-          * @default 10
-         */
-        "max"?: number;
-        /**
-          * The minimum value the stepper can take.
-          * @default 0
-         */
-        "min"?: number;
-        /**
-          * The name of the control, which is submitted with the form data.
-          * @default this.inputStepperId
-         */
-        "name"?: string;
-        /**
-          * Emitted when focus leaves the widget entirely. Tabbing between the two buttons does not emit — see `handleFocusout`.
-         */
-        "onDsBlur"?: (event: DsInputStepperCustomEvent<InputStepperBlurDetail>) => void;
-        /**
-          * Emitted once per successful step. Debounceable via the `debounce` prop.
-         */
-        "onDsChange"?: (event: DsInputStepperCustomEvent<InputStepperChangeDetail>) => void;
-        /**
-          * Emitted after a successful decrease step, in addition to `dsChange`/`dsInput`.
-         */
-        "onDsDecrease"?: (event: DsInputStepperCustomEvent<InputStepperDecreaseDetail>) => void;
-        /**
-          * Emitted when focus enters the widget (either button).
-         */
-        "onDsFocus"?: (event: DsInputStepperCustomEvent<InputStepperFocusDetail>) => void;
-        /**
-          * Emitted after a successful increase step, in addition to `dsChange`/`dsInput`.
-         */
-        "onDsIncrease"?: (event: DsInputStepperCustomEvent<InputStepperIncreaseDetail>) => void;
-        /**
-          * Emitted whenever the value changes via a step. Fires alongside `dsChange`.
-         */
-        "onDsInput"?: (event: DsInputStepperCustomEvent<InputStepperInputDetail>) => void;
-        /**
-          * If `true` the element can not be mutated. Both buttons are disabled while the form value continues to be submitted.
-          * @default false
-         */
-        "readonly"?: boolean;
-        /**
-          * If `true`, the user must have a value before submitting a form. Because the stepper always has a numeric value, this only affects the "optional" suffix on the label.
-          * @default true
-         */
-        "required"?: boolean;
-        /**
-          * The granularity by which the value increases or decreases per click. Must be a positive number (integer or decimal). If a non-positive value is provided, a warning is logged and `1` is used at click time.
-          * @default 1
-         */
-        "step"?: number;
-        /**
-          * The current numeric value of the stepper. A stepper can never be empty: every write is resolved onto `[min, max]`, with an empty value (`null`/`undefined`/`NaN`) falling back to `min`. The resolution is silent — no `dsChange` is emitted — because a programmatic write must never look like user input (a `ControlValueAccessor`'s `writeValue()` may not call back into `onChange()`). A framework binding that writes an out-of-range value therefore keeps that value on its side while the element shows the clamped one, until the next user interaction emits a real `dsChange`.
-          * @default 0
-         */
-        "value"?: number;
-    }
-    /**
      * Item displays a list entry that supports plain content, accordion, link, and button variants with optional icon, label, and description slots.
      */
     interface DsItem {
@@ -7320,8 +7228,6 @@ declare namespace LocalJSX {
     }
     /**
      * Modal displays content in a dialog overlay using the native dialog element.
-     * Supports both slot-based sub-components (ds-modal-header, ds-modal-body) and
-     * direct named slots (slot="header", slot="body").
      */
     interface DsModal {
         /**
@@ -7964,9 +7870,21 @@ declare namespace LocalJSX {
          */
         "fallbackLanguage"?: DsLanguage;
         /**
+          * Merges custom icons into the global config, keyed by name. Not reflected as an attribute — pass a JS object.
+         */
+        "icons"?: DsIcons;
+        /**
           * Sets the active language for all design system components. Falls back to the global config default when unset.
          */
         "language"?: DsLanguage;
+        /**
+          * Merges per-region, per-language legal links into the global config. Not reflected as an attribute — pass a JS object.
+         */
+        "legalLinks"?: DsLegalLinks;
+        /**
+          * Merges per-region, per-language legal text into the global config. Not reflected as an attribute — pass a JS object.
+         */
+        "legalText"?: DsLegalText;
         /**
           * @default ''
          */
@@ -7992,13 +7910,29 @@ declare namespace LocalJSX {
          */
         "onDsFallbackLanguageChange"?: (event: DsRootCustomEvent<DsLanguage>) => void;
         /**
+          * Emitted when the `icons` value changes in the global config.
+         */
+        "onDsIconsChange"?: (event: DsRootCustomEvent<DsIcons>) => void;
+        /**
           * Emitted when the `language` value changes in the global config.
          */
         "onDsLanguageChange"?: (event: DsRootCustomEvent<DsLanguage>) => void;
         /**
+          * Emitted when the `legalLinks` value changes in the global config.
+         */
+        "onDsLegalLinksChange"?: (event: DsRootCustomEvent<DsLegalLinks>) => void;
+        /**
+          * Emitted when the `legalText` value changes in the global config.
+         */
+        "onDsLegalTextChange"?: (event: DsRootCustomEvent<DsLegalText>) => void;
+        /**
           * Emitted when the `region` value changes in the global config.
          */
         "onDsRegionChange"?: (event: DsRootCustomEvent<DsRegion>) => void;
+        /**
+          * Emitted when the `socialLinks` value changes in the global config.
+         */
+        "onDsSocialLinksChange"?: (event: DsRootCustomEvent<DsSocialLinks>) => void;
         /**
           * @default false
          */
@@ -8007,6 +7941,10 @@ declare namespace LocalJSX {
           * Sets the active region for all design system components. Falls back to the global config default when unset.
          */
         "region"?: DsRegion;
+        /**
+          * Merges per-region social links into the global config. Not reflected as an attribute — pass a JS object.
+         */
+        "socialLinks"?: DsSocialLinks;
     }
     /**
      * Segment renders a group of button-like controls for selecting a single option from multiple choices with toggle behavior.
@@ -8325,6 +8263,114 @@ declare namespace LocalJSX {
           * Defines the content width of the sheet. Leave unset for the default width, or use `'fluid'` for full width, or `'compact'` for a narrow layout.
          */
         "containerSize"?: SheetContainerSize;
+    }
+    /**
+     * Slider renders a noUiSlider-backed slider with validation and label/description messaging.
+     */
+    interface DsSlider {
+        /**
+          * If `true`, disables the automatic `invalid`/`invalidText` behavior that the `@baloise/ds-angular` integration applies when the bound `NgControl` is touched and invalid. Only affects the Angular integration; it is a no-op in other framework integrations.
+          * @default false
+         */
+        "autoInvalidOff"?: boolean;
+        /**
+          * Recolors the connect (the filled progress track) with a brand color instead of the default grey/primary style. Left of the handle uses the darker `-4` shade, right of it the lighter `-2` shade. Empty (default) keeps the current grey/primary look.
+         */
+        "brandColor"?: SliderBrandColor;
+        /**
+          * Defines the color of the slider. The default value is `primary`.
+          * @default 'primary'
+         */
+        "color"?: InputColor;
+        /**
+          * Set the amount of time, in milliseconds, to wait to trigger the `dsChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
+          * @default 0
+         */
+        "debounce"?: number;
+        /**
+          * The description of the slider, which is displayed below the control.
+          * @default ''
+         */
+        "description"?: string;
+        /**
+          * If `true`, the element is not mutable, focusable, or even submitted with the form. The user can neither edit nor focus on the control, nor its form control descendants.
+          * @default false
+         */
+        "disabled"?: boolean;
+        /**
+          * The `id` of a `<form>` element to associate this element with.
+         */
+        "form"?: string;
+        /**
+          * If `true` the component gets an invalid style.
+          * @default false
+         */
+        "invalid"?: boolean;
+        /**
+          * The text to display when the slider is in an invalid state.
+          * @default ''
+         */
+        "invalidText"?: string;
+        /**
+          * The label of the slider, which is displayed above the control.
+          * @default ''
+         */
+        "label"?: string;
+        /**
+          * The maximum value of the slider.
+          * @default 100
+         */
+        "max"?: number;
+        /**
+          * The minimum value of the slider.
+          * @default 0
+         */
+        "min"?: number;
+        /**
+          * The name of the control, which is submitted with the form data.
+          * @default this.sliderId
+         */
+        "name"?: string;
+        /**
+          * Emitted when the input loses focus.
+         */
+        "onDsBlur"?: (event: DsSliderCustomEvent<SliderBlurDetail>) => void;
+        /**
+          * Emitted when the value is committed (noUiSlider `change`, not `blur` — see ADR-0010/ADR-0007). Fires once per discrete drag/step, independent of focus.
+         */
+        "onDsChange"?: (event: DsSliderCustomEvent<SliderChangeDetail>) => void;
+        /**
+          * Emitted when the input is clicked.
+         */
+        "onDsClick"?: (event: DsSliderCustomEvent<SliderClickDetail>) => void;
+        /**
+          * Emitted when the input has focus.
+         */
+        "onDsFocus"?: (event: DsSliderCustomEvent<SliderFocusDetail>) => void;
+        /**
+          * Emitted on each keyboard/pointer movement, before the value is committed.
+         */
+        "onDsInput"?: (event: DsSliderCustomEvent<SliderInputDetail>) => void;
+        /**
+          * If `true` the element can not be mutated. noUiSlider has no native concept of `readonly`, so this is treated as equivalent to `disabled`.
+          * @default false
+         */
+        "readonly"?: boolean;
+        /**
+          * If `true`, the user must fill in a value before submitting a form.
+          * @default true
+         */
+        "required"?: boolean;
+        /**
+          * The granularity the value must adhere to, as a string so `"any"` (free, continuous dragging with no step snapping) can be expressed alongside numeric step sizes.
+          * @default '1'
+         */
+        "step"?: string;
+        /**
+          * The value of the slider. Unlike a text input, a slider can never be empty; when unset it defaults to `min`. Internally starts as `NaN` (this codebase's established "empty number" sentinel, see `isValueEmpty`) until `connectedCallback` resolves it — never actually rendered or emitted.
+          * @default NaN
+         */
+        "value"?: number;
     }
     /**
      * Snackbar displays brief feedback messages at the bottom of the screen with optional action buttons and dismissal control.
@@ -9320,6 +9366,23 @@ declare namespace LocalJSX {
         "space": ContentSpace;
         "alignment": StackAlignment;
     }
+    interface DsCounterAttributes {
+        "value": number;
+        "name": string;
+        "label": string;
+        "description": string;
+        "color": InputColor;
+        "invalid": boolean;
+        "invalidText": string;
+        "min": number;
+        "max": number;
+        "step": number;
+        "debounce": number;
+        "disabled": boolean;
+        "readonly": boolean;
+        "required": boolean;
+        "autoInvalidOff": boolean;
+    }
     interface DsDataAttributes {
         "horizontal": boolean;
     }
@@ -9332,12 +9395,12 @@ declare namespace LocalJSX {
     interface DsDataLabelAttributes {
         "required": boolean;
     }
-    interface DsDateAttributes {
+    interface DsDatepickerAttributes {
         "value": string | null;
         "name": string;
         "label": string;
         "description": string;
-        "color": DateColor;
+        "color": DatepickerColor;
         "invalid": boolean;
         "invalidText": string;
         "required": boolean;
@@ -9468,41 +9531,6 @@ declare namespace LocalJSX {
         "disabled": boolean;
         "readonly": boolean;
         "placeholder": string;
-    }
-    interface DsInputSliderAttributes {
-        "value": number;
-        "name": string;
-        "label": string;
-        "description": string;
-        "color": InputColor;
-        "brandColor": InputSliderBrandColor;
-        "invalid": boolean;
-        "invalidText": string;
-        "min": number;
-        "max": number;
-        "step": string;
-        "debounce": number;
-        "disabled": boolean;
-        "readonly": boolean;
-        "required": boolean;
-        "autoInvalidOff": boolean;
-    }
-    interface DsInputStepperAttributes {
-        "value": number;
-        "name": string;
-        "label": string;
-        "description": string;
-        "color": InputColor;
-        "invalid": boolean;
-        "invalidText": string;
-        "min": number;
-        "max": number;
-        "step": number;
-        "debounce": number;
-        "disabled": boolean;
-        "readonly": boolean;
-        "required": boolean;
-        "autoInvalidOff": boolean;
     }
     interface DsItemAttributes {
         "accordionGroup": string;
@@ -9720,6 +9748,24 @@ declare namespace LocalJSX {
     interface DsSheetAttributes {
         "containerSize": SheetContainerSize;
     }
+    interface DsSliderAttributes {
+        "value": number;
+        "name": string;
+        "label": string;
+        "description": string;
+        "color": InputColor;
+        "brandColor": SliderBrandColor;
+        "invalid": boolean;
+        "invalidText": string;
+        "min": number;
+        "max": number;
+        "step": string;
+        "debounce": number;
+        "disabled": boolean;
+        "readonly": boolean;
+        "required": boolean;
+        "autoInvalidOff": boolean;
+    }
     interface DsSnackbarAttributes {
         "color": SnackbarColor;
         "closable": boolean;
@@ -9904,11 +9950,12 @@ declare namespace LocalJSX {
         "ds-checkbox-group": Omit<DsCheckboxGroup, keyof DsCheckboxGroupAttributes> & { [K in keyof DsCheckboxGroup & keyof DsCheckboxGroupAttributes]?: DsCheckboxGroup[K] } & { [K in keyof DsCheckboxGroup & keyof DsCheckboxGroupAttributes as `attr:${K}`]?: DsCheckboxGroupAttributes[K] } & { [K in keyof DsCheckboxGroup & keyof DsCheckboxGroupAttributes as `prop:${K}`]?: DsCheckboxGroup[K] };
         "ds-close": Omit<DsClose, keyof DsCloseAttributes> & { [K in keyof DsClose & keyof DsCloseAttributes]?: DsClose[K] } & { [K in keyof DsClose & keyof DsCloseAttributes as `attr:${K}`]?: DsCloseAttributes[K] } & { [K in keyof DsClose & keyof DsCloseAttributes as `prop:${K}`]?: DsClose[K] };
         "ds-content": Omit<DsContent, keyof DsContentAttributes> & { [K in keyof DsContent & keyof DsContentAttributes]?: DsContent[K] } & { [K in keyof DsContent & keyof DsContentAttributes as `attr:${K}`]?: DsContentAttributes[K] } & { [K in keyof DsContent & keyof DsContentAttributes as `prop:${K}`]?: DsContent[K] };
+        "ds-counter": Omit<DsCounter, keyof DsCounterAttributes> & { [K in keyof DsCounter & keyof DsCounterAttributes]?: DsCounter[K] } & { [K in keyof DsCounter & keyof DsCounterAttributes as `attr:${K}`]?: DsCounterAttributes[K] } & { [K in keyof DsCounter & keyof DsCounterAttributes as `prop:${K}`]?: DsCounter[K] };
         "ds-data": Omit<DsData, keyof DsDataAttributes> & { [K in keyof DsData & keyof DsDataAttributes]?: DsData[K] } & { [K in keyof DsData & keyof DsDataAttributes as `attr:${K}`]?: DsDataAttributes[K] } & { [K in keyof DsData & keyof DsDataAttributes as `prop:${K}`]?: DsData[K] };
         "ds-data-item": Omit<DsDataItem, keyof DsDataItemAttributes> & { [K in keyof DsDataItem & keyof DsDataItemAttributes]?: DsDataItem[K] } & { [K in keyof DsDataItem & keyof DsDataItemAttributes as `attr:${K}`]?: DsDataItemAttributes[K] } & { [K in keyof DsDataItem & keyof DsDataItemAttributes as `prop:${K}`]?: DsDataItem[K] };
         "ds-data-label": Omit<DsDataLabel, keyof DsDataLabelAttributes> & { [K in keyof DsDataLabel & keyof DsDataLabelAttributes]?: DsDataLabel[K] } & { [K in keyof DsDataLabel & keyof DsDataLabelAttributes as `attr:${K}`]?: DsDataLabelAttributes[K] } & { [K in keyof DsDataLabel & keyof DsDataLabelAttributes as `prop:${K}`]?: DsDataLabel[K] };
         "ds-data-value": DsDataValue;
-        "ds-date": Omit<DsDate, keyof DsDateAttributes> & { [K in keyof DsDate & keyof DsDateAttributes]?: DsDate[K] } & { [K in keyof DsDate & keyof DsDateAttributes as `attr:${K}`]?: DsDateAttributes[K] } & { [K in keyof DsDate & keyof DsDateAttributes as `prop:${K}`]?: DsDate[K] };
+        "ds-datepicker": Omit<DsDatepicker, keyof DsDatepickerAttributes> & { [K in keyof DsDatepicker & keyof DsDatepickerAttributes]?: DsDatepicker[K] } & { [K in keyof DsDatepicker & keyof DsDatepickerAttributes as `attr:${K}`]?: DsDatepickerAttributes[K] } & { [K in keyof DsDatepicker & keyof DsDatepickerAttributes as `prop:${K}`]?: DsDatepicker[K] };
         "ds-divider": Omit<DsDivider, keyof DsDividerAttributes> & { [K in keyof DsDivider & keyof DsDividerAttributes]?: DsDivider[K] } & { [K in keyof DsDivider & keyof DsDividerAttributes as `attr:${K}`]?: DsDividerAttributes[K] } & { [K in keyof DsDivider & keyof DsDividerAttributes as `prop:${K}`]?: DsDivider[K] };
         "ds-drawer": Omit<DsDrawer, keyof DsDrawerAttributes> & { [K in keyof DsDrawer & keyof DsDrawerAttributes]?: DsDrawer[K] } & { [K in keyof DsDrawer & keyof DsDrawerAttributes as `attr:${K}`]?: DsDrawerAttributes[K] } & { [K in keyof DsDrawer & keyof DsDrawerAttributes as `prop:${K}`]?: DsDrawer[K] };
         "ds-file-upload": Omit<DsFileUpload, keyof DsFileUploadAttributes> & { [K in keyof DsFileUpload & keyof DsFileUploadAttributes]?: DsFileUpload[K] } & { [K in keyof DsFileUpload & keyof DsFileUploadAttributes as `attr:${K}`]?: DsFileUploadAttributes[K] } & { [K in keyof DsFileUpload & keyof DsFileUploadAttributes as `prop:${K}`]?: DsFileUpload[K] };
@@ -9919,8 +9966,6 @@ declare namespace LocalJSX {
         "ds-icon": Omit<DsIcon, keyof DsIconAttributes> & { [K in keyof DsIcon & keyof DsIconAttributes]?: DsIcon[K] } & { [K in keyof DsIcon & keyof DsIconAttributes as `attr:${K}`]?: DsIconAttributes[K] } & { [K in keyof DsIcon & keyof DsIconAttributes as `prop:${K}`]?: DsIcon[K] };
         "ds-input": Omit<DsInput, keyof DsInputAttributes> & { [K in keyof DsInput & keyof DsInputAttributes]?: DsInput[K] } & { [K in keyof DsInput & keyof DsInputAttributes as `attr:${K}`]?: DsInputAttributes[K] } & { [K in keyof DsInput & keyof DsInputAttributes as `prop:${K}`]?: DsInput[K] };
         "ds-input-phone": Omit<DsInputPhone, keyof DsInputPhoneAttributes> & { [K in keyof DsInputPhone & keyof DsInputPhoneAttributes]?: DsInputPhone[K] } & { [K in keyof DsInputPhone & keyof DsInputPhoneAttributes as `attr:${K}`]?: DsInputPhoneAttributes[K] } & { [K in keyof DsInputPhone & keyof DsInputPhoneAttributes as `prop:${K}`]?: DsInputPhone[K] };
-        "ds-input-slider": Omit<DsInputSlider, keyof DsInputSliderAttributes> & { [K in keyof DsInputSlider & keyof DsInputSliderAttributes]?: DsInputSlider[K] } & { [K in keyof DsInputSlider & keyof DsInputSliderAttributes as `attr:${K}`]?: DsInputSliderAttributes[K] } & { [K in keyof DsInputSlider & keyof DsInputSliderAttributes as `prop:${K}`]?: DsInputSlider[K] };
-        "ds-input-stepper": Omit<DsInputStepper, keyof DsInputStepperAttributes> & { [K in keyof DsInputStepper & keyof DsInputStepperAttributes]?: DsInputStepper[K] } & { [K in keyof DsInputStepper & keyof DsInputStepperAttributes as `attr:${K}`]?: DsInputStepperAttributes[K] } & { [K in keyof DsInputStepper & keyof DsInputStepperAttributes as `prop:${K}`]?: DsInputStepper[K] };
         "ds-item": Omit<DsItem, keyof DsItemAttributes> & { [K in keyof DsItem & keyof DsItemAttributes]?: DsItem[K] } & { [K in keyof DsItem & keyof DsItemAttributes as `attr:${K}`]?: DsItemAttributes[K] } & { [K in keyof DsItem & keyof DsItemAttributes as `prop:${K}`]?: DsItem[K] };
         "ds-label": Omit<DsLabel, keyof DsLabelAttributes> & { [K in keyof DsLabel & keyof DsLabelAttributes]?: DsLabel[K] } & { [K in keyof DsLabel & keyof DsLabelAttributes as `attr:${K}`]?: DsLabelAttributes[K] } & { [K in keyof DsLabel & keyof DsLabelAttributes as `prop:${K}`]?: DsLabel[K] };
         "ds-list": Omit<DsList, keyof DsListAttributes> & { [K in keyof DsList & keyof DsListAttributes]?: DsList[K] } & { [K in keyof DsList & keyof DsListAttributes as `attr:${K}`]?: DsListAttributes[K] } & { [K in keyof DsList & keyof DsListAttributes as `prop:${K}`]?: DsList[K] };
@@ -9943,6 +9988,7 @@ declare namespace LocalJSX {
         "ds-select-option": Omit<DsSelectOption, keyof DsSelectOptionAttributes> & { [K in keyof DsSelectOption & keyof DsSelectOptionAttributes]?: DsSelectOption[K] } & { [K in keyof DsSelectOption & keyof DsSelectOptionAttributes as `attr:${K}`]?: DsSelectOptionAttributes[K] } & { [K in keyof DsSelectOption & keyof DsSelectOptionAttributes as `prop:${K}`]?: DsSelectOption[K] };
         "ds-shape": Omit<DsShape, keyof DsShapeAttributes> & { [K in keyof DsShape & keyof DsShapeAttributes]?: DsShape[K] } & { [K in keyof DsShape & keyof DsShapeAttributes as `attr:${K}`]?: DsShapeAttributes[K] } & { [K in keyof DsShape & keyof DsShapeAttributes as `prop:${K}`]?: DsShape[K] };
         "ds-sheet": Omit<DsSheet, keyof DsSheetAttributes> & { [K in keyof DsSheet & keyof DsSheetAttributes]?: DsSheet[K] } & { [K in keyof DsSheet & keyof DsSheetAttributes as `attr:${K}`]?: DsSheetAttributes[K] } & { [K in keyof DsSheet & keyof DsSheetAttributes as `prop:${K}`]?: DsSheet[K] };
+        "ds-slider": Omit<DsSlider, keyof DsSliderAttributes> & { [K in keyof DsSlider & keyof DsSliderAttributes]?: DsSlider[K] } & { [K in keyof DsSlider & keyof DsSliderAttributes as `attr:${K}`]?: DsSliderAttributes[K] } & { [K in keyof DsSlider & keyof DsSliderAttributes as `prop:${K}`]?: DsSlider[K] };
         "ds-snackbar": Omit<DsSnackbar, keyof DsSnackbarAttributes> & { [K in keyof DsSnackbar & keyof DsSnackbarAttributes]?: DsSnackbar[K] } & { [K in keyof DsSnackbar & keyof DsSnackbarAttributes as `attr:${K}`]?: DsSnackbarAttributes[K] } & { [K in keyof DsSnackbar & keyof DsSnackbarAttributes as `prop:${K}`]?: DsSnackbar[K] };
         "ds-spinner": Omit<DsSpinner, keyof DsSpinnerAttributes> & { [K in keyof DsSpinner & keyof DsSpinnerAttributes]?: DsSpinner[K] } & { [K in keyof DsSpinner & keyof DsSpinnerAttributes as `attr:${K}`]?: DsSpinnerAttributes[K] } & { [K in keyof DsSpinner & keyof DsSpinnerAttributes as `prop:${K}`]?: DsSpinner[K] };
         "ds-stack": Omit<DsStack, keyof DsStackAttributes> & { [K in keyof DsStack & keyof DsStackAttributes]?: DsStack[K] } & { [K in keyof DsStack & keyof DsStackAttributes as `attr:${K}`]?: DsStackAttributes[K] } & { [K in keyof DsStack & keyof DsStackAttributes as `prop:${K}`]?: DsStack[K] };
@@ -10049,6 +10095,10 @@ declare module "@stencil/core" {
              */
             "ds-content": LocalJSX.IntrinsicElements["ds-content"] & JSXBase.HTMLAttributes<HTMLDsContentElement>;
             /**
+             * Counter renders a numeric value flanked by decrease and increase buttons.
+             */
+            "ds-counter": LocalJSX.IntrinsicElements["ds-counter"] & JSXBase.HTMLAttributes<HTMLDsCounterElement>;
+            /**
              * Data displays a list of label-value pairs in a organized, accessible format.
              * Supports vertical and horizontal layouts with dividers always shown in vertical layout.
              */
@@ -10069,9 +10119,9 @@ declare module "@stencil/core" {
              */
             "ds-data-value": LocalJSX.IntrinsicElements["ds-data-value"] & JSXBase.HTMLAttributes<HTMLDsDataValueElement>;
             /**
-             * Date renders a masked date input field with an interactive calendar popup for date selection.
+             * Datepicker renders a masked date input field with an interactive calendar popup for date selection.
              */
-            "ds-date": LocalJSX.IntrinsicElements["ds-date"] & JSXBase.HTMLAttributes<HTMLDsDateElement>;
+            "ds-datepicker": LocalJSX.IntrinsicElements["ds-datepicker"] & JSXBase.HTMLAttributes<HTMLDsDatepickerElement>;
             /**
              * Divider renders a visual separator line for grouping or distinguishing content sections.
              */
@@ -10120,14 +10170,6 @@ declare module "@stencil/core" {
              */
             "ds-input-phone": LocalJSX.IntrinsicElements["ds-input-phone"] & JSXBase.HTMLAttributes<HTMLDsInputPhoneElement>;
             /**
-             * Input slider renders a noUiSlider-backed slider with validation and label/description messaging.
-             */
-            "ds-input-slider": LocalJSX.IntrinsicElements["ds-input-slider"] & JSXBase.HTMLAttributes<HTMLDsInputSliderElement>;
-            /**
-             * Input stepper renders a numeric value flanked by decrease and increase buttons.
-             */
-            "ds-input-stepper": LocalJSX.IntrinsicElements["ds-input-stepper"] & JSXBase.HTMLAttributes<HTMLDsInputStepperElement>;
-            /**
              * Item displays a list entry that supports plain content, accordion, link, and button variants with optional icon, label, and description slots.
              */
             "ds-item": LocalJSX.IntrinsicElements["ds-item"] & JSXBase.HTMLAttributes<HTMLDsItemElement>;
@@ -10147,8 +10189,6 @@ declare module "@stencil/core" {
             "ds-logo": LocalJSX.IntrinsicElements["ds-logo"] & JSXBase.HTMLAttributes<HTMLDsLogoElement>;
             /**
              * Modal displays content in a dialog overlay using the native dialog element.
-             * Supports both slot-based sub-components (ds-modal-header, ds-modal-body) and
-             * direct named slots (slot="header", slot="body").
              */
             "ds-modal": LocalJSX.IntrinsicElements["ds-modal"] & JSXBase.HTMLAttributes<HTMLDsModalElement>;
             /**
@@ -10234,6 +10274,10 @@ declare module "@stencil/core" {
              * blocking the main content.
              */
             "ds-sheet": LocalJSX.IntrinsicElements["ds-sheet"] & JSXBase.HTMLAttributes<HTMLDsSheetElement>;
+            /**
+             * Slider renders a noUiSlider-backed slider with validation and label/description messaging.
+             */
+            "ds-slider": LocalJSX.IntrinsicElements["ds-slider"] & JSXBase.HTMLAttributes<HTMLDsSliderElement>;
             /**
              * Snackbar displays brief feedback messages at the bottom of the screen with optional action buttons and dismissal control.
              */

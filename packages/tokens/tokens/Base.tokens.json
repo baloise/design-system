@@ -9531,6 +9531,16 @@
             "lineHeight": "VariableID:137:1290"
           }
         }
+      },
+      "Selection": {
+        "Color": {
+          "$type": "color",
+          "$value": "{🔗 Alias.🔤 Text.Color.Primary}"
+        },
+        "Surface": {
+          "$type": "color",
+          "$value": "{🔗 Alias.🎨 Surface.Selected}"
+        }
       }
     },
     "Card": {
@@ -10481,7 +10491,7 @@
         }
       }
     },
-    "Date": {
+    "Datepicker": {
       "Calendar": {
         "Weight": {
           "$type": "fontWeight",

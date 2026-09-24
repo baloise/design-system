@@ -42,7 +42,7 @@ export const mount = async (page: DsPage, content: string, testInfo: TestInfo) =
   }
 }
 
-const template = (html: string) => `
+export const template = (html: string) => `
 <!doctype html>
 <html dir="ltr" lang="en">
   <head>

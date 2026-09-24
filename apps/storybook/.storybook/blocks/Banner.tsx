@@ -24,7 +24,7 @@ export const Banner = ({ of, children, color, label, section, _puzzle, _tabs }):
 
   const definedColor = (subtitle || '').includes('Components') ? 'purple' : color || 'primary'
   // const definedPuzzle = (subtitle || '').includes('Components') ? true : puzzle
-  const background = isDeprecated ? 'bg-grey' : definedColor === 'primary' ? 'bg-primary' : `bg-${definedColor}-2`
+  const background = isDeprecated ? 'bg-grey' : definedColor === 'primary' ? 'bg-grey-2' : `bg-${definedColor}-2`
   const text = background === 'bg-primary' ? 'text-white' : 'text-primary'
   const className = `sb-unstyled pt-lg pb-mb ${background} ${text}`
 

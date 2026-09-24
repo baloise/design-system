@@ -1,0 +1,37 @@
+/**
+ * Shared configuration for Card component documentation pages.
+ * Import and reuse this across all card documentation MDX files to reduce duplication.
+ */
+
+export const CARD_DOC_CONFIG = {
+  section: 'Components / Card',
+  color: 'green' as const,
+  tabs: [
+    { label: 'Overview', storyId: 'components-structure-card-card--card' },
+    { label: 'Usage', storyId: 'components-structure-card-usage--usage' },
+    { label: 'Variants', storyId: 'components-structure-card-variants-overview--overview' },
+    { label: 'Styling', storyId: 'components-structure-card-styling--styling' },
+    { label: 'Accessibility', storyId: 'components-structure-card-accessibility--accessibility' },
+    { label: 'Testing', storyId: 'components-structure-card-testing--testing' },
+  ],
+}
+
+export const CARD_TAB_TITLES = {
+  overview: 'Overview',
+  usage: 'Usage',
+  variants: 'Variants',
+  styling: 'Styling',
+  accessibility: 'Accessibility',
+  testing: 'Testing',
+}
+
+/**
+ * Helper to get tabs with active state set.
+ * Usage: getCardTabs('usage')
+ */
+export const getCardTabs = (activeLabel: keyof typeof CARD_TAB_TITLES) => {
+  return CARD_DOC_CONFIG.tabs.map(tab => ({
+    ...tab,
+    active: tab.label === CARD_TAB_TITLES[activeLabel],
+  }))
+}

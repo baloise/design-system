@@ -2,6 +2,8 @@ import { DOCS_PREPARED, DOCS_RENDERED, STORY_PREPARED, STORY_RENDERED } from 'st
 import { addons, types } from 'storybook/manager-api'
 import { registerCookie } from './addons/cookie.addon'
 import { registerFramework } from './addons/framework.addon'
+import { registerLanguage } from './addons/language.addon'
+import { registerRegion } from './addons/region.addon'
 import { registerTheme } from './addons/theme.addon'
 import { registerVersion } from './addons/version.addon'
 import baloiseTheme from './bal.theme'
@@ -18,6 +20,22 @@ addons.setConfig({
 })
 
 addons.register('my/cookie', () => registerCookie())
+
+addons.register('my/region', () => {
+  addons.add('my-region-addon/toolbar', {
+    title: 'Region',
+    type: types.TOOLEXTRA,
+    render: registerRegion as any,
+  })
+})
+
+addons.register('my/language', () => {
+  addons.add('my-language-addon/toolbar', {
+    title: 'Language',
+    type: types.TOOLEXTRA,
+    render: registerLanguage as any,
+  })
+})
 
 addons.register('my/theme', () => {
   addons.add('my-theme-addon/toolbar', {

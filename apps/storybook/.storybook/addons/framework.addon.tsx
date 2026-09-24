@@ -42,10 +42,10 @@ const SvgIcons: Record<string, string> = {
 const labels: Record<string, string> = {
   angular: 'Angular',
   html: 'HTML & JS',
-  react: 'React',
+  react: 'React / Next.js',
 }
 
-const frameworks = ['angular', 'html', 'react']
+const frameworks = ['html', 'react', 'angular']
 
 const LOCAL_STORE_ID = 'ds-docs-framework'
 
@@ -117,9 +117,9 @@ export const registerFramework: React.FC = () => {
         />
       )}
     >
-      <IconButton key="framework-toolbar" title="Integration technology" active={active !== 'angular'}>
+      <IconButton key="framework-toolbar" title="Chose your integration technology" active={active !== 'angular'}>
         <SvgIcon html={SvgIcons[active]} size={16} />
-        <span style={{ marginLeft: 6 }}>{labels[active]}</span>
+        <span style={{ marginLeft: 4 }}>{labels[active]}</span>
       </IconButton>
     </WithTooltip>
   )

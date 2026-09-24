@@ -6,19 +6,15 @@ type DsRootProps = ComponentProps<typeof DsRootClient>
 
 export type DsRootProviderProps = Omit<DsRootProps, 'allowedLanguages'> & {
   allowedLanguages?: DsLanguage[] | string
-  icons?: DsConfig['icons']
-  legalLinks?: DsConfig['legalLinks']
-  legalText?: DsConfig['legalText']
-  socialLinks?: DsConfig['socialLinks']
 }
 
 type DsRootComponent = ComponentType<DsRootProps>
 
-function serializeAllowedLanguages(value: DsLanguage[] | string | undefined) {
+export function serializeAllowedLanguages(value: DsLanguage[] | string | undefined) {
   return Array.isArray(value) ? value.join(',') : value
 }
 
-function parseAllowedLanguages(value: DsLanguage[] | string | undefined) {
+export function parseAllowedLanguages(value: DsLanguage[] | string | undefined) {
   if (Array.isArray(value)) {
     return value
   }
@@ -30,11 +26,11 @@ function parseAllowedLanguages(value: DsLanguage[] | string | undefined) {
   return value.split(',').map(language => language.trim()) as DsLanguage[]
 }
 
-function omitUndefined<T extends object>(value: T): Partial<T> {
+export function omitUndefined<T extends object>(value: T): Partial<T> {
   return Object.fromEntries(Object.entries(value).filter(([, item]) => item !== undefined)) as Partial<T>
 }
 
-function ensureInit(config: DsConfig) {
+export function ensureInit(config: DsConfig) {
   if (typeof window === 'undefined') {
     return
   }
@@ -46,7 +42,6 @@ function ensureInit(config: DsConfig) {
 
   initializeDesignSystem({
     ...config,
-    httpFormSubmit: false,
   })
 }
 
@@ -86,6 +81,10 @@ export function createDsRootProvider(DsRoot: DsRootComponent) {
       <DsRoot
         {...props}
         ref={ref}
+        icons={icons}
+        legalLinks={legalLinks}
+        legalText={legalText}
+        socialLinks={socialLinks}
         {...omitUndefined({
           brand,
           region,

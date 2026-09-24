@@ -1,0 +1,175 @@
+@use '@baloise/ds-styles/dist/scss/mixins' as *;
+@use '../../../vars' as vars;
+
+/**
+ * Field Layout Mixins
+ * --------------------------------
+ */
+
+@mixin vars-field() {
+  @include vars.local(form-field-gap, 0.25rem);
+}
+
+@mixin field() {
+  position: relative;
+  display: grid;
+  gap: var(--_form-field-gap);
+}
+
+/**
+ * Container Mixins
+ * --------------------------------
+ */
+
+@mixin vars-container() {
+  @include vars.local(form-container-background, var(--ds-form-default-container-background));
+  @include vars.local(form-container-border, var(--ds-form-default-container-border));
+  @include vars.local(form-container-radius, var(--ds-form-container-radius));
+
+  @include vars.local(form-container-hover-background, var(--ds-form-hover-container-background));
+  @include vars.local(form-container-active-background, var(--ds-form-active-container-background));
+  @include vars.local(form-container-focus-background, var(--ds-form-focus-container-background));
+
+  @include vars.local(form-container-hover-border, var(--ds-form-hover-container-border));
+  @include vars.local(form-container-active-border, var(--ds-form-active-container-border));
+  @include vars.local(form-container-focus-border, var(--ds-form-focus-container-border));
+}
+
+// $bordered: false drops the background/border/hover/active/focus-within styling entirely,
+// keeping only the structural layout rules — for controls (e.g. ds-slider) whose own
+// control already reads as the interactive surface and doesn't need the shared "boxed" look.
+//
+// $active: false drops only the :active/.is-pressed container-wide border — for components
+// with multiple independently-focusable sub-elements (e.g. ds-input-phone's country trigger
+// and number field) where a plain click anywhere in #container must not flash a container-wide
+// active border; the component scopes its own focus/active styling to the clicked sub-element.
+@mixin container($selector: '#container', $bordered: true, $active: true) {
+  #{$selector} {
+    box-sizing: border-box;
+    clear: both;
+    display: flex;
+    width: 100%;
+    align-items: center;
+    min-height: 3rem;
+    gap: 0.25rem;
+
+    @if $bordered {
+      padding-inline: 0.5rem;
+
+      background: var(--_form-container-background);
+      border: var(--_form-container-border);
+      border-radius: var(--_form-container-radius);
+
+      @if $active {
+        @include hover {
+          &:hover,
+          &.is-hovered {
+            background: var(--_form-container-hover-background);
+            border: var(--_form-container-hover-border);
+          }
+        }
+
+        &:active,
+        &.is-pressed {
+          background: var(--_form-container-active-background);
+          border: var(--_form-container-active-border);
+        }
+
+        &:focus-within,
+        &.is-focused {
+          &:not(:active) {
+            background: var(--_form-container-focus-background);
+            border: var(--_form-container-focus-border);
+          }
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Label Mixins
+ * --------------------------------
+ */
+
+@mixin vars-label() {
+  @include vars.local(form-label-color, var(--ds-form-default-label-color));
+  @include vars.local(form-label-family, var(--ds-form-default-label-typo-font-family));
+  @include vars.local(form-label-weight, var(--ds-form-default-label-typo-font-weight));
+  @include vars.local(form-label-line-height, var(--ds-form-default-label-typo-line-height));
+  @include vars.local(form-label-size, var(--ds-form-default-label-typo-font-size));
+}
+
+@mixin label($selector: 'label') {
+  :where(fieldset) {
+    margin: 0;
+    padding: 0;
+    border: none;
+  }
+
+  :where(legend) {
+    padding: 0;
+    float: left;
+    width: 100%;
+  }
+
+  #{$selector} {
+    @include font-smoothing();
+
+    display: block;
+    box-sizing: content-box;
+
+    hyphens: auto;
+    overflow-wrap: break-word;
+    text-wrap: balance;
+    min-width: 0;
+    // margin-bottom: 0.25rem;
+
+    color: var(--_form-label-color);
+    font-family: var(--_form-label-family);
+    font-weight: var(--_form-label-weight);
+    font-size: var(--_form-label-size);
+    line-height: var(--_form-label-line-height);
+  }
+}
+
+/**
+ * Description Mixins
+ * --------------------------------
+ */
+
+@mixin vars-description() {
+  @include vars.local(form-description-color, var(--ds-form-default-description-color));
+  @include vars.local(form-description-family, var(--ds-form-default-description-typo-font-family));
+  @include vars.local(form-description-weight, var(--ds-form-default-description-typo-font-weight));
+  @include vars.local(form-description-line-height, var(--ds-form-default-description-typo-line-height));
+  @include vars.local(form-description-size, var(--ds-form-default-description-typo-font-size));
+}
+
+@mixin description($selector: '#description') {
+  #{$selector} {
+    @include font-smoothing();
+
+    display: flex;
+    box-sizing: content-box;
+
+    hyphens: auto;
+    overflow-wrap: break-word;
+    text-wrap: balance;
+    min-width: 0;
+    gap: 0.25rem;
+
+    // this is needed to prevent screen flimmering when the descriptions is only shown on error
+    min-height: 1.125rem;
+
+    color: var(--_form-description-color);
+    font-family: var(--_form-description-family);
+    font-weight: var(--_form-description-weight);
+    font-size: var(--_form-description-size);
+    line-height: var(--_form-description-line-height);
+
+    ds-icon {
+      --icon-color: var(--_form-description-color);
+    }
+  }
+}

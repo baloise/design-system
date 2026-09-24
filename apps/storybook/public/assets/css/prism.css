@@ -131,7 +131,7 @@ pre[class*='language-'] {
 .token.comment,
 .token.doctype,
 .token.prolog {
-  color: var(--ds-global-color-grey-5) !important;
+  color: var(--ds-global-color-grey-4) !important;
 }
 
 .token.punctuation {
@@ -160,11 +160,11 @@ pre[class*='language-'] {
 }
 
 .token.number {
-  color: var(--ds-global-color-purple-5) !important;
+  color: var(--ds-global-color-yellow-4) !important;
 }
 
 .token.boolean {
-  color: var(--ds-global-color-purple-5) !important;
+  color: var(--ds-global-color-yellow-4) !important;
 }
 
 .token.operator {
@@ -186,6 +186,14 @@ pre[class*='language-'] {
 
 .token.atrule.rule {
   color: var(--ds-global-color-purple-4) !important;
+}
+
+.token.literal-property.property {
+  color: var(--ds-global-color-white) !important;
+}
+
+.token.keyword.control-flow {
+  color: var(--ds-global-color-red-3) !important;
 }
 
 .language-html .token.tag.punctuation,
@@ -247,7 +255,7 @@ pre[class*='language-'] {
 }
 
 .language-scss .token.comment {
-  color: var(--ds-global-color-grey-5) !important;
+  color: var(--ds-global-color-grey-4) !important;
 }
 
 .language-scss .token.keyword {
@@ -287,3 +295,19 @@ pre[class*='language-'] {
 .language-scss .token.deleted {
   color: var(--ds-global-color-red-4) !important;
 } */
+
+.language-json .token.property {
+  color: var(--ds-global-color-yellow-2) !important;
+}
+
+.language-json .token.operator {
+  color: var(--ds-global-color-white) !important;
+}
+
+.language-json .token.string {
+  color: var(--ds-global-color-green-2) !important;
+}
+
+.language-tsx .token.tag.punctuation {
+  color: var(--ds-global-color-yellow-3) !important;
+}

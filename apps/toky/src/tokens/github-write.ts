@@ -204,8 +204,8 @@ export async function createFileOnBranch(
 
 // A brand starts as an empty sparse override file — it resolves identically
 // to Base for every token purely because nothing's in it yet (see
-// packages/tokens/tokens/Tcs.tokens.json for what a real one looks like once
-// it has overrides).
+// packages/tokens/tokens/OrangeVacations.tokens.json for what a real one
+// looks like once it has overrides).
 export function createBrandFile(branch: string, name: string): Promise<void> {
   return createFileOnBranch(branch, brandFilePath(name), '{}\n', `chore(tokens): add ${name} brand`)
 }

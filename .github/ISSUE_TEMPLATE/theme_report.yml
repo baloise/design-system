@@ -6,7 +6,7 @@ body:
   - type: markdown
     attributes:
       value: |
-        Thanks for taking the time to fill out this report! New brands/themes (e.g. ERV, TCS)
+        Thanks for taking the time to fill out this report! New brands/themes (e.g. OrangeVacations)
         are added as a token override on top of the base design tokens — the more brand
         guideline detail you can provide below, the faster this can be scoped.
   - type: input

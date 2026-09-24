@@ -1,5 +1,5 @@
-import { Meta } from '@storybook/addon-docs/blocks'
-import { Banner, Footer, Lead } from '../.storybook/blocks'
+import { Meta, Unstyled } from '@storybook/addon-docs/blocks'
+import { Banner, ButtonCard, Footer, Lead } from '../.storybook/blocks'
 import ChartMultiBrand from './assets/images/chart-multi-brand.svg'
 
 <Meta title="What's New" name="What's New" />
@@ -53,5 +53,38 @@ Alongside the architecture work, a few other pieces landed:
   configuration.
 - 📚 **Improved Documentation** — a theme switcher and a web component preview switcher let you compare themes
   and components side by side, alongside usage guides and live code examples with CodePen.
+
+## What's Next (Roadmap)
+
+Here's what we're working on next:
+
+- 🚚 **Prepage migration from Baloise to Helvetia** — moving remaining Baloise-branded pages and apps onto the
+  Helvetia Design System.
+- 🧩 **Missing components from Helvetia apps** — filling the gaps by adding components that Helvetia apps still
+  rely on outside the design system.
+- 🎨 **Better Figma support** — creating components in Figma that are built directly from our design tokens.
+- 🧱 **Blocks and page templates** — pre-assembled sections and full page templates on top of our components.
+- ✨ **And more** — the roadmap keeps growing as we learn from you.
+
+Missing something on the roadmap? Create an issue on GitHub or send us an email.
+
+<Unstyled>
+  <div className="flex flex-wrap gap-base mt-lg">
+    <ButtonCard
+      color="yellow"
+      icon="✨"
+      label="Request a feature"
+      description="Suggest an idea for this project"
+      link="https://github.com/baloise/design-system/issues/new?assignees=&labels=✨+feature&template=feature_report.yml&title=%3Asparkles%3A+feat%28component%29%3A+title"
+    ></ButtonCard>
+    <ButtonCard
+      color="yellow"
+      icon="✉️"
+      label="Send us an email"
+      description="design-system@helvetia.ch"
+      link="mailto:design-system@helvetia.ch"
+    ></ButtonCard>
+  </div>
+</Unstyled>
 
 <Footer />

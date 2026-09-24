@@ -25,6 +25,17 @@ export interface FormControlInterface<Value extends NonNullable<unknown> | null 
 
 type ControlValue = File | string | FormData | null
 
+/**
+ * Stencil's mock-doc `attachInternals()` (used by `@baloise/ds-core/hydrate` during SSR) returns a
+ * Proxy whose methods aren't implemented — calling them throws. Form association is meaningless
+ * during SSR anyway, so this is a no-op there.
+ */
+export const setFormValue = (internals: ElementInternals, value: ControlValue): void => {
+  if (typeof internals.setFormValue === 'function') {
+    internals.setFormValue(value)
+  }
+}
+
 export class FormControl<Value extends NonNullable<unknown> | null = string | null> {
   private resetHandlerTimer?: NodeJS.Timeout
 
@@ -72,7 +83,7 @@ export class FormControl<Value extends NonNullable<unknown> | null = string | nu
 
   componentDidLoad() {
     this.inputValue = this.component.value
-    this.component.internals.setFormValue(this.inputValue as ControlValue)
+    setFormValue(this.component.internals, this.inputValue as ControlValue)
   }
 
   /**
@@ -116,7 +127,7 @@ export class FormControl<Value extends NonNullable<unknown> | null = string | nu
     if (hasValueChanged(this.component.value, newValue)) {
       this.component.value = newValue
       this.inputValue = newValue
-      this.component.internals.setFormValue(this.inputValue as ControlValue)
+      setFormValue(this.component.internals, this.inputValue as ControlValue)
       this.component.dsChange.emit(this.component.value)
     }
   }

@@ -53,7 +53,7 @@ export default defineConfig({
   },
   /* Run your local dev server before starting the tests */
   webServer: {
-    command: process.env.CI ? 'node ./web-server.js' : 'cross-env DS_SILENT=true pnpm start',
+    command: process.env.CI ? 'node ./web-server.js' : 'cross-env DS_SILENT=true DS_SSR_TESTING=true pnpm start',
     url: 'http://localhost:4000',
     reuseExistingServer: true,
     cwd: __dirname,
@@ -67,6 +67,11 @@ export default defineConfig({
     {
       name: '⚙️ Component',
       testMatch: '**/*.component.play.ts',
+      use: { ...devices['Desktop Chrome'] },
+    },
+    {
+      name: '🧬 SSR',
+      testMatch: '**/*.ssr.play.ts',
       use: { ...devices['Desktop Chrome'] },
     },
     {

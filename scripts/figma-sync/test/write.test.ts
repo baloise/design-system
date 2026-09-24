@@ -589,7 +589,7 @@ describe('border push (two-pass write payload)', () => {
     },
   }
   const borderRefToken = {
-    path: ['Tcs', 'Border', 'Composite', 'Grey'],
+    path: ['Zurich', 'Border', 'Composite', 'Grey'],
     type: 'border',
     value: { kind: 'reference', path: ['Alias', 'Border', 'Composite', 'Grey'] },
   }
@@ -646,9 +646,9 @@ describe('border push (two-pass write payload)', () => {
       'temp-Alias.Border.Composite.Grey-color': 'real-c',
       'temp-Alias.Border.Composite.Grey-width': 'real-w',
       'temp-Alias.Border.Composite.Grey-style': 'real-s',
-      'temp-Tcs.Border.Composite.Grey-color': 'real-alias-c',
-      'temp-Tcs.Border.Composite.Grey-width': 'real-alias-w',
-      'temp-Tcs.Border.Composite.Grey-style': 'real-alias-s',
+      'temp-Zurich.Border.Composite.Grey-color': 'real-alias-c',
+      'temp-Zurich.Border.Composite.Grey-width': 'real-alias-w',
+      'temp-Zurich.Border.Composite.Grey-style': 'real-alias-s',
     })
 
     const { variableModeValues } = buildAliasPassPayload({
@@ -708,7 +708,7 @@ describe('typography push (two-pass write payload)', () => {
     },
   }
   const typographyRefToken = {
-    path: ['Tcs', 'Font', 'Typography', 'Test'],
+    path: ['Zurich', 'Font', 'Typography', 'Test'],
     type: 'typography',
     value: { kind: 'reference', path: ['Global', 'Font', 'Typography', 'Test'] },
   }
@@ -777,10 +777,10 @@ describe('typography push (two-pass write payload)', () => {
       'temp-Global.Font.Typography.Test-fontSize': 'real-fs',
       'temp-Global.Font.Typography.Test-fontWeight': 'real-fw',
       'temp-Global.Font.Typography.Test-lineHeight': 'real-lh',
-      'temp-Tcs.Font.Typography.Test-fontFamily': 'real-alias-ff',
-      'temp-Tcs.Font.Typography.Test-fontSize': 'real-alias-fs',
-      'temp-Tcs.Font.Typography.Test-fontWeight': 'real-alias-fw',
-      'temp-Tcs.Font.Typography.Test-lineHeight': 'real-alias-lh',
+      'temp-Zurich.Font.Typography.Test-fontFamily': 'real-alias-ff',
+      'temp-Zurich.Font.Typography.Test-fontSize': 'real-alias-fs',
+      'temp-Zurich.Font.Typography.Test-fontWeight': 'real-alias-fw',
+      'temp-Zurich.Font.Typography.Test-lineHeight': 'real-alias-lh',
     })
 
     const { variableModeValues } = buildAliasPassPayload({
@@ -834,7 +834,7 @@ describe('responsive dimension push (two-pass write payload)', () => {
   // exercises the buildAliasPassPayload guard: there's no single Figma variable a {mobile, tablet,
   // desktop} target resolves to, so this alias must be skipped, not miswritten.
   const dimensionRefToken = {
-    path: ['Tcs', 'Space', 'Lg'],
+    path: ['Zurich', 'Space', 'Lg'],
     type: 'dimension',
     value: { kind: 'reference', path: ['Alias', 'Space', 'Lg'] },
   }
@@ -892,7 +892,7 @@ describe('responsive dimension push (two-pass write payload)', () => {
       'temp-Alias.Space.Lg-mobile': 'real-mobile',
       'temp-Alias.Space.Lg-tablet': 'real-tablet',
       'temp-Alias.Space.Lg-desktop': 'real-desktop',
-      'temp-Tcs.Space.Lg': 'real-ref',
+      'temp-Zurich.Space.Lg': 'real-ref',
     })
 
     const { variableModeValues } = buildAliasPassPayload({
@@ -914,7 +914,7 @@ describe('responsive dimension push (two-pass write payload)', () => {
       'temp-Alias.Space.Lg-mobile': 'real-mobile',
       'temp-Alias.Space.Lg-tablet': 'real-tablet',
       'temp-Alias.Space.Lg-desktop': 'real-desktop',
-      'temp-Tcs.Space.Lg': 'real-ref',
+      'temp-Zurich.Space.Lg': 'real-ref',
     })
 
     const { variableModeValues } = buildAliasPassPayload({
@@ -1056,9 +1056,9 @@ describe('Device variable (responsive collection) push — MVP scope', () => {
     const idByPath = resolvedIdByPath()
     const { variableModeValues } = buildAliasPassPayload({
       baseTokens: deviceBaseTokens,
-      brandTokensByName: { Base: deviceBaseTokens, Tcs: deviceBaseTokens },
+      brandTokensByName: { Base: deviceBaseTokens, Zurich: deviceBaseTokens },
       idByPath,
-      modeIdByBrand: { Base: 'm-base', Tcs: 'm-tcs' },
+      modeIdByBrand: { Base: 'm-base', Zurich: 'm-zurich' },
       modeIdByBreakpoint: { Mobile: 'm-mobile', Tablet: 'm-tablet', Desktop: 'm-desktop' },
     })
 
@@ -1110,16 +1110,16 @@ describe('findCollectionAndModes', () => {
         name: 'Design Tokens',
         modes: [
           { modeId: 'm1', name: 'Base' },
-          { modeId: 'm2', name: 'Tcs' },
+          { modeId: 'm2', name: 'Zurich' },
         ],
       },
     },
   }
 
   it('maps each brand name to its mode id by exact name match', () => {
-    const { collectionId, modeIdByBrand } = findCollectionAndModes(meta, ['Tcs'])
+    const { collectionId, modeIdByBrand } = findCollectionAndModes(meta, ['Zurich'])
     expect(collectionId).toBe('VariableCollectionId:1')
-    expect(modeIdByBrand).toEqual({ Base: 'm1', Tcs: 'm2' })
+    expect(modeIdByBrand).toEqual({ Base: 'm1', Zurich: 'm2' })
   })
 
   it('throws if a brand has no matching Figma mode', () => {
@@ -1143,9 +1143,9 @@ describe('findCollectionAndModes', () => {
         },
       },
     }
-    const { collectionId, modeIdByBrand } = findCollectionAndModes(multiCollectionMeta, ['Tcs'], 'Design Tokens')
+    const { collectionId, modeIdByBrand } = findCollectionAndModes(multiCollectionMeta, ['Zurich'], 'Design Tokens')
     expect(collectionId).toBe('VariableCollectionId:1')
-    expect(modeIdByBrand).toEqual({ Base: 'm1', Tcs: 'm2' })
+    expect(modeIdByBrand).toEqual({ Base: 'm1', Zurich: 'm2' })
   })
 })
 
@@ -1211,7 +1211,7 @@ describe('two-pass write payload', () => {
   ]
   const brandTokensByName = {
     Base: baseTokens,
-    Tcs: [
+    Zurich: [
       { ...baseTokens[0], value: { kind: 'literal', value: { components: [0.9, 0.9, 0.9], alpha: 1 } } }, // brand override
       baseTokens[1],
       baseTokens[2],
@@ -1232,7 +1232,7 @@ describe('two-pass write payload', () => {
       brandTokensByName,
       idByPath,
       collectionId: 'coll-1',
-      modeIdByBrand: { Base: 'm-base', Tcs: 'm-tcs' },
+      modeIdByBrand: { Base: 'm-base', Zurich: 'm-zurich' },
     })
 
     expect(variables).toHaveLength(2)
@@ -1247,15 +1247,15 @@ describe('two-pass write payload', () => {
       brandTokensByName,
       idByPath,
       collectionId: 'coll-1',
-      modeIdByBrand: { Base: 'm-base', Tcs: 'm-tcs' },
+      modeIdByBrand: { Base: 'm-base', Zurich: 'm-zurich' },
     })
 
     // Global.White (2 brands) + Global.Spacing.Lg (2 brands) = 4; Alias.Background is a reference, excluded.
     expect(variableModeValues).toHaveLength(4)
     expect(variableModeValues.every(v => v.value.type !== 'VARIABLE_ALIAS')).toBe(true)
 
-    const tcsWhite = variableModeValues.find(v => v.variableId === 'VariableID:1:1' && v.modeId === 'm-tcs')
-    expect(tcsWhite.value).toEqual({ r: 0.9, g: 0.9, b: 0.9, a: 1 })
+    const zurichWhite = variableModeValues.find(v => v.variableId === 'VariableID:1:1' && v.modeId === 'm-zurich')
+    expect(zurichWhite.value).toEqual({ r: 0.9, g: 0.9, b: 0.9, a: 1 })
   })
 
   it('pass 2 writes alias mode-values for every brand, resolving against Base regardless of which brand tree is passed', () => {
@@ -1266,10 +1266,10 @@ describe('two-pass write payload', () => {
       baseTokens,
       brandTokensByName,
       idByPath,
-      modeIdByBrand: { Base: 'm-base', Tcs: 'm-tcs' },
+      modeIdByBrand: { Base: 'm-base', Zurich: 'm-zurich' },
     })
 
-    expect(variableModeValues).toHaveLength(2) // Alias.Background in Base and Tcs
+    expect(variableModeValues).toHaveLength(2) // Alias.Background in Base and Zurich
     for (const entry of variableModeValues) {
       expect(entry.variableId).toBe('VariableID:9:2')
       expect(entry.value).toEqual({ type: 'VARIABLE_ALIAS', id: 'VariableID:1:1' })
