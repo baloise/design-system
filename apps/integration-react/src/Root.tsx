@@ -4,6 +4,7 @@ import {
   DsButton,
   DsCheckbox,
   DsInput,
+  DsInputPhone,
   DsModalBody,
   DsModalHeader,
   Modal,
@@ -95,6 +96,7 @@ const OverlayDemos = () => {
 export const Root = () => {
   const [clicks, setClicks] = useState(0)
   const [inputValue, setInputValue] = useState('')
+  const [phoneValue, setPhoneValue] = useState('+41791234567')
   const [checked, setChecked] = useState(false)
 
   return (
@@ -113,6 +115,15 @@ export const Root = () => {
           name="smoke-test-input"
           value={inputValue}
           onDsInput={event => setInputValue(event.detail ?? '')}
+        />
+
+        <p data-testid="phone-value">Phone value: {phoneValue}</p>
+        <DsInputPhone
+          data-testid="phone"
+          name="smoke-test-phone"
+          initialCountry="CH"
+          value={phoneValue}
+          onDsInput={event => setPhoneValue(event.detail.value ?? '')}
         />
 
         <p data-testid="checked">Checked: {String(checked)}</p>

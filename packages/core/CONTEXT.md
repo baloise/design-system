@@ -636,7 +636,11 @@ vocabulary:
   national number.
   Distinct props because a form control that lets a user actively repick
   its country needs "starting state" and "current state" to not be the same
-  slot.
+  slot. Picking a country re-formats any already-typed national number for
+  it, which can change `value` immediately — before the number field ever
+  blurs. `dsChange` (the component's one "value changed" signal) fires from
+  that path too, not only from blur, whenever it actually changes `value`;
+  `dsCountryChange` fires alongside it but never carries `value` itself.
 - **`countries`** — the available-country allow-list,
   `string | string[]` (comma-separated attribute or array prop); `undefined`
   means all countries. If `country` names a country outside `countries`,
@@ -653,9 +657,11 @@ vocabulary:
   dataset.
 - **Flags are supplementary, not the accessible name.** Each flag SVG is
   `aria-hidden`; the country's localized name is always present as visible/
-  accessible text next to it. Flags are loaded per-country and lazily —
-  only for countries actually rendered, never as a full sprite/bundle — see
-  [docs/adr/0024-ds-input-phone-lazy-svg-flags.md](../../docs/adr/0024-ds-input-phone-lazy-svg-flags.md).
+  accessible text next to it. Flags are bundled as inline SVG strings in
+  `@helvetia-design/assets`, the same build-time approach as `ds-icon` — every
+  country ships in every consumer's bundle, no runtime asset path or
+  consumer-side asset copy needed — see
+  [docs/adr/0033-ds-input-phone-bundled-svg-flags.md](../../docs/adr/0033-ds-input-phone-bundled-svg-flags.md).
 - **No validation.** The component formats for display; it never calls
   `isValidPhoneNumber`/`isPossiblePhoneNumber` or otherwise judges
   correctness. That is application responsibility. Uses

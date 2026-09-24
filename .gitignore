@@ -69,6 +69,7 @@ libs/*/LICENSE
 packages/core/docs
 packages/core/icons
 packages/core/playwright
+packages/core/assets
 packages/core/components
 packages/core/components/**/readme.md
 packages/core/src/components/**/readme.md
@@ -85,6 +86,8 @@ packages/assets/src/brand-icons/svg.ts
 packages/assets/src/brand-icons/svg.json
 packages/assets/src/maps/svg.ts
 packages/assets/src/maps/svg.json
+packages/assets/src/flags/svg.ts
+packages/assets/src/flags/svg.json
 
 libs/output-targets-angular/CHANGELOG.md
 libs/output-targets-react/CHANGELOG.md
@@ -106,6 +109,10 @@ apps/storybook/public/assets/images/brand-icons
 apps/storybook/public/assets/images/icons
 apps/storybook/public/assets/flags
 apps/storybook/src/assets/data
+
+# 1:1 copy of country-flag-icons/3x2, synced by scripts/build-svg.mjs — fully reproducible from the
+# pinned dependency, unlike the hand-authored icon/map/brand-icon svg/ folders next to it.
+packages/assets/src/flags/svg/
 apps/storybook/src/components/**/api.md
 apps/storybook/src/components/**/theming.md
 apps/storybook/src/components/**/testing.md

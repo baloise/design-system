@@ -31,7 +31,7 @@ import {
   detectCountryFromInput,
   getExamplePlaceholder,
 } from './formatting'
-import { getFlagUrl } from './flag'
+import { getFlagSvg } from './flag'
 
 /**
  * Input phone renders an international phone number field with a country picker
@@ -183,6 +183,15 @@ export class InputPhone implements DsComponentInterface, FieldInterface {
   @Prop()
   @Type('string')
   readonly invalidText: string = ''
+
+  /**
+   * If `true`, disables the automatic `invalid`/`invalidText` behavior that the `@helvetia-design/angular`
+   * integration applies when the bound `NgControl` is touched and invalid. Only affects the Angular
+   * integration; it is a no-op in other framework integrations.
+   */
+  @Prop({ reflect: true })
+  @Type('boolean')
+  readonly autoInvalidOff: boolean = false
 
   /**
    * If `true`, the user must fill in a value before submitting a form.
@@ -596,6 +605,7 @@ export class InputPhone implements DsComponentInterface, FieldInterface {
 
   private applyCountry(code: string | undefined, options: { emit: boolean; reformat: boolean }) {
     const digits = this.nationalNumber
+    const previousValue = this.value
     this.resolvedCountry = code
     this.formatter.setCountry(code)
     if (options.reformat) {
@@ -603,6 +613,15 @@ export class InputPhone implements DsComponentInterface, FieldInterface {
     }
     if (options.emit && code) {
       this.dsCountryChange.emit({ country: code })
+      // A country switch re-formats any digits already typed for the new country (see `reformat` above),
+      // which can change `value` immediately — without the number field ever blurring. `dsChange` is this
+      // component's one "value changed" signal (consumers, including `@helvetia-design/angular`'s value
+      // accessor, rely on it rather than `dsCountryChange` to stay in sync with `value`), so it fires here
+      // too, not only from `handleBlur`. Guarded on an actual change so picking a country before typing
+      // anything (`value` staying `null`) doesn't emit a no-op "changed to the same value" event.
+      if (this.value !== previousValue) {
+        this.dsChange.emit(this.eventDetail())
+      }
     }
   }
 
@@ -759,7 +778,7 @@ export class InputPhone implements DsComponentInterface, FieldInterface {
           onKeyDown={this.handleTriggerKeyDown}
         >
           {selected ? (
-            <img class="flag" src={getFlagUrl(selected.code)} alt="" aria-hidden="true" draggable={false} />
+            <span class="flag" aria-hidden="true" innerHTML={getFlagSvg(selected.code)}></span>
           ) : (
             <span class="flag is-empty" aria-hidden="true"></span>
           )}
@@ -838,7 +857,7 @@ export class InputPhone implements DsComponentInterface, FieldInterface {
                     onClick={() => this.handleOptionClick(country.code)}
                     onMouseEnter={() => this.handleOptionMouseEnter(country.code)}
                   >
-                    <img class="flag" src={getFlagUrl(country.code)} alt="" aria-hidden="true" draggable={false} />
+                    <span class="flag" aria-hidden="true" innerHTML={getFlagSvg(country.code)}></span>
                     <span class="option-name">{name}</span>
                     <span class="option-code">+{country.callingCode}</span>
                   </div>

@@ -1,11 +1,17 @@
-import { getAssetPath } from '@stencil/core'
+import { Flags } from '@helvetia-design/assets'
+import camelCase from 'lodash/camelCase'
+import upperFirst from 'lodash/upperFirst'
 
 /**
- * Flags are copied to `assets/flags` for both the www and dist Stencil
- * outputs. `getAssetPath` resolves that folder relative to the loader's
- * resources URL (www: `/build/` → `/assets/flags`; dist: `design-system/` →
- * `dist/assets/flags`).
+ * Flags are bundled as inline SVG strings in `@helvetia-design/assets` (same build-time approach as
+ * `ds-icon`, see docs/adr/0033-ds-input-phone-bundled-svg-flags.md) — no runtime asset path or
+ * consumer-side asset copy is needed.
  */
-export function getFlagUrl(code: string): string {
-  return getAssetPath(`../assets/flags/${code.toUpperCase()}.svg`)
+export function getFlagSvg(code: string): string {
+  const flag: string | undefined = (Flags as Record<string, string>)[`Flag${upperFirst(camelCase(code))}`]
+  if (!flag) {
+    console.error(`Flag for country code "${code}" not found in @helvetia-design/assets.`)
+    return ''
+  }
+  return flag
 }
