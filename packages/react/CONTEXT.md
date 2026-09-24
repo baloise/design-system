@@ -35,7 +35,7 @@ The controllers create `ds-alert-container` / `ds-toast` / `ds-snackbar` with `d
 
 ### No runtime asset path
 
-No component resolves assets at runtime: `ds-input-phone`'s country flags are bundled as inline SVG strings in `@helvetia-design/assets`, same build-time approach as `ds-icon` — see [docs/adr/0032-ds-input-phone-bundled-svg-flags.md](../../docs/adr/0032-ds-input-phone-bundled-svg-flags.md). `createDsRootProvider()`'s `onInit` argument (`ds-root-provider.shared.tsx`) and the client-only `bootstrap.client.ts` variant remain as a seam for any future browser-only side effect the client entry point needs but the Node entry (`src/index.server.ts`) must not statically import — neither currently passes anything through it.
+No component resolves assets at runtime: `ds-input-phone`'s country flags are bundled as inline SVG strings in `@helvetia-design/assets`, same build-time approach as `ds-icon` — see [docs/adr/0032-ds-input-phone-bundled-svg-flags.md](../../docs/adr/0032-ds-input-phone-bundled-svg-flags.md).
 
 ### Build
 
