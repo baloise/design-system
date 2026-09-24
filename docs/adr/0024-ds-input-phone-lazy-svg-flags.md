@@ -6,7 +6,7 @@ Date: 2026-08-28
 
 ## Status
 
-Superseded by [ADR-0032](0032-ds-input-phone-bundled-svg-flags.md)
+Superseded by [ADR-0033](0033-ds-input-phone-bundled-svg-flags.md)
 
 ## Context
 

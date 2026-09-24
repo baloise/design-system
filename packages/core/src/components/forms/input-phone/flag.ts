@@ -4,7 +4,7 @@ import upperFirst from 'lodash/upperFirst'
 
 /**
  * Flags are bundled as inline SVG strings in `@helvetia-design/assets` (same build-time approach as
- * `ds-icon`, see docs/adr/0032-ds-input-phone-bundled-svg-flags.md) — no runtime asset path or
+ * `ds-icon`, see docs/adr/0033-ds-input-phone-bundled-svg-flags.md) — no runtime asset path or
  * consumer-side asset copy is needed.
  */
 export function getFlagSvg(code: string): string {

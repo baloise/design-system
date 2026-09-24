@@ -12,7 +12,6 @@
     "play:run": "pnpm exec playwright test"
   },
   "dependencies": {
-    "@helvetia-design/core": "workspace:*",
     "@helvetia-design/styles": "workspace:*",
     "@helvetia-design/react": "workspace:*",
     "@helvetia-design/tokens": "workspace:*",

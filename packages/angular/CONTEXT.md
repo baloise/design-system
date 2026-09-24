@@ -24,7 +24,7 @@ Generated with `outputType: 'standalone'` — every `ds-*` component is a standa
 
 ### Self-registering custom elements
 
-Configured with `customElementsDir: 'components'`, matching `packages/react`'s pattern: each generated component imports and calls `defineCustomElement` for its own tag on load. Consumers don't need a separate `defineCustomElements()`/bootstrap call before using a `ds-*` component in a template — `provideDesignSystem()` is only required for non-default config (brand/region/language). No component resolves assets at runtime any more; `ds-input-phone`'s country flags are bundled as inline SVG strings, same as `ds-icon` — see [docs/adr/0032-ds-input-phone-bundled-svg-flags.md](../../docs/adr/0032-ds-input-phone-bundled-svg-flags.md).
+Configured with `customElementsDir: 'components'`, matching `packages/react`'s pattern: each generated component imports and calls `defineCustomElement` for its own tag on load. Consumers don't need a separate `defineCustomElements()`/bootstrap call before using a `ds-*` component in a template — `provideDesignSystem()` is only required for non-default config (brand/region/language). No component resolves assets at runtime any more; `ds-input-phone`'s country flags are bundled as inline SVG strings, same as `ds-icon` — see [docs/adr/0033-ds-input-phone-bundled-svg-flags.md](../../docs/adr/0033-ds-input-phone-bundled-svg-flags.md).
 
 ### Build
 

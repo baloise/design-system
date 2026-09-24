@@ -1,4 +1,4 @@
-# 32. ds-input-phone bundles all flag SVGs inline instead of loading them lazily
+# 33. ds-input-phone bundles all flag SVGs inline instead of loading them lazily
 
 Package: `packages/core`
 
@@ -56,9 +56,9 @@ asset path left to resolve.
   imported at runtime.
 - The `getAssetPath()`/`setAssetPath()` workaround is deleted wholesale: `flagAssetsCopy` and its
   `www`-target twin in `packages/core/stencil.config.ts`, the `setAssetPath()` call in
-  `@helvetia-design/angular`'s `bootstrapDesignSystem()`, and `@helvetia-design/react`'s `asset-path.ts` plus
-  its wiring into `DsRootProvider`/`bootstrap.client.ts`. Consuming apps' equivalents
-  (`apps/integration-angular`'s `angular.json` assets glob, `apps/integration-react`'s
+  `@helvetia-design/angular`'s `bootstrapDesignSystem()`, and `@helvetia-design/react`'s `asset-path.ts`,
+  its wiring into `DsRootProvider`, and the `bootstrap.client.ts` seam it existed for. Consuming
+  apps' equivalents (`apps/integration-angular`'s `angular.json` assets glob, `apps/integration-react`'s
   `copyPhoneFlags()` Vite plugin) are removed too, since they no longer serve any purpose.
 - `ds-input-phone`'s flag markup changes from `<img src="...">` to an inline `<span innerHTML="...">`,
   matching `ds-icon`'s rendering; `.flag`'s SCSS switches from `object-fit: cover` on an `img` to

@@ -661,7 +661,7 @@ vocabulary:
   `@helvetia-design/assets`, the same build-time approach as `ds-icon` — every
   country ships in every consumer's bundle, no runtime asset path or
   consumer-side asset copy needed — see
-  [docs/adr/0032-ds-input-phone-bundled-svg-flags.md](../../docs/adr/0032-ds-input-phone-bundled-svg-flags.md).
+  [docs/adr/0033-ds-input-phone-bundled-svg-flags.md](../../docs/adr/0033-ds-input-phone-bundled-svg-flags.md).
 - **No validation.** The component formats for display; it never calls
   `isValidPhoneNumber`/`isPossiblePhoneNumber` or otherwise judges
   correctness. That is application responsibility. Uses

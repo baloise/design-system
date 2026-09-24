@@ -50,7 +50,7 @@ Fonts are served from the distributed package and referenced via `@font-face` in
   renders its icons. There is no public `<ds-flag>` element and, unlike icons, flags aren't
   registered through the overridable `DsConfig`/`updateDsIcons()`-style config path — they're a
   fixed set, not consumer-extensible. See
-  [docs/adr/0032-ds-input-phone-bundled-svg-flags.md](../../docs/adr/0032-ds-input-phone-bundled-svg-flags.md).
+  [docs/adr/0033-ds-input-phone-bundled-svg-flags.md](../../docs/adr/0033-ds-input-phone-bundled-svg-flags.md).
 
 ### Asset Metadata
 

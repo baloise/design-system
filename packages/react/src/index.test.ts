@@ -39,15 +39,8 @@ describe('public API', () => {
 
   test('marks bootstrapDesignSystem as deprecated', () => {
     const bootstrapSource = readFileSync(join(root, 'bootstrap.ts'), 'utf8')
-    const bootstrapClientSource = readFileSync(join(root, 'bootstrap.client.ts'), 'utf8')
     expect(bootstrapSource).toMatch(/@deprecated[\s\S]{0,400}export const bootstrapDesignSystem/)
-    expect(bootstrapClientSource).toMatch(/@deprecated[\s\S]{0,400}export const bootstrapDesignSystem/)
-    expect(indexSource).toContain("export { bootstrapDesignSystem } from './bootstrap.client'")
-  })
-
-  test('server entry re-exports the plain bootstrap variant', () => {
-    const serverIndexSource = readFileSync(join(root, 'index.server.ts'), 'utf8')
-    expect(serverIndexSource).toContain("export { bootstrapDesignSystem } from './bootstrap'")
+    expect(indexSource).toContain("export { bootstrapDesignSystem } from './bootstrap'")
   })
 
   test('does not export internal hooks', () => {

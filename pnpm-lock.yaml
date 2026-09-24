@@ -275,9 +275,6 @@ importers:
       '@helvetia-design/angular':
         specifier: workspace:*
         version: link:../../packages/angular
-      '@helvetia-design/core':
-        specifier: workspace:*
-        version: link:../../packages/core
       '@helvetia-design/styles':
         specifier: workspace:*
         version: link:../../packages/styles
@@ -346,9 +343,6 @@ importers:
 
   apps/integration-react:
     dependencies:
-      '@helvetia-design/core':
-        specifier: workspace:*
-        version: link:../../packages/core
       '@helvetia-design/react':
         specifier: workspace:*
         version: link:../../packages/react
