@@ -247,9 +247,16 @@ console.log(`\x1b[32m✔\x1b[0m dist/docs/design-system.json written (${Object.k
 // No standalone dist/css/foundation.css — only folded into design-system.css /
 // design-system.local.css below. ds-styles ships exactly two CSS bundles: design-system(.local)
 // and utilities.
+// Sass emits its own `@charset "UTF-8";` per compilation. When bundling multiple compiled
+// pieces together, strip these so the merged file carries only one, written explicitly
+// at the very top (per spec, @charset must be the first bytes in the file).
+function stripCharset(css: string): string {
+  return css.replace(/^@charset\s+["'][^"']*["'];\r?\n?/m, '')
+}
+
 async function compileScss(entry: string): Promise<string> {
   const result = await compileAsync(entry, { loadPaths: sassLoadPaths })
-  return autoprefix(result.css)
+  return stripCharset(await autoprefix(result.css))
 }
 
 const scssOutDir = resolve(__dirname, '../dist/scss')
@@ -288,7 +295,7 @@ const componentResult = await compileStringAsync(barrelContent, {
   loadPaths: sassLoadPaths,
   importers: [dsStylesImporter],
 })
-const componentCssContent = await autoprefix(componentResult.css)
+const componentCssContent = stripCharset(await autoprefix(componentResult.css))
 console.log(`\x1b[32m✔\x1b[0m Components compiled for ${styleFiles.length} components (bundled into design-system.css)`)
 
 // --- Write dist/scss/utilities.scss (pre-compiled, no SCSS source) ----------
@@ -299,13 +306,18 @@ console.log('\x1b[32m✔\x1b[0m dist/scss/utilities.scss written')
 
 // --- Build design-system.css (foundation + components — utilities are a separate, optional
 // file, not bundled in here) --------------------------------------------------------------
-const allCss = banner('Full Bundle (Foundation + Components)') + foundationCss + '\n' + componentCssContent
+const allCss =
+  '@charset "UTF-8";\n' + banner('Full Bundle (Foundation + Components)') + foundationCss + '\n' + componentCssContent
 await writeCssWithMinified(resolve(outDir, 'design-system.css'), allCss)
 
 // --- Build design-system.local.css (fonts with dev path + foundation + components) --------
 const foundationLocalCss = await compileScss(resolve(__dirname, 'scss/foundation.local.scss'))
 const allLocalCss =
-  banner('Full Bundle — Local Dev (Fonts + Foundation + Components)') + foundationLocalCss + '\n' + componentCssContent
+  '@charset "UTF-8";\n' +
+  banner('Full Bundle — Local Dev (Fonts + Foundation + Components)') +
+  foundationLocalCss +
+  '\n' +
+  componentCssContent
 await writeCssWithMinified(resolve(outDir, 'design-system.local.css'), allLocalCss)
 
 // --- Write dist/scss/design-system.scss (Sass entry that pulls foundation + component) ------
