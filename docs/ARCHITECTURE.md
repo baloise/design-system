@@ -44,6 +44,7 @@ packages/
   tokens/             # Style-dictionary design tokens
   assets/             # Fonts, icons, images
   playwright/         # Custom Playwright matchers for component testing
+  ds-skills/          # Installer CLI + consumer Claude Code skills (`@helvetia/ds-skills`)
 
 libs/
   output-target-angular/   # Stencil → Angular bindings generator

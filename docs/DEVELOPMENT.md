@@ -155,7 +155,7 @@ This repository includes **Claude Code skills** — specialized AI-powered tools
 /ds-sync-visual-tests <component-name>    # Generate visual regression tests
 ```
 
-For a complete list of available skills and how to use them, see [SKILLS.md](SKILLS.md).
+For a complete list of available skills and how to use them, see [SKILLS.md](SKILLS.md). How to test the published consumer installer (`npx @helvetia/ds-skills@next add`) is in [packages/ds-skills/CONTEXT.md](../packages/ds-skills/CONTEXT.md#testing).
 
 ## Versioning and Publishing
 

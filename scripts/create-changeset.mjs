@@ -27,6 +27,7 @@ const SCOPE_PACKAGE_MAP = {
   react: '@helvetia-design/react',
   assets: '@helvetia-design/assets',
   testing: '@helvetia-design/playwright',
+  skills: '@helvetia/ds-skills',
 }
 
 let cleanUp = () => Promise.resolve()
@@ -174,6 +175,7 @@ async function runInteractive() {
           { title: 'react', value: 'react' },
           { title: 'table', value: 'table' },
           { title: 'assets', value: 'assets' },
+          { title: 'skills', value: 'skills' },
           { title: 'deps', value: 'deps' },
           { title: 'a11y', value: 'a11y' },
           ...tags.map(tag => ({
