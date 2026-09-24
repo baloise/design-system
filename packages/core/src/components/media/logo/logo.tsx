@@ -173,7 +173,7 @@ export class Logo implements DsComponentInterface, DsBreakpointObserver, DsConfi
         return resolve()
       } else {
         rOnLoad(async () => {
-          import(/* @vite-ignore */ './logo.animation')
+          import('./logo.animation')
             .then(module => {
               this.animationFunction = module.animate
               resolve()
