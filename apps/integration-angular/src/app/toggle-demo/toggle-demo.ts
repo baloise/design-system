@@ -1,6 +1,6 @@
 import { Component, signal } from '@angular/core'
 import { FormControl, FormGroup, ReactiveFormsModule, ValidationErrors, ValidatorFn } from '@angular/forms'
-import { DsToggle } from '@baloise/ds-angular'
+import { DsToggle } from '@helvetia-design/angular'
 
 const requiredWithMessage = (message: string): ValidatorFn => {
   return (control): ValidationErrors | null => (control.value === true ? null : { required: message })

@@ -35,7 +35,7 @@ test('ds-toggle reactive form: initial value, updates, disabled, and touched+inv
   await expect(reactiveToggleInput).toBeEnabled()
 
   // The control is still unchecked (set via the "Set to false" button above), so blurring it while
-  // unchecked triggers the required-with-message validator, which the `@baloise/ds-angular` integration
+  // unchecked triggers the required-with-message validator, which the `@helvetia-design/angular` integration
   // surfaces as `invalid`/`invalidText` once the control is touched.
   await reactiveToggleInput.focus()
   await reactiveToggleInput.blur()
