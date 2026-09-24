@@ -1559,7 +1559,7 @@
       },
       {
         "package": "core",
-        "file": "components/input-phone/input-phone.host.css"
+        "file": "components/phone-input/phone-input.host.css"
       },
       {
         "package": "core",
@@ -2516,7 +2516,7 @@
       },
       {
         "package": "core",
-        "file": "components/input-phone/input-phone.host.css"
+        "file": "components/phone-input/phone-input.host.css"
       },
       {
         "package": "core",
@@ -5421,7 +5421,7 @@
     "locations": [
       {
         "package": "core",
-        "file": "components/input-phone/input-phone.host.css"
+        "file": "components/phone-input/phone-input.host.css"
       },
       {
         "package": "core",
@@ -12050,7 +12050,7 @@
       },
       {
         "package": "core",
-        "file": "components/input-phone/input-phone.host.css"
+        "file": "components/phone-input/phone-input.host.css"
       },
       {
         "package": "core",
@@ -12079,7 +12079,7 @@
       },
       {
         "package": "core",
-        "file": "components/input-phone/input-phone.host.css"
+        "file": "components/phone-input/phone-input.host.css"
       },
       {
         "package": "core",
@@ -12108,7 +12108,7 @@
       },
       {
         "package": "core",
-        "file": "components/input-phone/input-phone.host.css"
+        "file": "components/phone-input/phone-input.host.css"
       },
       {
         "package": "core",
@@ -12141,7 +12141,7 @@
       },
       {
         "package": "core",
-        "file": "components/input-phone/input-phone.host.css"
+        "file": "components/phone-input/phone-input.host.css"
       },
       {
         "package": "core",
@@ -12194,7 +12194,7 @@
       },
       {
         "package": "core",
-        "file": "components/input-phone/input-phone.host.css"
+        "file": "components/phone-input/phone-input.host.css"
       },
       {
         "package": "core",
@@ -12243,7 +12243,7 @@
       },
       {
         "package": "core",
-        "file": "components/input-phone/input-phone.host.css"
+        "file": "components/phone-input/phone-input.host.css"
       },
       {
         "package": "core",
@@ -12272,7 +12272,7 @@
       },
       {
         "package": "core",
-        "file": "components/input-phone/input-phone.host.css"
+        "file": "components/phone-input/phone-input.host.css"
       },
       {
         "package": "core",
@@ -12305,7 +12305,7 @@
       },
       {
         "package": "core",
-        "file": "components/input-phone/input-phone.host.css"
+        "file": "components/phone-input/phone-input.host.css"
       },
       {
         "package": "core",
@@ -12342,7 +12342,7 @@
       },
       {
         "package": "core",
-        "file": "components/input-phone/input-phone.host.css"
+        "file": "components/phone-input/phone-input.host.css"
       },
       {
         "package": "core",
@@ -12383,7 +12383,7 @@
       },
       {
         "package": "core",
-        "file": "components/input-phone/input-phone.host.css"
+        "file": "components/phone-input/phone-input.host.css"
       },
       {
         "package": "core",
@@ -12440,7 +12440,7 @@
       },
       {
         "package": "core",
-        "file": "components/input-phone/input-phone.host.css"
+        "file": "components/phone-input/phone-input.host.css"
       },
       {
         "package": "core",
@@ -12485,7 +12485,7 @@
       },
       {
         "package": "core",
-        "file": "components/input-phone/input-phone.host.css"
+        "file": "components/phone-input/phone-input.host.css"
       },
       {
         "package": "core",
@@ -12514,7 +12514,7 @@
       },
       {
         "package": "core",
-        "file": "components/input-phone/input-phone.host.css"
+        "file": "components/phone-input/phone-input.host.css"
       },
       {
         "package": "core",
@@ -12543,7 +12543,7 @@
       },
       {
         "package": "core",
-        "file": "components/input-phone/input-phone.host.css"
+        "file": "components/phone-input/phone-input.host.css"
       },
       {
         "package": "core",
@@ -12576,7 +12576,7 @@
       },
       {
         "package": "core",
-        "file": "components/input-phone/input-phone.host.css"
+        "file": "components/phone-input/phone-input.host.css"
       },
       {
         "package": "core",
@@ -12613,7 +12613,7 @@
       },
       {
         "package": "core",
-        "file": "components/input-phone/input-phone.host.css"
+        "file": "components/phone-input/phone-input.host.css"
       },
       {
         "package": "core",
@@ -12662,7 +12662,7 @@
       },
       {
         "package": "core",
-        "file": "components/input-phone/input-phone.host.css"
+        "file": "components/phone-input/phone-input.host.css"
       },
       {
         "package": "core",
@@ -12703,7 +12703,7 @@
       },
       {
         "package": "core",
-        "file": "components/input-phone/input-phone.host.css"
+        "file": "components/phone-input/phone-input.host.css"
       },
       {
         "package": "core",
@@ -12732,7 +12732,7 @@
       },
       {
         "package": "core",
-        "file": "components/input-phone/input-phone.host.css"
+        "file": "components/phone-input/phone-input.host.css"
       },
       {
         "package": "core",
@@ -12761,7 +12761,7 @@
       },
       {
         "package": "core",
-        "file": "components/input-phone/input-phone.host.css"
+        "file": "components/phone-input/phone-input.host.css"
       },
       {
         "package": "core",
@@ -12790,7 +12790,7 @@
       },
       {
         "package": "core",
-        "file": "components/input-phone/input-phone.host.css"
+        "file": "components/phone-input/phone-input.host.css"
       },
       {
         "package": "core",
@@ -12823,7 +12823,7 @@
       },
       {
         "package": "core",
-        "file": "components/input-phone/input-phone.host.css"
+        "file": "components/phone-input/phone-input.host.css"
       },
       {
         "package": "core",
@@ -12872,7 +12872,7 @@
       },
       {
         "package": "core",
-        "file": "components/input-phone/input-phone.host.css"
+        "file": "components/phone-input/phone-input.host.css"
       },
       {
         "package": "core",
@@ -12921,7 +12921,7 @@
       },
       {
         "package": "core",
-        "file": "components/input-phone/input-phone.host.css"
+        "file": "components/phone-input/phone-input.host.css"
       },
       {
         "package": "core",
@@ -12970,7 +12970,7 @@
       },
       {
         "package": "core",
-        "file": "components/input-phone/input-phone.host.css"
+        "file": "components/phone-input/phone-input.host.css"
       },
       {
         "package": "core",
@@ -13337,102 +13337,102 @@
       }
     ]
   },
-  "🧩 Component.InputPhone.Filter.Color.Placeholder": {
+  "🧩 Component.PhoneInput.Filter.Color.Placeholder": {
     "count": 1,
     "locations": [
       {
         "package": "core",
-        "file": "components/input-phone/input-phone.host.css"
+        "file": "components/phone-input/phone-input.host.css"
       }
     ]
   },
-  "🧩 Component.InputPhone.Flag.Background.Color.Empty": {
+  "🧩 Component.PhoneInput.Flag.Background.Color.Empty": {
     "count": 1,
     "locations": [
       {
         "package": "core",
-        "file": "components/input-phone/input-phone.host.css"
+        "file": "components/phone-input/phone-input.host.css"
       }
     ]
   },
-  "🧩 Component.InputPhone.Flag.Radius.Empty": {
+  "🧩 Component.PhoneInput.Flag.Radius.Empty": {
     "count": 1,
     "locations": [
       {
         "package": "core",
-        "file": "components/input-phone/input-phone.host.css"
+        "file": "components/phone-input/phone-input.host.css"
       }
     ]
   },
-  "🧩 Component.InputPhone.Option.Radius": {
+  "🧩 Component.PhoneInput.Option.Radius": {
     "count": 1,
     "locations": [
       {
         "package": "core",
-        "file": "components/input-phone/input-phone.host.css"
+        "file": "components/phone-input/phone-input.host.css"
       }
     ]
   },
-  "🧩 Component.InputPhone.Popup.Border": {
+  "🧩 Component.PhoneInput.Popup.Border": {
     "count": 1,
     "locations": [
       {
         "package": "core",
-        "file": "components/input-phone/input-phone.host.css"
+        "file": "components/phone-input/phone-input.host.css"
       }
     ]
   },
-  "🧩 Component.InputPhone.Popup.Color.Background": {
+  "🧩 Component.PhoneInput.Popup.Color.Background": {
     "count": 1,
     "locations": [
       {
         "package": "core",
-        "file": "components/input-phone/input-phone.host.css"
+        "file": "components/phone-input/phone-input.host.css"
       }
     ]
   },
-  "🧩 Component.InputPhone.Popup.Padding": {
+  "🧩 Component.PhoneInput.Popup.Padding": {
     "count": 1,
     "locations": [
       {
         "package": "core",
-        "file": "components/input-phone/input-phone.host.css"
+        "file": "components/phone-input/phone-input.host.css"
       }
     ]
   },
-  "🧩 Component.InputPhone.Popup.Radius": {
+  "🧩 Component.PhoneInput.Popup.Radius": {
     "count": 1,
     "locations": [
       {
         "package": "core",
-        "file": "components/input-phone/input-phone.host.css"
+        "file": "components/phone-input/phone-input.host.css"
       }
     ]
   },
-  "🧩 Component.InputPhone.Scrollbar.BorderWidth": {
+  "🧩 Component.PhoneInput.Scrollbar.BorderWidth": {
     "count": 1,
     "locations": [
       {
         "package": "core",
-        "file": "components/input-phone/input-phone.host.css"
+        "file": "components/phone-input/phone-input.host.css"
       }
     ]
   },
-  "🧩 Component.InputPhone.Scrollbar.Color": {
+  "🧩 Component.PhoneInput.Scrollbar.Color": {
     "count": 1,
     "locations": [
       {
         "package": "core",
-        "file": "components/input-phone/input-phone.host.css"
+        "file": "components/phone-input/phone-input.host.css"
       }
     ]
   },
-  "🧩 Component.InputPhone.Scrollbar.Radius": {
+  "🧩 Component.PhoneInput.Scrollbar.Radius": {
     "count": 1,
     "locations": [
       {
         "package": "core",
-        "file": "components/input-phone/input-phone.host.css"
+        "file": "components/phone-input/phone-input.host.css"
       }
     ]
   },
@@ -15305,7 +15305,7 @@
     "locations": [
       {
         "package": "core",
-        "file": "components/input-phone/input-phone.host.css"
+        "file": "components/phone-input/phone-input.host.css"
       },
       {
         "package": "core",
@@ -15476,7 +15476,7 @@
     "locations": [
       {
         "package": "core",
-        "file": "components/input-phone/input-phone.host.css"
+        "file": "components/phone-input/phone-input.host.css"
       },
       {
         "package": "core",
@@ -15498,7 +15498,7 @@
     "locations": [
       {
         "package": "core",
-        "file": "components/input-phone/input-phone.host.css"
+        "file": "components/phone-input/phone-input.host.css"
       },
       {
         "package": "core",
@@ -15520,7 +15520,7 @@
     "locations": [
       {
         "package": "core",
-        "file": "components/input-phone/input-phone.host.css"
+        "file": "components/phone-input/phone-input.host.css"
       },
       {
         "package": "core",
@@ -15533,7 +15533,7 @@
     "locations": [
       {
         "package": "core",
-        "file": "components/input-phone/input-phone.host.css"
+        "file": "components/phone-input/phone-input.host.css"
       },
       {
         "package": "core",
@@ -15555,7 +15555,7 @@
     "locations": [
       {
         "package": "core",
-        "file": "components/input-phone/input-phone.host.css"
+        "file": "components/phone-input/phone-input.host.css"
       },
       {
         "package": "core",

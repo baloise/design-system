@@ -40,7 +40,7 @@
 // control already reads as the interactive surface and doesn't need the shared "boxed" look.
 //
 // $active: false drops only the :active/.is-pressed container-wide border — for components
-// with multiple independently-focusable sub-elements (e.g. ds-input-phone's country trigger
+// with multiple independently-focusable sub-elements (e.g. ds-phone-input's country trigger
 // and number field) where a plain click anywhere in #container must not flash a container-wide
 // active border; the component scopes its own focus/active styling to the clicked sub-element.
 @mixin container($selector: '#container', $bordered: true, $active: true) {

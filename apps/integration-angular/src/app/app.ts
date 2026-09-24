@@ -6,7 +6,7 @@ import { CounterDemo } from './counter-demo/counter-demo'
 import { DatepickerDemo } from './datepicker-demo/datepicker-demo'
 import { FileUploadDemo } from './file-upload-demo/file-upload-demo'
 import { InputDemo } from './input-demo/input-demo'
-import { InputPhoneDemo } from './input-phone-demo/input-phone-demo'
+import { PhoneInputDemo } from './phone-input-demo/phone-input-demo'
 import { SliderDemo } from './slider-demo/slider-demo'
 import { NumberInputDemo } from './number-input-demo/number-input-demo'
 import { SegmentDemo } from './segment-demo/segment-demo'
@@ -20,7 +20,7 @@ import { ToggleDemo } from './toggle-demo/toggle-demo'
   imports: [
     ButtonDemo,
     InputDemo,
-    InputPhoneDemo,
+    PhoneInputDemo,
     NumberInputDemo,
     SliderDemo,
     CounterDemo,

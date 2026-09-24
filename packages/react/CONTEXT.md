@@ -35,7 +35,7 @@ The controllers create `ds-alert-container` / `ds-toast` / `ds-snackbar` with `d
 
 ### No runtime asset path
 
-No component resolves assets at runtime: `ds-input-phone`'s country flags are bundled as inline SVG strings in `@helvetia-design/assets`, same build-time approach as `ds-icon` — see [docs/adr/0033-ds-input-phone-bundled-svg-flags.md](../../docs/adr/0033-ds-input-phone-bundled-svg-flags.md).
+No component resolves assets at runtime: `ds-phone-input`'s country flags are bundled as inline SVG strings in `@helvetia-design/assets`, same build-time approach as `ds-icon` — see [docs/adr/0033-ds-phone-input-bundled-svg-flags.md](../../docs/adr/0033-ds-phone-input-bundled-svg-flags.md).
 
 ### Build
 

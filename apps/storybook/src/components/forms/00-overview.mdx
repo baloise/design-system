@@ -76,14 +76,6 @@ import { Banner, GridComponent, GridComponents, Lead } from '../../../.storybook
   </GridComponent>
   <GridComponent
     scale="1"
-    label="Input Phone"
-    component="input-phone"
-    pageTitle="Components/Forms/InputPhone"
-  >
-    <ds-input-phone label="Phone number" initial-country="CH" style={{ width: '220px' }}></ds-input-phone>
-  </GridComponent>
-  <GridComponent
-    scale="1"
     label="Label"
     component="label"
     pageTitle="Components/Forms/Label"
@@ -98,6 +90,14 @@ import { Banner, GridComponent, GridComponents, Lead } from '../../../.storybook
     pageTitle="Components/Forms/Number-input"
   >
     <ds-number-input decimal="2" suffix="CHF" value="1234.45"></ds-number-input>
+  </GridComponent>
+  <GridComponent
+    scale="1"
+    label="Phone Input"
+    component="phone-input"
+    pageTitle="Components/Forms/Phone-input"
+  >
+    <ds-phone-input label="Phone number" initial-country="CH" style={{ width: '220px' }}></ds-phone-input>
   </GridComponent>
   <GridComponent
     scale="1"
