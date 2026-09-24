@@ -41,7 +41,8 @@ test('ds-input-phone renders and fires dsInput with an E.164 value', async ({ pa
 
   // Regression coverage for a bundler incompatibility in Stencil's `resourcesUrl` auto-detection that
   // used to crash this component's render entirely under Vite (`TypeError: Invalid base URL`) — see
-  // packages/core/CONTEXT.md's "Asset path (`resourcesUrl`)" section.
+  // docs/adr/0032-ds-input-phone-bundled-svg-flags.md, which removed the runtime asset path this
+  // crash came from entirely.
   await expect(nativeInput).toHaveValue('79 123 45 67')
 
   await nativeInput.fill('798765432')

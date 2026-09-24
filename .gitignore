@@ -96,8 +96,11 @@ apps/storybook/public/build/
 apps/storybook/public/assets/images/map-markers
 apps/storybook/public/assets/images/brand-icons
 apps/storybook/public/assets/images/icons
-apps/storybook/public/assets/flags
 apps/storybook/src/assets/data
+
+# 1:1 copy of country-flag-icons/3x2, synced by scripts/build-svg.mjs — fully reproducible from the
+# pinned dependency, unlike the hand-authored icon/map/brand-icon svg/ folders next to it.
+packages/assets/src/flags/svg/
 apps/storybook/src/components/**/api.md
 apps/storybook/src/components/**/theming.md
 apps/storybook/src/components/**/testing.md

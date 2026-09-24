@@ -44,18 +44,6 @@ if (message) {
   console.log('')
 }
 
-/**
- * Shared by every output target that ships flags: `ds-input-phone`'s `getFlagUrl()` (see `flag.ts`)
- * throws at render time as soon as a country resolves if its target didn't get this copy.
- */
-const flagAssetsCopy = [
-  {
-    src: '../node_modules/country-flag-icons/3x2',
-    dest: 'assets/flags',
-    warn: true,
-  },
-]
-
 const workspaceDir = join(parse(__dirname).dir, '..')
 const packagesDir = join('../..')
 const nodeModulesProject = join(__dirname, 'node_modules')
@@ -119,7 +107,6 @@ export const config: Config = {
     !IS_DS_DEVELOPMENT && {
       type: 'dist',
       esmLoaderPath: '../loader',
-      copy: flagAssetsCopy,
     },
     /**
      * The dist-custom-elements output target creates custom elements that directly extend HTMLElement and provides
@@ -141,9 +128,6 @@ export const config: Config = {
          * contains a dynamic import that caused a warning in Angular.
          */
         externalRuntime: false,
-        // `@baloise/ds-angular`/`@baloise/ds-react` consumers are built on this target, so it needs its
-        // own copy of the flags the `dist`/`www` target above already gets.
-        copy: flagAssetsCopy,
       },
     /**
      * Custom output target that generates web components as standalone custom elements
@@ -233,11 +217,6 @@ export const config: Config = {
         {
           src: join(packagesDir, 'core', 'public', 'images'),
           dest: 'assets/images',
-          warn: true,
-        },
-        {
-          src: join(__dirname, 'node_modules/country-flag-icons/3x2'),
-          dest: 'assets/flags',
           warn: true,
         },
         {

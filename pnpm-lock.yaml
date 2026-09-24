@@ -154,6 +154,9 @@ importers:
       compression:
         specifier: 'catalog:'
         version: 1.8.2(supports-color@8.1.1)
+      country-flag-icons:
+        specifier: ^1.6.20
+        version: 1.6.20
       cross-env:
         specifier: 7.0.3
         version: 7.0.3
@@ -675,9 +678,6 @@ importers:
       big.js:
         specifier: ^7.0.1
         version: 7.0.1
-      country-flag-icons:
-        specifier: ^1.6.20
-        version: 1.6.20
       dompurify:
         specifier: 3.4.15
         version: 3.4.15

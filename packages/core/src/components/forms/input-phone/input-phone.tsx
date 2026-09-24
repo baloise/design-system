@@ -31,7 +31,7 @@ import {
   detectCountryFromInput,
   getExamplePlaceholder,
 } from './formatting'
-import { getFlagUrl } from './flag'
+import { getFlagSvg } from './flag'
 
 /**
  * Input phone renders an international phone number field with a country picker
@@ -778,7 +778,7 @@ export class InputPhone implements DsComponentInterface, FieldInterface {
           onKeyDown={this.handleTriggerKeyDown}
         >
           {selected ? (
-            <img class="flag" src={getFlagUrl(selected.code)} alt="" aria-hidden="true" draggable={false} />
+            <span class="flag" aria-hidden="true" innerHTML={getFlagSvg(selected.code)}></span>
           ) : (
             <span class="flag is-empty" aria-hidden="true"></span>
           )}
@@ -857,7 +857,7 @@ export class InputPhone implements DsComponentInterface, FieldInterface {
                     onClick={() => this.handleOptionClick(country.code)}
                     onMouseEnter={() => this.handleOptionMouseEnter(country.code)}
                   >
-                    <img class="flag" src={getFlagUrl(country.code)} alt="" aria-hidden="true" draggable={false} />
+                    <span class="flag" aria-hidden="true" innerHTML={getFlagSvg(country.code)}></span>
                     <span class="option-name">{name}</span>
                     <span class="option-code">+{country.callingCode}</span>
                   </div>

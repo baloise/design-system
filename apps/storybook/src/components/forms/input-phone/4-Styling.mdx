@@ -16,6 +16,14 @@ import { INPUTPHONE_DOC_CONFIG, getInputPhoneTabs } from './input-phone.doc-conf
 
 <BannerTabs of={InputPhoneStories} tabs={getInputPhoneTabs('styling')} />
 
+Country flags are bundled into `@baloise/ds-core` as inline SVGs, the same build-time approach as
+[`ds-icon`](?path=/docs/components-data-display-icon--documentation)'s icons. There is no asset path
+to resolve and nothing to configure in a consuming app's build — flags just render, in Angular, React,
+and plain HTML alike. The trade-off is bundle size: every country ships in every consumer's bundle
+regardless of whether the `countries` prop restricts the picker to a handful of entries. See
+[ADR-0032](https://github.com/baloise/design-system/blob/main/docs/adr/0032-ds-input-phone-bundled-svg-flags.md)
+for the full rationale.
+
 <ComponentParts component="input-phone" />
 
 <ComponentCssVariables component="input-phone" />

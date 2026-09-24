@@ -33,11 +33,9 @@ The controllers create `ds-alert-container` / `ds-toast` / `ds-snackbar` with `d
 
 `useModal()` will present JSX by passing a detached `HTMLElement` as `ModalOptions.component` once that lands in core. It does not need a React `FrameworkDelegate`.
 
-### Asset path
+### No runtime asset path
 
-The browser entry points call `initializeAssetPath()` from `src/asset-path.ts`, which wraps Stencil's `setAssetPath()` (imported from `@helvetia-design/core/components`, **not** re-exported through `initializeDesignSystem`/`@helvetia-design/core` — see [[packages/core|packages/core/CONTEXT.md]]'s "Asset path (`resourcesUrl`)" section for why that specific import path is required) to work around a bundler incompatibility in Stencil's own `resourcesUrl` auto-detection, confirmed to reproduce identically under React + Vite (same root cause as `@helvetia-design/angular`). `apps/integration-react`'s `vite.config.ts`/`public/` demonstrates the asset-copy step still required from the consuming app for `ds-input-phone`'s flags.
-
-Because `asset-path.ts` imports the browser-only custom elements build, no module reachable from the Node entry (`src/index.server.ts`) may import it — that rules out `ds-root-provider.shared.tsx` and `bootstrap.ts`, both of which the server entry pulls in. The call is therefore injected from the client side only: `ds-root-provider.tsx` passes `initializeAssetPath` as `createDsRootProvider()`'s `onInit` argument, and the deprecated `bootstrapDesignSystem()` gets a browser variant in `bootstrap.client.ts` that the client barrel re-exports while `index.server.ts` keeps the plain `bootstrap.ts` one. `src/index.test.ts` locks that invariant in.
+No component resolves assets at runtime: `ds-input-phone`'s country flags are bundled as inline SVG strings in `@helvetia-design/assets`, same build-time approach as `ds-icon` — see [docs/adr/0032-ds-input-phone-bundled-svg-flags.md](../../docs/adr/0032-ds-input-phone-bundled-svg-flags.md). `createDsRootProvider()`'s `onInit` argument (`ds-root-provider.shared.tsx`) and the client-only `bootstrap.client.ts` variant remain as a seam for any future browser-only side effect the client entry point needs but the Node entry (`src/index.server.ts`) must not statically import — neither currently passes anything through it.
 
 ### Build
 
