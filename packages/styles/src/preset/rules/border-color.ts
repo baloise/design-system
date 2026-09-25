@@ -53,8 +53,10 @@ export function buildBorderColorRules(tokensJsonPath: string) {
   ]
 
   // Composite shorthand classes from tokens
+  // Skip "none" — the dedicated remove-border helpers below already own the border-*-none classes.
   for (const token of borderCompositeTokens) {
     const name = token.name.replace('ds-alias-border-composite-', '')
+    if (name === 'none') continue
     for (const side of sides) {
       const className = `border-${side.prefix}${name}`
       addRule(className, { [side.property]: `var(--${token.name}) !important` }, token.name)

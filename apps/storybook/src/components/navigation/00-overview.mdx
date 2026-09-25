@@ -39,7 +39,7 @@ import { Banner, GridComponent, GridComponents, Lead } from '../../../.storybook
         <ds-app-navbar-menu-end>
           <ds-button-group>
             <ds-popover v-model="isActive">
-              <ds-button ds-popover-trigger color="light" inverted icon="web">
+              <ds-button ds-popover-trigger color="ghost" inverted icon="web">
                 DE
               </ds-button>
               <ds-popover-content>
@@ -62,13 +62,13 @@ import { Banner, GridComponent, GridComponents, Lead } from '../../../.storybook
                 </ds-list>
               </ds-popover-content>
             </ds-popover>
-            <ds-button square color="light" inverted icon="call"></ds-button>
+            <ds-button square color="ghost" inverted icon="call"></ds-button>
           </ds-button-group>
         </ds-app-navbar-menu-end>
       </ds-app-navbar-menu>
     </ds-app-navbar>
-    <div class="ds-container mt-base" style={{ height: '280px' }}>
-      <div class="h-full bg-purple-2 radius"></div>
+    <div className="ds-container mt-base" style={{ height: '280px' }}>
+      <div className="h-full bg-purple-2 radius"></div>
     </div>
   </GridComponent>
   <GridComponent
@@ -78,7 +78,7 @@ import { Banner, GridComponent, GridComponents, Lead } from '../../../.storybook
     fullwidth
     pageTitle="Components/Navigation/Pagination"
   >
-    <ds-pagination page-range="1" total-pages="20" value="2" class="mb-lg"></ds-pagination>
+    <ds-pagination page-range="1" total-pages="20" value="2" className="mb-lg"></ds-pagination>
     <ds-pagination variant="dots" page-range="1" total-pages="20" value="2"></ds-pagination>
   </GridComponent>
   <GridComponent
@@ -103,7 +103,7 @@ import { Banner, GridComponent, GridComponents, Lead } from '../../../.storybook
     component="tabs"
     pageTitle="Components/Navigation/Tabs"
   >
-    <div class="px-lg">
+    <div className="px-lg">
       <ds-tabs>
         <ds-tab name="a">Apple Pie</ds-tab>
         <ds-tab name="b">Mango</ds-tab>

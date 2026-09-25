@@ -30,7 +30,7 @@ const meta: Meta<Args> = {
   ${
     args.icon
       ? `
-  <ds-icon name="${args.icon}" size="small"></ds-icon>`
+  <ds-icon name="${args.icon}" size="sm"></ds-icon>`
       : ''
   }${slot}${
     args.closable

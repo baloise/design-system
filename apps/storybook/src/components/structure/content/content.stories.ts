@@ -100,7 +100,7 @@ export const Space = Story({
     <ds-label class="bg-green-2">X Small Space</ds-label>
     <ds-text class="bg-green-2">Content helps to align text nodes inside a section.</ds-text>
   </ds-content>
-  <ds-content space="small" class="bg-red-2 mt-md">
+  <ds-content space="sm" class="bg-red-2 mt-md">
     <ds-label class="bg-green-2">Small Space</ds-label>
     <ds-text class="bg-green-2">Content helps to align text nodes inside a section.</ds-text>
   </ds-content>

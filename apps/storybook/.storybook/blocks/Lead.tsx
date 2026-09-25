@@ -1,5 +1,5 @@
 import React from 'react'
 
 export const Lead = ({ children }) => {
-  return <span className="sb-unstyled block text-xl text-primary my-2xl">{children}</span>
+  return <span className="sb-unstyled ds-text text-lg text-primary mt-base mb-xl">{children}</span>
 }

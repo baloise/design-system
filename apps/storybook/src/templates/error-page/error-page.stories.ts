@@ -28,7 +28,7 @@ const meta: Meta<Args> = {
       </div>
     </div>
     <div class="flex justify-content-center align-items-center">
-      <ds-icon svg='${BrandIconError404Red}' size="2xl" color="auto"></ds-icon>
+      <ds-brand-icon svg='${BrandIconError404Red}' size="lg" color="red"></ds-brand-icon>
     </div>
   </div>`,
   ),

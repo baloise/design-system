@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { IconButton, TooltipLinkList, WithTooltip } from 'storybook/internal/components'
+import { ToggleButton, TooltipLinkList, WithTooltip } from 'storybook/internal/components'
 import { FORCE_RE_RENDER } from 'storybook/internal/core-events'
 import { addons, useGlobals } from 'storybook/manager-api'
 
@@ -117,10 +117,15 @@ export const registerFramework: React.FC = () => {
         />
       )}
     >
-      <IconButton key="framework-toolbar" title="Chose your integration technology" active={active !== 'angular'}>
+      <ToggleButton
+        key="framework-toolbar"
+        title="Chose your integration technology"
+        pressed={active !== 'angular'}
+        ariaLabel={false}
+      >
         <SvgIcon html={SvgIcons[active]} size={16} />
         <span style={{ marginLeft: 4 }}>{labels[active]}</span>
-      </IconButton>
+      </ToggleButton>
     </WithTooltip>
   )
 }

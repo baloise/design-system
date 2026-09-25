@@ -174,7 +174,7 @@ export const DownloadListHtml = Story({
                 <span class="ds-item-title">Document</span>
                 <span class="ds-item-text">PDF - 98KB</span>
               </span>
-              <ds-icon name="download" size="small"></ds-icon>
+              <ds-icon name="download" size="sm"></ds-icon>
             </button>
           </li>
           <li>
@@ -184,7 +184,7 @@ export const DownloadListHtml = Story({
                 <span class="ds-item-title">Picture</span>
                 <span class="ds-item-text">PNG - 140KB</span>
               </span>
-              <ds-icon name="download" size="small"></ds-icon>
+              <ds-icon name="download" size="sm"></ds-icon>
             </button>
           </li>
           <li>
@@ -194,7 +194,7 @@ export const DownloadListHtml = Story({
                 <span class="ds-item-title">Video</span>
                 <span class="ds-item-text">MP4 - 61MB</span>
               </span>
-              <ds-icon name="download" size="small"></ds-icon>
+              <ds-icon name="download" size="sm"></ds-icon>
             </button>
           </li>
           <li>
@@ -204,7 +204,7 @@ export const DownloadListHtml = Story({
                 <span class="ds-item-title">Audio</span>
                 <span class="ds-item-text">MP3 - 5MB</span>
               </span>
-              <ds-icon name="download" size="small"></ds-icon>
+              <ds-icon name="download" size="sm"></ds-icon>
             </button>
           </li>
           <li>
@@ -214,7 +214,7 @@ export const DownloadListHtml = Story({
                 <span class="ds-item-title">Disabled Document</span>
                 <span class="ds-item-text">PDF - 98KB</span>
               </span>
-              <ds-icon name="download" disabled size="small"></ds-icon>
+              <ds-icon name="download" disabled size="sm"></ds-icon>
             </button>
           </li>
         </ul>

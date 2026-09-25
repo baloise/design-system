@@ -1,14 +1,14 @@
 import { Meta, Unstyled } from '@storybook/addon-docs/blocks'
-import { Banner, ButtonCard, Footer, Lead } from '../.storybook/blocks'
+import { Banner, ButtonCard, Code, Footer, Lead } from '../.storybook/blocks'
 import ChartMultiBrand from './assets/images/chart-multi-brand.svg'
 
 <Meta title="What's New" name="What's New" />
 
-<Banner label="What's New" section="Helvetia Design System" />
-
-<Lead>
-  The Helvetia Design System builds on Baloise Design System's foundation. Here's what changed along the way.
-</Lead>
+<Banner label="What's New">
+  <Lead>
+    The Helvetia Design System builds on Baloise Design System's foundation. Here's what changed along the way.
+  </Lead>
+</Banner>
 
 ## A New Architecture for Multi-Brand at Scale
 
@@ -25,22 +25,69 @@ duplicating work:
   support white-label applications and partner brands alongside Helvetia.
 
 <br />
-<div class="p-md radius-lg bg-primary-5">
-<img src={ChartMultiBrand} alt="Diagram of the multi-brand token architecture syncing tokens across platforms" />
+<div className="p-md radius-lg bg-primary-5">
+  <img src={ChartMultiBrand} alt="Diagram of the multi-brand token architecture syncing tokens across platforms" />
 </div>
 
 <br />
 <br />
 
+## A More Robust Foundation for Every Component
+
+Besides multi-brand support, we also rebuilt how components are constructed — making pages load faster, look more
+consistent, and work in more places, without anyone having to change how they use the design system:
+
+### 🫧 Style isolation with Shadow DOM
+
+every component now keeps its own styling sealed off from the rest of the
+page. In practice, that means a component always looks exactly as designed, no matter what other styles exist on
+the site it's placed on, and it drops cleanly into Angular, React, or any other setup without clashing.
+
+### 🚀 Faster first paint with SSR support
+
+Pages built with Next.js can now render components on the server before sending them to the browser. Visitors see a finished page sooner instead of watching it build
+itself, and search engines can read the page content more easily too.
+
+No framework required — a single function renders components to real HTML on the server, ready to send straight
+to the browser. See the full walkthrough in the
+[Server-Side Rendering guide](/docs/development-getting-started--docs#server-side-rendering-ssr).
+
+<Code
+  language="js"
+  noPreview
+  code={`
+import { renderToString } from '@helvetia-design/core/hydrate'
+
+const fragment = \`
+<ds-root>
+  <ds-button>Button</ds-button>
+</ds-root>
+\`
+
+const { html } = await renderToString(fragment)
+
+res.type('html').send(html)
+`}
+/>
+
+### ⚡ More components that are just HTML and CSS
+
+Growing number of components no longer need JavaScript to work at all. Pages using them load faster and feel snappier for visitors, since there's simply less code for the browser to run.
+
+<Code
+  language="html"
+  code={`
+<ds-button color="primary">Web-component</ds-button>
+<button class="ds-button is-primary">CSS-only</button>
+`}
+/>
+
+<br />
+
+### And More…
+
 Alongside the architecture work, a few other pieces landed:
 
-- 🚀 **Next.js SSR support** — components can now be server-rendered with Next.js, so pages hydrate faster and work
-  better with server-first frameworks.
-- ⚡ **More CSS-only components** — additional components ship as plain HTML/CSS with no web component required,
-  cutting JavaScript overhead and improving rendering performance, for faster rendering on websites and
-  server-side rendered applications.
-- 🫧 **Shadow DOM** — every component now renders inside Shadow DOM, isolating styles from the host page and
-  improving how the library integrates with Angular, React, and any other framework.
 - ♿ **Accessibility** — components have been updated to better meet WCAG 2.2 AA success criteria, keeping
   applications compliant and inclusive by default.
 - 🛡️ **Cyber Resilience Act** — the design system now generates a Software Bill of Materials, runs automated
@@ -59,7 +106,8 @@ Alongside the architecture work, a few other pieces landed:
 Here's what we're working on next:
 
 - 🚚 **Prepage migration from Baloise to Helvetia** — moving remaining Baloise-branded pages and apps onto the
-  Helvetia Design System.
+  Helvetia Design System, using our own AI agent skill set to migrate `bal-` components to their `ds-` equivalents
+  faster and more consistently.
 - 🧩 **Missing components from Helvetia apps** — filling the gaps by adding components that Helvetia apps still
   rely on outside the design system.
 - 🎨 **Better Figma support** — creating components in Figma that are built directly from our design tokens.

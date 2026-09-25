@@ -10,16 +10,21 @@ const toKebabCase = (name: string) =>
 const config: StorybookConfig = {
   stories: ['../src/**/*.mdx', '../src/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
   addons: ['@storybook/addon-docs'],
+
   framework: {
     name: '@storybook/html-vite',
   },
+
   docs: {
     defaultName: 'Documentation',
   },
+
   staticDirs: ['../public', { from: '../../../packages/tokens/dist/css', to: '/assets/tokens' }],
+
   previewHead: head => `
   ${head}
 
+  <link rel="llms.txt" href="/llms.txt" />
   <link rel="stylesheet" type="text/css" href="assets/tokens/base.tokens.css" />
   <link rel="stylesheet" type="text/css" href="assets/css/design-system.css" />
   <link rel="stylesheet" type="text/css" href="assets/css/utilities.css" />
@@ -31,6 +36,7 @@ const config: StorybookConfig = {
   <script type="module" src="/build/design-system.esm.js"></script>
   <script nomodule src="/build/design-system.js"></script>
   `,
+
   viteFinal: async config =>
     mergeConfig(config, {
       build: {
@@ -45,5 +51,9 @@ const config: StorybookConfig = {
         },
       },
     }),
+
+  core: {
+    disableWhatsNewNotifications: true,
+  },
 }
 export default config

@@ -103,21 +103,21 @@ nav[aria-labelledby='table-of-contents'] {
 .sbdocs-content > div:not(.sb-unstyled) > h2 {
   font-size: var(--ds-device-text-size-2xl);
   line-height: 1.3;
-  margin-top: 6rem !important;
+  margin-top: 4rem !important;
 }
 
 .sbdocs-content > h3,
 .sbdocs-content > div:not(.sb-unstyled) > h3 {
   font-size: var(--ds-device-text-size-xl);
   line-height: 1.3;
-  margin-top: 4rem !important;
+  margin-top: 3rem !important;
 }
 
 .sbdocs-content > h4,
 .sbdocs-content > div:not(.sb-unstyled) > h4 {
   font-size: var(--ds-device-text-size-lg);
   line-height: 1.3;
-  margin-top: 3rem !important;
+  margin-top: 2rem !important;
 }
 
 .sbdocs-content > h5,

@@ -18,7 +18,7 @@ export const InfoQuote = ({ children }: InfoQuoteProps): React.ReactElement => {
 export const WarningQuote = ({ children }: InfoQuoteProps): React.ReactElement => {
   return (
     <div className="sb-unstyled flex gap-base bg-warning-1 border-left-warning text-sm text-primary my-md p-base radius-right">
-      <ds-icon color="warning-dark" name="alert-triangle" style={{ marginTop: '2px' }}></ds-icon>
+      <ds-icon color="warning" name="alert-triangle" style={{ marginTop: '2px' }}></ds-icon>
       <span>{children}</span>
     </div>
   )
@@ -31,7 +31,7 @@ type StylesQuoteProps = {
 export const StylesQuote = ({ _tag }: StylesQuoteProps): React.ReactElement => {
   return (
     <div className="sb-unstyled flex gap-base bg-grey-1 border-left-primary text-sm text-primary my-md p-base radius-right">
-      <ds-icon color="primary" size="medium" name="design" style={{ marginTop: '2px' }}></ds-icon>
+      <ds-icon color="primary" size="md" name="design" style={{ marginTop: '2px' }}></ds-icon>
       <div>
         <h3 className="ds-title">Styles import</h3>
         <span>
@@ -88,7 +88,7 @@ export const WebComponentQuote = ({ tag }: StylesQuoteProps): React.ReactElement
 
   return (
     <div className="sb-unstyled flex gap-base bg-grey-1 border-left-primary text-sm text-primary my-md p-base radius-right">
-      <ds-icon color="primary" size="medium" name="info" style={{ marginTop: '2px' }}></ds-icon>
+      <ds-icon color="primary" size="md" name="info" style={{ marginTop: '2px' }}></ds-icon>
       <div>
         <h3 className="ds-title">Installation</h3>
         <span>

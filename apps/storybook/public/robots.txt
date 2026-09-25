@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+
+# Machine-readable documentation for LLMs and AI coding tools (https://llmstxt.org)
+# https://design.baloise.dev/llms.txt
+# https://design.baloise.dev/llms-full.txt

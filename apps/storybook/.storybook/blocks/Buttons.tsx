@@ -157,8 +157,16 @@ export const GridComponent = ({
   return (
     <div className="ds-col mobile:is-12 tablet:is-6 desktop:is-4">
       <div className="h-full">
-        <a
+        <div
+          role="button"
+          tabIndex={0}
           onClick={() => navigate({ title: pageTitle })}
+          onKeyDown={e => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault()
+              navigate({ title: pageTitle })
+            }
+          }}
           className={`flex flex-direction-column gap-base justify-content-center align-items-center bg-white p-base h-full radius-lg shadow doc-shadow-large-hover cursor-pointer`}
         >
           <div
@@ -188,7 +196,7 @@ export const GridComponent = ({
             </h2>
             <p className="h-full text-sm">{resolvedDescription}</p>
           </div>
-        </a>
+        </div>
       </div>
     </div>
   )
@@ -198,8 +206,16 @@ export const GridCategory = ({ children, pageTitle, label, description }) => {
   return (
     <div className="ds-col is-12">
       <div className="h-full">
-        <a
+        <div
+          role="button"
+          tabIndex={0}
           onClick={() => navigate({ title: pageTitle })}
+          onKeyDown={e => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault()
+              navigate({ title: pageTitle })
+            }
+          }}
           className="flex flex-direction-column gap-base bg-white p-base h-full radius-lg shadow doc-shadow-large-hover cursor-pointer"
         >
           <div
@@ -213,7 +229,7 @@ export const GridCategory = ({ children, pageTitle, label, description }) => {
             <h2 className="ds-title mb-2xs">{label}</h2>
             <p className="ds-text mb-none">{description}</p>
           </div>
-        </a>
+        </div>
       </div>
     </div>
   )
