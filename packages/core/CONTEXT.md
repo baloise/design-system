@@ -717,11 +717,11 @@ the old, now-deprecated `bal-modal` also used) rather than invented fresh:
   the old `bal-modal`/Ionic `OverlayBaseController` pattern of a global
   top-of-stack `dismiss()`, which dismissed whatever overlay happened to be
   on top rather than the one the caller meant — a real bug class with
-  nested/concurrent overlays. `packages/core` only exposes `dismiss(id?,
-  data?, role?)` (still name/top-of-stack based); the scoped ref itself is
-  `packages/angular`'s `DsModalRef`, which also owns detaching the mounted
-  component via `detachComponent` on dismiss — core does not call it. See
-  [docs/adr/0022-modal-overlay-component-delegate-pattern.md](../../docs/adr/0022-modal-overlay-component-delegate-pattern.md).
+  nested/concurrent overlays. `packages/core` only exposes
+  `dismiss(id?, data?, role?)` (still name/top-of-stack based); the scoped
+  ref itself is `packages/angular`'s `DsModalRef`, which also owns detaching
+  the mounted component via `detachComponent` on dismiss — core does not
+  call it. See [docs/adr/0022-modal-overlay-component-delegate-pattern.md](../../docs/adr/0022-modal-overlay-component-delegate-pattern.md).
   _Avoid_: global dismiss, top-of-stack dismiss.
 
 ## Global Configuration (`DesignSystem.config`)
