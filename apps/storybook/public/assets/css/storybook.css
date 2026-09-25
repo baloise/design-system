@@ -76,6 +76,7 @@ button[aria-label='Show sidebar'] + span {
   border-radius: 1px !important;
 }
 
+button[title='View on GitHub'],
 button[title='Chose a region for the Design System'],
 button[title='Chose a language for the Design System'],
 button[title='Select Design System version'],
@@ -88,6 +89,7 @@ button[title='Chose your integration technology'] {
   font-family: 'BaloiseCreateHeadline';
 }
 
+button[title='View on GitHub']:hover,
 button[title='Chose a region for the Design System']:hover,
 button[title='Chose a language for the Design System']:hover,
 button[title='Select Design System version']:hover,
@@ -97,6 +99,7 @@ button[title='Chose your integration technology']:hover {
   color: #0014aa;
 }
 
+button[title='View on GitHub']:active,
 button[title='Chose a region for the Design System']:active,
 button[title='Chose a language for the Design System']:active,
 button[title='Select Design System version']:active,

@@ -2,6 +2,7 @@ import { DOCS_PREPARED, DOCS_RENDERED, STORY_PREPARED, STORY_RENDERED } from 'st
 import { addons, types } from 'storybook/manager-api'
 import { registerCookie } from './addons/cookie.addon'
 import { registerFramework } from './addons/framework.addon'
+import { registerGithub } from './addons/github.addon'
 import { registerLanguage } from './addons/language.addon'
 import { registerRegion } from './addons/region.addon'
 import { registerTheme } from './addons/theme.addon'
@@ -20,6 +21,14 @@ addons.setConfig({
 })
 
 addons.register('my/cookie', () => registerCookie())
+
+addons.register('my/github', () => {
+  addons.add('my-github-addon/toolbar', {
+    title: 'GitHub',
+    type: types.TOOLEXTRA,
+    render: registerGithub as any,
+  })
+})
 
 addons.register('my/region', () => {
   addons.add('my-region-addon/toolbar', {
