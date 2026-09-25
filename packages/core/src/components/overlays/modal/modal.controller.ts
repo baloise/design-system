@@ -1,4 +1,4 @@
-import { dsBrowser, getRootElement } from '@utils'
+import { attachComponent, dsBrowser, getRootElement } from '@utils'
 import { ModalController, ModalOptions } from './modal.interfaces'
 
 export type { ModalOptions, ModalController } from './modal.interfaces'
@@ -9,23 +9,26 @@ class ModalControllerImpl implements ModalController {
 
     if (options.modalWidth !== undefined) element.modalWidth = options.modalWidth
     if (options.closable !== undefined) element.closable = options.closable
-    // Slot projection requires direct light-DOM children of ds-modal, so unwrap the
-    // detached container and move its children in rather than appending it as-is.
-    if (options.component !== undefined) element.append(...Array.from(options.component.childNodes))
 
+    // Append to the document before mounting the component so a custom-element
+    // component ref connects and completes its own lifecycle (componentOnReady).
     const root = getRootElement(document)
     root.appendChild(element)
+
+    if (options.component !== undefined) {
+      await attachComponent(options.delegate, element, options.component, [], options.componentProps)
+    }
 
     await element.present()
     return element
   }
 
-  async dismiss(id?: string): Promise<void> {
+  async dismiss(id?: string, data?: unknown, role?: string): Promise<void> {
     if (!dsBrowser.hasDocument) return
 
     const selector = id ? `ds-modal#${id}` : 'ds-modal[open]'
     const modal = document.querySelector(selector) as HTMLDsModalElement | null
-    await modal?.dismiss()
+    await modal?.dismiss(data, role)
   }
 
   async dismissAll(): Promise<void> {
