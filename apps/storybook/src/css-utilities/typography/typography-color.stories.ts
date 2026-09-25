@@ -23,7 +23,7 @@ export const Colors = Story({
 
 <hr />
 
-<ds-text color="primary-light">Text with the color primary-light</ds-text>
+<ds-text color="hint">Text with the color primary-light</ds-text>
 <ds-text color="danger">Text with the color danger</ds-text>`,
   ),
 })

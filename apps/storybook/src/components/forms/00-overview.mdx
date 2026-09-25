@@ -40,7 +40,7 @@ import { Banner, GridComponent, GridComponents, Lead } from '../../../.storybook
     component="datepicker"
     pageTitle="Components/Forms/Datepicker"
   >
-    <div class="text-align-center">
+    <div className="text-align-center">
       <ds-datepicker value="2023-10-21"></ds-datepicker>
     </div>
   </GridComponent>
@@ -60,11 +60,11 @@ import { Banner, GridComponent, GridComponents, Lead } from '../../../.storybook
     pageTitle="Components/Forms/Form"
     description="The form component wraps the form section. It helps to scroll to the first invalid field after a failed submit."
   >
-    <div class="bg-purple-2 radius-lg mb-sm mt-2xl" style={{ width: '30%', height: '16px' }}></div>
-    <div class="bg-purple-2 radius mb-md" style={{ width: '100%', height: '48px' }}></div>
-    <div class="bg-purple-2 radius-lg mb-sm mt-lg" style={{ width: '30%', height: '16px' }}></div>
-    <div class="bg-purple-2 radius mb-lg" style={{ width: '100%', height: '48px' }}></div>
-    <div class="bg-purple-2 radius p-base" style={{ width: '20%', height: '48px' }}></div>
+    <div className="bg-purple-2 radius-lg mb-sm mt-2xl" style={{ width: '30%', height: '16px' }}></div>
+    <div className="bg-purple-2 radius mb-md" style={{ width: '100%', height: '48px' }}></div>
+    <div className="bg-purple-2 radius-lg mb-sm mt-lg" style={{ width: '30%', height: '16px' }}></div>
+    <div className="bg-purple-2 radius mb-lg" style={{ width: '100%', height: '48px' }}></div>
+    <div className="bg-purple-2 radius p-base" style={{ width: '20%', height: '48px' }}></div>
   </GridComponent>
   <GridComponent
     scale="1"
@@ -81,7 +81,7 @@ import { Banner, GridComponent, GridComponents, Lead } from '../../../.storybook
     pageTitle="Components/Forms/Label"
   >
     <ds-label>Label</ds-label>
-    <div class="bg-purple-2 radius" style={{ height: '48px', width: '200px' }}></div>
+    <div className="bg-purple-2 radius" style={{ height: '48px', width: '200px' }}></div>
   </GridComponent>
   <GridComponent
     scale="1"
@@ -120,7 +120,7 @@ import { Banner, GridComponent, GridComponents, Lead } from '../../../.storybook
     component="segment"
     pageTitle="Components/Forms/Segment"
   >
-    <div class="text-align-center">
+    <div className="text-align-center">
       <ds-segment value="yes">
         <ds-segment-item value="yes" label="Yes"></ds-segment-item>
         <ds-segment-item value="no" label="No"></ds-segment-item>
@@ -168,16 +168,14 @@ import { Banner, GridComponent, GridComponents, Lead } from '../../../.storybook
     pageTitle="Components/Forms/Time Input"
     description="Time Input allows to enter valid numbers for their specific index. The time value will be formatted accordingly."
   >
-    <div class="ds-field" style={{ width: '200px' }}>
-      <label class="ds-label" for="time-input-1">
+    <div className="ds-field" style={{ width: '200px' }}>
+      <label className="ds-label" htmlFor="time-input-1">
         Select a time
       </label>
-      <div class="ds-control">
-        <input type="time" id="time-input-1" class="ds-time-input" aria-describedby="time-input-help" />
+      <div className="ds-control">
+        <input type="time" id="time-input-1" className="ds-time-input" aria-describedby="time-input-help" />
       </div>
-      <p id="time-input-help" class="ds-help">
-        Select the desired time
-      </p>
+      <p id="time-input-help" className="ds-help">Select the desired time</p>
     </div>
   </GridComponent>
   <GridComponent

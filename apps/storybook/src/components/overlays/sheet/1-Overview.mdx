@@ -26,25 +26,25 @@ import { SHEET_DOC_CONFIG, getSheetTabs } from './sheet.doc-config'
 
 {/* Live, unwrapped instance (not in a Canvas) — intentional, to demonstrate the sheet's
    position: fixed "sticky" behavior against real page content while scrolling this doc. */}
-  <ds-sheet container-size="compact" class="sb-unstyled">
-    <div class="ds-stack tablet:hidden">
-      <div class="ds-stack-content">
-        <h3 class="ds-title is-4">CHF 460.60 per year</h3>
-        <p class="text-sm">incl. statutory charges</p>
+  <ds-sheet container-size="compact" className="sb-unstyled">
+    <div className="ds-stack tablet:hidden">
+      <div className="ds-stack-content">
+        <h3 className="ds-title is-4">CHF 460.60 per year</h3>
+        <p className="text-sm">incl. statutory charges</p>
       </div>
-      <div class="ds-buttons">
-        <button class="ds-button is-secondary is-square" aria-label="back"><ds-icon name="caret-left"></ds-icon></button>
-        <button class="ds-button">Select offer</button>
+      <div className="ds-buttons">
+        <button className="ds-button is-secondary is-square" aria-label="back"><ds-icon name="caret-left"></ds-icon></button>
+        <button className="ds-button">Select offer</button>
       </div>
     </div>
-    <div class="ds-stack as-row mobile:hidden">
-      <div class="ds-stack-content">
-        <h3 class="ds-title">CHF 460.60 per year</h3>
-        <p class="text-sm">incl. statutory charges</p>
+    <div className="ds-stack as-row mobile:hidden">
+      <div className="ds-stack-content">
+        <h3 className="ds-title">CHF 460.60 per year</h3>
+        <p className="text-sm">incl. statutory charges</p>
       </div>
-      <div class="ds-buttons fit-content">
-        <button class="ds-button is-secondary">back</button>
-        <button class="ds-button">Select offer</button>
+      <div className="ds-buttons fit-content">
+        <button className="ds-button is-secondary">back</button>
+        <button className="ds-button">Select offer</button>
       </div>
     </div>
 </ds-sheet>

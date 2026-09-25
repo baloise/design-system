@@ -1,5 +1,5 @@
 import React from 'react'
-import { IconButton, TooltipLinkList, WithTooltip } from 'storybook/internal/components'
+import { ToggleButton, TooltipLinkList, WithTooltip } from 'storybook/internal/components'
 import { FORCE_RE_RENDER } from 'storybook/internal/core-events'
 import { addons, useGlobals } from 'storybook/manager-api'
 
@@ -59,7 +59,7 @@ export const registerTheme: React.FC = () => {
         />
       )}
     >
-      <IconButton key="theme-toolbar" title="Select a brand (theme)" active={activeTheme !== ''}>
+      <ToggleButton key="theme-toolbar" title="Select a brand (theme)" pressed={activeTheme !== ''} ariaLabel={false}>
         <SvgIcon html={DesignSVG} />
         {/* <span
           style={{
@@ -74,7 +74,7 @@ export const registerTheme: React.FC = () => {
           }}
         /> */}
         {active.title}
-      </IconButton>
+      </ToggleButton>
     </WithTooltip>
   )
 }

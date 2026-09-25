@@ -1,5 +1,5 @@
 import React from 'react'
-import { IconButton, TooltipLinkList, WithTooltip } from 'storybook/internal/components'
+import { ToggleButton, TooltipLinkList, WithTooltip } from 'storybook/internal/components'
 import { FORCE_RE_RENDER } from 'storybook/internal/core-events'
 import { addons, useGlobals } from 'storybook/manager-api'
 
@@ -54,10 +54,15 @@ export const registerRegion: React.FC = () => {
         />
       )}
     >
-      <IconButton key="region-toolbar" title="Chose a region for the Design System" active={activeRegion !== 'CH'}>
+      <ToggleButton
+        key="region-toolbar"
+        title="Chose a region for the Design System"
+        pressed={activeRegion !== 'CH'}
+        ariaLabel={false}
+      >
         <SvgIcon html={LocationSVG} />
         <span style={{ marginLeft: 4, fontSize: '16px' }}>{active.flag}</span>
-      </IconButton>
+      </ToggleButton>
     </WithTooltip>
   )
 }

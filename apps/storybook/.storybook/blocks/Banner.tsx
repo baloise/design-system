@@ -26,7 +26,7 @@ export const Banner = ({ of, children, color, label, section, _puzzle, _tabs }):
   // const definedPuzzle = (subtitle || '').includes('Components') ? true : puzzle
   const background = isDeprecated ? 'bg-grey' : definedColor === 'primary' ? 'bg-grey-2' : `bg-${definedColor}-2`
   const text = background === 'bg-primary' ? 'text-white' : 'text-primary'
-  const className = `sb-unstyled pt-lg pb-mb ${background} ${text}`
+  const className = `sb-unstyled ${background} ${text}`
 
   // const puzzles = {
   //   green: PuzzleGreen,
@@ -47,14 +47,14 @@ export const Banner = ({ of, children, color, label, section, _puzzle, _tabs }):
           position: 'relative',
           paddingLeft: '3rem',
           paddingRight: '3rem',
+          paddingTop: '3rem',
         }}
       >
         <div className="flex gap-base" style={{ maxWidth: '1000px', margin: 'auto', position: 'relative' }}>
           <div className="flex-1">
             <span className="ds-text text-lg mb-none">{subtitle}</span>
             <h1 className={`ds-title text-4xl ${text} flex align-items-center gap-sm`}>
-              {isDeprecated ? <ds-icon color="warning-dark" name="alert-triangle" inline size="large"></ds-icon> : ''}{' '}
-              {title}
+              {isDeprecated ? <ds-icon color="warning" name="alert-triangle" inline size="lg"></ds-icon> : ''} {title}
             </h1>
             {children}
           </div>

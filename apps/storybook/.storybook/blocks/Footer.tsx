@@ -13,8 +13,10 @@ export const Footer = ({ children }) => {
         return 'https://github.com/baloise/design-system'
       }
 
-      // Remove the story variant suffix (--documentation, --page, etc.)
-      const cleanId = storyId.replace(/--\w+$/, '')
+      // Story IDs are "<kind-slug>--<story-slug>" — the kind slug itself may contain
+      // single hyphens (e.g. "what-s-new" from "What's New"), so only split on the
+      // first "--" separator rather than stripping a trailing \w+ suffix.
+      const cleanId = storyId.split('--')[0]
 
       // Look up the file path from the mapping
       const sourceFile = storyPathsMap[cleanId]
@@ -62,6 +64,9 @@ export const Footer = ({ children }) => {
               <div className="flex gap-base flex-wrap">
                 <a className="ds-link" target="_blank" href={githubEditUrl} style={{ width: 'auto' }}>
                   Edit this page on GitHub
+                </a>
+                <a className="ds-link" target="_blank" href="/llms-full.txt" style={{ width: 'auto' }}>
+                  View as plain text for LLMs
                 </a>
                 {/* <a
                   className="ds-button is-secondary"

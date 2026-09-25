@@ -10,6 +10,7 @@ import { createWriteStream, readFileSync, writeFileSync } from 'node:fs'
 import { mkdir, open } from 'node:fs/promises'
 import { dirname, join, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
+import { generateLlmsTxt } from './generate-llms-txt.mjs'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const docsRoot = resolve(__dirname, '../apps/storybook')
@@ -31,6 +32,14 @@ console.log(`
 async function indexMdxFiles() {
   console.log('🔍 Indexing MDX files for story mapping...')
   const glob = (await import('fast-glob')).default
+  // Use Storybook's own slugifier so the generated map always matches the real
+  // story IDs it builds from each file's <Meta title>. Reimplementing the
+  // slugification by hand (from the file path, or a hand-rolled sanitizer) drifts
+  // out of sync whenever a title doesn't mirror its path 1:1 — e.g. an apostrophe
+  // ("What's New" -> "what-s-new"), a singular/plural mismatch ("Colors" in
+  // foundation/color.mdx -> "foundation-colors"), or an extra title segment
+  // ("Components/Actions/Button/Variants/Overview" -> "...-variants-overview").
+  const { sanitize } = await import('storybook/internal/csf')
 
   try {
     const mdxFiles = await glob(['**/*.mdx'], {
@@ -41,20 +50,15 @@ async function indexMdxFiles() {
     const storyPathMap = {}
 
     for (const filePath of mdxFiles) {
-      // Convert file path to story ID, stripping leading numbers for sorting prefixes
-      // 01-getting-started.mdx -> getting-started
-      // foundation/02-colors.mdx -> foundation-colors
-      // changelog.mdx -> changelog
-      const storyId = filePath
-        .replace(/\.mdx$/, '') // Remove .mdx extension
-        .split('/') // Split by path separator
-        .map(segment => segment.replace(/^\d+-/, '')) // Strip leading digits and dash from each segment
-        .join('-') // Join segments with hyphen
-        .replace(/([A-Z])/g, '-$1') // Add hyphen before capitals
-        .toLowerCase() // Convert to lowercase
-        .replace(/^-/, '') // Remove leading hyphen
-        .replace(/-+/g, '-') // Collapse multiple hyphens
+      const content = readFileSync(join(docsRoot, 'src', filePath), 'utf-8')
+      const titleMatch = content.match(/<Meta[^>]*\stitle=(["'])((?:(?!\1).)*)\1/)
 
+      if (!titleMatch) {
+        console.warn(`⚠ No <Meta title="..."> found in ${filePath}, skipping`)
+        continue
+      }
+
+      const storyId = sanitize(titleMatch[2])
       storyPathMap[storyId] = filePath
     }
 
@@ -338,6 +342,9 @@ async function main() {
     console.log()
 
     await fetchContributors()
+    console.log()
+
+    await generateLlmsTxt()
     console.log()
 
     if (!serve) {

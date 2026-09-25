@@ -1,5 +1,5 @@
 import React from 'react'
-import { IconButton, TooltipLinkList, WithTooltip } from 'storybook/internal/components'
+import { ToggleButton, TooltipLinkList, WithTooltip } from 'storybook/internal/components'
 import { FORCE_RE_RENDER } from 'storybook/internal/core-events'
 import { addons, useGlobals } from 'storybook/manager-api'
 
@@ -56,14 +56,15 @@ export const registerLanguage: React.FC = () => {
         />
       )}
     >
-      <IconButton
+      <ToggleButton
         key="language-toolbar"
         title="Chose a language for the Design System"
-        active={activeLanguage !== 'de'}
+        pressed={activeLanguage !== 'de'}
+        ariaLabel={false}
       >
         <SvgIcon html={WebSVG} />
         <span style={{ marginLeft: 4 }}>{active.id.toUpperCase()}</span>
-      </IconButton>
+      </ToggleButton>
     </WithTooltip>
   )
 }

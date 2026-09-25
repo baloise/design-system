@@ -31,7 +31,7 @@ export const normalizeDeprecatedTShirtSize = <T extends string | undefined | nul
 
   const normalized = String(size).toLowerCase()
 
-  // Map old verbose sizes like "small", "normal", ... to their new short counterparts.
+  // Map old verbose sizes like "sm", "normal", ... to their new short counterparts.
   const short = verboseToShortEntries[normalized]
   if (short) {
     console.warn(`[bal] The t-shirt size "${size}" is deprecated. Please use the short value "${short}" instead.`)

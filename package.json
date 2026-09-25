@@ -120,11 +120,7 @@
     "@oxc-parser/binding-linux-x64-gnu": "0.150.0"
   },
   "lint-staged": {
-    "*.{ts,tsx}": [
-      "eslint --fix",
-      "prettier --write --end-of-line lf"
-    ],
-    "*.{js,jsx,mjs,json,md,mdx,scss,css,html,yml,yaml}": "prettier --write --end-of-line lf",
+    "*.{ts,tsx,js,jsx,mjs,json,md,mdx,scss,css,html,yml,yaml}": "prettier --write --end-of-line lf",
     "packages/core/src/**/*.{ts,tsx}": "cspell --no-progress",
     "apps/storybook/src/**/*.{md,mdx}": "cspell --no-progress"
   },

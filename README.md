@@ -78,6 +78,7 @@ Follow our [Code of Conduct](https://github.com/baloise/design-system/blob/next/
 
 - **[Documentation](https://helvetia-design.vercel.app)** — Component library, design tokens, and interactive examples in Storybook
 - **[Quick Start](https://helvetia-design.vercel.app/?path=/docs/development-getting-started--documentation)** — Get started with the design system in your project
+- **[llms.txt](https://design.baloise.dev/llms.txt)** / **[llms-full.txt](https://design.baloise.dev/llms-full.txt)** — Machine-readable component API and usage docs for AI coding tools ([llmstxt.org](https://llmstxt.org))
 - **[CHANGELOG.md](https://github.com/baloise/design-system/blob/next/CHANGELOG.md)** — Release notes, version history, and changes for each version
 - **[ARCHITECTURE.md](https://github.com/baloise/design-system/blob/next/docs/ARCHITECTURE.md)** — System design, workspace structure, component lifecycle, web components patterns, CSS variables, testing strategy
 - **[DEVELOPMENT.md](https://github.com/baloise/design-system/blob/next/docs/DEVELOPMENT.md)** — Local setup, dev servers, building, testing, troubleshooting

@@ -20,16 +20,16 @@ import { Banner, GridCategory, GridComponents, Lead } from '../../.storybook/blo
     pageTitle="Components/Actions/Overview"
     description="Components that trigger an action or event when a user interacts with them."
   >
-  <div class="ds-stack gap-md">
-  <div class="ds-stack as-row">
+  <div className="ds-stack gap-md">
+  <div className="ds-stack as-row">
       <ds-button wide>Primary</ds-button>
       <ds-button wide color="secondary">Secondary</ds-button>
   </div>
-  <div class="ds-stack as-row align-center">
+  <div className="ds-stack as-row align-center">
       <ds-close></ds-close>
-    <a class="ds-link" href="https://www.helvetia.com" target="_blank">
+    <span className="ds-link">
       Link
-    </a>
+    </span>
   </div>
   </div>
   </GridCategory>
@@ -50,7 +50,7 @@ import { Banner, GridCategory, GridComponents, Lead } from '../../.storybook/blo
           Male
         </label>
         <label className="ds-radio">
-          <input required="" type="radio" name="gender" aria-describedby="help-gender" checked />
+          <input required="" type="radio" name="gender" aria-describedby="help-gender" defaultChecked />
           Female
         </label>
       </div>
@@ -61,7 +61,7 @@ import { Banner, GridCategory, GridComponents, Lead } from '../../.storybook/blo
     <div className="ds-field">
       <label className="ds-label" htmlFor="fname">First Name</label>
       <div className="ds-control">
-        <input id="fname" className="ds-input" aria-describedby="help-fname" value="Jane" />
+        <input id="fname" className="ds-input" aria-describedby="help-fname" defaultValue="Jane" />
       </div>
       <p id="help-fname" className="ds-help">Provide the first name</p>
     </div>
@@ -71,7 +71,7 @@ import { Banner, GridCategory, GridComponents, Lead } from '../../.storybook/blo
     <div className="ds-field">
       <label className="ds-label" htmlFor="lname">Last Name</label>
       <div className="ds-control">
-        <input id="lname" className="ds-input" aria-describedby="help-lname" value="Doe" />
+        <input id="lname" className="ds-input" aria-describedby="help-lname" defaultValue="Doe" />
       </div>
       <p id="help-lname" className="ds-help">Provide the last name</p>
     </div>
@@ -104,14 +104,14 @@ import { Banner, GridCategory, GridComponents, Lead } from '../../.storybook/blo
   >
     <ds-icon name="edit" size="lg"></ds-icon>
     <ds-brand-icon src="/assets/images/brand-icons/car-purple.svg"></ds-brand-icon>
-    <ds-logo size="large"></ds-logo>
+    <ds-logo size="lg"></ds-logo>
   </GridCategory>
   <GridCategory
     label="Navigation"
     pageTitle="Components/Navigation/Overview"
     description="Navigation components help users move through an application."
   >
-  <div class="stack">
+  <div className="stack">
     <ds-tabs value="c">
       <ds-tab name="a">Apple Pie</ds-tab>
       <ds-tab name="b">Mango</ds-tab>
@@ -140,11 +140,11 @@ import { Banner, GridCategory, GridComponents, Lead } from '../../.storybook/blo
     pageTitle="Components/Overlays/Overview"
     description="Overlays display content above the main page, either temporarily or until dismissed by the user."
   >
-    <div class="stack">
-    <ds-toast color="success" heading="Success"> Your changes have been saved. </ds-toast>
+    <div className="stack">
+    <ds-toast color="success" heading="Success" message="Your changes have been saved."></ds-toast>
 
-    <div class="flex justify-content-center align-items-center p-lg">
-      <button class="ds-button is-secondary" id="grid-tooltip-basic" type="button">
+    <div className="flex justify-content-center align-items-center p-lg">
+      <button className="ds-button is-secondary" id="grid-tooltip-basic" type="button">
         Apple Pie
       </button>
       <ds-tooltip reference="grid-tooltip-basic" placement="bottom" open="true">
@@ -158,9 +158,9 @@ import { Banner, GridCategory, GridComponents, Lead } from '../../.storybook/blo
     pageTitle="Components/Structure/Overview"
     description="Structure components define layout, containers and the organization of content on the page."
   >
-  <div class="ds-stack as-row">
+  <div className="ds-stack as-row">
     <div style={{minWidth: '200px'}}>
-      <ul class="unordered-list has-bullet-circle is-purple">
+      <ul className="unordered-list has-bullet-circle is-purple">
         <li>Apple</li>
         <li>Mango</li>
         <li>Banana</li>
@@ -169,9 +169,9 @@ import { Banner, GridCategory, GridComponents, Lead } from '../../.storybook/blo
     </div>
 
 
-        <article class="ds-card is-fullheight">
-      <div class="ds-card-content ds-stack ">
-<table class="ds-table is-wide">
+        <article className="ds-card is-fullheight">
+      <div className="ds-card-content ds-stack ">
+<table className="ds-table is-wide">
   <thead>
     <tr>
       <th>Name</th>
@@ -181,19 +181,19 @@ import { Banner, GridCategory, GridComponents, Lead } from '../../.storybook/blo
   <tbody>
     <tr>
       <td>Apple</td>
-      <td><span class="ds-tag is-success is-sm">Ready</span></td>
+      <td><span className="ds-tag is-success is-sm">Ready</span></td>
     </tr>
         <tr>
       <td>Mango</td>
-      <td><span class="ds-tag is-danger is-sm">Out</span></td>
+      <td><span className="ds-tag is-danger is-sm">Out</span></td>
     </tr>
         <tr>
       <td>Banana</td>
-      <td><span class="ds-tag is-info is-sm">Ordered</span></td>
+      <td><span className="ds-tag is-info is-sm">Ordered</span></td>
     </tr>
             {/* <tr>
       <td>Strawberry</td>
-      <td><span class="ds-tag is-info is-sm">Ordered</span></td>
+      <td><span className="ds-tag is-info is-sm">Ordered</span></td>
     </tr> */}
   </tbody>
 </table>

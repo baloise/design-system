@@ -112,15 +112,18 @@ div[data-testid='tooltip'] > div > div {
   border-radius: 6px !important;
 }
 
+div[data-testid='tooltip'] a,
 div[data-testid='tooltip'] button {
   border-radius: 4px !important;
 }
 
+div[data-testid='tooltip'] a:hover,
 div[data-testid='tooltip'] button:hover {
   background: #e5e7f0;
   color: #0014aa;
 }
 
+div[data-testid='tooltip'] a:active,
 div[data-testid='tooltip'] button:active {
   background: #e5e7f0;
   color: #000739;

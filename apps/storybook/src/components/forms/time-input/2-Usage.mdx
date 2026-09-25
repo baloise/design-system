@@ -32,12 +32,12 @@ import { TIME_INPUT_DOC_CONFIG, getTimeInputTabs } from './time-input.doc-config
       title: 'Correct: Descriptive label',
       contentIsLeftAligned: true,
       content: (
-        <div class="ds-field">
-          <label class="ds-label" for="departure-time">
+        <div className="ds-field">
+          <label className="ds-label" htmlFor="departure-time">
             Departure Time
           </label>
-          <div class="ds-control">
-            <input type="time" id="departure-time" class="ds-time-input" />
+          <div className="ds-control">
+            <input type="time" id="departure-time" className="ds-time-input" />
           </div>
         </div>
       ),
@@ -48,9 +48,9 @@ import { TIME_INPUT_DOC_CONFIG, getTimeInputTabs } from './time-input.doc-config
       title: 'Incorrect: Missing or vague label',
       contentIsLeftAligned: true,
       content: (
-        <div class="ds-field">
-          <div class="ds-control">
-            <input type="time" class="ds-time-input" />
+        <div className="ds-field">
+          <div className="ds-control">
+            <input type="time" className="ds-time-input" />
           </div>
         </div>
       ),
@@ -68,14 +68,14 @@ import { TIME_INPUT_DOC_CONFIG, getTimeInputTabs } from './time-input.doc-config
       title: 'Correct: Supporting text for validation',
       contentIsLeftAligned: true,
       content: (
-        <div class="ds-field is-danger">
-          <label class="ds-label" for="meeting-time">
+        <div className="ds-field is-danger">
+          <label className="ds-label" htmlFor="meeting-time">
             Meeting Time
           </label>
-          <div class="ds-control">
-            <input type="time" id="meeting-time" class="ds-time-input" aria-invalid="true" aria-describedby="help-text" />
+          <div className="ds-control">
+            <input type="time" id="meeting-time" className="ds-time-input" aria-invalid="true" aria-describedby="help-text" />
           </div>
-          <p id="help-text" class="ds-help">
+          <p id="help-text" className="ds-help">
             Meeting must be scheduled during business hours (8 AM - 6 PM)
           </p>
         </div>
@@ -87,12 +87,12 @@ import { TIME_INPUT_DOC_CONFIG, getTimeInputTabs } from './time-input.doc-config
       title: 'Incorrect: Error without guidance',
       contentIsLeftAligned: true,
       content: (
-        <div class="ds-field is-danger">
-          <label class="ds-label" for="meeting-time">
+        <div className="ds-field is-danger">
+          <label className="ds-label" htmlFor="meeting-time">
             Meeting Time
           </label>
-          <div class="ds-control">
-            <input type="time" id="meeting-time" class="ds-time-input" aria-invalid="true" />
+          <div className="ds-control">
+            <input type="time" id="meeting-time" className="ds-time-input" aria-invalid="true" />
           </div>
         </div>
       ),

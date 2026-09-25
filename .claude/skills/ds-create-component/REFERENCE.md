@@ -349,9 +349,9 @@ The generated visual HTML file for testing variants:
       <section data-testid="sizes">
         <span>Sizes</span>
         <div class="stack as-row">
-          <ds-button size="sm" label="Small"></ds-button>
-          <ds-button size="md" label="Medium"></ds-button>
-          <ds-button size="lg" label="Large"></ds-button>
+          <ds-button size="sm" label="sm"></ds-button>
+          <ds-button size="md" label="md"></ds-button>
+          <ds-button size="lg" label="lg"></ds-button>
         </div>
       </section>
 

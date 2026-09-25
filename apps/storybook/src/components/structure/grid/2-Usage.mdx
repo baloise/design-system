@@ -29,9 +29,9 @@ import { GRID_DOC_CONFIG, getGridTabs } from './grid.doc-config'
       type: 'correct',
       title: 'Correct: Columns inside a grid',
       content: (
-        <div class="ds-grid">
-          <div class="ds-col">Column 1</div>
-          <div class="ds-col">Column 2</div>
+        <div className="ds-grid">
+          <div className="ds-col">Column 1</div>
+          <div className="ds-col">Column 2</div>
         </div>
       ),
       description: 'Every `ds-col` is a direct child of a `ds-grid` so the flex sizing rules apply correctly.',
@@ -39,7 +39,7 @@ import { GRID_DOC_CONFIG, getGridTabs } from './grid.doc-config'
     {
       type: 'incorrect',
       title: 'Incorrect: Column without a grid',
-      content: <div class="ds-col">Column without a grid</div>,
+      content: <div className="ds-col">Column without a grid</div>,
       description:
         'A `ds-col` used outside of `ds-grid` has no gap/width context and renders as a plain block element.',
     },
@@ -54,10 +54,10 @@ import { GRID_DOC_CONFIG, getGridTabs } from './grid.doc-config'
       type: 'correct',
       title: 'Correct: is-multiline for more than one row',
       content: (
-        <div class="ds-grid is-multiline">
-          <div class="ds-col is-half">1</div>
-          <div class="ds-col is-half">2</div>
-          <div class="ds-col is-half">3</div>
+        <div className="ds-grid is-multiline">
+          <div className="ds-col is-half">1</div>
+          <div className="ds-col is-half">2</div>
+          <div className="ds-col is-half">3</div>
         </div>
       ),
       description: 'Add `is-multiline` when the number of columns can exceed one row on smaller breakpoints.',
@@ -66,10 +66,10 @@ import { GRID_DOC_CONFIG, getGridTabs } from './grid.doc-config'
       type: 'incorrect',
       title: 'Incorrect: relying on default wrapping',
       content: (
-        <div class="ds-grid">
-          <div class="ds-col is-half">1</div>
-          <div class="ds-col is-half">2</div>
-          <div class="ds-col is-half">3</div>
+        <div className="ds-grid">
+          <div className="ds-col is-half">1</div>
+          <div className="ds-col is-half">2</div>
+          <div className="ds-col is-half">3</div>
         </div>
       ),
       description:

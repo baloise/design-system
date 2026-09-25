@@ -12,12 +12,12 @@ import { Banner, ButtonCard, Footer, InfoQuote, Lead, LinkCard, LinkCards, Warni
   }}
 />
 
-<Banner label="Design" />
-
-<Lead>
-  A guide for designers working with the Helvetia Design System — what it gives you, how to connect to it in Figma,
-  and where to go when you're stuck.
-</Lead>
+<Banner label="Design">
+  <Lead>
+    A guide for designers working with the Helvetia Design System — what it gives you, how to connect to it in Figma,
+    and where to go when you're stuck.
+  </Lead>
+</Banner>
 
 ## Intro
 
@@ -25,15 +25,28 @@ The Helvetia Design System (HDS) is the same source of truth designers and devel
 looks, behaves, and names things the same way whether you're in Figma or in the browser. As a designer, it gives
 you:
 
-- <a className="ds-link" onClick={() => navigate({ title: 'Tokens/Design Tokens Explained' })}><b>Design Tokens</b></a> — every color, spacing, shadow, and type value, named once and kept in sync between Figma Variables and code (see [Plugin: Toky](#plugin-toky) below).
-- <a className="ds-link" onClick={() => navigate({ title: 'Components/Overview' })}><b>Components</b></a> — 50+ accessible, framework-agnostic components (Angular, React, or plain Web Components), mirrored in Figma as reusable components with the same names and variants.
-- <a className="ds-link" onClick={() => navigate({ title: 'Foundation/Overview' })}><b>Foundation</b></a> — the shared visual principles: grid, spacing, elevation, iconography, and brand assets.
-- <a className="ds-link" onClick={() => navigate({ title: 'CSS Utilities/Overview' })}><b>CSS Utilities</b></a> — utility classes that cover everyday layout needs without custom CSS, useful context for understanding what's "free" versus custom-built.
+- <a className="ds-link" onClick={() => navigate({ title: 'Tokens/Design Tokens Explained' })}>
+    <b>Design Tokens</b>
+  </a>
+  — every color, spacing, shadow, and type value, named once and kept in sync between Figma Variables and code (see
+  [Plugin: Toky](#plugin-toky) below).
+- <a className="ds-link" onClick={() => navigate({ title: 'Components/Overview' })}>
+    <b>Components</b>
+  </a>
+  — 50+ accessible, framework-agnostic components (Angular, React, or plain Web Components), mirrored in Figma as
+  reusable components with the same names and variants.
+- <a className="ds-link" onClick={() => navigate({ title: 'Foundation/Overview' })}>
+    <b>Foundation</b>
+  </a>
+  — the shared visual principles: grid, spacing, elevation, iconography, and brand assets.
+- <a className="ds-link" onClick={() => navigate({ title: 'CSS Utilities/Overview' })}>
+    <b>CSS Utilities</b>
+  </a>
+  — utility classes that cover everyday layout needs without custom CSS, useful context for understanding what's "free"
+  versus custom-built.
 
 These building blocks are what today's separate Figma files package for specific contexts. See
 [Connect to Helvetia Figma Libraries](#connect-to-helvetia-figma-libraries) for details on each.
-
-
 
 ## Onboarding
 
@@ -50,8 +63,8 @@ New to the Helvetia Design System as a designer? Here's how to get set up:
 ## Helvetia Figma Libraries
 
 <WarningQuote>
-  Helvetia/Baloise design assets currently live across **multiple separate Figma files** rather than one unified
-  library – we're currently working on this. 
+  Helvetia/Baloise design assets currently live across **multiple separate Figma files** rather than one unified library
+  – we're currently working on this.
 </WarningQuote>
 
 <Markdown>
@@ -84,7 +97,7 @@ New to the Helvetia Design System as a designer? Here's how to get set up:
 
 ## Toky
 
-**Toky** is how design tokens stay in sync between Figma and code. 
+**Toky** is how design tokens stay in sync between Figma and code.
 
 <Unstyled>
   <div className="flex flex-wrap gap-base my-lg">
@@ -99,15 +112,13 @@ New to the Helvetia Design System as a designer? Here's how to get set up:
   </div>
 </Unstyled>
 
-
-
 Updates flow automatically from code into Figma the moment a Toky-authored change is merged — you don't need to
 manually "check for updates" for that direction. Going the other way, from a Figma edit back into code, always goes
 through a reviewed pull request, the same as any other change to the design system.
 
 <InfoQuote>
-  Toky signs you in via <b>GitHub</b>, and only lets in people added to the <b>baloise</b> GitHub organization. If
-  you get stuck at sign-in, ask <b>ux-design@helvetia.ch</b> to add you to the project first.
+  Toky signs you in via <b>GitHub</b>, and only lets in people added to the <b>baloise</b> GitHub organization. If you
+  get stuck at sign-in, ask <b>ux-design@helvetia.ch</b> to add you to the project first.
 </InfoQuote>
 
 ## Assets
@@ -121,7 +132,7 @@ Beyond components, the design system documents the visual assets behind them:
       pageTitle="Foundation/Brand Assets"
       description="Logos, imagery, and brand-approved visual elements."
     />
-    
+
   </div>
 </Unstyled>
 
@@ -130,7 +141,6 @@ For any asset that isn't covered yet, **ux-design@baloise.ch** is the right plac
 ## Connect
 
 Have a question, found something outdated, or want to suggest a change?
-
 
 - **Design questions** (Figma access, which library to use, proposing a token change) →
   **ux-design@baloise.ch**

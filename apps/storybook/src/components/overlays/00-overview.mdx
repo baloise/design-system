@@ -34,7 +34,7 @@ import { Banner, GridComponent, GridComponents, Lead } from '../../../.storybook
       }}
     ></div>
     <div
-      class="bg-white radius-lg stack p-base"
+      className="bg-white radius-lg stack p-base"
       style={{
         position: 'absolute',
         bottom: '0',
@@ -44,13 +44,11 @@ import { Banner, GridComponent, GridComponents, Lead } from '../../../.storybook
         height: '130px',
       }}
     >
-      <div class="ds-stack as-row">
-        <h4 class="ds-title ds-stack-content">Apple Pie</h4>
+      <div className="ds-stack as-row">
+        <h4 className="ds-title ds-stack-content">Apple Pie</h4>
         <ds-close></ds-close>
       </div>
-      <p class="text-sm mt-sm flex-1">
-        Apple pie, a quintessential dessert with a flaky, golden crust.
-      </p>
+      <p className="text-sm mt-sm flex-1">Apple pie, a quintessential dessert with a flaky, golden crust.</p>
     </div>
   </GridComponent>
   <GridComponent
@@ -72,7 +70,7 @@ import { Banner, GridComponent, GridComponents, Lead } from '../../../.storybook
       }}
     ></div>
     <div
-      class="bg-white radius-lg stack p-base"
+      className="bg-white radius-lg stack p-base"
       style={{
         position: 'absolute',
         top: '50%',
@@ -82,13 +80,11 @@ import { Banner, GridComponent, GridComponents, Lead } from '../../../.storybook
         height: '150px',
       }}
     >
-      <div class="ds-stack as-row">
-        <h4 class="ds-title ds-stack-content">Apple Pie</h4>
+      <div className="ds-stack as-row">
+        <h4 className="ds-title ds-stack-content">Apple Pie</h4>
         <ds-close></ds-close>
       </div>
-      <p class="text-sm mt-sm flex-1">
-        Apple pie, a quintessential dessert, combines the comforting aroma of baked apples with a flaky, golden crust.
-      </p>
+      <p className="text-sm mt-sm flex-1">Apple pie, a quintessential dessert, combines the comforting aroma of baked apples with a flaky, golden crust.</p>
     </div>
   </GridComponent>
   <GridComponent
@@ -111,10 +107,10 @@ import { Banner, GridComponent, GridComponents, Lead } from '../../../.storybook
     center
     pageTitle="Components/Overlays/Popup"
   >
-    <div class="relative" style={{ marginLeft: '-160px' }}>
+    <div className="relative" style={{ marginLeft: '-160px' }}>
       <ds-button color="primary">Apple pie</ds-button>
       <div
-        class="bg-white radius-lg stack p-base"
+        className="bg-white radius-lg stack p-base"
         style={{
           position: 'absolute',
           top: '50%',
@@ -125,7 +121,7 @@ import { Banner, GridComponent, GridComponents, Lead } from '../../../.storybook
         }}
       >
         <ds-close style={{ position: 'absolute', top: '8px', right: '8px' }}></ds-close>
-        <p class="text-sm"> Apple pie, a quintessential dessert, with a flaky, golden crust.</p>
+        <p className="text-sm"> Apple pie, a quintessential dessert, with a flaky, golden crust.</p>
       </div>
     </div>
   </GridComponent>
@@ -137,19 +133,19 @@ import { Banner, GridComponent, GridComponents, Lead } from '../../../.storybook
     fullheight
     pageTitle="Components/Overlays/Sheet"
   >
-    <div class="mx-md">
-      <div class="bg-purple-2" style={{ minHeight: '200px', width: '100%' }}></div>
+    <div className="mx-md">
+      <div className="bg-purple-2" style={{ minHeight: '200px', width: '100%' }}></div>
       <ds-sheet>
-        <div class="ds-stack">
-          <div class="ds-stack-content">
-            <h3 class="ds-title is-4">CHF 460.60 per year</h3>
-            <p class="text-sm">incl. statutory charges</p>
+        <div className="ds-stack">
+          <div className="ds-stack-content">
+            <h3 className="ds-title is-4">CHF 460.60 per year</h3>
+            <p className="text-sm">incl. statutory charges</p>
           </div>
-          <div class="ds-buttons">
-            <button class="ds-button is-secondary is-square" aria-label="back">
+          <div className="ds-buttons">
+            <button className="ds-button is-secondary is-square" aria-label="back">
               <ds-icon name="caret-left"></ds-icon>
             </button>
-            <button class="ds-button flex-1">Select offer</button>
+            <button className="ds-button flex-1">Select offer</button>
           </div>
         </div>
       </ds-sheet>
@@ -176,9 +172,7 @@ import { Banner, GridComponent, GridComponents, Lead } from '../../../.storybook
     pageTitle="Components/Overlays/Toast"
   >
     <div style={{ marginTop: '-100px' }}>
-      <ds-toast color="success" heading="Apple Pie">
-        Saved you some slice
-      </ds-toast>
+      <ds-toast color="success" heading="Apple Pie" message="Saved you some slice"></ds-toast>
     </div>
   </GridComponent>
   <GridComponent
@@ -191,10 +185,10 @@ import { Banner, GridComponent, GridComponents, Lead } from '../../../.storybook
     pageTitle="Components/Overlays/Tooltip"
   >
     <div
-      class="flex justify-content-center align-items-center p-lg"
+      className="flex justify-content-center align-items-center p-lg"
       style={{ marginTop: '-48px' }}
     >
-      <button class="ds-button is-secondary" id="tooltip-basic" type="button">
+      <button className="ds-button is-secondary" id="tooltip-basic" type="button">
         Apple Pie
       </button>
       <ds-tooltip reference="tooltip-basic" placement="bottom" open="true">
