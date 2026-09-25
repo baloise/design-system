@@ -57,7 +57,7 @@ export class DsValueAccessor<
       blurEvent: string
       valueProp: K
       // Defaults to the change event's own `detail` (see `handleChange()`) — true for every wrapper so far,
-      // since their change event's `detail` already *is* the new value. `ds-input-phone` overrides this:
+      // since their change event's `detail` already *is* the new value. `ds-phone-input` overrides this:
       // its `dsChange`'s detail is a payload object (`{ value, country, nationalNumber }`), not the bare
       // value, so it reads `element.value` directly instead — the component always commits `value` before
       // dispatching the event.

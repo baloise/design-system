@@ -281,7 +281,7 @@ folder listing, Storybook sidebar, docs. There are seven categories:
 | Category     | Components                                                                                                                                              |
 | ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `actions`    | button, close, link                                                                                                                                     |
-| `forms`      | checkbox, counter, datepicker, file-upload, form, input, input-phone, label, number-input, radio, segment, select, slider, textarea, time-input, toggle |
+| `forms`      | checkbox, counter, datepicker, file-upload, form, input, label, number-input, phone-input, radio, segment, select, slider, textarea, time-input, toggle |
 | `indicators` | badge, hint, progress-bar, spinner, tag                                                                                                                 |
 | `media`      | brand-icon, icon, logo, picture, shape                                                                                                                  |
 | `navigation` | app-navbar, pagination, steps, tabs                                                                                                                     |
@@ -603,10 +603,10 @@ danger`) shared with `ds-input`/`ds-number-input`. `bal-input-slider` had
 
 `componentWillLoad` re-derives `internalValue` by calling `valueChanged()` (the `@Watch('value')` handler itself, not a separate re-check) rather than assuming `connectedCallback`'s own `valueChanged()` call already caught the current `value` — the same "written as a property right after connecting" ordering can put a very first write in the gap between `connectedCallback` returning and `componentWillLoad` running, before the watch is reliably wired up. Calling `valueChanged()` again here reads `this.value` fresh regardless of whether the watch fired for that particular assignment.
 
-## Phone Field (ds-input-phone)
+## Phone Field (ds-phone-input)
 
-`ds-input-phone` is a form control (see
-[docs/plans/ds-input-phone-plan.md](../../docs/plans/ds-input-phone-plan.md))
+`ds-phone-input` is a form control (see
+[docs/plans/ds-phone-input-plan.md](../../docs/plans/ds-phone-input-plan.md))
 for entering an international phone number: a country picker (flag +
 calling code) paired with a national-number text field, formatted via
 `libphonenumber-js`. It is **standalone** — its own native `<input>` and
@@ -651,7 +651,7 @@ vocabulary:
   perform).
 - **Country picker** — a bespoke internal button + `aria-haspopup="listbox"`
   popup (not an extension of `ds-select`); see
-  [docs/adr/0023-ds-input-phone-bespoke-country-picker.md](../../docs/adr/0023-ds-input-phone-bespoke-country-picker.md).
+  [docs/adr/0023-ds-phone-input-bespoke-country-picker.md](../../docs/adr/0023-ds-phone-input-bespoke-country-picker.md).
   Country display names come from `Intl.DisplayNames`, keyed off the
   existing `language` `FieldInterface` prop — no shipped translation
   dataset.
@@ -661,7 +661,7 @@ vocabulary:
   `@helvetia-design/assets`, the same build-time approach as `ds-icon` — every
   country ships in every consumer's bundle, no runtime asset path or
   consumer-side asset copy needed — see
-  [docs/adr/0033-ds-input-phone-bundled-svg-flags.md](../../docs/adr/0033-ds-input-phone-bundled-svg-flags.md).
+  [docs/adr/0033-ds-phone-input-bundled-svg-flags.md](../../docs/adr/0033-ds-phone-input-bundled-svg-flags.md).
 - **No validation.** The component formats for display; it never calls
   `isValidPhoneNumber`/`isPossiblePhoneNumber` or otherwise judges
   correctness. That is application responsibility. Uses

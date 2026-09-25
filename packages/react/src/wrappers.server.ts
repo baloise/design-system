@@ -40,7 +40,7 @@ export {
   DsHintTitle,
   DsIcon,
   DsInput,
-  DsInputPhone,
+  DsPhoneInput,
   DsItem,
   DsLabel,
   DsList,

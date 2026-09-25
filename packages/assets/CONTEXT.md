@@ -45,12 +45,12 @@ Fonts are served from the distributed package and referenced via `@font-face` in
   `Flag<PascalCase(code)>` (e.g. `FlagCh`, `FlagDe`), generated into `src/flags/svg.ts` and exported
   as the `Flags` namespace from `src/flags/index.ts`, alongside a `svg.json` list of codes.
   Consistent with the `Icon<Name>`/`Icons` pattern above.
-- **Consumption** — internal only, by `ds-input-phone`'s `getFlagSvg(code)` lookup
-  (`packages/core/src/components/input-phone/flag.ts`), rendered inline the same way `ds-icon`
+- **Consumption** — internal only, by `ds-phone-input`'s `getFlagSvg(code)` lookup
+  (`packages/core/src/components/forms/phone-input/flag.ts`), rendered inline the same way `ds-icon`
   renders its icons. There is no public `<ds-flag>` element and, unlike icons, flags aren't
   registered through the overridable `DsConfig`/`updateDsIcons()`-style config path — they're a
   fixed set, not consumer-extensible. See
-  [docs/adr/0033-ds-input-phone-bundled-svg-flags.md](../../docs/adr/0033-ds-input-phone-bundled-svg-flags.md).
+  [docs/adr/0033-ds-phone-input-bundled-svg-flags.md](../../docs/adr/0033-ds-phone-input-bundled-svg-flags.md).
 
 ### Asset Metadata
 

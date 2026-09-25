@@ -102,7 +102,7 @@ These improvements help our components work seamlessly across all supported fram
 | number-input     | WC       | ✅     | ✅   | ✅   | ✅     | ✅        | ✅     | ⬜    |
 | slider           | WC       | ✅     | ✅   | ✅   | ✅     | ✅        | ✅     | ⬜    |
 | counter          | WC       | ✅     | ✅   | ✅   | ✅     | ✅        | ✅     | ⬜    |
-| input-phone      | WC       | ✅     | ✅   | ✅   | ✅     | ✅        | ✅     | ⬜    |
+| phone-input      | WC       | ✅     | ✅   | ✅   | ✅     | ✅        | ✅     | ⬜    |
 | select           | WC & CSS | ✅     | ✅   | ✅   | ✅     | ✅        | ✅     | ⬜    |
 | date             | WC       | ✅     | ✅   | ✅   | ✅     | ✅        | ✅     | ⬜    |
 | toggle           | WC & CSS | ✅     | ✅   | ✅   | ✅     | ✅        | ✅     | ⬜    |

@@ -4,7 +4,7 @@ import {
   DsButton,
   DsCheckbox,
   DsInput,
-  DsInputPhone,
+  DsPhoneInput,
   DsModalBody,
   DsModalHeader,
   Modal,
@@ -118,7 +118,7 @@ export const Root = () => {
         />
 
         <p data-testid="phone-value">Phone value: {phoneValue}</p>
-        <DsInputPhone
+        <DsPhoneInput
           data-testid="phone"
           name="smoke-test-phone"
           initialCountry="CH"
