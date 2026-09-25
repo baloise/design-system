@@ -44,6 +44,7 @@ export interface SelectPickerConfig {
   popupEl: HTMLDivElement
   shadowRoot: ShadowRoot
   triggerId: string
+  ariaLabel?: string
   language: DsLanguage
   placeholder: string
   searchable: boolean
@@ -394,8 +395,13 @@ export class SelectPickerController {
     const ssMain = this.trigger
     if (ssMain) {
       ssMain.id = this.config.triggerId
-      ssMain.setAttribute('aria-labelledby', 'label')
-      ssMain.removeAttribute('aria-label')
+      if (this.config.ariaLabel) {
+        ssMain.setAttribute('aria-label', this.config.ariaLabel)
+        ssMain.removeAttribute('aria-labelledby')
+      } else {
+        ssMain.setAttribute('aria-labelledby', 'label')
+        ssMain.removeAttribute('aria-label')
+      }
     }
 
     // <label for="..."> only focuses native labelable elements; .ss-main is a div,

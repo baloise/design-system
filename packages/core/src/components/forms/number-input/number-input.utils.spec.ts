@@ -525,4 +525,104 @@ describe('bal-number-input', () => {
       }),
     ).toBeTruthy()
   })
+
+  test('should let unreliable mobile IME key values through unblocked', () => {
+    const keys = ['Unidentified', 'Dead', 'Process', '', undefined as unknown as string]
+
+    keys.forEach(key => {
+      expect(
+        validateKeyDown({
+          key,
+          ctrlKey: false,
+          metaKey: false,
+          newValue: 'a',
+          oldValue: '',
+          selectionStart: 1,
+          selectionEnd: 1,
+          decimal: 0,
+          onlyPositive: false,
+        }),
+      ).toBeTruthy()
+    })
+  })
+
+  describe('with a locale whose decimal separator is a comma', () => {
+    beforeEach(() => {
+      ;(window as any).DesignSystem = { config: { locale: 'de-DE' } }
+    })
+
+    afterEach(() => {
+      delete (window as any).DesignSystem
+    })
+
+    test('should still accept "." as a decimal key (mobile decimal keypads emit it regardless of locale)', () => {
+      expect(
+        validateKeyDown({
+          key: '.',
+          ctrlKey: false,
+          metaKey: false,
+          newValue: '4.',
+          oldValue: '4',
+          selectionStart: 1,
+          selectionEnd: 1,
+          decimal: 2,
+          onlyPositive: false,
+        }),
+      ).toBeTruthy()
+    })
+
+    test('should accept the locale decimal separator too', () => {
+      expect(
+        validateKeyDown({
+          key: ',',
+          ctrlKey: false,
+          metaKey: false,
+          newValue: '4,',
+          oldValue: '4',
+          selectionStart: 1,
+          selectionEnd: 1,
+          decimal: 2,
+          onlyPositive: false,
+        }),
+      ).toBeTruthy()
+    })
+
+    test('should reject a second decimal point mixing "." and the locale separator', () => {
+      expect(
+        validateKeyDown({
+          key: ',',
+          ctrlKey: false,
+          metaKey: false,
+          newValue: '4.2,',
+          oldValue: '4.2',
+          selectionStart: 3,
+          selectionEnd: 3,
+          decimal: 2,
+          onlyPositive: false,
+        }),
+      ).toBeFalsy()
+    })
+
+    test('should enforce the decimal length limit after a "." separator', () => {
+      expect(
+        validateKeyDown({
+          key: '9',
+          ctrlKey: false,
+          metaKey: false,
+          newValue: '1.429',
+          oldValue: '1.42',
+          selectionStart: 5,
+          selectionEnd: 5,
+          decimal: 2,
+          onlyPositive: false,
+        }),
+      ).toBeFalsy()
+    })
+
+    test('should count "." as a decimal separator when limiting to one', () => {
+      expect(countDecimalSeparators('4.2,')).toBe(2)
+      expect(countDecimalSeparators('4.2')).toBe(1)
+      expect(countDecimalSeparators('4,2')).toBe(1)
+    })
+  })
 })

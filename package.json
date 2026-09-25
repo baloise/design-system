@@ -10,6 +10,7 @@
   },
   "scripts": {
     "preinstall": "npx only-allow pnpm",
+    "prepare": "husky",
     "_dev": "====================================================== Development ================================================",
     "start": "turbo run build --filter=@helvetia-design/styles && pnpm --filter @helvetia-design/core start",
     "start-two": "turbo run build --filter=@helvetia-design/styles && pnpm --filter @helvetia-design/core start-two",
@@ -78,6 +79,7 @@
     "@typescript-eslint/utils": "catalog:",
     "@vitest/ui": "4.1.11",
     "archiver": "8.0.0",
+    "change-case": "5.4.4",
     "compression": "catalog:",
     "country-flag-icons": "^1.6.20",
     "cross-env": "7.0.3",
@@ -85,17 +87,18 @@
     "dotenv": "18.0.0",
     "eslint": "catalog:",
     "eslint-config-prettier": "10.1.8",
-    "change-case": "5.4.4",
     "eslint-plugin-playwright": "2.12.0",
     "express": "catalog:",
     "fast-deep-equal": "catalog:",
     "fast-glob": "3.3.3",
     "fs-extra": "catalog:",
     "glob": "13.0.6",
+    "husky": "^9.1.7",
     "js-yaml": "5.4.2",
     "jsdom": "30.1.0",
     "jsonc-eslint-parser": "3.3.0",
     "kill-port": "2.0.1",
+    "lint-staged": "^17.5.1",
     "lodash": "catalog:",
     "prettier": "3.9.8",
     "prompts": "2.4.2",
@@ -115,6 +118,15 @@
   "optionalDependencies": {
     "@oxc-parser/binding-linux-arm64-gnu": "0.150.0",
     "@oxc-parser/binding-linux-x64-gnu": "0.150.0"
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "eslint --fix",
+      "prettier --write --end-of-line lf"
+    ],
+    "*.{js,jsx,mjs,json,md,mdx,scss,css,html,yml,yaml}": "prettier --write --end-of-line lf",
+    "packages/core/src/**/*.{ts,tsx}": "cspell --no-progress",
+    "apps/storybook/src/**/*.{md,mdx}": "cspell --no-progress"
   },
   "pnpm": {
     "_comment": "overrides below kept in sync with pnpm-workspace.yaml — required for Vercel installs. See docs/adr/0005-duplicate-pnpm-overrides.md",

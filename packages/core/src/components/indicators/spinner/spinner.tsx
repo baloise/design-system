@@ -214,7 +214,7 @@ export class Spinner implements DsComponentInterface, DsConfigObserver {
         return resolve()
       } else {
         rOnLoad(async () => {
-          import(/* @vite-ignore */ './spinner.animation')
+          import('./spinner.animation')
             .then(module => {
               this.animationFunction = module.animate
               resolve()

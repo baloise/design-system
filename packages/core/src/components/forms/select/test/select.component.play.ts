@@ -241,3 +241,51 @@ test.describe('form reset', () => {
     await select.assertValue('Italy')
   })
 })
+
+test.describe('slotted options', () => {
+  test('should not throw when the currently selected slotted option is removed', async ({ page }) => {
+    await page.mount(`
+      <ds-select label="Sport">
+        <ds-select-option value="running">Running</ds-select-option>
+        <ds-select-option value="climbing">Climbing</ds-select-option>
+        <ds-select-option value="surfing">Surfing</ds-select-option>
+      </ds-select>
+    `)
+    const select = new DsSelect(page.locator('ds-select'))
+    const pageErrors: string[] = []
+    page.on('pageerror', error => pageErrors.push(error.message))
+
+    await select.select('Running')
+    await select.assertValue('Running')
+
+    // Mirrors baloise/design-system#1879: a consumer re-filtering slotted
+    // ds-select-option children (e.g. React state-driven filtering) can remove
+    // the option that is currently selected.
+    await select.el.evaluate(el => {
+      el.querySelector('ds-select-option[value="running"]')?.remove()
+    })
+    await page.waitForChanges()
+
+    expect(pageErrors).toEqual([])
+  })
+})
+
+test.describe('aria-label', () => {
+  test('should use the label prop as the accessible name by default', async ({ page }) => {
+    await page.mount(`<ds-select label="Country"></ds-select>`)
+    const select = new DsSelect(page.locator('ds-select'))
+    await setOptions(page, select.el, COUNTRY_OPTIONS)
+
+    await expect(select.trigger).toHaveAttribute('aria-labelledby', 'label')
+    await expect(select.trigger).not.toHaveAttribute('aria-label')
+  })
+
+  test('should let a consumer-provided aria-label override the accessible name', async ({ page }) => {
+    await page.mount(`<ds-select label="Country" aria-label="Custom name"></ds-select>`)
+    const select = new DsSelect(page.locator('ds-select'))
+    await setOptions(page, select.el, COUNTRY_OPTIONS)
+
+    await expect(select.trigger).toHaveAttribute('aria-label', 'Custom name')
+    await expect(select.trigger).not.toHaveAttribute('aria-labelledby')
+  })
+})

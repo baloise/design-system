@@ -7,11 +7,51 @@ import {
   DsPhoneInput,
   DsModalBody,
   DsModalHeader,
+  DsSelect,
+  DsSelectOption,
   Modal,
   useModal,
   useSnackbar,
   useToast,
 } from '@helvetia-design/react'
+
+const SPORT_OPTIONS = [
+  { key: 'running', value: 'Running' },
+  { key: 'climbing', value: 'Climbing' },
+  { key: 'surfing', value: 'Surfing' },
+]
+
+const SelectFilterDemo = () => {
+  const [selectedSport, setSelectedSport] = useState<string>()
+
+  return (
+    <section>
+      <h2>Select filter demo (issue #1879)</h2>
+
+      <label htmlFor="sport1">Sport 1</label>
+      <DsSelect
+        data-testid="sport1"
+        name="sport1"
+        onDsChange={event => setSelectedSport(event.detail as unknown as string)}
+      >
+        {SPORT_OPTIONS.map(option => (
+          <DsSelectOption key={option.key} value={option.key}>
+            {option.value}
+          </DsSelectOption>
+        ))}
+      </DsSelect>
+
+      <label htmlFor="sport2">Sport 2</label>
+      <DsSelect data-testid="sport2" name="sport2">
+        {SPORT_OPTIONS.filter(option => option.key !== selectedSport).map(option => (
+          <DsSelectOption key={option.key} value={option.key}>
+            {option.value}
+          </DsSelectOption>
+        ))}
+      </DsSelect>
+    </section>
+  )
+}
 
 const OverlayDemos = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -132,6 +172,8 @@ export const Root = () => {
         </DsCheckbox>
 
         <OverlayDemos />
+
+        <SelectFilterDemo />
       </main>
     </DsRootProvider>
   )
