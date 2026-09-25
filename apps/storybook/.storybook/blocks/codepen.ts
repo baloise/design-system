@@ -5,7 +5,7 @@
  * @param html - The rendered story HTML (body content only)
  */
 export const openInCodePen = (html: string): void => {
-  const DESIGN_SYSTEM_VERSION = '0.0.0'
+  const DESIGN_SYSTEM_VERSION = '1.0.0'
   const JS_DELIVR = 'https://cdn.jsdelivr.net/npm/'
 
   const payload: Record<string, string> = {

@@ -1,6 +1,6 @@
 {
   "name": "@helvetia/ds-skills",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Installer CLI that copies Claude Code skills for migrating from the Baloise Design System to the Helvetia Design System.",
   "repository": {
     "type": "git",
