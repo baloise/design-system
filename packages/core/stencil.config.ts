@@ -1,7 +1,7 @@
 import { Config } from '@stencil/core'
 import { sass } from '@stencil/sass'
 import fg from 'fast-glob'
-import { mkdir, readFile, writeFile } from 'fs/promises'
+import { mkdir, writeFile } from 'fs/promises'
 import { join, parse, resolve } from 'path'
 
 import { webOutputTarget } from 'libs-output-target-web'
