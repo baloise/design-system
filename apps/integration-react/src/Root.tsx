@@ -34,7 +34,7 @@ const SelectFilterDemo = () => {
         onDsChange={event => setSelectedSport(event.detail as unknown as string)}
       >
         {SPORT_OPTIONS.map(option => (
-          <DsSelectOption key={option.key} value={option.key} label={option.value}>
+          <DsSelectOption key={option.key} value={option.key}>
             {option.value}
           </DsSelectOption>
         ))}
@@ -43,7 +43,7 @@ const SelectFilterDemo = () => {
       <label htmlFor="sport2">Sport 2</label>
       <DsSelect data-testid="sport2" name="sport2">
         {SPORT_OPTIONS.filter(option => option.key !== selectedSport).map(option => (
-          <DsSelectOption key={option.key} value={option.key} label={option.value}>
+          <DsSelectOption key={option.key} value={option.key}>
             {option.value}
           </DsSelectOption>
         ))}
