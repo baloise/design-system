@@ -25,7 +25,7 @@ Distribution is `npx @helvetia/ds-skills@next add`. There is no Claude Code plug
 
 ### One `migration.md` per component
 
-**Components** is a file-driven submenu. `SKILL.md` lists `components/*.md` and `components/*/migration.md` by the first heading and dispatches to that file. The menu control logic stays fixed.
+**Components** offers two paths. **Manual** lists `components/*.md` and `components/*/migration.md` by the first heading. **Detect** runs `scripts/scan-migratable.mjs` and suggests only used `bal-*` components with a matching `components/<name>/migration.md`. Both paths dispatch to that migration file.
 
 ### Adding the next component
 
@@ -33,7 +33,7 @@ Paths below are inside `skills/ds-migrate-from-baloise/`.
 
 1. Add `components/<name>/migration.md`. The first heading is the menu title.
 2. Write the confirm-then-rewrite steps and the prop mapping in that file. When the component needs a finder, add a dependency-free `scripts/scan-bal-<name>.mjs` that prints JSON findings and does not edit files, and invoke it from the migration file.
-3. Stop there. The **Components** section already lists every `migration.md` in that directory, so a new file shows up in the picker on its own.
+3. Stop there. **Manual** lists the new file automatically. **Detect** suggests it automatically when the consumer project uses the matching component.
 
 Spinner is the template: `components/spinner/migration.md` (heading `spinner`) and `scripts/scan-bal-spinner.mjs`. The agent rewrites matches after one bulk confirmation. The script does not edit files.
 
@@ -88,11 +88,13 @@ Done when:
 
 ### Menu (Claude)
 
-In the scratch directory, invoke `/ds-migrate-from-baloise`. Done when Init runs `scripts/detect-baloise.mjs`, Components lists **spinner** from the first heading of `components/spinner/migration.md`, and CSS utils / Assets report "coming soon" and stop.
+In the scratch directory, invoke `/ds-migrate-from-baloise`. Done when Init runs `scripts/detect-baloise.mjs`, Components offers **Manual** and **Detect**, Manual lists **spinner** from the first heading of `components/spinner/migration.md`, Detect suggests spinner only when the project uses it, and CSS utils / Assets report "coming soon" and stop.
 
 Against a project with no `@baloise/ds-*` dependency and no CSS/JS import, Init says "no Baloise Design System installation detected, nothing to migrate" and does not edit files. Against a project that has both, Init adds the `@helvetia/*` aliases from the script JSON, runs that JSON's `installCommand`, inserts the new import beside the untouched `@baloise/*` import, and leaves the result unstaged.
 
 Spinner: `node <skill>/scripts/scan-bal-spinner.mjs <project>` prints JSON findings (`total`, then `files` with `line` and `snippet`) and does not edit files. After one yes, the agent rewrites from `components/spinner/migration.md` and leaves the result unstaged.
+
+Detection: `node <skill>/scripts/scan-migratable.mjs <project>` prints used components grouped into `suggested` (migration available) and `notYet` (no migration available), with usage totals, and does not edit files.
 
 ## Related Contexts
 
