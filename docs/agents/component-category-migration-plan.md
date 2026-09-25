@@ -22,7 +22,7 @@ it does, not who consumes it (e.g. `app-navbar` lives under `navigation/`, not u
 | Category   | Components                                                                                                                                        |
 | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Actions    | button, close, link                                                                                                                               |
-| Forms      | checkbox, counter, date, file-upload, form, input, input-phone, label, number-input, radio, segment, select, slider, textarea, time-input, toggle |
+| Forms      | checkbox, counter, date, file-upload, form, input, label, number-input, phone-input, radio, segment, select, slider, textarea, time-input, toggle |
 | Indicators | badge, hint, progress-bar, spinner, tag                                                                                                           |
 | Media      | brand-icon, icon, logo, picture, shape                                                                                                            |
 | Navigation | app-navbar, pagination, steps, tabs                                                                                                               |

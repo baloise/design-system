@@ -1,4 +1,4 @@
-import { mkdir, readFile, writeFile } from 'fs/promises'
+import { cp, mkdir, readFile, writeFile } from 'fs/promises'
 import { glob } from 'glob'
 import { createRequire } from 'module'
 import { dirname, join, parse, resolve } from 'path'
@@ -23,7 +23,22 @@ const coreRoot = resolve(__dirname, '../packages/core')
 const NEWLINE = '\n'
 
 const SVG_GROUND_COLOR = '#000D6E'
-const SUB_PACKAGES = ['maps', 'icons', 'brand-icons']
+const SUB_PACKAGES = ['maps', 'icons', 'brand-icons', 'flags']
+
+// `flags` has no hand-authored SVGs of its own — its source of truth is the `country-flag-icons`
+// npm package (see docs/adr/0033-ds-phone-input-bundled-svg-flags.md). Syncing it into
+// `packages/assets/src/flags/svg` before the normal scan/optimize/write pipeline runs lets it reuse
+// that pipeline unchanged, and keeps the checked-in `svg/*.svg` files in sync with the dependency
+// instead of a manually maintained copy.
+async function syncFlagSources() {
+  const countryFlagIconsPkg = require.resolve('country-flag-icons/package.json')
+  const src = join(dirname(countryFlagIconsPkg), '3x2')
+  const dest = join(assetsRoot, 'src', 'flags', 'svg')
+  await mkdir(dest, { recursive: true })
+  // The `3x2` folder also ships a `flags.css`/`flags.zip` sprite bundle we don't want — only the
+  // individual per-country SVGs matter for this pipeline.
+  await cp(src, dest, { recursive: true, filter: source => !source.endsWith('.css') && !source.endsWith('.zip') })
+}
 
 async function scan(pattern) {
   return glob(pattern.replace(/\\/g, '/'))
@@ -73,6 +88,8 @@ async function processSubPackage(subPackage) {
   await writeFile(join(subPackageRoot, 'svg.ts'), buildJsOutput(subPackage, svgs))
   await writeFile(join(subPackageRoot, 'svg.json'), JSON.stringify([...svgs.keys()], undefined, 2))
 }
+
+await syncFlagSources()
 
 for (const subPackage of SUB_PACKAGES) {
   await processSubPackage(subPackage)

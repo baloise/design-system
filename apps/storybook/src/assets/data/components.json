@@ -29666,10 +29666,10 @@
         "ds-file-upload",
         "ds-hint",
         "ds-input",
-        "ds-input-phone",
         "ds-item",
         "ds-number-input",
         "ds-pagination",
+        "ds-phone-input",
         "ds-radio-group",
         "ds-segment",
         "ds-select",
@@ -29719,9 +29719,6 @@
         "ds-input": [
           "ds-icon"
         ],
-        "ds-input-phone": [
-          "ds-icon"
-        ],
         "ds-item": [
           "ds-icon"
         ],
@@ -29729,6 +29726,9 @@
           "ds-icon"
         ],
         "ds-pagination": [
+          "ds-icon"
+        ],
+        "ds-phone-input": [
           "ds-icon"
         ],
         "ds-radio-group": [
@@ -32341,1312 +32341,6 @@
           {
             "name": "assertToBeDisabled",
             "params": [],
-            "docs": ""
-          }
-        ]
-      },
-      "type": "web-component"
-    },
-    {
-      "fileName": "input-phone.tsx",
-      "tag": "ds-input-phone",
-      "overview": "Input phone renders an international phone number field with a country picker\n(flag + calling code) and a national-number input that live-formats as the user types.",
-      "usage": {},
-      "docs": "Input phone renders an international phone number field with a country picker\n(flag + calling code) and a national-number input that live-formats as the user types.",
-      "docsTags": [
-        {
-          "name": "slot",
-          "text": "invalid-text - Overrides the `invalidText` prop with custom markup, shown instead of the description when `invalid` is `true`."
-        },
-        {
-          "name": "part",
-          "text": "inner - The inner wrapper element containing label, control, and description."
-        },
-        {
-          "name": "part",
-          "text": "label - The label element."
-        },
-        {
-          "name": "part",
-          "text": "control - The control container wrapping the country trigger and number field."
-        },
-        {
-          "name": "part",
-          "text": "description - The description / validation message element."
-        },
-        {
-          "name": "part",
-          "text": "input - The native HTML input element for the national number."
-        },
-        {
-          "name": "part",
-          "text": "country-trigger - The country picker trigger button."
-        }
-      ],
-      "encapsulation": "shadow",
-      "dependents": [],
-      "dependencies": [
-        "ds-spinner",
-        "ds-icon"
-      ],
-      "dependencyGraph": {
-        "ds-input-phone": [
-          "ds-spinner",
-          "ds-icon"
-        ]
-      },
-      "props": [
-        {
-          "name": "color",
-          "type": "\"danger\" | \"primary\" | \"success\" | \"warning\"",
-          "complexType": {
-            "original": "InputColor",
-            "resolved": "\"danger\" | \"primary\" | \"success\" | \"warning\"",
-            "references": {
-              "InputColor": {
-                "location": "import",
-                "path": "../input/input.interfaces",
-                "id": "src/components/forms/input/input.interfaces.ts::InputColor",
-                "referenceLocation": "InputColor"
-              }
-            }
-          },
-          "mutable": false,
-          "attr": "color",
-          "reflectToAttr": false,
-          "docs": "Defines the color of the input. The default value is `primary`.",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "'primary'"
-            }
-          ],
-          "default": "'primary'",
-          "values": [
-            {
-              "value": "danger",
-              "type": "string"
-            },
-            {
-              "value": "primary",
-              "type": "string"
-            },
-            {
-              "value": "success",
-              "type": "string"
-            },
-            {
-              "value": "warning",
-              "type": "string"
-            }
-          ],
-          "optional": false,
-          "required": false,
-          "getter": false,
-          "setter": false
-        },
-        {
-          "name": "countries",
-          "type": "string | string[] | undefined",
-          "complexType": {
-            "original": "string | string[] | undefined",
-            "resolved": "string | string[] | undefined",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "countries",
-          "reflectToAttr": false,
-          "docs": "Allow-list of ISO 3166-1 alpha-2 country codes. Accepts a comma-separated\nstring or a string array. `undefined` / empty shows every country.",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "undefined"
-            }
-          ],
-          "default": "undefined",
-          "values": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "string[]"
-            },
-            {
-              "type": "undefined"
-            }
-          ],
-          "optional": false,
-          "required": false,
-          "getter": false,
-          "setter": false
-        },
-        {
-          "name": "country",
-          "type": "string | undefined",
-          "complexType": {
-            "original": "string",
-            "resolved": "string | undefined",
-            "references": {}
-          },
-          "mutable": true,
-          "attr": "country",
-          "reflectToAttr": false,
-          "docs": "Live / controlled selected country (ISO 3166-1 alpha-2).",
-          "docsTags": [],
-          "values": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "undefined"
-            }
-          ],
-          "optional": true,
-          "required": false,
-          "getter": false,
-          "setter": false
-        },
-        {
-          "name": "description",
-          "type": "string",
-          "complexType": {
-            "original": "string",
-            "resolved": "string",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "description",
-          "reflectToAttr": false,
-          "docs": "The description of the input, which is displayed below the input field.",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "''"
-            }
-          ],
-          "default": "''",
-          "values": [
-            {
-              "type": "string"
-            }
-          ],
-          "optional": false,
-          "required": false,
-          "getter": false,
-          "setter": false
-        },
-        {
-          "name": "disabled",
-          "type": "boolean",
-          "complexType": {
-            "original": "boolean",
-            "resolved": "boolean",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "disabled",
-          "reflectToAttr": false,
-          "docs": "If `true`, the element is not mutable, focusable, or even submitted with the form.",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "false"
-            }
-          ],
-          "default": "false",
-          "values": [
-            {
-              "type": "boolean"
-            }
-          ],
-          "optional": false,
-          "required": false,
-          "getter": false,
-          "setter": false
-        },
-        {
-          "name": "initialCountry",
-          "type": "string | undefined",
-          "complexType": {
-            "original": "string",
-            "resolved": "string | undefined",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "initial-country",
-          "reflectToAttr": false,
-          "docs": "Uncontrolled seed for the starting country. Read once during first load.",
-          "docsTags": [],
-          "values": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "undefined"
-            }
-          ],
-          "optional": true,
-          "required": false,
-          "getter": false,
-          "setter": false
-        },
-        {
-          "name": "invalid",
-          "type": "boolean",
-          "complexType": {
-            "original": "boolean",
-            "resolved": "boolean",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "invalid",
-          "reflectToAttr": false,
-          "docs": "If `true` the component gets a invalid style.",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "false"
-            }
-          ],
-          "default": "false",
-          "values": [
-            {
-              "type": "boolean"
-            }
-          ],
-          "optional": false,
-          "required": false,
-          "getter": false,
-          "setter": false
-        },
-        {
-          "name": "invalidText",
-          "type": "string",
-          "complexType": {
-            "original": "string",
-            "resolved": "string",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "invalid-text",
-          "reflectToAttr": false,
-          "docs": "The text to display when the input is in an invalid state.",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "''"
-            }
-          ],
-          "default": "''",
-          "values": [
-            {
-              "type": "string"
-            }
-          ],
-          "optional": false,
-          "required": false,
-          "getter": false,
-          "setter": false
-        },
-        {
-          "name": "label",
-          "type": "string",
-          "complexType": {
-            "original": "string",
-            "resolved": "string",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "label",
-          "reflectToAttr": false,
-          "docs": "The label of the input, which is displayed above the input field.",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "''"
-            }
-          ],
-          "default": "''",
-          "values": [
-            {
-              "type": "string"
-            }
-          ],
-          "optional": false,
-          "required": false,
-          "getter": false,
-          "setter": false
-        },
-        {
-          "name": "name",
-          "type": "string",
-          "complexType": {
-            "original": "string",
-            "resolved": "string",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "name",
-          "reflectToAttr": true,
-          "docs": "The name of the control, which is submitted with the form data.",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "this.inputId"
-            }
-          ],
-          "default": "this.inputId",
-          "values": [
-            {
-              "type": "string"
-            }
-          ],
-          "optional": false,
-          "required": false,
-          "getter": false,
-          "setter": false
-        },
-        {
-          "name": "placeholder",
-          "type": "string",
-          "complexType": {
-            "original": "string",
-            "resolved": "string",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "placeholder",
-          "reflectToAttr": false,
-          "docs": "Instructional text that shows before the number field has a value.",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "''"
-            }
-          ],
-          "default": "''",
-          "values": [
-            {
-              "type": "string"
-            }
-          ],
-          "optional": false,
-          "required": false,
-          "getter": false,
-          "setter": false
-        },
-        {
-          "name": "readonly",
-          "type": "boolean",
-          "complexType": {
-            "original": "boolean",
-            "resolved": "boolean",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "readonly",
-          "reflectToAttr": false,
-          "docs": "If `true` the element can not be mutated, meaning the user can not edit the control.\nThe country picker is disabled; the number field stays focusable and selectable.",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "false"
-            }
-          ],
-          "default": "false",
-          "values": [
-            {
-              "type": "boolean"
-            }
-          ],
-          "optional": false,
-          "required": false,
-          "getter": false,
-          "setter": false
-        },
-        {
-          "name": "required",
-          "type": "boolean",
-          "complexType": {
-            "original": "boolean",
-            "resolved": "boolean",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "required",
-          "reflectToAttr": false,
-          "docs": "If `true`, the user must fill in a value before submitting a form.",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "true"
-            }
-          ],
-          "default": "true",
-          "values": [
-            {
-              "type": "boolean"
-            }
-          ],
-          "optional": false,
-          "required": false,
-          "getter": false,
-          "setter": false
-        },
-        {
-          "name": "value",
-          "type": "null | string",
-          "complexType": {
-            "original": "string | null",
-            "resolved": "null | string",
-            "references": {}
-          },
-          "mutable": true,
-          "attr": "value",
-          "reflectToAttr": true,
-          "docs": "The canonical phone number value in E.164 format (e.g. `+41791234567`).",
-          "docsTags": [
-            {
-              "name": "default",
-              "text": "null"
-            }
-          ],
-          "default": "null",
-          "values": [
-            {
-              "type": "null"
-            },
-            {
-              "type": "string"
-            }
-          ],
-          "optional": false,
-          "required": false,
-          "getter": false,
-          "setter": false
-        }
-      ],
-      "methods": [
-        {
-          "name": "getInputElement",
-          "returns": {
-            "type": "Promise<HTMLInputElement | undefined>",
-            "docs": ""
-          },
-          "complexType": {
-            "signature": "() => Promise<HTMLInputElement | undefined>",
-            "parameters": [],
-            "references": {
-              "Promise": {
-                "location": "global",
-                "id": "global::Promise"
-              },
-              "HTMLInputElement": {
-                "location": "global",
-                "id": "global::HTMLInputElement"
-              }
-            },
-            "return": "Promise<HTMLInputElement | undefined>"
-          },
-          "signature": "getInputElement() => Promise<HTMLInputElement | undefined>",
-          "parameters": [],
-          "docs": "Returns the native `<input>` element used under the hood.",
-          "docsTags": []
-        },
-        {
-          "name": "setFocus",
-          "returns": {
-            "type": "Promise<void>",
-            "docs": ""
-          },
-          "complexType": {
-            "signature": "() => Promise<void>",
-            "parameters": [],
-            "references": {
-              "Promise": {
-                "location": "global",
-                "id": "global::Promise"
-              }
-            },
-            "return": "Promise<void>"
-          },
-          "signature": "setFocus() => Promise<void>",
-          "parameters": [],
-          "docs": "Sets focus on the national-number field.",
-          "docsTags": []
-        }
-      ],
-      "events": [
-        {
-          "event": "dsBlur",
-          "detail": "FocusEvent",
-          "bubbles": true,
-          "complexType": {
-            "original": "FocusEvent",
-            "resolved": "FocusEvent",
-            "references": {
-              "FocusEvent": {
-                "location": "global",
-                "id": "global::FocusEvent"
-              }
-            }
-          },
-          "cancelable": true,
-          "composed": true,
-          "docs": "Emitted when the number field loses focus.",
-          "docsTags": []
-        },
-        {
-          "event": "dsChange",
-          "detail": "{ value: string | null; country: string; nationalNumber: string; }",
-          "bubbles": true,
-          "complexType": {
-            "original": "PhoneChangeDetail",
-            "resolved": "{ value: string | null; country: string; nationalNumber: string; }",
-            "references": {
-              "PhoneChangeDetail": {
-                "location": "import",
-                "path": "./input-phone.interfaces",
-                "id": "src/components/forms/input-phone/input-phone.interfaces.ts::PhoneChangeDetail",
-                "referenceLocation": "PhoneChangeDetail"
-              }
-            }
-          },
-          "cancelable": true,
-          "composed": true,
-          "docs": "Emitted when the number field blurs, after the blur-time reformat.",
-          "docsTags": []
-        },
-        {
-          "event": "dsCountryChange",
-          "detail": "{ country: string; }",
-          "bubbles": true,
-          "complexType": {
-            "original": "PhoneCountryChangeDetail",
-            "resolved": "{ country: string; }",
-            "references": {
-              "PhoneCountryChangeDetail": {
-                "location": "import",
-                "path": "./input-phone.interfaces",
-                "id": "src/components/forms/input-phone/input-phone.interfaces.ts::PhoneCountryChangeDetail",
-                "referenceLocation": "PhoneCountryChangeDetail"
-              }
-            }
-          },
-          "cancelable": true,
-          "composed": true,
-          "docs": "Emitted when the selected country changes through the picker.",
-          "docsTags": []
-        },
-        {
-          "event": "dsFocus",
-          "detail": "FocusEvent",
-          "bubbles": true,
-          "complexType": {
-            "original": "FocusEvent",
-            "resolved": "FocusEvent",
-            "references": {
-              "FocusEvent": {
-                "location": "global",
-                "id": "global::FocusEvent"
-              }
-            }
-          },
-          "cancelable": true,
-          "composed": true,
-          "docs": "Emitted when the number field receives focus.",
-          "docsTags": []
-        },
-        {
-          "event": "dsInput",
-          "detail": "{ value: string | null; country: string; nationalNumber: string; }",
-          "bubbles": true,
-          "complexType": {
-            "original": "PhoneInputDetail",
-            "resolved": "{ value: string | null; country: string; nationalNumber: string; }",
-            "references": {
-              "PhoneInputDetail": {
-                "location": "import",
-                "path": "./input-phone.interfaces",
-                "id": "src/components/forms/input-phone/input-phone.interfaces.ts::PhoneInputDetail",
-                "referenceLocation": "PhoneInputDetail"
-              }
-            }
-          },
-          "cancelable": true,
-          "composed": true,
-          "docs": "Emitted on every keystroke or paste in the number field, after live formatting is applied.",
-          "docsTags": []
-        }
-      ],
-      "styles": [
-        {
-          "name": "--input-phone-color",
-          "docs": "Text color inside the number field."
-        },
-        {
-          "name": "--input-phone-placeholder",
-          "docs": "Placeholder text color."
-        },
-        {
-          "name": "--input-phone-family",
-          "docs": "Font family of the number field text."
-        },
-        {
-          "name": "--input-phone-weight",
-          "docs": "Font weight of the number field text."
-        },
-        {
-          "name": "--input-phone-size",
-          "docs": "Font size of the number field text."
-        },
-        {
-          "name": "--input-phone-line-height",
-          "docs": "Line height of the number field text."
-        },
-        {
-          "name": "--input-phone-flag-width",
-          "docs": "Width of the country flag."
-        },
-        {
-          "name": "--input-phone-flag-height",
-          "docs": "Height of the country flag."
-        },
-        {
-          "name": "--input-phone-flag-empty-background",
-          "docs": "Background color of the flag placeholder when no country is selected."
-        },
-        {
-          "name": "--input-phone-flag-empty-radius",
-          "docs": "Border radius of the flag placeholder when no country is selected."
-        },
-        {
-          "name": "--input-phone-popup-width",
-          "docs": "Width of the country picker popup."
-        },
-        {
-          "name": "--input-phone-popup-background",
-          "docs": "Background color of the country picker popup."
-        },
-        {
-          "name": "--input-phone-popup-shadow",
-          "docs": "Box shadow of the country picker popup."
-        },
-        {
-          "name": "--input-phone-popup-padding",
-          "docs": "Padding of the country picker popup."
-        },
-        {
-          "name": "--input-phone-popup-radius",
-          "docs": "Border radius of the country picker popup."
-        },
-        {
-          "name": "--input-phone-popup-border",
-          "docs": "Border of the country picker popup."
-        },
-        {
-          "name": "--input-phone-filter-placeholder-color",
-          "docs": "Placeholder text color of the country filter input."
-        },
-        {
-          "name": "--input-phone-scrollbar-color",
-          "docs": "Color of the country list scrollbar."
-        },
-        {
-          "name": "--input-phone-scrollbar-radius",
-          "docs": "Border radius of the country list scrollbar thumb."
-        },
-        {
-          "name": "--input-phone-scrollbar-border-width",
-          "docs": "Border width of the country list scrollbar thumb."
-        },
-        {
-          "name": "--input-phone-option-color",
-          "docs": "Text color of a country option."
-        },
-        {
-          "name": "--input-phone-option-background",
-          "docs": "Background color of a country option."
-        },
-        {
-          "name": "--input-phone-option-hover-background",
-          "docs": "Background color of a hovered or keyboard-active country option."
-        },
-        {
-          "name": "--input-phone-option-selected-background",
-          "docs": "Background color of the selected country option."
-        },
-        {
-          "name": "--input-phone-option-border",
-          "docs": "Border color between country options."
-        },
-        {
-          "name": "--input-phone-option-radius",
-          "docs": "Border radius of a country option."
-        },
-        {
-          "name": "--form-container-background",
-          "docs": "Background color of the input container."
-        },
-        {
-          "name": "--form-container-border-color",
-          "docs": "Border color of the input container."
-        },
-        {
-          "name": "--form-container-border-width",
-          "docs": "Border width of the input container."
-        },
-        {
-          "name": "--form-container-radius",
-          "docs": "Border radius of the input container."
-        },
-        {
-          "name": "--form-container-hover-background",
-          "docs": "Container background color on hover."
-        },
-        {
-          "name": "--form-container-active-background",
-          "docs": "Container background color when active."
-        },
-        {
-          "name": "--form-container-focus-background",
-          "docs": "Container background color when focused."
-        },
-        {
-          "name": "--form-container-hover-border",
-          "docs": "Container border color on hover."
-        },
-        {
-          "name": "--form-container-active-border",
-          "docs": "Container border color when active."
-        },
-        {
-          "name": "--form-container-focus-border",
-          "docs": "Container border color when focused."
-        },
-        {
-          "name": "--form-label-color",
-          "docs": "Text color of the label."
-        },
-        {
-          "name": "--form-label-family",
-          "docs": "Font family of the label."
-        },
-        {
-          "name": "--form-label-weight",
-          "docs": "Font weight of the label."
-        },
-        {
-          "name": "--form-label-size",
-          "docs": "Font size of the label."
-        },
-        {
-          "name": "--form-label-line-height",
-          "docs": "Line height of the label."
-        },
-        {
-          "name": "--form-description-color",
-          "docs": "Text color of the description."
-        },
-        {
-          "name": "--form-description-family",
-          "docs": "Font family of the description."
-        },
-        {
-          "name": "--form-description-weight",
-          "docs": "Font weight of the description."
-        },
-        {
-          "name": "--form-description-size",
-          "docs": "Font size of the description."
-        },
-        {
-          "name": "--form-description-line-height",
-          "docs": "Line height of the description."
-        }
-      ],
-      "slots": [
-        {
-          "name": "invalid-text",
-          "docs": "Overrides the `invalidText` prop with custom markup, shown instead of the description when `invalid` is `true`."
-        }
-      ],
-      "parts": [
-        {
-          "name": "control",
-          "docs": "The control container wrapping the country trigger and number field."
-        },
-        {
-          "name": "country-trigger",
-          "docs": "The country picker trigger button."
-        },
-        {
-          "name": "description",
-          "docs": "The description / validation message element."
-        },
-        {
-          "name": "inner",
-          "docs": "The inner wrapper element containing label, control, and description."
-        },
-        {
-          "name": "input",
-          "docs": "The native HTML input element for the national number."
-        },
-        {
-          "name": "label",
-          "docs": "The label element."
-        }
-      ],
-      "customStates": [],
-      "listeners": [
-        {
-          "event": "click",
-          "target": "document",
-          "capture": true,
-          "passive": false
-        },
-        {
-          "event": "reset",
-          "target": "document",
-          "capture": false,
-          "passive": false
-        }
-      ],
-      "tokens": [
-        {
-          "name": "🧩 Component / InputPhone / Flag / Radius / Empty",
-          "cssVarName": "--ds-inputphone-flag-radius-empty",
-          "value": "{🔗 Alias.🔵 Radius.Base}",
-          "nativeValue": "{\"value\":0.25,\"unit\":\"rem\"}",
-          "inheritance": [
-            {
-              "cssVar": "--ds-dimension-radius-4",
-              "figmaName": "Global / Dimension / Radius / 4"
-            },
-            {
-              "cssVar": "--ds-radius-base",
-              "figmaName": "Alias / Radius / Base"
-            },
-            {
-              "cssVar": "--ds-inputphone-flag-radius-empty",
-              "figmaName": "Component / InputPhone / Flag / Radius / Empty"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "InputPhone",
-            "Flag",
-            "Radius",
-            "Empty"
-          ]
-        },
-        {
-          "name": "🧩 Component / InputPhone / Flag / Background / Color / Empty",
-          "cssVarName": "--ds-inputphone-flag-background-color-empty",
-          "value": "{🔗 Alias.🎨 Surface.GreyDark}",
-          "nativeValue": "#D0D0D0",
-          "inheritance": [
-            {
-              "cssVar": "--ds-color-grey-3",
-              "figmaName": "Global / Color / Grey / 3"
-            },
-            {
-              "cssVar": "--ds-surface-greydark",
-              "figmaName": "Alias / Surface / GreyDark"
-            },
-            {
-              "cssVar": "--ds-inputphone-flag-background-color-empty",
-              "figmaName": "Component / InputPhone / Flag / Background / Color / Empty"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "InputPhone",
-            "Flag",
-            "Background",
-            "Color",
-            "Empty"
-          ]
-        },
-        {
-          "name": "🧩 Component / InputPhone / Popup / Color / Background",
-          "cssVarName": "--ds-inputphone-popup-color-background",
-          "value": "{🔗 Alias.🎨 Surface.White}",
-          "nativeValue": "#FFFFFF",
-          "inheritance": [
-            {
-              "cssVar": "--ds-color-white",
-              "figmaName": "Global / Color / White"
-            },
-            {
-              "cssVar": "--ds-surface-white",
-              "figmaName": "Alias / Surface / White"
-            },
-            {
-              "cssVar": "--ds-inputphone-popup-color-background",
-              "figmaName": "Component / InputPhone / Popup / Color / Background"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "InputPhone",
-            "Popup",
-            "Color",
-            "Background"
-          ]
-        },
-        {
-          "name": "🧩 Component / InputPhone / Popup / Padding",
-          "cssVarName": "--ds-inputphone-popup-padding",
-          "value": "{🔗 Alias.↔️ Space.Padding.2XS}",
-          "nativeValue": "{\"value\":0.25,\"unit\":\"rem\"}",
-          "inheritance": [
-            {
-              "cssVar": "--ds-dimension-space-4",
-              "figmaName": "Global / Dimension / Space / 4"
-            },
-            {
-              "cssVar": "--ds-space-padding-2xs",
-              "figmaName": "Alias / Space / Padding / 2XS"
-            },
-            {
-              "cssVar": "--ds-inputphone-popup-padding",
-              "figmaName": "Component / InputPhone / Popup / Padding"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "InputPhone",
-            "Popup",
-            "Padding"
-          ]
-        },
-        {
-          "name": "🧩 Component / InputPhone / Popup / Radius",
-          "cssVarName": "--ds-inputphone-popup-radius",
-          "value": "{🔗 Alias.🔵 Radius.MD}",
-          "nativeValue": "{\"value\":0.375,\"unit\":\"rem\"}",
-          "inheritance": [
-            {
-              "cssVar": "--ds-dimension-radius-6",
-              "figmaName": "Global / Dimension / Radius / 6"
-            },
-            {
-              "cssVar": "--ds-radius-md",
-              "figmaName": "Alias / Radius / MD"
-            },
-            {
-              "cssVar": "--ds-inputphone-popup-radius",
-              "figmaName": "Component / InputPhone / Popup / Radius"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "InputPhone",
-            "Popup",
-            "Radius"
-          ]
-        },
-        {
-          "name": "🧩 Component / InputPhone / Popup / Border",
-          "cssVarName": "--ds-inputphone-popup-border",
-          "value": "{🔗 Alias.▭ Border.Composite.Grey}",
-          "nativeValue": "{\"color\":\"{🔗 Alias.▭ Border.Color.GreyLight}\",\"width\":\"{🔗 Alias.▭ Border.Width.Base}\",\"style\":\"{🔗 Alias.▭ Border.Style.Solid}\"}",
-          "inheritance": [
-            {
-              "cssVar": "--ds-border-composite-grey",
-              "figmaName": "Alias / Border / Composite / Grey"
-            },
-            {
-              "cssVar": "--ds-inputphone-popup-border",
-              "figmaName": "Component / InputPhone / Popup / Border"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "InputPhone",
-            "Popup",
-            "Border"
-          ]
-        },
-        {
-          "name": "🧩 Component / InputPhone / Filter / Color / Placeholder",
-          "cssVarName": "--ds-inputphone-filter-color-placeholder",
-          "value": "{🔗 Alias.🔤 Text.Color.Placeholder}",
-          "nativeValue": "#656EA8",
-          "inheritance": [
-            {
-              "cssVar": "--ds-color-primary-3",
-              "figmaName": "Global / Color / Primary / 3"
-            },
-            {
-              "cssVar": "--ds-text-color-placeholder",
-              "figmaName": "Alias / Text / Color / Placeholder"
-            },
-            {
-              "cssVar": "--ds-inputphone-filter-color-placeholder",
-              "figmaName": "Component / InputPhone / Filter / Color / Placeholder"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "InputPhone",
-            "Filter",
-            "Color",
-            "Placeholder"
-          ]
-        },
-        {
-          "name": "🧩 Component / InputPhone / Scrollbar / Color",
-          "cssVarName": "--ds-inputphone-scrollbar-color",
-          "value": "{🔗 Alias.▭ Border.Color.GreyLight}",
-          "nativeValue": "#E8E8E8",
-          "inheritance": [
-            {
-              "cssVar": "--ds-color-grey-2",
-              "figmaName": "Global / Color / Grey / 2"
-            },
-            {
-              "cssVar": "--ds-border-color-greylight",
-              "figmaName": "Alias / Border / Color / GreyLight"
-            },
-            {
-              "cssVar": "--ds-inputphone-scrollbar-color",
-              "figmaName": "Component / InputPhone / Scrollbar / Color"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "InputPhone",
-            "Scrollbar",
-            "Color"
-          ]
-        },
-        {
-          "name": "🧩 Component / InputPhone / Scrollbar / Radius",
-          "cssVarName": "--ds-inputphone-scrollbar-radius",
-          "value": "{🔗 Alias.🔵 Radius.Rounded}",
-          "nativeValue": "{\"value\":9999,\"unit\":\"px\"}",
-          "inheritance": [
-            {
-              "cssVar": "--ds-dimension-radius-9999",
-              "figmaName": "Global / Dimension / Radius / 9999"
-            },
-            {
-              "cssVar": "--ds-radius-rounded",
-              "figmaName": "Alias / Radius / Rounded"
-            },
-            {
-              "cssVar": "--ds-inputphone-scrollbar-radius",
-              "figmaName": "Component / InputPhone / Scrollbar / Radius"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "InputPhone",
-            "Scrollbar",
-            "Radius"
-          ]
-        },
-        {
-          "name": "🧩 Component / InputPhone / Scrollbar / BorderWidth",
-          "cssVarName": "--ds-inputphone-scrollbar-borderwidth",
-          "value": "{🔗 Alias.▭ Border.Width.Base}",
-          "nativeValue": "{\"value\":0.125,\"unit\":\"rem\"}",
-          "inheritance": [
-            {
-              "cssVar": "--ds-dimension-border-1",
-              "figmaName": "Global / Dimension / Border / 1"
-            },
-            {
-              "cssVar": "--ds-border-width-base",
-              "figmaName": "Alias / Border / Width / Base"
-            },
-            {
-              "cssVar": "--ds-inputphone-scrollbar-borderwidth",
-              "figmaName": "Component / InputPhone / Scrollbar / BorderWidth"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "InputPhone",
-            "Scrollbar",
-            "BorderWidth"
-          ]
-        },
-        {
-          "name": "🧩 Component / InputPhone / Option / Radius",
-          "cssVarName": "--ds-inputphone-option-radius",
-          "value": "{🔗 Alias.🔵 Radius.Base}",
-          "nativeValue": "{\"value\":0.25,\"unit\":\"rem\"}",
-          "inheritance": [
-            {
-              "cssVar": "--ds-dimension-radius-4",
-              "figmaName": "Global / Dimension / Radius / 4"
-            },
-            {
-              "cssVar": "--ds-radius-base",
-              "figmaName": "Alias / Radius / Base"
-            },
-            {
-              "cssVar": "--ds-inputphone-option-radius",
-              "figmaName": "Component / InputPhone / Option / Radius"
-            }
-          ],
-          "path": [
-            "🧩 Component",
-            "InputPhone",
-            "Option",
-            "Radius"
-          ]
-        }
-      ],
-      "pageObject": {
-        "class": "DsInputPhone",
-        "import": "@helvetia-design/playwright",
-        "locators": [
-          {
-            "name": "inner",
-            "type": "Locator",
-            "docs": ""
-          },
-          {
-            "name": "label",
-            "type": "Locator",
-            "docs": ""
-          },
-          {
-            "name": "control",
-            "type": "Locator",
-            "docs": ""
-          },
-          {
-            "name": "description",
-            "type": "Locator",
-            "docs": ""
-          },
-          {
-            "name": "nativeInput",
-            "type": "Locator",
-            "docs": ""
-          },
-          {
-            "name": "trigger",
-            "type": "Locator",
-            "docs": ""
-          },
-          {
-            "name": "filter",
-            "type": "Locator",
-            "docs": ""
-          },
-          {
-            "name": "listbox",
-            "type": "Locator",
-            "docs": ""
-          }
-        ],
-        "actions": [
-          {
-            "name": "fill",
-            "params": [
-              {
-                "name": "value",
-                "type": "string"
-              }
-            ],
-            "docs": ""
-          },
-          {
-            "name": "type",
-            "params": [
-              {
-                "name": "value",
-                "type": "string"
-              }
-            ],
-            "docs": ""
-          },
-          {
-            "name": "paste",
-            "params": [
-              {
-                "name": "value",
-                "type": "string"
-              }
-            ],
-            "docs": ""
-          },
-          {
-            "name": "blur",
-            "params": [],
-            "docs": ""
-          },
-          {
-            "name": "open",
-            "params": [],
-            "docs": ""
-          },
-          {
-            "name": "selectCountry",
-            "params": [
-              {
-                "name": "code",
-                "type": "string"
-              }
-            ],
-            "docs": ""
-          }
-        ],
-        "assertions": [
-          {
-            "name": "assertValue",
-            "params": [
-              {
-                "name": "value",
-                "type": "string"
-              }
-            ],
-            "docs": ""
-          },
-          {
-            "name": "assertNationalNumber",
-            "params": [
-              {
-                "name": "value",
-                "type": "string"
-              }
-            ],
-            "docs": ""
-          },
-          {
-            "name": "assertToBeDisabled",
-            "params": [],
-            "docs": ""
-          },
-          {
-            "name": "assertPickerDisabled",
-            "params": [],
-            "docs": ""
-          },
-          {
-            "name": "assertOpen",
-            "params": [],
-            "docs": ""
-          },
-          {
-            "name": "assertClosed",
-            "params": [],
-            "docs": ""
-          },
-          {
-            "name": "assertToContainText",
-            "params": [
-              {
-                "name": "text",
-                "type": "string"
-              }
-            ],
             "docs": ""
           }
         ]
@@ -41574,6 +40268,1341 @@
           {
             "name": "assertNextToBeDisabled",
             "params": [],
+            "docs": ""
+          }
+        ]
+      },
+      "type": "web-component"
+    },
+    {
+      "fileName": "phone-input.tsx",
+      "tag": "ds-phone-input",
+      "overview": "Phone input renders an international phone number field with a country picker\n(flag + calling code) and a national-number input that live-formats as the user types.",
+      "usage": {},
+      "docs": "Phone input renders an international phone number field with a country picker\n(flag + calling code) and a national-number input that live-formats as the user types.",
+      "docsTags": [
+        {
+          "name": "slot",
+          "text": "invalid-text - Overrides the `invalidText` prop with custom markup, shown instead of the description when `invalid` is `true`."
+        },
+        {
+          "name": "part",
+          "text": "inner - The inner wrapper element containing label, control, and description."
+        },
+        {
+          "name": "part",
+          "text": "label - The label element."
+        },
+        {
+          "name": "part",
+          "text": "control - The control container wrapping the country trigger and number field."
+        },
+        {
+          "name": "part",
+          "text": "description - The description / validation message element."
+        },
+        {
+          "name": "part",
+          "text": "input - The native HTML input element for the national number."
+        },
+        {
+          "name": "part",
+          "text": "country-trigger - The country picker trigger button."
+        }
+      ],
+      "encapsulation": "shadow",
+      "dependents": [],
+      "dependencies": [
+        "ds-spinner",
+        "ds-icon"
+      ],
+      "dependencyGraph": {
+        "ds-phone-input": [
+          "ds-spinner",
+          "ds-icon"
+        ]
+      },
+      "props": [
+        {
+          "name": "autoInvalidOff",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "auto-invalid-off",
+          "reflectToAttr": true,
+          "docs": "If `true`, disables the automatic `invalid`/`invalidText` behavior that the `@helvetia-design/angular`\nintegration applies when the bound `NgControl` is touched and invalid. Only affects the Angular\nintegration; it is a no-op in other framework integrations.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "color",
+          "type": "\"danger\" | \"primary\" | \"success\" | \"warning\"",
+          "complexType": {
+            "original": "InputColor",
+            "resolved": "\"danger\" | \"primary\" | \"success\" | \"warning\"",
+            "references": {
+              "InputColor": {
+                "location": "import",
+                "path": "../input/input.interfaces",
+                "id": "src/components/forms/input/input.interfaces.ts::InputColor",
+                "referenceLocation": "InputColor"
+              }
+            }
+          },
+          "mutable": false,
+          "attr": "color",
+          "reflectToAttr": false,
+          "docs": "Defines the color of the input. The default value is `primary`.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "'primary'"
+            }
+          ],
+          "default": "'primary'",
+          "values": [
+            {
+              "value": "danger",
+              "type": "string"
+            },
+            {
+              "value": "primary",
+              "type": "string"
+            },
+            {
+              "value": "success",
+              "type": "string"
+            },
+            {
+              "value": "warning",
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "countries",
+          "type": "string | string[] | undefined",
+          "complexType": {
+            "original": "string | string[] | undefined",
+            "resolved": "string | string[] | undefined",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "countries",
+          "reflectToAttr": false,
+          "docs": "Allow-list of ISO 3166-1 alpha-2 country codes. Accepts a comma-separated\nstring or a string array. `undefined` / empty shows every country.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "undefined"
+            }
+          ],
+          "default": "undefined",
+          "values": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "string[]"
+            },
+            {
+              "type": "undefined"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "country",
+          "type": "string | undefined",
+          "complexType": {
+            "original": "string",
+            "resolved": "string | undefined",
+            "references": {}
+          },
+          "mutable": true,
+          "attr": "country",
+          "reflectToAttr": false,
+          "docs": "Live / controlled selected country (ISO 3166-1 alpha-2).",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "undefined"
+            }
+          ],
+          "optional": true,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "description",
+          "reflectToAttr": false,
+          "docs": "The description of the input, which is displayed below the input field.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "''"
+            }
+          ],
+          "default": "''",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "disabled",
+          "reflectToAttr": false,
+          "docs": "If `true`, the element is not mutable, focusable, or even submitted with the form.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "initialCountry",
+          "type": "string | undefined",
+          "complexType": {
+            "original": "string",
+            "resolved": "string | undefined",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "initial-country",
+          "reflectToAttr": false,
+          "docs": "Uncontrolled seed for the starting country. Read once during first load.",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "undefined"
+            }
+          ],
+          "optional": true,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "invalid",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "invalid",
+          "reflectToAttr": false,
+          "docs": "If `true` the component gets a invalid style.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "invalidText",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "invalid-text",
+          "reflectToAttr": false,
+          "docs": "The text to display when the input is in an invalid state.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "''"
+            }
+          ],
+          "default": "''",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "label",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "label",
+          "reflectToAttr": false,
+          "docs": "The label of the input, which is displayed above the input field.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "''"
+            }
+          ],
+          "default": "''",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "name",
+          "reflectToAttr": true,
+          "docs": "The name of the control, which is submitted with the form data.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "this.inputId"
+            }
+          ],
+          "default": "this.inputId",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "placeholder",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "placeholder",
+          "reflectToAttr": false,
+          "docs": "Instructional text that shows before the number field has a value.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "''"
+            }
+          ],
+          "default": "''",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "readonly",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "readonly",
+          "reflectToAttr": false,
+          "docs": "If `true` the element can not be mutated, meaning the user can not edit the control.\nThe country picker is disabled; the number field stays focusable and selectable.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "false"
+            }
+          ],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "required",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "required",
+          "reflectToAttr": false,
+          "docs": "If `true`, the user must fill in a value before submitting a form.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "true"
+            }
+          ],
+          "default": "true",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "value",
+          "type": "null | string",
+          "complexType": {
+            "original": "string | null",
+            "resolved": "null | string",
+            "references": {}
+          },
+          "mutable": true,
+          "attr": "value",
+          "reflectToAttr": true,
+          "docs": "The canonical phone number value in E.164 format (e.g. `+41791234567`).",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "null"
+            }
+          ],
+          "default": "null",
+          "values": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        }
+      ],
+      "methods": [
+        {
+          "name": "getInputElement",
+          "returns": {
+            "type": "Promise<HTMLInputElement | undefined>",
+            "docs": ""
+          },
+          "complexType": {
+            "signature": "() => Promise<HTMLInputElement | undefined>",
+            "parameters": [],
+            "references": {
+              "Promise": {
+                "location": "global",
+                "id": "global::Promise"
+              },
+              "HTMLInputElement": {
+                "location": "global",
+                "id": "global::HTMLInputElement"
+              }
+            },
+            "return": "Promise<HTMLInputElement | undefined>"
+          },
+          "signature": "getInputElement() => Promise<HTMLInputElement | undefined>",
+          "parameters": [],
+          "docs": "Returns the native `<input>` element used under the hood.",
+          "docsTags": []
+        },
+        {
+          "name": "setFocus",
+          "returns": {
+            "type": "Promise<void>",
+            "docs": ""
+          },
+          "complexType": {
+            "signature": "() => Promise<void>",
+            "parameters": [],
+            "references": {
+              "Promise": {
+                "location": "global",
+                "id": "global::Promise"
+              }
+            },
+            "return": "Promise<void>"
+          },
+          "signature": "setFocus() => Promise<void>",
+          "parameters": [],
+          "docs": "Sets focus on the national-number field.",
+          "docsTags": []
+        }
+      ],
+      "events": [
+        {
+          "event": "dsBlur",
+          "detail": "FocusEvent",
+          "bubbles": true,
+          "complexType": {
+            "original": "FocusEvent",
+            "resolved": "FocusEvent",
+            "references": {
+              "FocusEvent": {
+                "location": "global",
+                "id": "global::FocusEvent"
+              }
+            }
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Emitted when the number field loses focus.",
+          "docsTags": []
+        },
+        {
+          "event": "dsChange",
+          "detail": "{ value: string | null; country: string; nationalNumber: string; }",
+          "bubbles": true,
+          "complexType": {
+            "original": "PhoneChangeDetail",
+            "resolved": "{ value: string | null; country: string; nationalNumber: string; }",
+            "references": {
+              "PhoneChangeDetail": {
+                "location": "import",
+                "path": "./phone-input.interfaces",
+                "id": "src/components/forms/phone-input/phone-input.interfaces.ts::PhoneChangeDetail",
+                "referenceLocation": "PhoneChangeDetail"
+              }
+            }
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Emitted when the number field blurs, after the blur-time reformat.",
+          "docsTags": []
+        },
+        {
+          "event": "dsCountryChange",
+          "detail": "{ country: string; }",
+          "bubbles": true,
+          "complexType": {
+            "original": "PhoneCountryChangeDetail",
+            "resolved": "{ country: string; }",
+            "references": {
+              "PhoneCountryChangeDetail": {
+                "location": "import",
+                "path": "./phone-input.interfaces",
+                "id": "src/components/forms/phone-input/phone-input.interfaces.ts::PhoneCountryChangeDetail",
+                "referenceLocation": "PhoneCountryChangeDetail"
+              }
+            }
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Emitted when the selected country changes through the picker.",
+          "docsTags": []
+        },
+        {
+          "event": "dsFocus",
+          "detail": "FocusEvent",
+          "bubbles": true,
+          "complexType": {
+            "original": "FocusEvent",
+            "resolved": "FocusEvent",
+            "references": {
+              "FocusEvent": {
+                "location": "global",
+                "id": "global::FocusEvent"
+              }
+            }
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Emitted when the number field receives focus.",
+          "docsTags": []
+        },
+        {
+          "event": "dsInput",
+          "detail": "{ value: string | null; country: string; nationalNumber: string; }",
+          "bubbles": true,
+          "complexType": {
+            "original": "PhoneInputDetail",
+            "resolved": "{ value: string | null; country: string; nationalNumber: string; }",
+            "references": {
+              "PhoneInputDetail": {
+                "location": "import",
+                "path": "./phone-input.interfaces",
+                "id": "src/components/forms/phone-input/phone-input.interfaces.ts::PhoneInputDetail",
+                "referenceLocation": "PhoneInputDetail"
+              }
+            }
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Emitted on every keystroke or paste in the number field, after live formatting is applied.",
+          "docsTags": []
+        }
+      ],
+      "styles": [
+        {
+          "name": "--phone-input-color",
+          "docs": "Text color inside the number field."
+        },
+        {
+          "name": "--phone-input-placeholder",
+          "docs": "Placeholder text color."
+        },
+        {
+          "name": "--phone-input-family",
+          "docs": "Font family of the number field text."
+        },
+        {
+          "name": "--phone-input-weight",
+          "docs": "Font weight of the number field text."
+        },
+        {
+          "name": "--phone-input-size",
+          "docs": "Font size of the number field text."
+        },
+        {
+          "name": "--phone-input-line-height",
+          "docs": "Line height of the number field text."
+        },
+        {
+          "name": "--phone-input-flag-width",
+          "docs": "Width of the country flag."
+        },
+        {
+          "name": "--phone-input-flag-height",
+          "docs": "Height of the country flag."
+        },
+        {
+          "name": "--phone-input-flag-empty-background",
+          "docs": "Background color of the flag placeholder when no country is selected."
+        },
+        {
+          "name": "--phone-input-flag-empty-radius",
+          "docs": "Border radius of the flag placeholder when no country is selected."
+        },
+        {
+          "name": "--phone-input-popup-width",
+          "docs": "Width of the country picker popup."
+        },
+        {
+          "name": "--phone-input-popup-background",
+          "docs": "Background color of the country picker popup."
+        },
+        {
+          "name": "--phone-input-popup-shadow",
+          "docs": "Box shadow of the country picker popup."
+        },
+        {
+          "name": "--phone-input-popup-padding",
+          "docs": "Padding of the country picker popup."
+        },
+        {
+          "name": "--phone-input-popup-radius",
+          "docs": "Border radius of the country picker popup."
+        },
+        {
+          "name": "--phone-input-popup-border",
+          "docs": "Border of the country picker popup."
+        },
+        {
+          "name": "--phone-input-filter-placeholder-color",
+          "docs": "Placeholder text color of the country filter input."
+        },
+        {
+          "name": "--phone-input-scrollbar-color",
+          "docs": "Color of the country list scrollbar."
+        },
+        {
+          "name": "--phone-input-scrollbar-radius",
+          "docs": "Border radius of the country list scrollbar thumb."
+        },
+        {
+          "name": "--phone-input-scrollbar-border-width",
+          "docs": "Border width of the country list scrollbar thumb."
+        },
+        {
+          "name": "--phone-input-option-color",
+          "docs": "Text color of a country option."
+        },
+        {
+          "name": "--phone-input-option-background",
+          "docs": "Background color of a country option."
+        },
+        {
+          "name": "--phone-input-option-hover-background",
+          "docs": "Background color of a hovered or keyboard-active country option."
+        },
+        {
+          "name": "--phone-input-option-selected-background",
+          "docs": "Background color of the selected country option."
+        },
+        {
+          "name": "--phone-input-option-border",
+          "docs": "Border color between country options."
+        },
+        {
+          "name": "--phone-input-option-radius",
+          "docs": "Border radius of a country option."
+        },
+        {
+          "name": "--form-container-background",
+          "docs": "Background color of the input container."
+        },
+        {
+          "name": "--form-container-border-color",
+          "docs": "Border color of the input container."
+        },
+        {
+          "name": "--form-container-border-width",
+          "docs": "Border width of the input container."
+        },
+        {
+          "name": "--form-container-radius",
+          "docs": "Border radius of the input container."
+        },
+        {
+          "name": "--form-container-hover-background",
+          "docs": "Container background color on hover."
+        },
+        {
+          "name": "--form-container-active-background",
+          "docs": "Container background color when active."
+        },
+        {
+          "name": "--form-container-focus-background",
+          "docs": "Container background color when focused."
+        },
+        {
+          "name": "--form-container-hover-border",
+          "docs": "Container border color on hover."
+        },
+        {
+          "name": "--form-container-active-border",
+          "docs": "Container border color when active."
+        },
+        {
+          "name": "--form-container-focus-border",
+          "docs": "Container border color when focused."
+        },
+        {
+          "name": "--form-label-color",
+          "docs": "Text color of the label."
+        },
+        {
+          "name": "--form-label-family",
+          "docs": "Font family of the label."
+        },
+        {
+          "name": "--form-label-weight",
+          "docs": "Font weight of the label."
+        },
+        {
+          "name": "--form-label-size",
+          "docs": "Font size of the label."
+        },
+        {
+          "name": "--form-label-line-height",
+          "docs": "Line height of the label."
+        },
+        {
+          "name": "--form-description-color",
+          "docs": "Text color of the description."
+        },
+        {
+          "name": "--form-description-family",
+          "docs": "Font family of the description."
+        },
+        {
+          "name": "--form-description-weight",
+          "docs": "Font weight of the description."
+        },
+        {
+          "name": "--form-description-size",
+          "docs": "Font size of the description."
+        },
+        {
+          "name": "--form-description-line-height",
+          "docs": "Line height of the description."
+        }
+      ],
+      "slots": [
+        {
+          "name": "invalid-text",
+          "docs": "Overrides the `invalidText` prop with custom markup, shown instead of the description when `invalid` is `true`."
+        }
+      ],
+      "parts": [
+        {
+          "name": "control",
+          "docs": "The control container wrapping the country trigger and number field."
+        },
+        {
+          "name": "country-trigger",
+          "docs": "The country picker trigger button."
+        },
+        {
+          "name": "description",
+          "docs": "The description / validation message element."
+        },
+        {
+          "name": "inner",
+          "docs": "The inner wrapper element containing label, control, and description."
+        },
+        {
+          "name": "input",
+          "docs": "The native HTML input element for the national number."
+        },
+        {
+          "name": "label",
+          "docs": "The label element."
+        }
+      ],
+      "customStates": [],
+      "listeners": [
+        {
+          "event": "click",
+          "target": "document",
+          "capture": true,
+          "passive": false
+        },
+        {
+          "event": "reset",
+          "target": "document",
+          "capture": false,
+          "passive": false
+        }
+      ],
+      "tokens": [
+        {
+          "name": "🧩 Component / PhoneInput / Flag / Radius / Empty",
+          "cssVarName": "--ds-phoneinput-flag-radius-empty",
+          "value": "{🔗 Alias.🔵 Radius.Base}",
+          "nativeValue": "{\"value\":0.25,\"unit\":\"rem\"}",
+          "inheritance": [
+            {
+              "cssVar": "--ds-dimension-radius-4",
+              "figmaName": "Global / Dimension / Radius / 4"
+            },
+            {
+              "cssVar": "--ds-radius-base",
+              "figmaName": "Alias / Radius / Base"
+            },
+            {
+              "cssVar": "--ds-phoneinput-flag-radius-empty",
+              "figmaName": "Component / PhoneInput / Flag / Radius / Empty"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "PhoneInput",
+            "Flag",
+            "Radius",
+            "Empty"
+          ]
+        },
+        {
+          "name": "🧩 Component / PhoneInput / Flag / Background / Color / Empty",
+          "cssVarName": "--ds-phoneinput-flag-background-color-empty",
+          "value": "{🔗 Alias.🎨 Surface.GreyDark}",
+          "nativeValue": "#D0D0D0",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-grey-3",
+              "figmaName": "Global / Color / Grey / 3"
+            },
+            {
+              "cssVar": "--ds-surface-greydark",
+              "figmaName": "Alias / Surface / GreyDark"
+            },
+            {
+              "cssVar": "--ds-phoneinput-flag-background-color-empty",
+              "figmaName": "Component / PhoneInput / Flag / Background / Color / Empty"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "PhoneInput",
+            "Flag",
+            "Background",
+            "Color",
+            "Empty"
+          ]
+        },
+        {
+          "name": "🧩 Component / PhoneInput / Popup / Color / Background",
+          "cssVarName": "--ds-phoneinput-popup-color-background",
+          "value": "{🔗 Alias.🎨 Surface.White}",
+          "nativeValue": "#FFFFFF",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-white",
+              "figmaName": "Global / Color / White"
+            },
+            {
+              "cssVar": "--ds-surface-white",
+              "figmaName": "Alias / Surface / White"
+            },
+            {
+              "cssVar": "--ds-phoneinput-popup-color-background",
+              "figmaName": "Component / PhoneInput / Popup / Color / Background"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "PhoneInput",
+            "Popup",
+            "Color",
+            "Background"
+          ]
+        },
+        {
+          "name": "🧩 Component / PhoneInput / Popup / Padding",
+          "cssVarName": "--ds-phoneinput-popup-padding",
+          "value": "{🔗 Alias.↔️ Space.Padding.2XS}",
+          "nativeValue": "{\"value\":0.25,\"unit\":\"rem\"}",
+          "inheritance": [
+            {
+              "cssVar": "--ds-dimension-space-4",
+              "figmaName": "Global / Dimension / Space / 4"
+            },
+            {
+              "cssVar": "--ds-space-padding-2xs",
+              "figmaName": "Alias / Space / Padding / 2XS"
+            },
+            {
+              "cssVar": "--ds-phoneinput-popup-padding",
+              "figmaName": "Component / PhoneInput / Popup / Padding"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "PhoneInput",
+            "Popup",
+            "Padding"
+          ]
+        },
+        {
+          "name": "🧩 Component / PhoneInput / Popup / Radius",
+          "cssVarName": "--ds-phoneinput-popup-radius",
+          "value": "{🔗 Alias.🔵 Radius.MD}",
+          "nativeValue": "{\"value\":0.375,\"unit\":\"rem\"}",
+          "inheritance": [
+            {
+              "cssVar": "--ds-dimension-radius-6",
+              "figmaName": "Global / Dimension / Radius / 6"
+            },
+            {
+              "cssVar": "--ds-radius-md",
+              "figmaName": "Alias / Radius / MD"
+            },
+            {
+              "cssVar": "--ds-phoneinput-popup-radius",
+              "figmaName": "Component / PhoneInput / Popup / Radius"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "PhoneInput",
+            "Popup",
+            "Radius"
+          ]
+        },
+        {
+          "name": "🧩 Component / PhoneInput / Popup / Border",
+          "cssVarName": "--ds-phoneinput-popup-border",
+          "value": "{🔗 Alias.▭ Border.Composite.Grey}",
+          "nativeValue": "{\"color\":\"{🔗 Alias.▭ Border.Color.GreyLight}\",\"width\":\"{🔗 Alias.▭ Border.Width.Base}\",\"style\":\"{🔗 Alias.▭ Border.Style.Solid}\"}",
+          "inheritance": [
+            {
+              "cssVar": "--ds-border-composite-grey",
+              "figmaName": "Alias / Border / Composite / Grey"
+            },
+            {
+              "cssVar": "--ds-phoneinput-popup-border",
+              "figmaName": "Component / PhoneInput / Popup / Border"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "PhoneInput",
+            "Popup",
+            "Border"
+          ]
+        },
+        {
+          "name": "🧩 Component / PhoneInput / Filter / Color / Placeholder",
+          "cssVarName": "--ds-phoneinput-filter-color-placeholder",
+          "value": "{🔗 Alias.🔤 Text.Color.Placeholder}",
+          "nativeValue": "#656EA8",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-primary-3",
+              "figmaName": "Global / Color / Primary / 3"
+            },
+            {
+              "cssVar": "--ds-text-color-placeholder",
+              "figmaName": "Alias / Text / Color / Placeholder"
+            },
+            {
+              "cssVar": "--ds-phoneinput-filter-color-placeholder",
+              "figmaName": "Component / PhoneInput / Filter / Color / Placeholder"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "PhoneInput",
+            "Filter",
+            "Color",
+            "Placeholder"
+          ]
+        },
+        {
+          "name": "🧩 Component / PhoneInput / Scrollbar / Color",
+          "cssVarName": "--ds-phoneinput-scrollbar-color",
+          "value": "{🔗 Alias.▭ Border.Color.GreyLight}",
+          "nativeValue": "#E8E8E8",
+          "inheritance": [
+            {
+              "cssVar": "--ds-color-grey-2",
+              "figmaName": "Global / Color / Grey / 2"
+            },
+            {
+              "cssVar": "--ds-border-color-greylight",
+              "figmaName": "Alias / Border / Color / GreyLight"
+            },
+            {
+              "cssVar": "--ds-phoneinput-scrollbar-color",
+              "figmaName": "Component / PhoneInput / Scrollbar / Color"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "PhoneInput",
+            "Scrollbar",
+            "Color"
+          ]
+        },
+        {
+          "name": "🧩 Component / PhoneInput / Scrollbar / Radius",
+          "cssVarName": "--ds-phoneinput-scrollbar-radius",
+          "value": "{🔗 Alias.🔵 Radius.Rounded}",
+          "nativeValue": "{\"value\":9999,\"unit\":\"px\"}",
+          "inheritance": [
+            {
+              "cssVar": "--ds-dimension-radius-9999",
+              "figmaName": "Global / Dimension / Radius / 9999"
+            },
+            {
+              "cssVar": "--ds-radius-rounded",
+              "figmaName": "Alias / Radius / Rounded"
+            },
+            {
+              "cssVar": "--ds-phoneinput-scrollbar-radius",
+              "figmaName": "Component / PhoneInput / Scrollbar / Radius"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "PhoneInput",
+            "Scrollbar",
+            "Radius"
+          ]
+        },
+        {
+          "name": "🧩 Component / PhoneInput / Scrollbar / BorderWidth",
+          "cssVarName": "--ds-phoneinput-scrollbar-borderwidth",
+          "value": "{🔗 Alias.▭ Border.Width.Base}",
+          "nativeValue": "{\"value\":0.125,\"unit\":\"rem\"}",
+          "inheritance": [
+            {
+              "cssVar": "--ds-dimension-border-1",
+              "figmaName": "Global / Dimension / Border / 1"
+            },
+            {
+              "cssVar": "--ds-border-width-base",
+              "figmaName": "Alias / Border / Width / Base"
+            },
+            {
+              "cssVar": "--ds-phoneinput-scrollbar-borderwidth",
+              "figmaName": "Component / PhoneInput / Scrollbar / BorderWidth"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "PhoneInput",
+            "Scrollbar",
+            "BorderWidth"
+          ]
+        },
+        {
+          "name": "🧩 Component / PhoneInput / Option / Radius",
+          "cssVarName": "--ds-phoneinput-option-radius",
+          "value": "{🔗 Alias.🔵 Radius.Base}",
+          "nativeValue": "{\"value\":0.25,\"unit\":\"rem\"}",
+          "inheritance": [
+            {
+              "cssVar": "--ds-dimension-radius-4",
+              "figmaName": "Global / Dimension / Radius / 4"
+            },
+            {
+              "cssVar": "--ds-radius-base",
+              "figmaName": "Alias / Radius / Base"
+            },
+            {
+              "cssVar": "--ds-phoneinput-option-radius",
+              "figmaName": "Component / PhoneInput / Option / Radius"
+            }
+          ],
+          "path": [
+            "🧩 Component",
+            "PhoneInput",
+            "Option",
+            "Radius"
+          ]
+        }
+      ],
+      "pageObject": {
+        "class": "DsPhoneInput",
+        "import": "@helvetia-design/playwright",
+        "locators": [
+          {
+            "name": "inner",
+            "type": "Locator",
+            "docs": ""
+          },
+          {
+            "name": "label",
+            "type": "Locator",
+            "docs": ""
+          },
+          {
+            "name": "control",
+            "type": "Locator",
+            "docs": ""
+          },
+          {
+            "name": "description",
+            "type": "Locator",
+            "docs": ""
+          },
+          {
+            "name": "nativeInput",
+            "type": "Locator",
+            "docs": ""
+          },
+          {
+            "name": "trigger",
+            "type": "Locator",
+            "docs": ""
+          },
+          {
+            "name": "filter",
+            "type": "Locator",
+            "docs": ""
+          },
+          {
+            "name": "listbox",
+            "type": "Locator",
+            "docs": ""
+          }
+        ],
+        "actions": [
+          {
+            "name": "fill",
+            "params": [
+              {
+                "name": "value",
+                "type": "string"
+              }
+            ],
+            "docs": ""
+          },
+          {
+            "name": "type",
+            "params": [
+              {
+                "name": "value",
+                "type": "string"
+              }
+            ],
+            "docs": ""
+          },
+          {
+            "name": "paste",
+            "params": [
+              {
+                "name": "value",
+                "type": "string"
+              }
+            ],
+            "docs": ""
+          },
+          {
+            "name": "blur",
+            "params": [],
+            "docs": ""
+          },
+          {
+            "name": "open",
+            "params": [],
+            "docs": ""
+          },
+          {
+            "name": "selectCountry",
+            "params": [
+              {
+                "name": "code",
+                "type": "string"
+              }
+            ],
+            "docs": ""
+          }
+        ],
+        "assertions": [
+          {
+            "name": "assertValue",
+            "params": [
+              {
+                "name": "value",
+                "type": "string"
+              }
+            ],
+            "docs": ""
+          },
+          {
+            "name": "assertNationalNumber",
+            "params": [
+              {
+                "name": "value",
+                "type": "string"
+              }
+            ],
+            "docs": ""
+          },
+          {
+            "name": "assertToBeDisabled",
+            "params": [],
+            "docs": ""
+          },
+          {
+            "name": "assertPickerDisabled",
+            "params": [],
+            "docs": ""
+          },
+          {
+            "name": "assertOpen",
+            "params": [],
+            "docs": ""
+          },
+          {
+            "name": "assertClosed",
+            "params": [],
+            "docs": ""
+          },
+          {
+            "name": "assertToContainText",
+            "params": [
+              {
+                "name": "text",
+                "type": "string"
+              }
+            ],
             "docs": ""
           }
         ]
@@ -54936,8 +54965,8 @@
         "ds-datepicker",
         "ds-file-upload",
         "ds-input",
-        "ds-input-phone",
         "ds-number-input",
+        "ds-phone-input",
         "ds-radio-group",
         "ds-segment",
         "ds-select",
@@ -54965,10 +54994,10 @@
         "ds-input": [
           "ds-spinner"
         ],
-        "ds-input-phone": [
+        "ds-number-input": [
           "ds-spinner"
         ],
-        "ds-number-input": [
+        "ds-phone-input": [
           "ds-spinner"
         ],
         "ds-radio-group": [
@@ -67928,21 +67957,6 @@
       "docstring": "",
       "path": "src/components/forms/input/input.interfaces.ts"
     },
-    "src/components/forms/input-phone/input-phone.interfaces.ts::PhoneInputDetail": {
-      "declaration": "{\n  value: string | null\n  country: string\n  nationalNumber: string\n}",
-      "docstring": "",
-      "path": "src/components/forms/input-phone/input-phone.interfaces.ts"
-    },
-    "src/components/forms/input-phone/input-phone.interfaces.ts::PhoneChangeDetail": {
-      "declaration": "{\n  value: string | null\n  country: string\n  nationalNumber: string\n}",
-      "docstring": "",
-      "path": "src/components/forms/input-phone/input-phone.interfaces.ts"
-    },
-    "src/components/forms/input-phone/input-phone.interfaces.ts::PhoneCountryChangeDetail": {
-      "declaration": "{\n  country: string\n}",
-      "docstring": "",
-      "path": "src/components/forms/input-phone/input-phone.interfaces.ts"
-    },
     "src/components/forms/label/label.interfaces.ts::LabelSize": {
       "declaration": "\"sm\" | \"lg\" | \"xl\" | \"2xl\" | \"3xl\"",
       "docstring": "",
@@ -67977,6 +67991,21 @@
       "declaration": "interface KeyboardEvent extends UIEvent {\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/KeyboardEvent/altKey) */\n    readonly altKey: boolean;\n    /**\n     * @deprecated\n     *\n     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/KeyboardEvent/charCode)\n     */\n    readonly charCode: number;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/KeyboardEvent/code) */\n    readonly code: string;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/KeyboardEvent/ctrlKey) */\n    readonly ctrlKey: boolean;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/KeyboardEvent/isComposing) */\n    readonly isComposing: boolean;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/KeyboardEvent/key) */\n    readonly key: string;\n    /**\n     * @deprecated\n     *\n     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/KeyboardEvent/keyCode)\n     */\n    readonly keyCode: number;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/KeyboardEvent/location) */\n    readonly location: number;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/KeyboardEvent/metaKey) */\n    readonly metaKey: boolean;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/KeyboardEvent/repeat) */\n    readonly repeat: boolean;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/KeyboardEvent/shiftKey) */\n    readonly shiftKey: boolean;\n    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/KeyboardEvent/getModifierState) */\n    getModifierState(keyArg: string): boolean;\n    /**\n     * @deprecated\n     *\n     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/KeyboardEvent/initKeyboardEvent)\n     */\n    initKeyboardEvent(typeArg: string, bubblesArg?: boolean, cancelableArg?: boolean, viewArg?: Window | null, keyArg?: string, locationArg?: number, ctrlKey?: boolean, altKey?: boolean, shiftKey?: boolean, metaKey?: boolean): void;\n    readonly DOM_KEY_LOCATION_STANDARD: 0x00;\n    readonly DOM_KEY_LOCATION_LEFT: 0x01;\n    readonly DOM_KEY_LOCATION_RIGHT: 0x02;\n    readonly DOM_KEY_LOCATION_NUMPAD: 0x03;\n}",
       "docstring": "KeyboardEvent objects describe a user interaction with the keyboard; each event describes a single interaction between the user and a key (or combination of a key with modifier keys) on the keyboard.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/KeyboardEvent)",
       "path": "src/components/forms/number-input/number-input.interfaces.ts"
+    },
+    "src/components/forms/phone-input/phone-input.interfaces.ts::PhoneInputDetail": {
+      "declaration": "{\n  value: string | null\n  country: string\n  nationalNumber: string\n}",
+      "docstring": "",
+      "path": "src/components/forms/phone-input/phone-input.interfaces.ts"
+    },
+    "src/components/forms/phone-input/phone-input.interfaces.ts::PhoneChangeDetail": {
+      "declaration": "{\n  value: string | null\n  country: string\n  nationalNumber: string\n}",
+      "docstring": "",
+      "path": "src/components/forms/phone-input/phone-input.interfaces.ts"
+    },
+    "src/components/forms/phone-input/phone-input.interfaces.ts::PhoneCountryChangeDetail": {
+      "declaration": "{\n  country: string\n}",
+      "docstring": "",
+      "path": "src/components/forms/phone-input/phone-input.interfaces.ts"
     },
     "src/components/forms/radio/radio.interfaces.ts::RadioGroupColumns": {
       "declaration": "3 | 2 | 1 | 4",

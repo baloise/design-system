@@ -33,6 +33,10 @@ The controllers create `ds-alert-container` / `ds-toast` / `ds-snackbar` with `d
 
 `useModal()` will present JSX by passing a detached `HTMLElement` as `ModalOptions.component` once that lands in core. It does not need a React `FrameworkDelegate`.
 
+### No runtime asset path
+
+No component resolves assets at runtime: `ds-phone-input`'s country flags are bundled as inline SVG strings in `@helvetia-design/assets`, same build-time approach as `ds-icon` — see [docs/adr/0033-ds-phone-input-bundled-svg-flags.md](../../docs/adr/0033-ds-phone-input-bundled-svg-flags.md).
+
 ### Build
 
 Plain `tsc` compile (`tsc -p tsconfig.lib.json`), matching `packages/tokens` and `libs/output-target-angular` — no bundler, since this package is a straight re-export layer plus a small set of authored components and hooks. `moduleResolution` is `"bundler"` so the generated `components.server.ts` can resolve `@stencil/react-output-target/ssr`. Both `src/index.ts` and `src/index.server.ts` compile to `dist/`. After `tsc`, `scripts/patch-server-wrappers.mjs` rewrites `dist/generated/components.server.js` to (1) drop the generator's `'use client'` pragma so Next.js App Router can treat the wrappers as async Server Components, (2) load the client barrel only when `window` is defined, and (3) import `createComponent` from `src/ssr-create-component.ts` instead of `@stencil/react-output-target/ssr`. The generator emits a static `import * as clientComponents from "./components.js"` for hydration; evaluating that graph in Node 24 throws because Stencil inlines `lottie-web` into custom-element chunks that assume `window` exists whenever `navigator` does. Stencil's SSR factory also re-creates `<template shadowrootmode>` as a React child; browsers consume that template into a real shadow root before React hydrates, which throws React error 418. The local factory keeps the Declarative Shadow DOM in the HTML but wraps it as `dangerouslySetInnerHTML` so the reconciler does not look for the template node.

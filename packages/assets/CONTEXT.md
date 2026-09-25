@@ -34,6 +34,24 @@ Fonts are served from the distributed package and referenced via `@font-face` in
   - Icon components (e.g., `<ds-icon name="check">`)
   - CSS background images
 
+### Flag System
+
+- **Source** — country flag SVGs come from the third-party `country-flag-icons` npm package
+  (`3x2` aspect-ratio set), not hand-authored like the UI icons above. `scripts/build-svg.mjs` syncs
+  them into `src/flags/svg` before running the same scan/optimize/write pipeline used for `icons`,
+  `brand-icons`, and `maps` — so `country-flag-icons` stays the single source of truth and never
+  needs manual re-copying.
+- **Naming convention** — one string constant per ISO-3166-1 alpha-2 code:
+  `Flag<PascalCase(code)>` (e.g. `FlagCh`, `FlagDe`), generated into `src/flags/svg.ts` and exported
+  as the `Flags` namespace from `src/flags/index.ts`, alongside a `svg.json` list of codes.
+  Consistent with the `Icon<Name>`/`Icons` pattern above.
+- **Consumption** — internal only, by `ds-phone-input`'s `getFlagSvg(code)` lookup
+  (`packages/core/src/components/forms/phone-input/flag.ts`), rendered inline the same way `ds-icon`
+  renders its icons. There is no public `<ds-flag>` element and, unlike icons, flags aren't
+  registered through the overridable `DsConfig`/`updateDsIcons()`-style config path — they're a
+  fixed set, not consumer-extensible. See
+  [docs/adr/0033-ds-phone-input-bundled-svg-flags.md](../../docs/adr/0033-ds-phone-input-bundled-svg-flags.md).
+
 ### Asset Metadata
 
 Each asset type may have:
