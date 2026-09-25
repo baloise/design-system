@@ -9,6 +9,7 @@ import { dirname, join, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
 import { generateAngularMeta } from '../packages/core/config/generate-angular-meta.mjs'
+import { generateComponentTags } from '../packages/core/config/generate-component-tags.mjs'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const coreRoot = resolve(__dirname, '../packages/core')
@@ -89,6 +90,10 @@ async function main() {
     console.log('🏗️ Building core...\n')
 
     await ensurePackageFilesExist()
+    // `src/global/initialize.ts` imports the tags constant generated here — Stencil's own
+    // regeneration (stencil.config.ts's `watch-external` plugin) only fires during the bundle
+    // phase, too late for a fresh checkout where this gitignored file doesn't exist yet.
+    await generateComponentTags(coreRoot)
     buildStencil()
     console.log()
 
