@@ -66,9 +66,32 @@ If `status` is `ready`, show the detected framework, package manager, version, a
 
 ### Components
 
+Present this menu and wait for one choice:
+
+1. **Manual** — choose from every available component migration
+2. **Detect** — scan the project and suggest applicable component migrations
+
+#### Manual
+
 List every file matching `components/*.md` or `components/*/migration.md` in this skill folder. Build a picker from each file's title (the first Markdown heading). Dispatch to the chosen file's instructions.
 
 If that list is empty, report that no component migrations are available yet, then stop.
+
+#### Detect
+
+`<project-root>` is the consumer project root that contains the app lockfile. When the skill is invoked from that root, use the current directory.
+
+```bash
+node <this-skill-directory>/scripts/scan-migratable.mjs <project-root>
+```
+
+The script prints one JSON object. `suggested` contains used `bal-*` components that have a migration, with their usage total. `notYet` contains used components for which this skill has no migration.
+
+Show `notYet`, if it is not empty, as used components that cannot be migrated by this version of the skill. Do not offer them as choices.
+
+If `suggested` is empty, report that none of the used components has an available migration, then stop.
+
+Build a picker from every entry in `suggested`, showing its `name` and `total`. Wait for one choice, then dispatch to `components/<name>/migration.md`.
 
 ### CSS utils (coming soon)
 

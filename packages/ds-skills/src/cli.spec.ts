@@ -48,10 +48,13 @@ describe('ds-skills add', () => {
     const copiedSkill = readFileSync(join(cwd, SKILL_RELATIVE_PATH, 'SKILL.md'), 'utf8')
     expect(copiedSkill).toContain('Init')
     expect(copiedSkill).toContain('Components')
+    expect(copiedSkill).toContain('Manual')
+    expect(copiedSkill).toContain('Detect')
     expect(copiedSkill).toContain('CSS utils (coming soon)')
     expect(copiedSkill).toContain('Assets (coming soon)')
     expect(copiedSkill).toMatch(/never runs `git add`/i)
     expect(copiedSkill).toMatch(/git commit/i)
+    expect(existsSync(join(cwd, SKILL_RELATIVE_PATH, 'scripts', 'scan-migratable.mjs'))).toBe(true)
   })
 
   it('overwrites a previous copy on re-run', async () => {
