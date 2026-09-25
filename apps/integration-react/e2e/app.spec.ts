@@ -92,3 +92,31 @@ test('useSnackbar present and dismiss control a snackbar', async ({ page }) => {
   await page.getByTestId('dismiss-snackbar').click()
   await expect(page.locator('ds-snackbar')).toHaveCount(0)
 })
+
+// Regression test for baloise/design-system#1879: BalSelect used to throw a
+// NotFoundError when React removed a currently selected BalSelectOption from
+// its filtered children. Reproduces the same scenario with ds-select.
+test('ds-select does not throw when a sibling select filters out the currently selected option', async ({ page }) => {
+  const pageErrors: string[] = []
+  page.on('pageerror', error => pageErrors.push(error.message))
+
+  await page.goto('/')
+
+  const sport1 = page.getByTestId('sport1')
+  const sport2 = page.getByTestId('sport2')
+
+  await sport1.click()
+  await sport1.getByRole('option', { name: 'Surfing' }).click()
+
+  await sport2.click()
+  await sport2.getByRole('option', { name: 'Running' }).click()
+
+  // Selecting "Running" in Sport 1 filters it out of Sport 2, whose
+  // currently selected option is "Running" - this used to crash BalSelect.
+  await sport1.click()
+  await sport1.getByRole('option', { name: 'Running' }).click()
+
+  await expect(sport1).toContainText('Running')
+  await expect(sport2.getByRole('option', { name: 'Running' })).toHaveCount(0)
+  expect(pageErrors).toEqual([])
+})

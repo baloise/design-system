@@ -23,9 +23,6 @@ import {
   debounceEvent,
   Logger,
   type LogInstance,
-  getDecimalSeparator,
-  getThousandSeparator,
-  hasValue,
   OneOf,
   Type,
   watchInvalidTextSlot,
@@ -466,18 +463,11 @@ export class NumberInput implements DsComponentInterface, FieldInterface, FormCo
   }
 
   private createPattern(): string {
-    if (hasValue(this.pattern)) return this.pattern
-
-    let suffix = this.suffix || ''
-    if (hasValue(suffix)) suffix = ` ${suffix}`
-
-    const thousandSeparator = getThousandSeparator()
-    let decimalSeparator = getDecimalSeparator()
-    if (decimalSeparator === ',') decimalSeparator = '\\,'
-
-    const negativeSymbol = this.onlyPositive ? '' : '-'
-
-    return `${negativeSymbol}?\\d{1,3}(?:${thousandSeparator}\\d{3})*(?:\\${decimalSeparator}\\d{1,2})?(?:${suffix})?`
+    // Only ever reflect a consumer-supplied override to the DOM. An auto-generated pattern
+    // (e.g. embedding a letter-containing `suffix` like "CHF") makes mobile browsers ignore
+    // `inputmode="decimal"` and fall back to the full QWERTY keyboard (see issue #2008).
+    // Validation itself is already enforced via handleKeydown/handleInput/handleBlur.
+    return this.pattern
   }
 
   /**
@@ -504,7 +494,7 @@ export class NumberInput implements DsComponentInterface, FieldInterface, FormCo
           part="input"
           type="text"
           inputMode="decimal"
-          pattern={this.inputPattern}
+          pattern={this.inputPattern || undefined}
           ref={el => (this.control.nativeEl = el)}
           aria-describedby="description"
           aria-invalid={isInvalid ? 'true' : 'false'}

@@ -89,7 +89,18 @@ export type ValidateKeyDownOptions = {
   onlyPositive: boolean
 }
 
-export const countDecimalSeparators = (value: string) => (value.split(getDecimalSeparator()) || []).length - 1 || 0
+// Virtually every mobile numeric/decimal keypad emits "." for its decimal key regardless of
+// device locale, even when the app's configured decimal separator differs (e.g. ","). Accepting
+// both keeps decimal entry working across platforms instead of only the exact locale symbol.
+function isDecimalSeparatorKey(key: string): boolean {
+  return key === getDecimalSeparator() || key === '.'
+}
+
+export const countDecimalSeparators = (value: string): number => {
+  const separator = getDecimalSeparator()
+  const chars = separator === '.' ? [separator] : [separator, '.']
+  return chars.reduce((count, char) => count + ((value.split(char) || []).length - 1 || 0), 0)
+}
 
 export function validateKeyDown({
   key,
@@ -108,6 +119,14 @@ export function validateKeyDown({
   }
 
   //
+  // mobile IMEs (notably Android/Chrome) often fire keydown with an unreliable `key`
+  // (e.g. "Unidentified") for on-screen keypress. It can't be validated up front, so let it
+  // through and rely on the post-input number check (handleInput/isNotNumber) as the safety net.
+  if (!key || key === 'Unidentified' || key === 'Dead' || key === 'Process') {
+    return true
+  }
+
+  //
   // only allow negative symbols at the start of the input
   if (key === getNegativeSymbol()) {
     if (onlyPositive) {
@@ -119,9 +138,11 @@ export function validateKeyDown({
     }
   }
 
+  const isDecimalKey = isDecimalSeparatorKey(key)
+
   //
   // only allow decimal separator
-  if (key === getDecimalSeparator()) {
+  if (isDecimalKey) {
     if (decimal === 0) {
       return false
     } else if (countDecimalSeparators(newValue) > 1) {
@@ -131,17 +152,19 @@ export function validateKeyDown({
 
   //
   // check if it is an allowed key
-  if (![...NUMBER_KEYS, ...ACTION_KEYS, getDecimalSeparator(), getNegativeSymbol()].includes(key)) {
+  if (!isDecimalKey && ![...NUMBER_KEYS, ...ACTION_KEYS, getNegativeSymbol()].includes(key)) {
     return false
   }
 
   //
   // check if decimal points are reached
-  if (decimal !== 0 && newValue.includes(getDecimalSeparator()) && [...NUMBER_KEYS].includes(key)) {
-    const newValueParts = newValue.split(getDecimalSeparator())
-    const decimalPart = newValueParts[newValueParts.length - 1]
-    if (decimalPart.length > decimal) {
-      return false
+  if (decimal !== 0 && NUMBER_KEYS.includes(key)) {
+    const separatorIndex = Math.max(newValue.lastIndexOf(getDecimalSeparator()), newValue.lastIndexOf('.'))
+    if (separatorIndex !== -1) {
+      const decimalPart = newValue.slice(separatorIndex + 1)
+      if (decimalPart.length > decimal) {
+        return false
+      }
     }
   }
 
