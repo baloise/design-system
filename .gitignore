@@ -146,3 +146,5 @@ playwright.visual.config.ts
 .claude/settings.local.json
 
 docs/superpowers
+
+.husky/_
