@@ -1909,9 +1909,9 @@ export namespace Components {
         "closable": boolean;
         "configChanged": (state: DsConfigState) => Promise<void>;
         /**
-          * Closes the modal.
+          * Closes the modal, emitting `data`/`role` on `dsWillDismiss`/`dsDidDismiss`.
          */
-        "dismiss": () => Promise<void>;
+        "dismiss": (data?: unknown, role?: string) => Promise<void>;
         /**
           * If `true`, the modal covers the full viewport.
           * @default false

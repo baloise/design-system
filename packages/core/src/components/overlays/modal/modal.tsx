@@ -37,6 +37,8 @@ export class Modal implements DsComponentInterface, DsConfigObserver {
   @State() animated = true
   @State() isOpen = false
   private transitionQueue: Promise<void> = Promise.resolve()
+  private dismissData: unknown
+  private dismissRole: string | undefined
 
   /**
    * PUBLIC PROPERTY API
@@ -131,9 +133,11 @@ export class Modal implements DsComponentInterface, DsConfigObserver {
     this.open = true
   }
 
-  /** Closes the modal. */
+  /** Closes the modal, emitting `data`/`role` on `dsWillDismiss`/`dsDidDismiss`. */
   @Method()
-  async dismiss(): Promise<void> {
+  async dismiss(data?: unknown, role?: string): Promise<void> {
+    this.dismissData = data
+    this.dismissRole = role
     this.open = false
   }
 
@@ -154,7 +158,7 @@ export class Modal implements DsComponentInterface, DsConfigObserver {
   private handleCancel = (ev: Event): void => {
     ev.preventDefault()
     if (this.closable) {
-      this.open = false
+      this.dismiss(undefined, 'escape')
     }
   }
 
@@ -168,7 +172,7 @@ export class Modal implements DsComponentInterface, DsConfigObserver {
 
   private handleBackdropClick = (ev: MouseEvent): void => {
     if (this.closable && ev.target === this.dialogEl) {
-      this.open = false
+      this.dismiss(undefined, 'backdrop')
     }
   }
 
@@ -199,14 +203,17 @@ export class Modal implements DsComponentInterface, DsConfigObserver {
 
   private async doClose(): Promise<void> {
     if (!this.dialogEl?.open) return
-    this.dsWillDismiss.emit()
+    const detail: ModalDismissDetail = { data: this.dismissData, role: this.dismissRole }
+    this.dsWillDismiss.emit(detail)
     this.isOpen = false
     if (this.animated) {
       await wait(300)
     }
     this.dialogEl?.close()
     this.scrollHandler.enable()
-    this.dsDidDismiss.emit()
+    this.dsDidDismiss.emit(detail)
+    this.dismissData = undefined
+    this.dismissRole = undefined
   }
 
   /**
@@ -231,7 +238,7 @@ export class Modal implements DsComponentInterface, DsConfigObserver {
           aria-describedby="modal-body"
           onClick={this.handleBackdropClick}
         >
-          {this.closable && <ds-close part="close" onClick={() => (this.open = false)} />}
+          {this.closable && <ds-close part="close" onClick={() => this.dismiss(undefined, 'close')} />}
           <h2 id="modal-title" part="title">
             <slot name="header" />
           </h2>

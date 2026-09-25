@@ -54,7 +54,7 @@ export const RichContent = Story({
     <ds-checkbox>Category C</ds-checkbox>
   </ds-checkbox-group>
   <ds-button-group align="right">
-    <ds-button color="text">Cancel</ds-button>
+    <ds-button color="tertiary">Cancel</ds-button>
     <ds-button color="primary">Apply</ds-button>
   </ds-button-group>
 </ds-drawer>
