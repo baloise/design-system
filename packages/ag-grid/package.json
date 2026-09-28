@@ -34,7 +34,7 @@
   "devDependencies": {
     "ag-grid-community": "36.2.0",
     "eslint": "catalog:",
-    "jsdom": "30.1.0",
+    "jsdom": "30.1.1",
     "typescript": "catalog:",
     "vitest": "catalog:"
   }
