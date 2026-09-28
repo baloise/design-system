@@ -1,6 +1,6 @@
 # icon
 
-Migrate every `bal-icon` usage to `ds-icon`. Init has already added the `@helvetia/*` aliases. This task rewrites usages only.
+Migrate every `bal-icon` usage to `ds-icon`. Init has already added the `@helvetia-design/*` packages. This task rewrites usages only.
 
 The legacy folder has no child elements. Rewrite `bal-icon` only. The old `.icon-text` class is a stylesheet utility, not a tag, and is out of scope here.
 
@@ -68,8 +68,8 @@ Edit each finding yourself, using the mapping below. Read the whole element when
 ### Tags and imports
 
 - **HTML**: `<bal-icon>` becomes `<ds-icon>`, including the closing tag.
-- **Angular**: `<bal-icon>` becomes `<ds-icon>` in `.html` templates and in inline `template:` strings, including the closing tag. When a file imports `BalIcon` from `@baloise/ds-angular`, move only `BalIcon` to `import { DsIcon } from '@helvetia/ds-angular'` and leave the other symbols on the `@baloise` import.
-- **React**: `<BalIcon>` becomes `<DsIcon>` and `</BalIcon>` becomes `</DsIcon>`. Import `DsIcon` from `@helvetia/ds-react`. When the existing `@baloise/ds-react` import also binds other symbols, move only `BalIcon` to `import { DsIcon } from '@helvetia/ds-react'` and leave the other symbols on the `@baloise` import.
+- **Angular**: `<bal-icon>` becomes `<ds-icon>` in `.html` templates and in inline `template:` strings, including the closing tag. When a file imports `BalIcon` from `@baloise/ds-angular`, move only `BalIcon` to `import { DsIcon } from '@helvetia-design/angular'` and leave the other symbols on the `@baloise` import.
+- **React**: `<BalIcon>` becomes `<DsIcon>` and `</BalIcon>` becomes `</DsIcon>`. Import `DsIcon` from `@helvetia-design/react`. When the existing `@baloise/ds-react` import also binds other symbols, move only `BalIcon` to `import { DsIcon } from '@helvetia-design/react'` and leave the other symbols on the `@baloise` import.
 
 Leave any child content in place. Neither component projects children.
 

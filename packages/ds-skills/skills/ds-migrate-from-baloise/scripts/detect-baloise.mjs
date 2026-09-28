@@ -5,7 +5,8 @@ import { extname, join, relative, resolve, sep } from 'node:path'
 import { fileURLToPath, pathToFileURL } from 'node:url'
 import { promisify } from 'node:util'
 
-const SCOPE = '@baloise'
+const LEGACY_SCOPE = '@baloise'
+const TARGET_SCOPE = '@helvetia-design'
 const SHORT_NAMES = ['angular', 'core', 'react', 'styles']
 const SKIP_DIRS = new Set(['node_modules', 'dist', 'build', 'out', '.next', '.angular', '.git', '.claude', 'coverage'])
 const LOCKFILES = new Set(['package-lock.json', 'pnpm-lock.yaml', 'yarn.lock', 'npm-shrinkwrap.json'])
@@ -27,17 +28,19 @@ const IMPORT_EXTENSIONS = new Set([
 const DEPENDENCY_FIELDS = ['dependencies', 'devDependencies', 'optionalDependencies', 'peerDependencies']
 const NOTHING = 'no Baloise Design System installation detected, nothing to migrate'
 
-function packageName(short) {
-  return `${SCOPE}/ds-${short}`
+function targetPackageName(short) {
+  return `${TARGET_SCOPE}/${short}`
 }
 
-const MISSING_NEXT = `npm view ${packageName('core')} dist-tags did not include a next tag`
+const MISSING_NEXT = `npm view ${targetPackageName('core')} dist-tags did not include a next tag`
 
 const execFileAsync = promisify(execFile)
-const PACKAGE_RE = new RegExp(`${SCOPE}/ds-(?:${SHORT_NAMES.join('|')})\\b`)
+const PACKAGE_RE = new RegExp(`${LEGACY_SCOPE}/ds-(?:${SHORT_NAMES.join('|')})\\b`)
 
 export async function readNpmDistTags(execImpl = execFileAsync) {
-  const { stdout } = await execImpl('npm', ['view', packageName('core'), 'dist-tags', '--json'], { encoding: 'utf8' })
+  const { stdout } = await execImpl('npm', ['view', targetPackageName('core'), 'dist-tags', '--json'], {
+    encoding: 'utf8',
+  })
   const parsed = JSON.parse(stdout)
   return typeof parsed === 'string' ? JSON.parse(parsed) : parsed
 }
@@ -97,22 +100,21 @@ function detectFramework(manifest) {
 }
 
 function aliasesFor(framework, version) {
-  const alias = short => `npm:${packageName(short)}@${version}`
   if (framework === 'react') {
     return {
-      '@helvetia/ds-react': alias('react'),
-      '@helvetia/ds-styles': alias('styles'),
+      [targetPackageName('react')]: version,
+      [targetPackageName('styles')]: version,
     }
   }
   if (framework === 'angular') {
     return {
-      '@helvetia/ds-angular': alias('angular'),
-      '@helvetia/ds-styles': alias('styles'),
+      [targetPackageName('angular')]: version,
+      [targetPackageName('styles')]: version,
     }
   }
   return {
-    '@helvetia/ds-core': alias('core'),
-    '@helvetia/ds-styles': alias('styles'),
+    [targetPackageName('core')]: version,
+    [targetPackageName('styles')]: version,
   }
 }
 
@@ -203,8 +205,8 @@ function collectImports(rootDir, filePath, imports) {
 function kindOf(line) {
   if (/<link\b/i.test(line) || /<script\b/i.test(line)) return 'bootstrap'
   if (/@import\b/.test(line) || /@use\b/.test(line)) return 'bootstrap'
-  if (new RegExp(`import\\s+['"]${SCOPE}/ds-(?:core|styles)\\b`).test(line)) return 'bootstrap'
-  if (new RegExp(`node_modules/${SCOPE}/ds-(?:styles|core)\\b`).test(line)) return 'bootstrap'
+  if (new RegExp(`import\\s+['"]${LEGACY_SCOPE}/ds-(?:core|styles)\\b`).test(line)) return 'bootstrap'
+  if (new RegExp(`node_modules/${LEGACY_SCOPE}/ds-(?:styles|core)\\b`).test(line)) return 'bootstrap'
   return 'reference'
 }
 
