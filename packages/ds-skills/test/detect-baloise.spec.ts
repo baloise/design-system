@@ -183,8 +183,8 @@ describe('detectBaloise', () => {
       ],
       version: '20.0.0-next.42',
       aliases: {
-        '@helvetia/ds-react': 'npm:@baloise/ds-react@20.0.0-next.42',
-        '@helvetia/ds-styles': 'npm:@baloise/ds-styles@20.0.0-next.42',
+        '@helvetia-design/react': '20.0.0-next.42',
+        '@helvetia-design/styles': '20.0.0-next.42',
       },
     })
   })
@@ -204,8 +204,8 @@ describe('detectBaloise', () => {
       status: 'ready',
       version: '20.0.0-next.99',
       aliases: {
-        '@helvetia/ds-react': 'npm:@baloise/ds-react@20.0.0-next.99',
-        '@helvetia/ds-styles': 'npm:@baloise/ds-styles@20.0.0-next.99',
+        '@helvetia-design/react': '20.0.0-next.99',
+        '@helvetia-design/styles': '20.0.0-next.99',
       },
     })
   })
@@ -253,13 +253,13 @@ describe('detectBaloise', () => {
       framework: 'html',
       dependencies: ['@baloise/ds-styles'],
       aliases: {
-        '@helvetia/ds-core': 'npm:@baloise/ds-core@20.0.0-next.9',
-        '@helvetia/ds-styles': 'npm:@baloise/ds-styles@20.0.0-next.9',
+        '@helvetia-design/core': '20.0.0-next.9',
+        '@helvetia-design/styles': '20.0.0-next.9',
       },
     })
   })
 
-  it('detects Angular from @angular/core and aliases ds-angular plus ds-styles', async () => {
+  it('detects Angular from @angular/core and adds angular plus styles', async () => {
     const root = createScratchDir()
     write(
       root,
@@ -292,8 +292,8 @@ describe('detectBaloise', () => {
       framework: 'angular',
       packageJsonPath: 'package.json',
       aliases: {
-        '@helvetia/ds-angular': 'npm:@baloise/ds-angular@20.0.0-next.9',
-        '@helvetia/ds-styles': 'npm:@baloise/ds-styles@20.0.0-next.9',
+        '@helvetia-design/angular': '20.0.0-next.9',
+        '@helvetia-design/styles': '20.0.0-next.9',
       },
       imports: [
         {
@@ -346,7 +346,7 @@ describe('detectBaloise', () => {
 
     expect(result).toEqual({
       status: 'error',
-      message: 'npm view @baloise/ds-core dist-tags did not include a next tag',
+      message: 'npm view @helvetia-design/core dist-tags did not include a next tag',
     })
   })
 
@@ -367,14 +367,14 @@ describe('detectBaloise', () => {
 })
 
 describe('readNpmDistTags', () => {
-  it('asks npm view for the @baloise/ds-core dist-tags', async () => {
+  it('asks npm view for the @helvetia-design/core dist-tags', async () => {
     const calls: unknown[][] = []
     const distTags = await readNpmDistTags(async (command: string, args: string[]) => {
       calls.push([command, args])
       return { stdout: JSON.stringify({ latest: '19.10.2', next: '20.0.0-next.9' }) }
     })
 
-    expect(calls).toEqual([['npm', ['view', '@baloise/ds-core', 'dist-tags', '--json']]])
+    expect(calls).toEqual([['npm', ['view', '@helvetia-design/core', 'dist-tags', '--json']]])
     expect(distTags).toEqual({ latest: '19.10.2', next: '20.0.0-next.9' })
   })
 })

@@ -1,6 +1,6 @@
 # spinner
 
-Migrate every `bal-spinner` usage to `ds-spinner`. Init has already added the `@helvetia/*` aliases. This task rewrites usages only.
+Migrate every `bal-spinner` usage to `ds-spinner`. Init has already added the `@helvetia-design/*` packages. This task rewrites usages only.
 
 ## 1. Scan
 
@@ -48,7 +48,7 @@ Edit each finding yourself, using the mapping below. Read the whole element when
 
 - **HTML**: `<bal-spinner>` becomes `<ds-spinner>`, including the closing tag.
 - **Angular**: `<bal-spinner>` becomes `<ds-spinner>` in `.html` templates and in inline `template:` strings, including the closing tag.
-- **React**: `<BalSpinner>` becomes `<DsSpinner>` and `</BalSpinner>` becomes `</DsSpinner>`. Import `DsSpinner` from `@helvetia/ds-react`. When the existing `@baloise/ds-react` import also binds other symbols, move only `BalSpinner` to `import { DsSpinner } from '@helvetia/ds-react'` and leave the other symbols on the `@baloise` import.
+- **React**: `<BalSpinner>` becomes `<DsSpinner>` and `</BalSpinner>` becomes `</DsSpinner>`. Import `DsSpinner` from `@helvetia-design/react`. When the existing `@baloise/ds-react` import also binds other symbols, move only `BalSpinner` to `import { DsSpinner } from '@helvetia-design/react'` and leave the other symbols on the `@baloise` import.
 
 ### Events
 
