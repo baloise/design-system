@@ -280,6 +280,7 @@ describe('text migration.md', () => {
       'size="lead"',
       'size="block"',
       'color="white"',
+      'color="inverted"',
       'inverted="true"',
       'color="blue"',
       'color="primary"',
