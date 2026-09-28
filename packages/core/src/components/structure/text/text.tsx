@@ -12,6 +12,7 @@ import {
   TextSpace,
   TextAlign,
 } from './text.interfaces'
+import { resolveTextColor } from './text.color'
 
 /**
  * Text renders paragraph and article content with flexible sizing, styling, and semantic emphasis options.
@@ -139,13 +140,17 @@ export class Text implements DsComponentInterface {
 
   render() {
     const Text = this.inline ? 'span' : 'p'
+    const color = resolveTextColor({
+      disabled: this.disabled,
+      invalid: this.invalid,
+      inverted: this.inverted,
+      color: this.color,
+    })
 
     return (
       <Host
         class={{
-          [`is-${this.color}`]: hasValue(this.color),
-          'is-invalid': this.invalid,
-          'is-disabled': this.disabled,
+          [`is-${color}`]: hasValue(color),
           'is-bold': this.bold,
           'has-shadow': this.shadow,
           'is-inline': this.inline,
