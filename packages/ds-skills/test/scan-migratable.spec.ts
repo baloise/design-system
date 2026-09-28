@@ -41,6 +41,21 @@ describe('scanMigratable', () => {
     })
   })
 
+  it('suggests text when the project uses bal-text', () => {
+    const root = createScratchDir()
+    write(
+      root,
+      'App.tsx',
+      ["import { BalText } from '@baloise/ds-react'", 'export const App = () => <BalText>Hi</BalText>'].join('\n'),
+    )
+    write(root, 'index.html', '<bal-text>Hi</bal-text>\n')
+
+    expect(scanMigratable(root)).toEqual({
+      suggested: [{ name: 'text', total: 5 }],
+      notYet: [],
+    })
+  })
+
   it('suggests icon when the project uses bal-icon', () => {
     const root = createScratchDir()
     write(
