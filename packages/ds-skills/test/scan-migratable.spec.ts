@@ -41,6 +41,21 @@ describe('scanMigratable', () => {
     })
   })
 
+  it('suggests icon when the project uses bal-icon', () => {
+    const root = createScratchDir()
+    write(
+      root,
+      'App.tsx',
+      ["import { BalIcon } from '@baloise/ds-react'", 'export const App = () => <BalIcon name="plus" />'].join('\n'),
+    )
+    write(root, 'index.html', '<bal-icon name="check"></bal-icon>\n')
+
+    expect(scanMigratable(root)).toEqual({
+      suggested: [{ name: 'icon', total: 4 }],
+      notYet: [],
+    })
+  })
+
   it('returns no suggestions when only unsupported components are used', () => {
     const root = createScratchDir()
     write(root, 'index.html', '<bal-button></bal-button>\n')
