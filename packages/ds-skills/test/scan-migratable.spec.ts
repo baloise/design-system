@@ -71,6 +71,24 @@ describe('scanMigratable', () => {
     })
   })
 
+  it('suggests tooltip when the project uses bal-tooltip', () => {
+    const root = createScratchDir()
+    write(
+      root,
+      'App.tsx',
+      [
+        "import { BalTooltip } from '@baloise/ds-react'",
+        'export const App = () => <BalTooltip reference="save">Hint</BalTooltip>',
+      ].join('\n'),
+    )
+    write(root, 'index.html', '<bal-tooltip reference="save">Hint</bal-tooltip>\n')
+
+    expect(scanMigratable(root)).toEqual({
+      suggested: [{ name: 'tooltip', total: 5 }],
+      notYet: [],
+    })
+  })
+
   it('suggests icon when the project uses bal-icon', () => {
     const root = createScratchDir()
     write(

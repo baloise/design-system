@@ -66,7 +66,7 @@ pnpm --filter @helvetia/ds-skills test
 pnpm --filter @helvetia/ds-skills lint
 ```
 
-Done when the CLI specs, `test/detect-baloise.spec.ts`, `test/scan-bal-spinner.spec.ts`, `test/scan-bal-icon.spec.ts`, `test/scan-bal-text.spec.ts`, and `test/scan-bal-toast.spec.ts` pass and eslint exits 0.
+Done when the CLI specs, `test/detect-baloise.spec.ts`, `test/scan-bal-spinner.spec.ts`, `test/scan-bal-icon.spec.ts`, `test/scan-bal-text.spec.ts`, `test/scan-bal-toast.spec.ts`, and `test/scan-bal-tooltip.spec.ts` pass and eslint exits 0.
 
 ### Scratch CLI
 
@@ -88,7 +88,7 @@ Done when:
 
 ### Menu (Claude)
 
-In the scratch directory, invoke `/ds-migrate-from-baloise`. Done when Init runs `scripts/detect-baloise.mjs`, Components offers **Manual** and **Detect**, Manual lists **spinner**, **icon**, **text**, and **toast** from the first headings of their `migration.md` files, Detect suggests a component only when the project uses it and that migration exists, and CSS utils / Assets report "coming soon" and stop.
+In the scratch directory, invoke `/ds-migrate-from-baloise`. Done when Init runs `scripts/detect-baloise.mjs`, Components offers **Manual** and **Detect**, Manual lists **spinner**, **icon**, **text**, **toast**, and **tooltip** from the first headings of their `migration.md` files, Detect suggests a component only when the project uses it and that migration exists, and CSS utils / Assets report "coming soon" and stop.
 
 Against a project with no `@baloise/ds-*` dependency and no CSS/JS import, Init says "no Baloise Design System installation detected, nothing to migrate" and does not edit files. Against a project that has both, Init adds the `@helvetia-design/*` packages from the script JSON, runs that JSON's `installCommand`, inserts the new import beside the untouched `@baloise/*` import, and leaves the result unstaged.
 
@@ -99,6 +99,8 @@ Icon: `node <skill>/scripts/scan-bal-icon.mjs <project>` prints the same JSON sh
 Text: `node <skill>/scripts/scan-bal-text.mjs <project>` prints the same JSON shape and does not edit files. After one yes, the agent rewrites from `components/text/migration.md` and leaves the result unstaged.
 
 Toast: `node <skill>/scripts/scan-bal-toast.mjs <project>` prints the same JSON shape and does not edit files. After one yes, the agent rewrites from `components/toast/migration.md` and leaves the result unstaged.
+
+Tooltip: `node <skill>/scripts/scan-bal-tooltip.mjs <project>` prints the same JSON shape and does not edit files. After one yes, the agent rewrites from `components/tooltip/migration.md` and leaves the result unstaged.
 
 Detection: `node <skill>/scripts/scan-migratable.mjs <project>` prints used components grouped into `suggested` (migration available) and `notYet` (no migration available), with usage totals, and does not edit files.
 
