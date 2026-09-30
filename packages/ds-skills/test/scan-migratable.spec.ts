@@ -41,6 +41,21 @@ describe('scanMigratable', () => {
     })
   })
 
+  it('suggests toast when the project uses bal-toast', () => {
+    const root = createScratchDir()
+    write(
+      root,
+      'App.tsx',
+      ["import { BalToast } from '@baloise/ds-react'", 'export const App = () => <BalToast message="Hi" />'].join('\n'),
+    )
+    write(root, 'index.html', '<bal-toast message="Hi"></bal-toast>\n')
+
+    expect(scanMigratable(root)).toEqual({
+      suggested: [{ name: 'toast', total: 4 }],
+      notYet: [],
+    })
+  })
+
   it('suggests text when the project uses bal-text', () => {
     const root = createScratchDir()
     write(
