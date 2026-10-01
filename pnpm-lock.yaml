@@ -494,7 +494,7 @@ importers:
         specifier: 3.1.1
         version: 3.1.1
       '@helvetia-design/tokens':
-        specifier: 0.0.0
+        specifier: 1.0.0
         version: link:../../packages/tokens
       '@xyflow/react':
         specifier: 12.12.0
@@ -596,7 +596,7 @@ importers:
   packages/ag-grid:
     dependencies:
       '@helvetia-design/tokens':
-        specifier: 0.0.0
+        specifier: 1.0.0
         version: link:../tokens
     devDependencies:
       ag-grid-community:
@@ -618,7 +618,7 @@ importers:
   packages/angular:
     dependencies:
       '@helvetia-design/core':
-        specifier: 0.0.0
+        specifier: 1.0.0
         version: link:../core
       tslib:
         specifier: 'catalog:'
@@ -661,13 +661,13 @@ importers:
         specifier: 1.8.0
         version: 1.8.0
       '@helvetia-design/assets':
-        specifier: 0.0.0
+        specifier: 1.0.0
         version: link:../assets
       '@helvetia-design/styles':
-        specifier: 0.0.0
+        specifier: 1.0.0
         version: link:../styles
       '@helvetia-design/tokens':
-        specifier: 0.0.0
+        specifier: 1.0.0
         version: link:../tokens
       '@stencil/core':
         specifier: 'catalog:'
@@ -713,7 +713,7 @@ importers:
         version: 2.8.1
     devDependencies:
       '@helvetia-design/playwright':
-        specifier: 0.0.0
+        specifier: 1.0.0
         version: link:../playwright
       '@stencil/angular-output-target':
         specifier: 1.5.0
@@ -780,7 +780,7 @@ importers:
   packages/react:
     dependencies:
       '@helvetia-design/core':
-        specifier: 0.0.0
+        specifier: 1.0.0
         version: link:../core
       '@stencil/react-output-target':
         specifier: 1.6.2
@@ -817,10 +817,10 @@ importers:
   packages/styles:
     dependencies:
       '@helvetia-design/assets':
-        specifier: 0.0.0
+        specifier: 1.0.0
         version: link:../assets
       '@helvetia-design/tokens':
-        specifier: 0.0.0
+        specifier: 1.0.0
         version: link:../tokens
     devDependencies:
       autoprefixer:
@@ -14326,8 +14326,8 @@ snapshots:
       less: 4.9.1(supports-color@8.1.1)
       ora: 9.4.1
       postcss: 8.5.26
-      rolldown: 1.2.8
-      rolldown-plugin-dts: 0.28.6(oxc-resolver@11.21.2)(rolldown@1.2.8)(typescript@6.0.3)
+      rolldown: 1.2.11
+      rolldown-plugin-dts: 0.28.6(oxc-resolver@11.21.2)(rolldown@1.2.11)(typescript@6.0.3)
       rxjs: 7.8.2
       sass: 1.105.0
       sass-embedded: 1.105.0
@@ -15087,12 +15087,12 @@ snapshots:
       glob: 13.0.6
       package-json-from-dist: 1.0.1
 
-  rolldown-plugin-dts@0.28.6(oxc-resolver@11.21.2)(rolldown@1.2.8)(typescript@6.0.3):
+  rolldown-plugin-dts@0.28.6(oxc-resolver@11.21.2)(rolldown@1.2.11)(typescript@6.0.3):
     dependencies:
       dts-resolver: 3.0.0(oxc-resolver@11.21.2)
       get-tsconfig: 5.0.0-beta.6
       obug: 3.0.0
-      rolldown: 1.2.8
+      rolldown: 1.2.11
       yuku-ast: 0.10.2
       yuku-codegen: 0.10.2
       yuku-parser: 0.10.2
