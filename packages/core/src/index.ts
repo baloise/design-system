@@ -15,6 +15,7 @@ export { Components, JSX } from './components'
 export * from './components/overlays/modal/modal.interfaces'
 export * from './components/structure/app-footer/app-footer.interfaces'
 export * from './components/overlays/sheet/sheet.interfaces'
+export type { ComponentRef, FrameworkDelegate } from './utils/framework-delegate'
 
 /**
  * i18n
