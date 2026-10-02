@@ -712,6 +712,15 @@ the old, now-deprecated `bal-modal` also used) rather than invented fresh:
   (string tag or `HTMLElement` ref, no framework instantiation needed) and
   are what `ModalControllerImpl.create()` calls when `options.component`
   is set.
+- **Accessible name**: because a component-overlay modal's mounted
+  component only ever fills the `body` slot, its `header` slot is always
+  empty, so `ds-modal`'s default `aria-labelledby="modal-title"` resolves
+  to no accessible name (browsers don't fall back to `aria-label` just
+  because the referenced element is empty). `ModalOptions.label` /
+  `DsModalService.create()`'s `options.label` set `ds-modal`'s `label` prop, which replaces
+  `aria-labelledby` with `aria-label` on the dialog. Always pass `label`
+  when opening a component-overlay modal; it's optional for
+  declarative/slotted usage, which keeps using the `header` slot.
 - **Modal ref**: a handle scoped to one specific presented modal instance,
   used to dismiss _that_ modal and carry data back to its opener. Replaces
   the old `bal-modal`/Ionic `OverlayBaseController` pattern of a global
@@ -719,9 +728,11 @@ the old, now-deprecated `bal-modal` also used) rather than invented fresh:
   on top rather than the one the caller meant — a real bug class with
   nested/concurrent overlays. `packages/core` only exposes
   `dismiss(id?, data?, role?)` (still name/top-of-stack based); the scoped
-  ref itself is `packages/angular`'s `DsModalRef`, which also owns detaching
-  the mounted component via `detachComponent` on dismiss — core does not
-  call it. See [docs/adr/0022-modal-overlay-component-delegate-pattern.md](../../docs/adr/0022-modal-overlay-component-delegate-pattern.md).
+  ref itself is `packages/angular`'s `DsModalRef`. `ModalControllerImpl.create()`
+  owns detaching the mounted component via `detachComponent` on `dsDidDismiss`
+  (and removing `<ds-modal>` itself from `root`), so this cleanup happens
+  regardless of whether a caller ever holds onto a `DsModalRef`. See
+  [docs/adr/0022-modal-overlay-component-delegate-pattern.md](../../docs/adr/0022-modal-overlay-component-delegate-pattern.md).
   _Avoid_: global dismiss, top-of-stack dismiss.
 
 ## Global Configuration (`DesignSystem.config`)

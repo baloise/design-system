@@ -14,6 +14,7 @@ import { TextareaDemo } from './textarea-demo/textarea-demo'
 import { RadioGroupDemo } from './radio-group-demo/radio-group-demo'
 import { SelectDemo } from './select-demo/select-demo'
 import { ToggleDemo } from './toggle-demo/toggle-demo'
+import { ModalDemo } from './modal-demo/modal-demo'
 
 @Component({
   selector: 'app-root',
@@ -33,6 +34,7 @@ import { ToggleDemo } from './toggle-demo/toggle-demo'
     FileUploadDemo,
     SelectDemo,
     ToggleDemo,
+    ModalDemo,
   ],
   templateUrl: './app.html',
 })

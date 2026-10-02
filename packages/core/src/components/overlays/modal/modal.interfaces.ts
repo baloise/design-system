@@ -14,6 +14,8 @@ export interface ModalDismissDetail {
 export interface ModalOptions {
   modalWidth?: number
   closable?: boolean
+  fullscreen?: boolean
+  label?: string
   component?: ComponentRef
   componentProps?: { [key: string]: any }
   delegate?: FrameworkDelegate

@@ -21,7 +21,7 @@ import { DS_MODAL_DATA } from './modal.tokens'
  * actually supplied one either despite its delegate accepting one. So this delegate always
  * uses that path rather than requiring a real `ViewContainerRef`.
  */
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class AngularDelegate implements FrameworkDelegate {
   private readonly componentRefs = new WeakMap<HTMLElement, ComponentRef<unknown>>()
 
@@ -39,10 +39,10 @@ export class AngularDelegate implements FrameworkDelegate {
   ): Promise<HTMLElement> {
     return Promise.resolve(
       this.zone.run(() => {
-        const modalRef = new DsModalRef(container)
+        const modalRef = DsModalRef.for(container)
         const elementInjector = Injector.create({
           providers: [
-            { provide: DS_MODAL_DATA, useValue: componentProps },
+            { provide: DS_MODAL_DATA, useValue: componentProps ?? {} },
             { provide: DsModalRef, useValue: modalRef },
           ],
           parent: this.envInjector,
@@ -53,14 +53,19 @@ export class AngularDelegate implements FrameworkDelegate {
           elementInjector,
         })
 
-        const hostElement = componentRef.location.nativeElement as HTMLElement
-        cssClasses?.forEach(cssClass => hostElement.classList.add(cssClass))
-        hostElement.slot = 'body'
-        container.appendChild(hostElement)
-        this.appRef.attachView(componentRef.hostView)
-        this.componentRefs.set(hostElement, componentRef)
+        try {
+          const hostElement = componentRef.location.nativeElement as HTMLElement
+          this.componentRefs.set(hostElement, componentRef)
+          cssClasses?.forEach(cssClass => hostElement.classList.add(cssClass))
+          hostElement.slot = 'body'
+          container.appendChild(hostElement)
+          this.appRef.attachView(componentRef.hostView)
 
-        return hostElement
+          return hostElement
+        } catch (error) {
+          componentRef.destroy()
+          throw error
+        }
       }),
     )
   }
@@ -74,6 +79,11 @@ export class AngularDelegate implements FrameworkDelegate {
           componentRef.destroy()
           this.componentRefs.delete(element)
         }
+        // `componentRef.destroy()` only tears down Angular state (change detection, DI,
+        // ngOnDestroy): the host view was attached via the free `createComponent()` +
+        // `appRef.attachView()` path rather than through a `ViewContainerRef`, so Ivy never
+        // owns the parent/child DOM relationship and destroy() does not remove the native node.
+        element.remove()
       }),
     )
   }

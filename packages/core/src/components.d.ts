@@ -1909,7 +1909,7 @@ export namespace Components {
         "closable": boolean;
         "configChanged": (state: DsConfigState) => Promise<void>;
         /**
-          * Closes the modal, emitting `data`/`role` on `dsWillDismiss`/`dsDidDismiss`.
+          * Closes the modal, emitting `data`/`role` on `dsWillDismiss`/`dsDidDismiss`. Resolves once the close transition has finished.
          */
         "dismiss": (data?: unknown, role?: string) => Promise<void>;
         /**
@@ -1917,6 +1917,11 @@ export namespace Components {
           * @default false
          */
         "fullscreen": boolean;
+        /**
+          * Accessible label for the modal dialog (sets aria-label on the dialog element). Required for component-overlay modals (`ModalOptions.component`), whose mounted component only fills the `body` slot — the `header` slot stays empty, so `aria-labelledby="modal-title"` alone resolves to no accessible name.
+          * @default ''
+         */
+        "label": string;
         /**
           * Width of the modal in pixels.
           * @default 640
@@ -7148,6 +7153,11 @@ declare namespace LocalJSX {
          */
         "fullscreen"?: boolean;
         /**
+          * Accessible label for the modal dialog (sets aria-label on the dialog element). Required for component-overlay modals (`ModalOptions.component`), whose mounted component only fills the `body` slot — the `header` slot stays empty, so `aria-labelledby="modal-title"` alone resolves to no accessible name.
+          * @default ''
+         */
+        "label"?: string;
+        /**
           * Width of the modal in pixels.
           * @default 640
          */
@@ -9571,6 +9581,7 @@ declare namespace LocalJSX {
         "closable": boolean;
         "modalWidth": number;
         "fullscreen": boolean;
+        "label": string;
     }
     interface DsNotificationAttributes {
         "alert": boolean;
