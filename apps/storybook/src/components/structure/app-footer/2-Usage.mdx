@@ -27,15 +27,15 @@ same defaults for the active region/language. `legalText` can additionally be ov
 
 <AngularFramework>
 
-Set the defaults once in `provideDesignSystem()`, in `app.config.ts`.
+Set the defaults once in `bootstrapDesignSystem()`, in `app.config.ts`.
 
 <Code language="typescript" code={`
 import { ApplicationConfig } from '@angular/core'
-import { provideDesignSystem } from '@helvetia-design/angular'
+import { bootstrapDesignSystem } from '@helvetia-design/angular'
 
 export const appConfig: ApplicationConfig = {
 ${' '}providers: [
-${' '}${' '}provideDesignSystem({
+${' '}${' '}bootstrapDesignSystem({
 ${' '}${' '}${' '}defaults: {
 ${' '}${' '}${' '}${' '}legalLinks: {
 ${' '}${' '}${' '}${' '}${' '}CH: {
