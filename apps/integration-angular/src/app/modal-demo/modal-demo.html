@@ -1,0 +1,6 @@
+<h2>Modal demo</h2>
+<p data-testid="modal-result">Result: {{ result() }}</p>
+<ds-button data-testid="open-modal" (dsClick)="open()">Open modal</ds-button>
+<ds-button data-testid="open-modal-not-closable" (dsClick)="open({ closable: false })"
+  >Open non-closable modal</ds-button
+>

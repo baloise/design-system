@@ -45,11 +45,17 @@ Re-add `ComponentRef`/`FrameworkDelegate` to `packages/core`'s
 `ModalOptions`/`ModalController` (adapted for `ds-modal`'s shadow DOM: a
 delegate mounts into a light-DOM container slotted into the modal, not
 directly into the shadow root — the old non-shadow `bal-modal` didn't need
-this). `packages/angular` supplies the Angular delegate, using
-`ViewContainerRef.createComponent()` instead of the deprecated
-`ComponentFactoryResolver` — the same fix modern `@ionic/angular` and
-Angular Material's `MatDialog` (`ComponentPortal` +
-`ViewContainerRef.createComponent()`) both made.
+this). `packages/angular` supplies the Angular delegate, using the free
+`createComponent()` function plus `ApplicationRef.attachView()` instead of
+the deprecated `ComponentFactoryResolver` — the same fallback Angular CDK's
+`DomPortalOutlet` (which `MatDialog` uses) takes whenever no
+`ViewContainerRef` is supplied, which is the case here since
+`DsModalService.create()` is an imperative call with no ambient
+`ViewContainerRef` to create the component against. Unlike a
+`ViewContainerRef`-rooted view, a view attached this way is never inserted
+through container-view bookkeeping, so `componentRef.destroy()` alone does
+not remove its host node from the DOM — the Angular delegate's
+`removeViewFromDom()` must also explicitly call `element.remove()`.
 
 Dismissal and data flow are scoped per instance instead of via a global
 stack: `create()` returns a modal ref specific to that presentation, and
