@@ -1,6 +1,6 @@
 import { ApplicationConfig, provideBrowserGlobalErrorListeners } from '@angular/core'
-import { provideDesignSystem } from '@helvetia-design/angular'
+import { bootstrapDesignSystem } from '@helvetia-design/angular'
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideBrowserGlobalErrorListeners(), provideDesignSystem()],
+  providers: [provideBrowserGlobalErrorListeners(), bootstrapDesignSystem()],
 }
