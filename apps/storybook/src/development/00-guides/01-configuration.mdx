@@ -56,15 +56,15 @@ import {
 
 <AngularFramework>
 
-Pass the config to `provideDesignSystem()` in `app.config.ts`.
+Pass the config to `bootstrapDesignSystem()` in `app.config.ts`.
 
 <Code language="typescript" code={`
 import { ApplicationConfig } from '@angular/core'
-import { provideDesignSystem } from '@helvetia-design/angular'
+import { bootstrapDesignSystem } from '@helvetia-design/angular'
 
 export const appConfig: ApplicationConfig = {
 ${' '}providers: [
-${' '}${' '}provideDesignSystem({
+${' '}${' '}bootstrapDesignSystem({
 ${' '}${' '}${' '}defaults: {
 ${' '}${' '}${' '}${' '}brand: 'helvetia',
 ${' '}${' '}${' '}${' '}region: 'CH',
@@ -306,6 +306,50 @@ ${' '}})
 `} />
 
 </HTMLFramework>
+
+<AngularFramework>
+
+## Reactive state services
+
+`bootstrapDesignSystem()` also provides three injectable, signal-based services for consuming reactive state
+directly in a component, with no manual `onDsConfigChange`/`addEventListener` wiring. All three detach their
+listener automatically on `ngOnDestroy`.
+
+- **`DsConfigService`** — the full config state as `state`, plus setters `setLanguage`, `setRegion`, `setAnimated`,
+  `setIcons`, and `setAllowedLanguages`.
+- **`DsBreakpointsService`** — the current viewport breakpoints as `state`, with one `computed()` signal per
+  breakpoint: `mobile`, `tablet`, `touch`, `desktop`, `desktopLg`, `desktopXl`, `desktop2Xl`.
+- **`DsOrientationService`** — the device orientation as `state`, with `portrait` and `landscape` signals.
+
+<Code language="typescript" code={`
+import { Component, inject } from '@angular/core'
+import { DsBreakpointsService, DsConfigService, DsOrientationService } from '@helvetia-design/angular'
+
+@Component({
+${' '}selector: 'app-sample',
+${' '}templateUrl: './sample.html',
+})
+export class Sample {
+${' '}config = inject(DsConfigService)
+${' '}breakpoints = inject(DsBreakpointsService)
+${' '}orientation = inject(DsOrientationService)
+
+${' '}changeLanguage(): void {
+${' '}${' '}this.config.setLanguage('fr')
+${' '}}
+}
+`} />
+
+```html
+<!-- sample.html -->
+
+@if (breakpoints.mobile()) {
+  <p>Mobile layout, {{ orientation.portrait() ? 'portrait' : 'landscape' }}</p>
+}
+<p>Language: {{ config.state().language }}</p>
+```
+
+</AngularFramework>
 
 <Footer>
   <LinkCards>
