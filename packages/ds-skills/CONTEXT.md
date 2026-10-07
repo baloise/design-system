@@ -45,6 +45,7 @@ Conventions that hold across every component:
 - **`CHILD_SLUGS` stays explicit.** Never fold by prefix: `bal-input-slider` becomes `ds-slider`, a separate component, not part of the input migration.
 - **Anything with no `ds-*` equivalent is reported, never commented into the consumer's code.** The migration file's final step enumerates each loss for the summary. See `components/tooltip/migration.md` and `components/accordion/migration.md`.
 - **When the component has methods or events, the migration file carries the sibling-file rule.** Angular splits a component across `x.component.html` and `x.component.ts`, and the class file often calls `present()` or handles an event without ever naming the tag, so the scan cannot see it. The migration file tells the agent to open the same-basename `.ts` beside every `.html` finding. See `components/accordion/migration.md`.
+- **The directory is always the legacy slug**, because Detect derives it from the `bal-*` tag. When the component is renamed, the first heading names both sides so the Manual menu stays readable: `components/app/migration.md` opens with `# app → root`.
 - **Fixtures are written inline in the spec** with the local `write()` helper. `test/fixtures/` predates that and serves spinner only; do not extend it.
 
 Done when **Components** lists the new heading and choosing it follows that file.
@@ -76,7 +77,7 @@ pnpm --filter @helvetia/ds-skills test
 pnpm --filter @helvetia/ds-skills lint
 ```
 
-Done when the CLI specs, `test/detect-baloise.spec.ts`, `test/scan-bal-accordion.spec.ts`, `test/scan-bal-spinner.spec.ts`, `test/scan-bal-icon.spec.ts`, `test/scan-bal-text.spec.ts`, `test/scan-bal-toast.spec.ts`, and `test/scan-bal-tooltip.spec.ts` pass and eslint exits 0.
+Done when the CLI specs, `test/detect-baloise.spec.ts`, `test/scan-bal-accordion.spec.ts`, `test/scan-bal-app.spec.ts`, `test/scan-bal-spinner.spec.ts`, `test/scan-bal-icon.spec.ts`, `test/scan-bal-text.spec.ts`, `test/scan-bal-toast.spec.ts`, and `test/scan-bal-tooltip.spec.ts` pass and eslint exits 0.
 
 ### Scratch CLI
 
@@ -98,13 +99,15 @@ Done when:
 
 ### Menu (Claude)
 
-In the scratch directory, invoke `/ds-migrate-from-baloise`. Done when Init runs `scripts/detect-baloise.mjs`, Components offers **Manual** and **Detect**, Manual lists **accordion**, **spinner**, **icon**, **text**, **toast**, and **tooltip** from the first headings of their `migration.md` files, Detect suggests a component only when the project uses it and that migration exists, and CSS utils / Assets report "coming soon" and stop.
+In the scratch directory, invoke `/ds-migrate-from-baloise`. Done when Init runs `scripts/detect-baloise.mjs`, Components offers **Manual** and **Detect**, Manual lists **accordion**, **app → root**, **spinner**, **icon**, **text**, **toast**, and **tooltip** from the first headings of their `migration.md` files, Detect suggests a component only when the project uses it and that migration exists, and CSS utils / Assets report "coming soon" and stop.
 
 Against a project with no `@baloise/ds-*` dependency and no CSS/JS import, Init says "no Baloise Design System installation detected, nothing to migrate" and does not edit files. Against a project that has both, Init adds the `@helvetia-design/*` packages from the script JSON, runs that JSON's `installCommand`, inserts the new import beside the untouched `@baloise/*` import, and leaves the result unstaged.
 
 Spinner: `node <skill>/scripts/scan-bal-spinner.mjs <project>` prints JSON findings (`total`, then `files` with `line` and `snippet`) and does not edit files. After one yes, the agent rewrites from `components/spinner/migration.md` and leaves the result unstaged.
 
 Accordion: `node <skill>/scripts/scan-bal-accordion.mjs <project>` prints the same JSON shape and does not edit files. The regex covers `bal-accordion` and its `bal-accordion-summary`, `bal-accordion-trigger`, and `bal-accordion-details` children, plus the `BalAccordion*` bindings and `BalAccordionBundle`. After one yes, the agent rewrites from `components/accordion/migration.md` and leaves the result unstaged.
+
+App: `node <skill>/scripts/scan-bal-app.mjs <project>` prints the same JSON shape and does not edit files. The regex also matches `initializeBaloiseDesignSystem` and `useBaloiseDesignSystem`, so the startup file that holds the language and region is found even though it never names the tag. After one yes, the agent rewrites from `components/app/migration.md` and leaves the result unstaged.
 
 Icon: `node <skill>/scripts/scan-bal-icon.mjs <project>` prints the same JSON shape and does not edit files. After one yes, the agent rewrites from `components/icon/migration.md` and leaves the result unstaged.
 
