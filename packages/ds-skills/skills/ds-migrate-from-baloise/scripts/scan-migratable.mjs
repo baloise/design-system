@@ -24,6 +24,13 @@ export function componentNameToSlug(name) {
     .toLowerCase()
 }
 
+// Legacy Angular shipped 24 `Bal*Bundle` arrays (BalLayoutBundle, BalTypographyBundle,
+// ...). They are groups of components, not components, so they have no migration and
+// listing them as `notYet` is noise in every app that imports a bundle.
+function isBundle(slug) {
+  return slug.endsWith('-bundle')
+}
+
 export function scanMigratable(rootDir) {
   const available = availableMigrations()
   const totals = new Map()
@@ -33,6 +40,7 @@ export function scanMigratable(rootDir) {
     let match
     while ((match = COMPONENT_RE.exec(masked)) !== null) {
       const slug = match[1] ?? componentNameToSlug(match[2] ?? match[3])
+      if (isBundle(slug)) continue
       const name = CHILD_SLUGS.get(slug) ?? slug
       totals.set(name, (totals.get(name) ?? 0) + 1)
     }
