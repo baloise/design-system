@@ -105,6 +105,33 @@ describe('scanMigratable', () => {
     })
   })
 
+  it('suggests card when the project uses bal-card and folds its child tags in', () => {
+    const root = createScratchDir()
+    write(
+      root,
+      'App.tsx',
+      ["import { BalCard } from '@baloise/ds-react'", 'export const App = () => <BalCard flat />'].join('\n'),
+    )
+    write(
+      root,
+      'index.html',
+      [
+        '<bal-card flat>',
+        '  <bal-card-title>Title</bal-card-title>',
+        '  <bal-card-content>Body</bal-card-content>',
+        '</bal-card>',
+        '',
+      ].join('\n'),
+    )
+
+    // The child tags have no migration of their own; the card migration covers
+    // them, so they count towards card rather than showing up as notYet.
+    expect(scanMigratable(root)).toEqual({
+      suggested: [{ name: 'card', total: 8 }],
+      notYet: [],
+    })
+  })
+
   it('suggests toast when the project uses bal-toast', () => {
     const root = createScratchDir()
     write(
