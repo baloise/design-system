@@ -20,6 +20,7 @@ const CHILD_SLUGS = new Map([
   ['card-content', 'card'],
   ['card-subtitle', 'card'],
   ['card-title', 'card'],
+  ['carousel-item', 'carousel'],
 ])
 
 export function componentNameToSlug(name) {

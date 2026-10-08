@@ -132,6 +132,35 @@ describe('scanMigratable', () => {
     })
   })
 
+  it('suggests carousel when the project uses bal-carousel and folds its child tag in', () => {
+    const root = createScratchDir()
+    write(
+      root,
+      'App.tsx',
+      [
+        "import { BalCarousel } from '@baloise/ds-react'",
+        'export const App = () => <BalCarousel controls="dots" />',
+      ].join('\n'),
+    )
+    write(
+      root,
+      'index.html',
+      [
+        '<bal-carousel controls="dots">',
+        '  <bal-carousel-item src="a.jpg"></bal-carousel-item>',
+        '</bal-carousel>',
+        '',
+      ].join('\n'),
+    )
+
+    // The child tag has no migration of its own; the carousel migration covers
+    // it, so it counts towards carousel rather than showing up as notYet.
+    expect(scanMigratable(root)).toEqual({
+      suggested: [{ name: 'carousel', total: 6 }],
+      notYet: [],
+    })
+  })
+
   it('suggests toast when the project uses bal-toast', () => {
     const root = createScratchDir()
     write(
