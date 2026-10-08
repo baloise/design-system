@@ -77,7 +77,7 @@ pnpm --filter @helvetia/ds-skills test
 pnpm --filter @helvetia/ds-skills lint
 ```
 
-Done when the CLI specs, `test/detect-baloise.spec.ts`, `test/scan-bal-accordion.spec.ts`, `test/scan-bal-app.spec.ts`, `test/scan-bal-badge.spec.ts`, `test/scan-bal-card.spec.ts`, `test/scan-bal-spinner.spec.ts`, `test/scan-bal-icon.spec.ts`, `test/scan-bal-text.spec.ts`, `test/scan-bal-toast.spec.ts`, and `test/scan-bal-tooltip.spec.ts` pass and eslint exits 0.
+Done when the CLI specs, `test/detect-baloise.spec.ts`, `test/scan-bal-accordion.spec.ts`, `test/scan-bal-app.spec.ts`, `test/scan-bal-badge.spec.ts`, `test/scan-bal-card.spec.ts`, `test/scan-bal-carousel.spec.ts`, `test/scan-bal-spinner.spec.ts`, `test/scan-bal-icon.spec.ts`, `test/scan-bal-text.spec.ts`, `test/scan-bal-toast.spec.ts`, and `test/scan-bal-tooltip.spec.ts` pass and eslint exits 0.
 
 ### Scratch CLI
 
@@ -99,7 +99,7 @@ Done when:
 
 ### Menu (Claude)
 
-In the scratch directory, invoke `/ds-migrate-from-baloise`. Done when Init runs `scripts/detect-baloise.mjs`, Components offers **Manual** and **Detect**, Manual lists **accordion**, **app → root**, **badge**, **card**, **spinner**, **icon**, **text**, **toast**, and **tooltip** from the first headings of their `migration.md` files, Detect suggests a component only when the project uses it and that migration exists, and CSS utils / Assets report "coming soon" and stop.
+In the scratch directory, invoke `/ds-migrate-from-baloise`. Done when Init runs `scripts/detect-baloise.mjs`, Components offers **Manual** and **Detect**, Manual lists **accordion**, **app → root**, **badge**, **card**, **carousel**, **spinner**, **icon**, **text**, **toast**, and **tooltip** from the first headings of their `migration.md` files, Detect suggests a component only when the project uses it and that migration exists, and CSS utils / Assets report "coming soon" and stop.
 
 Against a project with no `@baloise/ds-*` dependency and no CSS/JS import, Init says "no Baloise Design System installation detected, nothing to migrate" and does not edit files. Against a project that has both, Init adds the `@helvetia-design/*` packages from the script JSON, runs that JSON's `installCommand`, inserts the new import beside the untouched `@baloise/*` import, and leaves the result unstaged.
 
@@ -120,6 +120,8 @@ Toast: `node <skill>/scripts/scan-bal-toast.mjs <project>` prints the same JSON 
 Tooltip: `node <skill>/scripts/scan-bal-tooltip.mjs <project>` prints the same JSON shape and does not edit files. After one yes, the agent rewrites from `components/tooltip/migration.md` and leaves the result unstaged.
 
 Card: `node <skill>/scripts/scan-bal-card.mjs <project>` prints the same JSON shape and does not edit files. The regex also matches the four `BalCard*` children (`Actions`, `Button`, `Content`, `Subtitle`, `Title`) and `BalCardBundle`. After one yes, the agent rewrites from `components/card/migration.md`: it synthesizes a `ds-card-header` around a direct-child `bal-card-title`/`bal-card-subtitle`, rewrites `bal-card-button` into a `ds-button` inside `ds-card-actions` (no direct `ds-*` equivalent exists), and leaves the result unstaged.
+
+Carousel: `node <skill>/scripts/scan-bal-carousel.mjs <project>` prints the same JSON shape and does not edit files. The regex also matches the single `bal-carousel-item` child via the same `bal-carousel\b` word-boundary trick that card and accordion use for their own children, plus `BalCarouselItem` and `BalCarouselBundle`. After one yes, the agent rewrites from `components/carousel/migration.md`: it synthesizes a positional `name` (`item-1`, `item-2`, ...) on every `ds-carousel-item` since the legacy child had no identifier, rewrites a literal numeric `value` from a 0-based index into the matching synthesized name (flagging a non-literal `value` for manual review instead of guessing), collapses `controls`'s five values into three (`small`→`large`, `tabs` dropped) and `interface`'s four values into `variant`'s two (`card`/`product`→`tile`, `image`/omitted→`slide` default), and rewrites a `bal-carousel-item` that rendered its own `<a>`/`<button>` into a literal wrapped element in the slot plus the new `navigation` prop for the link case.
 
 Detection: `node <skill>/scripts/scan-migratable.mjs <project>` prints used components grouped into `suggested` (migration available) and `notYet` (no migration available), with usage totals, and does not edit files.
 
