@@ -56,15 +56,15 @@ import {
 
 <AngularFramework>
 
-Pass the config to `bootstrapDesignSystem()` in `app.config.ts`.
+Pass the config to `provideDesignSystem()` in `app.config.ts`.
 
 <Code language="typescript" code={`
 import { ApplicationConfig } from '@angular/core'
-import { bootstrapDesignSystem } from '@helvetia-design/angular'
+import { provideDesignSystem } from '@helvetia-design/angular'
 
 export const appConfig: ApplicationConfig = {
 ${' '}providers: [
-${' '}${' '}bootstrapDesignSystem({
+${' '}${' '}provideDesignSystem({
 ${' '}${' '}${' '}defaults: {
 ${' '}${' '}${' '}${' '}brand: 'helvetia',
 ${' '}${' '}${' '}${' '}region: 'CH',
@@ -311,7 +311,7 @@ ${' '}})
 
 ## Reactive state services
 
-`bootstrapDesignSystem()` also provides three injectable, signal-based services for consuming reactive state
+`provideDesignSystem()` also provides three injectable, signal-based services for consuming reactive state
 directly in a component, with no manual `onDsConfigChange`/`addEventListener` wiring. All three detach their
 listener automatically on `ngOnDestroy`.
 

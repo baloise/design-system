@@ -29,7 +29,7 @@ export interface DsAngularConfig {
   defaults?: DsConfig
 }
 
-export function bootstrapDesignSystem(config: DsAngularConfig = {}): EnvironmentProviders {
+export function provideDesignSystem(config: DsAngularConfig = {}): EnvironmentProviders {
   return makeEnvironmentProviders([
     { provide: DsTokenBreakpoints, useValue: dsBreakpoints },
     { provide: DsTokenBreakpointSubject, useValue: dsBreakpointSubject },

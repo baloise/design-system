@@ -62,15 +62,15 @@ The initialize of the Design System config defines the default values.
 
 <AngularFramework>
 
-Pass the defaults to `bootstrapDesignSystem()` in `app.config.ts`.
+Pass the defaults to `provideDesignSystem()` in `app.config.ts`.
 
 <Code language="typescript" code={`
 import { ApplicationConfig } from '@angular/core'
-import { bootstrapDesignSystem } from '@helvetia-design/angular'
+import { provideDesignSystem } from '@helvetia-design/angular'
 
 export const appConfig: ApplicationConfig = {
 ${' '}providers: [
-${' '}${' '}bootstrapDesignSystem({
+${' '}${' '}provideDesignSystem({
 ${' '}${' '}${' '}defaults: {
 ${' '}${' '}${' '}${' '}region: 'DE',
 ${' '}${' '}${' '}${' '}language: 'de',

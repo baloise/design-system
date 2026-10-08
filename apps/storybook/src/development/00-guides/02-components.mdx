@@ -34,10 +34,10 @@ that the Design System is initialized correctly, it is crucial that the applicat
 
 ```ts
 import { ApplicationConfig } from '@angular/core'
-import { bootstrapDesignSystem } from '@helvetia-design/angular'
+import { provideDesignSystem } from '@helvetia-design/angular'
 
 export const appConfig: ApplicationConfig = {
-  providers: [bootstrapDesignSystem()],
+  providers: [provideDesignSystem()],
 }
 ```
 

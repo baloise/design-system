@@ -73,20 +73,20 @@ Add these to your global stylesheet (e.g. `styles.scss`). Only **Tokens** and
 
 For SASS mixins (breakpoints, etc.) without any styles, import `@helvetia-design/styles/scss/mixins` instead.
 
-### bootstrapDesignSystem
+### provideDesignSystem
 
-Angular apps are standalone by default. Add `bootstrapDesignSystem()` to the providers in `app.config.ts` — it
+Angular apps are standalone by default. Add `provideDesignSystem()` to the providers in `app.config.ts` — it
 initializes the system once and every nested component picks up brand, region, language, and animation settings.
 
 ```typescript
 // app.config.ts
 
 import { ApplicationConfig } from '@angular/core'
-import { bootstrapDesignSystem } from '@helvetia-design/angular'
+import { provideDesignSystem } from '@helvetia-design/angular'
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    bootstrapDesignSystem({
+    provideDesignSystem({
       defaults: {
         region: 'CH',
         language: 'de',

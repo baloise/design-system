@@ -1,5 +1,5 @@
 ---
-'@helvetia-design/angular': major
+'@helvetia-design/angular': minor
 ---
 
-**angular**: Rename provideDesignSystem to bootstrapDesignSystem and add DsBreakpointsService, DsOrientationService, DsConfigService for reactive viewport/orientation/config state
+**angular**: Add DsBreakpointsService, DsOrientationService, DsConfigService for reactive viewport/orientation/config state
