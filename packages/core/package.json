@@ -46,10 +46,6 @@
       "import": "./hydrate/index.mjs",
       "require": "./hydrate/index.js"
     },
-    "./hydrate-defaults": {
-      "types": "./hydrate-defaults/hydrate-defaults.d.ts",
-      "default": "./hydrate-defaults/hydrate-defaults.js"
-    },
     "./*": "./*"
   },
   "files": [
@@ -57,7 +53,6 @@
     "dist/",
     "docs/",
     "hydrate/",
-    "hydrate-defaults/",
     "loader/"
   ],
   "scripts": {
