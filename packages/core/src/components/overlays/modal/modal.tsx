@@ -37,6 +37,7 @@ export class Modal implements DsComponentInterface, DsConfigObserver {
   @State() animated = true
   @State() isOpen = false
   private transitionQueue: Promise<void> = Promise.resolve()
+  private suppressCloseWatch = false
 
   /**
    * PUBLIC PROPERTY API
@@ -54,8 +55,10 @@ export class Modal implements DsComponentInterface, DsConfigObserver {
   openChanged(newValue: boolean) {
     if (newValue) {
       this.runOpen()
-    } else {
-      this.runClose()
+    } else if (!this.suppressCloseWatch) {
+      // Only react when `open` is cleared directly (e.g. by external code) — dismiss()
+      // already queues its own close with the correct data/role.
+      this.runClose(undefined, undefined)
     }
   }
 
@@ -79,6 +82,16 @@ export class Modal implements DsComponentInterface, DsConfigObserver {
   @Prop()
   @Type('boolean')
   readonly fullscreen: boolean = false
+
+  /**
+   * Accessible label for the modal dialog (sets aria-label on the dialog element). Required for
+   * component-overlay modals (`ModalOptions.component`), whose mounted component only fills the
+   * `body` slot — the `header` slot stays empty, so `aria-labelledby="modal-title"` alone
+   * resolves to no accessible name.
+   */
+  @Prop()
+  @Type('string')
+  readonly label: string = ''
 
   /**
    * EVENTS
@@ -131,10 +144,15 @@ export class Modal implements DsComponentInterface, DsConfigObserver {
     this.open = true
   }
 
-  /** Closes the modal. */
+  /** Closes the modal, emitting `data`/`role` on `dsWillDismiss`/`dsDidDismiss`. Resolves once the close transition has finished. */
   @Method()
-  async dismiss(): Promise<void> {
+  async dismiss(data?: unknown, role?: string): Promise<void> {
+    this.suppressCloseWatch = true
     this.open = false
+    this.suppressCloseWatch = false
+    // Always queue our own close with this call's data/role — each dismiss() call gets its
+    // own dsWillDismiss/dsDidDismiss emission, even if a previous call is still closing.
+    await this.runClose(data, role)
   }
 
   /**
@@ -154,7 +172,7 @@ export class Modal implements DsComponentInterface, DsConfigObserver {
   private handleCancel = (ev: Event): void => {
     ev.preventDefault()
     if (this.closable) {
-      this.open = false
+      this.dismiss(undefined, 'escape')
     }
   }
 
@@ -168,7 +186,7 @@ export class Modal implements DsComponentInterface, DsConfigObserver {
 
   private handleBackdropClick = (ev: MouseEvent): void => {
     if (this.closable && ev.target === this.dialogEl) {
-      this.open = false
+      this.dismiss(undefined, 'backdrop')
     }
   }
 
@@ -181,8 +199,9 @@ export class Modal implements DsComponentInterface, DsConfigObserver {
     this.transitionQueue = this.transitionQueue.then(() => this.doOpen()).catch(() => undefined)
   }
 
-  private runClose(): void {
-    this.transitionQueue = this.transitionQueue.then(() => this.doClose()).catch(() => undefined)
+  private runClose(data: unknown, role: string | undefined): Promise<void> {
+    this.transitionQueue = this.transitionQueue.then(() => this.doClose(data, role)).catch(() => undefined)
+    return this.transitionQueue
   }
 
   private async doOpen(): Promise<void> {
@@ -197,16 +216,20 @@ export class Modal implements DsComponentInterface, DsConfigObserver {
     this.dsDidPresent.emit()
   }
 
-  private async doClose(): Promise<void> {
+  private async doClose(data: unknown, role: string | undefined): Promise<void> {
+    // transitionQueue serializes calls, so by the time a second queued doClose() runs, an
+    // earlier one has already closed the dialog — bail out so a modal already fully closed
+    // can't be dismissed a second time (duplicate dsWillDismiss/dsDidDismiss, wasted animation).
     if (!this.dialogEl?.open) return
-    this.dsWillDismiss.emit()
+    const detail: ModalDismissDetail = { data, role }
+    this.dsWillDismiss.emit(detail)
     this.isOpen = false
     if (this.animated) {
       await wait(300)
     }
     this.dialogEl?.close()
     this.scrollHandler.enable()
-    this.dsDidDismiss.emit()
+    this.dsDidDismiss.emit(detail)
   }
 
   /**
@@ -227,11 +250,16 @@ export class Modal implements DsComponentInterface, DsConfigObserver {
         <dialog
           part="dialog"
           ref={el => (this.dialogEl = el as HTMLDialogElement)}
-          aria-labelledby="modal-title"
+          // aria-labelledby, once present, wins the accessible-name computation even when its
+          // referenced element is empty — it does not fall back to aria-label. So `label` (for
+          // component-overlay modals, whose mounted component never fills the `header` slot)
+          // replaces aria-labelledby entirely rather than merely supplementing it.
+          aria-labelledby={this.label ? undefined : 'modal-title'}
+          aria-label={this.label || undefined}
           aria-describedby="modal-body"
           onClick={this.handleBackdropClick}
         >
-          {this.closable && <ds-close part="close" onClick={() => (this.open = false)} />}
+          {this.closable && <ds-close part="close" onClick={() => this.dismiss(undefined, 'close')} />}
           <h2 id="modal-title" part="title">
             <slot name="header" />
           </h2>
