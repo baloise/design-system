@@ -15,6 +15,11 @@ const CHILD_SLUGS = new Map([
   ['accordion-summary', 'accordion'],
   ['accordion-trigger', 'accordion'],
   ['accordion-details', 'accordion'],
+  ['card-actions', 'card'],
+  ['card-button', 'card'],
+  ['card-content', 'card'],
+  ['card-subtitle', 'card'],
+  ['card-title', 'card'],
 ])
 
 export function componentNameToSlug(name) {
