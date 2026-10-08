@@ -52,6 +52,8 @@ describe('ds-skills add', () => {
     expect(copiedSkill).toContain('Detect')
     expect(copiedSkill).toContain('CSS utils (coming soon)')
     expect(copiedSkill).toContain('Assets (coming soon)')
+    expect(copiedSkill).toContain('@helvetia-design/core')
+    expect(copiedSkill).toContain('@helvetia-design/styles')
     expect(copiedSkill).toMatch(/never runs `git add`/i)
     expect(copiedSkill).toMatch(/git commit/i)
     expect(existsSync(join(cwd, SKILL_RELATIVE_PATH, 'scripts', 'scan-migratable.mjs'))).toBe(true)

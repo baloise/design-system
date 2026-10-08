@@ -197,7 +197,7 @@ describe('spinner migration.md', () => {
       'color="blue"',
       'color="white"',
       'inverted="true"',
-      '@helvetia/ds-react',
+      '@helvetia-design/react',
       'DsSpinner',
       '<ds-spinner>',
       'no event changes',

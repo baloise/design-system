@@ -6,7 +6,7 @@ This document captures domain language, architectural patterns, and key concepts
 
 **packages/ds-skills** (`@helvetia/ds-skills`) ships Claude Code skills that consuming applications install into their own repo. It is not a design-system runtime package — there are no web components, tokens, or styles here. Consumers run `npx @helvetia/ds-skills@next add`, which copies a skill folder into `<cwd>/.claude/skills/`. The `@next` tag is required: this repo publishes with `--tag next`, and `npx` without a tag resolves `latest`.
 
-The first (and currently only) skill is **ds-migrate-from-baloise**: a menu-driven helper for migrating an app from the Baloise Design System (`bal-*`, `@baloise/ds-*`) to the Helvetia Design System (`ds-*`, `@helvetia/ds-*`). The menu itself lives in the copied `SKILL.md`; this file documents package conventions, not the menu copy.
+The first (and currently only) skill is **ds-migrate-from-baloise**: a menu-driven helper for migrating an app from the Baloise Design System (`bal-*`, `@baloise/ds-*`) to the Helvetia Design System (`ds-*`, `@helvetia-design/*`). The menu itself lives in the copied `SKILL.md`; this file documents package conventions, not the menu copy.
 
 ## Core Concepts
 
@@ -15,7 +15,7 @@ The first (and currently only) skill is **ds-migrate-from-baloise**: a menu-driv
 The package has two parts that must not be confused:
 
 - **Compiled CLI** — `src/cli.ts`, swc-compiled to `dist/cli.js`, exposed as `bin.ds-skills`. Its only job is the `add` subcommand: copy the skill payload into the consumer's `.claude/skills/` directory (creating parents, overwriting on re-run). Re-running `add` is how a consumer updates the skill. The CLI has no other subcommands until a second skill exists.
-- **Self-contained payload** — `skills/ds-migrate-from-baloise/`, plain uncompiled Markdown and dependency-free Node scripts. Copied verbatim. After copy, the skill must run inside the consumer's repo with **zero runtime dependency** back on `@helvetia/ds-skills` or this monorepo — no imports from `node_modules/@helvetia/*`.
+- **Self-contained payload** — `skills/ds-migrate-from-baloise/`, plain uncompiled Markdown and dependency-free Node scripts. Copied verbatim. After copy, the skill must run inside the consumer's repo with **zero runtime dependency** back on `@helvetia/ds-skills` or this monorepo — no script imports from `node_modules/@helvetia-design/*`.
 
 The compiled CLI is a delivery mechanism. The payload is the product.
 
@@ -41,7 +41,7 @@ Done when **Components** lists the new heading and choosing it follows that file
 
 ### Independent versioning
 
-This package publishes as `@helvetia/ds-skills`, outside the `@baloise/ds-*` fixed group in `.changeset/config.json`. A changeset bumps only this package, on its own version track.
+This package publishes as `@helvetia/ds-skills`, outside the `@helvetia-design/*` fixed group in `.changeset/config.json`. A changeset bumps only this package, on its own version track.
 
 ### The skill never commits
 
@@ -66,7 +66,7 @@ pnpm --filter @helvetia/ds-skills test
 pnpm --filter @helvetia/ds-skills lint
 ```
 
-Done when the CLI specs, `test/detect-baloise.spec.ts`, and `test/scan-bal-spinner.spec.ts` pass and eslint exits 0.
+Done when the CLI specs, `test/detect-baloise.spec.ts`, `test/scan-bal-spinner.spec.ts`, and `test/scan-bal-icon.spec.ts` pass and eslint exits 0.
 
 ### Scratch CLI
 
@@ -88,11 +88,13 @@ Done when:
 
 ### Menu (Claude)
 
-In the scratch directory, invoke `/ds-migrate-from-baloise`. Done when Init runs `scripts/detect-baloise.mjs`, Components offers **Manual** and **Detect**, Manual lists **spinner** from the first heading of `components/spinner/migration.md`, Detect suggests spinner only when the project uses it, and CSS utils / Assets report "coming soon" and stop.
+In the scratch directory, invoke `/ds-migrate-from-baloise`. Done when Init runs `scripts/detect-baloise.mjs`, Components offers **Manual** and **Detect**, Manual lists **spinner** and **icon** from the first headings of their `migration.md` files, Detect suggests a component only when the project uses it and that migration exists, and CSS utils / Assets report "coming soon" and stop.
 
-Against a project with no `@baloise/ds-*` dependency and no CSS/JS import, Init says "no Baloise Design System installation detected, nothing to migrate" and does not edit files. Against a project that has both, Init adds the `@helvetia/*` aliases from the script JSON, runs that JSON's `installCommand`, inserts the new import beside the untouched `@baloise/*` import, and leaves the result unstaged.
+Against a project with no `@baloise/ds-*` dependency and no CSS/JS import, Init says "no Baloise Design System installation detected, nothing to migrate" and does not edit files. Against a project that has both, Init adds the `@helvetia-design/*` packages from the script JSON, runs that JSON's `installCommand`, inserts the new import beside the untouched `@baloise/*` import, and leaves the result unstaged.
 
 Spinner: `node <skill>/scripts/scan-bal-spinner.mjs <project>` prints JSON findings (`total`, then `files` with `line` and `snippet`) and does not edit files. After one yes, the agent rewrites from `components/spinner/migration.md` and leaves the result unstaged.
+
+Icon: `node <skill>/scripts/scan-bal-icon.mjs <project>` prints the same JSON shape and does not edit files. After one yes, the agent rewrites from `components/icon/migration.md` and leaves the result unstaged.
 
 Detection: `node <skill>/scripts/scan-migratable.mjs <project>` prints used components grouped into `suggested` (migration available) and `notYet` (no migration available), with usage totals, and does not edit files.
 
