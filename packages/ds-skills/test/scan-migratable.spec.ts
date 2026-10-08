@@ -41,6 +41,35 @@ describe('scanMigratable', () => {
     })
   })
 
+  it('suggests accordion when the project uses bal-accordion and folds its child tags in', () => {
+    const root = createScratchDir()
+    write(
+      root,
+      'App.tsx',
+      ["import { BalAccordion } from '@baloise/ds-react'", 'export const App = () => <BalAccordion active />'].join(
+        '\n',
+      ),
+    )
+    write(
+      root,
+      'index.html',
+      [
+        '<bal-accordion active>',
+        '  <bal-accordion-summary trigger></bal-accordion-summary>',
+        '  <bal-accordion-details>Content</bal-accordion-details>',
+        '</bal-accordion>',
+        '',
+      ].join('\n'),
+    )
+
+    // The child tags have no migration of their own; the accordion migration covers
+    // them, so they count towards accordion rather than showing up as notYet.
+    expect(scanMigratable(root)).toEqual({
+      suggested: [{ name: 'accordion', total: 8 }],
+      notYet: [],
+    })
+  })
+
   it('suggests toast when the project uses bal-toast', () => {
     const root = createScratchDir()
     write(

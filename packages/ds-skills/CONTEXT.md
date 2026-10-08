@@ -33,9 +33,19 @@ Paths below are inside `skills/ds-migrate-from-baloise/`.
 
 1. Add `components/<name>/migration.md`. The first heading is the menu title.
 2. Write the confirm-then-rewrite steps and the prop mapping in that file. When the component needs a finder, add a dependency-free `scripts/scan-bal-<name>.mjs` that prints JSON findings and does not edit files, and invoke it from the migration file.
-3. Stop there. **Manual** lists the new file automatically. **Detect** suggests it automatically when the consumer project uses the matching component.
+3. When the legacy component has child tags, add an entry per child to `CHILD_SLUGS` in `scripts/scan-migratable.mjs`. Without it **Detect** reports the child as its own unmigratable component, when the parent migration already covers it.
+4. Stop there. **Manual** lists the new file automatically. **Detect** suggests it automatically when the consumer project uses the matching component.
 
-Spinner is the template: `components/spinner/migration.md` (heading `spinner`) and `scripts/scan-bal-spinner.mjs`. The agent rewrites matches after one bulk confirmation. The script does not edit files.
+Accordion is the template: `components/accordion/migration.md` (heading `accordion`) and `scripts/scan-bal-accordion.mjs`. It is the richest case — child tags, two legacy shapes, renamed events, removed methods, and props with no replacement. Spinner is the minimal case: one tag, one prop table, nothing lost. The agent rewrites matches after one bulk confirmation. The script does not edit files.
+
+Conventions that hold across every component:
+
+- **The scanner stays flat.** It prints `{ total, files: [{ file, findings: [{ line, snippet }] }] }` and nothing else. Reach comes from widening the single `USAGE_RE`, not from adding fields — toast matches `balToastController`, accordion matches the four `BalAccordion*` bindings and `BalAccordionBundle`.
+- **Never put a shared event name in a component regex.** `balChange` alone is emitted by 26 legacy components, so it would report checkbox, input, and dropdown usages as findings for whichever component you are migrating.
+- **`CHILD_SLUGS` stays explicit.** Never fold by prefix: `bal-input-slider` becomes `ds-slider`, a separate component, not part of the input migration.
+- **Anything with no `ds-*` equivalent is reported, never commented into the consumer's code.** The migration file's final step enumerates each loss for the summary. See `components/tooltip/migration.md` and `components/accordion/migration.md`.
+- **When the component has methods or events, the migration file carries the sibling-file rule.** Angular splits a component across `x.component.html` and `x.component.ts`, and the class file often calls `present()` or handles an event without ever naming the tag, so the scan cannot see it. The migration file tells the agent to open the same-basename `.ts` beside every `.html` finding. See `components/accordion/migration.md`.
+- **Fixtures are written inline in the spec** with the local `write()` helper. `test/fixtures/` predates that and serves spinner only; do not extend it.
 
 Done when **Components** lists the new heading and choosing it follows that file.
 
@@ -66,7 +76,7 @@ pnpm --filter @helvetia/ds-skills test
 pnpm --filter @helvetia/ds-skills lint
 ```
 
-Done when the CLI specs, `test/detect-baloise.spec.ts`, `test/scan-bal-spinner.spec.ts`, `test/scan-bal-icon.spec.ts`, `test/scan-bal-text.spec.ts`, `test/scan-bal-toast.spec.ts`, and `test/scan-bal-tooltip.spec.ts` pass and eslint exits 0.
+Done when the CLI specs, `test/detect-baloise.spec.ts`, `test/scan-bal-accordion.spec.ts`, `test/scan-bal-spinner.spec.ts`, `test/scan-bal-icon.spec.ts`, `test/scan-bal-text.spec.ts`, `test/scan-bal-toast.spec.ts`, and `test/scan-bal-tooltip.spec.ts` pass and eslint exits 0.
 
 ### Scratch CLI
 
@@ -88,11 +98,13 @@ Done when:
 
 ### Menu (Claude)
 
-In the scratch directory, invoke `/ds-migrate-from-baloise`. Done when Init runs `scripts/detect-baloise.mjs`, Components offers **Manual** and **Detect**, Manual lists **spinner**, **icon**, **text**, **toast**, and **tooltip** from the first headings of their `migration.md` files, Detect suggests a component only when the project uses it and that migration exists, and CSS utils / Assets report "coming soon" and stop.
+In the scratch directory, invoke `/ds-migrate-from-baloise`. Done when Init runs `scripts/detect-baloise.mjs`, Components offers **Manual** and **Detect**, Manual lists **accordion**, **spinner**, **icon**, **text**, **toast**, and **tooltip** from the first headings of their `migration.md` files, Detect suggests a component only when the project uses it and that migration exists, and CSS utils / Assets report "coming soon" and stop.
 
 Against a project with no `@baloise/ds-*` dependency and no CSS/JS import, Init says "no Baloise Design System installation detected, nothing to migrate" and does not edit files. Against a project that has both, Init adds the `@helvetia-design/*` packages from the script JSON, runs that JSON's `installCommand`, inserts the new import beside the untouched `@baloise/*` import, and leaves the result unstaged.
 
 Spinner: `node <skill>/scripts/scan-bal-spinner.mjs <project>` prints JSON findings (`total`, then `files` with `line` and `snippet`) and does not edit files. After one yes, the agent rewrites from `components/spinner/migration.md` and leaves the result unstaged.
+
+Accordion: `node <skill>/scripts/scan-bal-accordion.mjs <project>` prints the same JSON shape and does not edit files. The regex covers `bal-accordion` and its `bal-accordion-summary`, `bal-accordion-trigger`, and `bal-accordion-details` children, plus the `BalAccordion*` bindings and `BalAccordionBundle`. After one yes, the agent rewrites from `components/accordion/migration.md` and leaves the result unstaged.
 
 Icon: `node <skill>/scripts/scan-bal-icon.mjs <project>` prints the same JSON shape and does not edit files. After one yes, the agent rewrites from `components/icon/migration.md` and leaves the result unstaged.
 

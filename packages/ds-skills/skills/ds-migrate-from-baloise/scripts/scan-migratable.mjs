@@ -8,6 +8,15 @@ const COMPONENT_RE =
   /<\/?bal-([a-z][a-z0-9]*(?:-[a-z0-9]+)*)\b|<\/?Bal([A-Z][A-Za-z0-9]*)\b|\bBal([A-Z][A-Za-z0-9]*)\b/g
 const COMPONENTS_DIR = join(dirname(fileURLToPath(import.meta.url)), '../components')
 
+// Legacy child tags that one parent migration covers. Listed explicitly rather than
+// folded by prefix, because a shared prefix does not imply a shared migration:
+// `bal-input-slider` becomes `ds-slider`, not part of the input migration.
+const CHILD_SLUGS = new Map([
+  ['accordion-summary', 'accordion'],
+  ['accordion-trigger', 'accordion'],
+  ['accordion-details', 'accordion'],
+])
+
 export function componentNameToSlug(name) {
   return name
     .replace(/([A-Z])([A-Z][a-z])/g, '$1-$2')
@@ -23,7 +32,8 @@ export function scanMigratable(rootDir) {
     COMPONENT_RE.lastIndex = 0
     let match
     while ((match = COMPONENT_RE.exec(masked)) !== null) {
-      const name = match[1] ?? componentNameToSlug(match[2] ?? match[3])
+      const slug = match[1] ?? componentNameToSlug(match[2] ?? match[3])
+      const name = CHILD_SLUGS.get(slug) ?? slug
       totals.set(name, (totals.get(name) ?? 0) + 1)
     }
   })
