@@ -35662,8 +35662,19 @@
             "docs": ""
           },
           "complexType": {
-            "signature": "() => Promise<void>",
-            "parameters": [],
+            "signature": "(data?: unknown, role?: string) => Promise<void>",
+            "parameters": [
+              {
+                "name": "data",
+                "type": "unknown",
+                "docs": ""
+              },
+              {
+                "name": "role",
+                "type": "string | undefined",
+                "docs": ""
+              }
+            ],
             "references": {
               "Promise": {
                 "location": "global",
@@ -35672,9 +35683,20 @@
             },
             "return": "Promise<void>"
           },
-          "signature": "dismiss() => Promise<void>",
-          "parameters": [],
-          "docs": "Closes the modal.",
+          "signature": "dismiss(data?: unknown, role?: string) => Promise<void>",
+          "parameters": [
+            {
+              "name": "data",
+              "type": "unknown",
+              "docs": ""
+            },
+            {
+              "name": "role",
+              "type": "string | undefined",
+              "docs": ""
+            }
+          ],
+          "docs": "Closes the modal, emitting `data`/`role` on `dsWillDismiss`/`dsDidDismiss`.",
           "docsTags": []
         },
         {
@@ -35703,11 +35725,11 @@
       "events": [
         {
           "event": "dsDidDismiss",
-          "detail": "void",
+          "detail": "ModalDismissDetail",
           "bubbles": true,
           "complexType": {
             "original": "ModalDismissDetail",
-            "resolved": "void",
+            "resolved": "ModalDismissDetail",
             "references": {
               "ModalDismissDetail": {
                 "location": "import",
@@ -35745,11 +35767,11 @@
         },
         {
           "event": "dsWillDismiss",
-          "detail": "void",
+          "detail": "ModalDismissDetail",
           "bubbles": true,
           "complexType": {
             "original": "ModalDismissDetail",
-            "resolved": "void",
+            "resolved": "ModalDismissDetail",
             "references": {
               "ModalDismissDetail": {
                 "location": "import",
@@ -68428,7 +68450,7 @@
       "path": "src/components/overlays/modal/modal.interfaces.ts"
     },
     "src/components/overlays/modal/modal.interfaces.ts::ModalDismissDetail": {
-      "declaration": "void",
+      "declaration": "export interface ModalDismissDetail {\n  data?: unknown\n  role?: string\n}",
       "docstring": "",
       "path": "src/components/overlays/modal/modal.interfaces.ts"
     },
