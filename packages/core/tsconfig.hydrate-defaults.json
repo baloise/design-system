@@ -1,0 +1,12 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "rootDir": "config",
+    "outDir": "hydrate-defaults",
+    "declaration": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "types": ["node"]
+  },
+  "include": ["config/hydrate-defaults.ts"]
+}

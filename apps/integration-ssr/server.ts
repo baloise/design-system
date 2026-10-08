@@ -1,8 +1,12 @@
 import express from 'express'
+import { recommendedSerializeShadowRoot } from '@helvetia-design/core/hydrate-defaults'
 import { renderToString } from '@helvetia-design/core/hydrate'
 
-// Server-rendered fragment: real markup for every ds-* custom element, already inside a
-// declarative shadow root, before any client-side JavaScript runs.
+// Server-rendered fragment: real markup for every ds-* custom element, before any client-side
+// JavaScript runs. Rendered with `recommendedSerializeShadowRoot`, so most tags here (button,
+// input, checkbox) serialize `scoped` - no shadow root, one shared stylesheet - while
+// `ds-tooltip` serializes as a real declarative shadow root. See
+// packages/core/config/hydrate-defaults.ts.
 const fragment = `
   <ds-root>
     <main class="ds-container mt-base">
@@ -10,6 +14,9 @@ const fragment = `
       <ds-button data-testid="button">Button</ds-button>
       <ds-input data-testid="input" name="ssr-input" label="Name"></ds-input>
       <ds-checkbox data-testid="checkbox">Accept</ds-checkbox>
+      <ds-tooltip data-testid="tooltip" message="Hint">
+        <ds-button>Hover me</ds-button>
+      </ds-tooltip>
     </main>
   </ds-root>
 `
@@ -17,7 +24,8 @@ const fragment = `
 async function renderPage(): Promise<string> {
   const { html } = await renderToString(fragment, {
     fullDocument: false,
-    serializeShadowRoot: 'declarative-shadow-dom',
+    prettyHtml: true,
+    serializeShadowRoot: recommendedSerializeShadowRoot,
   })
 
   return `<!doctype html>

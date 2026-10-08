@@ -1,7 +1,7 @@
 {
   "compiler": {
     "name": "@stencil/core",
-    "version": "4.45.0",
+    "version": "4.45.1",
     "typescriptVersion": "5.8.3"
   },
   "components": [
@@ -35596,6 +35596,35 @@
           "setter": false
         },
         {
+          "name": "label",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "label",
+          "reflectToAttr": false,
+          "docs": "Accessible label for the modal dialog (sets aria-label on the dialog element). Required for\ncomponent-overlay modals (`ModalOptions.component`), whose mounted component only fills the\n`body` slot — the `header` slot stays empty, so `aria-labelledby=\"modal-title\"` alone\nresolves to no accessible name.",
+          "docsTags": [
+            {
+              "name": "default",
+              "text": "''"
+            }
+          ],
+          "default": "''",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
           "name": "modalWidth",
           "type": "number",
           "complexType": {
@@ -35696,7 +35725,7 @@
               "docs": ""
             }
           ],
-          "docs": "Closes the modal, emitting `data`/`role` on `dsWillDismiss`/`dsDidDismiss`.",
+          "docs": "Closes the modal, emitting `data`/`role` on `dsWillDismiss`/`dsDidDismiss`. Resolves once the close transition has finished.",
           "docsTags": []
         },
         {
