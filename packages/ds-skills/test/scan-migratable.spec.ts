@@ -41,6 +41,41 @@ describe('scanMigratable', () => {
     })
   })
 
+  it('ignores Bal*Bundle arrays, which are groups of components and not components', () => {
+    const root = createScratchDir()
+    write(
+      root,
+      'shell.component.ts',
+      [
+        "import { BalLayoutBundle, BalTypographyBundle } from '@baloise/ds-angular'",
+        '@Component({ imports: [BalLayoutBundle, BalTypographyBundle] })',
+        'export class ShellComponent {}',
+        '',
+      ].join('\n'),
+    )
+    write(root, 'index.html', '<bal-app></bal-app>\n')
+
+    expect(scanMigratable(root)).toEqual({
+      suggested: [{ name: 'app', total: 2 }],
+      notYet: [],
+    })
+  })
+
+  it('suggests app when the project uses bal-app', () => {
+    const root = createScratchDir()
+    write(
+      root,
+      'App.tsx',
+      ["import { BalApp } from '@baloise/ds-react'", 'export const App = () => <BalApp />'].join('\n'),
+    )
+    write(root, 'index.html', '<bal-app></bal-app>\n')
+
+    expect(scanMigratable(root)).toEqual({
+      suggested: [{ name: 'app', total: 4 }],
+      notYet: [],
+    })
+  })
+
   it('suggests accordion when the project uses bal-accordion and folds its child tags in', () => {
     const root = createScratchDir()
     write(
