@@ -346,6 +346,7 @@ basenames.
 ```js
 import express from 'express'
 import { renderToString } from '@helvetia-design/core/hydrate'
+import { recommendedSerializeShadowRoot } from '@helvetia-design/core/hydrate-defaults'
 
 const fragment = `
   <ds-root>
@@ -361,8 +362,14 @@ async function renderPage() {
     // Render only the fragment, not a full <html> document — for embedding into an
     // existing CMS page template. Omit (defaults to `true`) to get a full document.
     fullDocument: false,
-    // Real shadow DOM, sent as part of the HTML response (the default).
-    serializeShadowRoot: 'declarative-shadow-dom',
+    // This design system's recommended per-tag default: real declarative shadow DOM only for
+    // components that teleport, position against an anchor, or stack above page content
+    // (`ds-tooltip`, `ds-modal`, `ds-select`, …) — everything else (buttons, cards, form
+    // controls, …) renders `scoped`, sharing one stylesheet instead of duplicating it per
+    // instance. Pass `'declarative-shadow-dom'` instead for Stencil's own raw default — real
+    // shadow DOM for every component, matching client-side rendering exactly but costing more
+    // HTML on pages with many repeated simple components.
+    serializeShadowRoot: recommendedSerializeShadowRoot,
   })
 
   return `<!doctype html>
