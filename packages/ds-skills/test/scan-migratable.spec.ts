@@ -153,6 +153,21 @@ describe('scanMigratable', () => {
     })
   })
 
+  it('suggests badge when the project uses bal-badge', () => {
+    const root = createScratchDir()
+    write(
+      root,
+      'App.tsx',
+      ["import { BalBadge } from '@baloise/ds-react'", 'export const App = () => <BalBadge>2</BalBadge>'].join('\n'),
+    )
+    write(root, 'index.html', '<bal-badge color="grey">2</bal-badge>\n')
+
+    expect(scanMigratable(root)).toEqual({
+      suggested: [{ name: 'badge', total: 5 }],
+      notYet: [],
+    })
+  })
+
   it('suggests icon when the project uses bal-icon', () => {
     const root = createScratchDir()
     write(
