@@ -31,24 +31,6 @@ catalog:
   vite: 8.3.2
   vitest: 4.1.11
 
-# Kept in sync with package.json's "pnpm.overrides" — pnpm 11 reads
-# overrides from here locally, but Vercel's install only picks up the
-# copy in package.json (frozen-lockfile broke there without it).
-# See docs/adr/0005-duplicate-pnpm-overrides.md
-overrides:
-  'brace-expansion@<5.0.9': 5.0.9
-  'js-yaml@>=4.0.0 <4.3.2': 4.3.2
-  'js-yaml@>=3.0.0 <3.15.2': 3.15.2
-  'immutable@>=5.0.0-beta.1 <5.1.8': 5.1.8
-  'sharp@<0.35.0': 0.35.3
-  'postcss@<8.5.23': 8.5.26
-  'undici@>=7.0.0 <7.29.0': 7.29.0
-  'fast-uri@>=3.0.0 <3.1.6': 3.1.6
-  '@hono/node-server@<2.0.5': 2.1.0
-  'hono@<4.12.34': 4.13.1
-  'nanoid@<3.3.18': 3.3.18
-  'browserslist@<4.28.7': 4.28.8
-
 # Dependency lifecycle scripts are blocked by default (strictDepBuilds).
 # These native-build packages are explicitly allowed to run their scripts.
 # pnpm 11 replaced the `onlyBuiltDependencies` list with the `allowBuilds` map.
@@ -63,5 +45,10 @@ allowBuilds:
   lmdb: true
   msgpackr-extract: true
 
-minimumReleaseAgeExclude:
-  - hono@4.13.1
+# GHSA-vfj7-8cjw-p6xm (braces <=3.0.3, DoS via deeply nested patterns) has no
+# fixed release on npm yet (3.0.4 was never published) and micromatch pins
+# ^3.0.3. braces is only reached through build/dev tooling (fast-glob, shadcn).
+# Remove this entry once a patched version exists. Tracking: https://github.com/baloise/design-system/issues/2392
+auditConfig:
+  ignoreGhsas:
+    - GHSA-vfj7-8cjw-p6xm

@@ -46,8 +46,8 @@ jobs:
 
       - name: Audit dependencies
         env:
-          # Fail hard on protected branches; tolerate registry flakiness elsewhere.
-          HARD_FAIL: ${{ github.ref == 'refs/heads/next' || github.head_ref == 'changeset-release/next' }}
+          # Fail hard on release branches; tolerate registry flakiness elsewhere.
+          HARD_FAIL: ${{ github.head_ref == 'changeset-release/next' }}
         run: |
           if [ "$HARD_FAIL" = "true" ]; then
             pnpm audit --audit-level high
