@@ -15,6 +15,7 @@ import { RadioGroupDemo } from './radio-group-demo/radio-group-demo'
 import { SelectDemo } from './select-demo/select-demo'
 import { ToggleDemo } from './toggle-demo/toggle-demo'
 import { ModalDemo } from './modal-demo/modal-demo'
+import { AlertServicesDemo } from './services-demo/alert-services-demo'
 
 @Component({
   selector: 'app-root',
@@ -35,6 +36,7 @@ import { ModalDemo } from './modal-demo/modal-demo'
     SelectDemo,
     ToggleDemo,
     ModalDemo,
+    AlertServicesDemo,
   ],
   templateUrl: './app.html',
 })
