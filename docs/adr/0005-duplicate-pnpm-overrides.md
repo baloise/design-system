@@ -66,3 +66,11 @@ same commit. The check script will catch it if you forget.
 - If a future pnpm/Vercel upgrade makes `pnpm-workspace.yaml` the single
   source of truth everywhere, this ADR and the duplication it describes
   should be revisited and likely deleted.
+
+## Update 2026-10-09
+
+All overrides were removed: every affected transitive dependency resolves to
+a patched version on a fresh install, and `pnpm audit` is clean apart from the
+ignored braces advisory. The sync mechanism (`scripts/check-overrides.mjs`)
+stays in place. If an override is needed again, add it to both
+`pnpm-workspace.yaml` and `package.json` (`pnpm.overrides`) as described above.
