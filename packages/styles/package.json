@@ -41,7 +41,7 @@
   "devDependencies": {
     "@helvetia-design/tokens": "0.0.0",
     "autoprefixer": "10.6.1",
-    "cssnano": "9.0.5",
+    "cssnano": "9.1.2",
     "postcss": "8.5.28",
     "sass": "catalog:",
     "tsx": "catalog:",
