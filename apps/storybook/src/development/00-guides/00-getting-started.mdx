@@ -33,7 +33,7 @@ If you do not have an Angular app yet, create one with [Angular CLI](https://ang
   **Recommendations**
 
   - Use **SCSS** as stylesheet format to access breakpoint mixins and more. A pre-built CSS bundle is also available.
-  - Angular **17+** with standalone components is required — the Design System ships no `NgModule`.
+  - Angular **17+** is required. The Design System ships standalone components only and no `NgModule` — see [Standalone and NgModule apps](#standalone-and-ngmodule-apps).
 </InfoQuote>
 
 Install the Angular bindings and the global styles. All three packages are required.
@@ -112,8 +112,15 @@ bootstrapApplication(App, appConfig).catch(err => console.error(err))
 ```
 
 Every component — including layout elements like `DsRoot` and `DsAppFooter` — ships as a real, standalone Angular
-component generated from the underlying web component. Import what you need directly; no `CUSTOM_ELEMENTS_SCHEMA` is
-required.
+component generated from the underlying web component. Import what you need directly.
+
+<InfoQuote>
+  **No `CUSTOM_ELEMENTS_SCHEMA` needed**
+
+  Because every `ds-*` element is a real Angular component, Angular's template compiler already recognizes it. If your
+  app used `CUSTOM_ELEMENTS_SCHEMA` for the Design System (for example when migrating from `@baloise/ds-angular`),
+  remove it — with the schema in place, Angular stops reporting unknown elements and misspelled properties.
+</InfoQuote>
 
 ```typescript
 // app.ts
@@ -148,6 +155,84 @@ import or registration needed.
     <!-- Footer content -->
   </ds-app-footer>
 </ds-root>
+```
+
+### Standalone and NgModule apps
+
+The Design System ships standalone components only — there is no `DsModule` to import. In a standalone app, list the
+components in the `imports` of the component that uses them (as above). In an NgModule-based app, list them in the
+`imports` of the `NgModule` instead; Angular accepts standalone components there.
+
+```typescript
+// app.module.ts
+
+import { NgModule } from '@angular/core'
+import { DsButton, DsRoot } from '@helvetia-design/angular'
+
+@NgModule({
+  declarations: [AppComponent],
+  imports: [DsRoot, DsButton],
+})
+export class AppModule {}
+```
+
+### Reactive Forms
+
+The form components work with [Angular Reactive Forms](https://angular.io/guide/reactive-forms) out of the box. Import
+the component, bind `formControlName`, and validation state is derived from the control — no extra directive to
+import. See the [Form guide](?path=/docs/development-form--form) for details and supported components.
+
+### Services
+
+Overlays can be opened from code with injectable services. They are `providedIn: 'root'`, so there is nothing to
+register.
+
+`DsModalService` opens an Angular component inside a `ds-modal`. The component receives its data through the
+`DS_MODAL_DATA` token and can close the modal through its `DsModalRef`.
+
+```typescript
+import { Component, inject } from '@angular/core'
+import { DS_MODAL_DATA, DsModalRef, DsModalService } from '@helvetia-design/angular'
+
+@Component({
+  selector: 'app-confirm',
+  template: `<p>{{ data.question }}</p>`,
+})
+export class Confirm {
+  protected readonly data = inject(DS_MODAL_DATA) as { question: string }
+  protected readonly modalRef = inject(DsModalRef)
+}
+
+@Component({ selector: 'app-root', template: `<button (click)="open()">Open</button>` })
+export class App {
+  private readonly modalService = inject(DsModalService)
+
+  async open() {
+    const modalRef = await this.modalService.create(Confirm, { question: 'Delete this item?' }, { closable: true })
+    const { data, role } = await modalRef.onDidDismiss()
+  }
+}
+```
+
+`DsToastService` and `DsSnackbarService` show short messages. Both offer `create()`, `dismiss(id)` and `dismissAll()`.
+`create()` resolves with the id of the alert.
+
+```typescript
+import { Component, inject } from '@angular/core'
+import { DsSnackbarService, DsToastService } from '@helvetia-design/angular'
+
+@Component({ selector: 'app-root', template: `<button (click)="save()">Save</button>` })
+export class App {
+  private readonly toastService = inject(DsToastService)
+  private readonly snackbarService = inject(DsSnackbarService)
+
+  async save() {
+    const id = await this.toastService.create({ heading: 'Saved', message: 'Your changes were saved.' })
+    await this.toastService.dismiss(id)
+
+    await this.snackbarService.create({ heading: 'Deleted', message: 'The item was deleted.', duration: 'infinite' })
+  }
+}
 ```
 
 </AngularFramework>
