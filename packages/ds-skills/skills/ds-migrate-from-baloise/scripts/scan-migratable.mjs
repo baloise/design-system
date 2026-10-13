@@ -21,6 +21,7 @@ const CHILD_SLUGS = new Map([
   ['card-subtitle', 'card'],
   ['card-title', 'card'],
   ['carousel-item', 'carousel'],
+  ['checkbox-group', 'checkbox'],
 ])
 
 export function componentNameToSlug(name) {
