@@ -36,7 +36,7 @@ updates:
     ## Give freshly published releases time to clear pnpm's minimumReleaseAge
     ## supply-chain check before Dependabot proposes them.
     cooldown:
-      default-days: 3
+      default-days: 7
 
   - package-ecosystem: github-actions
     directory: /

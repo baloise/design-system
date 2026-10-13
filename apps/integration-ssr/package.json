@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "copy-assets": "copyfiles -u 5 \"node_modules/@helvetia-design/core/dist/design-system/**/*\" public/design-system && copyfiles -f node_modules/@helvetia-design/tokens/dist/css/base.tokens.css node_modules/@helvetia-design/styles/dist/css/design-system.css public",
+    "copy-assets": "copyfiles -u 5 \"node_modules/@helvetia-design/core/dist/design-system/**/*\" public/design-system && copyfiles -f node_modules/@helvetia-design/tokens/dist/css/base.tokens.css node_modules/@helvetia-design/styles/dist/css/design-system.min.css public",
     "predev": "pnpm copy-assets",
     "dev": "tsx watch server.ts",
     "prestart": "pnpm copy-assets",
@@ -18,9 +18,11 @@
     "@helvetia-design/core": "workspace:*",
     "@helvetia-design/styles": "workspace:*",
     "@helvetia-design/tokens": "workspace:*",
+    "compression": "catalog:",
     "express": "catalog:"
   },
   "devDependencies": {
+    "@types/compression": "1.8.1",
     "@types/express": "5.0.6",
     "@types/node": "24.19.1",
     "copyfiles": "2.4.1",

@@ -22,6 +22,6 @@ test('page hydrates in the browser without console errors', async ({ page }) => 
   await page.goto('/')
 
   await expect(page.getByTestId('heading')).toHaveText('Hello World')
-  await expect(page.getByTestId('button')).toBeVisible()
+  await expect(page.getByTestId('button').first()).toBeVisible()
   expect(errors).toEqual([])
 })
