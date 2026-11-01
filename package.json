@@ -35,7 +35,7 @@
     "e2e"
   ],
   "devDependencies": {
-    "@angular-devkit/build-angular": "~18.0.0",
+    "@angular-devkit/build-angular": "~18.2.21",
     "@angular-devkit/core": "~18.0.0",
     "@angular-devkit/schematics": "~18.0.0",
     "@angular-eslint/eslint-plugin": "~18.0.0",
@@ -91,7 +91,7 @@
     "@typescript-eslint/eslint-plugin": "7.16.0",
     "@typescript-eslint/parser": "7.16.0",
     "@typescript-eslint/utils": "7.16.0",
-    "@vitejs/plugin-react-swc": "~3.5.0",
+    "@vitejs/plugin-react-swc": "~3.11.0",
     "autoprefixer": "~10.4.17",
     "axe-core": "^4.10.2",
     "cheerio": "1.0.0-rc.12",
@@ -141,7 +141,7 @@
     "ts-node": "10.9.1",
     "tslib": "~2.3.0",
     "typescript": "~5.4.2",
-    "vite": "~5.0.12",
+    "vite": "~8.3.5",
     "vite-plugin-dts": "~2.3.0",
     "vitest": "~3.2.6",
     "zone.js": "~0.14.3"

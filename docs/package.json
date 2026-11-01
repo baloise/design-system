@@ -12,7 +12,7 @@
     "@storybook/addon-links": "~7.6.10",
     "@storybook/blocks": "~7.6.10",
     "@storybook/html": "~7.6.10",
-    "@storybook/html-vite": "~7.6.10",
+    "@storybook/html-vite": "~10.6.5",
     "@storybook/manager-api": "~7.6.10",
     "lodash.kebabcase": "~4.1.1",
     "js-beautify": "~1.14.11",
