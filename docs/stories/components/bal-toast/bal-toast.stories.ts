@@ -1,9 +1,6 @@
 import type { JSX } from '@baloise/ds-core'
 import type { Meta } from '@storybook/html'
-import { withRender, withComponentControls, StoryFactory, ListenerFactory, newCodeSandboxFile } from '../../utils'
-
-import codeSandboxHtmlTemplate from './code-sandbox/example_component_html.md?raw'
-import codeSandboxTsTemplate from './code-sandbox/example_component_ts.md?raw'
+import { withRender, withComponentControls, StoryFactory, ListenerFactory } from '../../utils'
 
 type Args = JSX.BalToast
 
@@ -11,15 +8,6 @@ const listener = ListenerFactory()
 
 const meta: Meta<Args> = {
   title: 'Components/Feedback/Toast',
-  parameters: {
-    balCodeSandbox: {
-      files: {
-        ...newCodeSandboxFile('example.component.html', codeSandboxHtmlTemplate),
-        ...newCodeSandboxFile('example.component.ts', codeSandboxTsTemplate),
-        ...newCodeSandboxFile('example.component.css'),
-      },
-    },
-  },
   args: {
     color: 'info',
     message: 'Hello World',

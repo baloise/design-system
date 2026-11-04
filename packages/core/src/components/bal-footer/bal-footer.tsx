@@ -40,6 +40,11 @@ export class Footer implements BalConfigObserver, Loggable {
    */
 
   /**
+   * Defines the brand of the logo. Default is 'baloise'.
+   */
+  @Prop() logoBrand: BalProps.BalLogoBrand = ''
+
+  /**
    * Image address for the logo.
    */
   @Prop() logoHref = ''
@@ -187,7 +192,7 @@ export class Footer implements BalConfigObserver, Loggable {
                 ) : this.logoSvgContent ? (
                   <div innerHTML={this.logoSvgContent}></div>
                 ) : (
-                  <bal-logo color="white"></bal-logo>
+                  <bal-logo color="white" brand={this.logoBrand}></bal-logo>
                 )}
               </div>
               <div

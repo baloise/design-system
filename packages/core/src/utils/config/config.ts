@@ -15,6 +15,17 @@ export class Config {
   public _rel?: (el: any, eventName: string, listener: any, options: any) => void
   public _ce?: (eventName: string, opts?: any) => any
 
+  get brand(): BalBrand {
+    return this._config.brand
+  }
+
+  set brand(brand: BalBrand) {
+    if (brand !== this._config.brand) {
+      this._config.brand = brand
+      this._notify()
+    }
+  }
+
   get locale(): string {
     return `${this._config.language}-${this._config.region}`
   }
@@ -32,17 +43,6 @@ export class Config {
 
   get language(): BalLanguage {
     return this._config.language
-  }
-
-  get brand(): BalBrand {
-    return this._config.brand
-  }
-
-  set brand(brand: BalBrand) {
-    if (brand !== this._config.brand) {
-      this._config.brand = brand
-      this._notify()
-    }
   }
 
   set language(language: BalLanguage) {
@@ -178,7 +178,8 @@ export const config = /*@__PURE__*/ new Config()
 
 export const configFromLocalStorage = (win: Window): any => {
   try {
-    const animated = JSON.parse(win.localStorage.getItem(BALOISE_ANIMATION_KEY))
+    const value = win.localStorage.getItem(BALOISE_ANIMATION_KEY) || 'true'
+    const animated = JSON.parse(value)
 
     if (animated !== null) {
       return {

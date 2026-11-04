@@ -2,8 +2,14 @@ mode: chatops
 openPR: true
 copyIssueLabelsToPR: true
 copyIssueAssigneeToPR: true
+autoLinkIssue: true
+autoCloseIssue: true
 branchName: short
 branches:
+  - label: '🛡️ lts'
+    name: 'main'
+    prefix: fix/
+    skip: false
   - label: '🐛 bug'
     prefix: fix/
     skip: false

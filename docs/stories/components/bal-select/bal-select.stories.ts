@@ -1,6 +1,6 @@
 import type { JSX } from '@baloise/ds-core'
 import type { Meta } from '@storybook/html'
-import { props, withRender, withComponentControls, StoryFactory, newCodeSandboxFile } from '../../utils'
+import { props, withRender, withComponentControls, StoryFactory } from '../../utils'
 
 type Args = JSX.BalSelect & { content: string }
 
@@ -94,18 +94,7 @@ export const Typeahead = Story({
   ),
 })
 
-import codeSandboxHtmlTemplate from './code-sandbox/example_component_html.md?raw'
-import codeSandboxTsTemplate from './code-sandbox/example_component_ts.md?raw'
-
 export const TypeaheadRemote = Story({
-  parameters: {
-    balCodeSandbox: {
-      files: {
-        ...newCodeSandboxFile('example.component.html', codeSandboxHtmlTemplate),
-        ...newCodeSandboxFile('example.component.ts', codeSandboxTsTemplate),
-      },
-    },
-  },
   args: {
     typeahead: true,
     remote: true,

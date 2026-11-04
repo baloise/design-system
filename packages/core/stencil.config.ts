@@ -258,7 +258,17 @@ export const config: Config = {
     },
     //
     // form components
-    { components: ['bal-checkbox', 'bal-checkbox-group'] },
+    {
+      components: [
+        'bal-dropdown',
+        'bal-option-list',
+        'bal-option',
+        'bal-checkbox',
+        'bal-checkbox-group',
+        'bal-check',
+        'bal-switch',
+      ],
+    },
     { components: ['bal-field', 'bal-field-label', 'bal-field-control', 'bal-field-message', 'bal-field-hint'] },
     { components: ['bal-file-upload'] },
     { components: ['bal-form'] },
@@ -268,13 +278,10 @@ export const config: Config = {
     { components: ['bal-input-slider'] },
     { components: ['bal-input-stepper'] },
     { components: ['bal-number-input'] },
-    { components: ['bal-radio', 'bal-radio-group'] },
+    { components: ['bal-radio', 'bal-radio-group', 'bal-radio-icon'] },
     { components: ['bal-select', 'bal-select-option'] },
     { components: ['bal-textarea'] },
     { components: ['bal-time-input'] },
-    {
-      components: ['bal-dropdown', 'bal-option-list', 'bal-option'],
-    },
     //
     // overlay components
     { components: ['bal-modal', 'bal-modal-body', 'bal-modal-header'] },

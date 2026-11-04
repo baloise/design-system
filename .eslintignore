@@ -1,6 +1,7 @@
 node_modules
 dist
 test
+playwright-report
 
 packages/icons/src/index.ts
 packages/core/icons

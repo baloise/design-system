@@ -1,5 +1,4 @@
 import React from 'react'
-import { CodeSandbox } from '../CodeSandbox'
 import { navigate } from '@storybook/addon-links'
 
 export const WelcomeStage = ({ children }) => {
@@ -16,7 +15,6 @@ export const WelcomeStage = ({ children }) => {
         </p>
         <div>
           <div className="flex gap-normal flex-wrap">
-            <CodeSandbox />
             <a
               className="button is-info"
               style={{ width: 'auto' }}
