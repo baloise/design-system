@@ -20,6 +20,7 @@ const config = {
     './addons/source/index.js',
     './addons/title/index.js',
     './addons/cookie/index.js',
+    './addons/migration/index.js',
   ],
   framework: {
     name: getAbsolutePath('@storybook/html-vite'),
